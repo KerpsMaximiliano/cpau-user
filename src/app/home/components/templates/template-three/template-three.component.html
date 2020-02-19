@@ -1,0 +1,125 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">{{data.breadCrumb}}</li>
+    </ol>
+</nav>
+<div class="container p-0 pt-2 pb-5">
+
+    <!--Articles-->
+    <section>
+        <div class="row">
+            <input type="radio" id="todos" name="categories" value="todos" checked>
+            <input type="radio" id="hoy" name="categories" value="hoy">
+            <input type="radio" id="semana" name="categories" value="semana">
+            <input type="radio" id="mes" name="categories" value="mes">
+            <input type="radio" id="ano" name="categories" value="ano">
+            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosagenda">
+                <ol>
+                    <li>
+                        <label (click)="onSelectTag('todos')" for="todos" title="TODOS">TODOS</label>
+                    </li>
+                    <li *ngFor="let currentTag of data.tags">
+                        <label for="{{currentTag}}" (click)="onSelectTag(currentTag)" title="{{currentTag}}">{{currentTag}}</label>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 posts ">
+                <ul class="list-unstyled">
+                    <article>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-9 pb-5 pr-0 ">
+                                <!--Nota - Titulo -->
+                                <h1>{{data.title}}</h1>
+                                <!--Nota - Titulo:fin -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <li *ngFor="let item of destacado" class="post" [attr.data-category]="item.categoryData">
+                                <div class="row">
+                                    <!--Tittle-->
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                                        <div class="container p-0 pt-2 pb-5">
+                                            <!--Nota-->
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
+                                                    <article>
+                                                        <!--Foto:fin-->
+                                                        <!--Nota - Titulo -->
+                                                        <h1>{{item.title}}</h1>
+                                                        <!--Nota - Titulo:fin -->
+                                                        <!--Nota - Resumen -->
+                                                        <h6 [innerHTML]="item.summary" class="resumen"> </h6>
+                                                        <!--Nota - Resumen: fin -->
+                                                        <!--Nota - Contenido -->
+                                                        <div [innerHTML]="item?.text"></div>
+                                                    </article>
+                                                </div>
+                                            </div>
+                                            <!--Nota: Fin-->
+                                        </div>
+                                    </div>
+                                    <!--FIN TITULO-->
+                                </div>
+                            </li>
+                            <li *ngFor="let item of noDestacado" class="post col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 " data-category="hoy">
+                                <figure>
+                                    <a href="#" title="Be.ar Render">
+                                        <img class="img-fluid imagen-beneficio" src="../../../../../stylesCustom/{{item?.image?.imageUrl}}" alt="{{item.image?.title}}" />
+                                    </a>
+                                </figure>
+                                <div *ngIf="item.percent" class="badge badge-primary">{{item.percent}}%</div>
+                                <div>
+                                    <p>&nbsp;</p>
+                                </div>
+                                <h4>{{item.title}}</h4>
+                                <div class="beneficio-txt" [innerHTML]="item.summary">
+                                </div>
+                                <div class="caplik">
+                                    <a *ngIf="item.link" href="{{item.link}}" target="_self" title="{{item.title}}">+ INFO</a>
+                                    <a *ngIf="!item.link" [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">+ INFO</a>
+
+                                </div>
+                            </li>
+                        </div>
+                        <p>&nbsp;</p>
+                        <div *ngIf="data.contactName" class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 pb-5 ">
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Contacto</th>
+                                                <th>&nbsp;</th>
+                                                <th>&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{data.contactName}}</td>
+                                                <td>{{data.contactEmail}}</td>
+                                                <td>{{data.contanctTel}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                <div [innerHTML]="data.policy"> </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngFor="let item of data.childLists">
+                            <a *ngIf="item.link.includes('http') || item.link.includes('www')" class="caplik" href="{{item.link}}">
+                                <h4>{{item.name}}</h4>
+                            </a>
+                            <a *ngIf="!item.link.includes('http') && !item.link.includes('www')" class="caplik" [routerLink]="['/', item.link]">
+                                <h4>{{item.name}}</h4>
+                            </a>
+                        </div>
+                    </article>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--Articles:fin-->
+
+</div>

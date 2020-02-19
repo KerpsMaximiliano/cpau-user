@@ -1,0 +1,135 @@
+<!--Fila Botonera-->
+<div class="row">
+    <div class="col-12 py-2">
+        <nav class="navbar navbar-expand-lg navbar-light container">
+            <div class="navbar-collapse row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 pl-0 ">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown bk5">
+                            <a class="nav-link div nav-link-first" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                EL CONSEJO
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a *ngFor="let item of consejo" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">
+                                    {{item.name}}
+                                </a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item bk5"> <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a> </li>
+
+                        <li class="nav-item dropdown bk5">
+                            <a class="nav-link div" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            EJERCICIO PROFESIONAL
+                        </a>
+                            <div class="dropdown-menu adaptado w-200" aria-labelledby="navbarDropdown">
+                                <a *ngFor="let item of ejercicioprofesional" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">
+                                    {{item.name}}
+                                </a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item bk5"> <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a></li>
+
+                        <li class="nav-item dropdown bk5">
+                            <a class="nav-link div" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                SERVICIOS
+                            </a>
+                            <div class="dropdown-menu adaptado" aria-labelledby="navbarDropdown">
+                                <a *ngFor="let item of servicios" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">
+                                    {{item.name}}
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item bk5"> <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a> </li>
+
+                        <li class="nav-item dropdown bk5">
+                            <a class="nav-link div" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                HERRAMIENTAS
+                            </a>
+                            <div class="dropdown-menu adaptado" aria-labelledby="navbarDropdown">
+                                <a *ngFor="let item of herramientas" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">
+                                    {{item.name}}
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item bk5"> <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a> </li>
+
+                        <li class="nav-item dropdown bk5">
+                            <a class="nav-link div nav-link-last" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                PRODUCTOS
+                            </a>
+                            <div class="dropdown-menu adaptado" aria-labelledby="navbarDropdown">
+                                <a *ngFor="let item of prodExternos" class="dropdown-item" href="{{item.url}}" target="_blank" title="{{item.title}}">
+                                    {{item.title}}
+                                </a>
+                            </div>
+                        </li>
+
+                        <!--Secciones-->
+                        <li class="nav-item pl-3"> <a href="" class="nav-link div burger" role="button" data-toggle="dropdown" data-target="#sections" aria-haspopup="true" aria-expanded="false">SECCIONES&nbsp;&nbsp;&nbsp;<i class="fa fa-bars"></i></a> </li>
+                        <!-- Secciones:fin-->
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 input-group search">
+                    <ng-autocomplete #autoComplete [data]="resultSearch" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate">
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.title"></a>
+                    </ng-template>
+                    <span class="input-group-append">
+                        <button (click)="onBtnSearch()" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" type="button"> <i class="fa fa-search"></i> </button>
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <div id="sections" class="collapse col-12 p-0 m-0 py-2 p-1 mt-2 mb-4 sections">
+            <div class="row pt-0  p-0 m-0">
+                <div class="col-md-12 p-0 m-0">
+                    <div class="row p-0 m-0">
+                        <div class="columna-1">
+                            <ul class="list-unstyled sections-link">
+                                <li *ngFor="let item of consejo"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="columna-2">
+                            <ul class="list-unstyled p-0 m-0 sections-link">
+                                <li *ngFor="let item of ejercicioprofesional"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="columna-3">
+                            <ul class="list-unstyled p-0 m-0 sections-link">
+                                <li *ngFor="let item of servicios"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="columna-4">
+                            <ul class="list-unstyled p-0 m-0 sections-link">
+                                <li *ngFor="let item of herramientas"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="columna-5">
+                            <ul class="list-unstyled p-0 m-0 sections-link">
+                                <li *ngFor="let item of prodExternos"><a href="{{item.url}}" title="{{item.title}}">{{item.title}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="columna-6">
+                            <ul class="list-unstyled p-0 m-0 sections-link">
+                                <li><a href="/noticias" title="Noticias">Noticias</a></li>
+                                <li><a href="/agenda" title="Agenda">Agenda</a></li>
+                                <li><a href="/profesionales" title="¿Necesita un profesional?">¿Necesita un profesional?</a></li>
+                                <li><a href="#" title="Términos y Condiciones">Términos y condiciones</a></li>
+                                <li><a href="#" title="Normativa de Confidencialidad">Normativa de confidencialidad</a></li>
+                                <li><a href="#" title="Anunciantes">Anunciantes</a></li>
+                                <li><a href="/contacto/general" title="Contáctese">Contáctese</a></li>
+                            </ul>
+                        </div>
+                        <div class="columna-7">
+                            <a href="" class="" role="button" data-toggle="dropdown" data-target="#sections" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-times" aria-hidden="true"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fila Botonera: fin-->

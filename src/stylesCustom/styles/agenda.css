@@ -1,0 +1,177 @@
+@charset "utf-8";
+/* CSS Document */
+article h4{
+	font-size: 20pt;
+	font-weight: 600;
+}
+time{
+	font-size: 20pt;
+}
+.fecha-agenda {
+	font-size: 20pt;
+	font-weight: 600;
+	line-height:24pt;
+	color: #3400ff;
+	word-spacing: 8vw;
+}
+.fecha-agenda p::first-letter {
+	text-transform: uppercase;
+}
+.fecha-agenda p span {
+	word-wrap: break-word;
+}
+.fecha-agenda p::second-word {
+	overflow-wrap: break-word;
+}
+.agenda-txt p{
+	font-size: 11pt;line-height: 1.3;margin: 0px 0px 10px 0px;
+
+}
+.caplik {
+	color: #3400ff;
+	text-decoration: none;
+	background-color: transparent;
+	font-weight: 700;
+	font-size: 13pt;
+}
+.caplik:hover {
+	color: #000000;
+	font-weight: 700;
+	text-decoration: underline;
+}
+/* AGENDA
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+	--blue: #3400ff;
+	--white: #ffffff;
+	--black: #000000;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ol {
+	list-style: none;
+	border-bottom: 1px solid #000000;
+	padding-bottom: 23px;
+}
+input[type="radio"] {
+	position: absolute;
+	left: -9999px;
+}
+/* flitrosagenda
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.flitrosagenda {
+	text-align: left;
+	margin-bottom: 2rem;
+	padding-top: 12px;
+}
+.flitrosagenda * {}
+.flitrosagenda label {
+	padding: 5px;
+	margin: 0px 0px 9px 0px;
+	border-radius: 0rem;
+	min-width: 100%;
+	cursor: pointer;
+	transition: all 0.1s;
+
+		font-size: 11pt;
+	line-height:12pt;
+}
+.flitrosagenda label:hover {
+	background: var(--blue);
+	color: var(--white);
+}
+
+.imagen-agenda {
+	width:100%;
+	padding-left: 32px;
+	
+}
+.posts {}
+.post {
+	border-bottom: 1px solid #000000;
+	padding: 30px 0px 15px 0px;
+}
+.post:last-child {
+	border-bottom: none;
+}
+.post:first-child {
+	padding: 11px 0px 12px 0px;
+}
+/* FILTERING RULES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+[value="todos"]:checked ~ .flitrosagenda [for="todos"], [value="hoy"]:checked ~ .flitrosagenda [for="hoy"], [value="semana"]:checked ~ .flitrosagenda [for="semana"], [value="mes"]:checked ~ .flitrosagenda [for="mes"], [value="ano"]:checked ~ .flitrosagenda [for="ano"] {
+	background: var(--black);
+	color: var(--white);
+}
+[value="todos"]:checked ~ .posts [data-category] {
+	display: block;
+}
+[value="hoy"]:checked ~ .posts .post:not([data-category~="hoy"]), [value="semana"]:checked ~ .posts .post:not([data-category~="semana"]), [value="mes"]:checked ~ .posts .post:not([data-category~="mes"]), [value="ano"]:checked ~ .posts .post:not([data-category~="ano"]) {
+	display: none;
+}
+/*==========  Non-Mobile First Method  ==========*/
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) {}
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {}
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+	.imagen-agenda {
+	width:100%;
+	padding-left:0px;	
+}
+	.fecha-agenda {
+	word-spacing: 0vw;
+	font-size: 18pt;	
+}
+}
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+	.fecha-agenda {
+		font-size: 18px;
+		font-weight: 700;
+		color: #3400ff;
+		padding-bottom: 0px;
+		word-spacing: 0;
+	}
+	p.pagenda {
+		margin: 0px 0px 0px 0px;
+		padding: 30px 0px 0px 0px;
+	}
+	.imagen-agenda {
+		/*display: none;*/
+		padding: 10px 0;
+	}
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+	.fecha-agenda {
+		font-size: 18px;
+		font-weight: 700;
+		color: #3400ff;
+		word-spacing: 0;
+	}
+	/*	p.pagenda {
+		margin: 0px 0px 0px 0px;
+		padding: 10px 0px 0px 0px;
+	}*/
+	a.caplik:hover {
+		color: #000000;
+		font-weight: 700;
+		text-decoration: underline;
+		padding: 0px;
+	}
+	.imagen-agenda {
+		/*display: none;*/
+		padding: 10px 0;
+	}
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 300px) {
+	p.pagenda {
+		margin: 10px 0px 0px 0px;
+		padding: 0px;
+	}
+}

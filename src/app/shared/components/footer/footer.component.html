@@ -1,0 +1,93 @@
+<footer>
+    <!--PIE-->
+    <div class="row">
+        <div class="col-sm col-md col-lg col-xl">
+            <div class="container border-top p-0 pt-5 pb-2">
+                <div class="row">
+                    <div class="col-sm col-md-6 col-lg col-xl">
+                        <div class="border-bottom pie-logo">
+                            <a href="index.html" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
+                                <figure><img src="../../stylesCustom/images/logo/iso.svg" width="140" height="auto" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" /></figure>
+                            </a>
+                        </div>
+                        <ul class="list-unstyled pie">
+                            <li><a href="/noticias" title="Noticias">Noticias</a></li>
+                            <li><a href="/agenda" title="Agenda">Agenda</a></li>
+                            <li><a href="/profesionales" title="¿Necesita un profesional?">¿Necesita un profesional?</a></li>
+                            <li><a href="#" title="Términos y condiciones">Términos y condiciones</a></li>
+                            <li><a href="#" title="Normativa de confidencialidad">Normativa de confidencialidad</a></li>
+                            <li><a href="#" title="Anunciantes">Anunciantes</a></li>
+                            <li><a href="/contacto/general" title="Contáctese">Contáctese</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm col-md-6 col-lg col-xl">
+                        <div class="title-pie-celda border-bottom ">
+                            <h6 class="title-pie">CONSEJO</h6>
+                        </div>
+                        <ul class="list-unstyled pie">
+                            <li *ngFor="let item of consejo"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm col-md-6 col-lg col-xl">
+                        <div class="title-pie-celda border-bottom ">
+                            <h6 class="title-pie">EJERCICIO PROFESIONAL</h6>
+                        </div>
+                        <ul class="list-unstyled pie">
+                            <li *ngFor="let item of ejercicioprofesional"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm col-md-6 col-lg col-xl">
+                        <div class="title-pie-celda border-bottom ">
+                            <h6 class="title-pie">SERVICIOS</h6>
+                        </div>
+                        <ul class="list-unstyled pie">
+                            <li *ngFor="let item of servicios"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm col-md-6 col-lg col-xl">
+                        <div class="title-pie-celda border-bottom ">
+                            <h6 class="title-pie">HERRAMIENTAS</h6>
+                        </div>
+                        <ul class="list-unstyled pie">
+                            <li *ngFor="let item of herramientas"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm col-md-6 col-lg col-xl">
+                        <div class="title-pie-celda border-bottom ">
+                            <h6 class="title-pie">PRODUCTOS</h6>
+                        </div>
+                        <ul class="list-unstyled pie">
+                            <li *ngFor="let item of prodExternos"><a href="{{item.url}}" title="{{item.title}}">{{item.title}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--COPYRIGHT-->
+
+    <div class="row">
+        <div class="col-sm pt-3 copyright">
+            <p>© Consejo Profesional de Arquitectura y Urbanismo. 25 de Mayo 482. C1002ABJ CABA. Tel: +5411 5238 1068. Fax: +5411 54312 4759. Atención: lunes a viernes de 9 a 17 horas.</p>
+        </div>
+    </div>
+
+    <!--FIN COPYRIGHT-->
+
+    <!--Columna Redes-->
+    <div class="col-12 py-4 redes-pie">
+        <ul class="redes">
+            <li><a href="https://www.instagram.com/cpauorg" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/cpauorg" target="_blank" title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/cpau-consejo-profesional-de-arquitectura-y-urbanismo" target="_blank" title="Linkedin"><i class="fa fa-linkedin-square"></i></a></li>
+            <li><a href="https://www.twitter.com/cpauorg" target="_blank" title="Twitter"><i class="fa fa-twitter-square"></i></a></li>
+            <li><a href="https://www.pinterest.com/cpauorg" target="_blank" title="Pinterest"><i class="fa fa-pinterest-square"></i></a></li>
+            <li><a href="http://www.flickr.com/cpauorg" target="_blank" title="Flickr"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="http://www.vimeo.com/cpauorg" target="_blank" title="Vimeo"><i class="fa fa-vimeo-square"></i></a></li>
+        </ul>
+    </div>
+    <!--Columna Redes:fin-->
+
+    <!--FIN PIE-->
+</footer>

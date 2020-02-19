@@ -1,0 +1,195 @@
+@charset "utf-8";
+/* CSS Document */
+article h4{
+	font-size: 20pt;
+	font-weight: 600;
+	line-height:24pt;
+	padding: 10px 0px 0px 0px;
+}
+article{
+	font-size:15px;
+	line-height: 18px;
+	font-weight: 500;
+}
+article p{
+
+}
+
+.beneficio-txt{
+	font-size: 15px;
+	line-height:18px;
+	padding: 10px 0px 0px 0px;
+	margin: 0;
+	font-weight:400;
+}
+.caplik {
+	padding:10px 0px 0px 0px;
+}
+.caplik a {
+color: #3400ff;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 13pt;
+} 
+.caplik a:hover {
+	color: #000000;
+	font-weight: 700;
+	text-decoration: underline;
+}
+.badge{
+	margin: 10px 0px 0px 0px;
+	font-size: 11pt;
+	font-weight:500;
+	padding: 2px 5px;
+	border-radius: 0;
+}
+
+.badge-primary{
+	
+	background-color:#3400ff !important;
+}
+
+
+
+/* AGENDA
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+	--blue: #3400ff;
+	--white: #ffffff;
+	--black: #000000;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ol {
+	list-style: none;
+	
+}
+input[type="radio"] {
+	position: absolute;
+	left: -9999px;
+}
+/* flitrosagenda
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.flitrosagenda {
+	text-align: left;
+	margin-bottom: 2rem;font-weight: 600;
+}
+.flitrosagenda * {}
+.flitrosagenda label {
+	padding: 5px;
+	margin: 0px 0px 7px 0px;
+	border-radius: 0rem;
+	min-width: 100%;
+	cursor: pointer;
+	transition: all 0.1s;
+
+		font-size: 11pt;
+	line-height:12pt;
+}
+.flitrosagenda label:hover {
+	background: var(--blue);
+	color: var(--white);
+}
+.imagen-beneficio {
+	width: 100%;
+}
+.posts { 
+	padding: 0px 70px;
+}
+.post {
+	padding:0px 10px 35px 10px;
+	
+
+}
+.post:last-child {
+	border-bottom: none;
+}
+.post:first-child {
+
+}
+/* FILTERING RULES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+[value="todos"]:checked ~ .flitrosagenda [for="todos"], [value="hoy"]:checked ~ .flitrosagenda [for="hoy"], [value="semana"]:checked ~ .flitrosagenda [for="semana"], [value="mes"]:checked ~ .flitrosagenda [for="mes"], [value="ano"]:checked ~ .flitrosagenda [for="ano"] {
+	background: var(--black);
+	color: var(--white);
+}
+[value="todos"]:checked ~ .posts [data-category] {
+	display: block;
+}
+[value="hoy"]:checked ~ .posts .post:not([data-category~="hoy"]), [value="semana"]:checked ~ .posts .post:not([data-category~="semana"]), [value="mes"]:checked ~ .posts .post:not([data-category~="mes"]), [value="ano"]:checked ~ .posts .post:not([data-category~="ano"]) {
+	display: none;
+}
+/*==========  Non-Mobile First Method  ==========*/
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) {}
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {}
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+	.posts { 
+	padding: 0px 50px;
+}
+	
+}
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+	
+	
+	
+	ol {
+	list-style: none;
+	border-bottom: 1px solid #000000;
+}
+	
+	.posts { 
+	padding: 0px 20px;
+}
+	
+	.fecha-agenda {
+		font-size: 18px;
+		font-weight: 700;
+		color: #3400ff;
+		padding-bottom: 0px;
+		word-spacing: 0;
+	}
+	p.pagenda {
+		margin: 0px 0px 0px 0px;
+		padding: 30px 0px 0px 0px;
+	}
+	.imagen-agenda {
+		/*display: none;*/
+		padding: 10px 0;
+	}
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+	.fecha-agenda {
+		font-size: 18px;
+		font-weight: 700;
+		color: #3400ff;
+		word-spacing: 0;
+	}
+	/*	p.pagenda {
+		margin: 0px 0px 0px 0px;
+		padding: 10px 0px 0px 0px;
+	}*/
+	a.caplik:hover {
+		color: #000000;
+		font-weight: 700;
+		text-decoration: underline;
+		padding: 0px;
+	}
+	.imagen-agenda {
+		/*display: none;*/
+		padding: 10px 0;
+	}
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 300px) {
+	p.pagenda {
+		margin: 10px 0px 0px 0px;
+		padding: 0px;
+	}
+}

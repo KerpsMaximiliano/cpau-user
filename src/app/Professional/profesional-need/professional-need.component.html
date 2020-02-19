@@ -1,0 +1,121 @@
+<body>
+    <!--CONTENEDOR-->
+    <div class="container pt-4">
+        <app-header-home></app-header-home>
+
+        <app-button-home></app-button-home>
+
+        <!--NOTICIAS-->
+        <div class="row ">
+
+            <!--Tittle-->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <h6 class="border-bottom title-sections pb-1"><a href="/profesionales" target="_self" title="¿NECESITA UN PROFESIONAL?">¿NECESITA UN PROFESIONAL?</a></h6>
+                <div class="container p-0 pt-2 pb-5">
+                    <!--Nota-->
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
+                            <h1 class="my-3">¿Necesita un profesional?</h1>
+                            <div class="pt-3 pb-5">
+                                <div style="padding:56.25% 0 0 0;position:relative;">
+                                    <iframe src="https://player.vimeo.com/video/352560966?autoplay=1&loop=1&color=3400ff&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                </div>
+
+                            </div>
+                            <form [formGroup]="form" novalidate>
+                                <h5 class="mb-3">Por profesión</h5>
+                                <div class="d-block my-3 pb-3">
+                                    <div class="row pt-3">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                                            <div class="custom-control custom-radio pb-1">
+                                                <input (click)="onSelectProfesion('ARQ')" id="arquitecto" name="paymentMethod" type="radio" value="ARQ" class="custom-control-input" checked>
+                                                <label class="custom-control-label" for="arquitecto">Arquitecto</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                                            <div class="custom-control custom-radio pb-1 pt-1">
+                                                <input (click)="onSelectProfesion('PAI')" id="paisajista" name="paymentMethod" type="radio" value="PAI" class="custom-control-input">
+                                                <label class="custom-control-label" for="paisajista">Licenciado en paisajismo</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                                            <div class="custom-control custom-radio pt-1">
+                                                <input (click)="onSelectProfesion('DSI')" id="interiores" name="paymentMethod" type="radio" value="DSI" class="custom-control-input">
+                                                <label class="custom-control-label" for="interiores">Diseñador de interiores</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-3 pb-2">
+                                    <label for="nombre">
+                                    <h6>Nombre o número de matícula:</h6>
+                                    </label>
+                                    <input formControlName="nameOrNumber" type="text" class="form-control rounded-0" id="nombre" placeholder="">
+                                    <div class="invalid-feedback"> </div>
+                                </div>
+                                <h5 class="mt-4 mb-4">Por profesión</h5>
+                                <div class="row ">
+                                    <div *ngFor="let item of actividades" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input rounded-0" id="{{item.nombre}}" (click)="onSelectAcividad(item)">
+                                            <label class="custom-control-label" for="{{item.nombre}}">{{item.nombre}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="mb-3 pt-3">Por tipo de obra realizada</h5>
+                                <div class="row ">
+                                    <div *ngFor="let item of obras" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="{{item.nombre}}" (click)="onSelectObra(item)">
+                                            <label class="custom-control-label" for="{{item.nombre}}">{{item.nombre}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-md-6 mb-3">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onClear()">Borrar filtros</button>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <button type="button" class="btn btn-primary" (click)="submit()" ng-disabled="buscando">{{buscando ? "Buscando..." : "Buscar"}}</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div *ngIf="profesionals" class="row pb-2 pt-4">
+                                <table class="table table-striped tb-m">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Matrícula</th>
+                                            <th>Contacto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of profesionals">
+                                            <td>{{item.apellido}}, {{item.nombre}}</td>
+                                            <td>{{item.matriculaTipo}}. {{item.matricula}}</td>
+                                            <td>
+                                                <a *ngIf="item.userId; else elseBlock" a class="contacto" href="/ficha/{{item.guid}}">Ficha Profesional</a>
+
+                                                <ng-template #elseBlock>
+                                                    <a *ngIf="item.email" a class="contacto" href="/profesional/contacto/{{item.guid}}">Contáctese</a>
+                                                </ng-template>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--FIN TITULO-->
+                </div>
+
+                <!--FIN NOTICIAS-->
+            </div>
+        </div>
+
+        <app-publicity-home></app-publicity-home>
+        <app-footer></app-footer>
+    </div>
+    <!--CONTENEDOR: FIN	-->
+</body>

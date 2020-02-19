@@ -1,0 +1,81 @@
+<body>
+    <!--CONTENEDOR-->
+    <div class="container pt-4">
+        <app-header-home></app-header-home>
+        <app-button-home></app-button-home>
+
+        <div class="row ">
+            <!--Tittle-->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">¿NECESITA UN PROFESIONAL?</li>
+                        <li class="breadcrumb-item active">PADRÓN</li>
+                    </ol>
+                </nav>
+                <div class="container p-0 pt-2 pb-5">
+                    <!--Nota-->
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
+                            <h1 class="my-3">Padrón</h1>
+                            <form [formGroup]="form" class="needs-validation" novalidate>
+                                <div class="row pb-2">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="tipomaty">
+                                        <h6>Tipo matrícula:</h6>
+                                        </label>
+                                        <select formControlName="matriculaTipo" class="custom-select d-block w-100 rounded-0" id="tipomat" required>
+                                            <option value="">Selecciones una opción</option>
+                                            <option *ngFor="let item of matriculasTipos" value="{{item.codigo}}">{{item.nombre}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>
+                                            <h6>Nombre o matrícula:</h6>
+                                        </label>
+                                        <div class="input-group search1">
+                                            <input formControlName="nameOrNumber" class="form-control custom-file border-secondary border-right-0 rounded-0 " type="search" value="" id="matynom">
+                                            <span class="input-group-append">
+                                                <button (click)="submit()" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" ng-disabled="buscando" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div *ngIf="profesionals" class="row pb-2 pt-4">
+                                <table class="table table-striped tb-m">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Matrícula</th>
+                                            <th>Contacto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of profesionals">
+                                            <td>{{item.apellido}}, {{item.nombre}}</td>
+                                            <td>{{item.matriculaTipo}}. {{item.matricula}}</td>
+                                            <td>
+                                                <a *ngIf="item.userId; else elseBlock" class="contacto" href="/ficha/{{item.guid}}">Ficha Profesional</a>
+
+                                                <ng-template #elseBlock>
+                                                    <a *ngIf="item.email" a class="contacto" href="/profesional/contacto/{{item.guid}}">Contáctese</a>
+                                                </ng-template>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <app-publicity-home></app-publicity-home>
+        <app-footer></app-footer>
+    </div>
+    <!--CONTENEDOR: FIN	-->
+</body>

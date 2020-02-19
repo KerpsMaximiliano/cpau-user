@@ -1,0 +1,30 @@
+.ng-autocomplete .autocomplete-container {
+    box-shadow: none
+}
+
+.ng-autocomplete,
+.autocomplete-container,
+.input-container {
+    height: inherit;
+}
+
+.ng-autocomplete,
+.autocomplete-container,
+.input-container input {
+    box-shadow: none;
+    color: #6c757d;
+    opacity: 1;
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin-bottom: 0;
+    border-radius: 0 !important;
+    border-color: #6c757d !important;
+    border-right: 0 !important;
+    height: auto !important;
+    line-height: inherit !important;
+    height: inherit !important;
+}

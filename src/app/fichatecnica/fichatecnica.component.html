@@ -1,0 +1,55 @@
+<body>
+    <!--CONTENEDOR-->
+    <div class="container pt-4">
+        <app-header-home></app-header-home>
+
+        <app-button-home></app-button-home>
+        <div class="row ">
+
+            <!--Tittle-->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <h6 class="border-bottom title-sections pb-1"><a href="/profesional/contacto/{{data.guid}}" target="_self" title="FICHA TÉCNICA">FICHA TÉCNICA</a></h6>
+                <div class="container p-0 pt-2 pb-5">
+                    <!--Nota-->
+
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
+                            <h1 class="my-3">Ficha técnica</h1>
+                            <div *ngIf="data" class="row pt-4">
+                                <div class="col-md-3">
+                                    <p style="text-align: center;">
+                                        <img src="../../../../stylesCustom/images/form/carnet.png" width="100 " height="101 " alt=" " /></p>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <li clas="padront "><strong>{{data.nombre}}</strong></li>
+                                    <li style="font-size: 14px; "><strong>Tipo de matrícula:</strong> {{data.matriculaTipo}}</li>
+                                    <li style="font-size: 14px; "><strong>Número de matrícula</strong> {{data.matricula}}</li>
+                                    <li style="font-size: 14px; "><strong>Fecha de matrícula</strong> {{data.fechaMatricula}}</li>
+                                    <li style="font-size: 14px; "><strong>Universidad</strong> {{data.universidad}}</li>
+                                </div>
+                            </div>
+                            <div class="row pt-5 ">
+                                <div class="col-md-4 ">
+                                    <button class="btn btn-secondary btn-lg rounded-0 " type="submit" (click)="back()">Volver</button>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <button class="btn btn-secondary btn-lg rounded-0 " [disabled]="!data?.universidad"><i class="fa fa-search "></i> Ver CV</button>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <button class="btn btn-secondary btn-lg rounded-0 " type="submit ">Contactar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--FIN TITULO-->
+                </div>
+
+                <!--FIN NOTICIAS-->
+            </div>
+        </div>
+        <app-publicity-home></app-publicity-home>
+        <app-footer></app-footer>
+    </div>
+    <!--CONTENEDOR: FIN	-->
+</body>

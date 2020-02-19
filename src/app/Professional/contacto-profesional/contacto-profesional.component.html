@@ -1,0 +1,74 @@
+<body>
+    <!--CONTENEDOR-->
+    <div class="container pt-4">
+        <app-header-home></app-header-home>
+        <app-button-home></app-button-home>
+
+        <div class="row ">
+
+            <!--Tittle-->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <h6 class="border-bottom title-sections pb-1"><a href="#" target="_self" title="CONTACTE UN PROFESIONAL">CONTACTE UN PROFESIONAL</a></h6>
+                <div class="container p-0 pt-2 pb-5">
+                    <!--Nota-->
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
+                            <article>
+                                <h1 class="my-3">Contacte un profesional</h1>
+                                <p style="font-size: 14px;"><strong>Recuerde:</strong> No utilice este espacio para promover sus productos o servicios a nuestros matriculados. Si usted esta interesado en ello, envíe su propuesta a <a href="mailto:servicios@cpau.org"><strong>servicios@cpau.org</strong></a></p>
+                            </article>
+                            <form [formGroup]="form" class="needs-validation" novalidate>
+                                <div class="my-3 pb-2">
+                                    <label for="nombre">
+                                    <h6>Nombre:</h6>
+                                    </label>
+                                    <input formControlName="nombre" [tooltip]="HtmlContent" content-type="template" placement="right" type="text" class="form-control rounded-0" id="nombre" placeholder="" required>
+                                </div>
+                                <div class="my-3 pb-2">
+                                    <label for="direccion">
+                                    <h6>Dirección:</h6>
+                                    </label>
+                                    <input formControlName="direccion" [tooltip]="HtmlContent" content-type="template" placement="right" type="text" class="form-control rounded-0" id="direccion" placeholder="" required>
+                                </div>
+                                <div class="my-3 pb-2">
+                                    <label for="localidad">
+                                    <h6>Localidad:</h6>
+                                    </label>
+                                    <input formControlName="localidad" [tooltip]="HtmlContent" content-type="template" placement="right" type="text" class="form-control rounded-0" id="localidad" placeholder="" required>
+                                </div>
+                                <div class="row pb-2">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="mail"><h6>Correo electrónico:</h6> </label>
+                                        <input formControlName="correo" [tooltip]="HtmlContent" content-type="template" placement="right" type="text" class="form-control rounded-0" id="correo" placeholder="" value="" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="tel"><h6>Teléfono:</h6></label>
+                                        <input formControlName="telefono" [tooltip]="HtmlContent" content-type="template" placement="right" type="text" class="form-control rounded-0" id="telefono" placeholder="" value="" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3 pb-2">
+                                    <label for="exampleFormControlTextarea1">
+                                    <h6>Mensaje:</h6>
+                                    </label>
+                                    <textarea formControlName="mensaje" id="mensaje" [tooltip]="HtmlContent" content-type="template" placement="right" class="form-control rounded-0" rows="3" required></textarea>
+                                </div>
+                                <button (click)="submit()" class="btn btn-secondary btn-lg rounded-0" type="submit" [disabled]="submitting">{{submitting ? 'Enviando...' : 'Enviar'}}</button>
+                            </form>
+                            <ng-template #HtmlContent>
+                                <p>Campo <strong>requerido</strong>!</p>
+                            </ng-template>
+                        </div>
+                    </div>
+
+                    <!--FIN TITULO-->
+                </div>
+
+                <!--FIN NOTICIAS-->
+            </div>
+        </div>
+
+        <app-publicity-home></app-publicity-home>
+        <app-footer></app-footer>
+    </div>
+    <!--CONTENEDOR: FIN	-->
+</body>

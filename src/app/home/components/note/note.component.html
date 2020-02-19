@@ -1,0 +1,48 @@
+<body>
+    <!--CONTENEDOR-->
+    <div class="container pt-4">
+        <app-header-home></app-header-home>
+
+        <app-button-home></app-button-home>
+
+        <main>
+            <!--NOTICIAS-->
+            <div class="row">
+
+                <!--Tittle-->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                    <h6 class="border-bottom title-sections pb-1"><a href="#" target="_self" title="{{data?.breadCrumb}}">{{data?.breadCrumb}}</a></h6>
+                    <div class="container p-0 pt-2 pb-5">
+                        <!--Nota-->
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
+                                <article>
+                                    <!--Foto:fin-->
+                                    <!--Nota - Titulo -->
+                                    <h1>{{data?.content?.title}}</h1>
+                                    <!--Nota - Titulo:fin -->
+                                    <!--Nota - Resumen -->
+
+                                    <h6 [innerHTML]="data?.content?.summary" class="resumen"> </h6>
+
+                                    <!--Nota - Resumen: fin -->
+                                    <!--Nota - Contenido -->
+                                    <div [innerHTML]="data?.content?.text"></div>
+                                </article>
+                            </div>
+                        </div>
+                        <!--Nota: Fin-->
+
+                    </div>
+                </div>
+                <!--FIN TITULO-->
+            </div>
+
+            <!--FIN NOTICIAS-->
+        </main>
+
+        <app-publicity-home></app-publicity-home>
+        <app-footer></app-footer>
+    </div>
+    <!--CONTENEDOR: FIN	-->
+</body>
