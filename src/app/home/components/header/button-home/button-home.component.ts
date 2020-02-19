@@ -45,7 +45,7 @@ export class ButtonHomeComponent implements OnInit {
   }
 
   selectEvent(item) {
-    this.router.navigateByUrl('/nota/' + item.sectionContentId);
+    this.router.navigate(['/nota/' + item.sectionContentId]);
     // do something with selected item
   }
 

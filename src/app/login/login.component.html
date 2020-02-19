@@ -44,13 +44,13 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver a intentar</button>
                                 <div class="btn btn-primary">
-                                    <a style="color: white; font-weight:normal; text-decoration: none;" href="/recover" target="_self" title="¿Olvidó sus datos?">¿Olvidó sus datos?</a>
+                                    <a style="color: white; font-weight:normal; text-decoration: none;" [routerLink]="['/recover']" target="_self" title="¿Olvidó sus datos?">¿Olvidó sus datos?</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="pt-4 text-center"> <a class="" href="/recover" target="_self" title="¿Olvidó sus datos?">¿Olvidó sus datos?</a> &nbsp;| &nbsp; <a class="" href="/register" target="_self" title="Registrese">Registrese</a> </div>
+                <div class="pt-4 text-center"> <a class="" [routerLink]="['/recover']" target="_self" title="¿Olvidó sus datos?">¿Olvidó sus datos?</a> &nbsp;| &nbsp; <a class="" [routerLink]="['/recover']" target="_self" title="Registrese">Registrese</a> </div>
             </div>
         </form>
 

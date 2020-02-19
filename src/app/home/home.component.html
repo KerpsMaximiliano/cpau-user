@@ -11,7 +11,7 @@
 
                     <!--NOTICIAS-->
                     <div *ngIf="contentSite; else loadingBlockNews" class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
-                        <h6 class="border-bottom title-sections pb-1"><a href="/noticias" title="{{contentSite.breadCrumb}}">{{contentSite.breadCrumb}}</a></h6>
+                        <h6 class="border-bottom title-sections pb-1"><a [routerLink]="['/noticias']" title="{{contentSite.breadCrumb}}">{{contentSite.breadCrumb}}</a></h6>
                         <div class="container p-0">
                             <ul class="noticias">
                                 <!--NOTICIAS: PRINCIPAL-->
@@ -101,7 +101,7 @@
                         <!--AGENDA-->
                         <div class="row">
                             <div *ngIf="events; else loadingBlockEvents" class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 pb-5">
-                                <h6 class="border-bottom title-sections pb-1 mb-0"><a href="/agenda" target="_self" title="AGENDA">AGENDA</a></h6>
+                                <h6 class="border-bottom title-sections pb-1 mb-0"><a [routerLink]="['/agenda']" target="_self" title="AGENDA">AGENDA</a></h6>
                                 <div class="agenda pt-2">
                                     <ul class="list-unstyled">
                                         <!--AGENDA NOTA: 1-->
@@ -129,8 +129,8 @@
                             <!--NECESITO UN PROFESIONAL-->
                             <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12">
                                 <article>
-                                    <h6 class="mt-0 mb-2 pb-1 border-bottom "><a href="/profesionales" title="¿NECESITÁS UN PROFESIONAL?">¿NECESITÁS UN PROFESIONAL?</a></h6>
-                                    <a href="/profesionales" target="_self" class="link-ss" title="Contactate ahora">
+                                    <h6 class="mt-0 mb-2 pb-1 border-bottom "><a [routerLink]="['/profesionales']" title="¿NECESITÁS UN PROFESIONAL?">¿NECESITÁS UN PROFESIONAL?</a></h6>
+                                    <a [routerLink]="['/profesionales']" target="_self" class="link-ss" title="Contactate ahora">
                                         <div style="padding:56.25% 0 0 0;position:relative;">
                                             <iframe class="video" src="https://player.vimeo.com/video/352560966?autoplay=1&loop=1&color=3400ff&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                                         </div>

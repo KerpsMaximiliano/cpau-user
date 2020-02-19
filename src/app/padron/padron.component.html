@@ -58,10 +58,10 @@
                                             <td>{{item.apellido}}, {{item.nombre}}</td>
                                             <td>{{item.matriculaTipo}}. {{item.matricula}}</td>
                                             <td>
-                                                <a *ngIf="item.userId; else elseBlock" class="contacto" href="/ficha/{{item.guid}}">Ficha Profesional</a>
+                                                <a *ngIf="item.userId; else elseBlock" class="contacto" routerLink="/ficha/{{item.guid}}">Ficha Profesional</a>
 
                                                 <ng-template #elseBlock>
-                                                    <a *ngIf="item.email" a class="contacto" href="/profesional/contacto/{{item.guid}}">Contáctese</a>
+                                                    <a *ngIf="item.email" a class="contacto" routerLink="/profesional/contacto/{{item.guid}}">Contáctese</a>
                                                 </ng-template>
                                             </td>
                                         </tr>
