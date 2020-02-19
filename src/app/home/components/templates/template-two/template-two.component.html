@@ -69,7 +69,7 @@
                     </li>
                     <li *ngFor="let item of noDestacado" class="post" [attr.data-category]="item.categoryData">
                         <article>
-                            <div *ngIf="!item.highlighted; else elseBlock" class="row">
+                            <div *ngIf="!item.highlighted" class="row">
                                 <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                     <img class="img-fluid imagen imagen-noticias" src="../../../../../stylesCustom/{{item?.image?.imageUrl}}" alt="{{item?.image?.title}}" />
                                 </div>
