@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:5000',
-    oldSiteUrl: 'http://localhost:50501'
+    apiUrl: 'https://site2020-api.azurewebsites.net',
+    oldSiteUrl: 'https://site2020-oldsite.azurewebsites.net'
 };
