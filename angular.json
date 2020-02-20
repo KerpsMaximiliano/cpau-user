@@ -26,7 +26,8 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
-                            "src/stylesCustom"
+                            "src/stylesCustom",
+                            "src/web.config"
                         ],
                         "styles": [
                             "src/stylesCustom/styles/bootstrap/bootstrap.css",
