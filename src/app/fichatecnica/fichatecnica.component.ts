@@ -15,7 +15,7 @@ export class FichatecnicaComponent implements OnInit {
     const guid = this._Activatedroute.snapshot.paramMap.get("guid");
     this.siteLoader.getFicha(guid).subscribe( data =>{
       this.data =data;
-      console.log(data)
+      console.log(this.data)
     });
   }
 
