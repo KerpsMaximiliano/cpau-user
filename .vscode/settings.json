@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/4b368455-ad96-486d-bc90-6db9c3bf5c9f/resourceGroups/cpau-rg/providers/Microsoft.Web/sites/Site2020-Institucional",
-    "appService.deploySubpath": "dist\\InstitutionalSite"
-}

@@ -64,7 +64,7 @@ console.log(`#${key}`)
     .subscribe(
         data => {
            if(data && data.success) {
-
+            alert("Email enviado!");
            }
            this.submitting = false;
         },

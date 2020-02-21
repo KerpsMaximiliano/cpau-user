@@ -1,7 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { AuthenticationService } from '@app/_services';
 
@@ -54,27 +53,37 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        var form = document.createElement("form");
+        this.authenticationService.login(this.loginForm.value.username,this.loginForm.value.password)
+        .subscribe(data => {
 
-        form.setAttribute("method", "post");
-        form.setAttribute("action", `${environment.oldSiteUrl}/login`);
-        //form.setAttribute("target", "_blank");
-        var userName = document.createElement("input");
-        userName.setAttribute("type", "hidden");
-        userName.setAttribute("name", "UserName");
-        userName.setAttribute("value", this.f.username.value);
-        form.appendChild(userName);
-        var password = document.createElement("input");
-        password.setAttribute("type", "hidden");
-        password.setAttribute("name", "Password");
-        password.setAttribute("value", this.f.password.value);
-        form.appendChild(password);
-        var redirect = document.createElement("input");
-        redirect.setAttribute("type", "hidden");
-        redirect.setAttribute("name", "redirect");
-        redirect.setAttribute("value", "/Perfil");
-        form.appendChild(redirect);
-        document.body.appendChild(form);
-        form.submit();
+            if(!data.error) {
+                var form = document.createElement("form");
+
+                form.setAttribute("method", "post");
+                form.setAttribute("action", `${environment.oldSiteUrl}/login?tkn=${data.token}`);
+                //form.setAttribute("target", "_blank");
+                var userName = document.createElement("input");
+                userName.setAttribute("type", "hidden");
+                userName.setAttribute("name", "UserName");
+                userName.setAttribute("value", this.f.username.value);
+                form.appendChild(userName);
+                var password = document.createElement("input");
+                password.setAttribute("type", "hidden");
+                password.setAttribute("name", "Password");
+                password.setAttribute("value", this.f.password.value);
+                form.appendChild(password);
+                var redirect = document.createElement("input");
+                redirect.setAttribute("type", "hidden");
+                redirect.setAttribute("name", "redirect");
+                redirect.setAttribute("value", "/Perfil");
+                form.appendChild(redirect);
+                document.body.appendChild(form);
+                form.submit();
+            }
+            else{
+                document.getElementById('btnDatosIncorrectos').click();
+                console.log(data);
+            }
+        });
     }
 }

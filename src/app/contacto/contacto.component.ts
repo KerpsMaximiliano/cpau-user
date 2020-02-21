@@ -67,7 +67,7 @@ export class ContactoComponent implements OnInit {
       .subscribe(
           data => {
              if(data && data.success) {
-
+                alert("Email enviado!");
              }
              this.submitting = false;
           },
