@@ -24,7 +24,7 @@
                                         <label for="tipomaty">
                                         <h6>Tipo matrícula:</h6>
                                         </label>
-                                        <select formControlName="matriculaTipo" class="custom-select d-block w-100 rounded-0" id="tipomat" required>
+                                        <select [tooltip]="HtmlContent" content-type="template" placement="right" formControlName="matriculaTipo" class="custom-select d-block w-100 rounded-0" id="tipomat" required>
                                             <option value="">Selecciones una opción</option>
                                             <option *ngFor="let item of matriculasTipos" value="{{item.codigo}}">{{item.nombre}}</option>
                                         </select>
@@ -34,7 +34,7 @@
                                             <h6>Nombre o matrícula:</h6>
                                         </label>
                                         <div class="input-group search1">
-                                            <input formControlName="nameOrNumber" class="form-control custom-file border-secondary border-right-0 rounded-0 " type="search" value="" id="matynom">
+                                            <input [tooltip]="HtmlContent" content-type="template" placement="right" formControlName="nameOrNumber" class="form-control custom-file border-secondary border-right-0 rounded-0 " type="search" value="" id="matynom">
                                             <span class="input-group-append">
                                                 <button (click)="submit()" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" ng-disabled="buscando" type="button">
                                                     <i class="fa fa-search"></i>
@@ -44,6 +44,9 @@
                                     </div>
                                 </div>
                             </form>
+                            <ng-template #HtmlContent>
+                                <p>Campo <strong>requerido</strong>!</p>
+                            </ng-template>
                             <div *ngIf="profesionals" class="row pb-2 pt-4">
                                 <table class="table table-striped tb-m">
                                     <thead>

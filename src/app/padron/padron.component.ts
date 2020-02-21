@@ -36,6 +36,8 @@ export class PadronComponent implements OnInit {
           this.profesionals = data;
         } );
     }
+    else
+    alert('Seleccione un tipo de matrícula.')
   }
 
 }
