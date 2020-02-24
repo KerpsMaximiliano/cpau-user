@@ -19,7 +19,7 @@
                         <label (click)="onSelectTag('todos')" for="todos" title="TODOS">TODOS</label>
                     </li>
                     <li *ngFor="let currentTag of data.tags">
-                        <label for="{{currentTag}}" (click)="onSelectTag(currentTag)" title="{{currentTag}}">{{currentTag}}</label>
+                        <label for="#{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>
                     </li>
                 </ol>
             </div>
