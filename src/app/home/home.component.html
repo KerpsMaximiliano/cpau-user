@@ -11,7 +11,7 @@
 
                     <!--NOTICIAS-->
                     <div *ngIf="contentSite; else loadingBlockNews" class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
-                        <h6 class="border-bottom title-sections pb-1"><a [routerLink]="['/noticias']" title="{{contentSite.breadCrumb}}">{{contentSite.breadCrumb}}</a></h6>
+                        <h6 class="border-bottom title-sections pb-1"><a [routerLink]="['/noticias']" title="{{contentSite.breadCrumb | uppercase}}">{{contentSite.breadCrumb | uppercase}}</a></h6>
                         <div class="container p-0">
                             <ul class="noticias">
                                 <!--NOTICIAS: PRINCIPAL-->
@@ -161,7 +161,7 @@
                 <div class="row pt-4 pb-5" *ngIf="externalProduct; else loadingBlockExternalProduct">
                     <div *ngFor="let product of externalProduct" class="col-sm col-md-6 col-lg col-xl">
                         <article>
-                            <h6 class="mt-0 mb-2 pb-1 border-bottom "><a href="{{product.url}}" title="{{product.title}}">{{product.title}}</a></h6>
+                            <h6 class="mt-0 mb-2 pb-1 border-bottom "><a href="{{product.url}}" title="{{product.title | uppercase}}">{{product.title | uppercase}}</a></h6>
                             <a href="{{product.url}}" target="_blank" class="link-ss" title="{{product.tooltip}}">
                                 <li class="media">
                                     <div class="producto" [ngStyle]="{'backgroundColor': product.color, 'color': product.textColor}">
