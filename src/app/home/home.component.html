@@ -107,10 +107,10 @@
                                         <!--AGENDA NOTA: 1-->
                                         <article *ngFor="let event of events">
                                             <li class="media">
-                                                <a [routerLink]="['/nota', event.id]" target="_self" class="link-agenda" title="CONVERSATORIO 2019: &quot;ARQUITECTURA ARMENIA&quot;">
+                                                <a [routerLink]="['/nota', event.id]" target="_self" class="link-agenda" title="{{event.title | uppercase}}">
                                                     <div class="media-body"> {{event.dateLabel}}<br> {{event.tag ? "#": ""}}{{event.tag}}
                                                         <br>
-                                                        <h6>{{event.title}}</h6>
+                                                        <h6>{{event.title | uppercase}}</h6>
                                                     </div>
                                                 </a>
                                             </li>
