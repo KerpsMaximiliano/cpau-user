@@ -107,7 +107,10 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-.imagen-noticias {}
+.imagen-noticias {
+    height: 190px;
+    width: 336px;
+}
 
 .posts {}
 
