@@ -1,4 +1,4 @@
-<h6 class="border-bottom title-sections pb-1"><a target="_self" href="#" title="{{data?.breadCrumb | uppercase}}">{{data?.breadCrumb | uppercase}}</a></h6>
+<h6 class="border-bottom title-sections pb-1"><a target="_self" href="  #" title="{{data?.breadCrumb | uppercase}}">{{data?.breadCrumb | uppercase}}</a></h6>
 <div *ngIf="data; else loadingBlockNews" class="container p-0 pt-2 pb-5">
     <!--Articles-->
     <section>
@@ -78,8 +78,9 @@
                                     <h4><a *ngIf="!item.link" [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
                                     <p [innerHTML]="item.summary"></p>
                                     <div>
-                                        <time *ngIf="item.showPublishedDate">{{item.publishDateString}} </time>
-                                        <label *ngFor="let currentTag of item.tags" class="caplik" for="{{currentTag}}">{{currentTag}}</label>
+                                        <label class="caplik" *ngFor="let currentTag of item.tags" for="{{currentTag}}" (click)="onSelectTag(currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}&nbsp;</label>
+                                        
+                                        
                                     </div>
                                 </div>
                             </div>
