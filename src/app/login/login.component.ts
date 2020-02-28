@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
                 var redirect = document.createElement("input");
                 redirect.setAttribute("type", "hidden");
                 redirect.setAttribute("name", "redirect");
-                redirect.setAttribute("value", "/Perfil");
+                redirect.setAttribute("value", `/Perfil?tkn=${data.token}`);
                 form.appendChild(redirect);
                 document.body.appendChild(form);
                 form.submit();
