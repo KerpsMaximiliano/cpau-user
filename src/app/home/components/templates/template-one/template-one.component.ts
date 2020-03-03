@@ -1,11 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite } from '@app/shared/models/contentsite.model';
 
 @Component({
   selector: 'app-template-one',
   templateUrl: './template-one.component.html',
-  styleUrls: ['./template-one.component.css']
+  styleUrls: ['./template-one.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TemplateOneComponent implements OnInit, TemplateWrapper {
 
@@ -13,11 +14,13 @@ export class TemplateOneComponent implements OnInit, TemplateWrapper {
   dataOld: ContentSite;
   destacado: ItemsSite[];
   noDestacado: ItemsSite[];
+  breadCrumb:string[];
 
   constructor() { }
 
   ngOnInit() {
     this.dataOld = Object.assign({}, this.data);
+    this.breadCrumb = this.dataOld.breadCrumb.split('/');
     this.destacado = this.data.items.filter(x=> x.highlighted)
     this.noDestacado = this.data.items.filter(x=> !x.highlighted)
   }

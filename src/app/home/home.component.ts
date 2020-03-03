@@ -1,4 +1,4 @@
-﻿import { Component, Injector } from '@angular/core';
+﻿import { Component, Injector, ViewEncapsulation } from '@angular/core';
 import { User } from '@app/_models';
 import { AuthenticationService, SiteLoader } from '@app/_services';
 import { map } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { ExternalProduct } from '@app/shared/Models/ExternalProduct.model';
     {
         templateUrl: 'home.component.html' ,
         styleUrls: ['home.component.css'],
+        encapsulation: ViewEncapsulation.None
     })
 export class HomeComponent {
     loading = false;

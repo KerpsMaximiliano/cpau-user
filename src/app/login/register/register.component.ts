@@ -79,6 +79,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading =true;
     this.errorPass = false;
     // stop here if form is invalid
     if (this.formregister.invalid) {
@@ -112,9 +113,11 @@ export class RegisterComponent implements OnInit {
                }
                console.log(data);
                this.disableRegisterButton = false;
+               this.loading =false;
             },
             error => {
               this.disableRegisterButton = false;
+              this.loading =false;
             });
   }
 

@@ -97,7 +97,7 @@
                                         </div>
                                         <button type="submit" class="btn btn-login" data-toggle="modal" [disabled]="disableRegisterButton">
                                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                                            REGISTRESE</button>
+                                            {{loading ? 'CARGANDO...' : 'REGISTRESE'}}</button>
 
                                         <!--Modal: Error Paswoord o Contraseña-->
 

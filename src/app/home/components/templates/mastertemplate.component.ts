@@ -65,7 +65,6 @@ export class MastertemplateComponent implements OnInit {
       .pipe(
         map(ret => ret as ContentSite),
       ).subscribe(data => {
-
         // if(data.childLists.length > 0) {
         //   const injectable = templateServiceMap.get(0);
         //   this.setDataInComponet(injectable.component, data);

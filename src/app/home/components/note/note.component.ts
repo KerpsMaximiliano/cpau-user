@@ -1,19 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SiteLoader } from '@app/_services';
 import { map } from 'rxjs/operators';
 import { ContentSite } from '@app/shared/models/contentsite.model';
-
+import { Renderer2, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
-  styleUrls: ['./note.component.css']
+  styleUrls: ['./note.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NoteComponent implements OnInit {
   data: ContentSite;
-  constructor(private _router: Router,private _Activatedroute:ActivatedRoute, private siteLoader: SiteLoader) { }
+  constructor(private _router: Router,private _Activatedroute:ActivatedRoute, private siteLoader: SiteLoader,private renderer2: Renderer2,
+    @Inject(DOCUMENT) private _document
+    ) { }
 
   ngOnInit() {
+    const s = this.renderer2.createElement('script');
+    s.onload = this.loadNextScript.bind(this);
+    s.type = 'text/javascript';
+    s.src = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c2bf6b040727c90';
+    s.text = ``;
+    this.renderer2.appendChild(this._document.body, s);
+
     this._router.events.subscribe(res => {
       if (res instanceof NavigationEnd)
       {
@@ -25,6 +36,12 @@ export class NoteComponent implements OnInit {
     const id = this._Activatedroute.snapshot.paramMap.get("id");
     this.loadContent(id);
   }
+
+  loadNextScript() {
+    const s = this.renderer2.createElement('script');
+    s.text = ``
+    this.renderer2.appendChild(this._document.body, s);
+    }
 
   loadContent(id) {
     this.siteLoader.getFullContent(id)

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
+        this.loading =true;
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
@@ -83,7 +83,11 @@ export class LoginComponent implements OnInit {
             else{
                 document.getElementById('btnDatosIncorrectos').click();
                 console.log(data);
+                this.loading =false;
             }
+        },
+        error => {
+            this.loading = false;
         });
     }
 }

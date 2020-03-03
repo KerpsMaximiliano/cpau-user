@@ -1,10 +1,19 @@
-<h6 class="border-bottom title-sections pb-1"><a href="#" target="_self" title="{{data?.breadCrumb | uppercase}}">{{data?.breadCrumb | uppercase}}</a></h6>
+<h6 *ngIf="breadCrumb?.length == 1" class="border-bottom title-sections pb-1">
+    <a *ngFor="let bc of breadCrumb" target="_self" href=" #" title="{{bc | uppercase}}">{{bc | uppercase}}
+    </a>
+</h6>
+
+<nav aria-label="breadcrumb" *ngIf="breadCrumb?.length > 1">
+    <ol class="breadcrumb">
+        <li *ngFor="let bc of breadCrumb; let last = last;" class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}}" title="{{bc | uppercase}}">{{bc | uppercase}}</li>
+    </ol>
+</nav>
 <div class="container p-0 pt-2 pb-5">
 
     <!--Articles-->
     <section>
         <div class="row">
-            <input type="radio" id="todos" name="categories" value="todos">
+            <input type="radio" id="todos" name="categories" value="todos" checked>
             <input type="radio" id="hoy" name="categories" value="hoy">
             <input type="radio" id="semana" name="categories" value="semana">
             <input type="radio" id="mes" name="categories" value="mes">

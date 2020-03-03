@@ -31,7 +31,7 @@ export class HeaderHomeComponent implements OnInit {
 
   private updateControllers() {
     this.isAuthenticated =  this.authenticationService.isAuthenticated();
-    this.lblAuthentication = this.isAuthenticated ? "LOGOUT" : "LOGIN";
+    this.lblAuthentication = "LOGIN" ;//this.isAuthenticated ? "LOGOUT" : "LOGIN";
 
     if(this.authenticationService.currentUserValue)
       this.lblUserName =  this.authenticationService.currentUserValue.username;

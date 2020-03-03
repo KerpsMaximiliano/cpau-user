@@ -1,9 +1,24 @@
-<h6 class="border-bottom title-sections pb-1"><a target="_self" href="  #" title="{{data?.breadCrumb | uppercase}}">{{data?.breadCrumb | uppercase}}</a></h6>
+<h6 *ngIf="breadCrumb?.length == 1" class="border-bottom title-sections pb-1">
+    <a *ngFor="let bc of breadCrumb" target="_self" href=" #" title="{{bc | uppercase}}">{{bc | uppercase}}
+    </a>
+</h6>
+
+<nav aria-label="breadcrumb" *ngIf="breadCrumb?.length > 1">
+    <ol class="breadcrumb">
+        <li *ngFor="let bc of breadCrumb; let last = last;" class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}}" title="{{bc | uppercase}}">{{bc | uppercase}}</li>
+    </ol>
+</nav>
+
 <div *ngIf="data; else loadingBlockNews" class="container p-0 pt-2 pb-5">
     <!--Articles-->
     <section>
         <div class="row">
-            <input type="radio" id="todos" name="categories" value="todos">
+            <input type="radio" id="todos" name="categories" value="todos" checked>
+            <input type="radio" id="{{currentTag | uppercase}}" name="categories" value="{{currentTag | uppercase}}" *ngFor="let currentTag of data.tags">
+            <input type="radio" id="hoy" name="categories" value="hoy">
+            <input type="radio" id="semana" name="categories" value="semana">
+            <input type="radio" id="mes" name="categories" value="mes">
+            <input type="radio" id="ano" name="categories" value="ano">
             <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias ">
                 <ol>
                     <li>
@@ -12,10 +27,10 @@
                         </div>
                     </li>
                     <li>
-                        <label (click)="onSelectTag('todos')" for="todos" title="Todas">Todas</label>
+                        <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="Todas">Todas</label>
                     </li>
                     <li *ngFor="let currentTag of data.tags">
-                        <label for="#{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>
+                        <label for="{{currentTag | uppercase}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>
                     </li>
                 </ol>
                 <ol>
@@ -78,10 +93,10 @@
                                     <h4><a *ngIf="!item.link" [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
                                     <p [innerHTML]="item.summary"></p>
                                     <div>
-                                        <time *ngIf="item.showPublishedDate">{{item.publishDateString}} </time>
+                                        <time *ngIf="item.showPublishedDate">{{item.publishDateString | uppercase}} </time>
                                         <label class="caplik" *ngFor="let currentTag of item.tags" for="{{currentTag}}" (click)="onSelectTag(currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}&nbsp;</label>
-                                        
-                                        
+
+
                                     </div>
                                 </div>
                             </div>
