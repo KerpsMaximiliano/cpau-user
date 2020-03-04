@@ -36,7 +36,7 @@ export class HomeComponent {
             map(ret => ret as ContentSite),
             map(ret => {
                     ret.items.forEach(i=> i.summary != null && i.summary != undefined
-                        ? i.summary = (i.summary.length > 265 ? i.summary.substr(0,265)+'...<a href="#">ver más</a>' : i.summary )
+                        ? i.summary = (i.summary.length > 265 ? i.summary.substr(0,265)+'...' : i.summary )
                         : i.summary = ''
                         );
                 return ret;
