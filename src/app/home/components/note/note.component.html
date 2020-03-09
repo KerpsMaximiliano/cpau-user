@@ -16,8 +16,13 @@
                     <div class="container p-0 pt-2 pb-5 ">
                         <!--Nota-->
                         <div class="row ">
-                            <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
+                            <div class="col-12 col-sm-12 col-md-7 offset-md-2 articleCss">
                                 <article>
+                                    <!--Foto-->
+                                    <figure *ngIf="data?.content?.image">
+                                        <img class="img-fluid imagen" src="{{data?.content?.image?.imageUrl}}" alt="{{data?.content?.image?.title}}" />
+                                        <figcaption>&copy; {{data?.content?.image?.alternateText}}</figcaption>
+                                    </figure>
                                     <!--Foto:fin-->
                                     <!--Nota - Titulo -->
                                     <h1>{{data?.content?.title}}</h1>

@@ -1,148 +1,181 @@
 @charset "utf-8";
+
 /* CSS Document */
-article figure {
-  position: relative;
-  margin: 0px 0px -30px 0px;
+
+.articleCss article figure {
+    position: relative;
+    margin: 0px 0px -30px 0px;
 }
-article figcaption {
-  text-align: left;
-  font-style: normal;
-  color: #000000;
-  padding: 10px 10px 10px 0px;
-  margin: 0px 0px 0px -35px;
-  -webkit-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-  transform-origin: top left;
-  max-width: 58%;
-  text-transform: uppercase;
-  font-size: 12px;
+
+.articleCss article figcaption {
+    text-align: left;
+    font-style: normal;
+    color: #000000;
+    padding: 10px 10px 10px 0px;
+    margin: 0px 0px 0px -35px;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    max-width: 58%;
+    text-transform: uppercase;
+    font-size: 12px;
 }
-article {
-  font-size: 14px;
-  line-height: 19px;
+
+.articleCss article {
+    font-size: 14px;
+    line-height: 19px;
 }
-article h1 {
-  padding: 20px 0px 15px 0px;
+
+.articleCss article h1 {
+    padding: 20px 0px 15px 0px;
 }
-article h6 {
-  border-bottom: 1px solid #000000;
-  padding: 0px 0px 10px 0px;
-  margin: 0px 0px 30px 0px;
-  font-size: 14pt;
+
+.articleCss article h6 {
+    border-bottom: 1px solid #000000;
+    padding: 0px 0px 10px 0px;
+    margin: 0px 0px 30px 0px;
+    font-size: 14pt;
 }
+
 .resumen {
-  border-bottom: none;
-  margin: 0px 0px 5px 0px;
+    border-bottom: none;
+    margin: 0px 0px 5px 0px;
 }
-article h6 p {
-  font-size: 14pt;
-  font-weight: 400;
-  border-bottom: none;
+
+.articleCss article h6 p {
+    font-size: 14pt;
+    font-weight: 400;
+    border-bottom: none;
 }
-article p {
-  font-size: 11pt;
+
+.articleCss article p {
+    font-size: 11pt;
 }
-article a {
-  color: #3400ff;
-  text-decoration: underline;
-  font-weight: 700;
+
+.articleCss article a {
+    color: #3400ff;
+    text-decoration: underline;
+    font-weight: 700;
 }
-article a:hover {
-  color: #000000;
-  text-decoration: underline;
+
+.articleCss article a:hover {
+    color: #000000;
+    text-decoration: underline;
 }
-article a::after {
-  content: "\0000a0 \0000a0 \f061";
-  font-family: 'FontAwesome';
+
+.articleCss article a::after {
+    content: "\0000a0 \0000a0 \f061";
+    font-family: 'FontAwesome';
 }
-article ul {
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  list-style: none;
+
+.articleCss article ul {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    list-style: none;
 }
-article li {
-  padding: 0px 0px 20px 16px;
-  margin: 0px 0px 0px 0px;
+
+.articleCss article li {
+    padding: 0px 0px 20px 16px;
+    margin: 0px 0px 0px 0px;
 }
-article li::before {
-  content: '\f105';
-  /*  content: '\f054';*/
-  font-family: 'FontAwesome';
-  float: left;
-  margin: 0px 10px 0px -16px;
-  font-weight: bold;
-  color: #3400ff;
-  font-size: 16px;
+
+.articleCss article li::before {
+    content: '\f105';
+    /*  content: '\f054';*/
+    font-family: 'FontAwesome';
+    float: left;
+    margin: 0px 10px 0px -16px;
+    font-weight: bold;
+    color: #3400ff;
+    font-size: 16px;
 }
+
 .badge {
-  font-size: 11pt;
-  font-weight: 500;
-  padding: 2px 5px;
-  margin: 0 0 20px 0;
-  border-radius: 0;
+    font-size: 11pt;
+    font-weight: 500;
+    padding: 2px 5px;
+    margin: 0 0 20px 0;
+    border-radius: 0;
 }
+
 .badge-primary {
-  background-color: #3400ff !important;
+    background-color: #3400ff !important;
 }
+
+
 /* SCROLLUP */
+
 #scrollUp {
-  /*    background-image: url("../images/scrollup/top.png");*/
-  /*	    background-image: url("../images/scrollup/arrow-circle-up-solid.svg");*/
-  /*	background-repeat: no-repeat;*/
-  /*	 background-color:#3400ff;
+    /*    background-image: url("../images/scrollup/top.png");*/
+    /*	    background-image: url("../images/scrollup/arrow-circle-up-solid.svg");*/
+    /*	background-repeat: no-repeat;*/
+    /*	 background-color:#3400ff;
 	-webkit-mask-image: url("../images/scrollup/arrow-circle-up-solid.svg");
 	 mask-image: url("../images/scrollup/arrow-circle-up-solid.svg");*/
-  background-image: url("../images/scrollup/arrow.svg");
-  background-repeat: no-repeat;
-  bottom: 10px;
-  right: 10px;
-  width: 50px; /* Width of image */
-  height: 50px; /* Height of image */
+    background-image: url("../images/scrollup/arrow.svg");
+    background-repeat: no-repeat;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    /* Width of image */
+    height: 50px;
+    /* Height of image */
 }
+
+
 /* Small Devices, Tablets */
+
 @media only screen and (max-width: 768px) {}
+
+
 /* Small Devices, Tablets */
+
 @media only screen and (max-width: 768px) {}
+
+
 /* Extra Small Devices, Phones */
+
 @media only screen and (max-width: 480px) {
-  article figcaption {
-    text-align: left;
-    font-style: normal;
-    color: #000000;
-    padding: 10px 10px 10px 0px;
-    margin: 0px 0px 20px 0px;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    transform-origin: top left;
-    max-width: 100%;
-    font-size: 12px;
-  }
+    .articleCss article figcaption {
+        text-align: left;
+        font-style: normal;
+        color: #000000;
+        padding: 10px 10px 10px 0px;
+        margin: 0px 0px 20px 0px;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        transform-origin: top left;
+        max-width: 100%;
+        font-size: 12px;
+    }
 }
+
 @media only screen and (max-width: 320px) {
-  article figcaption {
-    text-align: left;
-    font-style: normal;
-    color: #000000;
-    padding: 10px 10px 10px 0px;
-    margin: 0px 0px 20px 0px;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    transform-origin: top left;
-    max-width: 100%;
-    font-size: 12px;
-  }
+    .articleCss article figcaption {
+        text-align: left;
+        font-style: normal;
+        color: #000000;
+        padding: 10px 10px 10px 0px;
+        margin: 0px 0px 20px 0px;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        transform-origin: top left;
+        max-width: 100%;
+        font-size: 12px;
+    }
 }
+
 @media only screen and (max-width: 300px) {
-  article figcaption {
-    text-align: left;
-    font-style: normal;
-    color: #000000;
-    padding: 10px 10px 10px 0px;
-    margin: 0px 0px 20px 0px;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    transform-origin: top left;
-    max-width: 100%;
-    font-size: 12px;
-  }
+    .articleCss article figcaption {
+        text-align: left;
+        font-style: normal;
+        color: #000000;
+        padding: 10px 10px 10px 0px;
+        margin: 0px 0px 20px 0px;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        transform-origin: top left;
+        max-width: 100%;
+        font-size: 12px;
+    }
 }

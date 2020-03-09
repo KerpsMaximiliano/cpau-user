@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
   selector: 'app-note',
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.css'],
-  encapsulation: ViewEncapsulation.ShadowDom
+  encapsulation: ViewEncapsulation.None
 })
 export class NoteComponent implements OnInit {
   data: ContentSite;
