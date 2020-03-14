@@ -31,6 +31,7 @@ import { FichatecnicaComponent } from './fichatecnica/fichatecnica.component';
 import { ContactoProfesionalComponent } from './Professional/contacto-profesional/contacto-profesional.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { CacheInterceptor } from '../app/_helpers/cache.interceptor';
 
 @NgModule({
     imports: [
@@ -68,7 +69,8 @@ import { TooltipModule } from 'ng2-tooltip-directive';
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }
     ],
     entryComponents:[TemplateOneComponent,TemplateTwoComponent,TemplateThreeComponent,TemplateListComponent],
     bootstrap: [AppComponent]
