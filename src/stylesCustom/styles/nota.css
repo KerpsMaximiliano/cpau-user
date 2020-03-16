@@ -37,7 +37,7 @@
     font-size: 14pt;
 }
 
-.resumen {
+.articleCss .resumen {
     border-bottom: none;
     margin: 0px 0px 5px 0px;
 }
@@ -90,7 +90,7 @@
     font-size: 16px;
 }
 
-.badge {
+.articleCss .badge {
     font-size: 11pt;
     font-weight: 500;
     padding: 2px 5px;
@@ -98,7 +98,7 @@
     border-radius: 0;
 }
 
-.badge-primary {
+.articleCss .badge-primary {
     background-color: #3400ff !important;
 }
 

@@ -50,6 +50,7 @@ export class NoteComponent implements OnInit {
     )
     .subscribe( content => {
       this.data = content;
+      console.log(this.data)
     });
 
   }
