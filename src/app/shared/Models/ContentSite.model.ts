@@ -51,6 +51,7 @@ export interface ItemsSite {
 export interface Image {
   imageUrl?: string | null;
   fullSizeImageUrl?: string | null;
+  epigraph?: string | null;
   title?: string | null;
   alternateText?: string | null;
 }
