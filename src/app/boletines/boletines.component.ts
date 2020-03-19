@@ -21,7 +21,6 @@ export class BoletinesComponent implements OnInit {
     this.siteLoader.boletin(idInt)
     .subscribe(
         objSend => {
-          console.log(objSend)
           if(objSend && objSend.data){
             this.data = objSend.data
           }else{

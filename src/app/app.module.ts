@@ -33,7 +33,6 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { CacheInterceptor } from '../app/_helpers/cache.interceptor';
 import { BoletinesComponent } from './boletines/boletines.component';
-import { BoletinComponent } from './boletin/boletin.component';
 
 @NgModule({
     imports: [
@@ -69,7 +68,6 @@ import { BoletinComponent } from './boletin/boletin.component';
         ContactoProfesionalComponent,
         ContactoComponent,
         BoletinesComponent,
-        BoletinComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

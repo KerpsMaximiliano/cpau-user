@@ -24,7 +24,7 @@
                                             <td class="fila">
                                                 <table cellspacing="0" cellpadding="0" border="0" width="100%">
                                                     <tr>
-                                                        <td class="celda-migas"><a [routerLink]="['/noticias']" target="_blank" class="migas" title="NOTICIAS">NOTICIAS</a></td>
+                                                        <td class="celda-migas"><a [routerLink]="['/',data?.contenidoDestacado.section]" target="_blank" class="migas" title="{{data?.contenidoDestacado.section | uppercase}}">{{data?.contenidoDestacado.section | uppercase}}</a></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="celda-title"><a class="title" [routerLink]="['/nota',data?.contenidoDestacado?.link]" target="_blank" title="{{data?.contenidoDestacado?.title}}">{{data?.contenidoDestacado?.title}}</a></td>
@@ -54,7 +54,7 @@
                                                             <td class="fila-notas">
                                                                 <table cellspacing="0" cellpadding="0" border="0" width="100%" class="tabla-notas">
                                                                     <tr>
-                                                                        <td class="celda-migas"><a href="https://www.cpau.org/institucional/acciones" target="_blank" class="migas" title="INSTITUCIONAL / ACCIONES">INSTITUCIONAL / ACCIONES</a></td>
+                                                                        <td class="celda-migas"><a [routerLink]="['/',contenido.section]" target="_blank" class="migas" title="{{contenido.section | uppercase}}">{{contenido.section | uppercase}}</a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="celda-title"><a class="title" [routerLink]="['/nota',contenido?.link]" target="_blank" title="Preocupa la enajenación de bienes del Estado">{{contenido?.title}}</a></td>
