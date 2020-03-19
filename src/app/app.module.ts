@@ -21,6 +21,7 @@ import { ProfessionalNeedComponent } from './Professional/profesional-need/profe
 import { TemplateOneComponent } from './home/components/templates/template-one/template-one.component';
 import { TemplateTwoComponent } from './home/components/templates/template-two/template-two.component';
 import { TemplateThreeComponent } from './home/components/templates/template-three/template-three.component';
+import { TemplateFourComponent } from './home/components/templates/template-four/template-four.component';
 import { MastertemplateComponent } from './home/components/templates/mastertemplate.component';
 import { RenderDirective } from './_directive/renderhost.directive';
 import { NoteComponent } from './home/components/note/note.component';
@@ -58,6 +59,7 @@ import { CacheInterceptor } from '../app/_helpers/cache.interceptor';
         TemplateOneComponent,
         TemplateTwoComponent,
         TemplateThreeComponent,
+        TemplateFourComponent,
         MastertemplateComponent,
         RenderDirective,
         NoteComponent,
@@ -72,7 +74,7 @@ import { CacheInterceptor } from '../app/_helpers/cache.interceptor';
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }
     ],
-    entryComponents:[TemplateOneComponent,TemplateTwoComponent,TemplateThreeComponent,TemplateListComponent],
+    entryComponents:[TemplateOneComponent,TemplateTwoComponent,TemplateThreeComponent,TemplateListComponent, TemplateFourComponent],
     bootstrap: [AppComponent]
 })
 
