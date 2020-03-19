@@ -1,0 +1,378 @@
+td {
+    border-bottom: none;
+    padding: inherit;
+    vertical-align: auto;
+}
+
+
+/* What it does: Remove spaces around the email design added by some email clients. */
+
+
+/* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+
+/* What it does: Stops email clients resizing small text. */
+
+* {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+
+/* What it does: Forces Outlook.com to display emails full width. */
+
+.ExternalClass {
+    width: 100%;
+}
+
+
+/* What is does: Centers email on Android 4.4 */
+
+div[style*="margin: 16px 0"] {
+    margin: 0 !important;
+}
+
+
+/* What it does: Stops Outlook from adding extra spacing to tables. */
+
+table,
+td {
+    mso-table-lspace: 0pt !important;
+    mso-table-rspace: 0pt !important;
+}
+
+
+/* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+
+table {
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+    margin: 0 auto !important;
+}
+
+table table table {
+    table-layout: auto;
+}
+
+
+/* What it does: Uses a better rendering method when resizing images in IE. */
+
+img {
+    -ms-interpolation-mode: bicubic;
+}
+
+
+/* What it does: Overrides styles added when Yahoo's auto-senses a link. */
+
+.yshortcuts a {
+    border-bottom: none !important;
+}
+
+
+/* What it does: Another work-around for iOS meddling in triggered links. */
+
+a[x-apple-data-detectors] {
+    color: inherit !important;
+}
+
+</style><!-- Progressive Enhancements --><style type="text/css">body {
+    margin: 0 !important;
+    background: #f9f9f9 !important;
+}
+
+a img:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70) !important;
+    /* For IE8 and earlier */
+}
+
+a {
+    color: #3400ff !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #000000 !important;
+    text-decoration: underline !important;
+}
+
+.tabla-general {
+    background: #f9f9f9 !important;
+    border-collapse: collapse !important;
+}
+
+.invisible {
+    display: none !important;
+    font-size: 1px !important;
+    line-height: 1px !important;
+    max-height: 0px !important;
+    max-width: 0px !important;
+    opacity: 0 !important;
+    ;
+    overflow: hidden !important;
+    mso-hide: all !important;
+    font-family: sans-serif !important;
+}
+
+.div-general {
+    max-width: 680px !important;
+}
+
+.tabla-header {
+    background: #ffffff !important;
+    max-width: 680px !important;
+    text-align: center !important;
+}
+
+.celda {
+    background: #f9f9f9 !important;
+    padding: 10px 0px !important;
+    text-align: center !important;
+}
+
+.logo-cpau {
+    width: 100% !important;
+    max-width: 680px !important;
+    height: auto !important;
+    vertical-align: bottom !important;
+}
+
+.tabla-body {
+    background: #ffffff !important;
+    max-width: 680px !important;
+}
+
+.fila {
+    padding: 40px 20px 0px 20px !important;
+    border-bottom: 3px solid #1a1aff !important;
+}
+
+.fila-notas {
+    padding: 0px 20px 40px 20px !important;
+}
+
+.tabla-notas {
+    border-bottom: 3px solid #1a1aff !important;
+}
+
+.fila-final {
+    padding: 0px 20px 0px 20px !important;
+    border-bottom: none !important;
+}
+
+.celda-migas {
+    padding: 0px 0px 20px 0px !important;
+}
+
+.migas {
+    background-color: #3400ff !important;
+    font-family: 'Roboto', sans-serif!important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    padding: 5px!important;
+    font-size: 12px !important;
+    line-height: 1.20 !important;
+}
+
+.migas:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.celda-title {
+    padding: 0px 0px 20px 0px !important;
+}
+
+.title {
+    color: #000000 !important;
+    line-height: 1.14 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: bold !important;
+}
+
+.title:hover {
+    color: #3400ff !important;
+    text-decoration: underline !important;
+}
+
+.celda-resumen {
+    padding: 0px 0px 20px 0px !important;
+}
+
+.resumen {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    mso-height-rule: exactly !important;
+    line-height: 1.22 !important;
+}
+
+.celda-masinfo {
+    padding: 0px 0px 30px 0px !important;
+}
+
+.imagen {
+    padding: 0px 0px 5px 0px !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    height: auto !important;
+    vertical-align: bottom !important;
+}
+
+.masinfo {
+    color: #3400ff !important;
+    line-height: 36px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    mso-height-rule: exactly !important;
+    line-height: 1.22 !important;
+}
+
+.masinfo:hover {
+    color: #000000 !important;
+    text-decoration: underline !important;
+}
+
+.tabla-footer {
+    background: #ffffff !important;
+    max-width: 680px !important;
+}
+
+.celda-pie {
+    padding: 20px !important;
+    width: 100% !important;
+    font-size: 12px !important;
+    font-family: 'Roboto', sans-serif !important;
+    mso-height-rule: exactly !important;
+    line-height: 1.33 !important;
+    text-align: left !important;
+    color: #000000 !important;
+    background: #eeeeee !important;
+}
+
+.pie-cpau {
+    color: #000000 !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+}
+
+.pie-cpau:hover {
+    color: #3400ff !important;
+    text-decoration: underline !important;
+}
+
+.pie {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+.pie:hover {
+    color: #3400ff !important;
+    text-decoration: underline !important;
+}
+
+.tabla-redes {
+    border-collapse: collapse !important;
+    background: #ffffff !important;
+}
+
+.celda-redes {
+    padding: 20px 0px !important;
+    font-size: 12px !important;
+    font-family: 'Roboto', sans-serif !important;
+    mso-height-rule: exactly !important;
+    line-height: 18px !important;
+}
+
+.redes {
+    list-style-type: none;
+    padding: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin: 0px;
+    display: inline;
+    width: initial;
+    height: auto;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+
+/* What it does: Hover styles for buttons */
+
+.button-td,
+.button-a {
+    transition: all 100ms ease-in !important;
+    color: #3400ff !important;
+    text-decoration: none !important;
+}
+
+.button-td:hover,
+.button-a:hover {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border-color: #000000 !important;
+    text-decoration: none !important;
+}
+
+.stack-column-padding {
+    padding: 0 20px 0px 0 !important;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 480px) {
+    /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+    .fluid,
+    .fluid-centered {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    /* And center justify these ones. */
+    .fluid-centered {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    /* What it does: Forces table cells into full-width rows. */
+    .stack-column,
+    .stack-column-center {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        direction: ltr !important;
+    }
+    /* And center justify these ones. */
+    .stack-column-center {
+        text-align: center !important;
+    }
+    .stack-column-padding {
+        padding: 0px 20px 0px 20px;
+    }
+    /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+    .center-on-narrow {
+        text-align: center !important;
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        float: none !important;
+    }
+    table.center-on-narrow {
+        display: inline-block !important;
+    }
+}

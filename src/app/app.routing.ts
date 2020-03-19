@@ -12,11 +12,16 @@ import { NoteComponent } from './home/components/note/note.component';
 import { PadronComponent } from "./padron/padron.component";
 import { FichatecnicaComponent } from "./fichatecnica/fichatecnica.component";
 import { ContactoComponent } from "./contacto/contacto.component";
+import { BoletinesComponent } from "./boletines/boletines.component";
 
 const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
+    },
+    {
+        path: 'boletin/:idBoletin',
+        component: BoletinesComponent
     },
     {
         path: 'login',

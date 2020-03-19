@@ -81,4 +81,9 @@ export class SiteLoader implements ITemplate {
     professionalContact(data: string) {
         return this.http.post<any>(`${environment.apiUrl}/api/SiteConsumer/ContactoProfesional`, { 'model': data });
     }
+    boletin(id: number) {
+        let params = new HttpParams()
+        .set('id', id.toString())
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/PortalPublicBoletin`, { params: params });
+    }
 }
