@@ -31,6 +31,7 @@ export class HomeComponent {
         const sectionName = "NOTICIAS";
         const cantMax = 4;
 
+        this.siteLoader.bannerSubject.next({main: true, section: false, news: false});
         this.siteLoader.getNews(sectionName,cantMax)
         .pipe(
             map(ret => ret as ContentSite),

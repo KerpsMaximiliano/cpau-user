@@ -16,7 +16,6 @@ import { RegisterComponent } from './login/register/register.component';
 import { RecoverComponent } from './login/recover/recover.component';
 import { ConfirmComponent } from './login/recover/confirm/confirm.component';
 import { PublicityHomeComponent } from './shared/components/publicity-home/publicity-home.component';
-import { PublicityRegisterComponent } from './shared/components/publicity-register/publicity-register.component';
 import { ProfessionalNeedComponent } from './Professional/profesional-need/professional-need.component';
 import { TemplateOneComponent } from './home/components/templates/template-one/template-one.component';
 import { TemplateTwoComponent } from './home/components/templates/template-two/template-two.component';
@@ -55,7 +54,6 @@ import { BoletinesComponent } from './boletines/boletines.component';
         RecoverComponent,
         ConfirmComponent,
         PublicityHomeComponent,
-        PublicityRegisterComponent,
         ProfessionalNeedComponent,
         TemplateOneComponent,
         TemplateTwoComponent,

@@ -44,13 +44,13 @@ export class NoteComponent implements OnInit {
     }
 
   loadContent(id) {
+    this.siteLoader.bannerSubject.next({main: false, section: true, news: false});
     this.siteLoader.getFullContent(id)
     .pipe(
       map(ret => ret as ContentSite),
     )
     .subscribe( content => {
       this.data = content;
-      console.log(this.data)
     });
 
   }
