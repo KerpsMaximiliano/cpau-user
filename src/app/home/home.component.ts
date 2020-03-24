@@ -35,10 +35,14 @@ export class HomeComponent {
         .pipe(
             map(ret => ret as ContentSite),
             map(ret => {
-                    ret.items.forEach(i=> i.summary != null && i.summary != undefined
-                        ? i.summary = (i.summary.length > 265 ? i.summary.substr(0,265)+'...' : i.summary )
-                        : i.summary = ''
-                        );
+                if (ret.items != undefined){
+                    ret.items[0] != undefined && ret.items[0].title != undefined ? ret.items[0].title = $.fn.recortarTituloPrincipal(ret.items[0].title) : false;
+                    ret.items[0] != undefined && ret.items[0].summary != undefined ? ret.items[0].summary = $.fn.recortarSummary(ret.items[0].summary) : false;
+                    ret.items[1] != undefined && ret.items[1].title != undefined ? ret.items[1].title = $.fn.recortarTituloSecundario(ret.items[1].title) : false;
+                    ret.items[2] != undefined && ret.items[2].title != undefined ? ret.items[2].title = $.fn.recortarTituloSecundario(ret.items[2].title): false;
+                    ret.items[3] != undefined && ret.items[3].title != undefined ? ret.items[3].title = $.fn.recortarTituloSecundario(ret.items[3].title): false;
+                }
+
                 return ret;
             })
             )
@@ -57,5 +61,43 @@ export class HomeComponent {
         .subscribe(data => {
             this.externalProduct = data;
         });
+
+        $.fn.textWidth = function(text, font) {
+            if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+            $.fn.textWidth.fakeEl.text(text || this.val() || this.text()).css('font', font || this.css('font'));
+            return $.fn.textWidth.fakeEl.width();
+        };
+        
+        $.fn.recortar = function(text, font, lineWidth) {
+            var size = $.fn.textWidth(text, font);
+            var retext = text;
+            var recortar = size > lineWidth;
+            while (size > lineWidth) {
+                text = text.toString().substr(0,text.length-1);
+                size = $.fn.textWidth(text, font);
+            }
+            
+            if (recortar) {
+                text = text.toString().substr(0,text.length-5);
+                text = text + '...'
+            }
+            
+            return text;
+            
+        };
+
+        $.fn.recortarTituloPrincipal = function(text) {
+            return $.fn.recortar(text, '23pt Roboto', 990);
+        }
+
+        $.fn.recortarTituloSecundario = function(text) {
+            return $.fn.recortar(text, '15pt Roboto', 890);
+        }
+
+        $.fn.recortarSummary = function(text) {
+            return $.fn.recortar(text, '12pt Roboto', 1800);
+        }
+
     }
+
 }

@@ -26,8 +26,8 @@
                                                             <figure><img class="img-fluid imagen imagen-principal" src="https://static.cpau.org{{contentSite.items[0]?.image?.imageUrl}}" alt="{{contentSite.items[0]?.image?.title}}"></figure>
                                                         </div>
                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pt-2 pr-4">
-                                                            <h3>{{contentSite.items[0].title}}</h3>
-                                                            <p [innerHTML]="contentSite.items[0]?.summary"></p>
+                                                            <div id="noti1title"><h3>{{contentSite.items[0].title}}</h3></div>
+                                                            <div><p [innerHTML]="contentSite.items[0]?.summary"></p></div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -188,4 +188,7 @@
         <app-footer></app-footer>
     </div>
     <!--CONTENEDOR: FIN	-->
+
+    
+
 </body>
