@@ -1,8 +1,9 @@
 	/*
-						    Carousel
-						*/
+												    Carousel
+												*/
 	function triggerCarousel() {
-	    $('#carousel-example').on('slide.bs.carousel', function(e) {
+
+	    $('#carousel-example').bind('slide.bs.carousel', function(e) {
 	        /*
 	            CC 2.0 License Iatek LLC 2018 - Attribution required
 	        */

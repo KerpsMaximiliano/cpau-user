@@ -3,13 +3,23 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
 import { ITemplate } from '@app/shared/abstract/factory/tempate.abstract';
-import { Observable } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { BannerModelSearch } from '@app/shared/Models/BannerModelSearch';
 
 @Injectable({ providedIn: 'root' })
 export class SiteLoader implements ITemplate {
 
+    bannerSubject = new BehaviorSubject<BannerModelSearch>({main: true, section: false, news: false});
+
+
     constructor(private http: HttpClient) {
+    }
+
+    getBanners(main: boolean,section: boolean,news: boolean) {
+        return this.http
+        .get<any>(`${environment.apiUrl}/api/SiteConsumer/GetCurrentBanners`)
+        .pipe(distinctUntilChanged())
     }
 
     public get(sectionName): Observable<any> {
@@ -81,6 +91,7 @@ export class SiteLoader implements ITemplate {
     professionalContact(data: string) {
         return this.http.post<any>(`${environment.apiUrl}/api/SiteConsumer/ContactoProfesional`, { 'model': data });
     }
+
     boletin(id: number) {
         let params = new HttpParams()
         .set('id', id.toString())
