@@ -29,9 +29,21 @@ function recortarTituloPrincipal(text) {
 }
 
 function recortarTituloSecundario(text) {
-    return $.fn.recortar(text, '15pt Roboto', 890);
+    return $.fn.recortar(text, '20px Roboto', 890);
 }
 
 function recortarSummary(text) {
     return $.fn.recortar(text, '12pt Roboto', 1800);
+}
+
+function recortarTituloProductoExterno(text) {
+    return $.fn.recortar(text, '16px Roboto', 230);
+}
+
+function recortarHeaderProductoExterno(text) {
+    return $.fn.recortar(text, '20px Roboto', 420);
+}
+
+function recortarDescriptionProductoExterno(text) {
+    return $.fn.recortar(text, '16px Roboto', 1000);
 }
