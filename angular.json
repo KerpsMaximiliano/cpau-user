@@ -38,6 +38,7 @@
                             "src/stylesCustom/js/jquery-3.3.1.min.js",
                             "src/stylesCustom/js/boostrap/bootstrap.min.js",
                             "src/stylesCustom/js/carousel.js",
+                            "src/stylesCustom/js/recortar.js",
                             "src/stylesCustom/js/playerAPI.js"
                         ]
                     },
