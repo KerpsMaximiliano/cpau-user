@@ -10,6 +10,10 @@ declare function recortarTituloPrincipal(text);
 declare function recortarSummary(text);
 declare function recortarTituloSecundario(text);
 
+declare function recortarTituloProductoExterno(text);
+declare function recortarHeaderProductoExterno(text);
+declare function recortarDescriptionProductoExterno(text);
+
 @Component(
     {
         templateUrl: 'home.component.html' ,
