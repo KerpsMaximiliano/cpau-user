@@ -35,11 +35,13 @@
                             "src/stylesCustom/styles/carousel.css"
                         ],
                         "scripts": [
-                            "src/stylesCustom/js/jquery-3.3.1.min.js",
+                            "src/stylesCustom/js/scrollup/lib/jquery-1.11.1.min.js",
                             "src/stylesCustom/js/boostrap/bootstrap.min.js",
                             "src/stylesCustom/js/carousel.js",
                             "src/stylesCustom/js/recortar.js",
-                            "src/stylesCustom/js/playerAPI.js"
+                            "src/stylesCustom/js/playerAPI.js",
+                            "src/stylesCustom/js/scrollup/jquery.scrollUp.min.js",
+                            "src/stylesCustom/js/scrollup/scrollUp.js"
                         ]
                     },
                     "configurations": {

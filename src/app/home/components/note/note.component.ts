@@ -5,6 +5,9 @@ import { map } from 'rxjs/operators';
 import { ContentSite } from '@app/shared/models/contentsite.model';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+
+declare function scrollup();
+
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -35,6 +38,7 @@ export class NoteComponent implements OnInit {
 
     const id = this._Activatedroute.snapshot.paramMap.get("id");
     this.loadContent(id);
+    scrollup();
   }
 
   loadNextScript() {
