@@ -21,8 +21,8 @@ export class TemplateThreeComponent implements OnInit, TemplateWrapper {
   ngOnInit() {
     this.dataOld = Object.assign({}, this.data);
     this.breadCrumb = this.dataOld.breadCrumb.split('/');
-    this.destacado = this.data.items.filter(x=> x.highlighted)
-    this.noDestacado = this.data.items.filter(x=> !x.highlighted)
+    this.destacado = this.data.items.filter(x=> x.highlighted);
+    this.noDestacado = this.data.items.filter(x=> !x.highlighted);
   }
 
   onSelectTag(tag) {

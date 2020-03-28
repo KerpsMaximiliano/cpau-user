@@ -1,6 +1,11 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite } from '@app/shared/models/contentsite.model';
+import { map } from 'rxjs/operators';
+
+
+declare function recortarTituloListado(text);
+declare function recortarSummaryListado(text);
 
 @Component({
   selector: 'app-template-two',
@@ -21,8 +26,13 @@ export class TemplateTwoComponent implements OnInit, TemplateWrapper {
   ngOnInit() {
     this.dataOld = Object.assign({}, this.data);
     this.breadCrumb = this.dataOld.breadCrumb.split('/');
-    this.destacado = this.data.items.filter(x=> x.highlighted)
-    this.noDestacado = this.data.items.filter(x=> !x.highlighted)
+    this.destacado = this.data.items.filter(x=> x.highlighted);
+    this.noDestacado = this.data.items.filter(x=> !x.highlighted);
+
+    this.noDestacado.forEach(nota => {
+      nota.title = recortarTituloListado(nota.title);
+      nota.summary = recortarSummaryListado(nota.summary);
+    });
   }
 
   onSelectTag(tag) {

@@ -47,3 +47,11 @@ function recortarHeaderProductoExterno(text) {
 function recortarDescriptionProductoExterno(text) {
     return $.fn.recortar(text, '16px Roboto', 1000);
 }
+
+function recortarTituloListado(text)  {
+    return $.fn.recortar(text, '26px sans-serif', 940);
+}
+
+function recortarSummaryListado(text) {
+    return $.fn.recortar(text, '12px sans-serif', 1710);
+}
