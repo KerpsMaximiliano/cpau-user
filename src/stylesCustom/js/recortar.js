@@ -69,5 +69,5 @@ function recortarTituloBeneficio(text)  {
 }
 
 function recortarSummaryBeneficio(text) {
-    return $.fn.recortar(text, '14px sans-serif', 1300);
+    return $.fn.recortar(text, '14px sans-serif', 1500);
 }

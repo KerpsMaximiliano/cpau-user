@@ -32,6 +32,13 @@
             </div>
             <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts ">
                 <ul class="list-unstyled">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-9 pb-5 pr-0 ">
+                            <!--Nota - Titulo -->
+                            <h1>{{data.title}}</h1>
+                            <!--Nota - Titulo:fin -->
+                        </div>
+                    </div>
                     <li *ngFor="let item of destacado" class="post" [attr.data-category]="item.categoryData">
                         <div class="row">
                             <!--Tittle-->
@@ -71,10 +78,9 @@
                                     </a>
                                 </figure>
                                 <div *ngIf="item.percent" class="badge badge-primary">{{item.percent}}%</div>
-                                <div>
-                                    <p>&nbsp;</p>
-                                </div>
-                                <h4>{{item.title}}</h4>
+                                <div *ngIf="!item.percent" class="badge">&nbsp;</div>
+                                
+                                <h4 style="margin-top: 8px; height: 64px;">{{item.title}}</h4>
                                 <div class="beneficio-txt" [innerHTML]="item.summary">
                                 </div>
                                 <div class="caplik">

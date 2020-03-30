@@ -21,9 +21,11 @@ article p{
 	padding: 10px 0px 0px 0px;
 	margin: 0;
 	font-weight:400;
+	height: 108px;
 }
 .caplik {
-	padding:10px 0px 0px 0px;
+	padding: 10px 0px 0px 0px;
+	margin-top: 10px;
 }
 .caplik a {
 color: #3400ff;
@@ -42,10 +44,10 @@ color: #3400ff;
 	font-weight:500;
 	padding: 2px 5px;
 	border-radius: 0;
+	height: 18px;
 }
 
 .badge-primary{
-	
 	background-color:#3400ff !important;
 }
 
@@ -94,6 +96,7 @@ input[type="radio"] {
 }
 .imagen-beneficio {
 	width: 100%;
+	height: 145px;
 }
 .posts { 
 	padding: 0px 70px;
