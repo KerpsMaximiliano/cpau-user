@@ -64,6 +64,10 @@
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-12 articleCss">
                                             <article>
+                                                <figure *ngIf="item?.image">
+                                                    <img class="img-fluid imagen" src="https://static.cpau.org{{item?.image?.imageUrl}}" alt="{{item?.image?.title}}" />
+                                                    <figcaption>{{item?.image?.epigraph}}</figcaption>
+                                                </figure>
                                                 <!--Foto:fin-->
                                                 <!--Nota - Titulo -->
                                                 <h1>{{item.title}}</h1>

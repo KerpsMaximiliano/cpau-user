@@ -25,15 +25,15 @@ $.fn.recortar = function(text, font, lineWidth) {
 };
 
 function recortarTituloPrincipal(text) {
-    return $.fn.recortar(text, '23pt Roboto', 990);
+    return $.fn.recortar(text, '23pt Roboto', 900);
 }
 
 function recortarTituloSecundario(text) {
-    return $.fn.recortar(text, '20px Roboto', 890);
+    return $.fn.recortar(text, '20px Roboto', 750);
 }
 
 function recortarSummary(text) {
-    return $.fn.recortar(text, '12pt Roboto', 1800);
+    return $.fn.recortar(text, '12pt Roboto', 1900);
 }
 
 function recortarTituloProductoExterno(text) {
@@ -54,4 +54,20 @@ function recortarTituloListado(text)  {
 
 function recortarSummaryListado(text) {
     return $.fn.recortar(text, '12px sans-serif', 1710);
+}
+
+function recortarTituloListadoTemplateOne(text)  {
+    return $.fn.recortar(text, '26px sans-serif', 800);
+}
+
+function recortarSummaryListadoTemplateOne(text) {
+    return $.fn.recortar(text, '14px sans-serif', 1360);
+}
+
+function recortarTituloBeneficio(text)  {
+    return $.fn.recortar(text, '26px sans-serif', 400);
+}
+
+function recortarSummaryBeneficio(text) {
+    return $.fn.recortar(text, '14px sans-serif', 1300);
 }

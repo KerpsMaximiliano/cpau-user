@@ -2,6 +2,9 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite } from '@app/shared/models/contentsite.model';
 
+declare function recortarTituloBeneficio(text);
+declare function recortarSummaryBeneficio(text);
+
 @Component({
   selector: 'app-template-three',
   templateUrl: './template-three.component.html',
@@ -23,6 +26,10 @@ export class TemplateThreeComponent implements OnInit, TemplateWrapper {
     this.breadCrumb = this.dataOld.breadCrumb.split('/');
     this.destacado = this.data.items.filter(x=> x.highlighted);
     this.noDestacado = this.data.items.filter(x=> !x.highlighted);
+    this.noDestacado.forEach(nota => {
+      nota.title = recortarTituloBeneficio(nota.title);
+      nota.summary = recortarSummaryBeneficio(nota.summary);
+    });
   }
 
   onSelectTag(tag) {

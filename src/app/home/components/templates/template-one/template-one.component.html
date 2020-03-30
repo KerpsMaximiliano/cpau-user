@@ -49,6 +49,10 @@
                                         <!--div class="col-12 col-sm-12 col-md-7 offset-md-2 "-->
                                         <div class="col-12 col-sm-12 col-md-12 articleCss">
                                             <article>
+                                                <figure *ngIf="item?.image">
+                                                    <img class="img-fluid imagen" src="https://static.cpau.org{{item?.image?.imageUrl}}" alt="{{item?.image?.title}}" />
+                                                    <figcaption>{{item?.image?.epigraph}}</figcaption>
+                                                </figure>
                                                 <!--Foto:fin-->
                                                 <!--Nota - Titulo -->
                                                 <h1>{{item.title}}</h1>
@@ -117,3 +121,9 @@
     <!--Articles:fin-->
 
 </div>
+
+<ng-template #loadingBlockNews>
+    <div class="container p-0 pt-2 pb-5 align-self-center ">
+        <div class="loader ">Loading...</div>
+    </div>
+</ng-template>

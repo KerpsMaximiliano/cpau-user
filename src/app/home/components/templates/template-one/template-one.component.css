@@ -2,6 +2,8 @@
 @import '../../../../../stylesCustom/styles/cpau.css';
 @import '../../../../../stylesCustom/styles/agenda.css';
 @import '../../../../../stylesCustom/styles/loader.css';
+@import '../../../../../stylesCustom/styles/nota.css';
+
 .div.col-md-7:nth-child(1) {
     padding-left: 10px !important;
     padding-right: 10px !important;

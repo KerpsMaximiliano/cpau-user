@@ -2,6 +2,9 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite } from '@app/shared/models/contentsite.model';
 
+declare function recortarTituloListadoTemplateOne(text);
+declare function recortarSummaryListadoTemplateOne(text);
+
 @Component({
   selector: 'app-template-one',
   templateUrl: './template-one.component.html',
@@ -23,6 +26,12 @@ export class TemplateOneComponent implements OnInit, TemplateWrapper {
     this.breadCrumb = this.dataOld.breadCrumb.split('/');
     this.destacado = this.data.items.filter(x=> x.highlighted);
     this.noDestacado = this.data.items.filter(x=> !x.highlighted);
+
+    this.noDestacado.forEach(nota => {
+      nota.title = recortarTituloListadoTemplateOne(nota.title);
+      nota.summary = recortarSummaryListadoTemplateOne(nota.summary);
+    });
+
   }
 
   onSelectTag(tag) {
