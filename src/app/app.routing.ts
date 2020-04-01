@@ -13,6 +13,7 @@ import { PadronComponent } from "./padron/padron.component";
 import { FichatecnicaComponent } from "./fichatecnica/fichatecnica.component";
 import { ContactoComponent } from "./contacto/contacto.component";
 import { BoletinesComponent } from "./boletines/boletines.component";
+import { NotePreviewComponent } from './home/components/notePreview/notePreview.component';
 
 const routes: Routes = [
     {
@@ -58,6 +59,10 @@ const routes: Routes = [
     {
         path: 'nota/:id',
         component: NoteComponent
+    },
+    {
+        path: 'notaPreview/:id',
+        component: NotePreviewComponent
     },
     {
         path: 'ficha/:guid',

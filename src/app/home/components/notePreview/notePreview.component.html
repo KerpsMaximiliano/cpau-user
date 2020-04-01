@@ -1,0 +1,66 @@
+<body>
+    <!--CONTENEDOR-->
+    <div class="container pt-4">
+        <!--app-header-home></app-header-home>
+
+        <app-button-home></app-button-home-->
+
+        <main>
+            <!--NOTICIAS-->
+            <div class="row">
+
+                <!--Tittle-->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                    <div class="container p-0 pt-2 pb-5 ">
+                        <!--Nota-->
+                        <div class="row ">
+                            <!--div class="col-12 col-sm-12 col-md-8 articleCss"-->
+                            <div class="col-12 col-sm-12 col-md-7 offset-md-2 articleCss">
+                                <article>
+                                    <!--Foto-->
+                                    <figure *ngIf="data?.content?.image">
+                                        <img class="img-fluid imagen" src="https://static.cpau.org{{data?.content?.image?.imageUrl}}" alt="{{data?.content?.image?.title}}" />
+                                        <figcaption>{{data?.content?.image?.epigraph}}</figcaption>
+                                    </figure>
+                                    <!--Foto:fin-->
+                                    <!--Nota - Titulo -->
+                                    <h1>{{data?.content?.title}}</h1>
+                                    <!--Nota - Titulo:fin -->
+                                    <!--Nota - Resumen -->
+
+                                    <h6 [innerHTML]="data?.content?.summary" class="resumen"> </h6>
+
+                                    <!--Nota - Resumen: fin -->
+                                    <!--Nota - Contenido -->
+                                    <div [innerHTML]="data?.content?.text "></div>
+                                </article>
+                            </div>
+                        </div>
+                        <!--Nota: Fin-->
+
+                    </div>
+                </div>
+                <!--FIN TITULO-->
+            </div>
+            <a id="scrollUp" href="#top"></a>
+            <!--FIN NOTICIAS-->
+        </main>
+
+        <!--app-publicity-home></app-publicity-home>
+        <app-footer></app-footer-->
+    </div>
+    <!--CONTENEDOR: FIN	-->
+    <!--Columna Redes-->
+    <div class="col-12 py-4 redes-pie">
+        <ul class="redes">
+            <li><a href="https://www.instagram.com/cpauorg" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/cpauorg" target="_blank" title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/cpau-consejo-profesional-de-arquitectura-y-urbanismo" target="_blank" title="Linkedin"><i class="fa fa-linkedin-square"></i></a></li>
+            <li><a href="https://www.twitter.com/cpauorg" target="_blank" title="Twitter"><i class="fa fa-twitter-square"></i></a></li>
+            <li><a href="https://www.pinterest.com/cpauorg" target="_blank" title="Pinterest"><i class="fa fa-pinterest-square"></i></a></li>
+            <li><a href="http://www.flickr.com/cpauorg" target="_blank" title="Flickr"><i class="fa fa-flickr"></i></a></li>
+            <li><a href="http://www.vimeo.com/cpauorg" target="_blank" title="Vimeo"><i class="fa fa-vimeo-square"></i></a></li>
+        </ul>
+    </div>
+    <!--Columna Redes:fin-->
+</body>

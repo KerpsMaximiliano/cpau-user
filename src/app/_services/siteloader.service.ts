@@ -30,6 +30,10 @@ export class SiteLoader implements ITemplate {
     return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/Page?id=${id}`).pipe(distinctUntilChanged());
     }
 
+    public getFullContentPreview(id): Observable<any> {
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/PagePreview?id=${id}`).pipe(distinctUntilChanged());
+        }
+
     public getSearch(search): Observable<any> {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetSearch?search=${search}`).pipe(distinctUntilChanged());
         }

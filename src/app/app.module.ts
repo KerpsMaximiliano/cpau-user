@@ -33,6 +33,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { CacheInterceptor } from '../app/_helpers/cache.interceptor';
 import { BoletinesComponent } from './boletines/boletines.component';
+import { NotePreviewComponent } from './home/components/notePreview/notePreview.component';
 
 @NgModule({
     imports: [
@@ -62,6 +63,7 @@ import { BoletinesComponent } from './boletines/boletines.component';
         MastertemplateComponent,
         RenderDirective,
         NoteComponent,
+        NotePreviewComponent,
         TemplateListComponent,
         PadronComponent,
         FichatecnicaComponent,
