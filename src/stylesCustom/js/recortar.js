@@ -1,27 +1,37 @@
 
 
 $.fn.textWidth = function(text, font) {
-    if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+    if (!$.fn.textWidth.fakeEl) {
+        $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+    }
     $.fn.textWidth.fakeEl.text(text || this.val() || this.text()).css('font', font || this.css('font'));
     return $.fn.textWidth.fakeEl.width();
 };
 
-$.fn.recortar = function(text, font, lineWidth) {
-    var size = $.fn.textWidth(text, font);
-    var retext = text;
-    var recortar = size > lineWidth;
-    while (size > lineWidth) {
-        text = text.toString().substr(0,text.length-1);
-        size = $.fn.textWidth(text, font);
+$.fn.primerAjuste = function(text) {
+    if(text.length > 250) {
+        text = text.substr(0, 250);
     }
-    
-    if (recortar) {
-        text = text.toString().substr(0,text.length-5);
-        text = text + '...'
-    }
-    
     return text;
-    
+}
+
+$.fn.recortar = function(text, font, lineWidth) {
+    if (text != undefined && text != null) {
+        var retext = $.fn.primerAjuste(text);
+        var size = $.fn.textWidth(retext, font);
+        var recortar = size > lineWidth || text.length > retext.length;
+        while (size > lineWidth) {
+            retext = retext.toString().substr(0,retext.length-1);
+            size = $.fn.textWidth(retext, font);
+        }
+
+        if (recortar) {
+            retext = text.toString().substr(0,retext.length-5);
+            retext = retext + '...'
+        }
+        return retext;
+    }
+    return "";
 };
 
 function recortarTituloPrincipal(text) {
@@ -29,11 +39,11 @@ function recortarTituloPrincipal(text) {
 }
 
 function recortarTituloSecundario(text) {
-    return $.fn.recortar(text, '20px Roboto', 750);
+    return $.fn.recortar(text, '20px Roboto', 950);
 }
 
 function recortarSummary(text) {
-    return $.fn.recortar(text, '12pt Roboto', 1900);
+    return $.fn.recortar(text, '12pt Roboto', 1800);
 }
 
 function recortarTituloProductoExterno(text) {
@@ -65,9 +75,9 @@ function recortarSummaryListadoTemplateOne(text) {
 }
 
 function recortarTituloBeneficio(text)  {
-    return $.fn.recortar(text, '26px sans-serif', 400);
+    return $.fn.recortar(text, '26px sans-serif', 450);
 }
 
 function recortarSummaryBeneficio(text) {
-    return $.fn.recortar(text, '14px sans-serif', 1500);
+    return $.fn.recortar(text, '14px sans-serif', 1340);
 }
