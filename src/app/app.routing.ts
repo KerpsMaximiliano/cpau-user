@@ -14,6 +14,7 @@ import { FichatecnicaComponent } from "./fichatecnica/fichatecnica.component";
 import { ContactoComponent } from "./contacto/contacto.component";
 import { BoletinesComponent } from "./boletines/boletines.component";
 import { NotePreviewComponent } from './home/components/notePreview/notePreview.component';
+import { FormComponent } from './form/form.component';
 
 const routes: Routes = [
     {
@@ -23,6 +24,10 @@ const routes: Routes = [
     {
         path: 'boletin/:idBoletin',
         component: BoletinesComponent
+    },
+    {
+        path: 'formulario/:idFormulario',
+        component: FormComponent
     },
     {
         path: 'login',

@@ -1,0 +1,214 @@
+/* CSS Document */
+
+html,
+body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-image: url("../../stylesCustom/images/backgrounds/background2.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    font-size: 15px;
+}
+
+.form h1,
+.h1 {
+    font-weight: 900;
+}
+
+.form .splash {
+    width: 100%;
+    font-size: 14px;
+}
+
+.form .logo {
+    width: 90%;
+    height: auto;
+    text-align: center;
+}
+
+.form .alert {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.form .alert-light {
+    color: #495057;
+    background: #f5f5f5;
+    border: 1px solid #ced4da;
+}
+
+.form .alert-succes {
+    color: #155724;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.form .alert-warning {
+    color: #721c24;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+
+/*LOGIN*/
+
+.form .form-control {
+    border: 1px solid #6c757d;
+    border-radius: 0;
+}
+
+.form .form-control:focus {
+    border-color: #3400ff;
+}
+
+.form .form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form .form-label-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form .form-label-group>input,
+.form .form-label-group>label {
+    height: 3.125rem;
+    padding: .90rem;
+}
+
+.form .form-label-group>label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495057;
+    pointer-events: none;
+    cursor: text;
+    /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+}
+
+.form .form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.form .form-label-group input:-ms-input-placeholder {
+    color: transparent;
+}
+
+.form .form-label-group input::-ms-input-placeholder {
+    color: transparent;
+}
+
+.form .form-label-group input::-moz-placeholder {
+    color: transparent;
+}
+
+.form .form-label-group input::placeholder {
+    color: transparent;
+}
+
+.form .form-label-group input:not(:placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+}
+
+.form .form-label-group input:not(:placeholder-shown)~label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+}
+
+.form .terminos {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.form .terminos:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.form .btn-primary {
+    background: #3400ff;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.form .btn-primary:hover {
+    background: #000000;
+    border: none;
+    box-shadow: none;
+}
+
+.form .btn-primary:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.form .btn-primary:active {
+    border: none;
+    box-shadow: none;
+}
+
+.form .btn-secondary {
+    background: #444444;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.form .btn-secondary:hover {
+    background: #000000;
+    border: none;
+    box-shadow: none;
+}
+
+.form .btn-secondary:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.form .btn-secondary:active {
+    border: none;
+    box-shadow: none;
+    /*LOGIN:fin*/
+    /* Fallback for Edge
+-------------------------------------------------- */
+    @supports (-ms-ime-align: auto) {
+        .form-label-group > label {
+            display: none;
+        }
+        .form-label-group input::-ms-input-placeholder {
+            color: #777;
+        }
+    }
+    /* Fallback for IE
+-------------------------------------------------- */
+    @media all and (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+        .form-label-group>label {
+            display: none;
+        }
+        .form-label-group input:-ms-input-placeholder {
+            color: #777;
+        }
+    }
+}
