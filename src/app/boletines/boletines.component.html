@@ -87,8 +87,8 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td>
-                                                                            <a *ngFor="let banner of data?.banners" href="https://www.cpau.org/ad/2/Boletin29958" target="_blank" href="{{banner.urlLink}}">
-                                                                                <img src="https://static.cpau.org/.newsite/{{banner.urlImage}}" width="180" alt="{{banner.alternativeText}}" style="border: 0;width: 100%;max-width:180px;height: auto;" class="center-on-narrow">
+                                                                            <a *ngFor="let banner of data?.banners" target="_blank" href="{{banner.urlLink}}">
+                                                                                <img src="{{banner.urlImage}}" width="180" alt="{{banner.alternativeText}}" style="border: 0;width: 100%;max-width:180px;height: auto;" class="center-on-narrow">
                                                                             </a>
                                                                         </td>
                                                                     </tr>
