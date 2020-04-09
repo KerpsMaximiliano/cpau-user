@@ -32,7 +32,7 @@
 
                                     <!--Nota - Resumen: fin -->
                                     <!--Nota - Contenido -->
-                                    <div [innerHTML]="data?.content?.text "></div>
+                                    <div [innerHTML]="data?.content?.text | safeHtml"></div>
                                 </article>
                             </div>
                         </div>

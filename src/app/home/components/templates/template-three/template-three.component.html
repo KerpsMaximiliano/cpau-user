@@ -60,7 +60,7 @@
                                                 <h6 [innerHTML]="item.summary" class="resumen"> </h6>
                                                 <!--Nota - Resumen: fin -->
                                                 <!--Nota - Contenido -->
-                                                <div [innerHTML]="item?.text"></div>
+                                                <div [innerHTML]="item?.text | safeHtml"></div>
                                             </article>
                                         </div>
                                     </div>

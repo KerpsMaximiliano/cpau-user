@@ -17,7 +17,7 @@ export class BoletinesComponent implements OnInit {
   ngOnInit() {
     let id = this._Activatedroute.snapshot.paramMap.get("idBoletin");
     const idInt = id == null ? 0 : parseInt(id);
-
+    this.siteLoader.bannerSubject.next({main: false, section: false, news: true});
     this.siteLoader.boletin(idInt)
     .subscribe(
         objSend => {

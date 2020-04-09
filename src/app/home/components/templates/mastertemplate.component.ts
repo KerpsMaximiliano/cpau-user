@@ -39,7 +39,7 @@ export class MastertemplateComponent implements OnInit {
   constructor(private _Activatedroute:ActivatedRoute,private route: ActivatedRoute, private injector: Injector, private componentFactoryResolver: ComponentFactoryResolver, private siteLoader: SiteLoader) { }
 
   ngOnInit() {
-    this.siteLoader.bannerSubject.next({main: false, section: false, news: true});
+    this.siteLoader.bannerSubject.next({main: false, section: true, news: false});
     this.route.url.subscribe(url => {
       this.getData();
       this.loadComponent();
