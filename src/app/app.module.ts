@@ -34,8 +34,7 @@ import { TooltipModule } from 'ng2-tooltip-directive';
 import { CacheInterceptor } from '../app/_helpers/cache.interceptor';
 import { BoletinesComponent } from './boletines/boletines.component';
 import { NotePreviewComponent } from './home/components/notePreview/notePreview.component';
-import { Safe } from './_directive/pipeSafeHTML.directive';
-
+import { Safe } from './_directive/pipeSafeHTML.directive';import { FormComponent } from './form/form.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -71,8 +70,7 @@ import { Safe } from './_directive/pipeSafeHTML.directive';
         ContactoProfesionalComponent,
         ContactoComponent,
         BoletinesComponent,
-        Safe
-    ],
+		Safe,		FormComponent,    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
