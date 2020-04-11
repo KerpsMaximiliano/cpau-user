@@ -1,7 +1,6 @@
 import { Pipe } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { parse } from 'querystring';
-import { link } from 'fs';
 
 @Pipe({name: 'safeHtml'})
 export class Safe {
