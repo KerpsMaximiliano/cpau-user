@@ -102,6 +102,18 @@
     background-color: #3400ff !important;
 }
 
+.articleCss a[href^="mailto:"]
+{ 
+    color: #3400ff;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.articleCss article a[href^="mailto:"]::after {
+    content: "";
+}
+
+
 
 /* SCROLLUP */
 
