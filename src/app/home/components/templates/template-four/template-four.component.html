@@ -73,10 +73,10 @@
                                                 <h1>{{item.title}}</h1>
                                                 <!--Nota - Titulo:fin -->
                                                 <!--Nota - Resumen -->
-                                                <h6 [innerHTML]="item.summary" class="resumen"> </h6>
+                                                <h6 *ngIf="item?.hasSummary" [innerHTML]="item.summary" class="resumen"> </h6>
                                                 <!--Nota - Resumen: fin -->
                                                 <!--Nota - Contenido -->
-                                                <div [innerHTML]="item?.text | safeHtml"></div>
+                                                <div *ngIf="item?.hasText" [innerHTML]="item?.text | safeHtml"></div>
                                             </article>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 fecha-agenda">

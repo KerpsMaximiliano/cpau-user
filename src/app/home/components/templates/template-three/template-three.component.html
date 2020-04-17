@@ -33,7 +33,7 @@
             <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts ">
                 <ul class="list-unstyled">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-9 pb-5 pr-0 ">
+                        <div *ngIf="data?.title" class="col-12 col-sm-12 col-md-9 pb-5 pr-0 ">
                             <!--Nota - Titulo -->
                             <h1>{{data.title}}</h1>
                             <!--Nota - Titulo:fin -->

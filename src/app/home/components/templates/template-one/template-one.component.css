@@ -13,3 +13,8 @@
     padding-left: 10px !important;
     padding-right: 10px !important;
 }
+
+.container.p-0.pt-2.pb-5 {
+    padding-bottom: 0rem !important;
+    padding-top: 0.5rem !important;
+}
