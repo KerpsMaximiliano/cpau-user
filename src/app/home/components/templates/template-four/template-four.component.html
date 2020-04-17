@@ -20,7 +20,7 @@
             <input type="radio" id="mes" name="categories" value="mes">
             <input type="radio" id="ano" name="categories" value="ano">
             <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias ">
-                <ol>
+                <!--ol>
                     <li>
                         <div class="pl-1 pb-1">
                             <h6>ETIQUETAS</h6>
@@ -32,7 +32,7 @@
                     <li *ngFor="let currentTag of data.tags">
                         <label for="{{currentTag | uppercase}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>
                     </li>
-                </ol>
+                </ol-->
                 <ol>
                     <li>
                         <div class="p-1 ">
@@ -79,6 +79,11 @@
                                                 <div [innerHTML]="item?.text | safeHtml"></div>
                                             </article>
                                         </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 fecha-agenda">
+                                            <p *ngIf="item.showPublishedDate">
+                                                <time>{{item.fechaInicioString2}}</time>
+                                            </p>
+                                        </div>
                                     </div>
                                     <!--Nota: Fin-->
                                 </div>
@@ -90,8 +95,8 @@
                         <article>
                             <div *ngIf="!item.highlighted" class="row">
                                 <div class="col-15 col-sm-12 col-md-30 col-lg-38 col-xl-46 noticias-txt">
-                                    <h4><a *ngIf="item.link" href="{{item.link}}" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
-                                    <h4><a *ngIf="!item.link" [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
+                                    <h4 *ngIf="item.link"><a href="{{item.link}}" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
+                                    <h4 *ngIf="!item.link"><a  [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
                                     <p [innerHTML]="item.summary"></p>
                                     <div>
                                         <time *ngIf="item.showPublishedDate">{{item.publishDateString | uppercase}} </time>

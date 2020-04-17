@@ -2,8 +2,8 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite } from '@app/shared/models/contentsite.model';
 
-declare function recortarTituloListadoTemplateOne(text);
-declare function recortarSummaryListadoTemplateOne(text);
+declare function recortarTituloListadoTemplateFour(text);
+declare function recortarSummaryListadoTemplateFour(text);
 
 @Component({
   selector: 'app-template-four',
@@ -28,8 +28,8 @@ export class TemplateFourComponent implements OnInit, TemplateWrapper {
     this.noDestacado = this.data.items.filter(x=> !x.highlighted);
 
     this.noDestacado.forEach(nota => {
-      nota.title = recortarTituloListadoTemplateOne(nota.title);
-      nota.summary = recortarSummaryListadoTemplateOne(nota.summary);
+      nota.title = recortarTituloListadoTemplateFour(nota.title);
+      nota.summary = recortarSummaryListadoTemplateFour(nota.summary);
     });
 
   }

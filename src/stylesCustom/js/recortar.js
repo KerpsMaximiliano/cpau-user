@@ -34,6 +34,41 @@ $.fn.recortar = function(text, font, lineWidth) {
     return "";
 };
 
+$.fn.recortar2 = function(text, font, lineWidth) {
+    if (text != undefined && text != null) {
+        
+        const maxwidthLinea = 400;
+        var cantLineas = 0;
+
+        var widthacumuladoTotal = 0;
+        var posText = 0;
+        var linea = "";
+        
+        while (widthacumuladoTotal <= lineWidth && posText < text.length) {
+            
+            // Pongo el siguiente caracter
+            caracter = text.charAt(posText);
+            
+            // consulto el largo en px
+            var sizeChar = $.fn.textWidth(caracter, font)
+            
+            // Paso al siguiente caracter
+            posText = posText + 1;
+          
+            // Incremento el acumulado
+            widthacumuladoTotal = widthacumuladoTotal + sizeChar;
+        }
+
+        if ((posText) < text.length) {
+            text = text.substr(0,posText-4);
+            text = text + '...';
+        }
+
+        return text;
+    }
+    return "";
+};
+
 function recortarTituloPrincipal(text) {
     return $.fn.recortar(text, '23pt Roboto', 900);
 }
@@ -80,4 +115,12 @@ function recortarTituloBeneficio(text)  {
 
 function recortarSummaryBeneficio(text) {
     return $.fn.recortar(text, '14px sans-serif', 1340);
+}
+
+function recortarTituloListadoTemplateFour(text)  {
+    return $.fn.recortar2(text, '26px sans-serif', 1400);
+}
+
+function recortarSummaryListadoTemplateFour(text) {
+    return $.fn.recortar2(text, '14px sans-serif', 2250);
 }
