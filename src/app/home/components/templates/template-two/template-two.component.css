@@ -3,6 +3,7 @@
 @import '../../../../../stylesCustom/styles/noticias.css';
 @import '../../../../../stylesCustom/styles/nota.css';
 @import '../../../../../stylesCustom/styles/loader.css';
+
 .div.col-md-7:nth-child(1) {
     padding-left: 10px !important;
     padding-right: 10px !important;
@@ -18,14 +19,14 @@
     padding-left: 10px;
 }
 
-.container.p-0.pt-2.pb-5 {
-    padding-bottom: 0rem !important;
-    padding-top: 0.5rem !important;
-}
-
 li.post:nth-child(1)>article:nth-child(1)>div:nth-child(1)>div:nth-child(2)>p:nth-child(3)>p:nth-child(1) {
     font-size: 12pt !important;
     line-height: 1.4 !important;
     margin: 0px 0px 10px 0px !important;
 }
 
+.noticias-txt p {
+    font-size: 12pt;
+    line-height: 1.4;
+    margin: 0px 0px 6px 0px;
+}
