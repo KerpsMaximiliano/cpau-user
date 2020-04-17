@@ -20,7 +20,7 @@
                             <div class="col-12 col-sm-12 col-md-7 offset-md-2 articleCss">
                                 <article>
                                     <!--Foto-->
-                                    <figure *ngIf="data?.content?.image">
+                                    <figure style="padding-bottom: 20px;" *ngIf="data?.content?.image">
                                         <img class="img-fluid imagen" src="{{data?.content?.image?.imageUrl}}" alt="{{data?.content?.image?.title}}" />
                                         <figcaption>{{data?.content?.image?.epigraph}}</figcaption>
                                     </figure>
