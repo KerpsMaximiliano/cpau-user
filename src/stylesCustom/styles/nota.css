@@ -113,7 +113,10 @@
     content: "";
 }
 
-
+.articleCss a >  img 
+{
+     border: none; 
+}
 
 /* SCROLLUP */
 

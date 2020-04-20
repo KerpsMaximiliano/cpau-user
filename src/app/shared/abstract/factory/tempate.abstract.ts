@@ -6,6 +6,7 @@ import { TemplateTwoComponent } from '@app/home/components/templates/template-tw
 import { TemplateThreeComponent } from '@app/home/components/templates/template-three/template-three.component';
 import { TemplateListComponent } from '@app/home/components/templates/template-list/template-list.component';
 import { TemplateFourComponent } from '@app/home/components/templates/template-four/template-four.component';
+import { TemplateFiveComponent } from '@app/home/components/templates/template-five/template-five.component';
 
 // AbstractFactoryInterface
 export interface ITemplate {
@@ -17,6 +18,8 @@ export const templateServiceMap = new Map([
   [2, new AddTemplate(TemplateTwoComponent, SiteLoader)], //templateTwo
   [3, new AddTemplate(TemplateThreeComponent, SiteLoader)], //templateThree
   [0, new AddTemplate(TemplateListComponent, SiteLoader)],
-  [4, new AddTemplate(TemplateFourComponent, SiteLoader)]
+  [4, new AddTemplate(TemplateFourComponent, SiteLoader)],
+  [5, new AddTemplate(TemplateFiveComponent, SiteLoader)],
+
     //templateThree
 ]);

@@ -21,6 +21,7 @@ import { TemplateOneComponent } from './home/components/templates/template-one/t
 import { TemplateTwoComponent } from './home/components/templates/template-two/template-two.component';
 import { TemplateThreeComponent } from './home/components/templates/template-three/template-three.component';
 import { TemplateFourComponent } from './home/components/templates/template-four/template-four.component';
+import { TemplateFiveComponent } from './home/components/templates/template-five/template-five.component';
 import { MastertemplateComponent } from './home/components/templates/mastertemplate.component';
 import { RenderDirective } from './_directive/renderhost.directive';
 import { NoteComponent } from './home/components/note/note.component';
@@ -60,6 +61,7 @@ import { Safe } from './_directive/pipeSafeHTML.directive';import { FormComponen
         TemplateTwoComponent,
         TemplateThreeComponent,
         TemplateFourComponent,
+        TemplateFiveComponent,
         MastertemplateComponent,
         RenderDirective,
         NoteComponent,
@@ -76,7 +78,7 @@ import { Safe } from './_directive/pipeSafeHTML.directive';import { FormComponen
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }
     ],
-    entryComponents:[TemplateOneComponent,TemplateTwoComponent,TemplateThreeComponent,TemplateListComponent, TemplateFourComponent],
+    entryComponents:[TemplateOneComponent,TemplateTwoComponent,TemplateThreeComponent,TemplateListComponent, TemplateFourComponent, TemplateFiveComponent],
     bootstrap: [AppComponent]
 })
 
