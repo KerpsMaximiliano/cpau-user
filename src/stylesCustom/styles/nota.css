@@ -79,9 +79,9 @@
     margin: 0px 0px 0px 0px;
 }
 
-.articleCss article li::before {
+.articleCss article ul li::before {
     content: '\f105';
-    /*  content: '\f054';*/
+      /*content: '\f054';*/
     font-family: 'FontAwesome';
     float: left;
     margin: 0px 10px 0px -16px;
@@ -115,7 +115,9 @@
 
 .articleCss a >  img 
 {
-     border: none; 
+     border: blue;
+     border-width: 2px;
+     text-decoration: none;
 }
 
 /* SCROLLUP */
@@ -193,4 +195,13 @@
         max-width: 100%;
         font-size: 12px;
     }
+}
+
+.link-contains-image {
+    border: none;
+}
+
+
+.articleCss article a.link-contains-image::after {
+    content: "";
 }
