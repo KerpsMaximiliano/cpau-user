@@ -197,11 +197,6 @@
     }
 }
 
-.link-contains-image {
-    border: none;
-}
-
-
-.articleCss article a.link-contains-image::after {
+.articleCss article cite a::after {
     content: "";
 }
