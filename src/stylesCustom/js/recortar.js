@@ -110,11 +110,11 @@ function recortarSummaryListadoTemplateOne(text) {
 }
 
 function recortarTituloBeneficio(text)  {
-    return $.fn.recortar(text, '26px sans-serif', 450);
+    return $.fn.recortar(text, '26px sans-serif', 460);
 }
 
 function recortarSummaryBeneficio(text) {
-    return $.fn.recortar(text, '14px sans-serif', 1340);
+    return $.fn.recortar(text, '14px sans-serif', 1140);
 }
 
 function recortarTituloListadoTemplateFour(text)  {

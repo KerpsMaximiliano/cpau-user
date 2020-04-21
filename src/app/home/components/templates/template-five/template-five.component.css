@@ -24,7 +24,3 @@ li.post:nth-child(1)>article:nth-child(1)>div:nth-child(1)>div:nth-child(2)>p:nt
     margin: 0px 0px 10px 0px !important;
 }
 
-.container.p-0.pt-2.pb-5 {
-    padding-bottom: 0rem !important;
-    padding-top: 0.5rem !important;
-}

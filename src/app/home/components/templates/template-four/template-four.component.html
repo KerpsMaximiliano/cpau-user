@@ -98,11 +98,9 @@
                                     <h4 *ngIf="item.link"><a href="{{item.link}}" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
                                     <h4 *ngIf="!item.link"><a  [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
                                     <p [innerHTML]="item.summary"></p>
-                                    <div>
+                                    <div *ngIf="item.showPublishedDate || item?.tags?.size > 0">
                                         <time *ngIf="item.showPublishedDate">{{item.publishDateString | uppercase}} </time>
                                         <label class="caplik" *ngFor="let currentTag of item.tags" for="{{currentTag}}" (click)="onSelectTag(currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}&nbsp;</label>
-
-
                                     </div>
                                 </div>
                             </div>

@@ -30,7 +30,7 @@
                     </li>
                 </ol>
             </div>
-            <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts ">
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 posts">
                 <ul class="list-unstyled">
                     <div class="row">
                         <div *ngIf="data?.title" class="col-12 col-sm-12 col-md-9 pb-5 pr-0 ">
@@ -54,7 +54,7 @@
                                                 </figure>
                                                 <!--Foto:fin-->
                                                 <!--Nota - Titulo -->
-                                                <h1>{{item.title}}</h1>
+                                                <h1>{{item.title}}beneficio</h1>
                                                 <!--Nota - Titulo:fin -->
                                                 <!--Nota - Resumen -->
                                                 <h6 [innerHTML]="item.summary" class="resumen"> </h6>
@@ -80,8 +80,8 @@
                                 <div *ngIf="item.percent" class="badge badge-primary">{{item.percent}}%</div>
                                 <div *ngIf="!item.percent" class="badge">&nbsp;</div>
                                 
-                                <h4 style="margin-top: 8px; height: 64px;">{{item.title}}</h4>
-                                <div class="beneficio-txt" [innerHTML]="item.summary">
+                                <h4 style="margin-top: 8px;">{{item.title}}</h4>
+                                <div class="beneficio-txt" [innerHTML]="item.summary | safeHtml">
                                 </div>
                                 <div class="caplik">
                                     <a *ngIf="item.link" href="{{item.link}}" target="_self" title="{{item.title}}">+ INFO</a>
@@ -97,13 +97,13 @@
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>Contacto</th>
+                                                <th style="font-size: 15px; line-height: 18px;">Contacto</th>
                                                 <th>&nbsp;</th>
                                                 <th>&nbsp;</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr style="font-size: 15px; line-height: 18px; font-weight: 500;">
                                                 <td>{{data.contactName}}</td>
                                                 <td>{{data.contactEmail}}</td>
                                                 <td>{{data.contactTel}}</td>
@@ -113,7 +113,7 @@
                                 </div>
                                 <p>&nbsp;</p>
                                 <p>&nbsp;</p>
-                                <div [innerHTML]="data.policy"> </div>
+                                <div class="politicas" [innerHTML]="data.policy"> </div>
                             </div>
                         </div>
                         <div class="row" *ngFor="let item of data.childLists">
