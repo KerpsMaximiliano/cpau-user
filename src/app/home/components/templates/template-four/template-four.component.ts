@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
-import { ContentSite, ItemsSite } from '@app/shared/models/contentsite.model';
+import { ContentSite, ItemsSite, DEAFULT_IMAGE } from '@app/shared/models/contentsite.model';
 
 declare function recortarTituloListadoTemplateFour(text);
 declare function recortarSummaryListadoTemplateFour(text);

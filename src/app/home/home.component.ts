@@ -2,7 +2,7 @@
 import { User } from '@app/_models';
 import { AuthenticationService, SiteLoader } from '@app/_services';
 import { map } from 'rxjs/operators';
-import { ContentSite } from '@app/shared/models/contentsite.model';
+import { ContentSite, DEAFULT_IMAGE } from '@app/shared/models/contentsite.model';
 import { Events } from '@app/shared/Models/Events.model';
 import { ExternalProduct } from '@app/shared/Models/ExternalProduct.model';
 
@@ -52,6 +52,13 @@ export class HomeComponent {
                     ret.items[1] != undefined && ret.items[1].title != undefined ? ret.items[1].title = recortarTituloSecundario(ret.items[1].title) : false;
                     ret.items[2] != undefined && ret.items[2].title != undefined ? ret.items[2].title = recortarTituloSecundario(ret.items[2].title): false;
                     ret.items[3] != undefined && ret.items[3].title != undefined ? ret.items[3].title = recortarTituloSecundario(ret.items[3].title): false;
+
+                    for (let index = 0; index < 4; index++) {
+                        if (!ret.items[index].image || ret.items[index].image == null || ret.items[index].image.imageUrl == '')
+                        ret.items[index].image = {imageUrl: DEAFULT_IMAGE};
+                    }    
+                    
+                    
                 }
 
                 return ret;

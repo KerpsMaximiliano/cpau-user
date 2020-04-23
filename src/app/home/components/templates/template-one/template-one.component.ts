@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
-import { ContentSite, ItemsSite } from '@app/shared/models/contentsite.model';
+import { ContentSite, ItemsSite, DEAFULT_IMAGE } from '@app/shared/models/contentsite.model';
 
 declare function recortarTituloListadoTemplateOne(text);
 declare function recortarSummaryListadoTemplateOne(text);
@@ -30,6 +30,11 @@ export class TemplateOneComponent implements OnInit, TemplateWrapper {
     this.noDestacado.forEach(nota => {
       nota.title = recortarTituloListadoTemplateOne(nota.title);
       nota.summary = recortarSummaryListadoTemplateOne(nota.summary);
+     
+        if (!nota.image || nota.image == null || nota.image.imageUrl == '') {
+          nota.image = {imageUrl: DEAFULT_IMAGE};
+        }
+    
     });
 
   }

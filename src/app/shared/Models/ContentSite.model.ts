@@ -1,3 +1,5 @@
+export const DEAFULT_IMAGE: string = 'https://static.cpau.org/.newsite/images/home/principal.jpg';
+
 export interface ContentSite {
     id: number;
     keywords: string;
