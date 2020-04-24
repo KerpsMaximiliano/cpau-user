@@ -30,3 +30,15 @@ li.post:nth-child(1)>article:nth-child(1)>div:nth-child(1)>div:nth-child(2)>p:nt
     line-height: 1.4;
     margin: 0px 0px 6px 0px;
 }
+
+.margintop-52 {
+    margin-top: -52px;
+}
+
+.margintop-7 {
+    margin-top: -7px;
+}
+
+.articleCss article h1 {
+    padding: 40px 0px 15px 0px;
+}

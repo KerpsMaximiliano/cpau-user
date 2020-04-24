@@ -1,11 +1,15 @@
 <h6 *ngIf="breadCrumb?.length == 1" class="border-bottom title-sections pb-1">
-    <a *ngFor="let bc of breadCrumb" target="_self" href=" #" title="{{bc | uppercase}}">{{bc | uppercase}}
+    <a *ngFor="let bc of breadCrumb" target="_self" [routerLink]="['/', bc.link]" title="{{bc.name}}">{{bc.name}}
     </a>
 </h6>
 
 <nav aria-label="breadcrumb" *ngIf="breadCrumb?.length > 1">
     <ol class="breadcrumb">
-        <li *ngFor="let bc of breadCrumb; let last = last;" class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}}" title="{{bc | uppercase}}">{{bc | uppercase}}</li>
+        <li *ngFor="let bc of breadCrumb; let last = last;" 
+            class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}}" 
+            title="{{bc.name}}">
+            <a [routerLink]="['/', bc.link]">{{bc.name}}</a>
+        </li>
     </ol>
 </nav>
 
@@ -112,8 +116,6 @@
                     <li *ngFor="let item of data.childLists" class="post" [attr.data-category]="item.categoryData">
                         <article>
                             <div class="row">
-                                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
-                                </div>
                                 <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 noticias-txt">
                                     <a *ngIf="item.link.includes('http') || item.link.includes('www')" class="caplik" href="{{item.link}}">
                                         <h4>{{item.name}}</h4>

@@ -4,7 +4,7 @@ export interface ContentSite {
     id: number;
     keywords: string;
     showHeader: boolean;
-    breadCrumb: string;
+    breadCrumb: any;
     templateId: number;
     backgroundImageUrl: string;
     items?: (ItemsSite)[] | null;
@@ -66,4 +66,9 @@ export interface ChildList {
 }
 
 export interface Content extends ItemsSite {
+}
+
+export interface BreadCrumb {
+  name: string;
+  link: string;
 }

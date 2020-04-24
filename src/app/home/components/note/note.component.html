@@ -11,8 +11,22 @@
 
                 <!--Tittle-->
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                    <h6 class="border-bottom title-sections pb-1">
-                        <a target="_self " href="#" title="{{data?.breadCrumb}} ">{{data?.breadCrumb | uppercase}}</a></h6>
+                    
+                    <h6 *ngIf="data.breadCrumb?.length == 1" class="border-bottom title-sections pb-1">
+                        <a *ngFor="let bc of data.breadCrumb" target="_self" [routerLink]="['/', bc.link]" title="{{bc.name}}">{{bc.name}}
+                        </a>
+                    </h6>
+                    
+                    <nav aria-label="breadcrumb" *ngIf="data.breadCrumb?.length > 1">
+                        <ol class="breadcrumb">
+                            <li *ngFor="let bc of data.breadCrumb; let last = last;" 
+                                class="breadcrumb-item" 
+                                title="{{bc.name}}">
+                                <a [routerLink]="['/', bc.link]">{{bc.name}}</a>
+                            </li>
+                        </ol>
+                    </nav>              
+
                     <div class="container p-0 pt-2 pb-5 ">
                         <!--Nota-->
                         <div class="row ">

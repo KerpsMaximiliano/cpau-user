@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
-import { ContentSite, ItemsSite, DEAFULT_IMAGE } from '@app/shared/models/contentsite.model';
+import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/models/contentsite.model';
 import { map } from 'rxjs/operators';
 
 
@@ -19,13 +19,15 @@ export class TemplateTwoComponent implements OnInit, TemplateWrapper {
   dataOld: ContentSite;
   destacado: ItemsSite[];
   noDestacado: ItemsSite[];
-  breadCrumb:string[];
+  breadCrumb: BreadCrumb[];
+  
 
   constructor() { }
 
   ngOnInit() {
     this.dataOld = Object.assign({}, this.data);
-    this.breadCrumb = this.dataOld.breadCrumb.split('/');
+    this.breadCrumb = this.dataOld.breadCrumb;
+
     this.destacado = this.data.items.filter(x=> x.highlighted);
     this.noDestacado = this.data.items.filter(x=> !x.highlighted);
 

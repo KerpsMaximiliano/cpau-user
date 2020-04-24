@@ -30,19 +30,19 @@ article p {
 	font-weight:400;
 }
 .caplik {
-	padding: 10px 0px 0px 0px;
-	margin-top: 10px;
+    color: #3400ff;
+    text-decoration: none;
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 12pt;
+    margin-bottom: -0.5rem;
 }
-.caplik a {
-color: #3400ff;
-	text-decoration: none;
-	font-weight: 700;
-	font-size: 13pt;
-} 
-.caplik a:hover {
-	color: #000000;
-	font-weight: 700;
-	text-decoration: underline;
+
+.caplik:hover {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
 }
 .badge{
 	margin: 10px 0px 0px 0px;
