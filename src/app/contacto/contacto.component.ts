@@ -50,14 +50,38 @@ export class ContactoComponent implements OnInit {
       this.form.value.tipoConsulta = value;
     }
 
+    validateEmail(mail) {
+      return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail));
+    }
+
     submit(){
-      if (this.form.invalid) {
+      let errores:string[] = [];
+      
+      /*if (this.form.invalid) {
         this.getFormValidationErrors();
         return;
+      }*/
+
+      if (this.form.value.nombre.trim() == '') {
+        errores.push("El nombre es requerido.");
       }
 
-      if(!this.form.value.correo.includes('@')){
-        alert('El correo no es valido.');
+      if (this.form.value.celular.trim() == '' && this.form.value.correo.trim() == '' && this.form.value.telefono.trim() == '') {
+        errores.push("Debe indicar al menos un celular, teléfono o email.");
+      } else {
+        if(this.form.value.correo.trim() != '' && !this.validateEmail(this.form.value.correo)) {
+          errores.push('El correo no es válido.');
+        }
+        if(this.form.value.celular.trim() != '' && isNaN(this.form.value.celular)){
+          errores.push('El celular no es válido. Deben ser sólo números.');
+        }
+        if(this.form.value.telefono.trim() != '' && isNaN(this.form.value.telefono)){
+          errores.push('El teléfono no es válido. Deben ser sólo números.');
+        }
+      }
+
+      if (errores.length > 0) {
+        alert(errores.join("\n"));
         return;
       }
 

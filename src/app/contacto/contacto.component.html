@@ -19,20 +19,20 @@
                                     <label for="nombre">
                                     <h6>Nombre:</h6>
                                     </label>
-                                    <input [tooltip]="HtmlContent" content-type="template" placement="right" formControlName="nombre" type="text" class="form-control rounded-0" id="nombre" placeholder="" required>
+                                    <input  content-type="template" placement="right" formControlName="nombre" type="text" class="form-control rounded-0" id="nombre" placeholder="" required>
                                 </div>
                                 <div class="row pb-2">
                                     <div class="col-md-6 mb-3">
                                         <label for="dni">
                                         <h6>DNI:</h6>
                                         </label>
-                                        <input [tooltip]="HtmlContent" content-type="template" placement="right" formControlName="dni" type="number" class="form-control rounded-0" id="dni" placeholder="" value="" required>
+                                        <input  content-type="template" placement="right" formControlName="dni" type="number" class="form-control rounded-0" id="dni" placeholder="" value="" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="matricula">
                                         <h6>Matrícula:</h6>
                                         </label>
-                                        <input [tooltip]="HtmlContent" content-type="template" placement="right" formControlName="matricula" type="text" class="form-control rounded-0" id="matricula" placeholder="" value="" required>
+                                        <input  content-type="template" placement="right" formControlName="matricula" type="text" class="form-control rounded-0" id="matricula" placeholder="" value="" required>
                                     </div>
                                 </div>
                                 <div class="row pb-2">
@@ -40,33 +40,33 @@
                                         <label for="telefono">
                                         <h6>Teléfono:</h6>
                                         </label>
-                                        <input [tooltip]="HtmlContent" content-type="template" placement="right" formControlName="telefono" type="text" class="form-control rounded-0" id="telefono" placeholder="" value="" required>
+                                        <input  content-type="template" placement="right" formControlName="telefono" type="text" class="form-control rounded-0" id="telefono" placeholder="" value="" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="celular">
                                         <h6>Celular:</h6>
                                         </label>
-                                        <input [tooltip]="HtmlContent" content-type="template" placement="right" formControlName="celular" type="text" class="form-control rounded-0" id="celular" placeholder="" value="" required>
+                                        <input  content-type="template" placement="right" formControlName="celular" type="text" class="form-control rounded-0" id="celular" placeholder="" value="" required>
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <label for="email">
                                     <h6>Correo electrónico:</h6>
                                     </label>
-                                    <input [tooltip]="HtmlContent" content-type="template" placement="right" formControlName="correo" type="email" class="form-control rounded-0" id="correo" placeholder="" value="" required>
+                                    <input  content-type="template" placement="right" formControlName="correo" type="email" class="form-control rounded-0" id="correo" placeholder="" value="" required>
                                 </div>
                                 <h5 class="mb-3">Tipo de comentario</h5>
                                 <div class="d-block my-3 pb-3">
                                     <div class="custom-control custom-radio pb-1">
-                                        <input [tooltip]="HtmlContent" content-type="template" placement="right" (change)="onChangeTypeContact('consulta')" value="consulta" id="consulta" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                                        <input  content-type="template" placement="right" (change)="onChangeTypeContact('consulta')" value="consulta" id="consulta" name="paymentMethod" type="radio" class="custom-control-input" checked required>
                                         <label class="custom-control-label" for="consulta">Consulta</label>
                                     </div>
                                     <div class="custom-control custom-radio pb-1 pt-1">
-                                        <input [tooltip]="HtmlContent" content-type="template" placement="right" (change)="onChangeTypeContact('sugerencia')" value="sugerencia" id="sugerencia" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                        <input  content-type="template" placement="right" (change)="onChangeTypeContact('sugerencia')" value="sugerencia" id="sugerencia" name="paymentMethod" type="radio" class="custom-control-input" required>
                                         <label class="custom-control-label" for="sugerencia">Sugerencia</label>
                                     </div>
                                     <div class="custom-control custom-radio pt-1">
-                                        <input [tooltip]="HtmlContent" content-type="template" placement="right" (change)="onChangeTypeContact('queja')" value="queja" id="queja" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                        <input  content-type="template" placement="right" (change)="onChangeTypeContact('queja')" value="queja" id="queja" name="paymentMethod" type="radio" class="custom-control-input" required>
                                         <label class="custom-control-label" for="queja">Queja</label>
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                     <label for="exampleFormControlTextarea1">
                                     <h6>Comentario</h6>
                                     </label>
-                                    <textarea [tooltip]="HtmlContent" content-type="template" placement="right" formControlName="comentario" class="form-control rounded-0" id="comentario" rows="3"></textarea>
+                                    <textarea  content-type="template" placement="right" formControlName="comentario" class="form-control rounded-0" id="comentario" rows="3"></textarea>
                                 </div>
                                 <button class="btn btn-secondary btn-lg rounded-0" (click)="submit()" [disabled]="submitting">{{submitting ? 'Enviando...' : 'Enviar'}}</button>
                             </form>
