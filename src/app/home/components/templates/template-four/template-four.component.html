@@ -8,7 +8,8 @@
         <li *ngFor="let bc of breadCrumb; let last = last;" 
             class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}}" 
             title="{{bc.name}}">
-            <a [routerLink]="['/', bc.link]">{{bc.name}}</a>
+            <a *ngIf="bc.link != ''" [routerLink]="['/', bc.link]">{{bc.name}}</a>
+            <span *ngIf="bc.link == ''">{{bc.name}}</span>
         </li>
     </ol>
 </nav>
