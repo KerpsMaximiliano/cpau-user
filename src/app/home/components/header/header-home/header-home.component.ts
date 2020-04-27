@@ -1,27 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '@app/_services';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthenticationService } from "@app/_services";
 
 @Component({
-  selector: 'app-header-home',
-  templateUrl: './header-home.component.html',
-  styleUrls: ['./header-home.component.css']
+  selector: "app-header-home",
+  templateUrl: "./header-home.component.html",
+  styleUrls: ["./header-home.component.css"],
 })
 export class HeaderHomeComponent implements OnInit {
   isAuthenticated: boolean;
-  lblAuthentication : string;
-  lblUserName : string;
+  lblAuthentication = "LOGIN";
+  lblUserName: string;
 
-  constructor(private router: Router, private authenticationService: AuthenticationService) {}
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit() {
     this.updateControllers();
   }
 
   authentication() {
-
-    if(!this.isAuthenticated) {
-      this.router.navigate(['./login']);
+    if (!this.isAuthenticated) {
+      this.router.navigate(["./login"]);
       return;
     }
 
@@ -30,13 +32,18 @@ export class HeaderHomeComponent implements OnInit {
   }
 
   private updateControllers() {
-    this.isAuthenticated =  this.authenticationService.isAuthenticated();
-    this.lblAuthentication = "LOGIN" ;//this.isAuthenticated ? "LOGOUT" : "LOGIN";
+    this.authenticationService.isAuthenticated().subscribe((data) => {
+      this.isAuthenticated = localStorage.getItem("currentUser") && data.ret;
 
-    if(this.authenticationService.currentUserValue)
-      this.lblUserName =  this.authenticationService.currentUserValue.username;
-    else
-      this.lblUserName = '';
+      this.lblAuthentication = this.isAuthenticated ? "LOGOUT" : "LOGIN";
+
+      if (!this.isAuthenticated) {
+        this.authenticationService.logout();
+      }
+
+      if (this.authenticationService.currentUserValue)
+        this.lblUserName = this.authenticationService.currentUserValue.username;
+      else this.lblUserName = "";
+    });
   }
-
 }
