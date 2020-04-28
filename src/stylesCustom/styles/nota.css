@@ -206,3 +206,9 @@
 .articleCss article cite a::after {
     content: "";
 }
+
+
+.articleCss a:not([href])::after {
+    color: green;
+    content: '';
+}
