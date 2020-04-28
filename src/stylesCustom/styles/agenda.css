@@ -28,16 +28,19 @@ time{
 
 }
 .caplik {
-	color: #3400ff;
-	text-decoration: none;
-	background-color: transparent;
-	font-weight: 700;
-	font-size: 13pt;
+    color: #000000;
+    text-decoration: none;
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 12pt;
+    margin-bottom: -0.5rem;
 }
+
 .caplik:hover {
-	color: #000000;
-	font-weight: 700;
-	text-decoration: underline;
+    color: #3400ff;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
 }
 /* AGENDA
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
