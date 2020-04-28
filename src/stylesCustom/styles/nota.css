@@ -207,8 +207,6 @@
     content: "";
 }
 
-
 .articleCss a:not([href])::after {
-    color: green;
     content: '';
 }
