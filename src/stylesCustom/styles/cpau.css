@@ -1519,3 +1519,10 @@ td {
         padding-top: 20px;
     }
 }
+
+.autocomplete-container {
+    box-shadow: 0 1px 0px 0 rgba(0,0,0,-0.0), 0 0px 0px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12) !important;
+    position: relative !important;
+    overflow: visible !important;
+    height: 40px !important;
+}

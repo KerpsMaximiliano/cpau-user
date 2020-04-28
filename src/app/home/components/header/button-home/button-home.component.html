@@ -72,7 +72,9 @@
                     </ul>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 input-group search">
-                    <ng-autocomplete #autoComplete [data]="resultSearch" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate">
+                    <ng-autocomplete #autoComplete class="autocomplete-css" [data]="resultSearch" [searchKeyword]="keyword" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' 
+                        (inputFocused)='onFocused($event)' 
+                        [itemTemplate]="itemTemplate">
                     </ng-autocomplete>
                     <ng-template #itemTemplate let-item>
                         <a [innerHTML]="item.title"></a>
