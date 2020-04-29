@@ -98,7 +98,7 @@
                                     <img class="img-fluid imagen imagen-noticias" src="{{item?.image?.imageUrl}}" alt="{{item?.image?.title}}" />
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 noticias-txt">
-                                    <h4 *ngIf="item.link"><a href="{{item.link}}" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
+                                    <h4 *ngIf="item.link"><a href="{{item.link}}" target="{{item.target}}" title="{{item.title}}">{{item.title}}</a></h4>
                                     <h4 *ngIf="!item.link"><a [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
                                     <p [innerHTML]="item.summary"></p>
                                     <div>
