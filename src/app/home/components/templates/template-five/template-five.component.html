@@ -100,7 +100,7 @@
                         <article>
                             <div *ngIf="!item.highlighted" class="row">
                                 <div class="col-15 col-sm-12 col-md-30 col-lg-38 col-xl-46 noticias-txt">
-                                    <h4 *ngIf="item.link"><a href="{{item.link}}" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
+                                    <h4 *ngIf="item.link"><a href="{{item.link}}" target="{{item.linkTarget}}" title="{{item.title}}">{{item.title}}</a></h4>
                                     <h4 *ngIf="!item.link"><a  [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
                                     <p [innerHTML]="item.summary"></p>
                                     <div>
