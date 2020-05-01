@@ -25,7 +25,12 @@
             <input type="radio" id="mes" name="categories" value="mes">
             <input type="radio" id="ano" name="categories" value="ano">
             <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias ">
-                <!--ol>
+                <ol>
+                    <li>
+                        <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="Todas">Todas</label>
+                    </li>
+                </ol>
+                <ol *ngIf="data.tags.length > 0">
                     <li>
                         <div class="pl-1 pb-1">
                             <h6>ETIQUETAS</h6>
@@ -35,15 +40,12 @@
                     <li *ngFor="let currentTag of data.tags">
                         <label for="{{currentTag | uppercase}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>
                     </li>
-                </ol-->
+                </ol>
                 <ol>
                     <li>
                         <div class="p-1 ">
                             <h6>FECHA</h6>
                         </div>
-                    </li>
-                    <li>
-                        <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="Todas">Todas</label>
                     </li>
                     <li>
                         <label (click)="onSelectTag('hoy')" for="hoy" title="Hoy">Hoy</label>
@@ -104,7 +106,7 @@
                                     <h4 *ngIf="item.link"><a href="{{item.link}}" target="{{item.linkTarget}}" title="{{item.title}}">{{item.title}}</a></h4>
                                     <h4 *ngIf="!item.link"><a  [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">{{item.title}}</a></h4>
                                     <p [innerHTML]="item.summary"></p>
-                                    <div *ngIf="item.showPublishedDate || item?.tags?.size > 0">
+                                    <div *ngIf="item.showPublishedDate || item?.tags?.length > 0">
                                         <time *ngIf="item.showPublishedDate">{{item.publishDateString | uppercase}} </time>
                                         <label class="caplik" *ngFor="let currentTag of item.tags" for="{{currentTag}}" (click)="onSelectTag(currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}&nbsp;</label>
                                     </div>

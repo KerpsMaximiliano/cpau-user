@@ -27,12 +27,14 @@
             <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias ">
                 <ol>
                     <li>
+                        <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="Todas">Todas</label>
+                    </li>
+                </ol>
+                <ol *ngIf="data.tags.length > 0">
+                    <li>
                         <div class="pl-1 pb-1">
                             <h6>ETIQUETAS</h6>
                         </div>
-                    </li>
-                    <li>
-                        <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="Todas">Todas</label>
                     </li>
                     <li *ngFor="let currentTag of data.tags">
                         <label for="{{currentTag | uppercase}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>

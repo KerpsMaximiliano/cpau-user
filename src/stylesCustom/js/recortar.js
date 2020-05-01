@@ -113,7 +113,7 @@ function recortarTituloProductoExterno(text) {
 }
 
 function recortarHeaderProductoExterno(text) {
-    return $.fn.recortar2(text, '20px Roboto', 380);
+    return $.fn.recortar2(text, '20px Roboto', 350);
 }
 
 function recortarDescriptionProductoExterno(text) {
@@ -121,11 +121,11 @@ function recortarDescriptionProductoExterno(text) {
 }
 
 function recortarTituloListado(text)  {
-    return reemplazoCaracteres(text, '26px sans-serif', 800);
+    return $.fn.recortar2(text, '26px Roboto', 800);
 }
 
 function recortarSummaryListado(text) {
-    return reemplazoCaracteres(text, '12px sans-serif', 1400);
+    return reemplazoCaracteres(text, '12px sans-serif', 1250);
 }
 
 function recortarTituloListadoTemplateOne(text)  {
@@ -137,15 +137,15 @@ function recortarSummaryListadoTemplateOne(text) {
 }
 
 function recortarTituloBeneficio(text)  {
-    return reemplazoCaracteres(text, '26px sans-serif', 420);
+    return $.fn.recortar2(text, '26px sans-serif', 400);
 }
 
 function recortarSummaryBeneficio(text) {
-    return reemplazoCaracteres(text, '14px sans-serif', 1000);
+    return reemplazoCaracteres(text, '14px sans-serif', 900);
 }
 
 function recortarTituloListadoTemplateFour(text)  {
-    return reemplazoCaracteres(text, '26px sans-serif', 1300);
+    return $.fn.recortar2(text, '26px sans-serif', 1300);
 }
 
 function recortarSummaryListadoTemplateFour(text) {
