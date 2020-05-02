@@ -39,7 +39,7 @@ time {
 }
 
 .caplik {
-    color: #000000;
+    color: #3400ff;
     text-decoration: none;
     background-color: transparent;
     font-weight: 700;
@@ -48,11 +48,13 @@ time {
 }
 
 .caplik:hover {
-    color: #3400ff;
+    color: #000000;
     font-weight: 700;
     text-decoration: underline;
     cursor: pointer;
 }
+
+
 
 
 /* noticias

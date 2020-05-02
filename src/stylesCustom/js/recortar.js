@@ -129,15 +129,15 @@ function recortarSummaryListado(text) {
 }
 
 function recortarTituloListadoTemplateOne(text)  {
-    return reemplazoCaracteres(text, '26px sans-serif', 630);
+    return $.fn.recortar2(text, '26px sans-serif', 630);
 }
 
 function recortarSummaryListadoTemplateOne(text) {
-    return reemplazoCaracteres(text, '14px sans-serif', 1260);
+    return reemplazoCaracteres(text, '14px sans-serif', 1100);
 }
 
 function recortarTituloBeneficio(text)  {
-    return $.fn.recortar2(text, '26px sans-serif', 400);
+    return $.fn.recortar2(text, '26px sans-serif', 380);
 }
 
 function recortarSummaryBeneficio(text) {

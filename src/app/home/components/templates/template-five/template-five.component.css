@@ -35,19 +35,3 @@ li.post:nth-child(1)>article:nth-child(1)>div:nth-child(1)>div:nth-child(2)>p:nt
 .articleCss article h1 {
     padding: 40px 0px 15px 0px;
 }
-
-.caplik {
-    color: #000000;
-    text-decoration: none;
-    background-color: transparent;
-    font-weight: 700;
-    font-size: 12pt;
-    margin-bottom: -0.5rem;
-}
-
-.caplik:hover {
-    color: #3400ff;
-    font-weight: 700;
-    text-decoration: underline;
-    cursor: pointer;
-}
