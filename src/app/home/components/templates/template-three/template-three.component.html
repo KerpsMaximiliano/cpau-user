@@ -92,7 +92,7 @@
                                     </div>
                                 
                                 <div class="caplik">
-                                    <a *ngIf="item.link" href="{{item.link}}" target="{{item.linkTarget}}" title="{{item.title}}">+ INFO</a>
+                                    <a *ngIf="item.link" href="{{item.link}}" target="{{selectTarget(item.linkTarget)}}" title="{{item.title}}">+ INFO</a>
                                     <a *ngIf="!item.link" [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">+ INFO</a>
 
                                 </div>

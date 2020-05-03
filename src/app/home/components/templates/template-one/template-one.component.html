@@ -91,7 +91,7 @@
                                     <h4 title="{{item.title}}">{{item.title}}</h4>
                                     <p [innerHTML]="item.summary"></p>
                                     <div>
-                                        <a *ngIf="item.link" class="caplik" target="{{item.linkTarget}}" href="{{item.link}}">MÁS INFO</a>
+                                        <a *ngIf="item.link" class="caplik" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}">MÁS INFO</a>
                                         <a *ngIf="!item.link" class="caplik" [routerLink]="['/nota', item?.id]">MÁS INFO</a>
                                     </div>
 

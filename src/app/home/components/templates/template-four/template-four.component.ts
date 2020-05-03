@@ -63,4 +63,28 @@ export class TemplateFourComponent implements OnInit, TemplateWrapper {
       }
     });
   }
+
+  selectTarget(index){
+    let target = '';
+    switch (index) {
+      case 0:
+        target = '_self';
+        break;
+      case 1:
+        target = '_blank';        
+        break;
+      case 2:
+        target = '_parent';        
+        break;
+      case 3:
+        target = '_top';    
+        break;
+      case 4:
+        target = '_search';    
+        break;
+      default:
+        break;
+    }
+    return target;
+  }
 }
