@@ -31,18 +31,22 @@
     padding: 40px 0px 15px 0px;
 }
 
-.caplik {
-    color: #000000;
+.caplik a {
+    color: #3400ff;
     text-decoration: none;
     background-color: transparent;
     font-weight: 700;
-    font-size: 12pt;
+    font-size: 13pt;
     margin-bottom: -0.5rem;
 }
 
-.caplik:hover {
-    color: #3400ff;
+.caplik a:hover {
+    color: #000000;
     font-weight: 700;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.minheight215 {
+    min-height: 215px;
 }

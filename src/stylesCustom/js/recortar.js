@@ -141,7 +141,7 @@ function recortarTituloBeneficio(text)  {
 }
 
 function recortarSummaryBeneficio(text) {
-    return reemplazoCaracteres(text, '14px sans-serif', 900);
+    return reemplazoCaracteres(text, '14px sans-serif', 1300);
 }
 
 function recortarTituloListadoTemplateFour(text)  {

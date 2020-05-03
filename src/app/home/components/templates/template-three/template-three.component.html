@@ -20,18 +20,19 @@
     <section>
         <div class="row">
             <input type="radio" id="todos" name="categories" value="todos" checked>
+            <input type="radio" id="{{currentTag | uppercase}}" name="categories" value="{{currentTag | uppercase}}" *ngFor="let currentTag of data.tags">
             <input type="radio" id="hoy" name="categories" value="hoy">
             <input type="radio" id="semana" name="categories" value="semana">
             <input type="radio" id="mes" name="categories" value="mes">
             <input type="radio" id="ano" name="categories" value="ano">
-            <input type="radio" id="{{currentTag | uppercase}}" name="categories" value="{{currentTag | uppercase}}" *ngFor="let currentTag of data.tags">
+
             <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosagenda">
                 <ol>
                     <li>
-                        <label (click)="onSelectTag('todos')" for="todos" title="TODOS">TODOS</label>
+                        <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="TODOS">TODOS</label>
                     </li>
                     <li *ngFor="let currentTag of data.tags">
-                        <label for="#{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>
+                        <label for="{{currentTag | uppercase}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>
                     </li>
                 </ol>
             </div>
@@ -82,11 +83,13 @@
                                         <img class="img-fluid imagen-beneficio" src="{{item?.image?.imageUrl}}" alt="{{item.image?.title}}" />
                                     </a>
                                 </figure>
-                                <div *ngIf="item.percent" class="badge badge-primary">{{item.percent}}%</div>
-                                <div *ngIf="!item.percent" class="badge">&nbsp;</div>
-                                
-                                <h4 style="margin-top: 8px;">{{item.title}}</h4>
-                                <div class="beneficio-txt" [innerHTML]="item.summary | safeHtml">
+                                <div class="minheight215">
+                                    <div *ngIf="item.percent" class="badge badge-primary">{{item.percent}}%</div>
+                                    <div *ngIf="!item.percent" class="badge">&nbsp;</div>
+                                    
+                                    <h4 style="margin-top: 8px;">{{item.title}}</h4>
+                                    <div class="beneficio-txt" [innerHTML]="item.summary | safeHtml">
+                                    </div>
                                 </div>
                                 <div class="caplik">
                                     <a *ngIf="item.link" href="{{item.link}}" target="{{item.linkTarget}}" title="{{item.title}}">+ INFO</a>
