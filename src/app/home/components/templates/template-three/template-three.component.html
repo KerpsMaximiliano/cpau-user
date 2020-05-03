@@ -83,14 +83,14 @@
                                         <img class="img-fluid imagen-beneficio" src="{{item?.image?.imageUrl}}" alt="{{item.image?.title}}" />
                                     </a>
                                 </figure>
-                                <div class="minheight215">
+                                
                                     <div *ngIf="item.percent" class="badge badge-primary">{{item.percent}}%</div>
                                     <div *ngIf="!item.percent" class="badge">&nbsp;</div>
                                     
                                     <h4 style="margin-top: 8px;">{{item.title}}</h4>
                                     <div class="beneficio-txt" [innerHTML]="item.summary | safeHtml">
                                     </div>
-                                </div>
+                                
                                 <div class="caplik">
                                     <a *ngIf="item.link" href="{{item.link}}" target="{{item.linkTarget}}" title="{{item.title}}">+ INFO</a>
                                     <a *ngIf="!item.link" [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">+ INFO</a>
