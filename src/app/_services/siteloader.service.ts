@@ -84,8 +84,8 @@ export class SiteLoader implements ITemplate {
         .set('obraDestino', obraDestino ? obraDestino.join(", ") : '');
 
         return this.http
-        .get<any>(`${environment.apiUrl}/api/SiteConsumer/GetProfesional`, { params: params })
-        .pipe(distinctUntilChanged() );
+        .get<any>(`${environment.apiUrl}/api/SiteConsumer/GetProfesional?codigoProfesion=${codigoProfesion}&filtro=${filtro}&actividades=${actividades ? actividades.join(", ") : ''}&obraDestino=${obraDestino ? obraDestino.join(", ") : ''}`)
+        ;
     }
 
     generaContact(data: string) {

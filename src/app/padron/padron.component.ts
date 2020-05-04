@@ -25,8 +25,16 @@ export class PadronComponent implements OnInit {
     });
   }
 
+  buscar() {
+    if(this.form.value.matriculaTipo != '') {
+      this.profesionals = undefined;
+      this.buscando = true;
+    }
+  }
+
   submit() {
     if(this.form.value.matriculaTipo != '') {
+      this.profesionals = undefined;
       this.buscando=true;
       this.siteLoader
       .getProfesionales(this.form.value.matriculaTipo, this.form.value.nameOrNumber,null,null)

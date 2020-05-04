@@ -40,7 +40,7 @@
                                         <div class="input-group search1">
                                             <input  content-type="template" placement="right" formControlName="nameOrNumber" class="form-control custom-file border-secondary border-right-0 rounded-0 " type="search" value="" id="matynom">
                                             <span class="input-group-append">
-                                                <button (click)="submit()" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" ng-disabled="buscando" type="button">
+                                                <button (click)="buscar(); submit();" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" ng-disabled="buscando" type="button">
                                                     <i class="fa fa-search"></i>
                                                 </button>
                                             </span>
@@ -52,7 +52,9 @@
                                 <p>Campo <strong>requerido</strong>!</p>
                             </ng-template>
 
-                            <div *ngIf="!buscando; else loadingBlockNews;"></div>
+                            <div *ngIf="buscando" style="text-align: center;">
+                                <div>Buscando Profesionales...</div>
+                            </div>
 
                             <div *ngIf="profesionals" class="row pb-2 pt-4">
                                 <table class="table table-striped tb-m">
@@ -84,12 +86,7 @@
                 </div>
             </div>
         </div>
-        <ng-template #loadingBlockNews>
-            <div style="text-align: center;">
-                <div class="loader">Buscando Profesionales...</div>
-            </div>
-        </ng-template>
-
+        
         <app-publicity-home></app-publicity-home>
         <app-footer></app-footer>
     </div>
