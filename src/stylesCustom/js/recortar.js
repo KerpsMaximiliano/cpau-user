@@ -78,7 +78,7 @@ function recortarTituloListado(text)  {
 }
 
 function recortarSummaryListado(text) {
-    return reemplazoCaracteres(text, '12px sans-serif', 1250);
+    return reemplazoCaracteres(text, '12px sans-serif', 1200);
 }
 
 function recortarTituloListadoTemplateOne(text)  {
