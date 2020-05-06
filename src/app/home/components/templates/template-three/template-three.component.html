@@ -31,6 +31,8 @@
                     <li>
                         <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="TODOS">TODOS</label>
                     </li>
+                </ol>
+                <ol>
                     <li *ngFor="let currentTag of data.tags">
                         <label for="{{currentTag | uppercase}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>
                     </li>
@@ -79,7 +81,10 @@
                             <div class="row">
                             <li *ngFor="let item of noDestacado" class="post col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 " data-category="hoy">
                                 <figure>
-                                    <a href="#" title="Be.ar Render">
+                                    <a *ngIf="item.link" href="{{item.link}}" target="{{selectTarget(item.linkTarget)}}" title="{{item.title}}">
+                                        <img class="img-fluid imagen-beneficio" src="{{item?.image?.imageUrl}}" alt="{{item.image?.title}}" />
+                                    </a>
+                                    <a *ngIf="!item.link" [routerLink]="['/nota', item.id]" target="_self" title="{{item.title}}">
                                         <img class="img-fluid imagen-beneficio" src="{{item?.image?.imageUrl}}" alt="{{item.image?.title}}" />
                                     </a>
                                 </figure>

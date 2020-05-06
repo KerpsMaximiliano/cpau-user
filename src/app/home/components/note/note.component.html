@@ -12,20 +12,23 @@
                 <!--Tittle-->
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
                     
-                    <h6 *ngIf="data.breadCrumb?.length == 1" class="border-bottom title-sections pb-1">
-                        <a *ngFor="let bc of data.breadCrumb" target="_self" [routerLink]="['/', bc.link]" title="{{bc.name}}">{{bc.name}}
+                    <h6 *ngIf="breadCrumb?.length == 1" class="border-bottom title-sections pb-1">
+                        <a *ngFor="let bc of breadCrumb" target="_self" [routerLink]="['/', bc.link]" title="{{bc.name}}">{{bc.name}}
                         </a>
                     </h6>
                     
-                    <nav aria-label="breadcrumb" *ngIf="data.breadCrumb?.length > 1">
+                    <nav aria-label="breadcrumb" *ngIf="breadCrumb?.length > 1">
                         <ol class="breadcrumb">
-                            <li *ngFor="let bc of data.breadCrumb; let last = last;" 
-                                class="breadcrumb-item" 
+                            <li *ngFor="let bc of breadCrumb; let last = last;" 
+                                class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}}" 
                                 title="{{bc.name}}">
-                                <a [routerLink]="['/', bc.link]">{{bc.name}}</a>
+                                <a *ngIf="bc.link != ''" [routerLink]="['/', bc.link]">{{bc.name}}</a>
+                                <span *ngIf="bc.link == ''">{{bc.name}}</span>
                             </li>
                         </ol>
-                    </nav>              
+                    </nav>
+                    
+                               
 
                     <div class="container p-0 pt-2 pb-5 ">
                         <!--Nota-->

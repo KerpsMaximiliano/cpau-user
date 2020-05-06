@@ -2,11 +2,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SiteLoader } from '@app/_services';
 import { map } from 'rxjs/operators';
-import { ContentSite } from '@app/shared/models/contentsite.model';
+import { ContentSite, BreadCrumb } from '@app/shared/models/contentsite.model';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 declare function scrollup();
+
+
 
 @Component({
   selector: 'app-note',
@@ -15,6 +17,9 @@ declare function scrollup();
   encapsulation: ViewEncapsulation.None
 })
 export class NoteComponent implements OnInit {
+
+  breadCrumb:BreadCrumb[];
+
   data: ContentSite;
   constructor(private _router: Router,private _Activatedroute:ActivatedRoute, private siteLoader: SiteLoader,private renderer2: Renderer2,
     @Inject(DOCUMENT) private _document
@@ -55,6 +60,7 @@ export class NoteComponent implements OnInit {
     )
     .subscribe( content => {
       this.data = content;
+      this.breadCrumb = this.data.breadCrumb;
     });
 
   }
