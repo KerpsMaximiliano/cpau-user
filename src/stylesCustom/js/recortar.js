@@ -62,7 +62,7 @@ function recortarSummary(text) {
 }
 
 function recortarTituloProductoExterno(text) {
-    return $.fn.recortar2(text, '16px Roboto', 240);
+    return $.fn.recortar2(text, '16px Roboto', 243);
 }
 
 function recortarHeaderProductoExterno(text) {
