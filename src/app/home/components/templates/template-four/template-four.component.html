@@ -19,7 +19,7 @@
     <section>
         <div class="row">
             <input type="radio" id="todos" name="categories" value="todos" checked>
-            <input type="radio" id="{{currentTag | uppercase}}" name="categories" value="{{currentTag | uppercase}}" *ngFor="let currentTag of data.tags">
+            <input type="radio" id="{{currentTag}}" name="categories" value="{{currentTag}}" *ngFor="let currentTag of data.tags">
             <input type="radio" id="hoy" name="categories" value="hoy">
             <input type="radio" id="semana" name="categories" value="semana">
             <input type="radio" id="mes" name="categories" value="mes">
@@ -38,7 +38,7 @@
                     </li>
                     
                     <li *ngFor="let currentTag of data.tags">
-                        <label for="{{currentTag | uppercase}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag | uppercase }}">{{currentTag | uppercase }}</label>
+                        <label for="{{currentTag}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag}}">{{currentTag}}</label>
                     </li>
                 </ol>
                 <ol>
@@ -70,7 +70,7 @@
                                 <div class="container p-0 pt-2 pb-5">
                                     <!--Nota-->
                                     <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-12 articleCss">
+                                        <div class="col-12 col-sm-12 col-md-10 articleCss" style="flex: 0 0 77.8%;">
                                             <article class="{{(item?.image == undefined || item?.image == null) ? 'margintop-52' : 'margintop-7'}}">
                                                 <figure *ngIf="item?.image">
                                                     <img class="img-fluid imagen" src="{{item?.image?.imageUrl}}" alt="{{item?.image?.title}}" />

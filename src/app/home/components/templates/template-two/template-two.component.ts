@@ -60,7 +60,7 @@ export class TemplateTwoComponent implements OnInit, TemplateWrapper {
       const el =document.getElementById('lbl'+element.id.replace("#", ""));
 
       if(el){
-        if(element.id.replace("#", "").toLowerCase() === tag.replace("#", "").toLowerCase()){
+        if(element.id.replace("#", "") === tag.replace("#", "")){
           el.style.color= '#fff';
           el.style.backgroundColor  = '#000000';
         }
