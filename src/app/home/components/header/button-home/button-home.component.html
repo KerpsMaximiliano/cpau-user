@@ -102,24 +102,24 @@
                         <div class="columna-1">
                             <ul class="list-unstyled sections-link">
                                 <li *ngFor="let item of consejo">
-                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
-                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="!item.link" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="columna-2">
                             <ul class="list-unstyled p-0 m-0 sections-link">
                                 <li *ngFor="let item of ejercicioprofesional">
-                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
-                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="!item.link" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="columna-3">
                             <ul class="list-unstyled p-0 m-0 sections-link">
                                 <li *ngFor="let item of servicios">
-                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
-                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="!item.link" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
 
                                 </li>
                             </ul>
@@ -127,8 +127,8 @@
                         <div class="columna-4">
                             <ul class="list-unstyled p-0 m-0 sections-link">
                                 <li *ngFor="let item of herramientas">
-                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
-                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="!item.link" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
                                 </li>
                             </ul>
                         </div>
