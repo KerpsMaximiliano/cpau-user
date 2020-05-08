@@ -90,7 +90,7 @@ function recortarSummaryListadoTemplateOne(text) {
 }
 
 function recortarTituloBeneficio(text)  {
-    return $.fn.recortar2(text, '26px sans-serif', 380);
+    return $.fn.recortar2(text, '26px sans-serif', 395);
 }
 
 function recortarSummaryBeneficio(text) {
