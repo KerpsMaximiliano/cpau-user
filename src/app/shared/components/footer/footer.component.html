@@ -25,7 +25,10 @@
                             <h6 class="title-pie">CONSEJO</h6>
                         </div>
                         <ul class="list-unstyled pie">
-                            <li *ngFor="let item of consejo"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                            <li *ngFor="let item of consejo">
+                                <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-sm col-md-6 col-lg col-xl">
@@ -33,7 +36,10 @@
                             <h6 class="title-pie">EJERCICIO PROFESIONAL</h6>
                         </div>
                         <ul class="list-unstyled pie">
-                            <li *ngFor="let item of ejercicioprofesional"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                            <li *ngFor="let item of ejercicioprofesional">
+                                <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-sm col-md-6 col-lg col-xl">
@@ -41,7 +47,10 @@
                             <h6 class="title-pie">SERVICIOS</h6>
                         </div>
                         <ul class="list-unstyled pie">
-                            <li *ngFor="let item of servicios"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                            <li *ngFor="let item of servicios">
+                                <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-sm col-md-6 col-lg col-xl">
@@ -49,7 +58,10 @@
                             <h6 class="title-pie">HERRAMIENTAS</h6>
                         </div>
                         <ul class="list-unstyled pie">
-                            <li *ngFor="let item of herramientas"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                            <li *ngFor="let item of herramientas">
+                                <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-sm col-md-6 col-lg col-xl">

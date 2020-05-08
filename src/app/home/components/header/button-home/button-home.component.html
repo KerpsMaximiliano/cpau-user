@@ -10,9 +10,13 @@
                                 EL CONSEJO
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a *ngFor="let item of consejo" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">
-                                    {{item.name}}
-                                </a>
+                                <span *ngFor="let item of consejo">
+                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                </span>
+
+                                
+
                             </div>
                         </li>
 
@@ -23,9 +27,11 @@
                             EJERCICIO PROFESIONAL
                         </a>
                             <div class="dropdown-menu adaptado w-200" aria-labelledby="navbarDropdown">
-                                <a *ngFor="let item of ejercicioprofesional" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">
-                                    {{item.name}}
-                                </a>
+                                <span *ngFor="let item of ejercicioprofesional">
+                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                </span>
+
                             </div>
                         </li>
 
@@ -36,9 +42,11 @@
                                 SERVICIOS
                             </a>
                             <div class="dropdown-menu adaptado" aria-labelledby="navbarDropdown">
-                                <a *ngFor="let item of servicios" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">
-                                    {{item.name}}
-                                </a>
+                                <span *ngFor="let item of servicios">
+                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                </span>
+
                             </div>
                         </li>
                         <li class="nav-item bk5"> <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a> </li>
@@ -48,9 +56,11 @@
                                 HERRAMIENTAS
                             </a>
                             <div class="dropdown-menu adaptado" aria-labelledby="navbarDropdown">
-                                <a *ngFor="let item of herramientas" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">
-                                    {{item.name}}
-                                </a>
+                                <span *ngFor="let item of herramientas">
+                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                </span>
+
                             </div>
                         </li>
                         <li class="nav-item bk5"> <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a> </li>
@@ -91,22 +101,35 @@
                     <div class="row p-0 m-0">
                         <div class="columna-1">
                             <ul class="list-unstyled sections-link">
-                                <li *ngFor="let item of consejo"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                                <li *ngFor="let item of consejo">
+                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="columna-2">
                             <ul class="list-unstyled p-0 m-0 sections-link">
-                                <li *ngFor="let item of ejercicioprofesional"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                                <li *ngFor="let item of ejercicioprofesional">
+                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="columna-3">
                             <ul class="list-unstyled p-0 m-0 sections-link">
-                                <li *ngFor="let item of servicios"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                                <li *ngFor="let item of servicios">
+                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+
+                                </li>
                             </ul>
                         </div>
                         <div class="columna-4">
                             <ul class="list-unstyled p-0 m-0 sections-link">
-                                <li *ngFor="let item of herramientas"><a [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a></li>
+                                <li *ngFor="let item of herramientas">
+                                    <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="columna-5">
