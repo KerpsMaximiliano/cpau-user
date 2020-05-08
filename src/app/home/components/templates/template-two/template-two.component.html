@@ -118,7 +118,7 @@
                         <article>
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
-                                    <a *ngIf="item.link.includes('http') || item.link.includes('www')" href="{{item.link}}">
+                                    <a *ngIf="item.link.includes('http') || item.link.includes('www')" href="{{item.link}}" target="{{item.linkTarget}}">
                                         <h4>{{item.name}}</h4>
                                     </a>
                                     <a *ngIf="!item.link.includes('http') && !item.link.includes('www')"  [routerLink]="['/', item.link]">
