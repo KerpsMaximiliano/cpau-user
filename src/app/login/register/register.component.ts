@@ -67,9 +67,11 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.authenticationService.isAuthenticated()) {
-      this.router.navigate(["/"]);
-    }
+    this.authenticationService.isAuthenticated().subscribe((data) => {
+      if (localStorage.getItem("currentUser") && data.ret)
+        this.router.navigate(["/"]);
+    });
+
     this.inicializarListas();
     this.formregister = this.formBuilder.group({
       cbTerminos: [false, Validators.requiredTrue],
