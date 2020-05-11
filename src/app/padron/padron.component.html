@@ -10,7 +10,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a [routerLink]="['/profesionales']">¿NECESITA UN PROFESIONAL?</a>
+                            <a [routerLink]="['/profesionales']">¿NECESITÁS UN PROFESIONAL?</a>
                         </li>
                         <li class="breadcrumb-item">
                             <a [routerLink]="['/buscarpadron']">PADRÓN</a>
@@ -73,7 +73,7 @@
                                                 <a *ngIf="item.userId; else elseBlock" class="contacto" routerLink="/ficha/{{item.guid}}">Ficha Profesional</a>
 
                                                 <ng-template #elseBlock>
-                                                    <a *ngIf="item.email" a class="contacto" routerLink="/profesional/contacto/{{item.guid}}">Contáctese</a>
+                                                    <a *ngIf="item.email" a class="contacto" routerLink="/profesional/contacto/{{item.guid}}">Contactate</a>
                                                 </ng-template>
                                             </td>
                                         </tr>
