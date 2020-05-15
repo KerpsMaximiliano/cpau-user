@@ -15,36 +15,36 @@
                     <!--Nota-->
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
-                            <h1 class="my-3">¿Necesitás un profesional?</h1>
+                            <h1 class="my-3">¿Necesitás un/a profesional?</h1>
                             <div class="pt-3 pb-5">
                                 <div style="padding:56.25% 0 0 0;position:relative;">
-                                    <iframe src="https://player.vimeo.com/video/352560966?autoplay=1&loop=1&color=3400ff&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                    <iframe src="https://player.vimeo.com/video/418508052?autoplay=1&loop=1&color=3400ff&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                                 </div>
                                 <div style="font-family: 'Roboto', sans-serif; font-size: 1rem;">
                                     <br>
-                                    Si quiere consultar el padron completo de arquitectos activos y vitalicios click <a [routerLink]="['/buscarpadron']" target="_self"><strong>aquí</strong></a>
+                                    Si querés consultar el padrón completo de la matrícula activa y vitalicia hacé click <a [routerLink]="['/buscarpadron']" target="_self"><strong>aquí</strong></a>
                                 </div>
                             </div>
                             <form [formGroup]="form" novalidate>
-                                <h5 class="mb-3">Por profesión</h5>
+                                <h5 class="mb-3">Por disciplina</h5>
                                 <div class="d-block my-3 pb-3">
                                     <div class="row pt-3">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                                             <div class="custom-control custom-radio pb-1">
                                                 <input (click)="onSelectProfesion('ARQ')" id="arquitecto" name="paymentMethod" type="radio" value="ARQ" class="custom-control-input" checked>
-                                                <label class="custom-control-label" for="arquitecto">Arquitecto</label>
+                                                <label class="custom-control-label" for="arquitecto">Arquitectura</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                                             <div class="custom-control custom-radio pb-1 pt-1">
                                                 <input (click)="onSelectProfesion('PAI')" id="paisajista" name="paymentMethod" type="radio" value="PAI" class="custom-control-input">
-                                                <label class="custom-control-label" for="paisajista">Licenciado en paisajismo</label>
+                                                <label class="custom-control-label" for="paisajista">Planificación y Diseño del paisaje</label>
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                                             <div class="custom-control custom-radio pt-1">
                                                 <input (click)="onSelectProfesion('DSI')" id="interiores" name="paymentMethod" type="radio" value="DSI" class="custom-control-input">
-                                                <label class="custom-control-label" for="interiores">Diseñador de interiores</label>
+                                                <label class="custom-control-label" for="interiores">Diseño de Interiores</label>
                                             </div>
                                         </div>
                                     </div>
