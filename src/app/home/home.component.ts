@@ -8,6 +8,7 @@ import {
 } from "@app/shared/models/contentsite.model";
 import { Events } from "@app/shared/Models/Events.model";
 import { ExternalProduct } from "@app/shared/Models/ExternalProduct.model";
+import { Router } from '@angular/router';
 
 declare function recortarTituloPrincipal(text);
 declare function recortarSummary(text);
@@ -29,15 +30,29 @@ export class HomeComponent {
   contentSite: ContentSite;
   events: Events[];
   externalProduct: ExternalProduct[];
-
   constructor(
     private siteLoader: SiteLoader,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
   }
 
   ngOnInit() {
+
+    const queryString = window.location.search;
+    console.log('------ querystring: ' + queryString);
+    if (queryString) {
+      const urlParams = new URLSearchParams(queryString);
+      console.log('------ urlParams: ' + urlParams);
+      
+      if (urlParams && urlParams.has('redirectToPage')) {
+        const redirectToPage = urlParams.get('redirectToPage');
+        console.log('------ redirectToPage: ' + redirectToPage);
+        this.router.navigate([redirectToPage]);
+      }
+    }
+
     const sectionName = "NOTICIAS";
     const cantMax = 4;
 

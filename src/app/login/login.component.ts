@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
               form.setAttribute(
                 "action",
                 `${environment.oldSiteUrl}/login?tkn=${data.token}`
+                //`/login?tkn=${data.token}`
               );
               //form.setAttribute("target", "_blank");
               var userName = document.createElement("input");
