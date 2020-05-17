@@ -8,7 +8,7 @@ export const environment = {
     //oldSiteUrl: 'http://localhost:50501/Content/institucional'
     
     production: true,
-    apiUrl: 'https://site2020-api.azurewebsites.net',
+    apiUrl: 'https://cpauorgapi.azurewebsites.net',
     oldSiteUrl: ''
     //oldSiteUrl: 'https://site2020-oldsite.azurewebsites.net'
 };

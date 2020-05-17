@@ -47,7 +47,10 @@ export class HomeComponent {
       console.log('------ urlParams: ' + urlParams);
       
       if (urlParams && urlParams.has('redirectToPage')) {
-        const redirectToPage = urlParams.get('redirectToPage');
+        var redirectToPage = urlParams.get('redirectToPage');
+        if (window.location.hash != ""){
+          redirectToPage + '?' + window.location.hash; 
+        }
         console.log('------ redirectToPage: ' + redirectToPage);
         this.router.navigate([redirectToPage]);
       }
