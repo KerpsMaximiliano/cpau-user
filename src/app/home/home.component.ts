@@ -48,13 +48,22 @@ export class HomeComponent {
       
       if (urlParams && urlParams.has('redirectToPage')) {
         var redirectToPage = urlParams.get('redirectToPage');
-        if (window.location.hash != ""){
-          redirectToPage + '?' + window.location.hash; 
-        }
         console.log('------ redirectToPage: ' + redirectToPage);
-        this.router.navigate([redirectToPage]);
+        if (redirectToPage == '/passwordrecovery/confirm') {
+          const params = window.location.hash;
+          console.log('------ params: ' + redirectToPage);
+          var paramsarray = params.split('&');
+          const token = paramsarray[0].split('=')[1];
+          const email = paramsarray[1].split('=')[1];
+          console.log('------ token: ' + token);
+          console.log('------ email: ' + email);
+          this.router.navigate([redirectToPage], {queryParams: {'token': token, 'email' : email }});  
+        } else {
+          this.router.navigate([redirectToPage]);
+        }
       }
     }
+
 
     const sectionName = "NOTICIAS";
     const cantMax = 4;
