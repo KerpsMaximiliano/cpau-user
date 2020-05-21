@@ -41,22 +41,17 @@ export class HomeComponent {
   ngOnInit() {
 
     const queryString = window.location.search;
-//    console.log('------ querystring: ' + queryString);
+
     if (queryString) {
       const urlParams = new URLSearchParams(queryString);
-//      console.log('------ urlParams: ' + urlParams);
       
       if (urlParams && urlParams.has('redirectToPage')) {
         var redirectToPage = urlParams.get('redirectToPage');
-//        console.log('------ redirectToPage: ' + redirectToPage);
         if (redirectToPage == '/passwordrecovery/confirm') {
           const params = window.location.hash;
-//          console.log('------ params: ' + redirectToPage);
           var paramsarray = params.split('&');
           const token = paramsarray[0].split('=')[1];
           const email = paramsarray[1].split('=')[1];
-//          console.log('------ token: ' + token);
-//          console.log('------ email: ' + email);
           this.router.navigate([redirectToPage], {queryParams: {'token': token, 'email' : email }});  
         } else {
           this.router.navigate([redirectToPage]);
