@@ -34,7 +34,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-label-group mb-3">
-                                                <input type="text" id="txtNumeroMatricula" formControlName="txtNumeroMatricula" digitOnly inputmode="numeric" pattern="[0-9]*" maxlength="9" (keypress)="numberOnly($event)" (change)="checkMatricula()" (keyup)="checkMatricula()" class="form-control rounded-0"
+                                                <input type="text" id="txtNumeroMatricula" formControlName="txtNumeroMatricula" digitOnly inputmode="numeric" pattern="[0-9]*" maxlength="9" (change)="checkMatricula()" class="form-control rounded-0"
                                                     placeholder="Número de matrícula:" disabled>
                                                 <div style="color: red;" *ngIf="bMatriculaValidation">Matriculado inexistente </div>
                                             </div>
