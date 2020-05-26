@@ -19,7 +19,7 @@ export class ListConstantService {
     }
 
     checkMatricula( t, n) {
-        let params = new HttpParams().set('numero', n).set('tipo', t);
+        let params = new HttpParams().set('numero', n).set('tipo', t).set('nocache', 'true');
         return this.http.get<any>(`${environment.apiUrl}/api/matricula/CheckMatricula`, { params: params })
         .pipe(
             debounceTime(1000),
@@ -28,7 +28,7 @@ export class ListConstantService {
     }
 
     validMatricula( typeM, numMat, typeDoc, numDoc) {
-        let params = new HttpParams().set('numero', numMat).set('tipo', typeM).set('docTypeId', typeDoc).set('numDoc', numDoc);
+        let params = new HttpParams().set('numero', numMat).set('tipo', typeM).set('docTypeId', typeDoc).set('numDoc', numDoc).set('nocache', 'true');
         return this.http.get<any>(`${environment.apiUrl}/api/matricula/ValMatricula`, { params: params })
         .pipe(
             debounceTime(1000),
