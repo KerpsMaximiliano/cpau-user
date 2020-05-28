@@ -8,6 +8,26 @@
             <!--NOTICIAS Y AGENDA-->
             <section>
 
+              <!--button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                    <div id="myModal" class="modal" role="dialog">
+                            <div class="modal-dialog">
+                              <div class="modal-content" style="width:600px;display:table-cell">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Comienza el ciclo de charlas del ADI</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                  <p><iframe width="560" height="315" src="https://www.youtube.com/embed/56wAufpn_h0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                </div>
+                              </div>
+                          
+                            </div>
+                          </div-->
+    
+
                 <div class="row">
                     <!--NOTICIAS-->
                     <div *ngIf="contentSite; else loadingBlockNews" class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">

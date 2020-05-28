@@ -64,7 +64,7 @@ export class AuthenticationService {
   }
 
   validUserName(userName: string) {
-    let params = new HttpParams().set("username", userName);
+    let params = new HttpParams().set("username", userName).set("nocache", "true");
     return this.http.get<any>(`${environment.apiUrl}/api/user/validusername`, {
       params: params,
     });

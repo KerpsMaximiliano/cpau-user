@@ -34,9 +34,9 @@ export class CacheInterceptor implements HttpInterceptor {
       .pipe(
         tap(event => {
           if (event instanceof HttpResponse) {
-            console.log(`Adding item to cache: ${req.url}`);
             // TODO cambiar la forma de evitar la cache
             if (!req.params.get('nocache')) {
+              //console.log(`Adding item to cache: ${req.url}`);
               this.cacheService.put(req.url, event);
             }
           }

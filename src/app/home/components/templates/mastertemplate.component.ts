@@ -56,6 +56,12 @@ export class MastertemplateComponent implements OnInit {
   private loadComponent() {
 
     this.siteLoader.getSectionBySeName(this.sectionName).subscribe( section =>{
+      
+      if (section == null) {
+        this.sectionName = "rutainvalida";
+        this.loadComponent();
+      }
+      
       //Resolve AbstractFactory
       const injectable = templateServiceMap.get(section.templateId);
       // Inject service
