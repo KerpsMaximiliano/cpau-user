@@ -13,7 +13,7 @@
                     <input formControlName="email" type="email" id="UserName" class="form-control" placeholder="Usuario" required autofocus>
                     <label for="UserName"><i class="fa fa-envelope"></i> E-mail:</label>
                 </div>
-                <button type="submit" [disabled]="loading" class="btn btn-login">
+                <button type="submit" [disabled]="loading || buttonDisabled" class="btn btn-login">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     {{ButtonText}}</button>
             </div>
@@ -27,7 +27,8 @@
                         <h5 class="modal-title" id="DatosIncorrectosLabel">RECUPERAR</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                     </div>
-                    <div class="modal-body"> El correo electrónico brindado no corresponde.</div>
+                    <div *ngIf="errorCode == 'SRP'" class="modal-body"> Ha excedido la cantidad de reintentos de solicitud de restablecimiento de contraseña. Por favor, póngase en contacto con web@cpau.org.</div>
+                    <div *ngIf="errorCode == 'MNE'" class="modal-body"> El correo electrónico brindado no corresponde.</div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver a intentar</button>
                     </div>

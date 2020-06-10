@@ -12,6 +12,8 @@ export class RecoverComponent implements OnInit {
   formsignin: FormGroup;
   ButtonText = "RECUPERAR";
   loading = false;
+  errorCode = undefined;
+  buttonDisabled = false;
 
   constructor( private formBuilder: FormBuilder, private authenticationService: AuthenticationService) { }
 
@@ -37,6 +39,7 @@ export class RecoverComponent implements OnInit {
             data => {
                if(data) {
                    if(!data.success) {
+                    this.errorCode = data.errorCode;
                     document.getElementById('btnDatosIncorrectos').click();
 
                     if(data.message)
@@ -44,6 +47,7 @@ export class RecoverComponent implements OnInit {
 
                    } else {
                     this.ButtonText = "EMAIL ENVIADO";
+                    this.buttonDisabled = true;
                    }
                }
 
