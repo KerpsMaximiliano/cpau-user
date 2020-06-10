@@ -76,6 +76,16 @@
                                     </label>
                                     <textarea  content-type="template" placement="right" formControlName="comentario" class="form-control rounded-0" id="comentario" rows="3"></textarea>
                                 </div>
+                                <!-- 
+                                    the SITE_KEY is the sitekey from your admin console.
+                                    use form control for validation
+                                -->
+                                <div class="mb-3">
+                                    <re-captcha (resolved)="resolved($event)" 
+                                        formControlName="captcha" 
+                                        siteKey="6LeK_qIZAAAAAHHxNXAPji20tBXobWD-B5WDihF7">  
+                                    </re-captcha>
+                                </div>
                                 <button class="btn btn-secondary btn-lg rounded-0" (click)="submit()" [disabled]="submitting">{{submitting ? 'Enviando...' : 'Enviar'}}</button>
                             </form>
 

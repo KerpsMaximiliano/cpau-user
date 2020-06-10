@@ -36,6 +36,7 @@ import { CacheInterceptor } from '../app/_helpers/cache.interceptor';
 import { BoletinesComponent } from './boletines/boletines.component';
 import { NotePreviewComponent } from './home/components/notePreview/notePreview.component';
 import { Safe } from './_directive/pipeSafeHTML.directive';import { FormComponent } from './form/form.component';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 @NgModule({
     imports: [
         BrowserModule,
@@ -44,6 +45,8 @@ import { Safe } from './_directive/pipeSafeHTML.directive';import { FormComponen
         appRoutingModule,
         AutocompleteLibModule,
         TooltipModule ,
+        RecaptchaModule,  //this is the recaptcha main module
+        RecaptchaFormsModule //this is the module for form incase form validation
     ],
     declarations: [
         AppComponent,

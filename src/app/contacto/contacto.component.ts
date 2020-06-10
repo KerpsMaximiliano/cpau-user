@@ -25,6 +25,7 @@ export class ContactoComponent implements OnInit {
         correo: new FormControl('', [Validators.required]),
         tipoConsulta: 'consulta',
         comentario: new FormControl('', [Validators.required]),
+        captcha: new FormControl('', [Validators.required])
       });
     }
 
@@ -80,6 +81,10 @@ export class ContactoComponent implements OnInit {
         }
       }
 
+      if (this.form.value.captcha == null || this.form.value.captcha.trim() == '') {
+        errores.push('Debe validar el captcha antes de continuar.');
+      }
+
       if (errores.length > 0) {
         alert(errores.join("\n"));
         return;
@@ -98,5 +103,9 @@ export class ContactoComponent implements OnInit {
           error => {
             this.submitting = false;
           });
+      }
+
+      resolved(captchaResponse: string, res) {
+        console.log(`Resolved response token: ${captchaResponse}`);
       }
 }
