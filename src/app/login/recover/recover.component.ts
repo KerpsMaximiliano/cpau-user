@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthenticationService } from '@app/_services';
 import { first } from 'rxjs/operators';
 
@@ -19,7 +19,8 @@ export class RecoverComponent implements OnInit {
 
   ngOnInit() {
     this.formsignin = this.formBuilder.group({
-      email: ['', Validators.required]
+      email: ['', Validators.required],
+      captcha: new FormControl('', [Validators.required])
   });
   }
 
@@ -27,13 +28,18 @@ export class RecoverComponent implements OnInit {
  get f() { return this.formsignin.controls; }
 
   onSubmit() {
+
+    if (this.formsignin.value.captcha == null || this.formsignin.value.captcha.trim() == '') {
+        alert('Debe validar el captcha antes de continuar.');
+      }
+
     // stop here if form is invalid
     if (this.formsignin.invalid) {
         return;
     }
 
     this.loading = true;
-    this.authenticationService.recover(this.f.email.value)
+    this.authenticationService.recover(this.f.email.value, this.f.captcha.value)
         .pipe(first())
         .subscribe(
             data => {
@@ -57,4 +63,9 @@ export class RecoverComponent implements OnInit {
                 this.loading = false;
             });
 }
+
+resolved(captchaResponse: string, res) {
+  console.log(`Resolved response token: ${captchaResponse}`);
+}
+
 }

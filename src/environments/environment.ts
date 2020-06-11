@@ -3,14 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    //production: false,
-    //apiUrl: 'http://localhost:5000',
-    //oldSiteUrl: 'http://localhost:50501/Content/institucional'
+    // production: false,
+    // apiUrl: 'http://localhost:5000',
+    // oldSiteUrl: '',
     
     production: true,
     apiUrl: 'https://cpauorgapi.azurewebsites.net',
     oldSiteUrl: ''
-    //oldSiteUrl: 'https://site2020-oldsite.azurewebsites.net'
 };
 
 /*

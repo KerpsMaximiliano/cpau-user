@@ -27,7 +27,7 @@ export class HeaderHomeComponent implements OnInit {
       return;
     }
 
-    this.authenticationService.logout();
+    window.location.href = '/Perfil';
     this.updateControllers();
   }
 
@@ -35,7 +35,7 @@ export class HeaderHomeComponent implements OnInit {
     this.authenticationService.isAuthenticated().subscribe((data) => {
       this.isAuthenticated = localStorage.getItem("currentUser") && data.ret;
 
-      this.lblAuthentication = this.isAuthenticated ? "LOGOUT" : "LOGIN";
+      this.lblAuthentication = this.isAuthenticated ? "PERFIL" : "LOGIN";
 
       if (!this.isAuthenticated) {
         this.authenticationService.logout();

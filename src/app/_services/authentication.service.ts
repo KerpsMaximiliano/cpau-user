@@ -49,9 +49,10 @@ export class AuthenticationService {
     });
   }
 
-  recover(userNameOrEmail: string) {
+  recover(userNameOrEmail: string, captcha: string) {
     return this.http.post<any>(`${environment.apiUrl}/api/user/recover`, {
       UserOEmail: userNameOrEmail,
+      Captcha: captcha
     });
   }
 

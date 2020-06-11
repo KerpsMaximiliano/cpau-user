@@ -52,6 +52,12 @@
                                     </label>
                                     <textarea formControlName="mensaje" id="mensaje" [tooltip]="HtmlContent" content-type="template" placement="right" class="form-control rounded-0" rows="3" required></textarea>
                                 </div>
+                                <div class="mb-3 pb-2">
+                                    <re-captcha (resolved)="resolved($event)" 
+                                        formControlName="captcha" 
+                                        siteKey="6LeK_qIZAAAAAHHxNXAPji20tBXobWD-B5WDihF7">  
+                                    </re-captcha>
+                                </div>
                                 <button (click)="submit()" class="btn btn-secondary btn-lg rounded-0" type="submit" [disabled]="submitting">{{submitting ? 'Enviando...' : 'Enviar'}}</button>
                             </form>
                             <ng-template #HtmlContent>

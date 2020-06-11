@@ -25,7 +25,8 @@ export class ContactoProfesionalComponent implements OnInit {
       correo: new FormControl('', [Validators.required]),
       telefono: new FormControl('', [Validators.required]),
       mensaje: new FormControl('', [Validators.required]),
-      guidProfesional: this._Activatedroute.snapshot.paramMap.get("guid")
+      guidProfesional: this._Activatedroute.snapshot.paramMap.get("guid"),
+      captcha: new FormControl('', [Validators.required])
     });
   }
 
@@ -48,6 +49,12 @@ console.log(`#${key}`)
   }
 
   submit(){
+
+    if (this.form.value.captcha == null || this.form.value.captcha.trim() == '') {
+      alert('Debe validar el captcha antes de continuar.');
+    }
+
+
     if (this.form.invalid) {
       this.getFormValidationErrors();
       return;
@@ -73,4 +80,8 @@ console.log(`#${key}`)
         });
     }
 
+
+    resolved(captchaResponse: string, res) {
+      console.log(`Resolved response token: ${captchaResponse}`);
+    }
 }

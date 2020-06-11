@@ -13,6 +13,12 @@
                     <input formControlName="email" type="email" id="UserName" class="form-control" placeholder="Usuario" required autofocus>
                     <label for="UserName"><i class="fa fa-envelope"></i> E-mail:</label>
                 </div>
+                <div style="margin-top: -10px; margin-bottom: 10px;">
+                    <re-captcha (resolved)="resolved($event)" 
+                        formControlName="captcha" 
+                        siteKey="6LeK_qIZAAAAAHHxNXAPji20tBXobWD-B5WDihF7">  
+                    </re-captcha>
+                </div>
                 <button type="submit" [disabled]="loading || buttonDisabled" class="btn btn-login">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     {{ButtonText}}</button>
