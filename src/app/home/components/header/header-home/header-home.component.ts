@@ -27,7 +27,9 @@ export class HeaderHomeComponent implements OnInit {
       return;
     }
 
-    window.location.href = '/Perfil';
+    window.location.href = `/Perfil?tkn=${
+      JSON.parse(localStorage.getItem("currentUser")).token
+    }`;
     this.updateControllers();
   }
 
