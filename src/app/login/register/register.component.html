@@ -72,6 +72,7 @@
                                         <div class="form-label-group">
                                             <input id="txtUser" formControlName="txtUser" (change)="valUserName($event)" type="text" class="form-control rounded-0" placeholder="Usuario" required autofocus>
                                             <div style="color: red;" *ngIf="bUserNameValidaion">Nombre de usuario no disponible </div>
+                                            <div style="color: red;" *ngIf="bUserNameMalFormato">El Nombre de usuario debe tener 6 a 30 caracteres, letras números y '.' solamente</div>
                                             <label> (6 a 30 caracteres, letras, números y '.' solamente)</label>
                                         </div>
                                         <div class="form-label-group">

@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   disableRegisterButton = true;
   bMatriculaValidation = false;
   bUserNameValidaion = false;
+  bUserNameMalFormato = false
   errorPass = true;
 
   constructor(
@@ -238,8 +239,16 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  
+
   valUserName(event) {
-    if (event.target.value !== "") {
+    var regexusername = new RegExp("^[a-zA-Z0-9\.]{6,30}$");
+    
+    if (!regexusername.test(event.target.value)){
+      this.bUserNameMalFormato = true;
+      this.f.txtUser.setValue("");
+    } else {
+      this.bUserNameMalFormato = false;
       this.authenticationService
         .validUserName(event.target.value)
         .subscribe((data) => {
