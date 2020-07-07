@@ -35,8 +35,8 @@ export class RegisterMatriculadoComponent implements OnInit {
       cuit: new FormControl('',  [Validators.required, Validators.minLength(11), CuitValidator.cuit]),
       usuario: new FormControl('',  [Validators.required, Validators.minLength(6),Validators.maxLength(30), Validators.pattern('[a-z0-9.]*')]),
       mail: new FormControl('',  [Validators.required, Validators.email,Validators.maxLength(100)]),
-      password1: new FormControl('',  [Validators.required, Validators.minLength(8),Validators.maxLength(50),Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,50}$')]),
-      password2: new FormControl('',  [Validators.required]),
+      password1: new FormControl('', [Validators.required, Validators.minLength(8),Validators.maxLength(50),Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,50}$')]),
+      password2: new FormControl('', [Validators.required]),
       terminos: new FormControl('', [Validators.required]),
       captcha: new FormControl('', [Validators.required]),
     }, {validator: [PasswordMustMatchValidator.mustmatch('password1', 'password2'), ValueMustMatchValidator.mustmatch(this.emailPreregistro,'mail') ]});

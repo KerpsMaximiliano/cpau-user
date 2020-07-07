@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthenticationService } from '@app/_services';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import {
@@ -17,7 +18,7 @@ export class PreregisterComponent implements OnInit {
   loading = false;
   modalErrorMessage: string;
   success = false;
-  constructor(private formBuilder: FormBuilder, private el: ElementRef, private authenticationService: AuthenticationService) {}
+  constructor(private formBuilder: FormBuilder, private el: ElementRef, private authenticationService: AuthenticationService, private router: Router) {}
 
   ngOnInit() {
     this.formregister = this.formBuilder.group({
@@ -39,8 +40,7 @@ export class PreregisterComponent implements OnInit {
     } else {
       this.authenticationService.preregister(this.formregister.get('txtEmail').value).subscribe(result => {
         if(result.success) {
-          this.success = true;
-          console.log(result);
+          this.router.navigate(["./preregistracionexitosa"]);
         } else {
           this.modalErrorMessage = result.message;
           $("#datosIncorrectos").modal('show');
