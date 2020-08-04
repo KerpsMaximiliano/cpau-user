@@ -27,7 +27,7 @@ export class ConfirmComponent implements OnInit {
     });
 
     this.formsignin = this.formBuilder.group({
-      pass1: ['', Validators.required],
+      pass1: ['', [Validators.required,Validators.minLength(8),Validators.maxLength(50),Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,50}$')]],
       pass2: ['', Validators.required]
   });
   }
@@ -38,6 +38,7 @@ export class ConfirmComponent implements OnInit {
   onSubmit() {
     // stop here if form is invalid
     if (this.formsignin.invalid) {
+        this.formsignin.markAllAsTouched();
         return;
     }
 

@@ -1,0 +1,285 @@
+<form  [formGroup]="formNoMatriculado" (ngSubmit)="onSubmit()">
+  <h6>Datos personales</h6>
+  <div class="mb-3">
+    <input type="text" formControlName="nombre" id="nombre" class="form-control rounded-0" placeholder="Nombre:" required autofocus>
+    <div class="error-message"
+    *ngIf="
+    formNoMatriculado.controls.nombre?.errors &&
+      (formNoMatriculado.controls.nombre?.dirty ||
+      formNoMatriculado.controls.nombre?.touched)
+    "
+  >
+    <div *ngIf="formNoMatriculado.controls.nombre?.errors.required">El campo nombre es requerido.</div>
+    <div *ngIf="formNoMatriculado.controls.nombre?.errors.minlength">El campo nombre requiere al menos 2 caracteres.</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <input type="text" formControlName="apellido" id="apellido" class="form-control rounded-0" placeholder="Apellido:" required autofocus>
+      <div class="error-message"
+      *ngIf="
+      formNoMatriculado.controls.apellido?.errors &&
+        (formNoMatriculado.controls.apellido?.dirty ||
+        formNoMatriculado.controls.apellido?.touched)
+      "
+    >
+      <div *ngIf="formNoMatriculado.controls.apellido?.errors.required">El campo apellido es requerido.</div>
+      <div *ngIf="formNoMatriculado.controls.apellido?.errors.minlength">El campo apellido requiere al menos 2 caracteres.</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <input type="text" formControlName="cuit" id="cuit" class="form-control rounded-0" placeholder="CUIT/CUIL:" inputmode="numeric" pattern="[0-9]*" maxlength="11" required autofocus>
+    <div class="error-message"
+    *ngIf="
+    formNoMatriculado.controls.cuit?.errors &&
+      (formNoMatriculado.controls.cuit?.dirty ||
+      formNoMatriculado.controls.cuit?.touched)
+    "
+  >
+    <div *ngIf="formNoMatriculado.controls.cuit?.errors.required">El ingreso de CUIT/CUIL es obligatorio.</div>
+    <div *ngIf="formNoMatriculado.controls.cuit?.errors.minlength">Se requieren ingresar los 11 digitos del número de CUIT/CUIL.</div>
+    <div *ngIf="formNoMatriculado.controls.cuit.value.length === 11 && formNoMatriculado.controls.cuit?.errors.cuit">Se requiere un CUIT/CUIL valido, por favor revisar</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <select formControlName="tipoDocumento" id="tipoDocumento" class="custom-select d-block w-100 rounded-0">
+        <option value="">Tipo de documento:</option>
+        <option *ngFor="let dt of tiposDocumento" value="{{dt.value}}">{{dt.text}}</option>
+    </select>
+    <div class="error-message"
+    *ngIf="
+    formNoMatriculado.controls.tipoDocumento?.errors &&
+      (formNoMatriculado.controls.tipoDocumento?.dirty ||
+      formNoMatriculado.controls.tipoDocumento?.touched)
+    "
+  >
+    <div *ngIf="formNoMatriculado.controls.tipoDocumento?.errors.required">Debe seleccionar tipo de documento.</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <input type="text" formControlName="numeroDocumento" id="numeroDocumento" class="form-control rounded-0" placeholder="Número de documento:" required autofocus>
+    <div class="error-message"
+    *ngIf="
+    formNoMatriculado.controls.numeroDocumento?.errors &&
+      (formNoMatriculado.controls.numeroDocumento?.dirty ||
+      formNoMatriculado.controls.numeroDocumento?.touched)
+    "
+  >
+    <div *ngIf="formNoMatriculado.controls.numeroDocumento?.errors.required">El número de documento es obligatorio.</div>
+    <div *ngIf="formNoMatriculado.controls.numeroDocumento?.errors.minlength || formNoMatriculado.controls.numeroDocumento?.errors.maxlength">Se requieren ingresar los 7 u 8 digitos del número de documento.</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <input type="text" formControlName="usuario" id="usuario" class="form-control rounded-0" placeholder="Usuario:" required autofocus>
+    <div class="error-message"
+    *ngIf="
+    formNoMatriculado.controls.usuario?.errors &&
+      (formNoMatriculado.controls.usuario?.dirty ||
+      formNoMatriculado.controls.usuario?.touched)
+    "
+  >
+    <div *ngIf="formNoMatriculado.controls.usuario?.errors.required">El ingreso de usuario es obligatorio.</div>
+    <div *ngIf="formNoMatriculado.controls.usuario?.errors.minlength">Se requiere que el usuario tenga al menos 6 caracteres.</div>
+    <div *ngIf="formNoMatriculado.controls.usuario?.errors.pattern">Se requiere que el usuario tenga solo caracteres numericos, letras minusculas o punto.</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <input type="text" formControlName="mail" id="mail" class="form-control rounded-0" placeholder="Reingrese mail:" required autofocus>
+    <div class="error-message"
+    *ngIf="
+    formNoMatriculado.controls.mail?.errors &&
+      (formNoMatriculado.controls.mail?.dirty ||
+      formNoMatriculado.controls.mail?.touched)
+    "
+  >
+    <div *ngIf="formNoMatriculado.controls.mail?.errors.required">Debe ingresar un email para registrarse.</div>
+    <div *ngIf="formNoMatriculado.controls.mail?.errors.email">El formato del email es invalido.</div>
+    <div *ngIf="formNoMatriculado.controls.mail?.errors.maxlength">La longitud del email no puede superar los 100 caracteres.</div>
+    <div *ngIf="formNoMatriculado.controls.mail?.errors.mustmatch">El correo electronico ingresado no coincide con el declarado en la preregistración.</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <input type="password" formControlName="password1" id="password1" maxlength="50" class="form-control rounded-0" placeholder="Contraseña:" required autofocus>
+    <div class="error-message"
+    *ngIf="
+    formNoMatriculado.controls.password1?.errors &&
+      (formNoMatriculado.controls.password1?.dirty ||
+      formNoMatriculado.controls.password1?.touched)
+    "
+  >
+    <div *ngIf="formNoMatriculado.controls.password1?.errors.required">El ingreso de contraseña es obligatorio.</div>
+    <div *ngIf="formNoMatriculado.controls.password1?.errors.minlength">Se requiere que la contraseña tenga al menos 8 caracteres.</div>
+    <div *ngIf="formNoMatriculado.controls.password1?.value.length >= 8 && formNoMatriculado.controls.password1?.errors.pattern"> Debe contener al menos una minúscula, una mayúscula y un número. Caracteres especiales opcionales: +#$%&*-_[]</div>
+    </div>
+  </div>
+  <div class="form-label-group pb-4 mb-4 border-bottom">
+    <input type="password" formControlName="password2" id="password2" maxlength="50" class="form-control rounded-0" placeholder="Repetición contraseña" required autofocus>
+    <div class="error-message"
+    *ngIf="
+    formNoMatriculado.controls.password2?.errors &&
+      (formNoMatriculado.controls.password2?.dirty ||
+      formNoMatriculado.controls.password2?.touched)
+    "
+  >
+    <div *ngIf="formNoMatriculado.controls.password2?.errors.required">La repetición de la contraseña es obligatoria.</div>
+    <div *ngIf="formNoMatriculado.controls.password2?.errors.mustmatch">Las contraseñas no son iguales.</div>
+  </div>
+  </div>
+  <div class="mb-3">
+    <label>
+<input type="checkbox" id="terminos" formControlName="terminos" required>
+Acepto los <a data-toggle="modal" data-target="#terminosCondiciones" href="">términos y condiciones</a>.</label>
+<div class="error-message"
+  *ngIf="
+  formNoMatriculado.controls.terminos?.errors &&
+    (formNoMatriculado.controls.terminos?.dirty ||
+    formNoMatriculado.controls.terminos?.touched)
+  "
+  >
+  <div *ngIf="formNoMatriculado.controls.terminos?.errors.required">El obligatorio aceptar los términos y condiciones.</div>
+</div>
+
+</div>
+<div class="captcha">
+  <re-captcha (resolved)="resolved($event)"
+      formControlName="captcha"
+      siteKey="6LeK_qIZAAAAAHHxNXAPji20tBXobWD-B5WDihF7">
+  </re-captcha>
+  <div class="error-message"
+  *ngIf="
+  formNoMatriculado.controls.captcha?.errors &&
+    (formNoMatriculado.controls.captcha?.dirty ||
+    formNoMatriculado.controls.captcha?.touched)
+  "
+>
+<div >Debe validar el captcha para continuar el proceso de registro.</div>
+</div>
+</div>
+<br/>
+
+
+<button type="submit" class="btn btn-login" data-toggle="modal">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+    {{loading ? 'CARGANDO...' : 'REGISTRESE'}}</button>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="terminosCondiciones" tabindex="-1" role="dialog" aria-labelledby="terminosTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="terminosTitle">Términos y condiciones</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+          </div>
+          <div class="modal-body">
+              <p><strong>1. Aceptaci&oacute;n de los t&eacute;rminos</strong><br /> El CPAU le proporciona sus servicios de: (i) GPI (Gesti&oacute;n de Proyectos Integral), (ii) CPAU MAIL, (iii) CPAU PAGE y (IV) REGISTRO
+                  DE ENCOMIENDA EN LINEA, de acuerdo con las siguientes Condiciones de Servicio (&quot;CDS&quot;), los cuales podr&aacute;n ser actualizados por el CPAU sin previa notificaci&oacute;n. Usted puede
+                  conocer la versi&oacute;n m&aacute;s reciente de las CDS en cualquier momento en: <a href="http://www.cpau.org">http://www.cpau.org</a><br />
+                  <br />
+                  <strong>2. Descripci&oacute;n de los servicios</strong><br /> GPI: CPAU proporciona a los usuarios acceso a los servicios denominados GPI, CPAU MAIL, CPAU PAGE Y REGISTRO DE ENCOMIENDA EN LINEA.
+                  Usted tambi&eacute;n entiende y acepta que los servicios pueden incluir ciertas comunicaciones del CPAU, como avisos, mensajes administrativos y cualquier tipo de comunicaci&oacute;n que el CPAU
+                  decida realizar. Usted entiende y acepta que los servicios se ofrecen en las condiciones que el CPAU los proporciona, con sus virtudes y defectos, y que CPAU no asume ninguna responsabilidad por
+                  el retraso, oportunidad en tiempo, eliminaci&oacute;n, entrega equivocada o falla en los mismos, cualesquiera fuera la causa, inclusive culpa por parte del CPAU.<br /> Usted se compromete a acceder
+                  y leer atentamente la descripci&oacute;n de los servicios y/o manuales de uso en los siguientes links:<br /> GPI: <a href="http://gpi.cpau.org" target="_blank">http://gpi.cpau.org</a><br /> CPAU
+                  MAIL: <a href="http://webmail.cpaumail.com" target="_blank">http://webmail.cpaumail.com</a><br /> CPAU PAGE: <a href="http://www.cpau.org/Section.aspx?Id=75">http://(nombre de usuario).cpaupage.com</a><br
+                  /> REGISTRO DE ENCOMIENDA EN LINEA: <a href="http://retp.cpau.org">http://retp.cpau.org</a><br />
+                  <br />
+                  <strong>3. Obligaciones del usuario</strong><br /> Al utilizar los servicios, usted se compromete a: (a) proveer informaci&oacute;n verdadera, correcta, actualizada, y completa de su persona del
+                  modo requerido en el formulario de inscripci&oacute;n de los servicios (siendo dicha informaci&oacute;n los &quot;Datos de Inscripci&oacute;n&quot;) y (b) mantener y r&aacute;pidamente actualizar
+                  los Datos de Inscripci&oacute;n a fin de que se mantengan verdaderos, correctos, actualizados y completos.<br />
+                  <br />
+                  <strong>4. Normativa de confidencialidad de CPAU</strong><br /> Sus Datos de Inscripci&oacute;n y cierta otra informaci&oacute;n se encuentran sujetos a nuestra normativa de confidencialidad, la
+                  cual se encuentra disponible en www.cpau.org y que forma parte de los presentes CDS.<br />
+                  <br />
+                  <strong>5. Cuenta de usuario, contrase&ntilde;a y seguridad</strong><br /> Se le asignar&aacute; una contrase&ntilde;a y una cuenta una vez completado el proceso de inscripci&oacute;n de los servicios.
+                  Usted se responsabiliza de mantener la confidencialidad de su contrase&ntilde;a y cuenta, y de todas las actividades que se efect&uacute;en bajo su contrase&ntilde;a o cuenta. Usted se<br /> compromete
+                  a: (a) notificar inmediatamente al CPAU de cualquier uso no autorizado de su contrase&ntilde;a o cuenta o de cualquier otra falla de seguridad, y (b) asegurarse de que su cuenta sea cerrada al final
+                  de cada sesi&oacute;n. El CPAU no ser&aacute; responsable por ninguna p&eacute;rdida o da&ntilde;o que resulte como consecuencia de su incumplimiento de las disposiciones de esta Secci&oacute;n 5.<br
+                  />
+                  <br />
+                  <strong>6. Contenido</strong><br /> Usted acepta que toda la informaci&oacute;n que circule a trav&eacute;s de su cuenta de correo, datos, planos, proyectos u otros materiales, informaci&oacute;n
+                  que incluya su pagina web, etc. (&quot;Contenido&quot;), son responsabilidad &uacute;nicamente de la persona que origin&oacute; dicho Contenido. Esto significa que usted, y no el CPAU, es responsable
+                  exclusivo por todo el Contenido que usted cargue (&quot;upload&quot;), o de cualquier otra forma transmita o exhiba a trav&eacute;s de los servicios.<br /> Bajo ninguna circunstancia y en ninguna
+                  forma ser&aacute; el CPAU responsable de ning&uacute;n Contenido, que incluya y no se limite, a errores u omisiones en alg&uacute;n Contenido, o por alguna p&eacute;rdida o da&ntilde;o de cualquier
+                  tipo que resulte del uso de alg&uacute;n Contenido anunciado, enviado por correo electr&oacute;nico, exhibido en su p&aacute;gina web o de alguna otra forma transmitido por medio de los servicios.<br
+                  />
+                  <br />
+                  <strong>7. Conducta del usuario</strong><br /> Usted se compromete a no usar los servicios para:<br /> a. cargar (&quot;upload&quot;) o de cualquier otra forma transmitir alg&uacute;n Contenido que
+                  no tiene derecho a transmitir por ley o por relaci&oacute;n contractual o fiduciaria (tal como informaci&oacute;n interna, de propiedad y confidencial adquirida o entregada como parte de las relaciones
+                  de empleo o bajo contratos de confidencialidad);<br /> b. cargar (&quot;upload&quot;) o de cualquier otra forma transmitir alg&uacute;n Contenido que viole alguna patente, marca, secreto comercial,
+                  derecho de autor o cualquier derecho de propiedad (&quot;Derechos&quot;) de alguna parte;<br /> c. cargar (&quot;upload&quot;) o de cualquier otra forma transmitir alg&uacute;n material que contenga
+                  virus de software, o cualquier otro c&oacute;digo de computadora, archivos o programas dise&ntilde;ados para interrumpir, destruir o limitar el funcionamiento de alg&uacute;n software o disco duro
+                  de computadora o equipo de telecomunicaciones;<br /> d. interferir o interrumpir los servicios, servidores, o redes conectadas a los servicios, o desobedecer cualquier requisito, procedimiento, pol&iacute;tica
+                  o regulaci&oacute;n de redes conectadas a los servicios;<br /> e. Generar o facilitar correos electr&oacute;nicos comerciales no solicitados (&ldquo;spam&rdquo;);<br /> f. enviar, subir, distribuir,
+                  divulgar contenido ilegal, difamatorio, abusivo, obsceno o que pueda ser considerado objetable por distintos motivos;<br /> g. utilizar alguno de los servicios en relaci&oacute;n con el uso compartido
+                  de archivos ilegal de igual a igual;<br /> Usted acepta que el CPAU no efect&uacute;a verificaciones en el Contenido, pero que el CPAU y las personas designadas por el CPAU tienen a su discreci&oacute;n
+                  el derecho, pero no la obligaci&oacute;n, de rechazar o remover cualquier Contenido que est&eacute; disponible por medio de los servicios. Sin limitaci&oacute;n de lo anterior, el CPAU y las personas
+                  designadas por el CPAU tendr&aacute;n el derecho de remover cualquier Contenido que viole las CDS o sea de cualquier otra forma objetable.<br /> Usted acepta que el CPAU puede conservar y revelar
+                  el Contenido si as&iacute; le es requerido por ley o si en buena fe cree que dicha reserva o revelaci&oacute;n es absolutamente necesaria para: (a) cumplir con procesos legales; (b) hace valer las
+                  CDS; (c) responder a quejas de que alg&uacute;n Contenido viola los derechos de terceras personas; o (d) proteger los derechos, propiedad, o seguridad personal del CPAU, sus usuarios y el p&uacute;blico.<br
+                  />
+                  <br />
+                  <strong>8. Prohibici&oacute;n de revender los servicios y de ceder su uso</strong><br /> Usted se compromete a no reproducir, duplicar, copiar, vender, revender o explotar por cualquier prop&oacute;sito
+                  comercial, ninguna parte de los servicios, ceder el uso de los servicios, o permitir de cualquier forma el acceso a los servicios a terceros no autorizados a tales fines.<br />
+                  <br />
+                  <strong>9. Pr&aacute;cticas generales acerca del uso y retenci&oacute;n</strong><br /> Usted acepta que el CPAU puede establecer pr&aacute;cticas generales y limitaciones con respecto al uso de los
+                  servicios, incluyendo, sin ning&uacute;n l&iacute;mite, el espacio asignado para correos electr&oacute;nicos y la carga de Contenidos a cada usuario, el n&uacute;mero m&aacute;ximo de veces (y la
+                  m&aacute;xima duraci&oacute;n de tales) a las que usted podr&aacute; tener acceso a los servicios en un per&iacute;odo dado de tiempo, modificaciones en la interfaz del usuario, etc..Usted acepta
+                  que el CPAU no tiene responsabilidad u obligaci&oacute;n legal por la protecci&oacute;n y guarda de cualquier Contenido mantenido o transmitido por los servicios. Usted acepta que el CPAU se reserva
+                  el derecho de retirar cuentas que est&eacute;n inactivas por un per&iacute;odo prolongado de tiempo.<br />
+                  <br />
+                  <strong>10. Modificaciones a los servicios</strong><br /> El CPAU se reserva el derecho de modificar, o interrumpir los servicios o cualquier parte de los mismos, temporal o permanentemente, parcial
+                  o totalmente, en cualquier momento y peri&oacute;dicamente, con o sin previa notificaci&oacute;n. Usted acuerda que CPAU no ser&aacute; responsable hacia usted o terceras partes por ninguna modificaci&oacute;n,
+                  suspensi&oacute;n, o interrupci&oacute;n de los servicios. USTED ACEPTA QUE SI EL CPAU SUSPENDE TOTAL O PARCIALMENTE LOS SERVICIOS USTED NO TENDR&Aacute; DERECHO A INDEMNIZACI&Oacute;N ALGUNA, POR
+                  LO QUE ASUME EXPRESAMENTE LA OBLIGACI&Oacute;N DE GUARDAR TODA AQUELLA INFORMACI&Oacute;N DE SU PROPIEDAD O DE TERCEROS QUE PUDIERA TENER ALG&Uacute;N TIPO DE VALOR (&ldquo;backups&rdquo;).<br />
+                  <br />
+                  <strong>11. Terminaci&oacute;n</strong><br /> Usted acuerda a que el CPAU, a su plena discreci&oacute;n, puede cancelar su contrase&ntilde;a, cuenta (o alguna parte de la misma) o su uso de los servicios,
+                  total o parcialmente, y retirar y liminar cualquier Contenido dentro de los servicios por cualquier raz&oacute;n, incluyendo, sin limitaci&oacute;n, la falta de uso o si CPAU considera que usted
+                  ha violado o actuado inconsistentemente con el texto o el esp&iacute;ritu de las CDS. CPAU tambi&eacute;n podr&aacute; a su plena discreci&oacute;n y en cualquier momento, interrumpir los servicios,
+                  o alguna parte de los mismos, con o sin previa notificaci&oacute;n. Usted acuerda que cualquier terminaci&oacute;n de su acceso a los servicios bajo alguna provisi&oacute;n de estos CDS puede ser
+                  efectuada sin notificaci&oacute;n previa, y acepta y acuerda que CPAU podr&aacute; desactivar o borrar inmediatamente su cuenta y toda la informaci&oacute;n y archivos relacionados con la misma y/o
+                  prohibir cualquier nuevo acceso a dichos archivos o a los servicios. Adem&aacute;s, usted acuerda que CPAU no ser&aacute; responsable hacia usted o tercera parte por cualquier terminaci&oacute;n
+                  de su acceso a los servicios.<br />
+                  <br />
+                  <strong>12. Derechos de propiedad de CPAU</strong><br /> Usted acepta y acuerda que los servicios y cualquier software necesario usado en conexi&oacute;n con los servicios (&quot;Software&quot;)
+                  contiene bienes e informaci&oacute;n confidencial que se encuentra protegida por las leyes vigentes de propiedad intelectual y de otra naturaleza. El CPAU le otorga un derecho de uso, no transferible,
+                  y no exclusivo para usar el Software; siempre y cuando usted, u otra persona con su ayuda, no copie, modifique, haga una obra derivativa, haga ingenier&iacute;a reversiva o de cualquier otra forma
+                  transfiera alg&uacute;n derecho en el Software. Usted se compromete a no modificar de ninguna manera el Software o a usar versiones modificadas del Software, que incluya sin limitarse al prop&oacute;sito
+                  de obtener acceso no autorizado a los servicios. Usted se compromete a no acceder a los servicios por ning&uacute;n otro medio que no sea la zona interfacial provista por el CPAU para uso de entrada
+                  a cualquiera de los servicios.<br />
+                  <br />
+                  <strong>13. L&iacute;mite de responsabilidad</strong><br /> USTED COMPRENDE Y ACUERDA EXPRESAMENTE QUE EL CPAU NO SER&Aacute; RESPONSABLE POR NING&Uacute;N DA&Ntilde;O DIRECTO, INDIRECTO O DE CUALQUIER
+                  OTRO TIPO QUE INCLUYA SIN LIMITACIONES, DA&Ntilde;OS POR P&Eacute;RDIDA DE GANANCIA, BUENA FE, USO, DATOS U OTRAS P&Eacute;RDIDAS INTANGIBLES (AUN CUANDO CPAU HAYA SIDO ADVERTIDO DE LA POSIBILIDAD
+                  DE DICHOS DA&Ntilde;OS),COMO RESULTADO DE: (I) EL USO O IMPOSIBILIDAD DE USAR LOS SERVICIOS; (ii) EL COSTO DE OBTENCI&Oacute;N DE BIENES SUSTITUIBLES Y SERVICIOS RESULTANTES DE CUALQUIER BIEN, DATO,
+                  INFORMACI&Oacute;N O SERVICIOADQUIRIDO U OBTENIDO O (iii) CUALQUIER OTRO ASUNTO RELACIONADO A LOS SERVICIOS.<br />
+                  <br />
+                  <strong>14. Informaci&oacute;n general</strong><br /> Las CDS, los Datos de Inscripci&oacute;n y la Normas de Confidencialidad, constituyen el convenio completo entre usted y el CPAU respecto del
+                  uso de los servicios. La relaci&oacute;n entre usted y el CPAU derivada de la utilizaci&oacute;n de los servicios ser&aacute; regida por las leyes de la Rep&uacute;blica Argentina. Usted y el CPAU
+                  acuerdan expresamente someterse a la jurisdicci&oacute;n exclusiva de los Juzgados Nacionales en lo Comercial sitos en la Ciudad Aut&oacute;noma de Buenos Aires, renunciando a cualquier otro fuero
+                  o jurisdicci&oacute;n que pudiera corresponder.<br />
+                  <br />
+                  <strong>15. Consultas acerca de los servicios</strong><br /> Ante cualquier consulta que no pudiere ser evacuada mediante la lectura del Manual de Uso o ante cualquier inconveniente en el uso de
+                  los servicios, el usuario matriculado podr&aacute; realizar la consulta telef&oacute;nica de lunes a viernes al CPAU en el siguiente horario 9.30 a 17 hs., reserv&aacute;ndose el CPAU el derecho
+                  a modificar el mismo sin previa notificaci&oacute;n al usuario.</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Modal:fin -->
+<div class="modal fade" id="datosIncorrectos" tabindex="-1" role="dialog" aria-labelledby="DatosIncorrectosLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="DatosIncorrectosLabel">REGISTRACIÓN</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+          </div>
+          <div class="modal-body"> {{ modalErrorMessage  }}</div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
