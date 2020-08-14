@@ -59,7 +59,7 @@
 <div>
   <h6>Datos personales</h6>
   <div class="mb-3">
-    <input type="date" formControlName="fechaNacimiento" id="fechaNacimiento"  class="form-control rounded-0" placeholder="Fecha de nacimiento:" required autofocus>
+    <input type="text" formControlName="fechaNacimiento" onfocus="(this.type='date')" title="Fecha de nacimiento (formato dd/mm/aaaa)" id="fechaNacimiento"  class="form-control rounded-0" placeholder="Fecha de nacimiento (formato dd/mm/aaaa)" required autofocus>
     <div class="error-message"
     *ngIf="
     formMatriculado.controls.fechaNacimiento?.errors &&
