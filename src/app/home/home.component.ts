@@ -184,6 +184,6 @@ export class HomeComponent {
       });
 
       //modal
-      // document.getElementById("openModalButton").click();
+      document.getElementById("openModalButton").click();
   }
 }
