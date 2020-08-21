@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
+    this.returnUrl = this.route.snapshot.queryParams["redirect"] || "/";
   }
 
   // convenience getter for easy access to form fields
@@ -81,7 +81,10 @@ export class LoginComponent implements OnInit {
               var redirect = document.createElement("input");
               redirect.setAttribute("type", "hidden");
               redirect.setAttribute("name", "redirect");
-              redirect.setAttribute("value", `/Perfil?tkn=${data.token}`);
+              if(this.returnUrl === "/")
+                redirect.setAttribute("value", `/Perfil?tkn=${data.token}`);
+              else
+                redirect.setAttribute("value", `/` + this.returnUrl);
               form.appendChild(redirect);
               document.body.appendChild(form);
               form.submit();
