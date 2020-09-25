@@ -186,8 +186,8 @@ export class HomeComponent {
       //modal
       var hoy = new Date();
       
-      var inicio = new Date(2020,9-1,12,0,0,0,0);
-      var fin = new Date(2020,9-1,13,23,59,59,0);
+      var inicio = new Date(2020,9-1,23,0,0,0,0);
+      var fin = new Date(2020,9-1,23,23,59,59,0);
 
       if (inicio<=hoy && hoy<=fin) {
         document.getElementById("openModalButton").click();
