@@ -44,7 +44,7 @@ export class HomeComponent {
 
     if (queryString) {
       const urlParams = new URLSearchParams(queryString);
-      
+
       if (urlParams && urlParams.has('redirectToPage')) {
         var redirectToPage = urlParams.get('redirectToPage');
         if (redirectToPage == '/passwordrecovery/confirm') {
@@ -52,7 +52,7 @@ export class HomeComponent {
           var paramsarray = params.split('&');
           const token = paramsarray[0].split('=')[1];
           const email = paramsarray[1].split('=')[1];
-          this.router.navigate([redirectToPage], {queryParams: {'token': token, 'email' : email }});  
+          this.router.navigate([redirectToPage], {queryParams: {'token': token, 'email' : email }});
         } else {
           this.router.navigate([redirectToPage]);
         }
@@ -61,7 +61,7 @@ export class HomeComponent {
 
 
     const sectionName = "NOTICIAS";
-    const cantMax = 4;
+    const cantMax = 7;
 
     this.siteLoader.bannerSubject.next({
       main: true,
@@ -185,7 +185,7 @@ export class HomeComponent {
 
       //modal
       var hoy = new Date();
-      
+
       var inicio = new Date(2020,9-1,23,0,0,0,0);
       var fin = new Date(2020,9-1,23,23,59,59,0);
 

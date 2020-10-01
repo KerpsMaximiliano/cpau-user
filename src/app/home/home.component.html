@@ -1,167 +1,338 @@
 ﻿<!-- Global site tag (gtag.js) - Google Analytics -->
 <body>
-    <!--CONTENEDOR-->
-    <div class="container pt-4">
-        <app-header-home></app-header-home>
+  <!--CONTENEDOR-->
+  <div class="container pt-4">
+    <app-header-home></app-header-home>
 
-        <app-button-home></app-button-home>
-        <main>
-            <!--NOTICIAS Y AGENDA-->
-            <section>
+    <app-button-home></app-button-home>
+    <main>
+      <!--NOTICIAS Y AGENDA-->
+      <section>
+        <button
+          id="openModalButton"
+          [hidden]="true"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          Open Modal
+        </button>
+        <div id="myModal" class="modal" role="dialog">
+          <div class="modal-dialog">
+            <div
+              class="modal-content"
+              style="width: 600px; display: table-cell"
+            >
+              <div class="modal-header">
+                <h4 class="modal-title">Capacitación CPAU</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <div style="padding: 56.25% 0 0 0; position: relative">
+                  <iframe
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen=""
+                    frameborder="0"
+                    src="https://www.youtube.com/embed/MXKUen86Yqs"
+                    style="
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                    "
+                  >
+                  </iframe>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-              <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
-              <div id="myModal" class="modal" role="dialog">
-                      <div class="modal-dialog">
-                        <div class="modal-content" style="width:600px;display:table-cell">
-                          <div class="modal-header">
-                            <h4 class="modal-title">Capacitación CPAU</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          </div>
-                          <div class="modal-body">
-                            
-                            <div style="padding:56.25% 0 0 0;position:relative;">
-                              <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                  allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/MXKUen86Yqs" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                              </iframe>
-                            </div>
-                            
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                          </div>
-                        </div>
-                    
-                      </div>
-                    </div>
-    
-
-                <div class="row">
-                    <!--NOTICIAS-->
-                    <div *ngIf="contentSite; else loadingBlockNews" class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
-                        <h6 class="border-bottom title-sections pb-1">
-                            <a [routerLink]="['/noticias']" title="{{ (contentSite?.breadCrumb)[0]?.name | uppercase }}">NOTICIAS
+        <div class="row">
+          <!--NOTICIAS-->
+          <div
+            *ngIf="contentSite; else loadingBlockNews"
+            class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9"
+          >
+            <h6 class="border-bottom title-sections pb-1">
+              <a
+                [routerLink]="['/noticias']"
+                title="{{ (contentSite?.breadCrumb)[0]?.name | uppercase }}"
+                >NOTICIAS
               </a>
-                        </h6>
+            </h6>
 
-                        <!-- alerta -->
-                        <div class="alert alert-secondary" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h6 class="alert-heading"><a href="https://www.cpau.org/Content/institucional/nota/33503" target="_self">En el CPAU no paramos. Solo cambiamos el modo.</a></h6>
-                        <span style="font-size:15px">Hasta nuevo aviso atendemos todas las consultas por mail, de lunes a viernes de 9 a 17 horas.</span>
-                        </div>
-                        <!-- fin alerta -->  
+            <!-- alerta -->
+            <div class="alert alert-secondary" role="alert">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h6 class="alert-heading">
+                <a
+                  href="https://www.cpau.org/Content/institucional/nota/33503"
+                  target="_self"
+                  >En el CPAU no paramos. Solo cambiamos el modo.</a
+                >
+              </h6>
+              <span style="font-size: 15px"
+                >Hasta nuevo aviso atendemos todas las consultas por mail, de
+                lunes a viernes de 9 a 17 horas.</span
+              >
+            </div>
+            <!-- fin alerta -->
 
-                        <div class="container p-0">
-                            <ul class="noticias">
-                                <!--NOTICIAS: PRINCIPAL-->
-                                <div class="row">
-                                    <div class="col-12">
-                                        <article>
-                                            <a [routerLink]="['/nota', contentSite.items[0]?.id]" target="_self" title="{{ contentSite.items[0]?.image?.title }}">
-                                                <li class="media noticia-principal">
-                                                    <div class="row">
-                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                                                            <!-- TODO -->
-                                                            <figure>
-                                                                <img class="img-fluid imagen imagen-principal" src="{{
+            <div class="container p-0">
+              <ul class="noticias">
+                <!--NOTICIAS: PRINCIPAL-->
+                <div class="row">
+                  <div class="col-12">
+                    <article>
+                      <a
+                        [routerLink]="['/nota', contentSite.items[0]?.id]"
+                        target="_self"
+                        title="{{ contentSite.items[0]?.image?.title }}"
+                      >
+                        <li class="media noticia-principal">
+                          <div class="row">
+                            <div
+                              class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8"
+                            >
+                              <!-- TODO -->
+                              <figure>
+                                <img
+                                  class="img-fluid imagen imagen-principal"
+                                  src="{{
                                     contentSite.items[0]?.image?.imageUrl
-                                  }}" alt="{{ contentSite.items[0]?.image?.title }}" />
-                                                            </figure>
-                                                        </div>
-                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pt-2 pr-4">
-                                                            <div id="noti1title">
-                                                                <h3>{{ contentSite.items[0].title }}</h3>
-                                                            </div>
-                                                            <div class="noticia1content" [innerHTML]="contentSite.items[0]?.summary">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </a>
-                                        </article>
-                                    </div>
-                                </div>
-                                <!--FIN NOTICIAS: PRINCIPAL-->
-                                <!--NOTICIAS: SECUNDARIAS-->
-                                <div class="row pt-3 pb-1">
-                                    <div class="col-sm res-margin-bottom-20">
-                                        <article>
-                                            <a [routerLink]="['/nota', contentSite.items[1]?.id]" target="_self" title="{{ contentSite.items[1]?.title }}">
-                                                <li class="media minima">
-                                                    <div class="">
-                                                        <!-- TODO -->
-                                                        <figure>
-                                                            <img class="img-fluid imagen imagen-secundaria" src="{{
+                                  }}"
+                                  alt="{{ contentSite.items[0]?.image?.title }}"
+                                />
+                              </figure>
+                            </div>
+                            <div
+                              class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pt-2 pr-4"
+                            >
+                              <div id="noti1title">
+                                <h3>{{ contentSite.items[0].title }}</h3>
+                              </div>
+                              <div
+                                class="noticia1content"
+                                [innerHTML]="contentSite.items[0]?.summary"
+                              ></div>
+                            </div>
+                          </div>
+                        </li>
+                      </a>
+                    </article>
+                  </div>
+                </div>
+                <!--FIN NOTICIAS: PRINCIPAL-->
+                <!--NOTICIAS: SECUNDARIAS-->
+                <div class="row pt-3 pb-1">
+                  <div class="col-sm res-margin-bottom-20">
+                    <article>
+                      <a
+                        [routerLink]="['/nota', contentSite.items[1]?.id]"
+                        target="_self"
+                        title="{{ contentSite.items[1]?.title }}"
+                      >
+                        <li class="media minima">
+                          <div class="">
+                            <!-- TODO -->
+                            <figure>
+                              <img
+                                class="img-fluid imagen imagen-secundaria"
+                                src="{{
                                   contentSite.items[1]?.image?.imageUrl
-                                }}" alt="{{ contentSite.items[1]?.title }}" />
-                                                        </figure>
-                                                        <div class="p-2 res-margin-top-10">
-                                                            <h5>{{ contentSite.items[1]?.title }}</h5>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </a>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm res-margin-bottom-20">
-                                        <article>
-                                            <a [routerLink]="['/nota', contentSite.items[2]?.id]" target="_self" title="{{ contentSite.items[2]?.title }}">
-                                                <li class="media minima">
-                                                    <div class="">
-                                                        <!-- TODO -->
-                                                        <figure>
-                                                            <img class="img-fluid imagen imagen-secundaria" src="{{
+                                }}"
+                                alt="{{ contentSite.items[1]?.title }}"
+                              />
+                            </figure>
+                            <div class="p-2 res-margin-top-10">
+                              <h5>{{ contentSite.items[1]?.title }}</h5>
+                            </div>
+                          </div>
+                        </li>
+                      </a>
+                    </article>
+                  </div>
+                  <div class="col-sm res-margin-bottom-20">
+                    <article>
+                      <a
+                        [routerLink]="['/nota', contentSite.items[2]?.id]"
+                        target="_self"
+                        title="{{ contentSite.items[2]?.title }}"
+                      >
+                        <li class="media minima">
+                          <div class="">
+                            <!-- TODO -->
+                            <figure>
+                              <img
+                                class="img-fluid imagen imagen-secundaria"
+                                src="{{
                                   contentSite.items[2]?.image?.imageUrl
-                                }}" alt="{{ contentSite.items[2]?.title }}" />
-                                                        </figure>
-                                                        <div class="p-2 res-margin-top-10">
-                                                            <h5>{{ contentSite.items[2]?.title }}</h5>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </a>
-                                        </article>
-                                    </div>
-                                    <div class="col-sm res-margin-bottom-20">
-                                        <article>
-                                            <a [routerLink]="['/nota', contentSite.items[3]?.id]" target="_self" title="{{ contentSite.items[3]?.title }}">
-                                                <li class="media minima">
-                                                    <div class="">
-                                                        <!-- TODO -->
-                                                        <figure>
-                                                            <img class="img-fluid imagen imagen-secundaria" src="{{
+                                }}"
+                                alt="{{ contentSite.items[2]?.title }}"
+                              />
+                            </figure>
+                            <div class="p-2 res-margin-top-10">
+                              <h5>{{ contentSite.items[2]?.title }}</h5>
+                            </div>
+                          </div>
+                        </li>
+                      </a>
+                    </article>
+                  </div>
+                  <div class="col-sm res-margin-bottom-20">
+                    <article>
+                      <a
+                        [routerLink]="['/nota', contentSite.items[3]?.id]"
+                        target="_self"
+                        title="{{ contentSite.items[3]?.title }}"
+                      >
+                        <li class="media minima">
+                          <div class="">
+                            <!-- TODO -->
+                            <figure>
+                              <img
+                                class="img-fluid imagen imagen-secundaria"
+                                src="{{
                                   contentSite.items[3]?.image?.imageUrl
-                                }}" alt="{{ contentSite.items[3]?.title }}" />
-                                                        </figure>
-                                                        <div class="p-2 res-margin-top-5">
-                                                            <h5>{{ contentSite.items[3]?.title }}</h5>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </a>
-                                        </article>
-                                    </div>
-                                </div>
-                                <!--FIN NOTICIAS: SECUNDARIAS-->
-                            </ul>
-                        </div>
-                    </div>
-                    <ng-template #loadingBlockNews>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 align-self-center">
-                            <div class="loader">Loading...</div>
-                        </div>
-                    </ng-template>
-                    <!--FIN NOTICIAS-->
+                                }}"
+                                alt="{{ contentSite.items[3]?.title }}"
+                              />
+                            </figure>
+                            <div class="p-2 res-margin-top-5">
+                              <h5>{{ contentSite.items[3]?.title }}</h5>
+                            </div>
+                          </div>
+                        </li>
+                      </a>
+                    </article>
+                  </div>
+                </div>
+                <div class="row pt-3 pb-1">
+                  <div class="col-sm res-margin-bottom-20">
+                    <article>
+                      <a
+                        [routerLink]="['/nota', contentSite.items[4]?.id]"
+                        target="_self"
+                        title="{{ contentSite.items[4]?.title }}"
+                      >
+                        <li class="media minima">
+                          <div class="">
+                            <!-- TODO -->
+                            <figure>
+                              <img
+                                class="img-fluid imagen imagen-secundaria"
+                                src="{{
+                                  contentSite.items[4]?.image?.imageUrl
+                                }}"
+                                alt="{{ contentSite.items[4]?.title }}"
+                              />
+                            </figure>
+                            <div class="p-2 res-margin-top-5">
+                              <h5>{{ contentSite.items[4]?.title }}</h5>
+                            </div>
+                          </div>
+                        </li>
+                      </a>
+                    </article>
+                  </div>
+                  <div class="col-sm res-margin-bottom-20">
+                    <article>
+                      <a
+                        [routerLink]="['/nota', contentSite.items[5]?.id]"
+                        target="_self"
+                        title="{{ contentSite.items[5]?.title }}"
+                      >
+                        <li class="media minima">
+                          <div class="">
+                            <!-- TODO -->
+                            <figure>
+                              <img
+                                class="img-fluid imagen imagen-secundaria"
+                                src="{{
+                                  contentSite.items[5]?.image?.imageUrl
+                                }}"
+                                alt="{{ contentSite.items[5]?.title }}"
+                              />
+                            </figure>
+                            <div class="p-2 res-margin-top-5">
+                              <h5>{{ contentSite.items[5]?.title }}</h5>
+                            </div>
+                          </div>
+                        </li>
+                      </a>
+                    </article>
+                  </div>
+                  <div class="col-sm res-margin-bottom-20">
+                    <article>
+                      <a
+                        [routerLink]="['/nota', contentSite.items[6]?.id]"
+                        target="_self"
+                        title="{{ contentSite.items[6]?.title }}"
+                      >
+                        <li class="media minima">
+                          <div class="">
+                            <!-- TODO -->
+                            <figure>
+                              <img
+                                class="img-fluid imagen imagen-secundaria"
+                                src="{{
+                                  contentSite.items[6]?.image?.imageUrl
+                                }}"
+                                alt="{{ contentSite.items[6]?.title }}"
+                              />
+                            </figure>
+                            <div class="p-2 res-margin-top-5">
+                              <h5>{{ contentSite.items[6]?.title }}</h5>
+                            </div>
+                          </div>
+                        </li>
+                      </a>
+                    </article>
+                  </div>
+                </div>
+                <!--FIN NOTICIAS: SECUNDARIAS-->
+              </ul>
+            </div>
+          </div>
+          <ng-template #loadingBlockNews>
+            <div
+              class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 align-self-center"
+            >
+              <div class="loader">Loading...</div>
+            </div>
+          </ng-template>
+          <!--FIN NOTICIAS-->
 
-                    <!--COLUMNA DERECHA-->
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                        <!--AGENDA-->
-                        <div class="row">
-                            <div *ngIf="events; else loadingBlockEvents" class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 pb-5">
-                                <h6 class="border-bottom title-sections pb-1 mb-0">
-                                    <a [routerLink]="['/agenda']" target="_self" title="AGENDA">AGENDA</a
+          <!--COLUMNA DERECHA-->
+          <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+            <!--AGENDA-->
+            <div class="row">
+              <div
+                *ngIf="events; else loadingBlockEvents"
+                class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 pb-5"
+              >
+                <h6 class="border-bottom title-sections pb-1 mb-0">
+                  <a [routerLink]="['/agenda']" target="_self" title="AGENDA"
+                    >AGENDA</a
                   >
                 </h6>
                 <div class="agenda pt-2">
@@ -182,24 +353,29 @@
                             <h6>{{ event.title | uppercase }}</h6>
                           </div>
                         </a>
-                                    </li>
-                                    </article>
-                                    <!--FIN AGENDA NOTA: 1-->
-                                    </ul>
-                            </div>
-                        </div>
-                        <ng-template #loadingBlockEvents>
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 pb-5 align-self-center">
-                                <div class="loader">Loading...</div>
-                            </div>
-                        </ng-template>
-                        <!--FIN AGENDA-->
+                      </li>
+                    </article>
+                    <!--FIN AGENDA NOTA: 1-->
+                  </ul>
+                </div>
+              </div>
+              <ng-template #loadingBlockEvents>
+                <div
+                  class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 pb-5 align-self-center"
+                >
+                  <div class="loader">Loading...</div>
+                </div>
+              </ng-template>
+              <!--FIN AGENDA-->
 
-                        <!--NECESITO UN PROFESIONAL-->
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12">
-                            <article>
-                                <h6 class="mt-0 mb-2 pb-1 border-bottom">
-                                    <a [routerLink]="['/profesionales']" title="¿NECESITÁS UN/A PROFESIONAL?">¿NECESITÁS UN/A PROFESIONAL?</a
+              <!--NECESITO UN PROFESIONAL-->
+              <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12">
+                <article>
+                  <h6 class="mt-0 mb-2 pb-1 border-bottom">
+                    <a
+                      [routerLink]="['/profesionales']"
+                      title="¿NECESITÁS UN/A PROFESIONAL?"
+                      >¿NECESITÁS UN/A PROFESIONAL?</a
                     >
                   </h6>
                   <a
@@ -208,43 +384,62 @@
                     class="link-ss"
                     title="Contactate ahora"
                   >
-                  <div style="padding:56.25% 0 0 0;position:relative;">
-                    <iframe src="https://player.vimeo.com/video/448910505?autoplay=1&loop=1&color=3400ff&title=0&byline=0&portrait=0" 
-                      style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" 
-                      allow="autoplay; fullscreen" allowfullscreen>
-                    </iframe>
-                  </div>
-                  <script src="https://player.vimeo.com/api/player.js"></script>
+                    <div style="padding: 56.25% 0 0 0; position: relative">
+                      <iframe
+                        src="https://player.vimeo.com/video/448910505?autoplay=1&loop=1&color=3400ff&title=0&byline=0&portrait=0"
+                        style="
+                          position: absolute;
+                          top: 0;
+                          left: 0;
+                          width: 100%;
+                          height: 100%;
+                        "
+                        frameborder="0"
+                        allow="autoplay; fullscreen"
+                        allowfullscreen
+                      >
+                      </iframe>
+                    </div>
+                    <script src="https://player.vimeo.com/api/player.js"></script>
                     <li class="media">
                       <div class="contactate bk-azul ft-blanco">
                         <div class="py-2 px-3">
                           <h5>Contactate ahora</h5>
                           <p>
-                            Te ofrecemos toda la base de profesionales 
-                            para que puedas contratar sus servicios.
+                            Te ofrecemos toda la base de profesionales para que
+                            puedas contratar sus servicios.
                           </p>
                         </div>
                       </div>
                     </li>
                   </a>
-                            </article>
-                        </div>
+                </article>
+              </div>
 
-                        <!--FIN NECESITO UN PROFESIONAL-->
-                    </div>
-                </div>
-                <!--FIN COLUMNA DERECHA-->
-    </div>
-    </section>
-    <!--FIN NOTICIAS Y AGENDA-->
+              <!--FIN NECESITO UN PROFESIONAL-->
+            </div>
+          </div>
+          <!--FIN COLUMNA DERECHA-->
+        </div>
+      </section>
+      <!--FIN NOTICIAS Y AGENDA-->
 
-    <!--PRODUCTOS-->
-    <section>
-        <div class="row pt-4 pb-5" *ngIf="externalProduct; else loadingBlockExternalProduct">
-            <div *ngFor="let product of externalProduct" class="col-sm col-md-6 col-lg col-xl">
-                <article>
-                    <h6 class="mt-0 mb-2 pb-1 border-bottom">
-                        <a href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a
+      <!--PRODUCTOS-->
+      <section>
+        <div
+          class="row pt-4 pb-5"
+          *ngIf="externalProduct; else loadingBlockExternalProduct"
+        >
+          <div
+            *ngFor="let product of externalProduct"
+            class="col-sm col-md-6 col-lg col-xl"
+          >
+            <article>
+              <h6 class="mt-0 mb-2 pb-1 border-bottom">
+                <a
+                  href="{{ product.url }}"
+                  title="{{ product.title | uppercase }}"
+                  >{{ product.title | uppercase }}</a
                 >
               </h6>
               <a
@@ -275,19 +470,19 @@
                   </div>
                 </li>
               </a>
-                </article>
-            </div>
+            </article>
+          </div>
         </div>
         <ng-template #loadingBlockExternalProduct>
-            <div class="row pt-4 pb-5 align-self-center">
-                <div class="loader">Loading...</div>
-            </div>
+          <div class="row pt-4 pb-5 align-self-center">
+            <div class="loader">Loading...</div>
+          </div>
         </ng-template>
-    </section>
-    <!--FIN PRODUCTOS-->
+      </section>
+      <!--FIN PRODUCTOS-->
     </main>
     <app-publicity-home></app-publicity-home>
     <app-footer></app-footer>
-    </div>
-    <!--CONTENEDOR: FIN	-->
+  </div>
+  <!--CONTENEDOR: FIN	-->
 </body>
