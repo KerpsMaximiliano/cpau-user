@@ -82,23 +82,16 @@ export class HomeComponent {
             ret.items[0] != undefined && ret.items[0].summary != undefined
               ? (ret.items[0].summary = recortarSummary(ret.items[0].summary))
               : false;
-            ret.items[1] != undefined && ret.items[1].title != undefined
-              ? (ret.items[1].title = recortarTituloSecundario(
-                  ret.items[1].title
-                ))
-              : false;
-            ret.items[2] != undefined && ret.items[2].title != undefined
-              ? (ret.items[2].title = recortarTituloSecundario(
-                  ret.items[2].title
-                ))
-              : false;
-            ret.items[3] != undefined && ret.items[3].title != undefined
-              ? (ret.items[3].title = recortarTituloSecundario(
-                  ret.items[3].title
-                ))
-              : false;
-
-            for (let index = 0; index < 4; index++) {
+          
+           for (let ind = 1; ind<7; ind++) {
+            ret.items[ind] != undefined && ret.items[ind].title != undefined
+            ? (ret.items[ind].title = recortarTituloSecundario(
+                ret.items[ind].title
+              ))
+            : false;
+           }
+           
+            for (let index = 0; index < 7; index++) {
               if (
                 !ret.items[index].image ||
                 ret.items[index].image == null ||

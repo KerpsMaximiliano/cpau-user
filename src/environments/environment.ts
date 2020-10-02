@@ -4,11 +4,11 @@
 
 export const environment = {
     // production: false,
-    // apiUrl: 'http://localhost:5000',
+    apiUrl: 'http://localhost:5000',
     // oldSiteUrl: 'http://localhost:50501',
     
     production: true,
-    apiUrl: 'https://cpauorgapi.azurewebsites.net',
+    // apiUrl: 'https://cpauorgapi.azurewebsites.net',
     oldSiteUrl: ''
 };
 
