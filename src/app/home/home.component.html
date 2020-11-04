@@ -1,4 +1,5 @@
 ﻿<!-- Global site tag (gtag.js) - Google Analytics -->
+
 <body>
   <!--CONTENEDOR-->
   <div class="container pt-4">
@@ -8,17 +9,13 @@
     <main>
       <!--NOTICIAS Y AGENDA-->
       <section>
-        <button
-          id="openModalButton"
-          [hidden]="true"
-          data-toggle="modal"
-          data-target="#myModal"
-        >
+        <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">
           Open Modal
         </button>
         <div id="myModal" class="modal" role="dialog">
-          <div class="modal-dialog">
-            <div
+          <div [innerHtml]="modalContent?.content" class="modal-dialog">
+
+            <!-- <div
               class="modal-content"
               style="width: 600px; display: table-cell"
             >
@@ -55,45 +52,29 @@
                   Cerrar
                 </button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 
         <div class="row">
           <!--NOTICIAS-->
-          <div
-            *ngIf="contentSite; else loadingBlockNews"
-            class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9"
-          >
+          <div *ngIf="contentSite; else loadingBlockNews" class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
             <h6 class="border-bottom title-sections pb-1">
-              <a
-                [routerLink]="['/noticias']"
-                title="{{ (contentSite?.breadCrumb)[0]?.name | uppercase }}"
-                >NOTICIAS
+              <a [routerLink]="['/noticias']" title="{{ (contentSite?.breadCrumb)[0]?.name | uppercase }}">NOTICIAS
               </a>
             </h6>
 
             <!-- alerta -->
             <div class="alert alert-secondary" role="alert">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
               <h6 class="alert-heading">
-                <a
-                  href="https://www.cpau.org/Content/institucional/nota/33503"
-                  target="_self"
-                  >En el CPAU no paramos. Solo cambiamos el modo.</a
-                >
+                <a href="https://www.cpau.org/Content/institucional/nota/33503" target="_self">En el CPAU no paramos.
+                  Solo cambiamos el modo.</a>
               </h6>
-              <span style="font-size: 15px"
-                >Hasta nuevo aviso atendemos todas las consultas por mail, de
-                lunes a viernes de 9 a 17 horas.</span
-              >
+              <span style="font-size: 15px">Hasta nuevo aviso atendemos todas las consultas por mail, de
+                lunes a viernes de 9 a 17 horas.</span>
             </div>
             <!-- fin alerta -->
 
@@ -103,37 +84,23 @@
                 <div class="row">
                   <div class="col-12">
                     <article>
-                      <a
-                        [routerLink]="['/nota', contentSite.items[0]?.id]"
-                        target="_self"
-                        title="{{ contentSite.items[0]?.image?.title }}"
-                      >
+                      <a [routerLink]="['/nota', contentSite.items[0]?.id]" target="_self"
+                        title="{{ contentSite.items[0]?.image?.title }}">
                         <li class="media noticia-principal">
                           <div class="row">
-                            <div
-                              class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8"
-                            >
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                               <!-- TODO -->
                               <figure>
-                                <img
-                                  class="img-fluid imagen imagen-principal"
-                                  src="{{
+                                <img class="img-fluid imagen imagen-principal" src="{{
                                     contentSite.items[0]?.image?.imageUrl
-                                  }}"
-                                  alt="{{ contentSite.items[0]?.image?.title }}"
-                                />
+                                  }}" alt="{{ contentSite.items[0]?.image?.title }}" />
                               </figure>
                             </div>
-                            <div
-                              class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pt-2 pr-4"
-                            >
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pt-2 pr-4">
                               <div id="noti1title">
                                 <h3>{{ contentSite.items[0].title }}</h3>
                               </div>
-                              <div
-                                class="noticia1content"
-                                [innerHTML]="contentSite.items[0]?.summary"
-                              ></div>
+                              <div class="noticia1content" [innerHTML]="contentSite.items[0]?.summary"></div>
                             </div>
                           </div>
                         </li>
@@ -146,22 +113,15 @@
                 <div class="row pt-3 pb-1">
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a
-                        [routerLink]="['/nota', contentSite.items[1]?.id]"
-                        target="_self"
-                        title="{{ contentSite.items[1]?.title }}"
-                      >
+                      <a [routerLink]="['/nota', contentSite.items[1]?.id]" target="_self"
+                        title="{{ contentSite.items[1]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
-                              <img
-                                class="img-fluid imagen imagen-secundaria"
-                                src="{{
+                              <img class="img-fluid imagen imagen-secundaria" src="{{
                                   contentSite.items[1]?.image?.imageUrl
-                                }}"
-                                alt="{{ contentSite.items[1]?.title }}"
-                              />
+                                }}" alt="{{ contentSite.items[1]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-10">
                               <h5>{{ contentSite.items[1]?.title }}</h5>
@@ -173,22 +133,15 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a
-                        [routerLink]="['/nota', contentSite.items[2]?.id]"
-                        target="_self"
-                        title="{{ contentSite.items[2]?.title }}"
-                      >
+                      <a [routerLink]="['/nota', contentSite.items[2]?.id]" target="_self"
+                        title="{{ contentSite.items[2]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
-                              <img
-                                class="img-fluid imagen imagen-secundaria"
-                                src="{{
+                              <img class="img-fluid imagen imagen-secundaria" src="{{
                                   contentSite.items[2]?.image?.imageUrl
-                                }}"
-                                alt="{{ contentSite.items[2]?.title }}"
-                              />
+                                }}" alt="{{ contentSite.items[2]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-10">
                               <h5>{{ contentSite.items[2]?.title }}</h5>
@@ -200,22 +153,15 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a
-                        [routerLink]="['/nota', contentSite.items[3]?.id]"
-                        target="_self"
-                        title="{{ contentSite.items[3]?.title }}"
-                      >
+                      <a [routerLink]="['/nota', contentSite.items[3]?.id]" target="_self"
+                        title="{{ contentSite.items[3]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
-                              <img
-                                class="img-fluid imagen imagen-secundaria"
-                                src="{{
+                              <img class="img-fluid imagen imagen-secundaria" src="{{
                                   contentSite.items[3]?.image?.imageUrl
-                                }}"
-                                alt="{{ contentSite.items[3]?.title }}"
-                              />
+                                }}" alt="{{ contentSite.items[3]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-5">
                               <h5>{{ contentSite.items[3]?.title }}</h5>
@@ -229,22 +175,15 @@
                 <div class="row pt-3 pb-1" style="padding-top: 1.1em !important;">
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a
-                        [routerLink]="['/nota', contentSite.items[4]?.id]"
-                        target="_self"
-                        title="{{ contentSite.items[4]?.title }}"
-                      >
+                      <a [routerLink]="['/nota', contentSite.items[4]?.id]" target="_self"
+                        title="{{ contentSite.items[4]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
-                              <img
-                                class="img-fluid imagen imagen-secundaria"
-                                src="{{
+                              <img class="img-fluid imagen imagen-secundaria" src="{{
                                   contentSite.items[4]?.image?.imageUrl
-                                }}"
-                                alt="{{ contentSite.items[4]?.title }}"
-                              />
+                                }}" alt="{{ contentSite.items[4]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-5">
                               <h5>{{ contentSite.items[4]?.title }}</h5>
@@ -256,22 +195,15 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a
-                        [routerLink]="['/nota', contentSite.items[5]?.id]"
-                        target="_self"
-                        title="{{ contentSite.items[5]?.title }}"
-                      >
+                      <a [routerLink]="['/nota', contentSite.items[5]?.id]" target="_self"
+                        title="{{ contentSite.items[5]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
-                              <img
-                                class="img-fluid imagen imagen-secundaria"
-                                src="{{
+                              <img class="img-fluid imagen imagen-secundaria" src="{{
                                   contentSite.items[5]?.image?.imageUrl
-                                }}"
-                                alt="{{ contentSite.items[5]?.title }}"
-                              />
+                                }}" alt="{{ contentSite.items[5]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-5">
                               <h5>{{ contentSite.items[5]?.title }}</h5>
@@ -283,22 +215,15 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a
-                        [routerLink]="['/nota', contentSite.items[6]?.id]"
-                        target="_self"
-                        title="{{ contentSite.items[6]?.title }}"
-                      >
+                      <a [routerLink]="['/nota', contentSite.items[6]?.id]" target="_self"
+                        title="{{ contentSite.items[6]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
-                              <img
-                                class="img-fluid imagen imagen-secundaria"
-                                src="{{
+                              <img class="img-fluid imagen imagen-secundaria" src="{{
                                   contentSite.items[6]?.image?.imageUrl
-                                }}"
-                                alt="{{ contentSite.items[6]?.title }}"
-                              />
+                                }}" alt="{{ contentSite.items[6]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-5">
                               <h5>{{ contentSite.items[6]?.title }}</h5>
@@ -314,9 +239,7 @@
             </div>
           </div>
           <ng-template #loadingBlockNews>
-            <div
-              class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 align-self-center"
-            >
+            <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 align-self-center">
               <div class="loader">Loading...</div>
             </div>
           </ng-template>
@@ -326,26 +249,17 @@
           <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <!--AGENDA-->
             <div class="row">
-              <div
-                *ngIf="events; else loadingBlockEvents"
-                class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 pb-5"
-              >
+              <div *ngIf="events; else loadingBlockEvents" class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 pb-5">
                 <h6 class="border-bottom title-sections pb-1 mb-0">
-                  <a [routerLink]="['/agenda']" target="_self" title="AGENDA"
-                    >AGENDA</a
-                  >
+                  <a [routerLink]="['/agenda']" target="_self" title="AGENDA">AGENDA</a>
                 </h6>
                 <div class="agenda pt-2">
                   <ul class="list-unstyled">
                     <!--AGENDA NOTA: 1-->
                     <article *ngFor="let event of events">
                       <li class="media">
-                        <a
-                          [routerLink]="['/nota', event.id]"
-                          target="_self"
-                          class="link-agenda"
-                          title="{{ event.title | uppercase }}"
-                        >
+                        <a [routerLink]="['/nota', event.id]" target="_self" class="link-agenda"
+                          title="{{ event.title | uppercase }}">
                           <div class="media-body">
                             {{ event.dateLabel }}<br />
                             {{ event.tag ? "#" : "" }}{{ event.tag }}
@@ -360,9 +274,7 @@
                 </div>
               </div>
               <ng-template #loadingBlockEvents>
-                <div
-                  class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 pb-5 align-self-center"
-                >
+                <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12 pb-5 align-self-center">
                   <div class="loader">Loading...</div>
                 </div>
               </ng-template>
@@ -372,18 +284,10 @@
               <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-12">
                 <article>
                   <h6 class="mt-0 mb-2 pb-1 border-bottom">
-                    <a
-                      [routerLink]="['/profesionales']"
-                      title="¿NECESITÁS UN/A PROFESIONAL?"
-                      >¿NECESITÁS UN/A PROFESIONAL?</a
-                    >
+                    <a [routerLink]="['/profesionales']" title="¿NECESITÁS UN/A PROFESIONAL?">¿NECESITÁS UN/A
+                      PROFESIONAL?</a>
                   </h6>
-                  <a
-                    [routerLink]="['/profesionales']"
-                    target="_self"
-                    class="link-ss"
-                    title="Contactate ahora"
-                  >
+                  <a [routerLink]="['/profesionales']" target="_self" class="link-ss" title="Contactate ahora">
                     <div style="padding: 56.25% 0 0 0; position: relative">
                       <iframe
                         src="https://player.vimeo.com/video/448910505?autoplay=1&loop=1&color=3400ff&title=0&byline=0&portrait=0"
@@ -393,11 +297,7 @@
                           left: 0;
                           width: 100%;
                           height: 100%;
-                        "
-                        frameborder="0"
-                        allow="autoplay; fullscreen"
-                        allowfullscreen
-                      >
+                        " frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
                       </iframe>
                     </div>
                     <script src="https://player.vimeo.com/api/player.js"></script>
@@ -426,42 +326,20 @@
 
       <!--PRODUCTOS-->
       <section>
-        <div
-          class="row pt-4 pb-5"
-          *ngIf="externalProduct; else loadingBlockExternalProduct"
-        >
-          <div
-            *ngFor="let product of externalProduct"
-            class="col-sm col-md-6 col-lg col-xl"
-          >
+        <div class="row pt-4 pb-5" *ngIf="externalProduct; else loadingBlockExternalProduct">
+          <div *ngFor="let product of externalProduct" class="col-sm col-md-6 col-lg col-xl">
             <article>
               <h6 class="mt-0 mb-2 pb-1 border-bottom">
-                <a
-                  href="{{ product.url }}"
-                  title="{{ product.title | uppercase }}"
-                  >{{ product.title | uppercase }}</a
-                >
+                <a href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
               </h6>
-              <a
-                href="{{ product.url }}"
-                target="_blank"
-                class="link-ss"
-                title="{{ product.tooltip }}"
-              >
+              <a href="{{ product.url }}" target="_blank" class="link-ss" title="{{ product.tooltip }}">
                 <li class="media">
-                  <div
-                    class="producto"
-                    [ngStyle]="{
+                  <div class="producto" [ngStyle]="{
                       backgroundColor: product.color,
                       color: product.textColor
-                    }"
-                  >
+                    }">
                     <figure>
-                      <img
-                        class="img-fluid imagen imagen-secundaria"
-                        src="{{ product.imageURL }}"
-                        alt=""
-                      />
+                      <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}" alt="" />
                     </figure>
                     <div class="py-2 px-3">
                       <h5>{{ product.header }}</h5>

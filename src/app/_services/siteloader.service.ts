@@ -6,20 +6,22 @@ import { ITemplate } from '@app/shared/abstract/factory/tempate.abstract';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import { BannerModelSearch } from '@app/shared/Models/BannerModelSearch';
+import { ModalHome } from '@app/_models/modalHome.model';
+import { CustomResponse } from '@app/_models/customResponse.model';
 
 @Injectable({ providedIn: 'root' })
 export class SiteLoader implements ITemplate {
 
-    bannerSubject = new BehaviorSubject<BannerModelSearch>({main: true, section: false, news: false});
+    bannerSubject = new BehaviorSubject<BannerModelSearch>({ main: true, section: false, news: false });
 
 
     constructor(private http: HttpClient) {
     }
 
-    getBanners(main: boolean,section: boolean,news: boolean) {
+    getBanners(main: boolean, section: boolean, news: boolean) {
         return this.http
-        .get<any>(`${environment.apiUrl}/api/SiteConsumer/GetCurrentBanners`)
-        .pipe(distinctUntilChanged())
+            .get<any>(`${environment.apiUrl}/api/SiteConsumer/GetCurrentBanners`)
+            .pipe(distinctUntilChanged())
     }
 
     public get(sectionName): Observable<any> {
@@ -27,16 +29,16 @@ export class SiteLoader implements ITemplate {
     }
 
     public getFullContent(id): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/Page?id=${id}`).pipe(distinctUntilChanged());
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/Page?id=${id}`).pipe(distinctUntilChanged());
     }
 
     public getFullContentPreview(id): Observable<any> {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/PagePreview?id=${id}`).pipe(distinctUntilChanged());
-        }
+    }
 
     public getSearch(search): Observable<any> {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetSearch?search=${search}`).pipe(distinctUntilChanged());
-        }
+    }
 
     getSectionBySeName(sectionName) {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetByName?name=${sectionName}`).pipe(distinctUntilChanged());
@@ -76,16 +78,16 @@ export class SiteLoader implements ITemplate {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetObraDestino`).pipe(distinctUntilChanged());
     }
 
-    getProfesionales(codigoProfesion,filtro,actividades,obraDestino) {
+    getProfesionales(codigoProfesion, filtro, actividades, obraDestino) {
         let params = new HttpParams()
-        .set('codigoProfesion', codigoProfesion)
-        .set('filtro', filtro)
-        .set('actividades', actividades ? actividades.join(", ") : '')
-        .set('obraDestino', obraDestino ? obraDestino.join(", ") : '');
+            .set('codigoProfesion', codigoProfesion)
+            .set('filtro', filtro)
+            .set('actividades', actividades ? actividades.join(", ") : '')
+            .set('obraDestino', obraDestino ? obraDestino.join(", ") : '');
 
         return this.http
-        .get<any>(`${environment.apiUrl}/api/SiteConsumer/GetProfesional?codigoProfesion=${codigoProfesion}&filtro=${filtro}&actividades=${actividades ? actividades.join(", ") : ''}&obraDestino=${obraDestino ? obraDestino.join(", ") : ''}`)
-        ;
+            .get<any>(`${environment.apiUrl}/api/SiteConsumer/GetProfesional?codigoProfesion=${codigoProfesion}&filtro=${filtro}&actividades=${actividades ? actividades.join(", ") : ''}&obraDestino=${obraDestino ? obraDestino.join(", ") : ''}`)
+            ;
     }
 
     generaContact(data: string) {
@@ -98,7 +100,9 @@ export class SiteLoader implements ITemplate {
 
     boletin(id: number) {
         let params = new HttpParams()
-        .set('id', id.toString())
+            .set('id', id.toString())
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/PortalPublicBoletin`, { params: params });
     }
+
+
 }
