@@ -97,12 +97,12 @@ export class HomeComponent {
             }
 
             for (let index = 0; index < 7; index++) {
-              if (
-                !ret.items[index].image ||
+              if (!ret.items[index].image ||
                 ret.items[index].image == null ||
-                ret.items[index].image.imageUrl == ""
-              )
+                ret.items[index].image.imageUrl === ''
+              ) {
                 ret.items[index].image = { imageUrl: DEAFULT_IMAGE };
+              }
             }
           }
 
@@ -189,10 +189,11 @@ export class HomeComponent {
 
       if (modal && modal.content) {
         this.modalContent = {
+          title: modal.title,
           content: this.sanitizer.bypassSecurityTrustHtml(modal.content as string)
         };
-        document.getElementById("openModalButton").click();
+        document.getElementById('openModalButton').click();
       }
-    })
+    });
   }
 }
