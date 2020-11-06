@@ -95,8 +95,8 @@ export class HomeComponent {
                 ))
                 : false;
             }
-
-            for (let index = 0; index < 7; index++) {
+            let max = ret.items.length >= 7 ? 7 : ret.items.length - 1;
+            for (let index = 0; index < max; index++) {
               if (!ret.items[index].image ||
                 ret.items[index].image == null ||
                 ret.items[index].image.imageUrl === ''
