@@ -73,10 +73,10 @@
                                 }
                             ]
                         },
-                        "stage": {
+                        "test": {
                             "fileReplacements": [{
                                 "replace": "src/environments/environment.ts",
-                                "with": "src/environments/environment.stage.ts"
+                                "with": "src/environments/environment.test.ts"
                             }],
                             "optimization": true,
                             "outputHashing": "all",
