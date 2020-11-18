@@ -6,7 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   // Aplicar Lazy Loading
   {
-    path: 'gestion',
+    path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },

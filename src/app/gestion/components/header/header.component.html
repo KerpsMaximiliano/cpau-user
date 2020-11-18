@@ -1,2 +1,19 @@
-<p>header works!</p>
-<a [routerLink]="['/']">Home CPAU</a> <br/>
+<header>
+    <!--Fila Logo-->
+    <div class="row">
+        <!--Columna Logo-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 celda-logo">
+            <a [routerLink]="['/']" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
+                <figure><img src="https://static.cpau.org/.newsite/images/logo/cpau.svg" width="310" height="auto" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" /></figure>
+            </a>
+        </div>
+        <!--Columna Logo: fin-->
+        
+        <!--Columna Logout-->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 button-login">
+            <button type="button" class="btn btn-login" (click)="closeSession()">Cerrar Sesión</button>
+        </div>
+        <!--Columna Logout:fin-->
+    </div>
+    <!--Fila Logo: fin-->
+</header>
