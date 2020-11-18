@@ -42,6 +42,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 import { PreregisterComponent } from "./login/preregister/preregister.component";;
 import { RegisterMatriculadoComponent } from './login/register/register-matriculado/register-matriculado.component';
 import { RegisterNomatriculadoComponent } from './login/register/register-nomatriculado/register-nomatriculado.component'
+import { GestionModule } from './gestion/gestion.module';
 @NgModule({
   imports: [
     BrowserModule,
@@ -52,7 +53,8 @@ import { RegisterNomatriculadoComponent } from './login/register/register-nomatr
     TooltipModule,
     RecaptchaModule, // this is the recaptcha main module
     RecaptchaFormsModule, // this is the module for form incase form validation
-    FormsModule
+    FormsModule,
+    GestionModule
   ],
   declarations: [
     AppComponent,

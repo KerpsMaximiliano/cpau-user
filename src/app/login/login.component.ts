@@ -51,6 +51,9 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.router.navigate([`gestion`]);
+    return; // TODO OMV NO ME INTERESA EL LOGIN AHORA
+
     this.authenticationService
       .login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(

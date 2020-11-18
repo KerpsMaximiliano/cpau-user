@@ -82,7 +82,10 @@ const routes: Routes = [
     path: 'contacto/general',
     component: ContactoComponent,
   },
-
+  {
+    path: 'gestion',
+    loadChildren: () => import('./gestion/gestion.module').then(m => m.GestionModule),
+  },
   // otherwise redirect to home
   { path: '**', redirectTo: '' },
 ];
