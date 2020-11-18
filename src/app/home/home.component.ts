@@ -1,6 +1,6 @@
 ﻿import { Component, Injector, ViewEncapsulation } from "@angular/core";
 import { User } from "@app/_models";
-import { AuthenticationService, SiteLoader } from "@app/_services";
+import { AuthenticationService, ModalHomeService, SiteLoader } from "@app/_services";
 import { map } from "rxjs/operators";
 import {
   ContentSite,
@@ -9,6 +9,8 @@ import {
 import { Events } from "@app/shared/Models/Events.model";
 import { ExternalProduct } from "@app/shared/Models/ExternalProduct.model";
 import { Router } from '@angular/router';
+import { ModalHome } from '@app/_models/modalHome.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 declare function recortarTituloPrincipal(text);
 declare function recortarSummary(text);
@@ -30,10 +32,13 @@ export class HomeComponent {
   contentSite: ContentSite;
   events: Events[];
   externalProduct: ExternalProduct[];
+  modalContent: ModalHome;
   constructor(
     private siteLoader: SiteLoader,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private modalHomeService: ModalHomeService,
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
   }
@@ -52,7 +57,7 @@ export class HomeComponent {
           var paramsarray = params.split('&');
           const token = paramsarray[0].split('=')[1];
           const email = paramsarray[1].split('=')[1];
-          this.router.navigate([redirectToPage], {queryParams: {'token': token, 'email' : email }});
+          this.router.navigate([redirectToPage], { queryParams: { 'token': token, 'email': email } });
         } else {
           this.router.navigate([redirectToPage]);
         }
@@ -76,28 +81,28 @@ export class HomeComponent {
           if (ret.items != undefined) {
             ret.items[0] != undefined && ret.items[0].title != undefined
               ? (ret.items[0].title = recortarTituloPrincipal(
-                  ret.items[0].title
-                ))
+                ret.items[0].title
+              ))
               : false;
             ret.items[0] != undefined && ret.items[0].summary != undefined
               ? (ret.items[0].summary = recortarSummary(ret.items[0].summary))
               : false;
-          
-           for (let ind = 1; ind<7; ind++) {
-            ret.items[ind] != undefined && ret.items[ind].title != undefined
-            ? (ret.items[ind].title = recortarTituloSecundario(
-                ret.items[ind].title
-              ))
-            : false;
-           }
-           
-            for (let index = 0; index < 7; index++) {
-              if (
-                !ret.items[index].image ||
+
+            for (let ind = 1; ind < 7; ind++) {
+              ret.items[ind] != undefined && ret.items[ind].title != undefined
+                ? (ret.items[ind].title = recortarTituloSecundario(
+                  ret.items[ind].title
+                ))
+                : false;
+            }
+            let max = ret.items.length >= 7 ? 7 : ret.items.length - 1;
+            for (let index = 0; index < max; index++) {
+              if (!ret.items[index].image ||
                 ret.items[index].image == null ||
-                ret.items[index].image.imageUrl == ""
-              )
+                ret.items[index].image.imageUrl === ''
+              ) {
                 ret.items[index].image = { imageUrl: DEAFULT_IMAGE };
+              }
             }
           }
 
@@ -149,23 +154,23 @@ export class HomeComponent {
 
             ret[0] != undefined && ret[0].description != undefined
               ? (ret[0].description = recortarDescriptionProductoExterno(
-                  ret[0].description
-                ))
+                ret[0].description
+              ))
               : false;
             ret[1] != undefined && ret[1].description != undefined
               ? (ret[1].description = recortarDescriptionProductoExterno(
-                  ret[1].description
-                ))
+                ret[1].description
+              ))
               : false;
             ret[2] != undefined && ret[2].description != undefined
               ? (ret[2].description = recortarDescriptionProductoExterno(
-                  ret[2].description
-                ))
+                ret[2].description
+              ))
               : false;
             ret[3] != undefined && ret[3].description != undefined
               ? (ret[3].description = recortarDescriptionProductoExterno(
-                  ret[3].description
-                ))
+                ret[3].description
+              ))
               : false;
           }
 
@@ -176,14 +181,19 @@ export class HomeComponent {
         this.externalProduct = data;
       });
 
-      //modal
-      var hoy = new Date();
+    //modal
 
-      var inicio = new Date(2020,9-1,23,0,0,0,0);
-      var fin = new Date(2020,9-1,23,23,59,59,0);
+    this.modalHomeService.getTodayModal().pipe(
+      map(x => x.data)
+    ).subscribe(modal => {
 
-      if (inicio<=hoy && hoy<=fin) {
-        document.getElementById("openModalButton").click();
+      if (modal && modal.content) {
+        this.modalContent = {
+          title: modal.title,
+          content: this.sanitizer.bypassSecurityTrustHtml(modal.content as string)
+        };
+        document.getElementById('openModalButton').click();
       }
+    });
   }
 }
