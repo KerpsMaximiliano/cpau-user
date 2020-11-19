@@ -1,0 +1,10 @@
+@import './../../gestion.css';
+.footer {
+    border-top: 1px solid #e7eaec;
+    bottom: 0;
+    padding: 10px 20px;
+    position: absolute;
+    width: 85vw;
+    left: auto;
+    right: auto;
+}

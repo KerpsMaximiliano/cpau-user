@@ -1,6 +1,110 @@
-<app-header></app-header>
-
-<ul class="menu">
+<!-- <ul class="menu">
     <li><a [routerLink]="['perfil/identificacion']" title="Perfil / Identificación"><i class="fa fa-instagram"></i>Perfil / Identificación</a></li>
-</ul>
-<ng-content></ng-content>
+
+    
+</ul> -->
+<div  id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu" style="display: block;">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="../../img/luquio.png" width="48">
+                            </span>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Luciano Carnevalini</strong>
+                            </span> <span class="text-muted text-xs block">Registro Decreto 2293/92 <!--<b class="caret"></b>--></span> </span> 
+                    </div>
+                    <div class="logo-element">
+                        CPAU
+                    </div>
+                </li>                
+                <li>
+                    <a [routerLink]="'gestion/home'"><i class="fa fa-th-large"></i> <span class="nav-label">Inicio</span></a>             
+                </li>
+                <li class="active">
+                    <a><i class="fa fa-user"></i> <span class="nav-label">Perfil</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse in">
+                        <li class="active"><a [routerLink]="'perfil/identificacion'">Identificación</a></li>                        
+                        <li><a href="perfil-domicilios.html">Domicilios</a></li>
+                        <li><a href="perfil-contactos.html">Contactos</a></li>
+                        <li><a href="perfil-redes_sociales.html">Redes Sociales</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-briefcase"></i> <span class="nav-label">Matrícula</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="#">Estado</a></li>
+                        <li><a href="#">Derecho Anual</a></li>
+                        <li><a href="#">Certificado</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-graduation-cap"></i> <span class="nav-label">Oferta de Servicios</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="#">Actividad Profesional</a></li>
+                        <li><a href="#">Experiencia</a></li>
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">Posgrados</a></li>
+                        <li><a href="#">Asociados</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-newspaper-o"></i> <span class="nav-label">Suscripciones</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="#">Publicaciones</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                        <li><a href="#">Temas de Interés</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-building"></i> <span class="nav-label">Encomiendas</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="#">Nuevo RETP</a></li>
+                        <li><a href="#">Histórico</a></li>
+                    </ul>
+                </li>                
+                <li>
+                    <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Compras On-line</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">Publicaciones</a></li>
+                        <li><a href="#">Merchandising</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Herramientas</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="#">CPAU MAIL</a></li>
+                    </ul>
+                </li>               
+                <li>
+                    <a href="#"><i class="fa fa-lock"></i> <span class="nav-label">Seguridad</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="#">Usuario</a></li>
+                        <li><a href="#">Contraseña</a></li>
+                    </ul>
+                </li>          
+            </ul>
+
+        </div>
+    </nav>
+</div>
+<div id="page-wrapper" class="gray-bg" style="min-height: 329px;">
+    <div class="row border-bottom">   
+        <app-header></app-header>
+    </div>
+
+    <!--INCIO CONTENIDO-->    
+        
+    <ng-content></ng-content>
+
+    <!--FIN CONTENIDO--> 
+    <app-footer></app-footer>
+
+
+</div>
+
+
+
+
+

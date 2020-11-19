@@ -1,0 +1,10 @@
+@import './../../gestion.css';
+.header {
+    display: block;
+    width: 85vw;
+    margin: 0.5% 0;
+}
+
+.header .navbar-header {
+    display: contents;
+}
