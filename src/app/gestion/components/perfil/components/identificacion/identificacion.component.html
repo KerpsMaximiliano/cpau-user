@@ -37,14 +37,16 @@
                                 <div class="form-group"><label class="col-sm-2 control-label">Nombres:</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" disabled="" placeholder="Luciano">
+                                        <input type="text" class="form-control" formControlName="nombre" disabled=""
+                                            placeholder="Luciano">
                                     </div>
                                 </div>
 
                                 <div class="form-group"><label class="col-sm-2 control-label">Apellidos:</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" disabled="" placeholder="Carnevalini">
+                                        <input type="text" class="form-control" disabled="" formControlName="apellido"
+                                            placeholder="Carnevalini">
                                     </div>
                                 </div>
 
@@ -53,10 +55,18 @@
 
                                     <label class="col-sm-2 control-label">Sexo:</label>
                                     <div class="col-sm-10">
-                                        <div class="col-md-3 radio i-checks"> <label> <input type="radio" disabled=""
-                                                    checked="" value="option2"> <i></i> Masculino </label></div>
-                                        <div class="col-md-3 radio i-checks"> <label> <input type="radio" disabled=""
-                                                    name="a"> <i></i> Femenino</label></div>
+                                        <div class="col-md-3 radio i-checks">
+                                            <label>
+                                                <input type="radio" formControlName="sexo" checked="" value="M"> <i></i>
+                                                Masculino
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3 radio i-checks">
+                                            <label>
+                                                <input type="radio" formControlName="sexo" name="a" value="F"> <i></i>
+                                                Femenino
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -65,21 +75,20 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Documento:</label>
                                     <div class="col-sm-10">
-
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <input type="text" placeholder="D.N.I." disabled=""
-                                                    class="form-control">
-
+                                            <div *ngIf="(docTypes$ | async) as docTypes" class="col-md-4">
+                                                <select id="countries" formControlName="tipoDoc"
+                                                    class="identification-select browser-default custom-select">
+                                                    <option *ngFor="let type of docTypes" [value]="type.id">
+                                                        {{ type.descripcion }}</option>
+                                                </select>
                                                 <span class="help-block m-b-none">Tipo</span>
                                             </div>
-
                                             <div class="col-md-8">
-                                                <input type="text" placeholder="28648062" disabled=""
-                                                    class="form-control">
+                                                <input type="text" placeholder="28648062" formControlName="nroDoc"
+                                                    disabled="" class="form-control">
                                                 <span class="help-block m-b-none">Número</span>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +97,6 @@
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nacimiento:</label>
-
                                     <div class="col-sm-10">
                                         <div class="row">
                                             <div class="col-md-4">
@@ -96,10 +104,12 @@
                                                     disabled="" placeholder="28/03/1981">
                                                 <span class="help-block">Fecha</span>
                                             </div>
-
-                                            <div class="col-md-8">
-                                                <input type="text" placeholder="Argentina" disabled=""
-                                                    class="form-control">
+                                            <div *ngIf="(countries$ | async) as countries" class="col-md-8">
+                                                <select id="countries" formControlName="paisNac"
+                                                    class=" identification-select browser-default custom-select">
+                                                    <option *ngFor="let country of countries" [value]="country.id">
+                                                        {{ country.descripcion }}</option>
+                                                </select>
                                                 <span class="help-block m-b-none">País</span>
                                             </div>
                                         </div>
@@ -109,24 +119,22 @@
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group">
-
                                     <div class="alert alert-warning">
                                         <a class="alert-link" href="#">Atención!</a><br>
                                         Si Ud. desea modificar alguno de los datos personales que estan grisados,
                                         contáctese con cualquier personal del staff del Consejo.<br>
                                         Horario: Lunes a Viernes de 9 a 17hs. al +54 (011) 5238-1068.
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
+                        <button (click)="onClick()">SAREAWEASESRA</button>
                     </form>
                 </div>
 
             </div>
         </div>
     </div>
-
     <!--FIN TAB IDENTIFICACION-->
+
 </div>
