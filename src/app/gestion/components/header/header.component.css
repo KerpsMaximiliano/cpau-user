@@ -8,3 +8,7 @@
 .header .navbar-header {
     display: contents;
 }
+.btn-logout:hover {
+    color: #FFFFFF;
+    background-color: #000000;   
+}
