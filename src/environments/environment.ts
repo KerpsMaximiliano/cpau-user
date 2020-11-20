@@ -10,6 +10,10 @@ export const environment = {
     // production: true,
     // apiUrl: 'https://cpauorgapi.azurewebsites.net',
     // oldSiteUrl: ''
+
+
+    // apiUrl: 'https://cpauorgapi.azurewebsites.net',
+    // https://cpauorgapi-test.azurewebsites.net
 };
 
 /*
