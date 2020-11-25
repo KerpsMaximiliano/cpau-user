@@ -6,3 +6,18 @@
 .identification-select {
    height: calc(1.5em + 1.75rem + 2px);
 }
+.actions-buttons {
+   display: flex;
+   justify-content: flex-end;
+   align-items: flex-end;
+
+}
+.actions-buttons button {
+   margin-right: 5px;
+}
+.form-control.ng-invalid.ng-touched {
+   border: 1px solid red;
+}
+.error-text {
+   color: red;
+}
