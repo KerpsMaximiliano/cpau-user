@@ -6,13 +6,15 @@ import { HomeComponent } from './components/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ActionTableComponent } from '@app/shared/components/action-table/action-table.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, MenuComponent, HeaderComponent, FooterComponent],
+  declarations: [HomeComponent, MenuComponent, HeaderComponent, FooterComponent, ActionTableComponent],
   imports: [
     CommonModule,
-    GestionRoutingModule
-  ]
+    GestionRoutingModule,
+  ],
+  exports: [ActionTableComponent]
 })
 export class GestionModule { }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PerfilRoutingModule } from './perfil-routing.module';
 import { IdentificacionComponent } from './components/identificacion/identificacion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GestionModule } from '@app/gestion/gestion.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PerfilRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    GestionModule
   ]
 })
 export class PerfilModule { }

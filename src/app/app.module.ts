@@ -42,7 +42,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 import { PreregisterComponent } from "./login/preregister/preregister.component";;
 import { RegisterMatriculadoComponent } from './login/register/register-matriculado/register-matriculado.component';
 import { RegisterNomatriculadoComponent } from './login/register/register-nomatriculado/register-nomatriculado.component'
-import { GestionModule } from './gestion/gestion.module';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -88,7 +88,7 @@ import { GestionModule } from './gestion/gestion.module';
     PreregisterComponent,
     RegisterMatriculadoComponent,
     RegisterNomatriculadoComponent,
-    numberOnlyDirective
+    numberOnlyDirective,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

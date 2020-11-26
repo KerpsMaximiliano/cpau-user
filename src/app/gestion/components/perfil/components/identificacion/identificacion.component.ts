@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
+import { Fila, Valores } from '@app/shared/Models/ActionTable';
 import { Observable } from 'rxjs';
 import { IdentificacionService } from './service/identificacion.service';
 
@@ -12,6 +13,8 @@ import { IdentificacionService } from './service/identificacion.service';
 })
 export class IdentificacionComponent implements OnInit {
 
+
+  public filas: Fila[] = [];
 
   public identificacionForm: FormGroup;
 
@@ -51,10 +54,28 @@ export class IdentificacionComponent implements OnInit {
   }
 
   ngOnInit() {
+    const fila = new Fila();
+    fila.valores.push(new Valores({valor: '1'}));
+    fila.valores.push(new Valores({valor: 'Bootstrap 4 CDN and Starter Template'}));
+    fila.valores.push(new Valores({valor: 'Cristina'}));
+    fila.valores.push(new Valores({valor: '2.846'}));
+    this.filas.push(fila);
   }
 
   onClick() {
     this.identificacionForm.markAllAsTouched();
     console.log(this.identificacionForm);
+  }
+
+  onEditar(ev) {
+    console.log(ev);
+  }
+
+  onEliminar(ev) {
+    console.log(ev);
+  }
+
+  onVisualizar(ev) {
+    console.log(ev);
   }
 }
