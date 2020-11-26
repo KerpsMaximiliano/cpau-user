@@ -55,7 +55,6 @@ export class IdentificacionComponent implements OnInit {
       nroDoc: ['', {
         validators: [Validators.required, Validators.max(99999999), Validators.min(1000000)],
         updateOn: 'blur'
-
       }],
       fechaNac: [],
       paisNac: []
@@ -100,6 +99,19 @@ export class IdentificacionComponent implements OnInit {
 
   onVisualizar(ev) {
     console.log(ev);
+  }
+
+  public agregarFila(): void {
+    this.filas = [
+      ...this.filas,
+      {
+        valor: {
+          apellido: 'fila',
+          id: 11,
+          nombre: 'nueva'
+        }
+      }
+    ]
   }
 }
 
