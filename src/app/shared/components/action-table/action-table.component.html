@@ -1,41 +1,35 @@
 <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th *ngIf="permiteVisualizar || permiteEditar || permiteEliminar" scope="col">Acciones</th>
-              <th *ngFor="let col of columnas" scope="col">{{col}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let f of filas">
-                <th scope="row" *ngIf="permiteVisualizar || permiteEditar || permiteEliminar">
-                    <button *ngIf="permiteVisualizar"
-                            type="button"
-                            class="btn btn-primary"
-                            (click)="visualizar.emit(f)">
-                        <i class="fa fa-eye"></i>
-                    </button>
-                    <button *ngIf="permiteEditar"
-                            type="button"
-                            class="btn btn-success"
-                            (click)="editar.emit(f)">
-                        <i class="fa fa-edit"></i>
-                    </button>
-                    <button *ngIf="permiteEliminar"
-                            type="button"
-                            class="btn btn-danger"
-                            (click)="eliminar.emit(f)">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </th>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th *ngIf="permiteVisualizar || permiteEditar || permiteEliminar" scope="col">Acciones</th>
+            <th *ngFor="let col of columnas" scope="col">{{col.titulo}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of filas">
 
-                <td *ngFor="let c of f.valores">{{c.valor}}</td>
-                <!-- <ng-content></ng-content> -->
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            <th scope="row" *ngIf="permiteVisualizar || permiteEditar || permiteEliminar">
+              <button *ngIf="permiteVisualizar" type="button" class="btn btn-primary"
+                (click)="visualizar.emit(f.valor)">
+                <i class="fa fa-eye"></i>
+              </button>
+              <button *ngIf="permiteEditar" type="button" class="btn btn-success" (click)="editar.emit(f.valor)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button *ngIf="permiteEliminar" type="button" class="btn btn-danger" (click)="eliminar.emit(f.valor)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </th>
+            <ng-container *ngFor="let col of columnas">
+              <td>{{ f.valor[col.id] }}</td>
+              <!-- <ng-content></ng-content> -->
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>

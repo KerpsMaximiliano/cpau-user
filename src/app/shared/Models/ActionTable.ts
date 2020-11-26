@@ -1,16 +1,8 @@
-export class Fila {
-    valores: Valores[] = [];
+export interface Columna<T> {
+    id: keyof T;
+    titulo: string;
 }
 
-export class Valores {
-    valor: any;
-    tipoDato?: string;
-
-    /**
-     *
-     */
-    constructor(v: Valores) {
-        this.valor = v.valor;
-        this.tipoDato = v.tipoDato;
-    }
+export interface Filas<T> {
+    valor: T;
 }

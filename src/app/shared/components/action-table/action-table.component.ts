@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Fila } from '@app/shared/Models/ActionTable';
+import { Columna, Filas } from '@app/shared/Models/ActionTable';
 
 @Component({
   selector: 'app-action-table',
@@ -11,11 +11,15 @@ export class ActionTableComponent {
   @Input() permiteVisualizar = true;
   @Input() permiteEditar = true;
   @Input() permiteEliminar = true;
-  @Input() columnas: string[] = [];
-  @Input() filas: Fila[] = [];
+  @Input() columnas: Columna<any>[] = [];
+  @Input() filas: Filas<any>[] = [];
 
   @Output() visualizar = new EventEmitter();
   @Output() eliminar = new EventEmitter();
   @Output() editar = new EventEmitter();
 
 }
+
+
+
+

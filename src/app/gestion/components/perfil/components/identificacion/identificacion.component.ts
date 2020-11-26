@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
-import { Fila, Valores } from '@app/shared/Models/ActionTable';
+import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { Observable } from 'rxjs';
 import { IdentificacionService } from './service/identificacion.service';
 
@@ -14,8 +14,8 @@ import { IdentificacionService } from './service/identificacion.service';
 export class IdentificacionComponent implements OnInit {
 
 
-  public filas: Fila[] = [];
-
+  public filas: Filas<Contacto>[] = [];
+  public columnnas: Columna<Contacto>[];
   public identificacionForm: FormGroup;
 
   public countries$: Observable<SelectItem[]>;
@@ -25,6 +25,18 @@ export class IdentificacionComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private identificacionService: IdentificacionService) {
+
+
+    this.columnnas = [
+      {
+        id: 'nombre',
+        titulo: 'Nombre'
+      },
+      {
+        id: 'apellido',
+        titulo: 'Apellido'
+      }
+    ];
 
     this.identificacionForm = this.formBuilder.group({
       nombre: ['', {
@@ -54,12 +66,23 @@ export class IdentificacionComponent implements OnInit {
   }
 
   ngOnInit() {
-    const fila = new Fila();
-    fila.valores.push(new Valores({valor: '1'}));
-    fila.valores.push(new Valores({valor: 'Bootstrap 4 CDN and Starter Template'}));
-    fila.valores.push(new Valores({valor: 'Cristina'}));
-    fila.valores.push(new Valores({valor: '2.846'}));
-    this.filas.push(fila);
+
+    this.filas = [
+      {
+        valor: {
+          apellido: 'Rossi',
+          id: 0,
+          nombre: 'Alexis'
+        }
+      },
+      {
+        valor: {
+          apellido: 'Villalba',
+          id: 10,
+          nombre: 'Omar'
+        }
+      }
+    ]
   }
 
   onClick() {
@@ -78,4 +101,11 @@ export class IdentificacionComponent implements OnInit {
   onVisualizar(ev) {
     console.log(ev);
   }
+}
+
+
+export interface Contacto {
+  id: number;
+  nombre: string;
+  apellido: string;
 }

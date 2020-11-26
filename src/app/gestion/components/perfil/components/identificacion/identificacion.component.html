@@ -13,11 +13,8 @@
     </div>
 </div>
 
-<app-action-table [columnas]="['Test', 'Test2', 'Test3', 'Test4']"
-                  [filas]="filas"
-                  (editar)="onEditar($event)"
-                  (eliminar)="onEliminar($event)"
-                  (visualizar)="onVisualizar($event)">
+<app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)" (eliminar)="onEliminar($event)"
+    (visualizar)="onVisualizar($event)">
 </app-action-table>
 
 <!--TAB IDENTIFICACION-->
