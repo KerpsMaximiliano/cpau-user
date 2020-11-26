@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
-import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { Observable } from 'rxjs';
 import { IdentificacionService } from './service/identificacion.service';
 
@@ -11,11 +10,9 @@ import { IdentificacionService } from './service/identificacion.service';
   styleUrls: ['./identificacion.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IdentificacionComponent implements OnInit {
+export class IdentificacionComponent {
 
-
-  public filas: Filas<Contacto>[] = [];
-  public columnnas: Columna<Contacto>[];
+  collapsed: boolean;
   public identificacionForm: FormGroup;
 
   public countries$: Observable<SelectItem[]>;
@@ -25,18 +22,6 @@ export class IdentificacionComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private identificacionService: IdentificacionService) {
-
-
-    this.columnnas = [
-      {
-        id: 'nombre',
-        titulo: 'Nombre'
-      },
-      {
-        id: 'apellido',
-        titulo: 'Apellido'
-      }
-    ];
 
     this.identificacionForm = this.formBuilder.group({
       nombre: ['', {
@@ -64,60 +49,8 @@ export class IdentificacionComponent implements OnInit {
     this.docTypes$ = this.identificacionService.docTypes$;
   }
 
-  ngOnInit() {
-
-    this.filas = [
-      {
-        valor: {
-          apellido: 'Rossi',
-          id: 0,
-          nombre: 'Alexis'
-        }
-      },
-      {
-        valor: {
-          apellido: 'Villalba',
-          id: 10,
-          nombre: 'Omar'
-        }
-      }
-    ]
-  }
-
   onClick() {
     this.identificacionForm.markAllAsTouched();
     console.log(this.identificacionForm);
   }
-
-  onEditar(ev) {
-    console.log(ev);
-  }
-
-  onEliminar(ev) {
-    console.log(ev);
-  }
-
-  onVisualizar(ev) {
-    console.log(ev);
-  }
-
-  public agregarFila(): void {
-    this.filas = [
-      ...this.filas,
-      {
-        valor: {
-          apellido: 'fila',
-          id: 11,
-          nombre: 'nueva'
-        }
-      }
-    ]
-  }
-}
-
-
-export interface Contacto {
-  id: number;
-  nombre: string;
-  apellido: string;
 }
