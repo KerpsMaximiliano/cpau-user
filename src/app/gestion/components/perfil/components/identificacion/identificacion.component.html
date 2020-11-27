@@ -12,10 +12,6 @@
         </ol>
     </div>
 </div>
-<button class="btn btn-primary" (click)="agregarFila()"> agregar</button>
-<app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)" (eliminar)="onEliminar($event)"
-    (visualizar)="onVisualizar($event)">
-</app-action-table>
 
 <!--TAB IDENTIFICACION-->
 <div class="wrapper wrapper-content animated fadeIn">
@@ -26,15 +22,11 @@
                     <h5>Identificación</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
                         </a>
                     </div>
                 </div>
-                <div class="ibox-content">
+                <div class="ibox-content" [hidden]="collapsed">
                     <form method="get" class="form-horizontal" [formGroup]="identificacionForm">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">

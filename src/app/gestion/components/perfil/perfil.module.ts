@@ -6,10 +6,11 @@ import { IdentificacionComponent } from './components/identificacion/identificac
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GestionModule } from '@app/gestion/gestion.module';
 import { TelefonoComponent } from './components/telefono/telefono.component';
+import { DomicilioComponent } from './components/domicilio/domicilio.component';
 
 
 @NgModule({
-  declarations: [IdentificacionComponent, TelefonoComponent],
+  declarations: [IdentificacionComponent, DomicilioComponent, TelefonoComponent],
   imports: [
     CommonModule,
     PerfilRoutingModule,

@@ -1,0 +1,107 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Domicilios</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>Perfil</a>
+            </li>
+            <li class="active">
+                <a><strong>Domicilios</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!--TAB DOMICILIO-->
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Domicilios</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+                        </a>
+                    </div>
+                    <div class="ibox-content" [hidden]="collapsed">
+                        <form method="get" class="form-horizontal" [formGroup]="domicilioForm">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Tipo Domicilio:</label>
+                                    <div class="col-sm-10">
+                                        <div *ngIf="tiposDomicilios$ | async as tiposDomicilios" class="col-md-8">
+                                            <select id="tiposDomicilios" formControlName="idTipoDomicilio"
+                                                class="tipo-domicilio-select browser-default custom-select">
+                                                <option *ngFor="let tp of tiposDomicilios" [value]="tp.id">
+                                                    {{ tp.descripcion }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Calle:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" formControlName="calle"
+                                            placeholder="Calle">
+                                        <small class="error-text"
+                                            *ngIf="domicilioForm.controls.calle.errors?.required &&
+                                                   domicilioForm.controls.calle.touched">Campo requerido
+                                        </small>
+                                        <small class="error-text" *ngIf="(domicilioForm.controls.calle.errors?.minlength ||
+                                                                          domicilioForm.controls.calle.errors?.maxlength )
+                                                                        && domicilioForm.controls.calle.touched">
+                                            La longitud permitida es entre 1 y 100 caracteres
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Altura:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" formControlName="altura"
+                                            placeholder="Altura">
+                                        <small class="error-text"
+                                            *ngIf="domicilioForm.controls.altura.errors?.required &&
+                                                   domicilioForm.controls.altura.touched">Campo requerido
+                                        </small>
+                                        <small class="error-text" *ngIf="(domicilioForm.controls.altura.errors?.minlength ||
+                                                                          domicilioForm.controls.altura.errors?.maxlength )
+                                                                        && domicilioForm.controls.altura.touched">
+                                            La longitud permitida es entre 1 y 7 caracteres
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4"><button class="btn btn-primary" (click)="agregarFila()"> agregar</button></div>
+                        </div>
+                        </form>
+                        <div class="row">
+                            <app-action-table [columnas]="columnnas"
+                                              [filas]="filas"
+                                              (editar)="onEditar($event)"
+                                              (eliminar)="onEliminar($event)"
+                                              (visualizar)="onVisualizar($event)">
+                            </app-action-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--FIN TAB DOMICILIO-->
