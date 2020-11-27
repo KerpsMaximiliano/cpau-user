@@ -1,0 +1,101 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Telefono</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>Perfil</a>
+            </li>
+            <li class="active">
+                <a><strong>Telefono</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!--TAB IDENTIFICACION-->
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Telefonos</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="get" class="form-horizontal" [formGroup]="telefonoForm">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Tipo:</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div *ngIf="(tipos$ | async) as telTypes" class="col-md-4">
+                                                <select id="countries" formControlName="tipo"
+                                                    class="identification-select browser-default custom-select">
+                                                    <option *ngFor="let type of telTypes" [value]="type.id">
+                                                        {{ type.descripcion }}</option>
+                                                </select>
+                                            </div>
+                                            <!-- <div class="col-md-8">
+                                                <input type="text" placeholder="28648062" formControlName="nroDoc"
+                                                    class="form-control">
+                                                <small class="error-text"
+                                                    *ngIf="telefonoForm.controls.nroDoc.errors?.required && telefonoForm.controls.nroDoc.touched">Campo
+                                                    requerido
+                                                </small>
+                                                <small class="error-text" *ngIf="(telefonoForm.controls.nroDoc.errors?.min || telefonoForm.controls.nroDoc.errors?.max )
+                                                     ">
+                                                    Ingrese un documento valido entre 8 y 9 digitos.
+                                                </small>
+                                                <span class="help-block m-b-none">Número</span>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+
+                                    <label class="col-sm-2 control-label">Nombres:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" formControlName="numero">
+                                        <small class="error-text"
+                                            *ngIf="telefonoForm.controls.numero.errors?.required && telefonoForm.controls.numero.touched">Campo
+                                            requerido
+                                        </small>
+                                        <small class="error-text" *ngIf="(telefonoForm.controls.numero.errors?.minlength || telefonoForm.controls.numero.errors?.maxlength )
+                                             && telefonoForm.controls.numero.touched">
+                                            La longitud permitida es entre 2 y 200 caracteres
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions-buttons">
+                            <button class="btn btn-primary" (click)="agregarFila()"> agregar</button>
+                        </div>
+
+                    </form>
+                </div>
+                <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
+                    (eliminar)="onEliminar($event)" (visualizar)="onVisualizar($event)">
+                </app-action-table>
+
+            </div>
+        </div>
+    </div>
+    <!--FIN TAB IDENTIFICACION-->
+
+</div>
