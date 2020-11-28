@@ -6,6 +6,7 @@ import { IdentificacionComponent } from './components/identificacion/identificac
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GestionModule } from '@app/gestion/gestion.module';
 import { DomicilioComponent } from './components/domicilio/domicilio.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DomicilioComponent } from './components/domicilio/domicilio.component';
     PerfilRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    GestionModule
+    GestionModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ]
 })
 export class PerfilModule { }
