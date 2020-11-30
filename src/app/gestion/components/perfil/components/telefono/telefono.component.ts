@@ -48,17 +48,12 @@ export class TelefonoComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick() {
-    // this.identificacionForm.markAllAsTouched();
-    // console.log(this.identificacionForm);
-  }
-
   onEditar(ev) {
-    console.log(ev);
+    this.telefonoService.update({});
   }
 
   onEliminar(ev) {
-    console.log(ev);
+    this.telefonoService.delete({});
   }
 
   onVisualizar(ev) {
@@ -67,11 +62,8 @@ export class TelefonoComponent implements OnInit {
 
   public agregarFila(): void {
 
-
     const request = this.telefonoForm.value as TelefonoRequestModel;
-
-
-    this.telefonoService.AddPhone(request).subscribe(telefono => {
+    this.telefonoService.insert(request).subscribe(telefono => {
       this.filas = [
         ...this.filas,
         {
@@ -79,19 +71,7 @@ export class TelefonoComponent implements OnInit {
             ...telefono
           }
         }
-      ]
+      ];
     });
-
-    // this.filas = [
-    //   ...this.filas,
-    //   {
-    //     valor: {
-    //       id: 1,
-    //       tipo: 1,
-    //       numero: 12345678,
-    //       tipoDescripcion: 'sarasaaa'
-    //     }
-    //   }
-    // ];
   }
 }

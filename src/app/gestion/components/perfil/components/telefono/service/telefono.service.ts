@@ -40,10 +40,18 @@ export class TelefonoService {
 
 
 
-  public AddPhone(request: TelefonoRequestModel): Observable<Telefono> {
+  public insert(request: TelefonoRequestModel): Observable<Telefono> {
     return of({
       ...request,
       tipoDescripcion: 'Personal'
     } as Telefono);
+  }
+
+  public update(request: any): Observable<any> {
+    return of();
+  }
+
+  public delete(request: any): Observable<any> {
+    return of();
   }
 }
