@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
-import { Telefono } from './models/telefono.model';
+import { Telefono, TelefonoRequestModel } from './models/telefono.model';
 import { TelefonoService } from './service/telefono.service';
 
 @Component({
@@ -32,6 +32,7 @@ export class TelefonoComponent implements OnInit {
         titulo: 'Numero'
       }
     ];
+
     this.telefonoForm = this.formBuilder.group({
       numero: ['', {
         validators: [Validators.required, Validators.maxLength(10), Validators.minLength(10)],
@@ -63,13 +64,34 @@ export class TelefonoComponent implements OnInit {
   onVisualizar(ev) {
     console.log(ev);
   }
+
   public agregarFila(): void {
-    this.filas = [
-      ...this.filas,
-      // {
-      //   valor: {
-      //   }
-      // }
-    ];
+
+
+    const request = this.telefonoForm.value as TelefonoRequestModel;
+
+
+    this.telefonoService.AddPhone(request).subscribe(telefono => {
+      this.filas = [
+        ...this.filas,
+        {
+          valor: {
+            ...telefono
+          }
+        }
+      ]
+    });
+
+    // this.filas = [
+    //   ...this.filas,
+    //   {
+    //     valor: {
+    //       id: 1,
+    //       tipo: 1,
+    //       numero: 12345678,
+    //       tipoDescripcion: 'sarasaaa'
+    //     }
+    //   }
+    // ];
   }
 }

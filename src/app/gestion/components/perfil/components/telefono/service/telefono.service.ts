@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { Telefono, TelefonoRequestModel } from '../models/telefono.model';
 
 
 
@@ -36,4 +37,13 @@ export class TelefonoService {
   public tiposTelefonos$ = of(TELEFONOS_TYPES);
 
   constructor(private httpClient: HttpClient) { }
+
+
+
+  public AddPhone(request: TelefonoRequestModel): Observable<Telefono> {
+    return of({
+      ...request,
+      tipoDescripcion: 'Personal'
+    } as Telefono);
+  }
 }
