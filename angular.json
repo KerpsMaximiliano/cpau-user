@@ -33,7 +33,8 @@
                             "src/stylesCustom/styles/bootstrap/bootstrap.css",
                             "src/stylesCustom/styles/cpau.css",
                             "src/stylesCustom/styles/carousel.css",
-                            "src/stylesCustom/styles/fontawesome/font-awesome.css"
+                            "src/stylesCustom/styles/fontawesome/font-awesome.css",
+                            "node_modules/ngx-toastr/toastr.css"
                         ],
                         "scripts": [
                             "src/stylesCustom/js/scrollup/lib/jquery-1.11.1.min.js",

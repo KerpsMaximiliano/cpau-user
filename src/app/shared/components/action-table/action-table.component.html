@@ -12,10 +12,10 @@
           <tr *ngFor="let f of filas">
 
             <th scope="row" *ngIf="permiteVisualizar || permiteEditar || permiteEliminar">
-              <button *ngIf="permiteVisualizar" type="button" class="btn btn-primary"
+              <!-- <button *ngIf="permiteVisualizar" type="button" class="btn btn-primary"
                 (click)="visualizar.emit(f.valor)">
                 <i class="fa fa-eye"></i>
-              </button>
+              </button> -->
               <button *ngIf="permiteEditar" type="button" class="btn btn-success" (click)="editar.emit(f.valor)">
                 <i class="fa fa-edit"></i>
               </button>

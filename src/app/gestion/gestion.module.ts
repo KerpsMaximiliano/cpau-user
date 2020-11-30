@@ -7,6 +7,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ActionTableComponent } from '@app/shared/components/action-table/action-table.component';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ActionTableComponent } from '@app/shared/components/action-table/action
   imports: [
     CommonModule,
     GestionRoutingModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   exports: [ActionTableComponent]
 })
