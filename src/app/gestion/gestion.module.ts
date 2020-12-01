@@ -7,8 +7,11 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ActionTableComponent } from '@app/shared/components/action-table/action-table.component';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { FormErrorComponent } from '@app/shared/components/form-error/form-error.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ModalComponent } from '@app/shared/components/modal/modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
 
 @NgModule({
@@ -17,6 +20,7 @@ import { FormErrorComponent } from '@app/shared/components/form-error/form-error
     CommonModule,
     GestionRoutingModule,
     ToastrModule.forRoot(), // ToastrModule added
+    BootstrapModalModule
   ],
   exports: [ActionTableComponent, FormErrorComponent]
 })

@@ -39,11 +39,13 @@ import { NotePreviewComponent } from "./home/components/notePreview/notePreview.
 import { Safe } from "./_directive/pipeSafeHTML.directive";
 import { FormComponent } from "./form/form.component";
 import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
-import { PreregisterComponent } from "./login/preregister/preregister.component";;
+import { PreregisterComponent } from "./login/preregister/preregister.component";
 import { RegisterMatriculadoComponent } from './login/register/register-matriculado/register-matriculado.component';
 import { RegisterNomatriculadoComponent } from './login/register/register-nomatriculado/register-nomatriculado.component'
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';;
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 @NgModule({
   imports: [
@@ -57,7 +59,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';;
     RecaptchaFormsModule, // this is the module for form incase form validation
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    BootstrapModalModule.forRoot({ container: document.body })
   ],
   declarations: [
     AppComponent,
@@ -91,7 +94,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';;
     PreregisterComponent,
     RegisterMatriculadoComponent,
     RegisterNomatriculadoComponent,
-    numberOnlyDirective
+    numberOnlyDirective,
+    ModalComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -105,6 +109,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';;
     TemplateListComponent,
     TemplateFourComponent,
     TemplateFiveComponent,
+    ModalComponent
   ],
   bootstrap: [AppComponent],
 })
