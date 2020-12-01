@@ -148,7 +148,8 @@
                                                    domicilioForm.controls.codigoPostal.touched">Campo requerido
                                         </small>
                                         <small class="error-text" *ngIf="(domicilioForm.controls.codigoPostal.errors?.minlength ||
-                                                                          domicilioForm.controls.codigoPostal.errors?.maxlength )
+                                                                          domicilioForm.controls.codigoPostal.errors?.maxlength ||
+                                                                          domicilioForm.controls.codigoPostal.errors?.pattern)
                                                                         && domicilioForm.controls.codigoPostal.touched">
                                             El formato permitido es NNNN 0 LLNNNNL (N es numérico y L letra)
                                         </small>
