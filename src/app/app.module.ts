@@ -43,7 +43,7 @@ import { PreregisterComponent } from "./login/preregister/preregister.component"
 import { RegisterMatriculadoComponent } from './login/register/register-matriculado/register-matriculado.component';
 import { RegisterNomatriculadoComponent } from './login/register/register-nomatriculado/register-nomatriculado.component'
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';;
 
 @NgModule({
   imports: [
@@ -91,7 +91,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PreregisterComponent,
     RegisterMatriculadoComponent,
     RegisterNomatriculadoComponent,
-    numberOnlyDirective,
+    numberOnlyDirective
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -108,4 +108,4 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

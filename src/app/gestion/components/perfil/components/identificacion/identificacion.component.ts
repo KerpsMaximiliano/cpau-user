@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
+import { FieldErrorsMessages } from '@app/shared/components/form-error/form-error.component';
 import { Observable } from 'rxjs';
 import { IdentificacionService } from './service/identificacion.service';
 
@@ -18,6 +19,11 @@ export class IdentificacionComponent {
   public countries$: Observable<SelectItem[]>;
 
   public docTypes$: Observable<SelectItem[]>;
+  public fieldErrors: FieldErrorsMessages = {
+    required: 'Campo Requerido',
+    minlength: 'La longitud debe ser mayor a 2 caracteres',
+    maxlength: 'La longitud debe ser menor a 200 caracteres'
+  }
 
   constructor(
     private formBuilder: FormBuilder,
