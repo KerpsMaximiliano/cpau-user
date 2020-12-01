@@ -42,19 +42,23 @@
                                                     <option *ngFor="let type of telTypes" [value]="type.id">
                                                         {{ type.descripcion }}</option>
                                                 </select>
+                                                <form-error [errors]="telefonoForm.controls.tipo.errors"
+                                                    [errorsMessages]="{
+                                                      required: 'Campo Requerido'
+                                                      }" [controlTouched]="telefonoForm.controls.tipo.touched">
+                                                </form-error>
                                             </div>
                                             <div class="col-md-8">
                                                 <label class="col-sm-2 control-label">Numero:</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" formControlName="numero">
-                                                    <small class="error-text"
-                                                        *ngIf="telefonoForm.controls.numero.errors?.required && telefonoForm.controls.numero.touched">Campo
-                                                        requerido
-                                                    </small>
-                                                    <small class="error-text" *ngIf="(telefonoForm.controls.numero.errors?.minlength || telefonoForm.controls.numero.errors?.maxlength )
-                                                         && telefonoForm.controls.numero.touched">
-                                                        La longitud permitida es entre 2 y 200 caracteres
-                                                    </small>
+                                                    <form-error [errors]="telefonoForm.controls.numero.errors"
+                                                        [errorsMessages]="{
+                                                      required: 'Campo Requerido',
+                                                      minlength: 'La longitud permitida es entre 2 y 200 caracteres.',
+                                                      maxlength: 'La longitud permitida es entre 2 y 200 caracteres.'
+                                                    }" [controlTouched]="telefonoForm.controls.numero.touched">
+                                                    </form-error>
                                                 </div>
                                             </div>
                                         </div>

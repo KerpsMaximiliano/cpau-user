@@ -60,7 +60,7 @@ import { ModalComponent } from './shared/components/modal/modal.component';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    BootstrapModalModule.forRoot({container: document.body})
+    BootstrapModalModule.forRoot({ container: document.body })
   ],
   declarations: [
     AppComponent,
@@ -113,4 +113,4 @@ import { ModalComponent } from './shared/components/modal/modal.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

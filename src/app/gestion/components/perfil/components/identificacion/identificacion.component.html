@@ -37,14 +37,15 @@
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" formControlName="nombre"
                                             placeholder="Luciano">
-                                        <small class="error-text"
-                                            *ngIf="identificacionForm.controls.nombre.errors?.required && identificacionForm.controls.nombre.touched">Campo
-                                            requerido
-                                        </small>
-                                        <small class="error-text" *ngIf="(identificacionForm.controls.nombre.errors?.minlength || identificacionForm.controls.nombre.errors?.maxlength )
-                                             && identificacionForm.controls.nombre.touched">
-                                            La longitud permitida es entre 2 y 200 caracteres
-                                        </small>
+
+
+                                        <form-error [errors]="identificacionForm.controls.nombre.errors"
+                                            [errorsMessages]="{
+                                              required: 'Campo Requerido',
+                                              minlength: 'La longitud debe ser mayor a 2 caracteres',
+                                              maxlength: 'La longitud debe ser menor a 200 caracteres'
+                                            }" [controlTouched]="identificacionForm.controls.nombre.touched">
+                                        </form-error>
                                     </div>
                                 </div>
 
@@ -53,14 +54,13 @@
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" formControlName="apellido"
                                             placeholder="Carnevalini">
-                                        <small class="error-text"
-                                            *ngIf="identificacionForm.controls.apellido.errors?.required && identificacionForm.controls.apellido.touched">Campo
-                                            requerido
-                                        </small>
-                                        <small class="error-text" *ngIf="(identificacionForm.controls.apellido.errors?.minlength || identificacionForm.controls.apellido.errors?.maxlength )
-                                             && identificacionForm.controls.nombre.touched">
-                                            La longitud permitida es entre 2 y 200 caracteres
-                                        </small>
+                                        <form-error [errors]="identificacionForm.controls.apellido.errors"
+                                            [errorsMessages]="{
+                                              required: 'Campo Requerido',
+                                              minlength: 'La longitud debe ser mayor a 2 caracteres',
+                                              maxlength: 'La longitud debe ser menor a 200 caracteres'
+                                            }" [controlTouched]="identificacionForm.controls.apellido.touched">
+                                        </form-error>
                                     </div>
                                 </div>
 
@@ -83,10 +83,10 @@
                                                 Femenino
                                             </label>
                                         </div>
-                                        <small class="error-text"
-                                            *ngIf="identificacionForm.controls.sexo.errors?.required && identificacionForm.controls.sexo.touched">Campo
-                                            requerido
-                                        </small>
+                                        <form-error [errors]="identificacionForm.controls.sexo.errors" [errorsMessages]="{
+                                          required: 'Campo Requerido'
+                                        }" [controlTouched]="identificacionForm.controls.sexo.touched">
+                                        </form-error>
                                     </div>
                                 </div>
 
@@ -107,14 +107,13 @@
                                             <div class="col-md-8">
                                                 <input type="text" placeholder="28648062" formControlName="nroDoc"
                                                     class="form-control">
-                                                <small class="error-text"
-                                                    *ngIf="identificacionForm.controls.nroDoc.errors?.required && identificacionForm.controls.nroDoc.touched">Campo
-                                                    requerido
-                                                </small>
-                                                <small class="error-text" *ngIf="(identificacionForm.controls.nroDoc.errors?.min || identificacionForm.controls.nroDoc.errors?.max )
-                                                     ">
-                                                    Ingrese un documento valido entre 8 y 9 digitos.
-                                                </small>
+                                                <form-error [errors]="identificacionForm.controls.nroDoc.errors"
+                                                    [errorsMessages]="{
+                                                      required: 'Campo Requerido',
+                                                      min: 'Ingrese un documento valido entre 8 y 9 digitos.',
+                                                      max: 'Ingrese un documento valido entre 8 y 9 digitos.'
+                                                    }" [controlTouched]="identificacionForm.controls.nroDoc.touched">
+                                                </form-error>
                                                 <span class="help-block m-b-none">Número</span>
                                             </div>
                                         </div>
