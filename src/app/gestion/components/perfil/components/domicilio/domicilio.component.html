@@ -135,8 +135,6 @@
                                             <form-error [errors]="domicilioForm.controls.codigoPostal.errors"
                                                 [errorsMessages]="{
                                               required: 'Campo Requerido',
-                                              minlength: 'El formato permitido es NNNN 0 LLNNNNL (N es numérico y L letra)',
-                                              maxlength: 'El formato permitido es NNNN 0 LLNNNNL (N es numérico y L letra)',
                                               pattern: 'El formato permitido es NNNN 0 LLNNNNL (N es numérico y L letra)'
                                             }" [controlTouched]="domicilioForm.controls.codigoPostal.touched">
                                             </form-error>
@@ -152,6 +150,7 @@
                                 </div>
                             </div>
                         </form>
+                        <div class="hr-line-dashed"></div>
                         <div class="row container-action-table">
                             <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
                                 (eliminar)="onEliminar($event)">

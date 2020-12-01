@@ -17,7 +17,6 @@ export class DomicilioComponent implements OnInit {
 
   get f() { return this.domicilioForm.controls; }
 
-  @ViewChild('modal', {static: true}) private modalComponent: ModalComponent;
   collapsed: boolean;
   public filas: Filas<Domicilio>[] = [];
   public columnnas: Columna<Domicilio>[];
