@@ -18,6 +18,10 @@ const routes: Routes = [
         path: 'perfil',
         loadChildren: () => import('./components/perfil/perfil.module').then(m => m.PerfilModule),
       },
+      {
+        path: 'matricula',
+        loadChildren: () => import('./components/matricula/matricula.module').then(m => m.MatriculaModule),
+      },
     ]
   },
 

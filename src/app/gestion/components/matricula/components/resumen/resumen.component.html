@@ -1,0 +1,41 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Resumen</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>Matrícula</a>
+            </li>
+            <li class="active">
+                <a><strong>Resumen</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Resumen</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                        <div class="row container-action-table">
+                            <app-action-table [columnas]="columnas"
+                                              [filas]="filas"
+                                              [permiteEliminar]="false"
+                                              [permiteEditar]="false"
+                                              [permiteVisualizar]="false">
+                            </app-action-table>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
