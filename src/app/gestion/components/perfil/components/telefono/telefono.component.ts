@@ -16,6 +16,7 @@ export class TelefonoComponent implements OnInit {
 
   get f() { return this.telefonoForm.controls; }
 
+  collapsed: boolean;
   public filas: Filas<Telefono>[] = [];
   public columnnas: Columna<Telefono>[];
   public telefonoForm: FormGroup;
