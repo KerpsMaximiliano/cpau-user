@@ -1,0 +1,47 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Derecho anual</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>Matrícula</a>
+            </li>
+            <li class="active">
+                <a><strong>Derecho anual</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Derecho anual</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                        <h5>A continuación le detallaremos su estado de deuda:</h5>
+                        <div class="row container-action-table">
+                            <app-action-table [columnas]="columnas"
+                                              [filas]="filas"
+                                              [permiteEliminar]="false"
+                                              [permiteEditar]="false"
+                                              [permiteVisualizar]="false"
+                                              [mostrarTotal]="true">
+                            </app-action-table>
+                        </div>
+                        <div class="actions-buttons">
+                            <button class="btn btn-success" (click)="onPagarDerechoAnual()">Pagar derecho anual</button>
+                            <button class="btn btn-primary" (click)="onGenerarBoletaPago()">Generar boleta de pago</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

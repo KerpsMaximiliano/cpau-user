@@ -6,10 +6,11 @@ import { ResumenComponent } from './components/resumen/resumen.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GestionModule } from '@app/gestion/gestion.module';
 import { ToastrModule } from 'ngx-toastr';
+import { DerechoAnualComponent } from './components/derecho-anual/derecho-anual.component';
 
 
 @NgModule({
-  declarations: [ResumenComponent],
+  declarations: [ResumenComponent, DerechoAnualComponent],
   imports: [
     CommonModule,
     MatriculaRoutingModule,
