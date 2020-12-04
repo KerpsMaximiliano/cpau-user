@@ -1,0 +1,16 @@
+@import '../.././../../gestion.css';
+
+.tipo-obras-select, .destino-obras-select {
+    height: calc(1.5em + 1.75rem + 2px);
+ }
+
+.form-control.ng-invalid.ng-touched {
+    border: 1px solid red;
+ }
+ .error-text {
+    color: red;
+ }
+
+ .container-action-table {
+     overflow-x: auto;
+ }

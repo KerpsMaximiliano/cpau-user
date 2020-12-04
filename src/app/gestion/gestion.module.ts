@@ -11,14 +11,18 @@ import { FormErrorComponent } from '@app/shared/components/form-error/form-error
 import { ToastrModule } from 'ngx-toastr';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
-
 @NgModule({
-  declarations: [HomeComponent, MenuComponent, HeaderComponent, FooterComponent, ActionTableComponent, FormErrorComponent],
+  declarations: [HomeComponent,
+                 MenuComponent,
+                 HeaderComponent,
+                 FooterComponent,
+                 ActionTableComponent,
+                 FormErrorComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,
     ToastrModule.forRoot(), // ToastrModule added
-    BootstrapModalModule
+    BootstrapModalModule,
   ],
   exports: [ActionTableComponent, FormErrorComponent]
 })
