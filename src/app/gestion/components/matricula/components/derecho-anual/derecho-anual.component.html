@@ -1,3 +1,6 @@
+<div class="modal fade show in" role="dialog" style="display:block !important;" *ngIf="mostrarPop">
+    <app-pagar-boleta (cerrar)="mostrarPop=false"></app-pagar-boleta>
+</div>
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
@@ -29,11 +32,11 @@
                         <h5>A continuación le detallaremos su estado de deuda:</h5>
                         <div class="row container-action-table">
                             <app-action-table [columnas]="columnas"
-                                              [filas]="filas"
-                                              [permiteEliminar]="false"
-                                              [permiteEditar]="false"
-                                              [permiteVisualizar]="false"
-                                              [mostrarTotal]="true">
+                                            [filas]="filas"
+                                            [permiteEliminar]="false"
+                                            [permiteEditar]="false"
+                                            [permiteVisualizar]="false"
+                                            [mostrarTotal]="true">
                             </app-action-table>
                         </div>
                         <div class="actions-buttons">

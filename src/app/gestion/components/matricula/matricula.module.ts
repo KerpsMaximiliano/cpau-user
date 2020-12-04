@@ -7,10 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GestionModule } from '@app/gestion/gestion.module';
 import { ToastrModule } from 'ngx-toastr';
 import { DerechoAnualComponent } from './components/derecho-anual/derecho-anual.component';
+import { PagarBoletaComponent } from './components/derecho-anual/pagar-boleta/pagar-boleta.component';
 
 
 @NgModule({
-  declarations: [ResumenComponent, DerechoAnualComponent],
+  declarations: [ResumenComponent, DerechoAnualComponent, PagarBoletaComponent],
   imports: [
     CommonModule,
     MatriculaRoutingModule,

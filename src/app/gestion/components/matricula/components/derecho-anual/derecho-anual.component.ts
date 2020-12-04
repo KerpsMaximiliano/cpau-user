@@ -11,6 +11,7 @@ import { DerechoAnualService } from './services/derecho-anual.service';
 })
 export class DerechoAnualComponent implements OnInit {
 
+  mostrarPop: boolean;
   collapsed: boolean;
   public filas: Filas<DerechoAnual>[] = [];
   public columnas: Columna<DerechoAnual>[];
@@ -44,7 +45,7 @@ export class DerechoAnualComponent implements OnInit {
   }
 
   onPagarDerechoAnual() {
-    // DECIDIR
+    this.mostrarPop = true;
   }
 
   onGenerarBoletaPago() {
