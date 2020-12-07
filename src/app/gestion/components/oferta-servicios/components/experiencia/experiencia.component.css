@@ -14,3 +14,10 @@
  .container-action-table {
      overflow-x: auto;
  }
+ .input-group-addon {
+    width: auto;
+    height: 8vh;
+ }
+ .datepicker {
+    width: 83%;
+ }

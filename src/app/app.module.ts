@@ -46,6 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ModalComponent } from './shared/components/modal/modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -60,7 +61,8 @@ import { ModalComponent } from './shared/components/modal/modal.component';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    BootstrapModalModule.forRoot({ container: document.body })
+    BootstrapModalModule.forRoot({ container: document.body }),
+    NgbModule
   ],
   declarations: [
     AppComponent,

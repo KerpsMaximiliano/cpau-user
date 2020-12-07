@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -17,7 +18,8 @@ import { ExperienciaService } from './service/experiencia.service';
 export class ExperienciaComponent implements OnInit {
 
   get f() { return this.experienciaForm.controls; }
-
+  control: FormControl = new FormControl();
+  public model: string;
   collapsed: boolean;
   public filas: Filas<Experiencia>[] = [];
   public columnnas: Columna<Experiencia>[];
@@ -33,21 +35,21 @@ export class ExperienciaComponent implements OnInit {
 
     this.experienciaForm = this.formBuilder.group({
       id: [],
-      fechaInicio: ['', {
+      fechaInicio: [null, {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
-      fechaFin: ['', {
+      fechaFin: [null, {
         updateOn: 'blur'
       }],
-      idTipoDeObra: ['', {
+      idTipoDeObra: [null, {
         validators: [Validators.required],
       }],
-      ubicacion: ['', {
+      ubicacion: [null, {
         validators: [Validators.maxLength(100), Validators.minLength(3)],
         updateOn: 'blur'
       }],
-      idDestinoDeObra: ['', {
+      idDestinoDeObra: [null, {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
@@ -162,5 +164,12 @@ export class ExperienciaComponent implements OnInit {
       this.experienciaForm.markAllAsTouched();
       this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
+  }
+
+  pickDate(date: NgbDateStruct, event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.experienciaForm.controls.fechaInicio.patchValue(date);
   }
 }

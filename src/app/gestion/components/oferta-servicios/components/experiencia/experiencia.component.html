@@ -40,6 +40,10 @@
                                                         {{ do.descripcion }}</option>
                                                 </select>
                                             </div>
+                                            <form-error [errors]="experienciaForm.controls.idDestinoDeObra.errors" [errorsMessages]="{
+                                                required: 'Campo Requerido'
+                                              }" [controlTouched]="experienciaForm.controls.idDestinoDeObra.touched">
+                                              </form-error>
                                         </div>
                                     </div>
                                 </div>
@@ -54,6 +58,10 @@
                                                         {{ to.descripcion }}</option>
                                                 </select>
                                             </div>
+                                            <form-error [errors]="experienciaForm.controls.idTipoDeObra.errors" [errorsMessages]="{
+                                                required: 'Campo Requerido'
+                                              }" [controlTouched]="experienciaForm.controls.idTipoDeObra.touched">
+                                              </form-error>
                                         </div>
                                     </div>
                                 </div>
@@ -78,8 +86,17 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Fecha Inicio:</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" formControlName="fechaInicio"
-                                                placeholder="Fecha Inicio">
+                                            <div class="input-group">
+                                                <input class="form-control datepicker"
+                                                    placeholder="yyyy-mm-dd"
+                                                    formControlName="fechaInicio"
+                                                    ngbDatepicker 
+                                                    #d="ngbDatepicker">
+                                                <button class="input-group-addon" (click)="d.toggle()" type="button">
+                                                    <i class="fa fa-calendar"></i>
+                                                </button>
+                                            </div>                                                  
+
                                             <form-error [errors]="experienciaForm.controls.fechaInicio.errors" [errorsMessages]="{
                                               required: 'Campo Requerido'
                                             }" [controlTouched]="experienciaForm.controls.fechaInicio.touched">
@@ -91,8 +108,16 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Fecha Fin:</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" formControlName="fechaFin"
-                                                placeholder="Fecha Fin">
+                                            <div class="input-group">
+                                                <input class="form-control datepicker"
+                                                    placeholder="yyyy-mm-dd"
+                                                    formControlName="fechaFin"
+                                                    ngbDatepicker 
+                                                    #df="ngbDatepicker">
+                                                <button class="input-group-addon" (click)="df.toggle()" type="button">
+                                                    <i class="fa fa-calendar"></i>
+                                                </button>
+                                            </div>
                                             <form-error [errors]="experienciaForm.controls.fechaFin.errors" [errorsMessages]="{
                                               required: 'Campo Requerido'
                                             }" [controlTouched]="experienciaForm.controls.fechaFin.touched">
