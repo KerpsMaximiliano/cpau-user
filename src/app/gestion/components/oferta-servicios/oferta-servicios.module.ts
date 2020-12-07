@@ -7,10 +7,11 @@ import { GestionModule } from '@app/gestion/gestion.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { CursosComponent } from './components/cursos/cursos.component';
+import { PosgradosComponent } from './components/posgrados/posgrados.component';
 
 
 @NgModule({
-  declarations: [ExperienciaComponent, CursosComponent],
+  declarations: [ExperienciaComponent, CursosComponent, PosgradosComponent],
   imports: [
     CommonModule,
     OfertaServiciosRoutingModule,
