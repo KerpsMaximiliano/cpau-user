@@ -1,37 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { Experiencia } from './model/experiencia.model';
-import { ExperienciaService } from './service/experiencia.service';
+import { Curso } from './model/curso.model';
+import { CursoService } from './service/curso.service';
 
 @Component({
-  selector: 'app-experiencia',
-  templateUrl: './experiencia.component.html',
-  styleUrls: ['./experiencia.component.css']
+  selector: 'app-cursos',
+  templateUrl: './cursos.component.html',
+  styleUrls: ['./cursos.component.css']
 })
-export class ExperienciaComponent implements OnInit {
+export class CursosComponent implements OnInit {
 
-  get f() { return this.experienciaForm.controls; }
+  get f() { return this.cursosForm.controls; }
   collapsed: boolean;
-  public filas: Filas<Experiencia>[] = [];
-  public columnnas: Columna<Experiencia>[];
+  public filas: Filas<Curso>[] = [];
+  public columnnas: Columna<Curso>[];
 
-  public tiposObras$: Observable<SelectItem[]>;
-  public destinosObras$: Observable<SelectItem[]>;
-  public experienciaForm: FormGroup;
-
+  public cursosForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
-              private experienciaService: ExperienciaService,
+              private cursoService: CursoService,
               private toastr: ToastrService,
               private dialogService: DialogService) {
-
-    this.experienciaForm = this.formBuilder.group({
+    this.cursosForm = this.formBuilder.group({
       id: [],
       fechaInicio: [null, {
         validators: [Validators.required],
@@ -40,20 +33,25 @@ export class ExperienciaComponent implements OnInit {
       fechaFin: [null, {
         updateOn: 'blur'
       }],
-      idTipoDeObra: [null, {
-        validators: [Validators.required],
-      }],
-      ubicacion: [null, {
-        validators: [Validators.maxLength(100), Validators.minLength(3)],
+      nombre: [null, {
+        validators: [Validators.maxLength(100), Validators.minLength(3), Validators.required],
         updateOn: 'blur'
       }],
-      idDestinoDeObra: [null, {
-        validators: [Validators.required],
+      institucion: [null, {
+        validators: [Validators.maxLength(100), Validators.minLength(2), Validators.required],
         updateOn: 'blur'
       }],
     });
 
     this.columnnas = [
+      {
+        id: 'institucion',
+        titulo: 'Institución'
+      },
+      {
+        id: 'nombre',
+        titulo: 'Nombre'
+      },
       {
         id: 'fechaInicio',
         titulo: 'Fecha Inicio'
@@ -62,18 +60,11 @@ export class ExperienciaComponent implements OnInit {
         id: 'fechaFin',
         titulo: 'Fecha Fin'
       },
-      {
-        id: 'ubicacion',
-        titulo: 'Ubicación'
-      },
     ];
-
-    this.destinosObras$ = this.experienciaService.destinosObra$;
-    this.tiposObras$ = this.experienciaService.tiposObra$;
   }
 
   ngOnInit() {
-    this.experienciaService.getAll()
+    this.cursoService.getAll()
     .subscribe(d => {
       d.map(x => {
         this.filas = [
@@ -87,7 +78,7 @@ export class ExperienciaComponent implements OnInit {
   }
 
   onEditar(ev) {
-    this.experienciaForm.patchValue(ev);
+    this.cursosForm.patchValue(ev);
   }
 
   showConfirm(ev) {
@@ -97,7 +88,7 @@ export class ExperienciaComponent implements OnInit {
         .subscribe((isConfirmed) => {
             // We get dialog result
             if (isConfirmed) {
-                this.experienciaService.delete(ev.id).subscribe(d => {
+                this.cursoService.delete(ev.id).subscribe(d => {
                   if (d.success) {
                     const index = this.filas.findIndex(f => f.valor.id === ev.id);
                     this.filas.splice(index, 1);
@@ -120,30 +111,30 @@ export class ExperienciaComponent implements OnInit {
   }
 
   public editarFila(): void {
-    if (this.experienciaForm.valid) {
-      const fila = this.experienciaForm.value as Experiencia;
+    if (this.cursosForm.valid) {
+      const fila = this.cursosForm.value as Curso;
 
-      this.experienciaService.update(fila).subscribe(i => {
+      this.cursoService.update(fila).subscribe(i => {
         if (i.success) {
           const index = this.filas.findIndex(f => f.valor.id === fila.id);
           this.filas[index].valor = fila;
-          this.experienciaForm.reset();
+          this.cursosForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
         } else {
           this.toastr.error(null, i.message);
         }
       });
     } else {
-      this.experienciaForm.markAllAsTouched();
+      this.cursosForm.markAllAsTouched();
       this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
   }
 
   public agregarFila(): void {
-    if (this.experienciaForm.valid) {
-      const fila = this.experienciaForm.value as Experiencia;
+    if (this.cursosForm.valid) {
+      const fila = this.cursosForm.value as Curso;
 
-      this.experienciaService.insert(fila).subscribe(i => {
+      this.cursoService.insert(fila).subscribe(i => {
         if (i.success) {
           this.filas = [
             ...this.filas,
@@ -151,7 +142,7 @@ export class ExperienciaComponent implements OnInit {
               valor: fila
             }
           ];
-          this.experienciaForm.reset();
+          this.cursosForm.reset();
 
           this.toastr.success(null, 'Registro agregado correctamente.');
         } else {
@@ -159,7 +150,7 @@ export class ExperienciaComponent implements OnInit {
         }
       });
     } else {
-      this.experienciaForm.markAllAsTouched();
+      this.cursosForm.markAllAsTouched();
       this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
   }

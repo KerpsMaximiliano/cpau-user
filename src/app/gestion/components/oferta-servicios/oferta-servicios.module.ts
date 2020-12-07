@@ -6,10 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GestionModule } from '@app/gestion/gestion.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
+import { CursosComponent } from './components/cursos/cursos.component';
 
 
 @NgModule({
-  declarations: [ExperienciaComponent],
+  declarations: [ExperienciaComponent, CursosComponent],
   imports: [
     CommonModule,
     OfertaServiciosRoutingModule,
