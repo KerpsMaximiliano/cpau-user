@@ -1,13 +1,13 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Telefono</h2>
+        <h2>Emails</h2>
         <ol class="breadcrumb">
             <li>
                 <a>Perfil</a>
             </li>
             <li class="active">
-                <a><strong>Telefono</strong></a>
+                <a><strong>Emails</strong></a>
             </li>
         </ol>
     </div>
@@ -49,12 +49,21 @@
                                     <div class="col-md-4">
                                         <label class="col-sm-4 control-label">Mail:</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" formControlName="telefono">
-                                            <form-error [errors]="mailForm.controls.mail.errors" [errorsMessages]="{
+                                            <input type="text" class="form-control" formControlName="email">
+                                            <form-error [errors]="mailForm.controls.email.errors" [errorsMessages]="{
                                                 required: 'Campo Requerido',
                                                 email: 'Formato invalido'
-                                            }" [controlTouched]="mailForm.controls.mail.touched">
+                                            }" [controlTouched]="mailForm.controls.email.touched">
                                             </form-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label">Mail:</label>
+                                        <div class="col-sm-8">
+                                            <!-- [form]="mailForm" -->
+                                            <!-- <checkbox-list>
+                                            </checkbox-list> -->
+                                            <app-checkbox-list [ordersData]="checkData"></app-checkbox-list>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -69,6 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                             </div>
                         </div>

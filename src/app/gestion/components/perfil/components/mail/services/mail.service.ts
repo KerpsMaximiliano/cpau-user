@@ -30,29 +30,25 @@ const MAILS_TYPES: SelectItem[] = [
 })
 export class MailService {
 
-
-
   public tiposMails$ = of(MAILS_TYPES);
 
   constructor(private httpClient: HttpClient) { }
 
-
-
   public insert(request: MailRequestModel): Observable<IResponseService> {
-    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/mail/${request.id}`, request);
+    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/email/${request.id}`, request);
 
   }
 
   public update(request: MailRequestModel): Observable<IResponseService> {
-    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/mail/${request.id}`, request);
+    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/email/${request.id}`, request);
   }
 
 
   public read(): Observable<Mail[]> {
-    return this.httpClient.get<Mail[]>(`${environment.apiUrl}/api/perfil/contacto/mail`);
+    return this.httpClient.get<Mail[]>(`${environment.apiUrl}/api/perfil/contacto/email`);
   }
 
-  public delete(request: any): Observable<any> {
-    return of();
+  public delete(id: number): Observable<IResponseService> {
+    return this.httpClient.delete<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/email/${id}`);
   }
 }

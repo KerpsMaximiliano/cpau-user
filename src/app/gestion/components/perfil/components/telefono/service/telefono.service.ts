@@ -55,7 +55,7 @@ export class TelefonoService {
     return this.httpClient.get<Telefono[]>(`${environment.apiUrl}/api/perfil/contacto/telefono`);
   }
 
-  public delete(request: any): Observable<any> {
-    return of();
+  public delete(id: number): Observable<IResponseService> {
+    return this.httpClient.delete<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/telefono/${id}`);
   }
 }

@@ -17,6 +17,15 @@ export class MailComponent implements OnInit {
 
   get f() { return this.mailForm.controls; }
 
+
+  public checkData = [
+    { id: 100, name: 'checkbox 1', selected: true },
+    { id: 200, name: 'checkbox 2', selected: false },
+    { id: 300, name: 'checkbox 3', selected: true },
+    { id: 400, name: 'checkbox 4', selected: false }
+  ];
+
+
   collapsed: boolean;
   public filas: Filas<Mail>[] = [];
   public columnnas: Columna<Mail>[];
@@ -32,18 +41,18 @@ export class MailComponent implements OnInit {
 
     this.columnnas = [
       {
-        id: 'tipoMail',
+        id: 'tipoEmail',
         titulo: 'tipo'
       },
       {
-        id: 'mail',
+        id: 'email',
         titulo: 'Numero'
       }
     ];
 
     this.mailForm = this.formBuilder.group({
       id: [],
-      mail: ['', {
+      email: ['', {
         validators: [Validators.required, Validators.email],
         updateOn: 'blur'
       }],
@@ -111,7 +120,6 @@ export class MailComponent implements OnInit {
   }
 
   public agregarFila(): void {
-
     const request = this.mailForm.value as MailRequestModel;
     this.mailService.insert(request).subscribe(mails => {
       //   // this.filas = [

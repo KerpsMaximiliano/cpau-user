@@ -11,20 +11,28 @@ import { FormErrorComponent } from '@app/shared/components/form-error/form-error
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { CheckboxListComponent } from '@app/shared/components/checkbox-list/checkbox-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [HomeComponent,
     MenuComponent,
     HeaderComponent,
     FooterComponent,
     ActionTableComponent,
+    CheckboxListComponent,
     FormErrorComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(), // ToastrModule added
     BootstrapModalModule,
     NgbModule
   ],
-  exports: [ActionTableComponent, FormErrorComponent, NgbModule]
+  exports: [ActionTableComponent,
+    CheckboxListComponent,
+    FormErrorComponent,
+    NgbModule]
 })
 export class GestionModule { }

@@ -13,7 +13,11 @@ import { MailComponent } from './components/mail/mail.component';
 
 
 @NgModule({
-  declarations: [IdentificacionComponent, DomicilioComponent, TelefonoComponent, RedesComponent, MailComponent],
+  declarations: [IdentificacionComponent,
+    DomicilioComponent,
+    TelefonoComponent,
+    RedesComponent,
+    MailComponent],
   imports: [
     CommonModule,
     PerfilRoutingModule,

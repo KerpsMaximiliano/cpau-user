@@ -1,14 +1,14 @@
 export interface Mail {
     id: number;
     idTipoMail: number;
-    tipoMail: string;
-    mail: string;
+    tipoEmail: string;
+    email: string;
 }
 
 
 
 export interface MailRequestModel {
     id: number;
-    tipo: number;
-    mail: number;
+    tipoEmail: number;
+    email: number;
 }
