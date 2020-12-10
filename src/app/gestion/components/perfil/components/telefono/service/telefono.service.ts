@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
+import { environment } from '@environments/environment';
 import { Observable, of } from 'rxjs';
 import { Telefono, TelefonoRequestModel } from '../models/telefono.model';
 
@@ -26,7 +28,6 @@ const TELEFONOS_TYPES: SelectItem[] = [
   }
 ]
 
-// Particular, Laboral, Judicial, Otros
 @Injectable({
   providedIn: 'root'
 })
@@ -40,15 +41,18 @@ export class TelefonoService {
 
 
 
-  public insert(request: TelefonoRequestModel): Observable<Telefono> {
-    return of({
-      ...request,
-      tipoDescripcion: 'Personal'
-    } as Telefono);
+  public insert(request: TelefonoRequestModel): Observable<IResponseService> {
+    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/telefono/${request.id}`, request);
+
   }
 
-  public update(request: any): Observable<any> {
-    return of();
+  public update(request: TelefonoRequestModel): Observable<IResponseService> {
+    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/telefono/${request.id}`, request);
+  }
+
+
+  public read(): Observable<Telefono[]> {
+    return this.httpClient.get<Telefono[]>(`${environment.apiUrl}/api/perfil/contacto/telefono`);
   }
 
   public delete(request: any): Observable<any> {

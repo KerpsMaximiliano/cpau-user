@@ -1,7 +1,7 @@
 export interface Telefono {
     id: number;
     tipo: number;
-    numero: number;
+    telefono: number;
     tipoDescripcion: string;
 }
 
@@ -10,5 +10,5 @@ export interface Telefono {
 export interface TelefonoRequestModel {
     id: number;
     tipo: number;
-    numero: number;
+    telefono: number;
 }

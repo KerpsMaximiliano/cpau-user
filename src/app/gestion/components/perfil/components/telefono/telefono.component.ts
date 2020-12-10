@@ -35,14 +35,14 @@ export class TelefonoComponent implements OnInit {
         titulo: 'tipo'
       },
       {
-        id: 'numero',
+        id: 'telefono',
         titulo: 'Numero'
       }
     ];
 
     this.telefonoForm = this.formBuilder.group({
       id: [],
-      numero: ['', {
+      telefono: ['', {
         validators: [Validators.required, Validators.maxLength(10), Validators.minLength(10)],
         updateOn: 'blur'
       }],
@@ -54,34 +54,45 @@ export class TelefonoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.telefonoService.read().subscribe(telef => {
+      telef.map(t => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: t
+          }
+        ]
+      });
+    });
   }
 
-  onEditar(ev) {
-    this.telefonoService.update({});
+  onEditar(ev: Telefono) {
+    this.telefonoForm.patchValue(ev);
   }
 
   showConfirm(ev) {
     const disposable = this.dialogService.addDialog(ModalComponent, {
-        title: 'Confirmar borrado',
-        message: '¿Esta seguro que desea borrar el registro seleccionado?'})
-        .subscribe((isConfirmed) => {
-            // We get dialog result
-            if (isConfirmed) {
-                this.telefonoService.delete(ev.id).subscribe(d => {
-                  if (d.success) {
-                    const index = this.filas.findIndex(f => f.valor.id === ev.id);
-                    this.filas.splice(index, 1);
-                    this.toastr.success(null, 'Registro eliminado correctamente.');
-                  } else {
-                    this.toastr.error(null, d.message);
-                  }
-              });
+      title: 'Confirmar borrado',
+      message: '¿Esta seguro que desea borrar el registro seleccionado?'
+    })
+      .subscribe((isConfirmed) => {
+        // We get dialog result
+        if (isConfirmed) {
+          this.telefonoService.delete(ev.id).subscribe(d => {
+            if (d.success) {
+              const index = this.filas.findIndex(f => f.valor.id === ev.id);
+              this.filas.splice(index, 1);
+              this.toastr.success(null, 'Registro eliminado correctamente.');
+            } else {
+              this.toastr.error(null, d.message);
             }
-        });
+          });
+        }
+      });
     // We can close dialog calling disposable.unsubscribe();
     // If dialog was not closed manually close it by timeout
     setTimeout(() => {
-        disposable.unsubscribe();
+      disposable.unsubscribe();
     }, 10000);
   }
 
@@ -94,21 +105,22 @@ export class TelefonoComponent implements OnInit {
   }
 
   public editarFila(): void {
-    //
+    const telefonoUpdate = this.telefonoForm.value as TelefonoRequestModel;
+    this.telefonoService.update(telefonoUpdate).subscribe();
   }
 
   public agregarFila(): void {
 
     const request = this.telefonoForm.value as TelefonoRequestModel;
     this.telefonoService.insert(request).subscribe(telefono => {
-      this.filas = [
-        ...this.filas,
-        {
-          valor: {
-            ...telefono
-          }
-        }
-      ];
+      // this.filas = [
+      //   ...this.filas,
+      //   {
+      //     valor: {
+      //       ...telefono
+      //     }
+      //   }
+      // ];
     });
   }
 }

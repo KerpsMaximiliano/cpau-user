@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
+import { environment } from '@environments/environment';
+import { Identificacion } from '../model/identificacion.model';
+import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 
 const COUNTRIES: SelectItem[] = [
     {
@@ -60,4 +63,14 @@ export class IdentificacionService {
     public countries$ = of(COUNTRIES);
 
     public docTypes$ = of(DOCTYPES);
+
+
+    public read(): Observable<Identificacion> {
+        return this.httpClient.get<Identificacion>(`${environment.apiUrl}/api/perfil/identificacion`);
+    }
+
+    public update(request: Identificacion): Observable<IResponseService> {
+        return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/identificacion`, request);
+    }
+
 }

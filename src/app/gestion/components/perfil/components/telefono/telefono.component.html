@@ -33,30 +33,30 @@
                                     <div class="col-sm-4">
                                         <label class="col-sm-4 control-label">Tipo:</label>
                                         <div class="col-sm-8">
-                                                <div *ngIf="(tipos$ | async) as telTypes">
-                                                    <select id="countries" formControlName="tipo"
-                                                        class="identification-select browser-default custom-select">
-                                                        <option *ngFor="let type of telTypes" [value]="type.id">
-                                                            {{ type.descripcion }}</option>
-                                                    </select>
-                                                    <form-error [errors]="telefonoForm.controls.tipo.errors"
-                                                        [errorsMessages]="{
+                                            <div *ngIf="(tipos$ | async) as telTypes">
+                                                <select id="countries" formControlName="tipo"
+                                                    class="identification-select browser-default custom-select">
+                                                    <option *ngFor="let type of telTypes" [value]="type.id">
+                                                        {{ type.descripcion }}</option>
+                                                </select>
+                                                <form-error [errors]="telefonoForm.controls.tipo.errors"
+                                                    [errorsMessages]="{
                                                         required: 'Campo Requerido'
                                                         }" [controlTouched]="telefonoForm.controls.tipo.touched">
-                                                    </form-error>
-                                                </div>
+                                                </form-error>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-sm-4 control-label">Numero:</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" formControlName="numero">
-                                            <form-error [errors]="telefonoForm.controls.numero.errors"
+                                            <input type="text" class="form-control" formControlName="telefono">
+                                            <form-error [errors]="telefonoForm.controls.telefono.errors"
                                                 [errorsMessages]="{
                                                 required: 'Campo Requerido',
                                                 minlength: 'La longitud permitida es entre 2 y 200 caracteres.',
                                                 maxlength: 'La longitud permitida es entre 2 y 200 caracteres.'
-                                            }" [controlTouched]="telefonoForm.controls.numero.touched">
+                                            }" [controlTouched]="telefonoForm.controls.telefono.touched">
                                             </form-error>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
-                                                    (eliminar)="onEliminar($event)" (visualizar)="onVisualizar($event)">
+                                    (eliminar)="onEliminar($event)" (visualizar)="onVisualizar($event)">
                                 </app-action-table>
                             </div>
                         </div>

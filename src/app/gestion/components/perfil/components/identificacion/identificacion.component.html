@@ -35,16 +35,16 @@
 
                                     <label class="col-sm-2 control-label">Nombres:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="nombre"
+                                        <input type="text" class="form-control" formControlName="nombres"
                                             placeholder="Luciano">
 
 
-                                        <form-error [errors]="identificacionForm.controls.nombre.errors"
+                                        <form-error [errors]="identificacionForm.controls.nombres.errors"
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud debe ser mayor a 2 caracteres',
                                               maxlength: 'La longitud debe ser menor a 200 caracteres'
-                                            }" [controlTouched]="identificacionForm.controls.nombre.touched">
+                                            }" [controlTouched]="identificacionForm.controls.nombres.touched">
                                         </form-error>
                                     </div>
                                 </div>
@@ -52,14 +52,14 @@
                                 <div class="form-group"><label class="col-sm-2 control-label">Apellidos:</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="apellido"
+                                        <input type="text" class="form-control" formControlName="apellidos"
                                             placeholder="Carnevalini">
-                                        <form-error [errors]="identificacionForm.controls.apellido.errors"
+                                        <form-error [errors]="identificacionForm.controls.apellidos.errors"
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud debe ser mayor a 2 caracteres',
                                               maxlength: 'La longitud debe ser menor a 200 caracteres'
-                                            }" [controlTouched]="identificacionForm.controls.apellido.touched">
+                                            }" [controlTouched]="identificacionForm.controls.apellidos.touched">
                                         </form-error>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                                     <div class="col-sm-10">
                                         <div class="row">
                                             <div *ngIf="(docTypes$ | async) as docTypes" class="col-md-4">
-                                                <select id="countries" formControlName="tipoDoc"
+                                                <select id="countries" formControlName="tipoDocumento"
                                                     class="identification-select browser-default custom-select">
                                                     <option *ngFor="let type of docTypes" [value]="type.id">
                                                         {{ type.descripcion }}</option>
@@ -105,14 +105,16 @@
                                                 <span class="help-block m-b-none">Tipo</span>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="text" placeholder="28648062" formControlName="nroDoc"
-                                                    class="form-control">
-                                                <form-error [errors]="identificacionForm.controls.nroDoc.errors"
+                                                <input type="text" placeholder="28648062"
+                                                    formControlName="numeroDocumento" class="form-control">
+                                                <form-error
+                                                    [errors]="identificacionForm.controls.numeroDocumento.errors"
                                                     [errorsMessages]="{
                                                       required: 'Campo Requerido',
                                                       min: 'Ingrese un documento valido entre 8 y 9 digitos.',
                                                       max: 'Ingrese un documento valido entre 8 y 9 digitos.'
-                                                    }" [controlTouched]="identificacionForm.controls.nroDoc.touched">
+                                                    }"
+                                                    [controlTouched]="identificacionForm.controls.numeroDocumento.touched">
                                                 </form-error>
                                                 <span class="help-block m-b-none">Número</span>
                                             </div>
@@ -127,12 +129,12 @@
                                     <div class="col-sm-10">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" data-mask="99/99/9999"
-                                                    placeholder="28/03/1981">
+                                                <input type="text" class="form-control" formControlName="nacimiento"
+                                                    data-mask="99/99/9999" placeholder="28/03/1981">
                                                 <span class="help-block">Fecha</span>
                                             </div>
                                             <div *ngIf="countries$ | async as countries" class="col-md-8">
-                                                <select id="countries" formControlName="paisNac"
+                                                <select id="countries" formControlName="pais"
                                                     class=" identification-select browser-default custom-select">
                                                     <option *ngFor="let country of countries" [value]="country.id">
                                                         {{ country.descripcion }}</option>
@@ -156,8 +158,8 @@
                             </div>
                         </div>
                         <div class="actions-buttons">
-                            <button class="btn btn-danger" (click)="onClick()">Cancelar</button>
-                            <button class="btn btn-primary" (click)="onClick()">Guardar</button>
+                            <button class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+                            <button class="btn btn-primary" (click)="onSave()">Guardar</button>
                         </div>
 
                     </form>
