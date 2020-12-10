@@ -19,11 +19,12 @@ export class CheckboxListComponent implements OnInit {
     // this.form = this.formBuilder.group({
     //   orders: new FormArray([])
     // });
-    this.form.addControl('checklist', new FormArray([]));
-    this.addCheckboxes();
+
   }
 
   public ngOnInit(): void {
+    this.form.addControl('checklist', new FormArray([]));
+    this.addCheckboxes();
   }
 
   private addCheckboxes() {
