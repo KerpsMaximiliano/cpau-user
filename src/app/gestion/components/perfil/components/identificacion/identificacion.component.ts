@@ -25,7 +25,7 @@ export class IdentificacionComponent implements OnInit {
     required: 'Campo Requerido',
     minlength: 'La longitud debe ser mayor a 2 caracteres',
     maxlength: 'La longitud debe ser menor a 200 caracteres'
-  }
+  };
 
   constructor(
     private formBuilder: FormBuilder,

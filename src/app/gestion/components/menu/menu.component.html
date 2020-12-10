@@ -35,20 +35,20 @@
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse in">
                         <li><a [routerLink]="'matricula/resumen'">Resumen</a></li>
+                        <li><a [routerLink]="'matricula/derecho-anual'">Derecho Anual</a></li>
                         <li><a href="#">Estado</a></li>
-                        <li><a href="#">Derecho Anual</a></li>
                         <li><a href="#">Certificado</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-graduation-cap"></i> <span class="nav-label">Oferta de
+                    <a><i class="fa fa-graduation-cap"></i> <span class="nav-label">Oferta de
                             Servicios</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
+                    <ul class="nav nav-second-level collapse in">
                         <li><a href="#">Actividad Profesional</a></li>
-                        <li><a href="#">Experiencia</a></li>
-                        <li><a href="#">Cursos</a></li>
-                        <li><a href="#">Posgrados</a></li>
-                        <li><a href="#">Asociados</a></li>
+                        <li><a [routerLink]="'oferta-servicios/experiencia'">Experiencia</a></li>
+                        <li><a [routerLink]="'oferta-servicios/cursos'">Cursos</a></li>
+                        <li><a [routerLink]="'oferta-servicios/posgrados'">Posgrados</a></li>
+                        <!-- <li><a href="#">Asociados</a></li> -->
                     </ul>
                 </li>
                 <li>

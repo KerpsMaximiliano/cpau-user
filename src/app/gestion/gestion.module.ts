@@ -9,17 +9,22 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ActionTableComponent } from '@app/shared/components/action-table/action-table.component';
 import { FormErrorComponent } from '@app/shared/components/form-error/form-error.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-
-
 @NgModule({
-  declarations: [HomeComponent, MenuComponent, HeaderComponent, FooterComponent, ActionTableComponent, FormErrorComponent],
+  declarations: [HomeComponent,
+                 MenuComponent,
+                 HeaderComponent,
+                 FooterComponent,
+                 ActionTableComponent,
+                 FormErrorComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,
     ToastrModule.forRoot(), // ToastrModule added
-    BootstrapModalModule
+    BootstrapModalModule,
+    NgbModule
   ],
-  exports: [ActionTableComponent, FormErrorComponent]
+  exports: [ActionTableComponent, FormErrorComponent, NgbModule]
 })
 export class GestionModule { }

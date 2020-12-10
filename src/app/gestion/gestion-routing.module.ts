@@ -22,6 +22,10 @@ const routes: Routes = [
         path: 'matricula',
         loadChildren: () => import('./components/matricula/matricula.module').then(m => m.MatriculaModule),
       },
+      {
+        path: 'oferta-servicios',
+        loadChildren: () => import('./components/oferta-servicios/oferta-servicios.module').then(m => m.OfertaServiciosModule),
+      },
     ]
   },
 
