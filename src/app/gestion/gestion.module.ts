@@ -13,11 +13,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 @NgModule({
   declarations: [HomeComponent,
-                 MenuComponent,
-                 HeaderComponent,
-                 FooterComponent,
-                 ActionTableComponent,
-                 FormErrorComponent],
+    MenuComponent,
+    HeaderComponent,
+    FooterComponent,
+    ActionTableComponent,
+    FormErrorComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,

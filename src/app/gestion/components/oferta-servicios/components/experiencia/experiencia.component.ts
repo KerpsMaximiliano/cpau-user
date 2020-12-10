@@ -27,9 +27,9 @@ export class ExperienciaComponent implements OnInit {
   public experienciaForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private experienciaService: ExperienciaService,
-              private toastr: ToastrService,
-              private dialogService: DialogService) {
+    private experienciaService: ExperienciaService,
+    private toastr: ToastrService,
+    private dialogService: DialogService) {
 
     this.experienciaForm = this.formBuilder.group({
       id: [],
@@ -74,16 +74,16 @@ export class ExperienciaComponent implements OnInit {
 
   ngOnInit() {
     this.experienciaService.getAll()
-    .subscribe(d => {
-      d.map(x => {
-        this.filas = [
-          ...this.filas,
-          {
-            valor: x
-          }
-        ];
+      .subscribe(d => {
+        d.map(x => {
+          this.filas = [
+            ...this.filas,
+            {
+              valor: x
+            }
+          ];
+        });
       });
-    });
   }
 
   onEditar(ev) {
@@ -92,26 +92,27 @@ export class ExperienciaComponent implements OnInit {
 
   showConfirm(ev) {
     const disposable = this.dialogService.addDialog(ModalComponent, {
-        title: 'Confirmar borrado',
-        message: '¿Esta seguro que desea borrar el registro seleccionado?'})
-        .subscribe((isConfirmed) => {
-            // We get dialog result
-            if (isConfirmed) {
-                this.experienciaService.delete(ev.id).subscribe(d => {
-                  if (d.success) {
-                    const index = this.filas.findIndex(f => f.valor.id === ev.id);
-                    this.filas.splice(index, 1);
-                    this.toastr.success(null, 'Registro eliminado correctamente.');
-                  } else {
-                    this.toastr.error(null, d.message);
-                  }
-              });
+      title: 'Confirmar borrado',
+      message: '¿Esta seguro que desea borrar el registro seleccionado?'
+    })
+      .subscribe((isConfirmed) => {
+        // We get dialog result
+        if (isConfirmed) {
+          this.experienciaService.delete(ev.id).subscribe(d => {
+            if (d.success) {
+              const index = this.filas.findIndex(f => f.valor.id === ev.id);
+              this.filas.splice(index, 1);
+              this.toastr.success(null, 'Registro eliminado correctamente.');
+            } else {
+              this.toastr.error(null, d.message);
             }
-        });
+          });
+        }
+      });
     // We can close dialog calling disposable.unsubscribe();
     // If dialog was not closed manually close it by timeout
     setTimeout(() => {
-        disposable.unsubscribe();
+      disposable.unsubscribe();
     }, 10000);
   }
 

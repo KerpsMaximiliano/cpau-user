@@ -9,10 +9,11 @@ import { TelefonoComponent } from './components/telefono/telefono.component';
 import { DomicilioComponent } from './components/domicilio/domicilio.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RedesComponent } from './components/redes/redes.component';
+import { MailComponent } from './components/mail/mail.component';
 
 
 @NgModule({
-  declarations: [IdentificacionComponent, DomicilioComponent, TelefonoComponent, RedesComponent],
+  declarations: [IdentificacionComponent, DomicilioComponent, TelefonoComponent, RedesComponent, MailComponent],
   imports: [
     CommonModule,
     PerfilRoutingModule,
