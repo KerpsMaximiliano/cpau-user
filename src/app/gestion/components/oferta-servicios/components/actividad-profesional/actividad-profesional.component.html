@@ -1,0 +1,71 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Actividad profesional</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>Oferta de servicios</a>
+            </li>
+            <li class="active">
+                <a><strong>Actividad profesional</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Actividad profesional</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                    <form method="get" class="form-horizontal" [formGroup]="mailForm">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-sm-12 title">
+                                        <span>
+                                            Actividad Profesional
+                                        </span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class=" checkbox-list">
+
+                                            <app-checkbox-list [form]="mailForm" [checkboxData]="checkData"
+                                                [controlName]="'actividad'">
+                                            </app-checkbox-list>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-sm-12 title">
+                                        <span>
+                                            Tipo de Obra Realizada
+                                        </span>
+                                    </div>
+                                    <div class="col-md-12 checkbox-list">
+                                        <app-checkbox-list [form]="mailForm" [checkboxData]="checkData"
+                                            [controlName]="'obra'">
+                                        </app-checkbox-list>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

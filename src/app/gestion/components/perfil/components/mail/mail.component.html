@@ -18,7 +18,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Telefonos</h5>
+                    <h5>Mails</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link" (click)="collapsed=!collapsed">
                             <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
@@ -55,15 +55,6 @@
                                                 email: 'Formato invalido'
                                             }" [controlTouched]="mailForm.controls.email.touched">
                                             </form-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label">Mail:</label>
-                                        <div class="col-sm-8">
-                                            <!-- [form]="mailForm" -->
-                                            <!-- <checkbox-list>
-                                            </checkbox-list> -->
-                                            <app-checkbox-list [form]="mailForm" [ordersData]="checkData"></app-checkbox-list>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

@@ -120,6 +120,15 @@ export class MailComponent implements OnInit {
   }
 
   public agregarFila(): void {
+
+    const formValue = this.mailForm.value.checklist.map((selected, i) => {
+      return {
+        id: this.checkData[i].id,
+        selected
+      }
+    });
+    console.log('sarasa', formValue);
+
     const request = this.mailForm.value as MailRequestModel;
     this.mailService.insert(request).subscribe(mails => {
       //   // this.filas = [

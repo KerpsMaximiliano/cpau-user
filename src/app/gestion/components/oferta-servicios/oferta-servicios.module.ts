@@ -8,10 +8,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { CursosComponent } from './components/cursos/cursos.component';
 import { PosgradosComponent } from './components/posgrados/posgrados.component';
+import { ActividadProfesionalComponent } from './components/actividad-profesional/actividad-profesional.component';
 
 
 @NgModule({
-  declarations: [ExperienciaComponent, CursosComponent, PosgradosComponent],
+  declarations: [ExperienciaComponent, CursosComponent, PosgradosComponent, ActividadProfesionalComponent],
   imports: [
     CommonModule,
     OfertaServiciosRoutingModule,

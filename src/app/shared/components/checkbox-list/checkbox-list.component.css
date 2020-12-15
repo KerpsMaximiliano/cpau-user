@@ -1,0 +1,10 @@
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: calc(100vh - 620px);
+}
+
+.checkbox-list {
+    display: flex;
+}

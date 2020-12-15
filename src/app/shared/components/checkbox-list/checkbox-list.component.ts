@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { CheckBoxDataModel } from './models/CheckboxList.model';
 
 @Component({
   selector: 'app-checkbox-list',
@@ -10,10 +11,12 @@ export class CheckboxListComponent implements OnInit {
 
   @Input() public form: FormGroup;
 
-  @Input() public ordersData: any;
+  @Input() public checkboxData: CheckBoxDataModel[];
+  @Input() public controlName: string;
+
 
   get ordersFormArray() {
-    return this.form.controls.checklist as FormArray;
+    return this.form.controls[this.controlName] as FormArray;
   }
   constructor(private formBuilder: FormBuilder) {
     // this.form = this.formBuilder.group({
@@ -23,19 +26,11 @@ export class CheckboxListComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.form.addControl('checklist', new FormArray([]));
+    this.form.addControl(this.controlName, new FormArray([]));
     this.addCheckboxes();
   }
 
   private addCheckboxes() {
-    this.ordersData.forEach((d) => this.ordersFormArray.push(new FormControl(d.selected)));
+    this.checkboxData.forEach((d) => this.ordersFormArray.push(new FormControl(d.selected)));
   }
-
-  submit() {
-    const selectedOrderIds = this.form.value.checklist
-      .map((checked, i) => checked ? this.ordersData[i].id : null)
-      .filter(v => v !== null);
-    console.log(selectedOrderIds);
-  }
-
 }
