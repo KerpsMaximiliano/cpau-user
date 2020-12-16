@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
+import { CustomValidator } from '@app/gestion/shared/validators/CustomValidator';
 import { FieldErrorsMessages } from '@app/shared/components/form-error/form-error.component';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -34,24 +35,33 @@ export class IdentificacionComponent implements OnInit {
 
     this.identificacionForm = this.formBuilder.group({
       nombres: ['', {
-        validators: [Validators.required, Validators.maxLength(200), Validators.minLength(2)],
+        validators: [Validators.required, Validators.maxLength(200), Validators.minLength(2), CustomValidator.noWhitespaceValidator],
         updateOn: 'blur'
       }],
       apellidos: ['', {
-        validators: [Validators.required, Validators.maxLength(200), Validators.minLength(2)],
+        validators: [Validators.required, Validators.maxLength(200), Validators.minLength(2), CustomValidator.noWhitespaceValidator],
         updateOn: 'blur'
       }],
       sexo: ['', {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
-      tipoDocumento: [],
+      tipoDocumento: ['', {
+        validators: [Validators.required],
+        updateOn: 'blur'
+      }],
       numeroDocumento: ['', {
         validators: [Validators.required, Validators.max(99999999), Validators.min(1000000)],
         updateOn: 'blur'
       }],
-      nacimiento: [],
-      pais: []
+      nacimiento: ['', {
+        validators: [Validators.required],
+        updateOn: 'blur'
+      }],
+      pais: ['', {
+        validators: [Validators.required],
+        updateOn: 'blur'
+      }]
     });
 
     this.countries$ = this.identificacionService.countries$;

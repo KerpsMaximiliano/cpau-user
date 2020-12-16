@@ -4,6 +4,9 @@
         <h2>Domicilios</h2>
         <ol class="breadcrumb">
             <li>
+                <a>Panel de control</a>
+            </li>
+            <li>
                 <a>Perfil</a>
             </li>
             <li class="active">
@@ -39,6 +42,11 @@
                                                     <option *ngFor="let tp of tiposDomicilios" [value]="tp.id">
                                                         {{ tp.descripcion }}</option>
                                                 </select>
+                                                <form-error [errors]="domicilioForm.controls.idTipoDomicilio.errors"
+                                                    [errorsMessages]="{
+                                                    required: 'Campo Requerido'
+                                                  }" [controlTouched]="domicilioForm.controls.idTipoDomicilio.touched">
+                                                </form-error>
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +71,7 @@
                                         <label class="col-sm-3 control-label">Altura:</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" formControlName="altura"
-                                                placeholder="Altura">
+                                                mask="9999999" placeholder="Altura">
 
                                             <form-error [errors]="domicilioForm.controls.altura.errors"
                                                 [errorsMessages]="{
@@ -82,7 +90,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Piso:</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" formControlName="piso"
+                                            <input type="text" class="form-control" formControlName="piso" mask="99"
                                                 placeholder="Piso">
                                             <form-error [errors]="domicilioForm.controls.piso.errors" [errorsMessages]="{
                                               required: 'Campo Requerido',
@@ -95,10 +103,10 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Dpto Nro:</label>
+                                        <label class="col-sm-3 control-label">Depto Nro:</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" formControlName="depto"
-                                                placeholder="Dpto Nro">
+                                                placeholder="Depto Nro">
                                             <form-error [errors]="domicilioForm.controls.depto.errors" [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud permitida es entre 1 y 20 caracteres',

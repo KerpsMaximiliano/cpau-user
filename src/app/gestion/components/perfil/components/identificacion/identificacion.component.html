@@ -4,6 +4,9 @@
         <h2>Identificación</h2>
         <ol class="breadcrumb">
             <li>
+                <a>Panel de control</a>
+            </li>
+            <li>
                 <a>Perfil</a>
             </li>
             <li class="active">
@@ -21,7 +24,7 @@
                 <div class="ibox-title">
                     <h5>Identificación</h5>
                     <div class="ibox-tools">
-                        <a class="collapse-link">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
                             <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
                         </a>
                     </div>
@@ -43,7 +46,9 @@
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud debe ser mayor a 2 caracteres',
-                                              maxlength: 'La longitud debe ser menor a 200 caracteres'
+                                              maxlength: 'La longitud debe ser menor a 200 caracteres',
+                                              whitespace: 'No se permite ingresar solo espacios en blanco'
+
                                             }" [controlTouched]="identificacionForm.controls.nombres.touched">
                                         </form-error>
                                     </div>
@@ -58,7 +63,8 @@
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud debe ser mayor a 2 caracteres',
-                                              maxlength: 'La longitud debe ser menor a 200 caracteres'
+                                              maxlength: 'La longitud debe ser menor a 200 caracteres',
+                                              whitespace: 'No se permite ingresar solo espacios en blanco'
                                             }" [controlTouched]="identificacionForm.controls.apellidos.touched">
                                         </form-error>
                                     </div>
@@ -102,6 +108,12 @@
                                                     <option *ngFor="let type of docTypes" [value]="type.id">
                                                         {{ type.descripcion }}</option>
                                                 </select>
+                                                <form-error [errors]="identificacionForm.controls.tipoDocumento.errors"
+                                                    [errorsMessages]="{
+                                                          required: 'Campo Requerido'
+                                                        }"
+                                                    [controlTouched]="identificacionForm.controls.tipoDocumento.touched">
+                                                </form-error>
                                                 <span class="help-block m-b-none">Tipo</span>
                                             </div>
                                             <div class="col-md-8">
@@ -130,7 +142,13 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control" formControlName="nacimiento"
-                                                    data-mask="99/99/9999" placeholder="28/03/1981">
+                                                    mask="99/99/9999" placeholder="28/03/1981">
+                                                <form-error [errors]="identificacionForm.controls.nacimiento.errors"
+                                                    [errorsMessages]="{
+                                                              required: 'Campo Requerido'
+                                                            }"
+                                                    [controlTouched]="identificacionForm.controls.nacimiento.touched">
+                                                </form-error>
                                                 <span class="help-block">Fecha</span>
                                             </div>
                                             <div *ngIf="countries$ | async as countries" class="col-md-8">
@@ -139,6 +157,11 @@
                                                     <option *ngFor="let country of countries" [value]="country.id">
                                                         {{ country.descripcion }}</option>
                                                 </select>
+                                                <form-error [errors]="identificacionForm.controls.pais.errors"
+                                                    [errorsMessages]="{
+                                                          required: 'Campo Requerido'
+                                                        }" [controlTouched]="identificacionForm.controls.pais.touched">
+                                                </form-error>
                                                 <span class="help-block m-b-none">País</span>
                                             </div>
                                         </div>

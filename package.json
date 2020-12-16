@@ -28,6 +28,7 @@
         "ng-recaptcha": "^5.0.0",
         "ng2-bootstrap-modal": "^1.0.1",
         "ng2-tooltip-directive": "^2.8.17",
+        "ngx-mask": "8.2.0",
         "ngx-toastr": "^10.1.0",
         "rxjs": "~6.4.0",
         "tslib": "^1.10.0",

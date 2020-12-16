@@ -46,7 +46,7 @@ export class TelefonoComponent implements OnInit {
         validators: [Validators.required, Validators.maxLength(10), Validators.minLength(10)],
         updateOn: 'blur'
       }],
-      tipo: ['', {
+      IdTipoTelefono: ['', {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
@@ -111,8 +111,12 @@ export class TelefonoComponent implements OnInit {
 
   public agregarFila(): void {
 
-    const request = this.telefonoForm.value as TelefonoRequestModel;
+    const request = {
+      TipoTelefono: this.telefonoForm.value.idTipoTelefono,
+      telefono: this.telefonoForm.value.telefono
+    } as TelefonoRequestModel
     this.telefonoService.insert(request).subscribe(telefono => {
+
       // this.filas = [
       //   ...this.filas,
       //   {
