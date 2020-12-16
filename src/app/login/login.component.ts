@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           if (!data.error) {
             console.log(localStorage.getItem("currentUser"));
-            this.router.navigate([`gestion/home`]);
+            this.router.navigate([`gestion/home/perfil/identificacion`]);
 
           } else {
             document.getElementById("btnDatosIncorrectos").click();
