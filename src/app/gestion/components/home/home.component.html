@@ -1,7 +1,7 @@
-<body class="pace-done"  style="height: auto">
+<body class="pace-done" [ngClass]="{'mini-navbar': colapsado}"  style="height: auto">
     <!--CONTENEDOR-->
     <ng-container>
-        <app-menu>
+        <app-menu (colapsarMenu)="colapsado = !colapsado">
             <router-outlet></router-outlet>
         </app-menu>
     </ng-container>

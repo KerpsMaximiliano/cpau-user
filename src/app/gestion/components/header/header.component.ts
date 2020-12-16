@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +6,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./header.component.css'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Output() colapsarMenu = new EventEmitter();
 
   closeSession() {}
 
