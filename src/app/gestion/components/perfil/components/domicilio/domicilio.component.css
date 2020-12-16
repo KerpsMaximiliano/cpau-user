@@ -14,3 +14,6 @@
  .container-action-table {
      overflow-x: auto;
  }
+ .tipo-domicilio-select.ng-invalid.ng-touched {
+    border: 1px solid red;
+ }

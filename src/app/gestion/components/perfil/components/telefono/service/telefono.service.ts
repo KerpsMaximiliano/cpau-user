@@ -41,7 +41,7 @@ export class TelefonoService {
 
 
 
-  public insert(request: TelefonoRequestModel): Observable<IResponseService> {
+  public insert(request: TelefonoRequestModel): Observable<IResponseService | Telefono> {
     return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/telefono/${request.id}`, request);
 
   }

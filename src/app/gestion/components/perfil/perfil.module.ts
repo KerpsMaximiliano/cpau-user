@@ -10,7 +10,9 @@ import { DomicilioComponent } from './components/domicilio/domicilio.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RedesComponent } from './components/redes/redes.component';
 import { MailComponent } from './components/mail/mail.component';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
 
+export var options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
   declarations: [IdentificacionComponent,
@@ -24,6 +26,7 @@ import { MailComponent } from './components/mail/mail.component';
     ReactiveFormsModule,
     FormsModule,
     GestionModule,
+    NgxMaskModule.forRoot(options),
     ToastrModule.forRoot(), // ToastrModule added
   ]
 })
