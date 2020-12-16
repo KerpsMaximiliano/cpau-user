@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -6,11 +6,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./menu.component.css'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
-  constructor() { }
+  @Output() colapsarMenu = new EventEmitter();
 
-  ngOnInit() {
+  colapsado: boolean[] = [];
+
+  colapsar(i: number) {
+    this.colapsado[i] = !this.colapsado[i];
   }
 
 }
