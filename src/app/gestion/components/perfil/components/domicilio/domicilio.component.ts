@@ -43,7 +43,7 @@ export class DomicilioComponent implements OnInit {
         validators: [Validators.required],
       }],
       piso: ['', {
-        validators: [Validators.maxLength(2), Validators.minLength(1)],
+        validators: [Validators.maxLength(2)],
         updateOn: 'blur'
       }],
       depto: ['', {
