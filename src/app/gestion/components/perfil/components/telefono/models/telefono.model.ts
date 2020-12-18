@@ -1,14 +1,14 @@
 export interface Telefono {
     id: number;
-    IdTipoTelefono: number;
+    idTipoTelefono: number;
     telefono: number;
-    tipoDescripcion: string;
+    tipoTelefono: string;
 }
 
 
 
 export interface TelefonoRequestModel {
     id: number;
-    TipoTelefono: string;
+    tipoTelefono: string;
     telefono: string;
 }

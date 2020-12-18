@@ -31,7 +31,7 @@ export class TelefonoComponent implements OnInit {
 
     this.columnnas = [
       {
-        id: 'tipoDescripcion',
+        id: 'tipoTelefono',
         titulo: 'tipo'
       },
       {
@@ -46,7 +46,7 @@ export class TelefonoComponent implements OnInit {
         validators: [Validators.required, Validators.maxLength(10), Validators.minLength(10)],
         updateOn: 'blur'
       }],
-      IdTipoTelefono: ['', {
+      idTipoTelefono: ['', {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
@@ -106,25 +106,43 @@ export class TelefonoComponent implements OnInit {
 
   public editarFila(): void {
     const telefonoUpdate = this.telefonoForm.value as TelefonoRequestModel;
-    this.telefonoService.update(telefonoUpdate).subscribe();
+    this.telefonoService.update(telefonoUpdate).subscribe(response => {
+      if (response.success) {
+        let index = this.filas.findIndex(fila => fila.valor.id === response.entity.id)
+        this.filas[index].valor = response.entity;
+        this.telefonoForm.reset();
+        this.toastr.success(null, 'Registro editado correctamente.');
+      } else {
+        this.toastr.error(null, response.message);
+      }
+    });
   }
 
   public agregarFila(): void {
+    if (this.telefonoForm.valid) {
+      const request = {
+        tipoTelefono: this.telefonoForm.value.idTipoTelefono,
+        telefono: this.telefonoForm.value.telefono
+      } as TelefonoRequestModel
 
-    const request = {
-      TipoTelefono: this.telefonoForm.value.idTipoTelefono,
-      telefono: this.telefonoForm.value.telefono
-    } as TelefonoRequestModel
-    this.telefonoService.insert(request).subscribe(telefono => {
+      this.telefonoService.insert(request).subscribe(response => {
+        if (response.success) {
+          this.filas = [
+            ...this.filas,
+            {
+              valor: response.entity
+            }
+          ];
+          this.telefonoForm.reset();
 
-      // this.filas = [
-      //   ...this.filas,
-      //   {
-      //     valor: {
-      //       ...telefono
-      //     }
-      //   }
-      // ];
-    });
+          this.toastr.success(null, 'Registro agregado correctamente.');
+        } else {
+          this.toastr.error(null, response.message);
+        }
+      });
+    } else {
+      this.telefonoForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
+    }
   }
 }
