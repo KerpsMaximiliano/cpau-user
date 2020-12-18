@@ -1,9 +1,9 @@
 export interface Identificacion {
-    Nombres: string;
-    Apellidos: string;
-    Sexo: string;
-    TipoDocumento: string;
-    NumeroDocumento: string;
-    Nacimiento: string;
-    Pais: string;
+    nombres: string;
+    apellidos: string;
+    sexo: string;
+    tipoDocumento: string;
+    numeroDocumento: string;
+    nacimiento: string;
+    pais: string;
 }

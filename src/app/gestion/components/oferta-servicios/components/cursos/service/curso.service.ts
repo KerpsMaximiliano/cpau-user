@@ -16,15 +16,15 @@ export class CursoService {
     return this.httpClient.get<Curso[]>(`${environment.apiUrl}/api/perfil/curso`);
   }
 
-  insert(curso: Curso): Observable<IResponseService>  {
-    return this.httpClient.post<IResponseService>(`${environment.apiUrl}/api/perfil/curso`, curso);
+  insert(curso: Curso): Observable<IResponseService<Curso>>  {
+    return this.httpClient.post<IResponseService<Curso>>(`${environment.apiUrl}/api/perfil/curso`, curso);
   }
 
-  update(curso: Curso): Observable<IResponseService>  {
-    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/curso/${curso.id}`, curso);
+  update(curso: Curso): Observable<IResponseService<Curso>>  {
+    return this.httpClient.put<IResponseService<Curso>>(`${environment.apiUrl}/api/perfil/curso/${curso.id}`, curso);
   }
 
-  delete(id: number): Observable<IResponseService>  {
-    return this.httpClient.delete<IResponseService>(`${environment.apiUrl}/api/perfil/curso/${id}`);
+  delete(id: number): Observable<IResponseService<Curso>>  {
+    return this.httpClient.delete<IResponseService<Curso>>(`${environment.apiUrl}/api/perfil/curso/${id}`);
   }
 }

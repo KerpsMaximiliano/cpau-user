@@ -41,13 +41,13 @@ export class TelefonoService {
 
 
 
-  public insert(request: TelefonoRequestModel): Observable<IResponseService | Telefono> {
-    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/telefono/${request.id}`, request);
+  public insert(request: TelefonoRequestModel): Observable<IResponseService<Telefono>> {
+    return this.httpClient.put<IResponseService<Telefono>>(`${environment.apiUrl}/api/perfil/contacto/telefono/${request.id}`, request);
 
   }
 
-  public update(request: TelefonoRequestModel): Observable<IResponseService> {
-    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/telefono/${request.id}`, request);
+  public update(request: TelefonoRequestModel): Observable<IResponseService<Telefono>> {
+    return this.httpClient.put<IResponseService<Telefono>>(`${environment.apiUrl}/api/perfil/contacto/telefono/${request.id}`, request);
   }
 
 
@@ -55,7 +55,7 @@ export class TelefonoService {
     return this.httpClient.get<Telefono[]>(`${environment.apiUrl}/api/perfil/contacto/telefono`);
   }
 
-  public delete(id: number): Observable<IResponseService> {
-    return this.httpClient.delete<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/telefono/${id}`);
+  public delete(id: number): Observable<IResponseService<Telefono>> {
+    return this.httpClient.delete<IResponseService<Telefono>>(`${environment.apiUrl}/api/perfil/contacto/telefono/${id}`);
   }
 }

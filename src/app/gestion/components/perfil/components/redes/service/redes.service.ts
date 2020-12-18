@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { Observable, of } from 'rxjs';
-import { RedesRequestModel } from '../models/redes.model';
+import { Redes, RedesRequestModel } from '../models/redes.model';
 
 
 const REDES_TYPES: SelectItem[] = [
@@ -33,15 +33,15 @@ export class RedesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public insert(request: RedesRequestModel): Observable<IResponseService> {
+  public insert(request: RedesRequestModel): Observable<IResponseService<Redes>> {
     return of();
   }
 
-  public update(request: RedesRequestModel): Observable<IResponseService> {
+  public update(request: RedesRequestModel): Observable<IResponseService<Redes>> {
     return of();
   }
 
-  public delete(id: number): Observable<IResponseService> {
+  public delete(id: number): Observable<IResponseService<Redes>> {
     return of();
   }
 }

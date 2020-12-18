@@ -39,15 +39,15 @@ export class DomicilioService {
     return this.httpClient.get<Domicilio[]>(`${environment.apiUrl}/api/perfil/domicilio`);
   }
 
-  insert(domicilio: Domicilio): Observable<IResponseService>  {
-    return this.httpClient.post<IResponseService>(`${environment.apiUrl}/api/perfil/domicilio`, domicilio);
+  insert(domicilio: Domicilio): Observable<IResponseService<Domicilio>>  {
+    return this.httpClient.post<IResponseService<Domicilio>>(`${environment.apiUrl}/api/perfil/domicilio`, domicilio);
   }
 
-  update(domicilio: Domicilio): Observable<IResponseService>  {
-    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/domicilio/${domicilio.id}`, domicilio);
+  update(domicilio: Domicilio): Observable<IResponseService<Domicilio>>  {
+    return this.httpClient.put<IResponseService<Domicilio>>(`${environment.apiUrl}/api/perfil/domicilio/${domicilio.id}`, domicilio);
   }
 
-  delete(id: number): Observable<IResponseService>  {
-    return this.httpClient.delete<IResponseService>(`${environment.apiUrl}/api/perfil/domicilio/${id}`);
+  delete(id: number): Observable<IResponseService<Domicilio>>  {
+    return this.httpClient.delete<IResponseService<Domicilio>>(`${environment.apiUrl}/api/perfil/domicilio/${id}`);
   }
 }

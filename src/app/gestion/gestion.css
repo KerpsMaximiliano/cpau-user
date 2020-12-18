@@ -5817,20 +5817,22 @@
       margin: 0 0 0 0px;
       min-height: 1000px;
     }
-    .body-small.rtls .navbar-static-side {
+    ::ng-deep.body-small.rtls .navbar-static-side {
       display: none;
       z-index: 2001;
       position: absolute;
       width: 70px;
+      overflow: inherit;
     }
     .body-small.rtls#wrapper .navbar-static-side {
       display: block;
     }
-    .rtls.fixed-sidebar.body-small .navbar-static-side {
+    ::ng-deep.rtls.fixed-sidebar.body-small .navbar-static-side {
       display: none;
       z-index: 2001;
       position: fixed;
       width: 220px;
+      overflow: inherit;
     }
     .rtls.fixed-sidebar.body-small#wrapper .navbar-static-side {
       display: block;
@@ -5877,7 +5879,7 @@
     margin-left: 40px;
     background: #f3f3f4;
   }
-  .skin-setttings .title {
+  ::ng-deep.skin-setttings .title {
     background: #efefef;
     text-align: center;
     text-transform: uppercase;
@@ -6295,6 +6297,9 @@
       z-index: 2001;
       position: absolute;
       width: 220px;
+    }
+    ::ng-deep.mini-navbar .navbar-static-side {
+      overflow-y: inherit;
     }
     .navbar-top-links .dropdown-messages,
     .navbar-top-links .dropdown-tasks,

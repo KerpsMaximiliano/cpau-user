@@ -17,11 +17,11 @@ export class ServiceNameService {
         return this.httpClient.get<Obras[]>(`${environment.apiUrl}/api/servicios/obrasrealizadas`);
     }
 
-    public guardarActividadProfesional(request: any): Observable<IResponseService> {
-        return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/servicios/actividadprofesional`, request);
+    public guardarActividadProfesional(request: any): Observable<IResponseService<ActividadProfesional>> {
+        return this.httpClient.put<IResponseService<ActividadProfesional>>(`${environment.apiUrl}/api/servicios/actividadprofesional`, request);
     }
 
-    public guardarObrasRealizada(request: any): Observable<IResponseService> {
-        return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/servicios/obrasrealizadas`, request);
+    public guardarObrasRealizada(request: any): Observable<IResponseService<ActividadProfesional>> {
+        return this.httpClient.put<IResponseService<ActividadProfesional>>(`${environment.apiUrl}/api/servicios/obrasrealizadas`, request);
     }
 }

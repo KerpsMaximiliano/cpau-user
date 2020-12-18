@@ -25,15 +25,15 @@ export class PosgradoService {
     return this.httpClient.get<Posgrado[]>(`${environment.apiUrl}/api/perfil/posgrado`);
   }
 
-  insert(posgrado: Posgrado): Observable<IResponseService>  {
-    return this.httpClient.post<IResponseService>(`${environment.apiUrl}/api/perfil/posgrado`, posgrado);
+  insert(posgrado: Posgrado): Observable<IResponseService<Posgrado>>  {
+    return this.httpClient.post<IResponseService<Posgrado>>(`${environment.apiUrl}/api/perfil/posgrado`, posgrado);
   }
 
-  update(posgrado: Posgrado): Observable<IResponseService>  {
-    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/posgrado/${posgrado.id}`, posgrado);
+  update(posgrado: Posgrado): Observable<IResponseService<Posgrado>>  {
+    return this.httpClient.put<IResponseService<Posgrado>>(`${environment.apiUrl}/api/perfil/posgrado/${posgrado.id}`, posgrado);
   }
 
-  delete(id: number): Observable<IResponseService>  {
-    return this.httpClient.delete<IResponseService>(`${environment.apiUrl}/api/perfil/posgrado/${id}`);
+  delete(id: number): Observable<IResponseService<Posgrado>>  {
+    return this.httpClient.delete<IResponseService<Posgrado>>(`${environment.apiUrl}/api/perfil/posgrado/${id}`);
   }
 }

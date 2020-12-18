@@ -34,13 +34,13 @@ export class MailService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public insert(request: MailRequestModel): Observable<IResponseService> {
-    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/email/${request.id}`, request);
+  public insert(request: MailRequestModel): Observable<IResponseService<Mail>> {
+    return this.httpClient.put<IResponseService<Mail>>(`${environment.apiUrl}/api/perfil/contacto/email/${request.id}`, request);
 
   }
 
-  public update(request: MailRequestModel): Observable<IResponseService> {
-    return this.httpClient.put<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/email/${request.id}`, request);
+  public update(request: MailRequestModel): Observable<IResponseService<Mail>> {
+    return this.httpClient.put<IResponseService<Mail>>(`${environment.apiUrl}/api/perfil/contacto/email/${request.id}`, request);
   }
 
 
@@ -48,7 +48,7 @@ export class MailService {
     return this.httpClient.get<Mail[]>(`${environment.apiUrl}/api/perfil/contacto/email`);
   }
 
-  public delete(id: number): Observable<IResponseService> {
-    return this.httpClient.delete<IResponseService>(`${environment.apiUrl}/api/perfil/contacto/email/${id}`);
+  public delete(id: number): Observable<IResponseService<Mail>> {
+    return this.httpClient.delete<IResponseService<Mail>>(`${environment.apiUrl}/api/perfil/contacto/email/${id}`);
   }
 }

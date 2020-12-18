@@ -81,6 +81,7 @@ export class IdentificacionComponent implements OnInit {
 
     this.identificacionService.update(identifToSave).subscribe(response => {
       if (response.success) {
+        this.identificacionService.currentIdentificacionValue = response.entity;
         this.toastr.success('Actualizacion realizada con exito')
       } else {
         this.toastr.error(response.message);
