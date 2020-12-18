@@ -56,7 +56,7 @@ export class MailComponent implements OnInit {
         validators: [Validators.required, Validators.email],
         updateOn: 'blur'
       }],
-      tipo: ['', {
+      idTipoEmail: ['', {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
@@ -115,30 +115,48 @@ export class MailComponent implements OnInit {
   }
 
   public editarFila(): void {
-    const mailUpdate = this.mailForm.value as MailRequestModel;
-    this.mailService.update(mailUpdate).subscribe();
+
+    const mailUpdate = {
+      email: this.mailForm.value.email,
+      tipoEmail: this.mailForm.value.idTipoEmail,
+      id: this.mailForm.value.id
+    } as MailRequestModel;
+    this.mailService.update(mailUpdate).subscribe(response => {
+      if (response.success) {
+        let index = this.filas.findIndex(fila => fila.valor.id === response.entity.id)
+        this.filas[index].valor = response.entity;
+        this.mailForm.reset();
+        this.toastr.success(null, 'Registro editado correctamente.');
+      } else {
+        this.toastr.error(null, response.message);
+      }
+    });
   }
 
   public agregarFila(): void {
 
-    const formValue = this.mailForm.value.checklist.map((selected, i) => {
-      return {
-        id: this.checkData[i].id,
-        selected
-      }
-    });
-    console.log('sarasa', formValue);
+    if (this.mailForm.valid) {
+      const request = this.mailForm.value as MailRequestModel;
 
-    const request = this.mailForm.value as MailRequestModel;
-    this.mailService.insert(request).subscribe(mails => {
-      //   // this.filas = [
-      //   //   ...this.filas,
-      //   //   {
-      //   //     valor: {
-      //   //       ...mails
-      //   //     }
-      //   //   }
-      //   // ];
-    });
+      this.mailService.insert(request).subscribe(response => {
+        if (response.success) {
+          this.filas = [
+            ...this.filas,
+            {
+              valor: response.entity
+            }
+          ];
+          this.mailForm.reset();
+
+          this.toastr.success(null, 'Registro agregado correctamente.');
+        } else {
+          this.toastr.error(null, response.message);
+        }
+      });
+    } else {
+      this.mailForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
+    }
+
   }
 }

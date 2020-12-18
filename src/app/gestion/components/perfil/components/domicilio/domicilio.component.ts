@@ -25,9 +25,9 @@ export class DomicilioComponent implements OnInit {
   public domicilioForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private domicilioService: DomicilioService,
-              private toastr: ToastrService,
-              private dialogService: DialogService) {
+    private domicilioService: DomicilioService,
+    private toastr: ToastrService,
+    private dialogService: DialogService) {
 
     this.domicilioForm = this.formBuilder.group({
       id: [],
@@ -56,7 +56,7 @@ export class DomicilioComponent implements OnInit {
       }],
       codigoPostal: ['', {
         validators: [Validators.required, Validators.maxLength(7),
-                     Validators.minLength(4), Validators.pattern('[A-Za-z]{0,2}[0-9]{4}[A-Za-z]{0,1}$')],
+        Validators.minLength(4), Validators.pattern('[A-Za-z]{0,2}[0-9]{4}[A-Za-z]{0,1}$')],
         updateOn: 'blur'
       }]
     });
@@ -97,44 +97,47 @@ export class DomicilioComponent implements OnInit {
 
   ngOnInit() {
     this.domicilioService.getAll()
-    .subscribe(d => {
-      d.map(x => {
-        this.filas = [
-          ...this.filas,
-          {
-            valor: new Domicilio(x, this.tiposDomicilios)
-          }
-        ];
+      .subscribe(d => {
+        d.map(x => {
+          this.filas = [
+            ...this.filas,
+            {
+              valor: new Domicilio(x, this.tiposDomicilios)
+            }
+          ];
+        });
       });
-    });
   }
 
   onEditar(ev) {
+    console.log('el evento', ev);
+
     this.domicilioForm.patchValue(ev);
   }
 
   showConfirm(ev) {
     const disposable = this.dialogService.addDialog(ModalComponent, {
-        title: 'Confirmar borrado',
-        message: '¿Esta seguro que desea borrar el registro seleccionado?'})
-        .subscribe((isConfirmed) => {
-            // We get dialog result
-            if (isConfirmed) {
-                this.domicilioService.delete(ev.id).subscribe(d => {
-                  if (d.success) {
-                    const index = this.filas.findIndex(f => f.valor.id === ev.id);
-                    this.filas.splice(index, 1);
-                    this.toastr.success(null, 'Registro eliminado correctamente.');
-                  } else {
-                    this.toastr.error(null, d.message);
-                  }
-              });
+      title: 'Confirmar borrado',
+      message: '¿Esta seguro que desea borrar el registro seleccionado?'
+    })
+      .subscribe((isConfirmed) => {
+        // We get dialog result
+        if (isConfirmed) {
+          this.domicilioService.delete(ev.id).subscribe(d => {
+            if (d.success) {
+              const index = this.filas.findIndex(f => f.valor.id === ev.id);
+              this.filas.splice(index, 1);
+              this.toastr.success(null, 'Registro eliminado correctamente.');
+            } else {
+              this.toastr.error(null, d.message);
             }
-        });
+          });
+        }
+      });
     // We can close dialog calling disposable.unsubscribe();
     // If dialog was not closed manually close it by timeout
     setTimeout(() => {
-        disposable.unsubscribe();
+      disposable.unsubscribe();
     }, 10000);
   }
 
@@ -171,7 +174,7 @@ export class DomicilioComponent implements OnInit {
           this.filas = [
             ...this.filas,
             {
-              valor: fila
+              valor: i.entity
             }
           ];
           this.domicilioForm.reset();

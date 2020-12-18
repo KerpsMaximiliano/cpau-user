@@ -35,7 +35,7 @@ export class MailService {
   constructor(private httpClient: HttpClient) { }
 
   public insert(request: MailRequestModel): Observable<IResponseService<Mail>> {
-    return this.httpClient.put<IResponseService<Mail>>(`${environment.apiUrl}/api/perfil/contacto/email/${request.id}`, request);
+    return this.httpClient.post<IResponseService<Mail>>(`${environment.apiUrl}/api/perfil/contacto/email`, request);
 
   }
 

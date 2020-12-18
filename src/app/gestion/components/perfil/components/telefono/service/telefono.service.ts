@@ -42,7 +42,7 @@ export class TelefonoService {
 
 
   public insert(request: TelefonoRequestModel): Observable<IResponseService<Telefono>> {
-    return this.httpClient.put<IResponseService<Telefono>>(`${environment.apiUrl}/api/perfil/contacto/telefono/${request.id}`, request);
+    return this.httpClient.post<IResponseService<Telefono>>(`${environment.apiUrl}/api/perfil/contacto/telefono`, request);
 
   }
 
