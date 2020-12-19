@@ -1,6 +1,6 @@
 export interface Mail {
     id: number;
-    idTipoMail: number;
+    idTipoEmail: number;
     tipoEmail: string;
     email: string;
 }

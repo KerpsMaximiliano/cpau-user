@@ -37,16 +37,16 @@
                                         <label class="col-sm-4 control-label">Tipo:</label>
                                         <div class="col-sm-8">
                                             <div *ngIf="(tipos$ | async) as telTypes">
-                                                <select id="countries" formControlName="IdTipoTelefono"
+                                                <select id="countries" formControlName="idTipoTelefono"
                                                     class="identification-select browser-default custom-select">
                                                     <option *ngFor="let type of telTypes" [value]="type.id">
                                                         {{ type.descripcion }}</option>
                                                 </select>
-                                                <form-error [errors]="telefonoForm.controls.IdTipoTelefono.errors"
+                                                <form-error [errors]="telefonoForm.controls.idTipoTelefono.errors"
                                                     [errorsMessages]="{
                                                         required: 'Campo Requerido'
                                                         }"
-                                                    [controlTouched]="telefonoForm.controls.IdTipoTelefono.touched">
+                                                    [controlTouched]="telefonoForm.controls.idTipoTelefono.touched">
                                                 </form-error>
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@
                                                 <button class="btn btn-primary" (click)="agregarFila()"
                                                     *ngIf="!f.id.value">Agregar</button>
                                                 <button class="btn btn-primary" (click)="editarFila()"
-                                                    *ngIf="f.id.value">Editar</button>
+                                                    *ngIf="f.id.value">Actualizar</button>
                                             </div>
                                         </div>
                                     </div>
