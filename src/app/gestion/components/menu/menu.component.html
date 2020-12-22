@@ -36,20 +36,19 @@
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[1] === true}">
                             <li><a [routerLink]="'matricula/resumen'">Resumen</a></li>
                             <li><a [routerLink]="'matricula/derecho-anual'">Derecho Anual</a></li>
-                            <li><a href="#">Estado</a></li>
                             <li><a href="#">Certificado</a></li>
+                            <li><a href="#">Credencial digital</a></li>
                         </ul>
                     </li>
                     <li>
                         <a (click)="colapsar(2)"><i class="fa fa-graduation-cap"></i> <span class="nav-label">Oferta de
                                 Servicios</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[2] === true}">
-                            <li><a [routerLink]="'oferta-servicios/actividad-profesional'">Actividad Profesional</a>
-                            </li>
+                            <li><a [routerLink]="'oferta-servicios/actividad-profesional'">Actividad Profesional</a></li>
                             <li><a [routerLink]="'oferta-servicios/experiencia'">Experiencia</a></li>
                             <li><a [routerLink]="'oferta-servicios/cursos'">Cursos</a></li>
                             <li><a [routerLink]="'oferta-servicios/posgrados'">Posgrados</a></li>
-                            <!-- <li><a href="#">Asociados</a></li> -->
+                            <li><a href="#">Curriculum Vitae</a></li>
                         </ul>
                     </li>
                     <li>
@@ -58,39 +57,47 @@
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[3] === true}">
                             <li><a href="#">Publicaciones</a></li>
                             <li><a href="#">Newsletters</a></li>
-                            <li><a href="#">Temas de Interés</a></li>
+                            <!-- <li><a href="#">Temas de Interés</a></li> -->
                         </ul>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a (click)="colapsar(4)"><i class="fa fa-building"></i> <span
                                 class="nav-label">Encomiendas</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[4] === true}">
                             <li><a href="#">Nuevo RETP</a></li>
                             <li><a href="#">Histórico</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li>
                         <a (click)="colapsar(5)"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Compras
                                 On-line</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true}">
+                        <!-- <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true}">
                             <li><a href="#">Cursos</a></li>
                             <li><a href="#">Publicaciones</a></li>
                             <li><a href="#">Merchandising</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
-                    <li>
+                    <!-- <li>
                         <a (click)="colapsar(6)"><i class="fa fa-cog"></i> <span
                                 class="nav-label">Herramientas</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[6] === true}">
                             <li><a href="#">CPAU MAIL</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li>
                         <a (click)="colapsar(7)"><i class="fa fa-lock"></i> <span class="nav-label">Seguridad</span>
                             <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[7] === true}">
                             <li><a href="#">Usuario</a></li>
                             <li><a href="#">Contraseña</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a (click)="colapsar(8)"><i class="fa fa-lock"></i> <span class="nav-label">Administración</span>
+                            <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[8] === true}">
+                            <li><a href="#">Nuevo</a></li>
+                            <li><a href="#">Actual</a></li>
                         </ul>
                     </li>
                 </ul>
