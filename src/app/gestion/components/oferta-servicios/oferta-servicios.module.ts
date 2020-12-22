@@ -9,10 +9,11 @@ import { ExperienciaComponent } from './components/experiencia/experiencia.compo
 import { CursosComponent } from './components/cursos/cursos.component';
 import { PosgradosComponent } from './components/posgrados/posgrados.component';
 import { ActividadProfesionalComponent } from './components/actividad-profesional/actividad-profesional.component';
+import { CurriculumVitaeComponent } from './components/curriculum-vitae/curriculum-vitae.component';
 
 
 @NgModule({
-  declarations: [ExperienciaComponent, CursosComponent, PosgradosComponent, ActividadProfesionalComponent],
+  declarations: [ExperienciaComponent, CursosComponent, PosgradosComponent, ActividadProfesionalComponent, CurriculumVitaeComponent],
   imports: [
     CommonModule,
     OfertaServiciosRoutingModule,

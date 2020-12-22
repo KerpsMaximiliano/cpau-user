@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ActividadProfesionalComponent } from './components/actividad-profesional/actividad-profesional.component';
+import { CurriculumVitaeComponent } from './components/curriculum-vitae/curriculum-vitae.component';
 import { CursosComponent } from './components/cursos/cursos.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { PosgradosComponent } from './components/posgrados/posgrados.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'posgrados',
     component: PosgradosComponent,
+  },
+  {
+    path: 'curriculum-vitae',
+    component: CurriculumVitaeComponent,
   },
 ];
 
