@@ -6,31 +6,11 @@ import { environment } from '@environments/environment';
 import { Observable, of } from 'rxjs';
 import { Redes, RedesRequestModel } from '../models/redes.model';
 
-
-const REDES_TYPES: SelectItem[] = [
-  {
-    id: 1,
-    descripcion: 'Facebook'
-  },
-  {
-    id: 2,
-    descripcion: 'Instagram'
-  },
-  {
-    id: 3,
-    descripcion: 'Pinterest'
-  },
-  {
-    id: 4,
-    descripcion: 'Twitter'
-  }
-];
-
 @Injectable({
   providedIn: 'root'
 })
 export class RedesService {
-  public tiposRedes$ = of(REDES_TYPES);
+  public tiposRedes$ = this.httpClient.get<SelectItem[]>(`${environment.apiUrl}/api/siteConsumer/redSocial`);
 
   constructor(private httpClient: HttpClient) { }
 

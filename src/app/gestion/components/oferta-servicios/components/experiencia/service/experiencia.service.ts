@@ -8,35 +8,35 @@ import { Experiencia } from '../model/experiencia.model';
 
 const DESTINO_OBRA: SelectItem[] = [
   {
-      id: 1,
-      descripcion: 'Particular'
+    id: 1,
+    nombre: 'Particular'
   },
   {
-      id: 2,
-      descripcion: 'Laboral'
+    id: 2,
+    nombre: 'Laboral'
   },
   {
-      id: 3,
-      descripcion: 'Judicial'
+    id: 3,
+    nombre: 'Judicial'
   },
   {
-      id: 4,
-      descripcion: 'Otros'
+    id: 4,
+    nombre: 'Otros'
   }
 ];
 
 const TIPO_OBRA: SelectItem[] = [
   {
-      id: 1,
-      descripcion: 'Normal'
+    id: 1,
+    nombre: 'Normal'
   },
   {
-      id: 2,
-      descripcion: 'Seco'
+    id: 2,
+    nombre: 'Seco'
   },
   {
-      id: 3,
-      descripcion: 'Hierro'
+    id: 3,
+    nombre: 'Hierro'
   }
 ];
 
@@ -54,15 +54,15 @@ export class ExperienciaService {
     return this.httpClient.get<Experiencia[]>(`${environment.apiUrl}/api/perfil/experiencia`);
   }
 
-  insert(experiencia: Experiencia): Observable<IResponseService<Experiencia>>  {
+  insert(experiencia: Experiencia): Observable<IResponseService<Experiencia>> {
     return this.httpClient.post<IResponseService<Experiencia>>(`${environment.apiUrl}/api/perfil/experiencia`, experiencia);
   }
 
-  update(experiencia: Experiencia): Observable<IResponseService<Experiencia>>  {
+  update(experiencia: Experiencia): Observable<IResponseService<Experiencia>> {
     return this.httpClient.put<IResponseService<Experiencia>>(`${environment.apiUrl}/api/perfil/experiencia/${experiencia.id}`, experiencia);
   }
 
-  delete(id: number): Observable<IResponseService<Experiencia>>  {
+  delete(id: number): Observable<IResponseService<Experiencia>> {
     return this.httpClient.delete<IResponseService<Experiencia>>(`${environment.apiUrl}/api/perfil/experiencia/${id}`);
   }
 }

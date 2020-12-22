@@ -8,8 +8,8 @@ import { Posgrado } from '../model/posgrado.model';
 
 const UNIVERSIDADES: SelectItem[] = [
   {
-      id: 1,
-      descripcion: 'HOLANDA'
+    id: 1,
+    nombre: 'HOLANDA'
   }
 ];
 
@@ -25,15 +25,15 @@ export class PosgradoService {
     return this.httpClient.get<Posgrado[]>(`${environment.apiUrl}/api/perfil/posgrado`);
   }
 
-  insert(posgrado: Posgrado): Observable<IResponseService<Posgrado>>  {
+  insert(posgrado: Posgrado): Observable<IResponseService<Posgrado>> {
     return this.httpClient.post<IResponseService<Posgrado>>(`${environment.apiUrl}/api/perfil/posgrado`, posgrado);
   }
 
-  update(posgrado: Posgrado): Observable<IResponseService<Posgrado>>  {
+  update(posgrado: Posgrado): Observable<IResponseService<Posgrado>> {
     return this.httpClient.put<IResponseService<Posgrado>>(`${environment.apiUrl}/api/perfil/posgrado/${posgrado.id}`, posgrado);
   }
 
-  delete(id: number): Observable<IResponseService<Posgrado>>  {
+  delete(id: number): Observable<IResponseService<Posgrado>> {
     return this.httpClient.delete<IResponseService<Posgrado>>(`${environment.apiUrl}/api/perfil/posgrado/${id}`);
   }
 }

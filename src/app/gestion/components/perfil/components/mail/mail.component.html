@@ -36,11 +36,11 @@
                                     <div class="col-sm-4">
                                         <label class="col-sm-4 control-label">Tipo:</label>
                                         <div class="col-sm-8">
-                                            <div *ngIf="(tipos$ | async) as telTypes">
+                                            <div *ngIf="(tipos$ | async) as mailTypes">
                                                 <select id="countries" formControlName="idTipoEmail"
                                                     class="identification-select browser-default custom-select">
-                                                    <option *ngFor="let type of telTypes" [value]="type.id">
-                                                        {{ type.descripcion }}</option>
+                                                    <option *ngFor="let type of mailTypes" [value]="type.id">
+                                                        {{ type.nombre }}</option>
                                                 </select>
                                                 <form-error [errors]="mailForm.controls.idTipoEmail.errors"
                                                     [errorsMessages]="{

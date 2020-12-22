@@ -40,7 +40,7 @@
                                                 <select id="countries" formControlName="idTipoTelefono"
                                                     class="identification-select browser-default custom-select">
                                                     <option *ngFor="let type of telTypes" [value]="type.id">
-                                                        {{ type.descripcion }}</option>
+                                                        {{ type.nombre }}</option>
                                                 </select>
                                                 <form-error [errors]="telefonoForm.controls.idTipoTelefono.errors"
                                                     [errorsMessages]="{

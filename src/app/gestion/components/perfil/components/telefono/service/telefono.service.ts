@@ -7,27 +7,6 @@ import { Observable, of } from 'rxjs';
 import { Telefono, TelefonoRequestModel } from '../models/telefono.model';
 
 
-
-
-const TELEFONOS_TYPES: SelectItem[] = [
-  {
-    id: 1,
-    descripcion: 'Particular'
-  },
-  {
-    id: 2,
-    descripcion: 'Laboral'
-  },
-  {
-    id: 2,
-    descripcion: 'Judicial'
-  },
-  {
-    id: 0,
-    descripcion: 'Otros'
-  }
-]
-
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +14,7 @@ export class TelefonoService {
 
 
 
-  public tiposTelefonos$ = of(TELEFONOS_TYPES);
+  public tiposTelefonos$ = this.httpClient.get<SelectItem[]>(`${environment.apiUrl}/api/siteConsumer/tipoContacto`);
 
   constructor(private httpClient: HttpClient) { }
 

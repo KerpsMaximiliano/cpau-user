@@ -37,15 +37,16 @@
                                         <label class="col-sm-4 control-label">Red Social:</label>
                                         <div class="col-sm-8">
                                             <div *ngIf="(tipos$ | async) as redTypes">
-                                                <select id="tiposRed" formControlName="idRedSocial"
+                                                <select id="tiposRed" formControlName="idtipoRedSocial"
                                                     class="red-select browser-default custom-select">
                                                     <option *ngFor="let type of redTypes" [value]="type.id">
-                                                        {{ type.descripcion }}</option>
+                                                        {{ type.nombre }}</option>
                                                 </select>
-                                                <form-error [errors]="redesForm.controls.idRedSocial.errors"
+                                                <form-error [errors]="redesForm.controls.idtipoRedSocial.errors"
                                                     [errorsMessages]="{
                                                         required: 'Campo Requerido'
-                                                        }" [controlTouched]="redesForm.controls.idRedSocial.touched">
+                                                        }"
+                                                    [controlTouched]="redesForm.controls.idtipoRedSocial.touched">
                                                 </form-error>
                                             </div>
                                         </div>

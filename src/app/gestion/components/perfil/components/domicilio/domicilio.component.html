@@ -40,7 +40,7 @@
                                                 <select id="tiposDomicilios" formControlName="idTipoDomicilio"
                                                     class="tipo-domicilio-select browser-default custom-select">
                                                     <option *ngFor="let tp of tiposDomicilios" [value]="tp.id">
-                                                        {{ tp.descripcion }}</option>
+                                                        {{ tp.nombre }}</option>
                                                 </select>
                                                 <form-error [errors]="domicilioForm.controls.idTipoDomicilio.errors"
                                                     [errorsMessages]="{

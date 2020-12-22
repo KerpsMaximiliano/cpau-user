@@ -6,31 +6,12 @@ import { environment } from '@environments/environment';
 import { Observable, of } from 'rxjs';
 import { Mail, MailRequestModel } from '../models/mail.model';
 
-const MAILS_TYPES: SelectItem[] = [
-  {
-    id: 1,
-    descripcion: 'Particular'
-  },
-  {
-    id: 2,
-    descripcion: 'Laboral'
-  },
-  {
-    id: 2,
-    descripcion: 'Judicial'
-  },
-  {
-    id: 0,
-    descripcion: 'Otros'
-  }
-]
-
 @Injectable({
   providedIn: 'root'
 })
 export class MailService {
 
-  public tiposMails$ = of(MAILS_TYPES);
+  public tiposMails$ = this.httpClient.get<SelectItem[]>(`${environment.apiUrl}/api/siteConsumer/tipoContacto`);
 
   constructor(private httpClient: HttpClient) { }
 

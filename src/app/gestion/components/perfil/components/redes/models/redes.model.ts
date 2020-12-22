@@ -1,7 +1,7 @@
 export interface Redes {
     id: number;
-    idRedSocial: number;
-    redSocial: string;
+    idtipoRedSocial: number;
+    tipoRedSocial: string;
     url: string;
 }
 
@@ -9,7 +9,7 @@ export interface Redes {
 
 export interface RedesRequestModel {
     id: number;
-    idRedSocial: number;
-    redSocial: string;
+    idtipoRedSocial: number;
+    tipoRedSocial: string;
     url: string;
 }

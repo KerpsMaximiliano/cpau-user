@@ -31,7 +31,7 @@ export class RedesComponent {
 
     this.columnnas = [
       {
-        id: 'redSocial',
+        id: 'tipoRedSocial',
         titulo: 'Red Social'
       },
       {
@@ -44,10 +44,11 @@ export class RedesComponent {
       id: [],
       url: ['', {
         validators: [
-          Validators.required],
+          Validators.required,
+        ],
         updateOn: 'blur'
       }],
-      idRedSocial: ['', {
+      idtipoRedSocial: ['', {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
@@ -95,7 +96,7 @@ export class RedesComponent {
       this.redesService.update(request).subscribe(i => {
         if (i.success) {
           const index = this.filas.findIndex(f => f.valor.id === request.id);
-          this.filas[index].valor = request;
+          this.filas[index].valor = i.entity;
           this.redesForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
         } else {
