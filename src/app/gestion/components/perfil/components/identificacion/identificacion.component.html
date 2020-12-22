@@ -35,30 +35,24 @@
                             <div class="col-md-6 col-md-offset-3">
 
                                 <div class="form-group">
-
                                     <label class="col-sm-2 control-label">Nombres:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="nombres"
-                                            placeholder="Luciano">
-
-
+                                        <input type="text" class="form-control" formControlName="nombres" maxlength="200" placeholder="Nombres">
                                         <form-error [errors]="identificacionForm.controls.nombres.errors"
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud debe ser mayor a 2 caracteres',
                                               maxlength: 'La longitud debe ser menor a 200 caracteres',
                                               whitespace: 'No se permite ingresar solo espacios en blanco'
-
                                             }" [controlTouched]="identificacionForm.controls.nombres.touched">
                                         </form-error>
                                     </div>
                                 </div>
 
-                                <div class="form-group"><label class="col-sm-2 control-label">Apellidos:</label>
-
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Apellidos:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="apellidos"
-                                            placeholder="Carnevalini">
+                                        <input type="text" class="form-control" formControlName="apellidos" maxlength="200" placeholder="Apellidos">
                                         <form-error [errors]="identificacionForm.controls.apellidos.errors"
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
@@ -117,7 +111,7 @@
                                                 <span class="help-block m-b-none">Tipo</span>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="text" placeholder="28648062"
+                                                <input type="text" placeholder="Número" mask="99999999"
                                                     formControlName="numeroDocumento" class="form-control">
                                                 <form-error
                                                     [errors]="identificacionForm.controls.numeroDocumento.errors"
