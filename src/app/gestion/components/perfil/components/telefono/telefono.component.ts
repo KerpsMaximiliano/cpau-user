@@ -120,10 +120,7 @@ export class TelefonoComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.telefonoForm.valid) {
-      const request = {
-        tipoTelefono: this.telefonoForm.value.idTipoTelefono,
-        telefono: this.telefonoForm.value.telefono
-      } as TelefonoRequestModel
+      const request = this.telefonoForm.value as TelefonoRequestModel;
 
       this.telefonoService.insert(request).subscribe(response => {
         if (response.success) {

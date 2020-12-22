@@ -6,7 +6,7 @@ import { environment } from '@environments/environment';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 
 @Injectable({ providedIn: 'root' })
-export class ServiceNameService {
+export class ActividadProfesionalService {
     constructor(private httpClient: HttpClient) { }
 
     public getActividadProfesional(): Observable<ActividadProfesional[]> {

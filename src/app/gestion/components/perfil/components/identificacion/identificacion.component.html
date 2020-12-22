@@ -37,7 +37,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nombres:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="nombres" maxlength="200" placeholder="Nombres">
+                                        <input type="text" class="form-control" formControlName="nombres"
+                                            maxlength="200" placeholder="Nombres">
                                         <form-error [errors]="identificacionForm.controls.nombres.errors"
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
@@ -52,7 +53,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Apellidos:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="apellidos" maxlength="200" placeholder="Apellidos">
+                                        <input type="text" class="form-control" formControlName="apellidos"
+                                            maxlength="200" placeholder="Apellidos">
                                         <form-error [errors]="identificacionForm.controls.apellidos.errors"
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
@@ -136,7 +138,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <input type="text" class="form-control" formControlName="nacimiento"
-                                                    mask="9999/99/99" placeholder="1981/03/28">
+                                                    mask="9999-99-99" placeholder="dd/mm/aaaa">
                                                 <form-error [errors]="identificacionForm.controls.nacimiento.errors"
                                                     [errorsMessages]="{
                                                               required: 'Campo Requerido'
