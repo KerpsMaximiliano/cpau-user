@@ -22,18 +22,18 @@ export class PosgradoService {
   constructor(private httpClient: HttpClient) { }
 
   getAll() {
-    return this.httpClient.get<Posgrado[]>(`${environment.apiUrl}/api/perfil/posgrado`);
+    return this.httpClient.get<Posgrado[]>(`${environment.apiUrl}/api/servicios/postgrados`);
   }
 
   insert(posgrado: Posgrado): Observable<IResponseService<Posgrado>> {
-    return this.httpClient.post<IResponseService<Posgrado>>(`${environment.apiUrl}/api/perfil/posgrado`, posgrado);
+    return this.httpClient.post<IResponseService<Posgrado>>(`${environment.apiUrl}/api/servicios/postgrados`, posgrado);
   }
 
   update(posgrado: Posgrado): Observable<IResponseService<Posgrado>> {
-    return this.httpClient.put<IResponseService<Posgrado>>(`${environment.apiUrl}/api/perfil/posgrado/${posgrado.id}`, posgrado);
+    return this.httpClient.put<IResponseService<Posgrado>>(`${environment.apiUrl}/api/servicios/postgrados/${posgrado.id}`, posgrado);
   }
 
   delete(id: number): Observable<IResponseService<Posgrado>> {
-    return this.httpClient.delete<IResponseService<Posgrado>>(`${environment.apiUrl}/api/perfil/posgrado/${id}`);
+    return this.httpClient.delete<IResponseService<Posgrado>>(`${environment.apiUrl}/api/servicios/postgrados/${id}`);
   }
 }

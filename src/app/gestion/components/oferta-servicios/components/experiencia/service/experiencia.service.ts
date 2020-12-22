@@ -51,18 +51,18 @@ export class ExperienciaService {
   public tiposObra$ = of(TIPO_OBRA);
 
   getAll() {
-    return this.httpClient.get<Experiencia[]>(`${environment.apiUrl}/api/perfil/experiencia`);
+    return this.httpClient.get<Experiencia[]>(`${environment.apiUrl}/api/servicios/experiencia`);
   }
 
   insert(experiencia: Experiencia): Observable<IResponseService<Experiencia>> {
-    return this.httpClient.post<IResponseService<Experiencia>>(`${environment.apiUrl}/api/perfil/experiencia`, experiencia);
+    return this.httpClient.post<IResponseService<Experiencia>>(`${environment.apiUrl}/api/servicios/experiencia`, experiencia);
   }
 
   update(experiencia: Experiencia): Observable<IResponseService<Experiencia>> {
-    return this.httpClient.put<IResponseService<Experiencia>>(`${environment.apiUrl}/api/perfil/experiencia/${experiencia.id}`, experiencia);
+    return this.httpClient.put<IResponseService<Experiencia>>(`${environment.apiUrl}/api/servicios/experiencia/${experiencia.id}`, experiencia);
   }
 
   delete(id: number): Observable<IResponseService<Experiencia>> {
-    return this.httpClient.delete<IResponseService<Experiencia>>(`${environment.apiUrl}/api/perfil/experiencia/${id}`);
+    return this.httpClient.delete<IResponseService<Experiencia>>(`${environment.apiUrl}/api/servicios/experiencia/${id}`);
   }
 }

@@ -51,7 +51,7 @@ export class IdentificacionComponent implements OnInit {
         updateOn: 'blur'
       }],
       numeroDocumento: ['', {
-        validators: [Validators.required, Validators.max(99999999), Validators.min(1000000)],
+        validators: [Validators.required, Validators.minLength(7), Validators.maxLength(8)],
         updateOn: 'blur'
       }],
       nacimiento: ['', {
