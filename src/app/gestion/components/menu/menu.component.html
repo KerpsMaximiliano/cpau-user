@@ -7,9 +7,11 @@
                         <div class="dropdown profile-element"> <span>
                                 <img alt="image" class="img-circle" src="stylesCustom/images/luquio.png" width="48">
                             </span>
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{perfil?.nombres}} {{perfil?.apellidos}}</strong>
-                                </span> <span class="text-muted text-xs block">Registro Decreto 2293/92
-                                </span> </span>
+                            <span class="clear">
+                                <span class="block m-t-xs"> <strong class="font-bold">{{perfil?.nombres}} {{perfil?.apellidos}}</strong></span>
+                                <span *ngIf="currentUser?.matricula" class="text-muted text-xs block">{{currentUser.matricula}}</span>
+                                <span *ngIf="currentUser?.tipoMatricula" class="text-muted text-xs block">{{currentUser.tipoMatricula}}</span>
+                            </span>
                         </div>
                         <div class="logo-element">
                             CPAU
@@ -30,7 +32,7 @@
                             <li><a [routerLink]="'perfil/redes'">Redes Sociales</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li *ngIf="isMatriculado">
                         <a (click)="colapsar(1)"><i class="fa fa-briefcase"></i> <span
                                 class="nav-label">Matrícula</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[1] === true}">
@@ -40,7 +42,7 @@
                             <li><a href="#">Credencial digital</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li *ngIf="isMatriculado">
                         <a (click)="colapsar(2)"><i class="fa fa-graduation-cap"></i> <span class="nav-label">Oferta de
                                 Servicios</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[2] === true}">

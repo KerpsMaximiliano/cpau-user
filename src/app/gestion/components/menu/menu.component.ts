@@ -39,4 +39,8 @@ export class MenuComponent implements OnInit {
     return this.currentUser && this.currentUser.role === Role.Admin;
   }
 
+  get isMatriculado() {
+    return this.currentUser && this.currentUser.isMatriculado;
+  }
+
 }
