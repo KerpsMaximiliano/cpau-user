@@ -14,7 +14,7 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { CheckboxListComponent } from '@app/shared/components/checkbox-list/checkbox-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatepickerComponent } from '@app/shared/components/datepicker/datepicker.component';
-import { CustomAdapter, CustomDateParserFormatter } from '@app/shared/components/datepicker/datepicker.service';
+import { UsuarioComponent } from './components/seguridad/components/usuario/usuario.component';
 @NgModule({
   declarations: [HomeComponent,
     MenuComponent,
@@ -38,9 +38,6 @@ import { CustomAdapter, CustomDateParserFormatter } from '@app/shared/components
     DatepickerComponent,
     FormErrorComponent,
     NgbModule],
-  providers: [
-    { provide: NgbDateAdapter, useClass: CustomAdapter },
-    { provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter }
-  ]
+
 })
 export class GestionModule { }

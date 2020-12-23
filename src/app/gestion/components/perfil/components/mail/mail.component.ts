@@ -17,15 +17,6 @@ export class MailComponent implements OnInit {
 
   get f() { return this.mailForm.controls; }
 
-
-  public checkData = [
-    { id: 100, name: 'checkbox 1', selected: true },
-    { id: 200, name: 'checkbox 2', selected: false },
-    { id: 300, name: 'checkbox 3', selected: true },
-    { id: 400, name: 'checkbox 4', selected: false }
-  ];
-
-
   collapsed: boolean;
   public filas: Filas<Mail>[] = [];
   public columnnas: Columna<Mail>[];
@@ -92,6 +83,7 @@ export class MailComponent implements OnInit {
             if (d.success) {
               const index = this.filas.findIndex(f => f.valor.id === ev.id);
               this.filas.splice(index, 1);
+              this.mailForm.reset();
               this.toastr.success(null, 'Registro eliminado correctamente.');
             } else {
               this.toastr.error(null, d.message);
