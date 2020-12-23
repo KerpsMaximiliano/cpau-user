@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
-import { Resumen } from './models/resumen.model';
+import { Resumen, ResumenGrid } from './models/resumen.model';
 import { ResumenService } from './service/resumen.service';
 
 @Component({
@@ -11,8 +11,8 @@ import { ResumenService } from './service/resumen.service';
 export class ResumenComponent implements OnInit {
 
   collapsed: boolean;
-  public filas: Filas<Resumen>[] = [];
-  public columnas: Columna<Resumen>[];
+  public filas: Filas<ResumenGrid>[] = [];
+  public columnas: Columna<ResumenGrid>[];
   constructor(private resumenService: ResumenService) {
     this.columnas = [
       {
@@ -27,15 +27,15 @@ export class ResumenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filas = [];
     this.resumenService.getAll()
       .subscribe(d => {
-        d.map(x => {
-          this.filas = [
-            ...this.filas,
-            {
-              valor: x,
-            }
-          ];
+        Object.keys(d).forEach(k => {
+          this.filas.push(
+            {valor: {id: k ,
+                     valor: d[k],
+                     titulo: k.replace(/([A-Z])/g, ' $1')
+                              .replace(/^./, function(str){ return str.toUpperCase(); })}})
         });
     });
   }
