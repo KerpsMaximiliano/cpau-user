@@ -36,7 +36,6 @@ export class IdentificacionService {
     }
 
     public update(request: Identificacion): Observable<IResponseService<Identificacion>> {
-        request.nacimiento = new Date(request.nacimiento).toString();
         return this.httpClient.put<IResponseService<Identificacion>>(`${environment.apiUrl}/api/perfil/identificacion`, request);
     }
 

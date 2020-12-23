@@ -1526,3 +1526,7 @@ td {
     overflow: visible !important;
     height: 40px !important;
 }
+dp-date-picker.dp-material.ng-untouched.ng-pristine.ng-invalid div div.dp-input-container input.dp-picker-input {
+    border: 1px solid #ced4da !important;
+    height: 33px;
+  }

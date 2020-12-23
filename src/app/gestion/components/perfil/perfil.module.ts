@@ -11,6 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { RedesComponent } from './components/redes/redes.component';
 import { MailComponent } from './components/mail/mail.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 export var options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -25,9 +26,11 @@ export var options: Partial<IConfig> | (() => Partial<IConfig>);
     PerfilRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    DpDatePickerModule,
     GestionModule,
     NgxMaskModule.forRoot(options),
     ToastrModule.forRoot(), // ToastrModule added
-  ]
+  ],
+
 })
 export class PerfilModule { }
