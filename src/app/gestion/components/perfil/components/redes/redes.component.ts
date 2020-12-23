@@ -45,6 +45,7 @@ export class RedesComponent {
       url: ['', {
         validators: [
           Validators.required,
+          CustomValidator.urlValidator
         ],
         updateOn: 'blur'
       }],

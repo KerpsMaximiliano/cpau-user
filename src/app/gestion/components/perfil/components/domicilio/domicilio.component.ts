@@ -102,7 +102,7 @@ export class DomicilioComponent implements OnInit {
           this.filas = [
             ...this.filas,
             {
-              valor: new Domicilio(x, this.tiposDomicilios)
+              valor: x
             }
           ];
         });

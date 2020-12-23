@@ -108,11 +108,7 @@ export class MailComponent implements OnInit {
 
   public editarFila(): void {
 
-    const mailUpdate = {
-      email: this.mailForm.value.email,
-      tipoEmail: this.mailForm.value.idTipoEmail,
-      id: this.mailForm.value.id
-    } as MailRequestModel;
+    const mailUpdate = this.mailForm.value as MailRequestModel;
     this.mailService.update(mailUpdate).subscribe(response => {
       if (response.success) {
         let index = this.filas.findIndex(fila => fila.valor.id === response.entity.id)

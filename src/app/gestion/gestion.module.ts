@@ -13,7 +13,6 @@ import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { CheckboxListComponent } from '@app/shared/components/checkbox-list/checkbox-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DatepickerComponent } from '@app/shared/components/datepicker/datepicker.component';
 import { UsuarioComponent } from './components/seguridad/components/usuario/usuario.component';
 @NgModule({
   declarations: [HomeComponent,
@@ -22,7 +21,6 @@ import { UsuarioComponent } from './components/seguridad/components/usuario/usua
     FooterComponent,
     ActionTableComponent,
     CheckboxListComponent,
-    DatepickerComponent,
     FormErrorComponent],
   imports: [
     CommonModule,
@@ -35,7 +33,6 @@ import { UsuarioComponent } from './components/seguridad/components/usuario/usua
   ],
   exports: [ActionTableComponent,
     CheckboxListComponent,
-    DatepickerComponent,
     FormErrorComponent,
     NgbModule],
 

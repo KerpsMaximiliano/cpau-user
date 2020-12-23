@@ -16,7 +16,7 @@ export class DomicilioService {
 
   public tiposDomicilios$ = this.httpClient.get<SelectItem[]>(`${environment.apiUrl}/api/siteConsumer/tipoContacto`);
 
-  getAll() {
+  getAll(): Observable<Domicilio[]> {
     return this.httpClient.get<Domicilio[]>(`${environment.apiUrl}/api/perfil/domicilio`);
   }
 

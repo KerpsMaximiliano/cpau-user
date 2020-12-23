@@ -9,6 +9,6 @@ export interface Mail {
 
 export interface MailRequestModel {
     id: number;
-    tipoEmail: number;
+    idTipoEmail: number;
     email: number;
 }
