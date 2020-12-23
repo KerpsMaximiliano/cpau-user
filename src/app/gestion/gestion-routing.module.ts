@@ -26,6 +26,10 @@ const routes: Routes = [
         path: 'oferta-servicios',
         loadChildren: () => import('./components/oferta-servicios/oferta-servicios.module').then(m => m.OfertaServiciosModule),
       },
+      {
+        path: 'seguridad',
+        loadChildren: () => import('./components/seguridad/seguridad.module').then(m => m.SeguridadModule),
+      },
     ]
   },
 

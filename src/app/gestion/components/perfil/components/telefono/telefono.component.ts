@@ -82,6 +82,7 @@ export class TelefonoComponent implements OnInit {
             if (d.success) {
               const index = this.filas.findIndex(f => f.valor.id === ev.id);
               this.filas.splice(index, 1);
+              this.telefonoForm.reset();
               this.toastr.success(null, 'Registro eliminado correctamente.');
             } else {
               this.toastr.error(null, d.message);

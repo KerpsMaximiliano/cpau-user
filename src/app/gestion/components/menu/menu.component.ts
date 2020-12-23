@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Role, User } from '@app/_models';
+import { AuthenticationService } from '@app/_services';
 import { Identificacion } from '../perfil/components/identificacion/model/identificacion.model';
 import { IdentificacionService } from '../perfil/components/identificacion/service/identificacion.service';
 
@@ -14,8 +16,10 @@ export class MenuComponent implements OnInit {
 
   colapsado: boolean[] = [];
   perfil: Identificacion;
+  currentUser: User;
 
-  constructor(private identificacionService: IdentificacionService) { }
+  constructor(private identificacionService: IdentificacionService,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.identificacionService.read().subscribe(identificacion => {
@@ -23,10 +27,16 @@ export class MenuComponent implements OnInit {
     });
 
     this.identificacionService.getCurrentIdentificacionValue().subscribe(x => this.perfil = x);
+
+    this.currentUser = this.authenticationService.currentUserValue;
   }
   
   colapsar(i: number) {
     this.colapsado[i] = !this.colapsado[i];
+  }
+
+  get isAdmin() {
+    return this.currentUser && this.currentUser.role === Role.Admin;
   }
 
 }

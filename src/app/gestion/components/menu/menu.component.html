@@ -88,16 +88,16 @@
                         <a (click)="colapsar(7)"><i class="fa fa-lock"></i> <span class="nav-label">Seguridad</span>
                             <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[7] === true}">
-                            <li><a href="#">Usuario</a></li>
-                            <li><a href="#">Contraseña</a></li>
+                            <li><a [routerLink]="'seguridad/usuario'">Usuario</a></li>
+                            <li><a [routerLink]="'seguridad/contrasenia'">Contraseña</a></li>
                         </ul>
                     </li>
                     <li>
                         <a (click)="colapsar(8)"><i class="fa fa-lock"></i> <span class="nav-label">Administración</span>
                             <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[8] === true}">
-                            <li><a href="#">Nuevo</a></li>
-                            <li><a href="#">Actual</a></li>
+                        <ul *ngIf="isAdmin" class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[8] === true}">
+                            <li><a href="/Content/admin">Nuevo</a></li>
+                            <li><a href="/admin/index">Actual</a></li>
                         </ul>
                     </li>
                 </ul>

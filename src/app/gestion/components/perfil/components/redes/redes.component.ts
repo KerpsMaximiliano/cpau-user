@@ -48,10 +48,23 @@ export class RedesComponent {
         ],
         updateOn: 'blur'
       }],
-      idtipoRedSocial: ['', {
+      idTipoRedSocial: ['', {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
+    });
+  }
+
+  ngOnInit() {
+    this.redesService.read().subscribe(redes => {
+      redes.map(t => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: t
+          }
+        ]
+      });
     });
   }
 
@@ -71,6 +84,7 @@ export class RedesComponent {
             if (d.success) {
               const index = this.filas.findIndex(f => f.valor.id === ev.id);
               this.filas.splice(index, 1);
+              this.redesForm.reset();
               this.toastr.success(null, 'Registro eliminado correctamente.');
             } else {
               this.toastr.error(null, d.message);

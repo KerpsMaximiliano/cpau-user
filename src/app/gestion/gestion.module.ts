@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { CheckboxListComponent } from '@app/shared/components/checkbox-list/checkbox-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsuarioComponent } from './components/seguridad/components/usuario/usuario.component';
 @NgModule({
   declarations: [HomeComponent,
     MenuComponent,
