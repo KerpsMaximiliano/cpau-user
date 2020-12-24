@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { CustomValidator } from '@app/gestion/shared/validators/CustomValidator';
 import { FieldErrorsMessages } from '@app/shared/components/form-error/form-error.component';
-import { NgbDate, NgbDateAdapter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { IDatePickerDirectiveConfig } from 'ng2-date-picker';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -30,7 +29,6 @@ export class IdentificacionComponent implements OnInit {
     maxlength: 'La longitud debe ser menor a 200 caracteres'
   };
 
-  model1: any;
   config = {
     firstDayOfWeek: 'su',
     monthFormat: 'MMM, YYYY',
@@ -57,10 +55,10 @@ export class IdentificacionComponent implements OnInit {
     locale: 'es-AR',
 
   } as IDatePickerDirectiveConfig;
+
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private dateAdapter: NgbDateAdapter<string>,
     private identificacionService: IdentificacionService) {
 
     this.identificacionForm = this.formBuilder.group({
@@ -101,17 +99,25 @@ export class IdentificacionComponent implements OnInit {
   public ngOnInit(): void {
     this.identificacionService.read().subscribe(identificacion => {
       this.identificacionForm.patchValue(identificacion);
+
+      const nacimientoArr = identificacion.nacimiento.split('-');
+      const nacimiento = {
+        year: +nacimientoArr[0],
+        month: +nacimientoArr[1],
+        day: +nacimientoArr[2].slice(0, 2)
+      }
+      this.identificacionForm.controls.nacimiento.patchValue(nacimiento)
       this.identificacionOriginal = identificacion;
     });
   }
-  onDateSelect(event) {
-    console.log('el evento', event);
 
-  }
   public onSave(): void {
     this.identificacionForm.markAllAsTouched();
-    const identifToSave = this.identificacionForm.value as Identificacion;
 
+    const identifToSave = {
+      ...this.identificacionForm.value,
+      nacimiento: this.identificacionForm.value.nacimiento.year.toString() + '-' + this.identificacionForm.value.nacimiento.month + '-' + this.identificacionForm.value.nacimiento.day,
+    } as Identificacion;
     this.identificacionService.update(identifToSave).subscribe(response => {
       if (response.success) {
         this.identificacionService.currentIdentificacionValue = response.entity;

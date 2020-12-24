@@ -24,9 +24,9 @@ export class PosgradosComponent implements OnInit {
 
   public posgradoForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
-              private posgradoService: PosgradoService,
-              private toastr: ToastrService,
-              private dialogService: DialogService) {
+    private posgradoService: PosgradoService,
+    private toastr: ToastrService,
+    private dialogService: DialogService) {
     this.posgradoForm = this.formBuilder.group({
       id: [],
       fechaInicio: [null, {
@@ -70,44 +70,61 @@ export class PosgradosComponent implements OnInit {
 
   ngOnInit() {
     this.posgradoService.getAll()
-    .subscribe(d => {
-      d.map(x => {
-        this.filas = [
-          ...this.filas,
-          {
-            valor: x
-          }
-        ];
+      .subscribe(d => {
+        d.map(x => {
+          this.filas = [
+            ...this.filas,
+            {
+              valor: x
+            }
+          ];
+        });
       });
-    });
   }
 
-  onEditar(ev) {
+  onEditar(ev: Posgrado) {
     this.posgradoForm.patchValue(ev);
+    const fechaInicioArr = ev.fechaInicio.split('-');
+    const fechaInicio = {
+      year: +fechaInicioArr[0],
+      month: +fechaInicioArr[1],
+      day: +fechaInicioArr[2].slice(0, 2)
+    }
+
+    this.posgradoForm.controls.fechaInicio.patchValue(fechaInicio)
+
+    const fechaFinArr = ev.fechaFin.split('-');
+    const fechaFin = {
+      year: +fechaFinArr[0],
+      month: +fechaFinArr[1],
+      day: +fechaFinArr[2].slice(0, 2)
+    }
+    this.posgradoForm.controls.fechaFin.patchValue(fechaFin)
   }
 
   showConfirm(ev) {
     const disposable = this.dialogService.addDialog(ModalComponent, {
-        title: 'Confirmar borrado',
-        message: '¿Esta seguro que desea borrar el registro seleccionado?'})
-        .subscribe((isConfirmed) => {
-            // We get dialog result
-            if (isConfirmed) {
-                this.posgradoService.delete(ev.id).subscribe(d => {
-                  if (d.success) {
-                    const index = this.filas.findIndex(f => f.valor.id === ev.id);
-                    this.filas.splice(index, 1);
-                    this.toastr.success(null, 'Registro eliminado correctamente.');
-                  } else {
-                    this.toastr.error(null, d.message);
-                  }
-              });
+      title: 'Confirmar borrado',
+      message: '¿Esta seguro que desea borrar el registro seleccionado?'
+    })
+      .subscribe((isConfirmed) => {
+        // We get dialog result
+        if (isConfirmed) {
+          this.posgradoService.delete(ev.id).subscribe(d => {
+            if (d.success) {
+              const index = this.filas.findIndex(f => f.valor.id === ev.id);
+              this.filas.splice(index, 1);
+              this.toastr.success(null, 'Registro eliminado correctamente.');
+            } else {
+              this.toastr.error(null, d.message);
             }
-        });
+          });
+        }
+      });
     // We can close dialog calling disposable.unsubscribe();
     // If dialog was not closed manually close it by timeout
     setTimeout(() => {
-        disposable.unsubscribe();
+      disposable.unsubscribe();
     }, 10000);
   }
 
@@ -117,12 +134,15 @@ export class PosgradosComponent implements OnInit {
 
   public editarFila(): void {
     if (this.posgradoForm.valid) {
-      const fila = this.posgradoForm.value as Posgrado;
-
+      const fila = {
+        ...this.posgradoForm.value,
+        fechaFin: this.posgradoForm.value.fechaFin.year.toString() + '-' + this.posgradoForm.value.fechaFin.month + '-' + this.posgradoForm.value.fechaFin.day,
+        fechaInicio: this.posgradoForm.value.fechaInicio.year.toString() + '-' + this.posgradoForm.value.fechaInicio.month + '-' + this.posgradoForm.value.fechaInicio.day
+      } as Posgrado;
       this.posgradoService.update(fila).subscribe(i => {
         if (i.success) {
           const index = this.filas.findIndex(f => f.valor.id === fila.id);
-          this.filas[index].valor = fila;
+          this.filas[index].valor = i.entity;
           this.posgradoForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
         } else {
@@ -137,14 +157,17 @@ export class PosgradosComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.posgradoForm.valid) {
-      const fila = this.posgradoForm.value as Posgrado;
-
+      const fila = {
+        ...this.posgradoForm.value,
+        fechaFin: this.posgradoForm.value.fechaFin.year.toString() + '-' + this.posgradoForm.value.fechaFin.month + '-' + this.posgradoForm.value.fechaFin.day,
+        fechaInicio: this.posgradoForm.value.fechaInicio.year.toString() + '-' + this.posgradoForm.value.fechaInicio.month + '-' + this.posgradoForm.value.fechaInicio.day
+      } as Posgrado;
       this.posgradoService.insert(fila).subscribe(i => {
         if (i.success) {
           this.filas = [
             ...this.filas,
             {
-              valor: fila
+              valor: i.entity
             }
           ];
           this.posgradoForm.reset();

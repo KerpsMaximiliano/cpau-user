@@ -21,9 +21,9 @@ export class CursosComponent implements OnInit {
 
   public cursosForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
-              private cursoService: CursoService,
-              private toastr: ToastrService,
-              private dialogService: DialogService) {
+    private cursoService: CursoService,
+    private toastr: ToastrService,
+    private dialogService: DialogService) {
     this.cursosForm = this.formBuilder.group({
       id: [],
       fechaInicio: [null, {
@@ -65,44 +65,61 @@ export class CursosComponent implements OnInit {
 
   ngOnInit() {
     this.cursoService.getAll()
-    .subscribe(d => {
-      d.map(x => {
-        this.filas = [
-          ...this.filas,
-          {
-            valor: x
-          }
-        ];
+      .subscribe(d => {
+        d.map(x => {
+          this.filas = [
+            ...this.filas,
+            {
+              valor: x
+            }
+          ];
+        });
       });
-    });
   }
 
-  onEditar(ev) {
+  onEditar(ev: Curso) {
     this.cursosForm.patchValue(ev);
+    const fechaInicioArr = ev.fechaInicio.split('-');
+    const fechaInicio = {
+      year: +fechaInicioArr[0],
+      month: +fechaInicioArr[1],
+      day: +fechaInicioArr[2].slice(0, 2)
+    }
+
+    this.cursosForm.controls.fechaInicio.patchValue(fechaInicio)
+
+    const fechaFinArr = ev.fechaFin.split('-');
+    const fechaFin = {
+      year: +fechaFinArr[0],
+      month: +fechaFinArr[1],
+      day: +fechaFinArr[2].slice(0, 2)
+    }
+    this.cursosForm.controls.fechaFin.patchValue(fechaFin)
   }
 
   showConfirm(ev) {
     const disposable = this.dialogService.addDialog(ModalComponent, {
-        title: 'Confirmar borrado',
-        message: '¿Esta seguro que desea borrar el registro seleccionado?'})
-        .subscribe((isConfirmed) => {
-            // We get dialog result
-            if (isConfirmed) {
-                this.cursoService.delete(ev.id).subscribe(d => {
-                  if (d.success) {
-                    const index = this.filas.findIndex(f => f.valor.id === ev.id);
-                    this.filas.splice(index, 1);
-                    this.toastr.success(null, 'Registro eliminado correctamente.');
-                  } else {
-                    this.toastr.error(null, d.message);
-                  }
-              });
+      title: 'Confirmar borrado',
+      message: '¿Esta seguro que desea borrar el registro seleccionado?'
+    })
+      .subscribe((isConfirmed) => {
+        // We get dialog result
+        if (isConfirmed) {
+          this.cursoService.delete(ev.id).subscribe(d => {
+            if (d.success) {
+              const index = this.filas.findIndex(f => f.valor.id === ev.id);
+              this.filas.splice(index, 1);
+              this.toastr.success(null, 'Registro eliminado correctamente.');
+            } else {
+              this.toastr.error(null, d.message);
             }
-        });
+          });
+        }
+      });
     // We can close dialog calling disposable.unsubscribe();
     // If dialog was not closed manually close it by timeout
     setTimeout(() => {
-        disposable.unsubscribe();
+      disposable.unsubscribe();
     }, 10000);
   }
 
@@ -112,8 +129,11 @@ export class CursosComponent implements OnInit {
 
   public editarFila(): void {
     if (this.cursosForm.valid) {
-      const fila = this.cursosForm.value as Curso;
-
+      const fila = {
+        ...this.cursosForm.value,
+        fechaFin: this.cursosForm.value.fechaFin.year.toString() + '-' + this.cursosForm.value.fechaFin.month + '-' + this.cursosForm.value.fechaFin.day,
+        fechaInicio: this.cursosForm.value.fechaInicio.year.toString() + '-' + this.cursosForm.value.fechaInicio.month + '-' + this.cursosForm.value.fechaInicio.day
+      } as Curso;
       this.cursoService.update(fila).subscribe(i => {
         if (i.success) {
           const index = this.filas.findIndex(f => f.valor.id === fila.id);
@@ -132,8 +152,11 @@ export class CursosComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.cursosForm.valid) {
-      const fila = this.cursosForm.value as Curso;
-
+      const fila = {
+        ...this.cursosForm.value,
+        fechaFin: this.cursosForm.value.fechaFin.year.toString() + '-' + this.cursosForm.value.fechaFin.month + '-' + this.cursosForm.value.fechaFin.day,
+        fechaInicio: this.cursosForm.value.fechaInicio.year.toString() + '-' + this.cursosForm.value.fechaInicio.month + '-' + this.cursosForm.value.fechaInicio.day
+      } as Curso;
       this.cursoService.insert(fila).subscribe(i => {
         if (i.success) {
           this.filas = [

@@ -37,13 +37,14 @@
                                                 <select id="universidades" formControlName="idUniversidad"
                                                     class="universidades-select browser-default custom-select">
                                                     <option *ngFor="let to of universidades" [value]="to.id">
-                                                        {{ to.descripcion }}</option>
+                                                        {{ to.nombre }}</option>
                                                 </select>
                                             </div>
-                                            <form-error [errors]="posgradoForm.controls.idUniversidad.errors" [errorsMessages]="{
+                                            <form-error [errors]="posgradoForm.controls.idUniversidad.errors"
+                                                [errorsMessages]="{
                                                 required: 'Campo Requerido'
                                               }" [controlTouched]="posgradoForm.controls.idUniversidad.touched">
-                                              </form-error>
+                                            </form-error>
                                         </div>
                                     </div>
                                 </div>
@@ -69,17 +70,15 @@
                                         <label class="col-sm-3 control-label">Fecha Inicio:</label>
                                         <div class="col-sm-9">
                                             <div class="input-group">
-                                                <input class="form-control datepicker"
-                                                    placeholder="yyyy-mm-dd"
-                                                    formControlName="fechaInicio"
-                                                    ngbDatepicker 
-                                                    #d="ngbDatepicker">
+                                                <input class="form-control datepicker" placeholder="yyyy-mm-dd"
+                                                    formControlName="fechaInicio" ngbDatepicker #d="ngbDatepicker">
                                                 <button class="input-group-addon" (click)="d.toggle()" type="button">
                                                     <i class="fa fa-calendar"></i>
                                                 </button>
-                                            </div>                                                  
+                                            </div>
 
-                                            <form-error [errors]="posgradoForm.controls.fechaInicio.errors" [errorsMessages]="{
+                                            <form-error [errors]="posgradoForm.controls.fechaInicio.errors"
+                                                [errorsMessages]="{
                                               required: 'Campo Requerido'
                                             }" [controlTouched]="posgradoForm.controls.fechaInicio.touched">
                                             </form-error>
@@ -91,16 +90,14 @@
                                         <label class="col-sm-3 control-label">Fecha Fin:</label>
                                         <div class="col-sm-9">
                                             <div class="input-group">
-                                                <input class="form-control datepicker"
-                                                    placeholder="yyyy-mm-dd"
-                                                    formControlName="fechaFin"
-                                                    ngbDatepicker 
-                                                    #df="ngbDatepicker">
+                                                <input class="form-control datepicker" placeholder="yyyy-mm-dd"
+                                                    formControlName="fechaFin" ngbDatepicker #df="ngbDatepicker">
                                                 <button class="input-group-addon" (click)="df.toggle()" type="button">
                                                     <i class="fa fa-calendar"></i>
                                                 </button>
                                             </div>
-                                            <form-error [errors]="posgradoForm.controls.fechaFin.errors" [errorsMessages]="{
+                                            <form-error [errors]="posgradoForm.controls.fechaFin.errors"
+                                                [errorsMessages]="{
                                               required: 'Campo Requerido'
                                             }" [controlTouched]="posgradoForm.controls.fechaFin.touched">
                                             </form-error>

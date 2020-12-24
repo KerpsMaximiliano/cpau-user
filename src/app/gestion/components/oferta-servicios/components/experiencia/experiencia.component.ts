@@ -5,6 +5,7 @@ import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DialogService } from 'ng2-bootstrap-modal';
+import { IDatePickerDirectiveConfig } from 'ng2-date-picker';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Experiencia } from './model/experiencia.model';
@@ -33,21 +34,21 @@ export class ExperienciaComponent implements OnInit {
 
     this.experienciaForm = this.formBuilder.group({
       id: [],
-      fechaInicio: [null, {
-        validators: [Validators.required],
+      fechaInicio: ['', {
+        // validators: [Validators.required],
         updateOn: 'blur'
       }],
-      fechaFin: [null, {
+      fechaFin: ['', {
         updateOn: 'blur'
       }],
-      idTipoDeObra: [null, {
+      idTipoDeObra: ['', {
         validators: [Validators.required],
       }],
-      ubicacion: [null, {
+      ubicacion: ['', {
         validators: [Validators.maxLength(100), Validators.minLength(3)],
         updateOn: 'blur'
       }],
-      idDestinoDeObra: [null, {
+      idDestinoDeObra: ['', {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
@@ -86,8 +87,25 @@ export class ExperienciaComponent implements OnInit {
       });
   }
 
-  onEditar(ev) {
+  onEditar(ev: Experiencia) {
     this.experienciaForm.patchValue(ev);
+
+    const fechaInicioArr = ev.fechaInicio.split('-');
+
+    const fechaInicio = {
+      year: +fechaInicioArr[0],
+      month: +fechaInicioArr[1],
+      day: +fechaInicioArr[2].slice(0, 2)
+    }
+    this.experienciaForm.controls.fechaInicio.patchValue(fechaInicio)
+
+    const fechaFinArr = ev.fechaFin.split('-');
+    const fechaFin = {
+      year: +fechaFinArr[0],
+      month: +fechaFinArr[1],
+      day: +fechaFinArr[2].slice(0, 2)
+    }
+    this.experienciaForm.controls.fechaFin.patchValue(fechaFin)
   }
 
   showConfirm(ev) {
@@ -122,8 +140,11 @@ export class ExperienciaComponent implements OnInit {
 
   public editarFila(): void {
     if (this.experienciaForm.valid) {
-      const fila = this.experienciaForm.value as Experiencia;
-
+      const fila = {
+        ...this.experienciaForm.value,
+        fechaFin: this.experienciaForm.value.fechaFin.year.toString() + '-' + this.experienciaForm.value.fechaFin.month + '-' + this.experienciaForm.value.fechaFin.day,
+        fechaInicio: this.experienciaForm.value.fechaInicio.year.toString() + '-' + this.experienciaForm.value.fechaInicio.month + '-' + this.experienciaForm.value.fechaInicio.day
+      } as Experiencia;
       this.experienciaService.update(fila).subscribe(i => {
         if (i.success) {
           const index = this.filas.findIndex(f => f.valor.id === fila.id);
@@ -142,14 +163,20 @@ export class ExperienciaComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.experienciaForm.valid) {
-      const fila = this.experienciaForm.value as Experiencia;
+      console.log(this.experienciaForm.value);
+
+      const fila = {
+        ...this.experienciaForm.value,
+        fechaFin: this.experienciaForm.value.fechaFin.year.toString() + '-' + this.experienciaForm.value.fechaFin.month + '-' + this.experienciaForm.value.fechaFin.day,
+        fechaInicio: this.experienciaForm.value.fechaInicio.year.toString() + '-' + this.experienciaForm.value.fechaInicio.month + '-' + this.experienciaForm.value.fechaInicio.day
+      } as Experiencia;
 
       this.experienciaService.insert(fila).subscribe(i => {
         if (i.success) {
           this.filas = [
             ...this.filas,
             {
-              valor: fila
+              valor: i.entity
             }
           ];
           this.experienciaForm.reset();

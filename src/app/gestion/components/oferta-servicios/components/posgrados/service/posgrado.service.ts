@@ -18,7 +18,7 @@ const UNIVERSIDADES: SelectItem[] = [
 })
 export class PosgradoService {
 
-  public universidades$ = of(UNIVERSIDADES);
+  public universidades$ = this.httpClient.get<SelectItem[]>(`${environment.apiUrl}/api/siteConsumer/Universidades`);
   constructor(private httpClient: HttpClient) { }
 
   getAll() {

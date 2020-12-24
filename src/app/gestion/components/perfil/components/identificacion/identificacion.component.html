@@ -136,10 +136,15 @@
                                     <label class="col-sm-2 control-label">Nacimiento:</label>
                                     <div class="col-sm-10">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <dp-date-picker class="datepicker" formControlName="nacimiento"
-                                                    theme="dp-material" [config]="config">
-                                                </dp-date-picker>
+                                            <div class="col-md-6">
+                                                <div class="input-group nacimiento">
+                                                    <input class="form-control datepicker" placeholder="yyyy-mm-dd"
+                                                        formControlName="nacimiento" ngbDatepicker #d="ngbDatepicker">
+                                                    <button class="input-group-addon button-datepicker"
+                                                        (click)="d.toggle()" type="button">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </button>
+                                                </div>
                                                 <form-error [errors]="identificacionForm.controls.nacimiento.errors"
                                                     [errorsMessages]="{
                                                               required: 'Campo Requerido'
@@ -148,7 +153,7 @@
                                                 </form-error>
                                                 <span class="help-block">Fecha</span>
                                             </div>
-                                            <div *ngIf="countries$ | async as countries" class="col-md-8">
+                                            <div *ngIf="countries$ | async as countries" class="col-md-6">
                                                 <select id="countries" formControlName="pais"
                                                     class=" identification-select browser-default custom-select">
                                                     <option *ngFor="let country of countries" [value]="country.id">

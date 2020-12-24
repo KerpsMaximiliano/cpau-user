@@ -47,8 +47,8 @@ export class ExperienciaService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public destinosObra$ = of(DESTINO_OBRA);
-  public tiposObra$ = of(TIPO_OBRA);
+  public destinosObra$ = this.httpClient.get<SelectItem[]>(`${environment.apiUrl}/api/siteConsumer/GetObraDestino`);
+  public tiposObra$ = this.httpClient.get<SelectItem[]>(`${environment.apiUrl}/api/siteConsumer/TipoObra`);
 
   getAll() {
     return this.httpClient.get<Experiencia[]>(`${environment.apiUrl}/api/servicios/experiencia`);

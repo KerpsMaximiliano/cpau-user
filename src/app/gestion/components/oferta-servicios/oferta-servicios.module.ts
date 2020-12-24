@@ -10,6 +10,7 @@ import { CursosComponent } from './components/cursos/cursos.component';
 import { PosgradosComponent } from './components/posgrados/posgrados.component';
 import { ActividadProfesionalComponent } from './components/actividad-profesional/actividad-profesional.component';
 import { CurriculumVitaeComponent } from './components/curriculum-vitae/curriculum-vitae.component';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { CurriculumVitaeComponent } from './components/curriculum-vitae/curricul
     OfertaServiciosRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    DpDatePickerModule,
     GestionModule,
     ToastrModule.forRoot(), // ToastrModule added
   ]

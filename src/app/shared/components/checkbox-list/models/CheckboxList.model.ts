@@ -1,5 +1,5 @@
 export interface CheckBoxDataModel {
     id: number | string;
-    title: string;
+    nombre: string;
     selected: boolean;
 }

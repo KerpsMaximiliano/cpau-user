@@ -1,9 +1,7 @@
-import { CheckBoxDataModel } from '@app/shared/components/checkbox-list/models/CheckboxList.model';
-
-export interface ActividadProfesional {
-    actividades: CheckBoxDataModel[];
+export interface ActividadProfesionalRequestModel {
+    id: number[];
 }
 
-export interface Obras {
-    obras: CheckBoxDataModel[];
+export interface ObrasRequestModel {
+    id: number[];
 }
