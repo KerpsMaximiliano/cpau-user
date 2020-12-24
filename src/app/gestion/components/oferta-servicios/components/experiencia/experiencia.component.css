@@ -18,8 +18,10 @@
  }
  .input-group-addon {
     width: auto;
-    height: 8vh;
- }
+    width: 13%;
+    height: 34px;
+
+   }
  .datepicker {
     width: 83%;
  }
