@@ -30,6 +30,9 @@ export class IdentificacionService {
         this.currentIdentificacionSubject.next(v);
     }
 
+    public readImage(): Observable<ArrayBuffer> {
+        return this.httpClient.get<ArrayBuffer>(`${environment.apiUrl}/api/perfil/foto`);
+    }
 
     public read(): Observable<Identificacion> {
         return this.httpClient.get<Identificacion>(`${environment.apiUrl}/api/perfil/identificacion`);

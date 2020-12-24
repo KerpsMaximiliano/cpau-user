@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '@app/_services';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +12,14 @@ export class HeaderComponent {
 
   @Output() colapsarMenu = new EventEmitter();
 
-  closeSession() {}
+  /**
+   *
+   */
+  constructor(private authenticationService: AuthenticationService,
+              private router: Router) { }
+  closeSession() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+  }
 
 }

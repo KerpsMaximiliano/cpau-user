@@ -26,6 +26,10 @@ export class MenuComponent implements OnInit {
       this.identificacionService.currentIdentificacionValue = identificacion;
     });
 
+    this.identificacionService.readImage().subscribe(i => {
+      console.log(i);
+    });
+
     this.identificacionService.getCurrentIdentificacionValue().subscribe(x => this.perfil = x);
 
     this.currentUser = this.authenticationService.currentUserValue;
