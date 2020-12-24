@@ -137,7 +137,7 @@ export class CursosComponent implements OnInit {
       this.cursoService.update(fila).subscribe(i => {
         if (i.success) {
           const index = this.filas.findIndex(f => f.valor.id === fila.id);
-          this.filas[index].valor = fila;
+          this.filas[index].valor = i.entity;
           this.cursosForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
         } else {
@@ -162,7 +162,7 @@ export class CursosComponent implements OnInit {
           this.filas = [
             ...this.filas,
             {
-              valor: fila
+              valor: i.entity
             }
           ];
           this.cursosForm.reset();

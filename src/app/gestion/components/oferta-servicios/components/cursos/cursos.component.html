@@ -35,7 +35,8 @@
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" formControlName="institucion"
                                                 placeholder="Institución">
-                                            <form-error [errors]="cursosForm.controls.institucion.errors" [errorsMessages]="{
+                                            <form-error [errors]="cursosForm.controls.institucion.errors"
+                                                [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud permitida es entre 2 y 100 caracteres',
                                               maxlength: 'La longitud permitida es entre 2 y 100 caracteres'
@@ -66,17 +67,15 @@
                                         <label class="col-sm-3 control-label">Fecha Inicio:</label>
                                         <div class="col-sm-9">
                                             <div class="input-group">
-                                                <input class="form-control datepicker"
-                                                    placeholder="yyyy-mm-dd"
-                                                    formControlName="fechaInicio"
-                                                    ngbDatepicker 
-                                                    #d="ngbDatepicker">
+                                                <input class="form-control datepicker" placeholder="yyyy-mm-dd"
+                                                    formControlName="fechaInicio" ngbDatepicker #d="ngbDatepicker">
                                                 <button class="input-group-addon" (click)="d.toggle()" type="button">
                                                     <i class="fa fa-calendar"></i>
                                                 </button>
-                                            </div>                                                  
+                                            </div>
 
-                                            <form-error [errors]="cursosForm.controls.fechaInicio.errors" [errorsMessages]="{
+                                            <form-error [errors]="cursosForm.controls.fechaInicio.errors"
+                                                [errorsMessages]="{
                                               required: 'Campo Requerido'
                                             }" [controlTouched]="cursosForm.controls.fechaInicio.touched">
                                             </form-error>
@@ -88,11 +87,8 @@
                                         <label class="col-sm-3 control-label">Fecha Fin:</label>
                                         <div class="col-sm-9">
                                             <div class="input-group">
-                                                <input class="form-control datepicker"
-                                                    placeholder="yyyy-mm-dd"
-                                                    formControlName="fechaFin"
-                                                    ngbDatepicker 
-                                                    #df="ngbDatepicker">
+                                                <input class="form-control datepicker" placeholder="yyyy-mm-dd"
+                                                    formControlName="fechaFin" ngbDatepicker #df="ngbDatepicker">
                                                 <button class="input-group-addon" (click)="df.toggle()" type="button">
                                                     <i class="fa fa-calendar"></i>
                                                 </button>
