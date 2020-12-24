@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '@app/_helpers';
 import { DomicilioComponent } from './components/domicilio/domicilio.component';
 import { IdentificacionComponent } from './components/identificacion/identificacion.component';
 import { MailComponent } from './components/mail/mail.component';
@@ -16,22 +17,27 @@ const routes: Routes = [
   {
     path: 'identificacion',
     component: IdentificacionComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path: 'telefonos',
-    component: TelefonoComponent
+    component: TelefonoComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path: 'domicilio',
-    component: DomicilioComponent
+    component: DomicilioComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path: 'emails',
-    component: MailComponent
+    component: MailComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path: 'redes',
-    component: RedesComponent
+    component: RedesComponent,
+    canActivate: [AuthGuard] 
   }
 ];
 

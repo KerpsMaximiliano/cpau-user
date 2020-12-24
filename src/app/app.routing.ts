@@ -16,6 +16,7 @@ import { BoletinesComponent } from './boletines/boletines.component';
 import { NotePreviewComponent } from './home/components/notePreview/notePreview.component';
 import { FormComponent } from './form/form.component';
 import { PreregisterComponent } from './login/preregister';
+import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
   {
@@ -85,6 +86,7 @@ const routes: Routes = [
   {
     path: 'gestion',
     loadChildren: () => import('./gestion/gestion.module').then(m => m.GestionModule),
+    canActivate: [AuthGuard] 
   },
   // otherwise redirect to home
   { path: '**', redirectTo: '' },

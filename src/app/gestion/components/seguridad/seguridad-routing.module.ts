@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '@app/_helpers';
 import { ContraseniaComponent } from './components/contrasenia/contrasenia.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 
@@ -13,10 +14,12 @@ const routes: Routes = [
   {
     path: 'usuario',
     component: UsuarioComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path: 'contrasenia',
     component: ContraseniaComponent,
+    canActivate: [AuthGuard] 
   },
 ];
 
