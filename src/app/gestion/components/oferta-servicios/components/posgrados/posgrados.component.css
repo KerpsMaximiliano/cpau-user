@@ -17,10 +17,11 @@
      overflow-x: auto;
  }
  .input-group-addon {
-    width: auto;
-    width: 13%;
     height: 34px;
    }
- .datepicker {
-    width: 83%;
- }
+.datepicker {
+   width: 75%;
+}
+.button-datepicker {
+   width: 13%;
+}

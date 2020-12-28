@@ -49,14 +49,14 @@ export class ActividadProfesionalComponent implements OnInit {
       id: selectedActividadesIds
     } as ActividadProfesionalRequestModel
 
-    // const selectedObrasIds = this.actividadForm.value.obra
-    // .map((v, i) => v ? this.actividadProfesionalData[i].id : null)
-    // .filter(v => v !== null);
-    // console.log(selectedObrasIds);
+    const selectedObrasIds = this.actividadForm.value.obra
+      .map((v, i) => v ? this.actividadProfesionalData[i].id : null)
+      .filter(v => v !== null);
+    console.log(selectedObrasIds);
 
-    // const requestObras = {
-    //   id: selectedObrasIds
-    // } as ObrasRequestModel
+    const requestObras = {
+      id: selectedObrasIds
+    } as ObrasRequestModel
 
     this.actividadService.guardarActividadProfesional(requestActividades).subscribe(response => {
       if (response.success) {
@@ -65,12 +65,12 @@ export class ActividadProfesionalComponent implements OnInit {
         this.toastr.error(response.message);
       }
     })
-    // this.actividadService.guardarObrasRealizada(requestObras).subscribe(response => {
-    //   if (response.success) {
-    //     this.toastr.success('Actualizacion realizada con exito')
-    //   } else {
-    //     this.toastr.error(response.message);
-    //   }
-    // })
+    this.actividadService.guardarObrasRealizada(requestObras).subscribe(response => {
+      if (response.success) {
+        this.toastr.success('Actualizacion realizada con exito')
+      } else {
+        this.toastr.error(response.message);
+      }
+    })
   }
 }

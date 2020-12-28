@@ -38,7 +38,7 @@
                                         <div class="col-sm-8">
                                             <div *ngIf="(tipos$ | async) as mailTypes">
                                                 <select id="countries" formControlName="idTipoEmail"
-                                                    class="identification-select browser-default custom-select">
+                                                    class="mail-select browser-default custom-select">
                                                     <option *ngFor="let type of mailTypes" [value]="type.id">
                                                         {{ type.nombre }}</option>
                                                 </select>

@@ -12,10 +12,12 @@
  }
  .input-group-addon {
     width: auto;
-    width: 13%;
     height: 34px;
 
  }
  .datepicker {
-    width: 83%;
- }
+   width: 75%;
+}
+.button-datepicker {
+   width: 13%;
+}

@@ -16,10 +16,12 @@
                 (click)="visualizar.emit(f.valor)">
                 <i class="fa fa-eye"></i>
               </button> -->
-              <button *ngIf="permiteEditar" type="button" class="btn btn-success" (click)="editar.emit(f.valor)">
+              <button *ngIf="permiteEditar" type="button" class="btn btn-success" (click)="editar.emit(f.valor)"
+                ngbTooltip="Editar">
                 <i class="fa fa-edit"></i>
               </button>
-              <button *ngIf="permiteEliminar" type="button" class="btn btn-danger" (click)="eliminar.emit(f.valor)">
+              <button *ngIf="permiteEliminar" type="button" class="btn btn-danger" (click)="eliminar.emit(f.valor)"
+                ngbTooltip="Eliminar">
                 <i class="fa fa-trash"></i>
               </button>
             </th>
