@@ -19,3 +19,9 @@
  .red-select.ng-invalid.ng-touched {
     border: 1px solid red;
  }
+ button {
+    margin-right: 5px;
+ }
+ .button-container { 
+    display: flex;
+}

@@ -68,11 +68,13 @@
                                     <div class="col-md-4">
                                         <div class="row">
                                             <div class="col-sm-4 col-sm-offset-2">&nbsp;</div>
-                                            <div class="col-sm-4 text-right">
+                                            <div class="col-sm-4 text-right button-container">
                                                 <button class="btn btn-primary" (click)="agregarFila()"
                                                     *ngIf="!f.id.value">Agregar</button>
                                                 <button class="btn btn-primary" (click)="editarFila()"
                                                     *ngIf="f.id.value">Actualizar</button>
+                                                <button class="btn btn-danger"
+                                                    (click)="cancelarFila()">Cancelar</button>
                                             </div>
                                         </div>
                                     </div>

@@ -147,4 +147,7 @@ export class MailComponent implements OnInit {
     }
 
   }
+  public cancelarFila(): void {
+    this.mailForm.reset();
+  }
 }
