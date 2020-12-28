@@ -71,7 +71,7 @@
                                         <label class="col-sm-3 control-label">Altura:</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" formControlName="altura"
-                                                mask="9999999" placeholder="Altura">
+                                                [specialCharacters]="[]" mask="9999999" placeholder="Altura">
 
                                             <form-error [errors]="domicilioForm.controls.altura.errors"
                                                 [errorsMessages]="{
@@ -91,7 +91,7 @@
                                         <label class="col-sm-3 control-label">Piso:</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" formControlName="piso" mask="99"
-                                                placeholder="Piso">
+                                                [specialCharacters]="[]" placeholder="Piso">
                                             <form-error [errors]="domicilioForm.controls.piso.errors" [errorsMessages]="{
                                               maxlength: 'La longitud permitida es entre 1 y 2 caracteres'
                                             }" [controlTouched]="domicilioForm.controls.piso.touched">

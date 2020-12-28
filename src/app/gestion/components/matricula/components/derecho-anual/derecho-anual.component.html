@@ -7,6 +7,9 @@
         <h2>Derecho anual</h2>
         <ol class="breadcrumb">
             <li>
+                <a>Panel de control</a>
+            </li>
+            <li>
                 <a>Matrícula</a>
             </li>
             <li class="active">
@@ -29,20 +32,16 @@
                     </div>
                 </div>
                 <div class="ibox-content" [hidden]="collapsed">
-                        <h5>A continuación le detallaremos su estado de deuda:</h5>
-                        <div class="row container-action-table">
-                            <app-action-table [columnas]="columnas"
-                                            [filas]="filas"
-                                            [permiteEliminar]="false"
-                                            [permiteEditar]="false"
-                                            [permiteVisualizar]="false"
-                                            [mostrarTotal]="true">
-                            </app-action-table>
-                        </div>
-                        <div class="actions-buttons">
-                            <button class="btn btn-success" (click)="onPagarDerechoAnual()">Pagar derecho anual</button>
-                            <button class="btn btn-primary" (click)="onGenerarBoletaPago()">Generar boleta de pago</button>
-                        </div>
+                    <h5>A continuación le detallaremos su estado de deuda:</h5>
+                    <div class="row container-action-table">
+                        <app-action-table [columnas]="columnas" [filas]="filas" [permiteEliminar]="false"
+                            [permiteEditar]="false" [permiteVisualizar]="false" [mostrarTotal]="true">
+                        </app-action-table>
+                    </div>
+                    <div class="actions-buttons">
+                        <button class="btn btn-success" (click)="onPagarDerechoAnual()">Pagar derecho anual</button>
+                        <button class="btn btn-primary" (click)="onGenerarBoletaPago()">Generar boleta de pago</button>
+                    </div>
                 </div>
             </div>
         </div>

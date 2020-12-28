@@ -114,7 +114,8 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <input type="text" placeholder="Número" mask="99999999"
-                                                    formControlName="numeroDocumento" class="form-control">
+                                                    [specialCharacters]="[]" formControlName="numeroDocumento"
+                                                    class="form-control">
                                                 <form-error
                                                     [errors]="identificacionForm.controls.numeroDocumento.errors"
                                                     [errorsMessages]="{
