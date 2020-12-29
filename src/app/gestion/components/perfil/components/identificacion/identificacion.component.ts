@@ -100,11 +100,11 @@ export class IdentificacionComponent implements OnInit {
     this.identificacionService.read().subscribe(identificacion => {
       this.identificacionForm.patchValue(identificacion);
 
-      const nacimientoArr = identificacion.nacimiento.split('-');
+      const nacimientoArr = identificacion.nacimiento.split('/');
       const nacimiento = {
-        year: +nacimientoArr[0],
+        day: +nacimientoArr[0],
         month: +nacimientoArr[1],
-        day: +nacimientoArr[2].slice(0, 2)
+        year: +nacimientoArr[2]
       }
       this.identificacionForm.controls.nacimiento.patchValue(nacimiento)
       this.identificacionOriginal = identificacion;
@@ -116,7 +116,7 @@ export class IdentificacionComponent implements OnInit {
 
     const identifToSave = {
       ...this.identificacionForm.value,
-      nacimiento: this.identificacionForm.value.nacimiento.year.toString() + '-' + this.identificacionForm.value.nacimiento.month + '-' + this.identificacionForm.value.nacimiento.day,
+      nacimiento: this.identificacionForm.value.nacimiento.year.toString() + '/' + this.identificacionForm.value.nacimiento.month + '/' + this.identificacionForm.value.nacimiento.day,
     } as Identificacion;
     this.identificacionService.update(identifToSave).subscribe(response => {
       if (response.success) {

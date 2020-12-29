@@ -41,14 +41,14 @@ export class ExperienciaComponent implements OnInit {
       fechaFin: ['', {
         updateOn: 'blur'
       }],
-      idTipoDeObra: ['', {
+      idTipo: ['', {
         validators: [Validators.required],
       }],
       ubicacion: ['', {
         validators: [Validators.maxLength(100), Validators.minLength(3)],
         updateOn: 'blur'
       }],
-      idDestinoDeObra: ['', {
+      idDestino: ['', {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
@@ -90,20 +90,20 @@ export class ExperienciaComponent implements OnInit {
   onEditar(ev: Experiencia) {
     this.experienciaForm.patchValue(ev);
 
-    const fechaInicioArr = ev.fechaInicio.split('-');
+    const fechaInicioArr = ev.fechaInicio.split('/');
 
     const fechaInicio = {
-      year: +fechaInicioArr[0],
+      day: +fechaInicioArr[0],
       month: +fechaInicioArr[1],
-      day: +fechaInicioArr[2].slice(0, 2)
+      year: +fechaInicioArr[2]
     }
     this.experienciaForm.controls.fechaInicio.patchValue(fechaInicio)
 
-    const fechaFinArr = ev.fechaFin.split('-');
+    const fechaFinArr = ev.fechaFin.split('/');
     const fechaFin = {
-      year: +fechaFinArr[0],
+      day: +fechaFinArr[0],
       month: +fechaFinArr[1],
-      day: +fechaFinArr[2].slice(0, 2)
+      year: +fechaFinArr[2]
     }
     this.experienciaForm.controls.fechaFin.patchValue(fechaFin)
   }
@@ -140,10 +140,16 @@ export class ExperienciaComponent implements OnInit {
 
   public editarFila(): void {
     if (this.experienciaForm.valid) {
+
+      let dayFin = this.experienciaForm.value.fechaFin.day >= 10 ? this.experienciaForm.value.fechaFin.day.toString() : '0' + this.experienciaForm.value.fechaFin.day;
+      let monthFin = this.experienciaForm.value.fechaFin.month >= 10 ? this.experienciaForm.value.fechaFin.month : '0' + this.experienciaForm.value.fechaFin.month;
+      let dayInicio = this.experienciaForm.value.fechaInicio.day >= 10 ? this.experienciaForm.value.fechaInicio.day.toString() : '0' + this.experienciaForm.value.fechaInicio.day;
+      let monthInicio = this.experienciaForm.value.fechaInicio.month >= 10 ? this.experienciaForm.value.fechaInicio.month : '0' + this.experienciaForm.value.fechaInicio.month;
+
       const fila = {
         ...this.experienciaForm.value,
-        fechaFin: this.experienciaForm.value.fechaFin.year.toString() + '-' + this.experienciaForm.value.fechaFin.month + '-' + this.experienciaForm.value.fechaFin.day,
-        fechaInicio: this.experienciaForm.value.fechaInicio.year.toString() + '-' + this.experienciaForm.value.fechaInicio.month + '-' + this.experienciaForm.value.fechaInicio.day
+        fechaFin: this.experienciaForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
+        fechaInicio: this.experienciaForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio
       } as Experiencia;
       this.experienciaService.update(fila).subscribe(i => {
         if (i.success) {
@@ -163,12 +169,16 @@ export class ExperienciaComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.experienciaForm.valid) {
-      console.log(this.experienciaForm.value);
+
+      let dayFin = this.experienciaForm.value.fechaFin.day >= 10 ? this.experienciaForm.value.fechaFin.day.toString() : '0' + this.experienciaForm.value.fechaFin.day;
+      let monthFin = this.experienciaForm.value.fechaFin.month >= 10 ? this.experienciaForm.value.fechaFin.month : '0' + this.experienciaForm.value.fechaFin.month;
+      let dayInicio = this.experienciaForm.value.fechaInicio.day >= 10 ? this.experienciaForm.value.fechaInicio.day.toString() : '0' + this.experienciaForm.value.fechaInicio.day;
+      let monthInicio = this.experienciaForm.value.fechaInicio.month >= 10 ? this.experienciaForm.value.fechaInicio.month : '0' + this.experienciaForm.value.fechaInicio.month;
 
       const fila = {
         ...this.experienciaForm.value,
-        fechaFin: this.experienciaForm.value.fechaFin.year.toString() + '-' + this.experienciaForm.value.fechaFin.month + '-' + this.experienciaForm.value.fechaFin.day,
-        fechaInicio: this.experienciaForm.value.fechaInicio.year.toString() + '-' + this.experienciaForm.value.fechaInicio.month + '-' + this.experienciaForm.value.fechaInicio.day
+        fechaFin: this.experienciaForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
+        fechaInicio: this.experienciaForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio
       } as Experiencia;
 
       this.experienciaService.insert(fila).subscribe(i => {

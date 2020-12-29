@@ -12,6 +12,8 @@ import { RedesComponent } from './components/redes/redes.component';
 import { MailComponent } from './components/mail/mail.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { DpDatePickerModule } from 'ng2-date-picker';
+import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { CustomDateParserFormatter } from '@app/shared/service/datepicker-format.service';
 
 export var options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -29,8 +31,11 @@ export var options: Partial<IConfig> | (() => Partial<IConfig>);
     DpDatePickerModule,
     GestionModule,
     NgxMaskModule.forRoot(options),
+
     ToastrModule.forRoot(), // ToastrModule added
   ],
-
+  providers: [
+    { provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter }
+  ]
 })
 export class PerfilModule { }

@@ -11,6 +11,8 @@ import { PosgradosComponent } from './components/posgrados/posgrados.component';
 import { ActividadProfesionalComponent } from './components/actividad-profesional/actividad-profesional.component';
 import { CurriculumVitaeComponent } from './components/curriculum-vitae/curriculum-vitae.component';
 import { DpDatePickerModule } from 'ng2-date-picker';
+import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { CustomDateParserFormatter } from '@app/shared/service/datepicker-format.service';
 
 
 @NgModule({
@@ -23,6 +25,9 @@ import { DpDatePickerModule } from 'ng2-date-picker';
     DpDatePickerModule,
     GestionModule,
     ToastrModule.forRoot(), // ToastrModule added
+  ],
+  providers: [
+    { provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter }
   ]
 })
 export class OfertaServiciosModule { }

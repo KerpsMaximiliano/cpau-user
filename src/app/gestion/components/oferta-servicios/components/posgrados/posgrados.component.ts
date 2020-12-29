@@ -84,7 +84,7 @@ export class PosgradosComponent implements OnInit {
 
   onEditar(ev: Posgrado) {
     this.posgradoForm.patchValue(ev);
-    const fechaInicioArr = ev.fechaInicio.split('-');
+    const fechaInicioArr = ev.fechaInicio.split('/');
     const fechaInicio = {
       year: +fechaInicioArr[0],
       month: +fechaInicioArr[1],
@@ -93,11 +93,11 @@ export class PosgradosComponent implements OnInit {
 
     this.posgradoForm.controls.fechaInicio.patchValue(fechaInicio)
 
-    const fechaFinArr = ev.fechaFin.split('-');
+    const fechaFinArr = ev.fechaFin.split('/');
     const fechaFin = {
-      year: +fechaFinArr[0],
+      day: +fechaFinArr[0],
       month: +fechaFinArr[1],
-      day: +fechaFinArr[2].slice(0, 2)
+      year: +fechaFinArr[2]
     }
     this.posgradoForm.controls.fechaFin.patchValue(fechaFin)
   }
@@ -134,10 +134,15 @@ export class PosgradosComponent implements OnInit {
 
   public editarFila(): void {
     if (this.posgradoForm.valid) {
+      let dayFin = this.posgradoForm.value.fechaFin.day >= 10 ? this.posgradoForm.value.fechaFin.day.toString() : '0' + this.posgradoForm.value.fechaFin.day;
+      let monthFin = this.posgradoForm.value.fechaFin.month >= 10 ? this.posgradoForm.value.fechaFin.month : '0' + this.posgradoForm.value.fechaFin.month;
+      let dayInicio = this.posgradoForm.value.fechaInicio.day >= 10 ? this.posgradoForm.value.fechaInicio.day.toString() : '0' + this.posgradoForm.value.fechaInicio.day;
+      let monthInicio = this.posgradoForm.value.fechaInicio.month >= 10 ? this.posgradoForm.value.fechaInicio.month : '0' + this.posgradoForm.value.fechaInicio.month;
+
       const fila = {
         ...this.posgradoForm.value,
-        fechaFin: this.posgradoForm.value.fechaFin.year.toString() + '-' + this.posgradoForm.value.fechaFin.month + '-' + this.posgradoForm.value.fechaFin.day,
-        fechaInicio: this.posgradoForm.value.fechaInicio.year.toString() + '-' + this.posgradoForm.value.fechaInicio.month + '-' + this.posgradoForm.value.fechaInicio.day
+        fechaFin: this.posgradoForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
+        fechaInicio: this.posgradoForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio
       } as Posgrado;
       this.posgradoService.update(fila).subscribe(i => {
         if (i.success) {
@@ -157,10 +162,15 @@ export class PosgradosComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.posgradoForm.valid) {
+      let dayFin = this.posgradoForm.value.fechaFin.day >= 10 ? this.posgradoForm.value.fechaFin.day.toString() : '0' + this.posgradoForm.value.fechaFin.day;
+      let monthFin = this.posgradoForm.value.fechaFin.month >= 10 ? this.posgradoForm.value.fechaFin.month : '0' + this.posgradoForm.value.fechaFin.month;
+      let dayInicio = this.posgradoForm.value.fechaInicio.day >= 10 ? this.posgradoForm.value.fechaInicio.day.toString() : '0' + this.posgradoForm.value.fechaInicio.day;
+      let monthInicio = this.posgradoForm.value.fechaInicio.month >= 10 ? this.posgradoForm.value.fechaInicio.month : '0' + this.posgradoForm.value.fechaInicio.month;
+
       const fila = {
         ...this.posgradoForm.value,
-        fechaFin: this.posgradoForm.value.fechaFin.year.toString() + '-' + this.posgradoForm.value.fechaFin.month + '-' + this.posgradoForm.value.fechaFin.day,
-        fechaInicio: this.posgradoForm.value.fechaInicio.year.toString() + '-' + this.posgradoForm.value.fechaInicio.month + '-' + this.posgradoForm.value.fechaInicio.day
+        fechaFin: this.posgradoForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
+        fechaInicio: this.posgradoForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio
       } as Posgrado;
       this.posgradoService.insert(fila).subscribe(i => {
         if (i.success) {
