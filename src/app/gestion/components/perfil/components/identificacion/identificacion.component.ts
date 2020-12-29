@@ -113,23 +113,28 @@ export class IdentificacionComponent implements OnInit {
   }
 
   public onSave(): void {
-    this.loading = true;
-    this.identificacionForm.markAllAsTouched();
-
-    const identifToSave = {
-      ...this.identificacionForm.value,
-      nacimiento: this.identificacionForm.value.nacimiento.year.toString() + '-' + this.identificacionForm.value.nacimiento.month + '-' + this.identificacionForm.value.nacimiento.day,
-    } as Identificacion;
-    this.identificacionService.update(identifToSave).subscribe(response => {
-      if (response.success) {
-        this.identificacionService.currentIdentificacionValue = response.entity;
-        this.toastr.success('Actualizacion realizada con exito');
-        this.loading = false;
-      } else {
-        this.toastr.error(response.message);
-        this.loading = false;
-      }
-    });
+    if (this.identificacionForm.valid) {
+      this.loading = true;
+      this.identificacionForm.markAllAsTouched();
+  
+      const identifToSave = {
+        ...this.identificacionForm.value,
+        nacimiento: this.identificacionForm.value.nacimiento.year.toString() + '-' + this.identificacionForm.value.nacimiento.month + '-' + this.identificacionForm.value.nacimiento.day,
+      } as Identificacion;
+      this.identificacionService.update(identifToSave).subscribe(response => {
+        if (response.success) {
+          this.identificacionService.currentIdentificacionValue = response.entity;
+          this.toastr.success('Actualizacion realizada con exito');
+          this.loading = false;
+        } else {
+          this.toastr.error(response.message);
+          this.loading = false;
+        }
+      });
+    } else {
+      this.identificacionForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
+    }
   }
 
   public onCancel(): void {

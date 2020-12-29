@@ -34,11 +34,11 @@ export class MailComponent implements OnInit {
     this.columnnas = [
       {
         id: 'tipoEmail',
-        titulo: 'tipo'
+        titulo: 'Tipo'
       },
       {
         id: 'email',
-        titulo: 'Numero'
+        titulo: 'Email'
       }
     ];
 

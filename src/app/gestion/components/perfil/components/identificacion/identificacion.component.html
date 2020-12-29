@@ -120,8 +120,8 @@
                                                     [errors]="identificacionForm.controls.numeroDocumento.errors"
                                                     [errorsMessages]="{
                                                       required: 'Campo Requerido',
-                                                      min: 'Ingrese un documento valido entre 8 y 9 digitos.',
-                                                      max: 'Ingrese un documento valido entre 8 y 9 digitos.'
+                                                      minlength: 'Ingrese un documento valido entre 8 y 9 digitos.',
+                                                      maxlength: 'Ingrese un documento valido entre 8 y 9 digitos.'
                                                     }"
                                                     [controlTouched]="identificacionForm.controls.numeroDocumento.touched">
                                                 </form-error>
