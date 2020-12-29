@@ -79,32 +79,28 @@ export class CursosComponent implements OnInit {
   }
 
   onEditar(ev: Curso) {
-    if (this.cursosForm.valid) {
 
-      this.loading = true;
+    this.loading = true;
 
-      this.cursosForm.patchValue(ev);
-      const fechaInicioArr = ev.fechaInicio.split('/');
-      const fechaInicio = {
-        day: +fechaInicioArr[0],
-        month: +fechaInicioArr[1],
-        year: +fechaInicioArr[2]
-      }
-
-      this.cursosForm.controls.fechaInicio.patchValue(fechaInicio)
-
-      const fechaFinArr = ev.fechaFin.split('/');
-      const fechaFin = {
-        day: +fechaFinArr[0],
-        month: +fechaFinArr[1],
-        year: +fechaFinArr[2]
-      }
-      this.cursosForm.controls.fechaFin.patchValue(fechaFin);
-      this.loading = false;
-    } else {
-      this.cursosForm.markAllAsTouched();
-      this.toastr.error(null, 'Por favor complete los datos requeridos.');
+    this.cursosForm.patchValue(ev);
+    const fechaInicioArr = ev.fechaInicio.split('/');
+    const fechaInicio = {
+      day: +fechaInicioArr[0],
+      month: +fechaInicioArr[1],
+      year: +fechaInicioArr[2]
     }
+
+    this.cursosForm.controls.fechaInicio.patchValue(fechaInicio)
+
+    const fechaFinArr = ev.fechaFin.split('/');
+    const fechaFin = {
+      day: +fechaFinArr[0],
+      month: +fechaFinArr[1],
+      year: +fechaFinArr[2]
+    }
+    this.cursosForm.controls.fechaFin.patchValue(fechaFin);
+    this.loading = false;
+
   }
 
   showConfirm(ev) {

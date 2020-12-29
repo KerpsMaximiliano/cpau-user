@@ -84,30 +84,26 @@ export class PosgradosComponent implements OnInit {
   }
 
   onEditar(ev: Posgrado) {
-    if (this.posgradoForm.valid) {
-      this.loading = true;
-      this.posgradoForm.patchValue(ev);
-      const fechaInicioArr = ev.fechaInicio.split('/');
-      const fechaInicio = {
-        year: +fechaInicioArr[0],
-        month: +fechaInicioArr[1],
-        day: +fechaInicioArr[2].slice(0, 2)
-      }
-
-      this.posgradoForm.controls.fechaInicio.patchValue(fechaInicio)
-
-      const fechaFinArr = ev.fechaFin.split('/');
-      const fechaFin = {
-        day: +fechaFinArr[0],
-        month: +fechaFinArr[1],
-        year: +fechaFinArr[2]
-      }
-      this.posgradoForm.controls.fechaFin.patchValue(fechaFin);
-      this.loading = false;
-    } else {
-      this.posgradoForm.markAllAsTouched();
-      this.toastr.error(null, 'Por favor complete los datos requeridos.');
+    this.loading = true;
+    this.posgradoForm.patchValue(ev);
+    const fechaInicioArr = ev.fechaInicio.split('/');
+    const fechaInicio = {
+      year: +fechaInicioArr[0],
+      month: +fechaInicioArr[1],
+      day: +fechaInicioArr[2].slice(0, 2)
     }
+
+    this.posgradoForm.controls.fechaInicio.patchValue(fechaInicio)
+
+    const fechaFinArr = ev.fechaFin.split('/');
+    const fechaFin = {
+      day: +fechaFinArr[0],
+      month: +fechaFinArr[1],
+      year: +fechaFinArr[2]
+    }
+    this.posgradoForm.controls.fechaFin.patchValue(fechaFin);
+    this.loading = false;
+
   }
 
   showConfirm(ev) {
