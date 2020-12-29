@@ -20,6 +20,7 @@ export class RedesComponent {
   public columnnas: Columna<Redes>[];
   public redesForm: FormGroup;
   public tipos$ = this.redesService.tiposRedes$;
+  loading: boolean;
   collapsed: boolean;
 
   constructor(
@@ -106,6 +107,7 @@ export class RedesComponent {
 
   public editarFila(): void {
     if (this.redesForm.valid) {
+      this.loading = true;
       const request = this.redesForm.value as RedesRequestModel;
 
       this.redesService.update(request).subscribe(i => {
@@ -114,8 +116,10 @@ export class RedesComponent {
           this.filas[index].valor = i.entity;
           this.redesForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, i.message);
+          this.loading = false;
         }
       });
     } else {
@@ -126,6 +130,7 @@ export class RedesComponent {
 
   public agregarFila(): void {
     if (this.redesForm.valid) {
+      this.loading = true;
       const request = this.redesForm.value as RedesRequestModel;
 
       this.redesService.insert(request).subscribe(i => {
@@ -139,8 +144,10 @@ export class RedesComponent {
           this.redesForm.reset();
 
           this.toastr.success(null, 'Registro agregado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, i.message);
+          this.loading = false;
         }
       });
     } else {

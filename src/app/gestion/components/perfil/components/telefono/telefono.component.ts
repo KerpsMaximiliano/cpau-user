@@ -16,6 +16,7 @@ export class TelefonoComponent implements OnInit {
 
   get f() { return this.telefonoForm.controls; }
 
+  loading: boolean;
   collapsed: boolean;
   public filas: Filas<Telefono>[] = [];
   public columnnas: Columna<Telefono>[];
@@ -106,21 +107,30 @@ export class TelefonoComponent implements OnInit {
   }
 
   public editarFila(): void {
-    const telefonoUpdate = this.telefonoForm.value as TelefonoRequestModel;
-    this.telefonoService.update(telefonoUpdate).subscribe(response => {
-      if (response.success) {
-        let index = this.filas.findIndex(fila => fila.valor.id === response.entity.id)
-        this.filas[index].valor = response.entity;
-        this.telefonoForm.reset();
-        this.toastr.success(null, 'Registro editado correctamente.');
-      } else {
-        this.toastr.error(null, response.message);
-      }
-    });
+    if (this.telefonoForm.valid) {
+      this.loading = true;
+      const telefonoUpdate = this.telefonoForm.value as TelefonoRequestModel;
+      this.telefonoService.update(telefonoUpdate).subscribe(response => {
+        if (response.success) {
+          let index = this.filas.findIndex(fila => fila.valor.id === response.entity.id)
+          this.filas[index].valor = response.entity;
+          this.telefonoForm.reset();
+          this.toastr.success(null, 'Registro editado correctamente.');
+          this.loading = false;
+        } else {
+          this.toastr.error(null, response.message);
+          this.loading = false;
+        }
+      });
+    } else {
+      this.telefonoForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
+    }
   }
 
   public agregarFila(): void {
     if (this.telefonoForm.valid) {
+      this.loading = true;
       const request = this.telefonoForm.value as TelefonoRequestModel;
 
       this.telefonoService.insert(request).subscribe(response => {
@@ -134,8 +144,10 @@ export class TelefonoComponent implements OnInit {
           this.telefonoForm.reset();
 
           this.toastr.success(null, 'Registro agregado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, response.message);
+          this.loading = false;
         }
       });
     } else {

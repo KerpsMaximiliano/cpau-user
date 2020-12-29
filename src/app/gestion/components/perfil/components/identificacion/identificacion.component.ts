@@ -20,6 +20,7 @@ export class IdentificacionComponent implements OnInit {
   private identificacionOriginal: Identificacion;
   collapsed: boolean;
   public identificacionForm: FormGroup;
+  public loading: boolean;
 
   public countries$: Observable<SelectItem[]>;
   public docTypes$: Observable<SelectItem[]>;
@@ -112,6 +113,7 @@ export class IdentificacionComponent implements OnInit {
   }
 
   public onSave(): void {
+    this.loading = true;
     this.identificacionForm.markAllAsTouched();
 
     const identifToSave = {
@@ -121,9 +123,11 @@ export class IdentificacionComponent implements OnInit {
     this.identificacionService.update(identifToSave).subscribe(response => {
       if (response.success) {
         this.identificacionService.currentIdentificacionValue = response.entity;
-        this.toastr.success('Actualizacion realizada con exito')
+        this.toastr.success('Actualizacion realizada con exito');
+        this.loading = false;
       } else {
         this.toastr.error(response.message);
+        this.loading = false;
       }
     });
   }

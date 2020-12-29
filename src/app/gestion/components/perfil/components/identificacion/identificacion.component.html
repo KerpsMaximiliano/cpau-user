@@ -185,7 +185,10 @@
                         </div>
                         <div class="actions-buttons">
                             <button class="btn btn-danger" (click)="onCancel()">Cancelar</button>
-                            <button class="btn btn-primary" (click)="onSave()">Guardar</button>
+                            <button [disabled]="loading" class="btn btn-primary"  (click)="onSave()">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Guardar
+                            </button>
                         </div>
 
                     </form>

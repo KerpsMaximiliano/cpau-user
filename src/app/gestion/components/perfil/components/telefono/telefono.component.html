@@ -69,10 +69,20 @@
                                         <div class="row">
                                             <div class="col-sm-4 col-sm-offset-2">&nbsp;</div>
                                             <div class="col-sm-4 text-right button-container">
-                                                <button class="btn btn-primary" (click)="agregarFila()"
-                                                    *ngIf="!f.id.value">Agregar</button>
-                                                <button class="btn btn-primary" (click)="editarFila()"
-                                                    *ngIf="f.id.value">Actualizar</button>
+                                                <button *ngIf="!f.id.value" 
+                                                        [disabled]="loading"
+                                                        class="btn btn-primary"
+                                                        (click)="agregarFila()">
+                                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                                    Agregar
+                                                </button>
+                                                <button  *ngIf="f.id.value"
+                                                        [disabled]="loading"
+                                                        class="btn btn-primary"
+                                                        (click)="editarFila()">
+                                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                                    Actualizar
+                                                </button>
                                                 <button class="btn btn-danger"
                                                     (click)="cancelarFila()">Cancelar</button>
                                             </div>

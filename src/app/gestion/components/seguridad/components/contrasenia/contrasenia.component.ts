@@ -13,6 +13,7 @@ import { ContraseniaService } from './service/contrasenia.service';
 export class ContraseniaComponent implements OnInit {
 
   collapsed: boolean;
+  loading: boolean;
   public contraseniaForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private toastr: ToastrService,
@@ -47,17 +48,26 @@ export class ContraseniaComponent implements OnInit {
   }
 
   onSave(): void {
-    this.contraseniaForm.markAllAsTouched();
-    const contraseniaToSave = this.contraseniaForm.value as Contrasenia;
+    if (this.contraseniaForm.valid) {
+      this.loading = true;
+      this.contraseniaForm.markAllAsTouched();
+      const contraseniaToSave = this.contraseniaForm.value as Contrasenia;
+  
+      this.contraseniaService.update(contraseniaToSave).subscribe(response => {
+        if (response.success) {
+          this.contraseniaForm.reset();
+          this.toastr.success('Actualizacion realizada con exito');
+          this.loading = false;
+        } else {
+          this.toastr.error(response.message);
+          this.loading = false;
+        }
+      });
 
-    this.contraseniaService.update(contraseniaToSave).subscribe(response => {
-      if (response.success) {
-        this.contraseniaForm.reset();
-        this.toastr.success('Actualizacion realizada con exito')
-      } else {
-        this.toastr.error(response.message);
-      }
-    });
+    } else {
+      this.contraseniaForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
+    }
   }
 
 }

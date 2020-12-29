@@ -17,6 +17,7 @@ export class MailComponent implements OnInit {
 
   get f() { return this.mailForm.controls; }
 
+  loading: boolean;
   collapsed: boolean;
   public filas: Filas<Mail>[] = [];
   public columnnas: Columna<Mail>[];
@@ -108,22 +109,31 @@ export class MailComponent implements OnInit {
 
   public editarFila(): void {
 
-    const mailUpdate = this.mailForm.value as MailRequestModel;
-    this.mailService.update(mailUpdate).subscribe(response => {
-      if (response.success) {
-        let index = this.filas.findIndex(fila => fila.valor.id === response.entity.id)
-        this.filas[index].valor = response.entity;
-        this.mailForm.reset();
-        this.toastr.success(null, 'Registro editado correctamente.');
-      } else {
-        this.toastr.error(null, response.message);
-      }
-    });
+    if (this.mailForm.valid) {
+      this.loading = true;
+      const mailUpdate = this.mailForm.value as MailRequestModel;
+      this.mailService.update(mailUpdate).subscribe(response => {
+        if (response.success) {
+          let index = this.filas.findIndex(fila => fila.valor.id === response.entity.id)
+          this.filas[index].valor = response.entity;
+          this.mailForm.reset();
+          this.toastr.success(null, 'Registro editado correctamente.');
+          this.loading = false;
+        } else {
+          this.toastr.error(null, response.message);
+          this.loading = false;
+        }
+      });
+    } else {
+      this.mailForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
+    }
   }
 
   public agregarFila(): void {
 
     if (this.mailForm.valid) {
+      this.loading = true;
       const request = this.mailForm.value as MailRequestModel;
 
       this.mailService.insert(request).subscribe(response => {
@@ -137,8 +147,10 @@ export class MailComponent implements OnInit {
           this.mailForm.reset();
 
           this.toastr.success(null, 'Registro agregado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, response.message);
+          this.loading = false;
         }
       });
     } else {

@@ -12,6 +12,7 @@ import { ActividadProfesionalService } from './services/actividad-profesional.se
 })
 export class ActividadProfesionalComponent implements OnInit {
   collapsed: boolean;
+  loading: boolean;
   public actividadForm: FormGroup;
 
   public actividadProfesionalData: CheckBoxDataModel[];
@@ -38,8 +39,7 @@ export class ActividadProfesionalComponent implements OnInit {
   }
 
   public onSave(): void {
-
-
+    this.loading = true;
     const selectedActividadesIds = this.actividadForm.value.actividad
       .map((v, i) => v ? this.actividadProfesionalData[i].id : null)
       .filter(v => v !== null);
@@ -58,18 +58,22 @@ export class ActividadProfesionalComponent implements OnInit {
       id: selectedObrasIds
     } as ObrasRequestModel
 
-    this.actividadService.guardarActividadProfesional(requestActividades).subscribe(response => {
+    this.actividadService.guardarActividadProfesional(requestActividades)
+    .subscribe(response => {
       if (response.success) {
-        this.toastr.success('Actualizacion realizada con exito')
+        this.actividadService.guardarObrasRealizada(requestObras)
+        .subscribe(response => {
+          if (response.success) {
+            this.toastr.success('Actualizacion realizada con exito');
+            this.loading = false;
+          } else {
+            this.toastr.error(response.message);
+            this.loading = false;
+          }
+        })
       } else {
         this.toastr.error(response.message);
-      }
-    })
-    this.actividadService.guardarObrasRealizada(requestObras).subscribe(response => {
-      if (response.success) {
-        this.toastr.success('Actualizacion realizada con exito')
-      } else {
-        this.toastr.error(response.message);
+        this.loading = false;
       }
     })
   }

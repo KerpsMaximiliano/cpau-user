@@ -20,6 +20,7 @@ export class ExperienciaComponent implements OnInit {
 
   get f() { return this.experienciaForm.controls; }
   collapsed: boolean;
+  loading: boolean;
   public filas: Filas<Experiencia>[] = [];
   public columnnas: Columna<Experiencia>[];
 
@@ -88,24 +89,31 @@ export class ExperienciaComponent implements OnInit {
   }
 
   onEditar(ev: Experiencia) {
-    this.experienciaForm.patchValue(ev);
-
-    const fechaInicioArr = ev.fechaInicio.split('-');
-
-    const fechaInicio = {
-      year: +fechaInicioArr[0],
-      month: +fechaInicioArr[1],
-      day: +fechaInicioArr[2].slice(0, 2)
+    if (this.experienciaForm.valid) {
+      this.loading = true;
+      this.experienciaForm.patchValue(ev);
+  
+      const fechaInicioArr = ev.fechaInicio.split('-');
+  
+      const fechaInicio = {
+        year: +fechaInicioArr[0],
+        month: +fechaInicioArr[1],
+        day: +fechaInicioArr[2].slice(0, 2)
+      }
+      this.experienciaForm.controls.fechaInicio.patchValue(fechaInicio)
+  
+      const fechaFinArr = ev.fechaFin.split('-');
+      const fechaFin = {
+        year: +fechaFinArr[0],
+        month: +fechaFinArr[1],
+        day: +fechaFinArr[2].slice(0, 2)
+      }
+      this.experienciaForm.controls.fechaFin.patchValue(fechaFin);
+      this.loading = false;
+    } else {
+      this.experienciaForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
-    this.experienciaForm.controls.fechaInicio.patchValue(fechaInicio)
-
-    const fechaFinArr = ev.fechaFin.split('-');
-    const fechaFin = {
-      year: +fechaFinArr[0],
-      month: +fechaFinArr[1],
-      day: +fechaFinArr[2].slice(0, 2)
-    }
-    this.experienciaForm.controls.fechaFin.patchValue(fechaFin)
   }
 
   showConfirm(ev) {
@@ -140,6 +148,7 @@ export class ExperienciaComponent implements OnInit {
 
   public editarFila(): void {
     if (this.experienciaForm.valid) {
+      this.loading = true;
       const fila = {
         ...this.experienciaForm.value,
         fechaFin: this.experienciaForm.value.fechaFin.year.toString() + '-' + this.experienciaForm.value.fechaFin.month + '-' + this.experienciaForm.value.fechaFin.day,
@@ -151,8 +160,10 @@ export class ExperienciaComponent implements OnInit {
           this.filas[index].valor = fila;
           this.experienciaForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, i.message);
+          this.loading = false;
         }
       });
     } else {
