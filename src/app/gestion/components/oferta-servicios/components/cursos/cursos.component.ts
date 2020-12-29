@@ -16,6 +16,7 @@ export class CursosComponent implements OnInit {
 
   get f() { return this.cursosForm.controls; }
   collapsed: boolean;
+  loading: boolean;
   public filas: Filas<Curso>[] = [];
   public columnnas: Columna<Curso>[];
 
@@ -78,23 +79,32 @@ export class CursosComponent implements OnInit {
   }
 
   onEditar(ev: Curso) {
-    this.cursosForm.patchValue(ev);
-    const fechaInicioArr = ev.fechaInicio.split('/');
-    const fechaInicio = {
-      day: +fechaInicioArr[0],
-      month: +fechaInicioArr[1],
-      year: +fechaInicioArr[1]
-    }
+    if (this.cursosForm.valid) {
 
-    this.cursosForm.controls.fechaInicio.patchValue(fechaInicio)
+      this.loading = true;
 
-    const fechaFinArr = ev.fechaFin.split('/');
-    const fechaFin = {
-      day: +fechaFinArr[0],
-      month: +fechaFinArr[1],
-      year: +fechaFinArr[1]
+      this.cursosForm.patchValue(ev);
+      const fechaInicioArr = ev.fechaInicio.split('/');
+      const fechaInicio = {
+        day: +fechaInicioArr[0],
+        month: +fechaInicioArr[1],
+        year: +fechaInicioArr[2]
+      }
+
+      this.cursosForm.controls.fechaInicio.patchValue(fechaInicio)
+
+      const fechaFinArr = ev.fechaFin.split('/');
+      const fechaFin = {
+        day: +fechaFinArr[0],
+        month: +fechaFinArr[1],
+        year: +fechaFinArr[2]
+      }
+      this.cursosForm.controls.fechaFin.patchValue(fechaFin);
+      this.loading = false;
+    } else {
+      this.cursosForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
-    this.cursosForm.controls.fechaFin.patchValue(fechaFin)
   }
 
   showConfirm(ev) {
@@ -133,6 +143,7 @@ export class CursosComponent implements OnInit {
       let monthFin = this.cursosForm.value.fechaFin.month >= 10 ? this.cursosForm.value.fechaFin.month : '0' + this.cursosForm.value.fechaFin.month;
       let dayInicio = this.cursosForm.value.fechaInicio.day >= 10 ? this.cursosForm.value.fechaInicio.day.toString() : '0' + this.cursosForm.value.fechaInicio.day;
       let monthInicio = this.cursosForm.value.fechaInicio.month >= 10 ? this.cursosForm.value.fechaInicio.month : '0' + this.cursosForm.value.fechaInicio.month;
+      this.loading = true;
       const fila = {
         ...this.cursosForm.value,
         fechaFin: this.cursosForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
@@ -144,8 +155,10 @@ export class CursosComponent implements OnInit {
           this.filas[index].valor = i.entity;
           this.cursosForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, i.message);
+          this.loading = false;
         }
       });
     } else {

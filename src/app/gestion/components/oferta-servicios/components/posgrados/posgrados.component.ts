@@ -18,6 +18,7 @@ export class PosgradosComponent implements OnInit {
 
   get f() { return this.posgradoForm.controls; }
   collapsed: boolean;
+  loading: boolean;
   public filas: Filas<Posgrado>[] = [];
   public columnnas: Columna<Posgrado>[];
   public universidades$: Observable<SelectItem[]>;
@@ -83,23 +84,30 @@ export class PosgradosComponent implements OnInit {
   }
 
   onEditar(ev: Posgrado) {
-    this.posgradoForm.patchValue(ev);
-    const fechaInicioArr = ev.fechaInicio.split('/');
-    const fechaInicio = {
-      year: +fechaInicioArr[0],
-      month: +fechaInicioArr[1],
-      day: +fechaInicioArr[2].slice(0, 2)
-    }
+    if (this.posgradoForm.valid) {
+      this.loading = true;
+      this.posgradoForm.patchValue(ev);
+      const fechaInicioArr = ev.fechaInicio.split('/');
+      const fechaInicio = {
+        year: +fechaInicioArr[0],
+        month: +fechaInicioArr[1],
+        day: +fechaInicioArr[2].slice(0, 2)
+      }
 
-    this.posgradoForm.controls.fechaInicio.patchValue(fechaInicio)
+      this.posgradoForm.controls.fechaInicio.patchValue(fechaInicio)
 
-    const fechaFinArr = ev.fechaFin.split('/');
-    const fechaFin = {
-      day: +fechaFinArr[0],
-      month: +fechaFinArr[1],
-      year: +fechaFinArr[2]
+      const fechaFinArr = ev.fechaFin.split('/');
+      const fechaFin = {
+        day: +fechaFinArr[0],
+        month: +fechaFinArr[1],
+        year: +fechaFinArr[2]
+      }
+      this.posgradoForm.controls.fechaFin.patchValue(fechaFin);
+      this.loading = false;
+    } else {
+      this.posgradoForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
-    this.posgradoForm.controls.fechaFin.patchValue(fechaFin)
   }
 
   showConfirm(ev) {
@@ -139,6 +147,7 @@ export class PosgradosComponent implements OnInit {
       let dayInicio = this.posgradoForm.value.fechaInicio.day >= 10 ? this.posgradoForm.value.fechaInicio.day.toString() : '0' + this.posgradoForm.value.fechaInicio.day;
       let monthInicio = this.posgradoForm.value.fechaInicio.month >= 10 ? this.posgradoForm.value.fechaInicio.month : '0' + this.posgradoForm.value.fechaInicio.month;
 
+      this.loading = true;
       const fila = {
         ...this.posgradoForm.value,
         fechaFin: this.posgradoForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
@@ -150,8 +159,10 @@ export class PosgradosComponent implements OnInit {
           this.filas[index].valor = i.entity;
           this.posgradoForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, i.message);
+          this.loading = false;
         }
       });
     } else {

@@ -18,6 +18,7 @@ export class DomicilioComponent implements OnInit {
   get f() { return this.domicilioForm.controls; }
 
   collapsed: boolean;
+  loading: boolean;
   public filas: Filas<Domicilio>[] = [];
   public columnnas: Columna<Domicilio>[];
 
@@ -147,6 +148,7 @@ export class DomicilioComponent implements OnInit {
 
   public editarFila(): void {
     if (this.domicilioForm.valid) {
+      this.loading = true;
       const fila = new Domicilio(this.domicilioForm.value, this.tiposDomicilios);
 
       this.domicilioService.update(fila).subscribe(i => {
@@ -155,8 +157,10 @@ export class DomicilioComponent implements OnInit {
           this.filas[index].valor = fila;
           this.domicilioForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, i.message);
+          this.loading = false;
         }
       });
     } else {
@@ -167,6 +171,7 @@ export class DomicilioComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.domicilioForm.valid) {
+      this.loading = true;
       const fila = new Domicilio(this.domicilioForm.value, this.tiposDomicilios);
 
       this.domicilioService.insert(fila).subscribe(i => {
@@ -180,8 +185,10 @@ export class DomicilioComponent implements OnInit {
           this.domicilioForm.reset();
 
           this.toastr.success(null, 'Registro agregado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, i.message);
+          this.loading = false;
         }
       });
     } else {

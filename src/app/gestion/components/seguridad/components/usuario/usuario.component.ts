@@ -12,6 +12,7 @@ import { UsuarioService } from './service/usuario.service';
 export class UsuarioComponent implements OnInit {
 
   collapsed: boolean;
+  loading: boolean;
   public usuarioForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private toastr: ToastrService,
@@ -35,14 +36,17 @@ export class UsuarioComponent implements OnInit {
 
   onSave() {
     if (this.usuarioForm.valid) {
+      this.loading = true;
       const request = this.usuarioForm.value as Usuario;
 
       this.usuarioService.update(request).subscribe(i => {
         if (i.success) {
           this.usuarioForm.patchValue(i.entity);
           this.toastr.success(null, 'Registro editado correctamente.');
+          this.loading = false;
         } else {
           this.toastr.error(null, i.message);
+          this.loading = false;
         }
       });
     } else {
