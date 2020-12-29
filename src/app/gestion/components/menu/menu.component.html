@@ -18,26 +18,26 @@
                         </div>
                     </li>
                     <li>
-                        <a [routerLink]="'/gestion/home'"><i class="fa fa-th-large"></i> <span
+                        <a [routerLink]="'/gestion/home'" routerLinkActive="active-link"><i class="fa fa-th-large"></i> <span
                                 class="nav-label">Panel</span></a>
                     </li>
                     <li>
                         <a (click)="colapsar(0)"><i class="fa fa-user"></i> <span class="nav-label">Perfil</span> <span
                                 class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[0] === true}">
-                            <li><a [routerLink]="'perfil/identificacion'">Identificación</a></li>
-                            <li><a [routerLink]="'perfil/domicilio'">Domicilios</a></li>
-                            <li><a [routerLink]="'perfil/emails'">Emails</a></li>
-                            <li><a [routerLink]="'perfil/telefonos'">Teléfonos</a></li>
-                            <li><a [routerLink]="'perfil/redes'">Redes Sociales</a></li>
+                            <li><a [routerLink]="'perfil/identificacion'" routerLinkActive="active-link">Identificación</a></li>
+                            <li><a [routerLink]="'perfil/domicilio'" routerLinkActive="active-link">Domicilios</a></li>
+                            <li><a [routerLink]="'perfil/emails'" routerLinkActive="active-link">Emails</a></li>
+                            <li><a [routerLink]="'perfil/telefonos'" routerLinkActive="active-link">Teléfonos</a></li>
+                            <li><a [routerLink]="'perfil/redes'" routerLinkActive="active-link">Redes Sociales</a></li>
                         </ul>
                     </li>
                     <li *ngIf="isMatriculado">
                         <a (click)="colapsar(1)"><i class="fa fa-briefcase"></i> <span
                                 class="nav-label">Matrícula</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[1] === true}">
-                            <li><a [routerLink]="'matricula/resumen'">Resumen</a></li>
-                            <li><a [routerLink]="'matricula/derecho-anual'">Derecho Anual</a></li>
+                            <li><a [routerLink]="'matricula/resumen'" routerLinkActive="active-link">Resumen</a></li>
+                            <li><a [routerLink]="'matricula/derecho-anual'" routerLinkActive="active-link">Derecho Anual</a></li>
                             <li><a href="#">Certificado</a></li>
                             <li><a href="#">Credencial digital</a></li>
                         </ul>
@@ -46,11 +46,11 @@
                         <a (click)="colapsar(2)"><i class="fa fa-graduation-cap"></i> <span class="nav-label">Oferta de
                                 Servicios</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[2] === true}">
-                            <li><a [routerLink]="'oferta-servicios/actividad-profesional'">Actividad Profesional</a></li>
-                            <li><a [routerLink]="'oferta-servicios/experiencia'">Experiencia</a></li>
-                            <li><a [routerLink]="'oferta-servicios/cursos'">Cursos</a></li>
-                            <li><a [routerLink]="'oferta-servicios/posgrados'">Posgrados</a></li>
-                            <li><a [routerLink]="'oferta-servicios/curriculum-vitae'">Curriculum Vitae</a></li>
+                            <li><a [routerLink]="'oferta-servicios/actividad-profesional'" routerLinkActive="active-link">Actividad Profesional</a></li>
+                            <li><a [routerLink]="'oferta-servicios/experiencia'" routerLinkActive="active-link">Experiencia</a></li>
+                            <li><a [routerLink]="'oferta-servicios/cursos'" routerLinkActive="active-link">Cursos</a></li>
+                            <li><a [routerLink]="'oferta-servicios/posgrados'" routerLinkActive="active-link">Posgrados</a></li>
+                            <li><a [routerLink]="'oferta-servicios/curriculum-vitae'" routerLinkActive="active-link">Curriculum Vitae</a></li>
                         </ul>
                     </li>
                     <li>
@@ -90,8 +90,8 @@
                         <a (click)="colapsar(7)"><i class="fa fa-lock"></i> <span class="nav-label">Seguridad</span>
                             <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[7] === true}">
-                            <li><a [routerLink]="'seguridad/usuario'">Usuario</a></li>
-                            <li><a [routerLink]="'seguridad/contrasenia'">Contraseña</a></li>
+                            <li><a [routerLink]="'seguridad/usuario'" routerLinkActive="active-link">Usuario</a></li>
+                            <li><a [routerLink]="'seguridad/contrasenia'" routerLinkActive="active-link">Contraseña</a></li>
                         </ul>
                     </li>
                     <li>
