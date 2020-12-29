@@ -1,9 +1,9 @@
 export interface Experiencia {
     id: number;
-    destinoDeObra: string;
-    idDestinoDeObra: number;
-    tipoDeObra: string;
-    idTipoDeObra: number;
+    destino: string;
+    idDestino: number;
+    tipo: string;
+    idTipo: number;
     ubicacion: string;
     fechaInicio: string;
     fechaFin: string;
