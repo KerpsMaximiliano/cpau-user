@@ -12,8 +12,7 @@ import { IdentificacionService } from './service/identificacion.service';
 @Component({
   selector: 'app-identificacion',
   templateUrl: './identificacion.component.html',
-  styleUrls: ['./identificacion.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./identificacion.component.css']
 })
 export class IdentificacionComponent implements OnInit {
 
