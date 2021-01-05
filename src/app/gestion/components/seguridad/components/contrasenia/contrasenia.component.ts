@@ -21,20 +21,20 @@ export class ContraseniaComponent implements OnInit {
     this.contraseniaForm = this.formBuilder.group({
       passwordActual: ['', {
                 validators: [Validators.required,
-                            Validators.maxLength(30),
-                            Validators.minLength(6)],
+                            Validators.maxLength(50),
+                            Validators.minLength(8)],
                 updateOn: 'blur'
                 }],
       nuevaPassword: ['', {
                 validators: [Validators.required,
-                            Validators.maxLength(30),
-                            Validators.minLength(6)],
+                            Validators.maxLength(50),
+                            Validators.minLength(8)],
                 updateOn: 'blur'
                 }],
       repiteNuevaPassword: ['', {
                 validators: [Validators.required,
-                            Validators.maxLength(30),
-                            Validators.minLength(6)],
+                            Validators.maxLength(50),
+                            Validators.minLength(8)],
                 updateOn: 'blur'
                 }],
     });
