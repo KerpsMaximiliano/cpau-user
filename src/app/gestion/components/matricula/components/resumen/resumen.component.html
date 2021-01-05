@@ -30,9 +30,50 @@
                 </div>
                 <div class="ibox-content" [hidden]="collapsed">
                     <div class="row container-action-table">
-                        <app-action-table [columnas]="columnas" [filas]="filas" [permiteEliminar]="false"
-                            [permiteEditar]="false" [permiteVisualizar]="false">
-                        </app-action-table>
+                        <div class="container table">
+                            <div class="row">
+                              <div class="col-12">
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                        <td>Tipo de matrícula</td>
+                                        <td>{{resumen.matriculaTipo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Número de matrícula</td>
+                                        <td>{{resumen.numero}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fecha de matriculación</td>
+                                        <td>{{resumen.fechaMatriculacion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tipo de matrícula</td>
+                                        <td>{{resumen.matriculaTipo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Estado</td>
+                                        <td>{{resumen.estado}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Universidad</td>
+                                        <td>{{resumen.universidad}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fecha de egreso</td>
+                                        <td>{{resumen.fechaEgreso}}</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
                     </div>
                 </div>
             </div>
