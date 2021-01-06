@@ -25,7 +25,6 @@ export class ActividadProfesionalComponent implements OnInit {
   ) {
 
     this.actividadForm = this.formBuilder.group({
-
     })
   }
 
@@ -43,38 +42,36 @@ export class ActividadProfesionalComponent implements OnInit {
     const selectedActividadesIds = this.actividadForm.value.actividad
       .map((v, i) => v ? this.actividadProfesionalData[i].id : null)
       .filter(v => v !== null);
-    console.log(selectedActividadesIds);
 
     const requestActividades = {
       id: selectedActividadesIds
     } as ActividadProfesionalRequestModel
 
     const selectedObrasIds = this.actividadForm.value.obra
-      .map((v, i) => v ? this.actividadProfesionalData[i].id : null)
+      .map((v, i) => v ? this.obrasData[i].id : null)
       .filter(v => v !== null);
-    console.log(selectedObrasIds);
 
     const requestObras = {
       id: selectedObrasIds
     } as ObrasRequestModel
 
     this.actividadService.guardarActividadProfesional(requestActividades)
-    .subscribe(response => {
-      if (response.success) {
-        this.actividadService.guardarObrasRealizada(requestObras)
-        .subscribe(response => {
-          if (response.success) {
-            this.toastr.success('Actualizacion realizada con exito');
-            this.loading = false;
-          } else {
-            this.toastr.error(response.message);
-            this.loading = false;
-          }
-        })
-      } else {
-        this.toastr.error(response.message);
-        this.loading = false;
-      }
-    })
+      .subscribe(response => {
+        if (response.success) {
+          this.actividadService.guardarObrasRealizada(requestObras)
+            .subscribe(response => {
+              if (response.success) {
+                this.toastr.success('Actualizacion realizada con exito');
+                this.loading = false;
+              } else {
+                this.toastr.error(response.message);
+                this.loading = false;
+              }
+            })
+        } else {
+          this.toastr.error(response.message);
+          this.loading = false;
+        }
+      })
   }
 }
