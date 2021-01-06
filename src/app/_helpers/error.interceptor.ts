@@ -18,7 +18,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             }
 
             let error = "Error Desconocido";
-            if (err.error.message ) {
+            if (err && err.error && err.error.message ) {
                 error = err.error.message;
             } else if (err.statusText) {
                 error = err.statusText;

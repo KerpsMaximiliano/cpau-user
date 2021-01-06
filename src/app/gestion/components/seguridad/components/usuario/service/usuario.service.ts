@@ -18,11 +18,11 @@ export class UsuarioService {
   constructor(private httpClient: HttpClient) { }
 
   public update(request: Usuario): Observable<IResponseService<Usuario>> {
-    return this.httpClient.put<IResponseService<Usuario>>(`${environment.apiUrl}/api/perfil/contacto/username`, request);
+    return this.httpClient.put<IResponseService<Usuario>>(`${environment.apiUrl}/api/perfil/username`, request);
   }
 
   public read(): Observable<string> {
-    return this.httpClient.get<string>(`${environment.apiUrl}/api/perfil/contacto/username`, {responseType: 'text' as 'json'});
+    return this.httpClient.get<string>(`${environment.apiUrl}/api/perfil/username`, {responseType: 'text' as 'json'});
   }
 
 }

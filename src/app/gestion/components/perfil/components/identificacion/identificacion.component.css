@@ -28,11 +28,9 @@
 }
 
 .datepicker {
-   width: 75%;
+   width: 75% !important;
 }
 .button-datepicker {
-   width: 13%;
+   height: 34px;
+   width: 50%;
 }
- .nacimiento {
-    display: flex;
- }

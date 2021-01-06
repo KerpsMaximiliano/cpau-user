@@ -37,7 +37,7 @@ export class TelefonoComponent implements OnInit {
       },
       {
         id: 'telefono',
-        titulo: 'Numero'
+        titulo: 'Número'
       }
     ];
 
