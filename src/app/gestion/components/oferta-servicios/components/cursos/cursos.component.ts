@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomValidator } from '@app/gestion/shared/validators/CustomValidator';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { DialogService } from 'ng2-bootstrap-modal';
@@ -35,11 +36,11 @@ export class CursosComponent implements OnInit {
         updateOn: 'blur'
       }],
       nombre: [null, {
-        validators: [Validators.maxLength(100), Validators.minLength(3), Validators.required],
+        validators: [Validators.maxLength(100), Validators.minLength(3), Validators.required, CustomValidator.noWhitespaceValidator],
         updateOn: 'blur'
       }],
       institucion: [null, {
-        validators: [Validators.maxLength(100), Validators.minLength(2), Validators.required],
+        validators: [Validators.maxLength(100), Validators.minLength(2), Validators.required, CustomValidator.noWhitespaceValidator],
         updateOn: 'blur'
       }],
     });
@@ -135,15 +136,23 @@ export class CursosComponent implements OnInit {
 
   public editarFila(): void {
     if (this.cursosForm.valid) {
-      let dayFin = this.cursosForm.value.fechaFin.day >= 10 ? this.cursosForm.value.fechaFin.day.toString() : '0' + this.cursosForm.value.fechaFin.day;
-      let monthFin = this.cursosForm.value.fechaFin.month >= 10 ? this.cursosForm.value.fechaFin.month : '0' + this.cursosForm.value.fechaFin.month;
+      var fechaFin;
+      var fechaInicio;
+      if (this.cursosForm.value.fechaFin) {
+        let dayFin = this.cursosForm.value.fechaFin.day >= 10 ? this.cursosForm.value.fechaFin.day.toString() : '0' + this.cursosForm.value.fechaFin.day;
+        let monthFin = this.cursosForm.value.fechaFin.month >= 10 ? this.cursosForm.value.fechaFin.month : '0' + this.cursosForm.value.fechaFin.month;
+        fechaFin = this.cursosForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin;
+      }
+
       let dayInicio = this.cursosForm.value.fechaInicio.day >= 10 ? this.cursosForm.value.fechaInicio.day.toString() : '0' + this.cursosForm.value.fechaInicio.day;
       let monthInicio = this.cursosForm.value.fechaInicio.month >= 10 ? this.cursosForm.value.fechaInicio.month : '0' + this.cursosForm.value.fechaInicio.month;
+      fechaInicio = this.cursosForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio;
+
       this.loading = true;
       const fila = {
         ...this.cursosForm.value,
-        fechaFin: this.cursosForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
-        fechaInicio: this.cursosForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio
+        fechaFin: fechaFin,
+        fechaInicio: fechaInicio
       } as Curso;
       this.cursoService.update(fila).subscribe(i => {
         if (i.success) {
@@ -165,14 +174,21 @@ export class CursosComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.cursosForm.valid) {
-      let dayFin = this.cursosForm.value.fechaFin.day >= 10 ? this.cursosForm.value.fechaFin.day.toString() : '0' + this.cursosForm.value.fechaFin.day;
-      let monthFin = this.cursosForm.value.fechaFin.month >= 10 ? this.cursosForm.value.fechaFin.month : '0' + this.cursosForm.value.fechaFin.month;
+      var fechaFin;
+      var fechaInicio;
+      if (this.cursosForm.value.fechaFin) {
+        let dayFin = this.cursosForm.value.fechaFin.day >= 10 ? this.cursosForm.value.fechaFin.day.toString() : '0' + this.cursosForm.value.fechaFin.day;
+        let monthFin = this.cursosForm.value.fechaFin.month >= 10 ? this.cursosForm.value.fechaFin.month : '0' + this.cursosForm.value.fechaFin.month;
+        fechaFin = this.cursosForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin;
+      }
       let dayInicio = this.cursosForm.value.fechaInicio.day >= 10 ? this.cursosForm.value.fechaInicio.day.toString() : '0' + this.cursosForm.value.fechaInicio.day;
       let monthInicio = this.cursosForm.value.fechaInicio.month >= 10 ? this.cursosForm.value.fechaInicio.month : '0' + this.cursosForm.value.fechaInicio.month;
+      fechaInicio = this.cursosForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio;
+
       const fila = {
         ...this.cursosForm.value,
-        fechaFin: this.cursosForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
-        fechaInicio: this.cursosForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio
+        fechaFin: fechaFin,
+        fechaInicio: fechaInicio
       } as Curso;
       this.cursoService.insert(fila).subscribe(i => {
         if (i.success) {

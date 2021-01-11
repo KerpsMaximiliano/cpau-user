@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
+import { CustomValidator } from '@app/gestion/shared/validators/CustomValidator';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { DialogService } from 'ng2-bootstrap-modal';
@@ -38,7 +39,7 @@ export class PosgradosComponent implements OnInit {
         updateOn: 'blur'
       }],
       nombre: [null, {
-        validators: [Validators.maxLength(100), Validators.minLength(3), Validators.required],
+        validators: [Validators.maxLength(100), Validators.minLength(3), Validators.required, CustomValidator.noWhitespaceValidator],
         updateOn: 'blur'
       }],
       idUniversidad: [null, {
@@ -138,16 +139,22 @@ export class PosgradosComponent implements OnInit {
 
   public editarFila(): void {
     if (this.posgradoForm.valid) {
-      let dayFin = this.posgradoForm.value.fechaFin.day >= 10 ? this.posgradoForm.value.fechaFin.day.toString() : '0' + this.posgradoForm.value.fechaFin.day;
-      let monthFin = this.posgradoForm.value.fechaFin.month >= 10 ? this.posgradoForm.value.fechaFin.month : '0' + this.posgradoForm.value.fechaFin.month;
+      var fechaFin;
+      var fechaInicio;
+      if (this.posgradoForm.value.fechaFin) {
+        let dayFin = this.posgradoForm.value.fechaFin.day >= 10 ? this.posgradoForm.value.fechaFin.day.toString() : '0' + this.posgradoForm.value.fechaFin.day;
+        let monthFin = this.posgradoForm.value.fechaFin.month >= 10 ? this.posgradoForm.value.fechaFin.month : '0' + this.posgradoForm.value.fechaFin.month;
+        fechaFin = this.posgradoForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin;
+      }
       let dayInicio = this.posgradoForm.value.fechaInicio.day >= 10 ? this.posgradoForm.value.fechaInicio.day.toString() : '0' + this.posgradoForm.value.fechaInicio.day;
       let monthInicio = this.posgradoForm.value.fechaInicio.month >= 10 ? this.posgradoForm.value.fechaInicio.month : '0' + this.posgradoForm.value.fechaInicio.month;
+      fechaInicio = this.posgradoForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio;
 
       this.loading = true;
       const fila = {
         ...this.posgradoForm.value,
-        fechaFin: this.posgradoForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
-        fechaInicio: this.posgradoForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio
+        fechaFin: fechaFin,
+        fechaInicio: fechaInicio
       } as Posgrado;
       this.posgradoService.update(fila).subscribe(i => {
         if (i.success) {
@@ -169,15 +176,21 @@ export class PosgradosComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.posgradoForm.valid) {
-      let dayFin = this.posgradoForm.value.fechaFin.day >= 10 ? this.posgradoForm.value.fechaFin.day.toString() : '0' + this.posgradoForm.value.fechaFin.day;
-      let monthFin = this.posgradoForm.value.fechaFin.month >= 10 ? this.posgradoForm.value.fechaFin.month : '0' + this.posgradoForm.value.fechaFin.month;
+      var fechaFin;
+      var fechaInicio;
+      if (this.posgradoForm.value.fechaFin) {
+        let dayFin = this.posgradoForm.value.fechaFin.day >= 10 ? this.posgradoForm.value.fechaFin.day.toString() : '0' + this.posgradoForm.value.fechaFin.day;
+        let monthFin = this.posgradoForm.value.fechaFin.month >= 10 ? this.posgradoForm.value.fechaFin.month : '0' + this.posgradoForm.value.fechaFin.month;
+        fechaFin = this.posgradoForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin;
+      }
       let dayInicio = this.posgradoForm.value.fechaInicio.day >= 10 ? this.posgradoForm.value.fechaInicio.day.toString() : '0' + this.posgradoForm.value.fechaInicio.day;
       let monthInicio = this.posgradoForm.value.fechaInicio.month >= 10 ? this.posgradoForm.value.fechaInicio.month : '0' + this.posgradoForm.value.fechaInicio.month;
+      fechaInicio = this.posgradoForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio;
 
       const fila = {
         ...this.posgradoForm.value,
-        fechaFin: this.posgradoForm.value.fechaFin.year.toString() + '-' + monthFin + '-' + dayFin,
-        fechaInicio: this.posgradoForm.value.fechaInicio.year.toString() + '-' + monthInicio + '-' + dayInicio
+        fechaFin: fechaFin,
+        fechaInicio: fechaInicio
       } as Posgrado;
       this.posgradoService.insert(fila).subscribe(i => {
         if (i.success) {

@@ -4,6 +4,9 @@
         <h2>Experiencia</h2>
         <ol class="breadcrumb">
             <li>
+                <a>Panel</a>
+            </li>
+            <li>
                 <a>Oferta de Servicios</a>
             </li>
             <li class="active">
@@ -69,7 +72,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Ubicacion:</label>
+                                        <label class="col-sm-3 control-label">Ubicación:</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" formControlName="ubicacion"
                                                 placeholder="Ubicación">
@@ -102,6 +105,12 @@
                                                 [errorsMessages]="{
                                               required: 'Campo Requerido'
                                             }" [controlTouched]="experienciaForm.controls.fechaInicio.touched">
+                                            </form-error>
+
+                                            <form-error [errors]="experienciaForm.errors"
+                                                [errorsMessages]="{
+                                              dates: 'La fecha desde no puede ser menor a la fecha hasta.'
+                                            }" [controlTouched]="experienciaForm.touched">
                                             </form-error>
                                         </div>
                                     </div>
