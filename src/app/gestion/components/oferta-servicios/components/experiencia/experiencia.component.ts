@@ -40,7 +40,7 @@ export class ExperienciaComponent implements OnInit {
         // validators: [Validators.required],
         updateOn: 'blur'
       }],
-      fechaFin: ['', {
+      fechaFin: [null, {
         updateOn: 'blur'
       }],
       idTipo: ['', {

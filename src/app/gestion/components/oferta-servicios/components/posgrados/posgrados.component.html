@@ -60,7 +60,8 @@
                                             <form-error [errors]="posgradoForm.controls.nombre.errors" [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud permitida es entre 3 y 100 caracteres',
-                                              maxlength: 'La longitud permitida es entre 3 y 100 caracteres'
+                                              maxlength: 'La longitud permitida es entre 3 y 100 caracteres',
+                                              whitespace: 'Campo Requerido'
                                             }" [controlTouched]="posgradoForm.controls.nombre.touched">
                                             </form-error>
                                         </div>
