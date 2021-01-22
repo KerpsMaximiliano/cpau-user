@@ -1,4 +1,8 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { environment } from '@environments/environment';
+import { AuthenticationService } from "@app/_services";
+import { DerechoAnualService } from '../services/derecho-anual.service';
+import { ValidarPago } from '../models/validar-pago.model';
 
 @Component({
   selector: 'app-pagar-boleta',
@@ -10,41 +14,25 @@ export class PagarBoletaComponent implements OnInit {
   isProcessing: boolean;
   cuotas: string;
   formValidarPago: ValidarPago;
-  @ViewChild('form', {static: true}) form: ElementRef;
+  @ViewChild('form', { static: false }) form: ElementRef;
   @Output() cerrar = new EventEmitter();
-  constructor() { }
+  constructor(private derechoAnualService: DerechoAnualService) { }
 
   ngOnInit() {
   }
 
   select(medioDePago: string) {
-    console.log('Pagar');
-
-    // $http.post(
-    //     '/api/consejo/pagarboleta',
-    //     {
-    //         matriculadoId: session.matriculado.id,
-    //         creditCardType: medioDePago,
-    //         creditCardInstallments: this.cuotas
-    //     }
-    // ).then(response => {
-        // this.formValidarPago.cuotas = this.cuotas;
-        // this.formValidarPago.emailCliente = response.data.emailCliente;
-        // this.formValidarPago.nroComercio = response.data.nroComercio;
-        // this.formValidarPago.nroOperacion = response.data.nroOperacion;
-        // this.formValidarPago.medioDePago = medioDePago;
-        // this.formValidarPago.monto = `${response.data.monto}00`;
-        // this.form.nativeElement.submit();
-    // });
+    this.derechoAnualService.pagarBoleta(medioDePago, this.cuotas).subscribe(data => {
+      this.formValidarPago = {
+        cuotas: data.cuotas,
+        emailCliente: data.emailCliente,
+        nroComercio: data.nroComercio,
+        nroOperacion: data.nroOperacion,
+        medioDePago: data.medioDePago,
+        monto: `${data.monto}00`
+      }
+      this.form.nativeElement.submit();
+    })
   }
 
-}
-
-export class ValidarPago {
-  nroComercio: string;
-  nroOperacion: string;
-  medioDePago: string;
-  monto: string;
-  cuotas: string;
-  emailCliente: string;
 }

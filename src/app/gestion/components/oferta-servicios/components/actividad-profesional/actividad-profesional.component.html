@@ -4,10 +4,13 @@
         <h2>Actividad profesional</h2>
         <ol class="breadcrumb">
             <li>
-                <a>Oferta de servicios</a>
+                <a>Panel de Control</a>
+            </li>
+            <li>
+                <a>Oferta de Servicios</a>
             </li>
             <li class="active">
-                <a><strong>Actividad profesional</strong></a>
+                <a><strong>Actividad Profesional</strong></a>
             </li>
         </ol>
     </div>
@@ -18,7 +21,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Actividad profesional</h5>
+                    <h5>Actividad Profesional</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link" (click)="collapsed=!collapsed">
                             <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
@@ -71,9 +74,7 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="actions-buttons">
-                            <button [disabled]="loading"
-                                    class="btn btn-primary"
-                                    (click)="onSave()">
+                            <button [disabled]="loading" class="btn btn-primary" (click)="onSave()">
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                 Guardar
                             </button>

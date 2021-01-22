@@ -115,7 +115,7 @@ export class IdentificacionComponent implements OnInit {
     if (this.identificacionForm.valid) {
       this.loading = true;
       this.identificacionForm.markAllAsTouched();
-  
+
       const identifToSave = {
         ...this.identificacionForm.value,
         nacimiento: this.identificacionForm.value.nacimiento.year.toString() + '/' + this.identificacionForm.value.nacimiento.month + '/' + this.identificacionForm.value.nacimiento.day,
@@ -123,6 +123,7 @@ export class IdentificacionComponent implements OnInit {
       this.identificacionService.update(identifToSave).subscribe(response => {
         if (response.success) {
           this.identificacionService.currentIdentificacionValue = response.entity;
+          this.identificacionOriginal = response.entity;
           this.toastr.success('Actualizacion realizada con exito');
           this.loading = false;
         } else {
@@ -138,6 +139,13 @@ export class IdentificacionComponent implements OnInit {
 
   public onCancel(): void {
     this.identificacionForm.patchValue(this.identificacionOriginal);
+    const nacimientoArr = this.identificacionOriginal.nacimiento.split('-');
+    const nacimiento = {
+      day: +nacimientoArr[2].slice(0, 2),
+      month: +nacimientoArr[1],
+      year: +nacimientoArr[0]
+    }
+    this.identificacionForm.controls.nacimiento.patchValue(nacimiento)
     this.identificacionForm.markAsPristine();
   }
 }

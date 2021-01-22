@@ -54,7 +54,7 @@ export class ExperienciaComponent implements OnInit {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
-    }, {validator: DateValidator('fechaInicio','fechaFin')});
+    }, { validator: DateValidator('fechaInicio', 'fechaFin') });
 
     this.columnnas = [
       {
@@ -166,7 +166,7 @@ export class ExperienciaComponent implements OnInit {
       this.experienciaService.update(fila).subscribe(i => {
         if (i.success) {
           const index = this.filas.findIndex(f => f.valor.id === fila.id);
-          this.filas[index].valor = fila;
+          this.filas[index].valor = i.entity;
           this.experienciaForm.reset();
           this.toastr.success(null, 'Registro editado correctamente.');
           this.loading = false;
