@@ -14,6 +14,7 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { CheckboxListComponent } from '@app/shared/components/checkbox-list/checkbox-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioComponent } from './components/seguridad/components/usuario/usuario.component';
+import { SuscripcionComponent } from './components/suscripcion/suscripcion.component';
 @NgModule({
   declarations: [HomeComponent,
     MenuComponent,
@@ -21,7 +22,8 @@ import { UsuarioComponent } from './components/seguridad/components/usuario/usua
     FooterComponent,
     ActionTableComponent,
     CheckboxListComponent,
-    FormErrorComponent],
+    FormErrorComponent,
+    SuscripcionComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,

@@ -92,14 +92,16 @@ export class CursosComponent implements OnInit {
     }
 
     this.cursosForm.controls.fechaInicio.patchValue(fechaInicio)
+    if (ev.fechaFin) {
 
-    const fechaFinArr = ev.fechaFin.split('/');
-    const fechaFin = {
-      day: +fechaFinArr[0],
-      month: +fechaFinArr[1],
-      year: +fechaFinArr[2]
+      const fechaFinArr = ev.fechaFin.split('/');
+      const fechaFin = {
+        day: +fechaFinArr[0],
+        month: +fechaFinArr[1],
+        year: +fechaFinArr[2]
+      }
+      this.cursosForm.controls.fechaFin.patchValue(fechaFin);
     }
-    this.cursosForm.controls.fechaFin.patchValue(fechaFin);
     this.loading = false;
 
   }
@@ -115,7 +117,7 @@ export class CursosComponent implements OnInit {
           this.cursoService.delete(ev.id).subscribe(d => {
             if (d.success) {
               const index = this.filas.findIndex(f => f.valor.id === ev.id);
-              this.filas.splice(index, 1);
+              this.filas[index].valor = d.entity;
               this.toastr.success(null, 'Registro eliminado correctamente.');
             } else {
               this.toastr.error(null, d.message);

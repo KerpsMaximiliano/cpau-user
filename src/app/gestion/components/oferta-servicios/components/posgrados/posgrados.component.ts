@@ -87,22 +87,25 @@ export class PosgradosComponent implements OnInit {
   onEditar(ev: Posgrado) {
     this.loading = true;
     this.posgradoForm.patchValue(ev);
-    const fechaInicioArr = ev.fechaInicio.split('-');
+    const fechaInicioArr = ev.fechaInicio.split('/');
     const fechaInicio = {
-      year: +fechaInicioArr[0],
+      year: +fechaInicioArr[2],
       month: +fechaInicioArr[1],
-      day: +fechaInicioArr[2].slice(0, 2)
+      day: +fechaInicioArr[0].slice(0, 2)
     }
 
     this.posgradoForm.controls.fechaInicio.patchValue(fechaInicio)
 
-    const fechaFinArr = ev.fechaFin.split('-');
-    const fechaFin = {
-      year: +fechaFinArr[0],
-      month: +fechaFinArr[1],
-      day: +fechaFinArr[2].slice(0, 2)
+    if (ev.fechaFin) {
+
+      const fechaFinArr = ev.fechaFin.split('/');
+      const fechaFin = {
+        year: +fechaInicioArr[2],
+        month: +fechaInicioArr[1],
+        day: +fechaInicioArr[0].slice(0, 2)
+      }
+      this.posgradoForm.controls.fechaFin.patchValue(fechaFin);
     }
-    this.posgradoForm.controls.fechaFin.patchValue(fechaFin);
     this.loading = false;
 
   }
