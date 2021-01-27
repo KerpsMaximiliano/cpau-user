@@ -103,13 +103,16 @@ export class ExperienciaComponent implements OnInit {
     }
     this.experienciaForm.controls.fechaInicio.patchValue(fechaInicio)
 
-    const fechaFinArr = ev.fechaFin.split('/');
-    const fechaFin = {
-      day: +fechaFinArr[0],
-      month: +fechaFinArr[1],
-      year: +fechaFinArr[2]
+    if (ev.fechaFin) {
+
+      const fechaFinArr = ev.fechaFin.split('/');
+      const fechaFin = {
+        day: +fechaFinArr[0],
+        month: +fechaFinArr[1],
+        year: +fechaFinArr[2]
+      }
+      this.experienciaForm.controls.fechaFin.patchValue(fechaFin);
     }
-    this.experienciaForm.controls.fechaFin.patchValue(fechaFin);
     this.loading = false;
 
   }
@@ -160,6 +163,9 @@ export class ExperienciaComponent implements OnInit {
       this.loading = true;
       const fila = {
         ...this.experienciaForm.value,
+        id: this.experienciaForm.value.id != null ? this.experienciaForm.value.id : 0,
+        idDestino: +this.experienciaForm.value.idDestino,
+        idTipo: +this.experienciaForm.value.idTipo,
         fechaFin: fechaFin,
         fechaInicio: fechaInicio
       } as Experiencia;
@@ -196,6 +202,9 @@ export class ExperienciaComponent implements OnInit {
 
       const fila = {
         ...this.experienciaForm.value,
+        idDestino: +this.experienciaForm.value.idDestino,
+        idTipo: +this.experienciaForm.value.idTipo,
+        id: this.experienciaForm.value.id != null ? this.experienciaForm.value.id : 0,
         fechaFin: fechaFin,
         fechaInicio: fechaInicio
       } as Experiencia;
