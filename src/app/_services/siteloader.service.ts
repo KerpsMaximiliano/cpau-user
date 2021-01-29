@@ -48,6 +48,10 @@ export class SiteLoader implements ITemplate {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetMenusTo?sectionName=${sectionName}`).pipe(distinctUntilChanged());
     }
 
+    GetSectionMenu() {
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetSectionMenu`).pipe(distinctUntilChanged());
+    }
+
     GetMenusExtProd() {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetMenusExtProd`).pipe(distinctUntilChanged());
     }

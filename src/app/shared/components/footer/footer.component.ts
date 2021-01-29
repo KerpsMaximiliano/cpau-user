@@ -8,29 +8,40 @@ import { SiteLoader } from '@app/_services';
   styleUrls: ['./footer.component.css']
 })
 export class FooterHomeComponent implements OnInit {
-  servicios: Observable<any>;
-  herramientas: Observable<any>;
-  ejercicioprofesional: Observable<any>;
-  prodExternos: Observable<any>;
-  consejo: Observable<any>;
+  servicios: any[] = [];
+  herramientas: any[] = [];
+  ejercicioprofesional: any[] = [];
+  prodExternos: any[] = [];
+  consejo: any[] = [];
 
   constructor(private siteLoader: SiteLoader) { }
 
   ngOnInit() {
-    this.siteLoader.GetMenusTo("EL CONSEJO")
-    .subscribe(data => this.consejo = data);
+    this.siteLoader.GetSectionMenu()
+    .subscribe(x => {
 
-    this.siteLoader.GetMenusTo("SERVICIOS")
-    .subscribe(data => this.servicios = data);
-
-    this.siteLoader.GetMenusTo("HERRAMIENTAS")
-    .subscribe(data => this.herramientas = data);
-
-    this.siteLoader.GetMenusTo("EJERCICIO PROFESIONAL")
-    .subscribe(data => this.ejercicioprofesional = data);
-
-    this.siteLoader.GetMenusExtProd()
-    .subscribe(data => this.prodExternos = data);
+      x.forEach(e => {
+        switch (e.parentSeName) {
+          case '/el-consejo':
+            this.consejo.push(e);
+            break;
+          case '/herramientas':
+            this.herramientas.push(e);
+            break;
+          case '/servicios':
+            this.servicios.push(e);
+            break;
+          case '/ejercicio-profesional':
+            this.ejercicioprofesional.push(e);
+            break;
+          case '/ejercicio-profesional': // TODO
+            this.prodExternos.push(e);
+            break;            
+          default:
+            break;
+        }
+      });       
+    });
   }
 
   selectTarget(index){
