@@ -97,7 +97,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterMatriculadoComponent,
     RegisterNomatriculadoComponent,
     numberOnlyDirective,
-    ModalComponent
+    ModalComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

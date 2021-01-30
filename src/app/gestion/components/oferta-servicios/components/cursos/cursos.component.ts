@@ -117,7 +117,7 @@ export class CursosComponent implements OnInit {
           this.cursoService.delete(ev.id).subscribe(d => {
             if (d.success) {
               const index = this.filas.findIndex(f => f.valor.id === ev.id);
-              this.filas[index].valor = d.entity;
+              this.filas.splice(index, 1);
               this.toastr.success(null, 'Registro eliminado correctamente.');
             } else {
               this.toastr.error(null, d.message);
