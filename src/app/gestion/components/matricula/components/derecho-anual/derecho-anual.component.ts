@@ -18,11 +18,11 @@ export class DerechoAnualComponent implements OnInit {
   constructor(private derechoAnualService: DerechoAnualService) {
     this.columnas = [
       {
-        id: 'concepto',
+        id: 'periodo',
         titulo: 'Concepto'
       },
       {
-        id: 'monto',
+        id: 'saldo',
         titulo: 'Monto',
         tipo: ColumnType.Currency
       }
@@ -41,7 +41,7 @@ export class DerechoAnualComponent implements OnInit {
             }
           ];
         });
-    });
+      });
   }
 
   onPagarDerechoAnual() {

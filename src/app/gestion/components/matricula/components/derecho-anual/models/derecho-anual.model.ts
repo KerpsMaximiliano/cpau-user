@@ -1,5 +1,5 @@
 export interface DerechoAnual {
     id: number;
-    concepto: string;
-    monto: number;
+    periodo: string;
+    saldo: number;
 }
