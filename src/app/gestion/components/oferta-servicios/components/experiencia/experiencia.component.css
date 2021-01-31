@@ -20,8 +20,8 @@
     height: 34px;
  }
    .datepicker {
-      width: 75%;
+      width: 75% !important;
    }
    .button-datepicker {
-      width: 13%;
+      width: 15% !important;
    }
