@@ -104,7 +104,7 @@
                                         <label class="col-sm-3 control-label">Depto Nro:</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" formControlName="depto"
-                                                placeholder="Depto Nro">
+                                                placeholder="Depto Nro" maxlength="20">
                                             <form-error [errors]="domicilioForm.controls.depto.errors" [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud permitida es entre 1 y 20 caracteres',
