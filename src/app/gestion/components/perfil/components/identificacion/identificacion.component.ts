@@ -139,11 +139,11 @@ export class IdentificacionComponent implements OnInit {
 
   public onCancel(): void {
     this.identificacionForm.patchValue(this.identificacionOriginal);
-    const nacimientoArr = this.identificacionOriginal.nacimiento.split('-');
+    const nacimientoArr = this.identificacionOriginal.nacimiento.split('/');
     const nacimiento = {
-      day: +nacimientoArr[2].slice(0, 2),
+      day: +nacimientoArr[0],
       month: +nacimientoArr[1],
-      year: +nacimientoArr[0]
+      year: +nacimientoArr[2]
     }
     this.identificacionForm.controls.nacimiento.patchValue(nacimiento)
     this.identificacionForm.markAsPristine();

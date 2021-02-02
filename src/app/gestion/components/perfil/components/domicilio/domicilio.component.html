@@ -141,7 +141,7 @@
                                             <form-error [errors]="domicilioForm.controls.codigoPostal.errors"
                                                 [errorsMessages]="{
                                               required: 'Campo Requerido',
-                                              pattern: 'El formato permitido es NNNN 0 LLNNNNL (N es numérico y L letra)'
+                                              pattern: 'El formato permitido es NNNN 0 LNNNNLLL (N es numérico y L letra)'
                                             }" [controlTouched]="domicilioForm.controls.codigoPostal.touched">
                                             </form-error>
                                         </div>
@@ -149,17 +149,13 @@
                                 </div>
                                 <div class="col-sm-4">&nbsp;</div>
                                 <div class="col-sm-4  text-right">
-                                    <button *ngIf="!f.id.value" 
-                                            [disabled]="loading"
-                                            class="btn btn-primary"
-                                            (click)="agregarFila()">
+                                    <button *ngIf="!f.id.value" [disabled]="loading" class="btn btn-primary"
+                                        (click)="agregarFila()">
                                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                         Agregar
                                     </button>
-                                    <button  *ngIf="f.id.value"
-                                            [disabled]="loading"
-                                            class="btn btn-primary"
-                                            (click)="editarFila()">
+                                    <button *ngIf="f.id.value" [disabled]="loading" class="btn btn-primary"
+                                        (click)="editarFila()">
                                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                         Actualizar
                                     </button>

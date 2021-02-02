@@ -56,8 +56,8 @@ export class DomicilioComponent implements OnInit {
         updateOn: 'blur'
       }],
       codigoPostal: ['', {
-        validators: [Validators.required, Validators.maxLength(7),
-        Validators.minLength(4), Validators.pattern('[A-Za-z]{0,2}[0-9]{4}[A-Za-z]{0,1}$')],
+        validators: [Validators.required, Validators.maxLength(8),
+        Validators.minLength(4), Validators.pattern('[A-Za-z]{0,1}[0-9]{4}[A-Za-z]{0,3}$')],
         updateOn: 'blur'
       }]
     });
@@ -193,6 +193,8 @@ export class DomicilioComponent implements OnInit {
       });
     } else {
       this.domicilioForm.markAllAsTouched();
+      console.log(this.domicilioForm);
+
       this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
   }
