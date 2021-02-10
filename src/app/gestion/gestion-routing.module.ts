@@ -18,22 +18,27 @@ const routes: Routes = [
       {
         path: 'perfil',
         loadChildren: () => import('./components/perfil/perfil.module').then(m => m.PerfilModule),
-        canActivate: [AuthGuard] 
+        canActivate: [AuthGuard]
       },
       {
         path: 'matricula',
         loadChildren: () => import('./components/matricula/matricula.module').then(m => m.MatriculaModule),
-        canActivate: [AuthGuard] 
+        canActivate: [AuthGuard]
       },
       {
         path: 'oferta-servicios',
         loadChildren: () => import('./components/oferta-servicios/oferta-servicios.module').then(m => m.OfertaServiciosModule),
-        canActivate: [AuthGuard] 
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'suscripciones',
+        loadChildren: () => import('./components/suscripcion/suscripciones.module').then(m => m.SuscripcionModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'seguridad',
         loadChildren: () => import('./components/seguridad/seguridad.module').then(m => m.SeguridadModule),
-        canActivate: [AuthGuard] 
+        canActivate: [AuthGuard]
       },
     ]
   },

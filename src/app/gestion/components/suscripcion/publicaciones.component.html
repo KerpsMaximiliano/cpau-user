@@ -19,7 +19,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Actividad Profesional</h5>
+                    <h5>Publicaciones</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link" (click)="collapsed=!collapsed">
                             <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
@@ -27,45 +27,19 @@
                     </div>
                 </div>
                 <div class="ibox-content" [hidden]="collapsed">
-                    <form method="get" class="form-horizontal" [formGroup]="suscripcionForm">
+                    <form method="get" class="form-horizontal" [formGroup]="publicacionesForm">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <div class="col-sm-12 title">
-                                        <span>
-                                            Actividad Profesional
-                                        </span>
-                                    </div>
                                     <div class="col-md-12">
                                         <div class=" checkbox-list">
-                                            <ng-container *ngIf="actividadProfesionalData">
+                                            <ng-container *ngIf="publicaciones">
 
-                                                <app-checkbox-list [form]="suscripcionForm"
-                                                    [checkboxData]="actividadProfesionalData"
-                                                    [controlName]="'actividad'">
+                                                <app-checkbox-list [form]="publicacionesForm"
+                                                    [checkboxData]="publicaciones" [controlName]="'publicaciones'">
                                                 </app-checkbox-list>
                                             </ng-container>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="col-sm-12 title">
-                                        <span>
-                                            Tipo de Obra Realizada
-                                        </span>
-                                    </div>
-                                    <div class="col-md-12 checkbox-list">
-                                        <ng-container *ngIf="obrasData ">
-
-                                            <app-checkbox-list [form]="suscripcionForm" [checkboxData]="obrasData "
-                                                [controlName]="'obra'">
-                                            </app-checkbox-list>
-                                        </ng-container>
-
                                     </div>
                                 </div>
                             </div>

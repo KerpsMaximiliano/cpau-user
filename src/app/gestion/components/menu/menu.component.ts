@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
   currentUser: User;
 
   constructor(private identificacionService: IdentificacionService,
-              private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.identificacionService.read().subscribe(identificacion => {
@@ -34,7 +34,7 @@ export class MenuComponent implements OnInit {
 
     this.currentUser = this.authenticationService.currentUserValue;
   }
-  
+
   colapsar(i: number) {
     this.colapsado[i] = !this.colapsado[i];
   }
