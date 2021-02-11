@@ -117,7 +117,7 @@ export class MailComponent implements OnInit {
           let index = this.filas.findIndex(fila => fila.valor.id === response.entity.id)
           this.filas[index].valor = response.entity;
           this.mailForm.reset();
-          this.toastr.success(null, 'Registro editado correctamente.');
+          this.toastr.success(null, response.message);
           this.loading = false;
         } else {
           this.toastr.error(null, response.message);

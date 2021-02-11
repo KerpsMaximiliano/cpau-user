@@ -38,12 +38,12 @@
                                     <label class="col-sm-2 control-label">Nombres:</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" formControlName="nombres"
-                                            maxlength="200" placeholder="Nombres">
+                                            maxlength="100" placeholder="Nombres">
                                         <form-error [errors]="identificacionForm.controls.nombres.errors"
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud debe ser mayor a 2 caracteres',
-                                              maxlength: 'La longitud debe ser menor a 200 caracteres',
+                                              maxlength: 'La longitud debe ser menor a 100 caracteres',
                                               whitespace: 'No se permite ingresar solo espacios en blanco'
                                             }" [controlTouched]="identificacionForm.controls.nombres.touched">
                                         </form-error>
@@ -54,12 +54,12 @@
                                     <label class="col-sm-2 control-label">Apellidos:</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" formControlName="apellidos"
-                                            maxlength="200" placeholder="Apellidos">
+                                            maxlength="100" placeholder="Apellidos">
                                         <form-error [errors]="identificacionForm.controls.apellidos.errors"
                                             [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud debe ser mayor a 2 caracteres',
-                                              maxlength: 'La longitud debe ser menor a 200 caracteres',
+                                              maxlength: 'La longitud debe ser menor a 100 caracteres',
                                               whitespace: 'No se permite ingresar solo espacios en blanco'
                                             }" [controlTouched]="identificacionForm.controls.apellidos.touched">
                                         </form-error>
