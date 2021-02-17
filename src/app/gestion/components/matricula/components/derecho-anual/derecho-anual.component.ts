@@ -37,7 +37,7 @@ export class DerechoAnualComponent implements OnInit {
             ...this.filas,
             {
               valor: x,
-              campoSumarizador: 'monto'
+              campoSumarizador: 'saldo'
             }
           ];
         });
