@@ -36,7 +36,7 @@ export class ExperienciaComponent implements OnInit {
 
     this.experienciaForm = this.formBuilder.group({
       id: [],
-      fechaInicio: ['', {
+      fechaInicio: [null, {
         // validators: [Validators.required],
         updateOn: 'blur'
       }],
@@ -228,5 +228,8 @@ export class ExperienciaComponent implements OnInit {
       this.experienciaForm.markAllAsTouched();
       this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
+  }
+  public cancelarFila(): void {
+    this.experienciaForm.reset();
   }
 }

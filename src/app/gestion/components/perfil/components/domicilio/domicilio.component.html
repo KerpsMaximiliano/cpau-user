@@ -38,7 +38,7 @@
                                         <div class="col-sm-9">
                                             <div *ngIf="tiposDomicilios">
                                                 <select id="tiposDomicilios" formControlName="idTipoDomicilio"
-                                                    class="tipo-domicilio-select browser-default custom-select">
+                                                    class="tipo-domicilio-select browser-default custom-select form-control">
                                                     <option *ngFor="let tp of tiposDomicilios" [value]="tp.id">
                                                         {{ tp.nombre }}</option>
                                                 </select>

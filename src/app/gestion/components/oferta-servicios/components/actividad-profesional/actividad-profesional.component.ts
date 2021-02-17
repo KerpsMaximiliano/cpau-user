@@ -74,4 +74,7 @@ export class ActividadProfesionalComponent implements OnInit {
         }
       })
   }
+  public cancelarFila(): void {
+    this.actividadForm.reset();
+  }
 }

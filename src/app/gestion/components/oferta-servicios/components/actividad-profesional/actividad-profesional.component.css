@@ -14,3 +14,6 @@ align-items: center;
     flex-direction: column;
     max-height: 50%;
 }
+button {
+    margin-right: 5px;
+ }

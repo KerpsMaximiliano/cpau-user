@@ -38,7 +38,7 @@
                                         <div class="col-sm-8">
                                             <div *ngIf="(tipos$ | async) as telTypes">
                                                 <select id="countries" formControlName="idTipoTelefono"
-                                                    class="telefono-select browser-default custom-select">
+                                                    class="telefono-select browser-default custom-select form-control">
                                                     <option *ngFor="let type of telTypes" [value]="type.id">
                                                         {{ type.nombre }}</option>
                                                 </select>

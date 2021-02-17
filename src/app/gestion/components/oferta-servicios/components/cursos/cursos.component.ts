@@ -212,4 +212,7 @@ export class CursosComponent implements OnInit {
       this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
   }
+  public cancelarFila(): void {
+    this.cursosForm.reset();
+  }
 }

@@ -57,7 +57,7 @@
                                         <div class="col-sm-9">
                                             <div *ngIf="tiposObras$ | async as tipoDeObras">
                                                 <select id="tipoDeObras" formControlName="idTipo"
-                                                    class="tipo-obras-select browser-default custom-select">
+                                                    class="tipo-obras-select browser-default custom-select form-control">
                                                     <option *ngFor="let to of tipoDeObras" [value]="to.id">
                                                         {{ to.nombre }}</option>
                                                 </select>
@@ -145,6 +145,7 @@
                                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                         Actualizar
                                     </button>
+                                    <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button>
                                 </div>
                             </div>
                         </form>

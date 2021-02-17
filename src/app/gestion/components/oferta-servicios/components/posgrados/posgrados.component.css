@@ -25,3 +25,6 @@
 .button-datepicker {
    width: 15% !important;
 }
+button {
+   margin-right: 5px;
+}
