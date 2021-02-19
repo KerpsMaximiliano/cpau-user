@@ -22,6 +22,8 @@ export class AppComponent {
         router.events.pipe(
             filter(event => event instanceof NavigationEnd)  
           ).subscribe((event: NavigationEnd) => {
+            console.log('Log:');
+            console.log(event.url);
             if (event.url == '/') {
                 this.dynamicCSSUrl = '../stylesCustom/styles/bootstrap/bootstrap.css';
                 this.dynamicCSSUrlCpau = '../stylesCustom/styles/cpau.css';
