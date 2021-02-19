@@ -28,7 +28,7 @@ export class AppComponent {
                 this.dynamicCSSUrl = '../stylesCustom/styles/bootstrap/bootstrap.css';
                 this.dynamicCSSUrlCpau = '../stylesCustom/styles/cpau.css';
             } else if (event.url == '/gestion/home/perfil/identificacion') {
-                this.dynamicCSSUrl = '../stylesCustom/styles/bootstrap/bootstrap.3.3.4.css';
+                this.dynamicCSSUrl = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css';
             }
           });
     }

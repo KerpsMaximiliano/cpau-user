@@ -30,6 +30,7 @@
                             "src/web.config"
                         ],
                         "styles": [
+                            "src/stylesCustom/styles/bootstrap/bootstrap.css",
                             "src/stylesCustom/styles/cpau.css",
                             "src/stylesCustom/styles/carousel.css",
                             "src/stylesCustom/styles/fontawesome/font-awesome.css",
