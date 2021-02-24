@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nombres:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="nombres"
+                                        <input type="text" disabled="disabled" class="form-control" formControlName="nombres"
                                             maxlength="100" placeholder="Nombres">
                                         <form-error [errors]="identificacionForm.controls.nombres.errors"
                                             [errorsMessages]="{
@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Apellidos:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="apellidos"
+                                        <input type="text" disabled="disabled" class="form-control" formControlName="apellidos"
                                             maxlength="100" placeholder="Apellidos">
                                         <form-error [errors]="identificacionForm.controls.apellidos.errors"
                                             [errorsMessages]="{
@@ -73,14 +73,14 @@
                                     <div class="col-sm-10">
                                         <div class="col-md-3 radio i-checks">
                                             <label>
-                                                <input type="radio" formControlName="sexo" name="sexo" value="M">
+                                                <input disabled="disabled" type="radio" formControlName="sexo" name="sexo" value="M">
                                                 <i></i>
                                                 Masculino
                                             </label>
                                         </div>
                                         <div class="col-md-3 radio i-checks">
                                             <label>
-                                                <input type="radio" formControlName="sexo" name="sexo" value="F">
+                                                <input disabled="disabled" type="radio" formControlName="sexo" name="sexo" value="F">
                                                 <i></i>
                                                 Femenino
                                             </label>
@@ -99,7 +99,7 @@
                                     <div class="col-sm-10">
                                         <div class="row">
                                             <div *ngIf="(docTypes$ | async) as docTypes" class="col-md-4">
-                                                <select id="countries" formControlName="tipoDocumento"
+                                                <select disabled="disabled" id="countries" formControlName="tipoDocumento"
                                                     class="identification-select browser-default custom-select form-control">
                                                     <option *ngFor="let type of docTypes" [value]="type.id">
                                                         {{ type.nombre }}</option>
@@ -113,7 +113,7 @@
                                                 <span class="help-block m-b-none">Tipo</span>
                                             </div>
                                             <div class="col-md-8">
-                                                <input type="text" placeholder="Número" mask="99999999"
+                                                <input type="text" disabled="disabled" placeholder="Número" mask="99999999"
                                                     [specialCharacters]="[]" formControlName="numeroDocumento"
                                                     class="form-control">
                                                 <form-error
@@ -139,10 +139,10 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="input-group">
-                                                    <input class="form-control datepicker" placeholder="dd/mm/yyyy"
+                                                    <input disabled="disabled" class="form-control datepicker" placeholder="dd/mm/yyyy"
                                                         formControlName="nacimiento" ngbDatepicker #d="ngbDatepicker" [minDate]="{year: 1900, month: 1, day: 1}" [maxDate]="{year: 2050, month: 1, day: 1}">
                                                     <div class="input-group-append">
-                                                        <button class="input-group-addon button-datepicker"
+                                                        <button disabled="disabled" class="input-group-addon button-datepicker"
                                                             (click)="d.toggle()" type="button">
                                                             <i class="fa fa-calendar"></i>
                                                         </button>
@@ -157,7 +157,7 @@
                                                 <span class="help-block">Fecha</span>
                                             </div>
                                             <div *ngIf="countries$ | async as countries" class="col-md-6">
-                                                <select id="countries" formControlName="pais"
+                                                <select disabled="disabled" id="countries" formControlName="pais"
                                                     class=" identification-select browser-default custom-select form-control">
                                                     <option *ngFor="let country of countries" [value]="country.id">
                                                         {{ country.nombre }}</option>
@@ -185,13 +185,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="actions-buttons">
+                        <!-- <div class="actions-buttons">
                             <button [disabled]="loading" class="btn btn-primary"  (click)="onSave()">
                                 <span class="spinner-border spinner-border-sm mr-1" *ngIf="loading"></span>
                                 Guardar
                             </button>
                             <button class="btn btn-danger" (click)="onCancel()">Cancelar</button>
-                        </div>
+                        </div> -->
 
                     </form>
                 </div>

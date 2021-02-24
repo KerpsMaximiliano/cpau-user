@@ -12,7 +12,7 @@ export const environment = {
     // oldSiteUrl: ''
     
     // production: true,
-    // apiUrl: 'https://cpauorgapi.azurewebsites.net',
+    // apiUrl: 'https://localhost:44348',
     // oldSiteUrl: ''
 };
 

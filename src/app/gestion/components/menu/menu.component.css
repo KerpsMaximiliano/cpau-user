@@ -3,3 +3,8 @@
     background-color: #293846;
     color: white;
 }
+
+.nombre-matricula {
+    color:white !important;
+    font-weight: 400 !important;
+}

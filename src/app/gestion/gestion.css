@@ -120,8 +120,11 @@
   .nav.navbar-top-links .dropdown-alerts a {
     font-size: 12px;
   }
+  li.nav-header {
+    text-align: center;
+  }
   .nav-header {
-    padding: 33px 25px;
+    padding: 15px 25px;
     background: url(img/header-profile.png) no-repeat;
   }
   .pace-done .nav-header {
@@ -555,8 +558,8 @@
     color: #fff;
   }
   .btn-primary {
-    background-color: #1ab394;
-    border-color: #1ab394;
+    background-color: #3400FF;
+    border-color: #3400FF;
     color: #FFFFFF;
   }
   .btn-primary:hover,
@@ -564,8 +567,8 @@
   .btn-primary:active,
   .btn-primary.active,
   .open .dropdown-toggle.btn-primary {
-    background-color: #18a689;
-    border-color: #18a689;
+    background-color: #3400FF;
+    border-color: #3400FF;
     color: #FFFFFF;
   }
   .btn-primary:active,
@@ -588,8 +591,8 @@
   fieldset[disabled] .btn-primary:focus,
   fieldset[disabled] .btn-primary:active,
   fieldset[disabled] .btn-primary.active {
-    background-color: #1dc5a3;
-    border-color: #1dc5a3;
+    background-color: #3400FF;
+    border-color: #3400FF;
   }
   .btn-success {
     background-color: #1c84c6;
@@ -740,8 +743,8 @@
     border-color: #f9b66d;
   }
   .btn-danger {
-    background-color: #ed5565;
-    border-color: #ed5565;
+    background-color: #000000;
+    border-color: #000000;
     color: #FFFFFF;
   }
   .btn-danger:hover,
@@ -749,8 +752,8 @@
   .btn-danger:active,
   .btn-danger.active,
   .open .dropdown-toggle.btn-danger {
-    background-color: #ec4758;
-    border-color: #ec4758;
+    background-color: #000000;
+    border-color: #000000;
     color: #FFFFFF;
   }
   .btn-danger:active,
@@ -773,8 +776,8 @@
   fieldset[disabled] .btn-danger:focus,
   fieldset[disabled] .btn-danger:active,
   fieldset[disabled] .btn-danger.active {
-    background-color: #ef6776;
-    border-color: #ef6776;
+    background-color: #000000;
+    border-color: #000000;
   }
   .btn-link {
     color: inherit;
@@ -3022,6 +3025,8 @@
   .ibox-title h4,
   .ibox-title h5 {
     margin-top: 5px;
+    color: #3400FF;
+    font-weight: 700;
   }
   ul.unstyled,
   ol.unstyled {
