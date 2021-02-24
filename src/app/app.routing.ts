@@ -17,6 +17,7 @@ import { NotePreviewComponent } from './home/components/notePreview/notePreview.
 import { FormComponent } from './form/form.component';
 import { PreregisterComponent } from './login/preregister';
 import { AuthGuard } from './_helpers';
+import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'registrar',
     component: RegisterComponent,
+  },
+  {
+    path: 'actualizacion-email',
+    component: ActualizacionEmailComponent,
   },
   {
     path: 'recover',

@@ -47,6 +47,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
 
 @NgModule({
   imports: [
@@ -98,6 +99,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterNomatriculadoComponent,
     numberOnlyDirective,
     ModalComponent,
+    ActualizacionEmailComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
