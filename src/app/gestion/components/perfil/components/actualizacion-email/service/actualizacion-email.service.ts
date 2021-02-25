@@ -12,7 +12,7 @@ export class ActualizacionEmailService {
   emailconfirmacion(uid: string, contactId: string) {
     return this.httpClient.post<any>(`${environment.apiUrl}/api/perfil/contacto/email/emailconfirm`, {
       Uid: uid,
-      ContactId: contactId
+      Ci: contactId
     });
   }
 }

@@ -15,7 +15,7 @@ export class ActualizacionEmailComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const uid = params['uid'];
-      const contactId = params['contactId'];
+      const contactId = params['ci'];
       if(uid === undefined) {
         this.router.navigate(["/"]);
       }
