@@ -8,22 +8,22 @@
                                 <img alt="image" class="img-circle" src="stylesCustom/images/luquio.png" width="48">
                             </span>
                             <span class="clear">
-                                <span class="block m-t-xs"> <strong class="font-bold">{{perfil?.nombres}}
+                                <span class="block m-t-xs nombre-matricula"> <strong class="font-bold">{{perfil?.nombres}}
                                         {{perfil?.apellidos}}</strong></span>
                                 <span *ngIf="currentUser?.matricula"
-                                    class="text-muted text-xs block">{{currentUser.matricula}}</span>
+                                    class="text-muted text-xs block nombre-matricula">{{currentUser.matricula}}</span>
                                 <span *ngIf="currentUser?.tipoMatricula"
-                                    class="text-muted text-xs block">{{currentUser.tipoMatricula}}</span>
+                                    class="text-muted text-xs block nombre-matricula">{{currentUser.tipoMatricula}}</span>
                             </span>
                         </div>
                         <div class="logo-element">
                             CPAU
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a [routerLink]="'/gestion/home'" routerLinkActive="active-link"><i class="fa fa-th-large"></i>
                             <span class="nav-label">Panel</span></a>
-                    </li>
+                    </li> -->
                     <li>
                         <a (click)="colapsar(0)"><i class="fa fa-user"></i> <span class="nav-label">Perfil</span> <span
                                 class="fa arrow"></span></a>
@@ -67,7 +67,7 @@
                         <a (click)="colapsar(3)"><i class="fa fa-newspaper-o"></i> <span
                                 class="nav-label">Suscripciones</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[3] === true}">
-                            <li><a [routerLink]="'suscripciones/publicaciones'">Publicaciones</a></li>
+                            <li *ngIf="isMatriculado"><a [routerLink]="'suscripciones/publicaciones'">Publicaciones</a></li>
                             <li><a [routerLink]="'suscripciones/newsletter'">Newsletters</a></li>
                             <!-- <li><a href="#">Temas de Interés</a></li> -->
                         </ul>
@@ -81,7 +81,7 @@
                         </ul>
                     </li> -->
                     <li>
-                        <a href="https://cpau.org/store?Length=4" target="_blank" (click)="colapsar(5)"><span
+                        <a href="https://cpau.org/store?Length=4" target="_blank" (click)="colapsar(5)"><i class="fa fa-shopping-cart"></i><span
                                 class="nav-label">Compras
                                 On-line</span></a>
                         <!-- <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true}">

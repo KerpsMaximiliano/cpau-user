@@ -27,9 +27,10 @@ export class HeaderHomeComponent implements OnInit {
       return;
     }
 
-    window.location.href = `/Perfil?tkn=${
-      JSON.parse(localStorage.getItem("currentUser")).token
-    }`;
+    // window.location.href = `/Perfil?tkn=${
+    //   JSON.parse(localStorage.getItem("currentUser")).token
+    // }`;
+    window.location.href = '/gestion/home/perfil/identificacion';
     this.updateControllers();
   }
 
