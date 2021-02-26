@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Role, User } from '@app/_models';
 import { AuthenticationService } from '@app/_services';
+import { MatriculaService } from '../matricula/services/matricula.service';
 import { Identificacion } from '../perfil/components/identificacion/model/identificacion.model';
 import { IdentificacionService } from '../perfil/components/identificacion/service/identificacion.service';
 
@@ -19,7 +20,8 @@ export class MenuComponent implements OnInit {
   currentUser: User;
 
   constructor(private identificacionService: IdentificacionService,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService,
+    private matriculadoService: MatriculaService) { }
 
   ngOnInit(): void {
     this.identificacionService.read().subscribe(identificacion => {
@@ -45,6 +47,10 @@ export class MenuComponent implements OnInit {
 
   get isMatriculado() {
     return this.currentUser && this.currentUser.isMatriculado;
+  }
+
+  imprimirCertificado() {
+    this.matriculadoService.imprimirCertificado();
   }
 
 }
