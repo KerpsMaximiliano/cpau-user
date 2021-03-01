@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
-import { Observable } from 'rxjs';
+
 const HttpOptionsDownloadFile = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     responseType : 'blob' as 'json',
@@ -16,18 +16,11 @@ export class MatriculaService {
   constructor(private httpClient: HttpClient) { }
 
   imprimirCertificado() {
-    //return this.httpClient.get<any>(`${environment.apiUrl}/api/matricula/generarCertificadoPDF`);
     this.httpClient.get(`${environment.apiUrl}/api/matricula/generarCertificadoPDF`, HttpOptionsDownloadFile )
     .subscribe((resp: HttpResponse<Blob>) => {
       this.downloadFile(resp);
     });
   }
-
-//   async catchResponseBlob(e: any) {
-//     const text = await new Response(e.error).text();
-//     e.error = JSON.parse(text);
-//     return this.catchResponse(e);
-//   }
 
   downloadFile(resp: HttpResponse<Blob>) {
     const contentType = resp.headers.get('Content-type');

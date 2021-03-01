@@ -1530,3 +1530,6 @@ dp-date-picker.dp-material.ng-untouched.ng-pristine.ng-invalid div div.dp-input-
     border: 1px solid #ced4da !important;
     height: 33px;
   }
+.tooltip {
+    opacity: 1 !important;
+}

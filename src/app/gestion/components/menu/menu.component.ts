@@ -20,8 +20,7 @@ export class MenuComponent implements OnInit {
   currentUser: User;
 
   constructor(private identificacionService: IdentificacionService,
-    private authenticationService: AuthenticationService,
-    private matriculadoService: MatriculaService) { }
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.identificacionService.read().subscribe(identificacion => {
@@ -48,9 +47,4 @@ export class MenuComponent implements OnInit {
   get isMatriculado() {
     return this.currentUser && this.currentUser.isMatriculado;
   }
-
-  imprimirCertificado() {
-    this.matriculadoService.imprimirCertificado();
-  }
-
 }

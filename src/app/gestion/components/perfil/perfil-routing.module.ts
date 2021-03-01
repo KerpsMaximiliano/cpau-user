@@ -38,7 +38,7 @@ const routes: Routes = [
     path: 'redes',
     component: RedesComponent,
     canActivate: [AuthGuard] 
-  }
+  },
 ];
 
 @NgModule({
