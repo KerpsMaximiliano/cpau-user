@@ -29,12 +29,17 @@ export class ActividadProfesionalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
     this.actividadService.getActividadProfesional().subscribe(actividades => {
-      this.actividadProfesionalData = actividades;
+      this.actividadProfesionalData = actividades.filter(f => f.id == f.id);
+
+      this.actividadService.getObras().subscribe(obras => {
+        this.obrasData = obras.filter(f => f.id == f.id);
+      });
     });
-    this.actividadService.getObras().subscribe(obras => {
-      this.obrasData = obras
-    })
   }
 
   public onSave(): void {
@@ -76,5 +81,6 @@ export class ActividadProfesionalComponent implements OnInit {
   }
   public cancelarFila(): void {
     this.actividadForm.reset();
+    this.loadData();
   }
 }

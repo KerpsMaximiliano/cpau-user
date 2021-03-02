@@ -29,6 +29,9 @@ export class UsuarioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setUser();
+  }
+  setUser() {
     this.usuarioService.read().subscribe(usr => {
       this.usuarioForm.controls.username.patchValue(usr);
     });
@@ -54,5 +57,7 @@ export class UsuarioComponent implements OnInit {
       this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
   }
-
+  public cancelarFila(): void {
+    this.setUser();
+  }
 }

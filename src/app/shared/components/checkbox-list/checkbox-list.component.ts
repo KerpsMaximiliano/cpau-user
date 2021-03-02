@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { CheckBoxDataModel } from './models/CheckboxList.model';
 
@@ -7,7 +7,7 @@ import { CheckBoxDataModel } from './models/CheckboxList.model';
   templateUrl: './checkbox-list.component.html',
   styleUrls: ['./checkbox-list.component.css']
 })
-export class CheckboxListComponent implements OnInit {
+export class CheckboxListComponent implements OnInit, OnChanges {
 
   @Input() public form: FormGroup;
 
@@ -19,6 +19,14 @@ export class CheckboxListComponent implements OnInit {
     return this.form.controls[this.controlName] as FormArray;
   }
   constructor(private formBuilder: FormBuilder) {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes.checkboxData.firstChange) {
+      this.form.removeControl(this.controlName);
+      this.form.addControl(this.controlName, new FormArray([]));
+      this.addCheckboxes();
+    }
   }
 
   public ngOnInit(): void {

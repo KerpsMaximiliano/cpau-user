@@ -6,3 +6,6 @@
  .error-text {
     color: red;
  }
+ button {
+   margin-right: 5px;
+}

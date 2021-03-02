@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CheckBoxDataModel } from '@app/shared/components/checkbox-list/models/CheckboxList.model';
 import { ToastrService } from 'ngx-toastr';
 import { Suscripcion } from './Models/suscipcion.model';
 import { SuscripcionService } from './services/suscripcion.service';
@@ -31,12 +30,12 @@ export class NewsletterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
+  }
+  loadData() {
     this.suscripcionService.getSuscripciones().subscribe(suscripciones => {
       this.newsletter = suscripciones.filter(x => x.type === 0);
     });
-    // this.actividadService.getObras().subscribe(obras => {
-    //   this.obrasData = obras
-    // })
   }
 
   public onSave(): void {
@@ -45,12 +44,6 @@ export class NewsletterComponent implements OnInit {
       .map((v, i) => this.newsletter[i].selected = v);
 
     console.log(this.newsletter);
-
-    // const requestActividades = {
-    //   id: selectedActividadesIds
-    // } as ActividadProfesionalRequestModel
-
-
 
     this.suscripcionService.saveNewsletter(this.newsletter)
       .subscribe(response => {
@@ -63,5 +56,10 @@ export class NewsletterComponent implements OnInit {
           this.loading = false;
         }
       })
+  }
+  
+  public cancelarFila(): void {
+    this.newsletterForm.reset();
+    this.loadData();
   }
 }
