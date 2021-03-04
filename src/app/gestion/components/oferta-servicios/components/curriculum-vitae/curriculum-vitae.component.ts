@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fileSizeValidator } from '@app/shared/validators/fileSizeValidator';
 import { requiredFileType } from '@app/shared/validators/requireFileTypeValidator';
+import { ToastrService } from 'ngx-toastr';
 import { CurriculumVitaeService } from './service/curriculum-vitae.service';
 
 @Component({
@@ -13,32 +14,41 @@ export class CurriculumVitaeComponent implements OnInit {
 
   get f() { return this.curriculumForm.controls; }
   collapsed: boolean;
+  archivo: boolean;
 
   public curriculumForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
              private curriculumVitaeService: CurriculumVitaeService,
+             private toastr: ToastrService,
              private cd: ChangeDetectorRef) {
     this.curriculumForm = this.formBuilder.group({
       id: [],
       archivo: [],
+      file: []
     });
   }
 
   ngOnInit() {
+     this.curriculumVitaeService.getAll().subscribe(x => {
+      this.archivo = x;
+    });
   }
 
   subirArchivo() {
     if (this.curriculumForm.valid) {
-      this.curriculumVitaeService.insert(this.curriculumForm.controls.archivo.value)
+      this.curriculumVitaeService.insert(this.curriculumForm.controls.file.value)
       .subscribe(x => {
-        // TODO
-        this.curriculumForm.reset();
+        if (x.success) {
+          this.archivo = true;
+          this.toastr.success(null, 'Curriculum subido correctamente.');
+          this.curriculumForm.reset();
+        }
       });
     }
   }
 
   descargarArchivo() {
-    //
+    this.curriculumVitaeService.getDownloadFile();
   }
 
   onFileChange(event) {
@@ -53,17 +63,17 @@ export class CurriculumVitaeComponent implements OnInit {
     if(event.target.files && event.target.files.length && this.curriculumForm.controls.archivo.valid) {
 
       const [file] = event.target.files;
-      reader.readAsDataURL(file);
+      reader.readAsArrayBuffer(file);
     
-      reader.onload = () => {
-        this.curriculumForm.patchValue({
-          archivo: reader.result
-        });
-        
-        // need to run CD since file load runs outside of zone
-        this.cd.markForCheck();
+      reader.onloadend = () => {
+        const arrayBuffer: any = reader.result,
+        array = new Uint8Array(arrayBuffer);
+        const fileByteArray = [];
+        for (let i = 0; i < array.length; i++) {
+            fileByteArray.push(array[i]);
+        }
+        this.curriculumForm.controls.file.patchValue(fileByteArray);
       };
     }
   }
-
 }
