@@ -5,7 +5,12 @@
                 <ul class="nav" id="side-menu" style="display: block;">
                     <li class="nav-header">
                         <div class="dropdown profile-element"> <span>
-                                <img alt="image" class="img-circle" src="stylesCustom/images/luquio.png" width="48">
+                                <img alt="image"
+                                     class="img-circle"
+                                     [src]="imgSrc"
+                                     onerror="this.src='stylesCustom/images/fas-fa-user-circle.svg'"
+                                     width="48"
+                                     height="48">
                             </span>
                             <span class="clear">
                                 <span class="block m-t-xs nombre-matricula"> <strong class="font-bold">{{perfil?.nombres}}

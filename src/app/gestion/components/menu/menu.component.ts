@@ -18,6 +18,7 @@ export class MenuComponent implements OnInit {
   colapsado: boolean[] = [];
   perfil: Identificacion;
   currentUser: User;
+  imgSrc: string | ArrayBuffer;
 
   constructor(private identificacionService: IdentificacionService,
     private authenticationService: AuthenticationService) { }
@@ -28,7 +29,9 @@ export class MenuComponent implements OnInit {
     });
 
     this.identificacionService.readImage().subscribe(i => {
-      console.log(i);
+      if (i.success) {
+        this.imgSrc = 'data:image/jpg;base64,' + i.entity.image;
+      }
     });
 
     this.identificacionService.getCurrentIdentificacionValue().subscribe(x => this.perfil = x);
