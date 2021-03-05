@@ -56,7 +56,36 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           if (!data.error) {
-            this.router.navigate([`gestion/home/perfil/identificacion`]);
+            console.log(localStorage.getItem("currentUser"));
+
+            setTimeout(() => {
+              var form = document.createElement("form");
+
+              form.setAttribute("method", "post");
+              form.setAttribute(
+                "action",
+                `${environment.oldSiteUrl}/login?tkn=${data.token}`
+              );
+              var userName = document.createElement("input");
+              userName.setAttribute("type", "hidden");
+              userName.setAttribute("name", "UserName");
+              userName.setAttribute("value", this.f.username.value);
+              form.appendChild(userName);
+              var password = document.createElement("input");
+              password.setAttribute("type", "hidden");
+              password.setAttribute("name", "Password");
+              password.setAttribute("value", this.f.password.value);
+              form.appendChild(password);
+              // var redirect = document.createElement("input");
+              // redirect.setAttribute("type", "hidden");
+              // redirect.setAttribute("name", "redirect");
+              // redirect.setAttribute("value", `/Perfil?tkn=${data.token}`);
+              // form.appendChild(redirect);
+              document.body.appendChild(form);
+              form.submit();
+
+              this.router.navigate([`gestion/home/perfil/identificacion`]);
+            }, 1000);
           } else {
             document.getElementById("btnDatosIncorrectos").click();
             this.loading = false;
