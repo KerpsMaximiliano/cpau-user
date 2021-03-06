@@ -30,20 +30,20 @@ export class CertificadoComponent implements OnInit {
     private matriculadoService: MatriculaService) {
 
     this.certificadoForm = this.formBuilder.group({
-      id: [],
-      codigoCertificado: ['CMW', {
-        validators: [Validators.required, Validators.maxLength(100), Validators.minLength(1)],
-        updateOn: 'blur'
-      }],
-      fechaHora: ['', {
-        validators: [Validators.required],
-        updateOn: 'blur'
-      }],
+      //id: [],
+      // codigoCertificado: ['CMW', {
+      //   validators: [Validators.required, Validators.maxLength(100), Validators.minLength(1)],
+      //   updateOn: 'blur'
+      // }],
+      // fechaHora: [new Date(), {
+      //   validators: [Validators.required],
+      //   updateOn: 'blur'
+      // }],
     });
 
     this.columnnas = [
       {
-        id: 'codigoCertificado',
+        id: 'codigo',
         titulo: 'Código certificado'
       },
       {
@@ -69,26 +69,26 @@ export class CertificadoComponent implements OnInit {
 
   public agregarFila(): void {
     if (this.certificadoForm.valid) {
-      // this.loading = true;
-      // const fila = new Domicilio(this.certificadoForm.value);
+      this.loading = true;
+      // const fila = new Certificado(this.certificadoForm.value);
 
-      // this.certificadoService.insert(fila).subscribe(i => {
-      //   if (i.success) {
-      //     this.filas = [
-      //       ...this.filas,
-      //       {
-      //         valor: i.entity
-      //       }
-      //     ];
-      //     this.certificadoForm.reset();
+      this.certificadoService.insert().subscribe(i => {
+        if (i.success) {
+          this.filas = [
+            ...this.filas,
+            {
+              valor: i.entity
+            }
+          ];
+          //this.certificadoForm.reset();
 
-      //     this.toastr.success(null, 'Registro agregado correctamente.');
-      //     this.loading = false;
-      //   } else {
-      //     this.toastr.error(null, i.message);
-      //     this.loading = false;
-      //   }
-      // });
+          this.toastr.success(null, 'Registro agregado correctamente.');
+          this.loading = false;
+        } else {
+          this.toastr.error(null, i.message);
+          this.loading = false;
+        }
+      });
     } else {
       this.certificadoForm.markAllAsTouched();
       console.log(this.certificadoForm);
@@ -96,11 +96,11 @@ export class CertificadoComponent implements OnInit {
       this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
   }
-  public cancelarFila(): void {
-    this.certificadoForm.controls.fechaHora.reset();
-  }
+  // public cancelarFila(): void {
+  //   this.certificadoForm.controls.fechaHora.reset();
+  // }
   
-  imprimirCertificado() {
-    this.matriculadoService.imprimirCertificado();
+  imprimirCertificado(ev: Certificado) {
+    this.matriculadoService.imprimirCertificado(ev.id);
   }
 }

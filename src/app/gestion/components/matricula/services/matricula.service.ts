@@ -15,8 +15,8 @@ export class MatriculaService {
 
   constructor(private httpClient: HttpClient) { }
 
-  imprimirCertificado() {
-    this.httpClient.get(`${environment.apiUrl}/api/matricula/generarCertificadoPDF`, HttpOptionsDownloadFile )
+  imprimirCertificado(id: number) {
+    this.httpClient.get(`${environment.apiUrl}/api/perfil/generarCertificadoPDF/${id}`, HttpOptionsDownloadFile )
     .subscribe((resp: HttpResponse<Blob>) => {
       this.downloadFile(resp);
     });

@@ -27,9 +27,9 @@
                     </div>
                     <div class="ibox-content" [hidden]="collapsed">
                         <form method="get" class="form-horizontal" [formGroup]="certificadoForm">
-                            <input hidden formControlName="id">
+                            <!-- <input hidden formControlName="id"> -->
                             <div class="row">
-                                <div class="col-sm-4">
+                                <!--<div class="col-sm-4">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Código de Certificado:</label>
                                         <div class="col-sm-9">
@@ -50,7 +50,7 @@
                                         <div class="col-sm-9">
                                             <div class="input-group">
                                                 <input class="form-control datepicker" placeholder="dd/mm/yyyy"
-                                                    formControlName="fechaHora" ngbDatepicker #d="ngbDatepicker">
+                                                    formControlName="fechaHora" ngbDatepicker #d="ngbDatepicker" disabled>
                                                 <button class="input-group-addon button-datepicker" (click)="d.toggle()"
                                                     type="button">
                                                     <i class="fa fa-calendar"></i>
@@ -64,15 +64,15 @@
                                             </form-error>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="col-sm-4">&nbsp;</div> -->
-                                <div class="col-sm-4 text-right">
-                                    <button *ngIf="!f.id.value" [disabled]="loading" class="btn btn-primary"
+                                <div class="col-sm-4">
+                                    <button [disabled]="loading" class="btn btn-primary"
                                         (click)="agregarFila()">
                                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                         Generar nuevo
                                     </button>
-                                    <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button>
+                                    <!-- <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button> -->
                                 </div>
                             </div>
                         </form>
@@ -85,7 +85,7 @@
                                               [permiteEliminar]="false"
                                               [permitePersonalizado]="true"
                                               [configButton]="{icon:'fa fa-download', tooltip: 'Descargar'}"
-                                              (personalizado)="imprimirCertificado()"> 
+                                              (personalizado)="imprimirCertificado($event)"> 
                             </app-action-table>
                         </div>
                     </div>

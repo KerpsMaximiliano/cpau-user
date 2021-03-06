@@ -17,7 +17,7 @@ export class CertificadoService {
     return this.httpClient.get<Certificado[]>(`${environment.apiUrl}/api/perfil/matricula/certificado`);
   }
 
-  insert(certificado: Certificado): Observable<IResponseService<Certificado>> {
-    return this.httpClient.post<IResponseService<Certificado>>(`${environment.apiUrl}/api/matricula/certificado`, certificado);
+  insert(): Observable<IResponseService<Certificado>> {
+    return this.httpClient.post<IResponseService<Certificado>>(`${environment.apiUrl}/api/perfil/matricula/certificado`, null);
   }
 }
