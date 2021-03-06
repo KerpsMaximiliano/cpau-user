@@ -24,7 +24,7 @@ export class CurriculumVitaeService {
   }
 
   insert(file: File): Observable<IResponseService<any>>  {
-    return this.httpClient.post<IResponseService<any>>(`${environment.apiUrl}/api/servicios/curriculum`, { userId: 1, archivoPdf: file});
+    return this.httpClient.post<IResponseService<any>>(`${environment.apiUrl}/api/servicios/curriculum`, { contactId: 1, archivoPdf: file});
   }
 
   getDownloadFile(): void {
