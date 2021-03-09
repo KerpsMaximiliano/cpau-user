@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Role, User } from '@app/_models';
 import { AuthenticationService } from '@app/_services';
+import { environment } from '@environments/environment';
 import { MatriculaService } from '../matricula/services/matricula.service';
 import { Identificacion } from '../perfil/components/identificacion/model/identificacion.model';
 import { IdentificacionService } from '../perfil/components/identificacion/service/identificacion.service';
@@ -49,5 +50,9 @@ export class MenuComponent implements OnInit {
 
   get isMatriculado() {
     return this.currentUser && this.currentUser.isMatriculado;
+  }
+
+  get storeUrl() {
+    return environment.storeUrl;
   }
 }

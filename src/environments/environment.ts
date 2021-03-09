@@ -6,10 +6,12 @@ export const environment = {
     production: true,
     apiUrl: 'https://cpauorgapi-perfil.azurewebsites.net',
     oldSiteUrl: '',
+    storeUrl: 'https://cpau-perfil.azurewebsites.net/store?Length=4'
 
     // production: true,
     // apiUrl: 'https://cpauorgapi.azurewebsites.net',
     // oldSiteUrl: ''
+    // storeUrl: 'https://cpau.org/store=length=4'
     
     // production: true,
     // apiUrl: 'https://localhost:44348',

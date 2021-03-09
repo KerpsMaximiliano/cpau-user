@@ -86,7 +86,7 @@
                         </ul>
                     </li> -->
                     <li>
-                        <a href="https://cpau.org/store?Length=4" target="_blank" (click)="colapsar(5)"><i class="fa fa-shopping-cart"></i><span
+                        <a href="{{storeUrl}}" target="_blank" (click)="colapsar(5)"><i class="fa fa-shopping-cart"></i><span
                                 class="nav-label">Compras
                                 On-line</span></a>
                         <!-- <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true}">
@@ -117,8 +117,8 @@
                             <span class="fa arrow"></span></a>
                         <ul *ngIf="isAdmin" class="nav nav-second-level collapse"
                             [ngClass]="{'in': colapsado[8] === true}">
-                            <li><a href="/Content/admin">Nuevo</a></li>
-                            <li><a href="/admin/index">Actual</a></li>
+                            <li><a target="_blank" href="/Content/admin">Nuevo</a></li>
+                            <li><a target="_blank" href="/admin/index">Actual</a></li>
                         </ul>
                     </li>
                 </ul>
