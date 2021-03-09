@@ -15,14 +15,14 @@ export class MatriculaService {
 
   constructor(private httpClient: HttpClient) { }
 
-  imprimirCertificado(id: number) {
+  imprimirCertificado(id: number, codigo: string) {
     this.httpClient.get(`${environment.apiUrl}/api/perfil/generarCertificadoPDF/${id}`, HttpOptionsDownloadFile )
     .subscribe((resp: HttpResponse<Blob>) => {
-      this.downloadFile(resp);
+      this.downloadFile(resp, codigo);
     });
   }
 
-  downloadFile(resp: HttpResponse<Blob>) {
+  downloadFile(resp: HttpResponse<Blob>, codigo: string) {
     const contentType = resp.headers.get('Content-type');
     const file = new Blob([ resp.body ], {type: contentType});
 
@@ -33,13 +33,13 @@ export class MatriculaService {
 
     // Descarga
     if (ie || oldIE || ieEDGE) {
-      window.navigator.msSaveBlob(file, this.getContentDisposition(resp));
+      window.navigator.msSaveBlob(file, 'Certificado-' + codigo);
     } else {
       const fileURL = URL.createObjectURL(file);
       const a       = document.createElement('a');
       a.href        = fileURL;
       a.target      = '_blank';
-      a.download    = this.getContentDisposition(resp);
+      a.download    = 'Certificado-' + codigo;
       a.click();
       URL.revokeObjectURL(fileURL);
     }

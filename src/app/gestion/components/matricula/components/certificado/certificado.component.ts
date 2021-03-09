@@ -101,6 +101,6 @@ export class CertificadoComponent implements OnInit {
   // }
   
   imprimirCertificado(ev: Certificado) {
-    this.matriculadoService.imprimirCertificado(ev.id);
+    this.matriculadoService.imprimirCertificado(ev.id, ev.codigo.toString());
   }
 }
