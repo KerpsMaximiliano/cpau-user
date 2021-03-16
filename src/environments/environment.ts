@@ -3,17 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    production: false,
-    apiUrl: 'http://localhost:5000',
-    oldSiteUrl: 'http://localhost:50501',
+    // production: false,
+    // apiUrl: 'https://localhost:44348',
+    // oldSiteUrl: 'http://localhost:50501',
+    oldSiteUrl: 'http://www.cpau.org',
     
-    // production: true,
-    // apiUrl: 'https://cpauorgapi.azurewebsites.net',
-    // oldSiteUrl: ''
-
-
-    // apiUrl: 'https://cpauorgapi.azurewebsites.net',
-    // https://cpauorgapi-test.azurewebsites.net
+    production: true,
+    apiUrl: 'https://cpauorgapi.azurewebsites.net',
+    // oldSiteUrl: '',
+    // apiUrl: 'https://cpauorgapi-test.azurewebsites.net'
 };
 
 /*
