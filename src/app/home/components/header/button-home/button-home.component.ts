@@ -40,14 +40,15 @@ export class ButtonHomeComponent implements OnInit {
           case '/ejercicio-profesional':
             this.ejercicioprofesional.push(e);
             break;
-          case '/ejercicio-profesional': // TODO
-            this.prodExternos.push(e);
-            break;            
           default:
             break;
         }
       });       
     });
+
+    this.siteLoader.GetMenusExtProd()
+    .subscribe(data => this.prodExternos = data);
+
   }
 
   onBtnSearch(){
