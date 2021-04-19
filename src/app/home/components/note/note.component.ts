@@ -65,4 +65,8 @@ export class NoteComponent implements OnInit {
 
   }
 
+  top() {
+    window.scroll(0,0);
+  }
+
 }
