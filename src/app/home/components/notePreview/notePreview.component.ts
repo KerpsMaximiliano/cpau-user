@@ -59,4 +59,8 @@ export class NotePreviewComponent implements OnInit {
 
   }
 
+  top() {
+    window.scroll(0,0);
+  }
+
 }
