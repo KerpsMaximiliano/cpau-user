@@ -237,7 +237,7 @@
                         <a [routerLink]="['/nota', event.id]" target="_self" class="link-agenda"
                           title="{{ event.title | uppercase }}">
                           <div class="media-body">
-                            {{ event.dateLabel }}<br />
+                            <span *ngIf="event.showEventStartDate">{{ event.dateLabel }}</span><br />
                             {{ event.tag ? "#" : "" }}{{ event.tag }}
                             <br />
                             <h6>{{ event.title | uppercase }}</h6>
