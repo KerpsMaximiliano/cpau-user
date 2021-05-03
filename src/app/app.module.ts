@@ -19,6 +19,7 @@ import { ConfirmComponent } from "./login/recover/confirm/confirm.component";
 import { PublicityHomeComponent } from "./shared/components/publicity-home/publicity-home.component";
 import { ProfessionalNeedComponent } from "./Professional/profesional-need/professional-need.component";
 import { TemplateOneComponent } from "./home/components/templates/template-one/template-one.component";
+import { TemplateAgendaTagsComponent } from "./home/components/templates/template-agenda-tags/template-agenda-tags.component";
 import { TemplateTwoComponent } from "./home/components/templates/template-two/template-two.component";
 import { TemplateThreeComponent } from "./home/components/templates/template-three/template-three.component";
 import { TemplateFourComponent } from "./home/components/templates/template-four/template-four.component";
@@ -71,6 +72,7 @@ import { RegisterNomatriculadoComponent } from './login/register/register-nomatr
     TemplateThreeComponent,
     TemplateFourComponent,
     TemplateFiveComponent,
+    TemplateAgendaTagsComponent,
     MastertemplateComponent,
     RenderDirective,
     NoteComponent,
@@ -100,6 +102,7 @@ import { RegisterNomatriculadoComponent } from './login/register/register-nomatr
     TemplateListComponent,
     TemplateFourComponent,
     TemplateFiveComponent,
+    TemplateAgendaTagsComponent
   ],
   bootstrap: [AppComponent],
 })
