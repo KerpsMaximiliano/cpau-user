@@ -26,6 +26,11 @@
             <input type="radio" id="mes" name="categories" value="mes">
             <input type="radio" id="ano" name="categories" value="ano">
             <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 flitrosagenda">
+                <ol>
+                    <li>
+                        <label (click)="onSelectTag('todos')" for="todos" title="Todas">Todas</label>
+                    </li>
+                </ol>
                 <ol *ngIf="data.tags.length > 0">
                     <li>
                         <div class="pl-1 pb-1">
@@ -34,11 +39,6 @@
                     </li>
                     <li *ngFor="let currentTag of data.tags">
                         <label for="{{currentTag}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag}}">{{currentTag}}</label>
-                    </li>
-                </ol>
-                <ol>
-                    <li>
-                        <label (click)="onSelectTag('todos')" for="todos" title="Todas">Todas</label>
                     </li>
                 </ol>
                 <ol>
