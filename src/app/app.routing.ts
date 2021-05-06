@@ -64,6 +64,10 @@ const routes: Routes = [
     component: PadronComponent,
   },
   {
+    path: 'anunciantes',
+    component: ContactoAnuncianteComponent,
+  },
+  {
     path: ':namesection',
     component: MastertemplateComponent,
   },
@@ -82,10 +86,6 @@ const routes: Routes = [
   {
     path: 'contacto/general',
     component: ContactoComponent,
-  },
-  {
-    path: 'contacto-anunciante/general',
-    component: ContactoAnuncianteComponent,
   },
 
   // otherwise redirect to home
