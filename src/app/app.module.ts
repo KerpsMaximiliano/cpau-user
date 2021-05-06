@@ -33,6 +33,7 @@ import { PadronComponent } from "./padron/padron.component";
 import { FichatecnicaComponent } from "./fichatecnica/fichatecnica.component";
 import { ContactoProfesionalComponent } from "./Professional/contacto-profesional/contacto-profesional.component";
 import { ContactoComponent } from "./contacto/contacto.component";
+import { ContactoAnuncianteComponent } from "./contacto-anunciante/contacto-anunciante.component";
 import { TooltipModule } from "ng2-tooltip-directive";
 import { CacheInterceptor } from "../app/_helpers/cache.interceptor";
 import { BoletinesComponent } from "./boletines/boletines.component";
@@ -82,6 +83,7 @@ import { RegisterNomatriculadoComponent } from './login/register/register-nomatr
     FichatecnicaComponent,
     ContactoProfesionalComponent,
     ContactoComponent,
+    ContactoAnuncianteComponent,
     BoletinesComponent,
     Safe,
     FormComponent,

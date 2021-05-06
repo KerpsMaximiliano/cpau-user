@@ -98,6 +98,10 @@ export class SiteLoader implements ITemplate {
         return this.http.post<any>(`${environment.apiUrl}/api/SiteConsumer/ContactoGeneral`, { 'model': data });
     }
 
+    generaContactAnunciante(data: string) {
+        return this.http.post<any>(`${environment.apiUrl}/api/SiteConsumer/ContactoAnunciante`, { 'model': data });
+    }
+
     professionalContact(data: string) {
         return this.http.post<any>(`${environment.apiUrl}/api/SiteConsumer/ContactoProfesional`, { 'model': data });
     }

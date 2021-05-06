@@ -12,6 +12,7 @@ import { NoteComponent } from './home/components/note/note.component';
 import { PadronComponent } from './padron/padron.component';
 import { FichatecnicaComponent } from './fichatecnica/fichatecnica.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { ContactoAnuncianteComponent } from './contacto-anunciante/contacto-anunciante.component';
 import { BoletinesComponent } from './boletines/boletines.component';
 import { NotePreviewComponent } from './home/components/notePreview/notePreview.component';
 import { FormComponent } from './form/form.component';
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'contacto/general',
     component: ContactoComponent,
+  },
+  {
+    path: 'contacto-anunciante/general',
+    component: ContactoAnuncianteComponent,
   },
 
   // otherwise redirect to home
