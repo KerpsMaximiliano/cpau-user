@@ -8,17 +8,17 @@ declare let $: any; // --> Jquery
   styleUrls: ['./publicity-home.component.css']
 })
 export class PublicityHomeComponent implements OnInit {
-  banners: any;
+  banners: any = [];
 
   constructor(private siteLoad: SiteLoader,
               private el: ElementRef) {
                 $(this.el.nativeElement).on('slide.bs.carousel', (e) =>  {
                   const $e = $(e.relatedTarget);
                   const idx = $e.index();
-                  const itemsPerSlide = $('.carousel-item').length < 4 ? 1 : 4;
+                  const itemsPerSlide = 4;
                   const totalItems = $('.carousel-item').length;
 
-                  if (idx >= totalItems - (itemsPerSlide - 1)) {
+                  if (totalItems > itemsPerSlide) {
                       const it = itemsPerSlide - (totalItems - idx);
                       for (let i = 0; i < it; i++) {
                           // append slides to end
@@ -36,8 +36,8 @@ export class PublicityHomeComponent implements OnInit {
       this.siteLoad.bannerSubject.subscribe(data =>
        this.siteLoad.getBanners(data.main, data.section, data.news)
        .subscribe(ret => {
-
-          this.banners = ret.filter(x => {
+        this.banners = ret
+          .filter(x => {
               if(data.main && x.isMainPage)
                   return x;
 
@@ -47,7 +47,8 @@ export class PublicityHomeComponent implements OnInit {
               if(data.news && x.isNewsletter)
                   return x;
           }
-        )}
+        );
+      }
       )
       ).unsubscribe();
     }
