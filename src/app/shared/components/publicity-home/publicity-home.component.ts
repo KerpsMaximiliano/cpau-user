@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { SiteLoader } from '@app/_services';
-declare var $: any;
-// import * as $ from 'jquery'; window["$"] = $; window["jQuery"] = $;
+// declare var $: any;
+// import * as jQuery from 'jquery';
+// window['$'] = jQuery;
+import * as $ from 'jquery'; window["$"] = $; window["jQuery"] = $;
 
 @Component({
   selector: 'app-publicity-home',
@@ -13,7 +15,7 @@ export class PublicityHomeComponent implements OnInit {
 
   constructor(private siteLoad: SiteLoader,
               private el: ElementRef) {
-                $(this.el.nativeElement).on('slide.bs.carousel', (e) =>  {
+                $(this.el.nativeElement).on('slide.bs.carousel', (e: any) =>  {
                   const $e = $(e.relatedTarget);
                   const idx = $e.index();
                   const itemsPerSlide = 4;
