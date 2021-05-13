@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { SiteLoader } from '@app/_services';
 declare var $: any;
+// import * as $ from 'jquery'; window["$"] = $; window["jQuery"] = $;
 
 @Component({
   selector: 'app-publicity-home',
