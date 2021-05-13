@@ -43,8 +43,7 @@
                             "src/stylesCustom/js/imageLinkStyle.js",
                             "src/stylesCustom/js/playerAPI.js",
                             "src/stylesCustom/js/scrollup/jquery.scrollUp.min.js",
-                            "src/stylesCustom/js/scrollup/scrollUp.js",
-                            "node_modules/jquery/dist/jquery.js"
+                            "src/stylesCustom/js/scrollup/scrollUp.js"
                         ]
                     },
                     "configurations": {
