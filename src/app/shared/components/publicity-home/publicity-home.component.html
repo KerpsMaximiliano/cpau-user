@@ -1,21 +1,20 @@
 <aside >
     <div class="row">
         <div class="col-sm col-md col-lg col-xl ">
-            <div class="container py-3 border-top">
+            <div class="container py-3 border-top" style="max-height: 90px;">
                 <div class="top-content">
                     <div class="container-fluid">
-                        <div id="carousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                                <div *ngFor="let banner of banners; let index = index" 
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div *ngFor="let banner of banners; let index = index; let last = last" 
                                      [class.active]="index == 0"
-                                     class="col-6 col-sm-6 col-md-6 col-lg-3  adv"
-                                     [ngClass]="{'carousel-item':banners?.length > 4, 
-                                                 'offset-md-2': banners?.length == 3 && index === 0,
-                                                 'offset-md-3': banners?.length == 2 && index === 0,
-                                                 'offset-md-4': banners?.length == 1 && index === 0}">
-                                    <a href="{{banner.urlLink}}" target="_blank" title="{{banner.campaign}}">
-                                        <figure><img src="{{banner.urlImage}}" class="img-fluid mx-auto d-block" alt="{{banner.campaign}}" /></figure>
-                                    </a>
+                                     class="item">
+                                     <div class="col-xs-3 margenes-banner">
+                                       <a href="{{banner.urlLink}}" target="_blank" title="{{banner.campaign}}">
+                                           <figure><img src="{{banner.urlImage}}" class="img-responsive" alt="{{banner.campaign}}" /></figure>
+                                       </a>
+                                     </div>
+                                    <div class="d-none" *ngIf="messagesRendered(last)"></div>
                                 </div>
                             </div>
                         </div>
