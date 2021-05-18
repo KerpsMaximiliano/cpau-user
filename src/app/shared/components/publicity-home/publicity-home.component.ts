@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SiteLoader } from '@app/_services';
-declare var $: any;
+import { OwlCarousel } from 'ngx-owl-carousel';
+
 
 @Component({
   selector: 'app-publicity-home',
@@ -8,57 +9,27 @@ declare var $: any;
   styleUrls: ['./publicity-home.component.css']
 })
 export class PublicityHomeComponent implements OnInit {
+  @ViewChild('owlElement', {static: false}) owlElement: OwlCarousel;
   banners: any = [];
   load: boolean;
+  //SlideOptions = { items: 4, dots: false, nav: false, navSpeed: 700, loop: true, };
+  SlideOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 1000,
+    navText: ['', ''],
+    nav: false,
+    items: 4,
+    lazyLoad: true,
+    autoplay: true
+  };
+  // CarouselOptions = { items: 4, dots: true, nav: true };
 
   constructor(private siteLoad: SiteLoader) {
-  }
 
-  /* Helpers */
-  messagesRendered(isLast: boolean) {
-    if (isLast && !this.load) {
-      this.carrousel();
-    }
-  }
-
-  carrousel() {
-    this.load = true;
-    $('#myCarousel').carousel( {
-      interval: 6000
-    });
-
-    $('.carousel .item').each(function(){
-      var next = $(this).next();
-      if (!next.length) {
-        next = $(this).siblings(':first');
-      }
-      next.children(':first-child').clone().appendTo($(this));
-      
-      for (var i=0;i<2;i++) {
-        next=next.next();
-        if (!next.length) {
-          next = $(this).siblings(':first');
-        }
-        
-        next.children(':first-child').clone().appendTo($(this));
-      }
-    });
-
-    $('#myCarousel').bind('slide.bs.carousel', function(e) {
-
-      var $e = $(e.currentTarget);
-      var totalItems = $('.carousel .item').length - 1;
-      var $indicators = $e.find('.carousel-inner');
-
-      var $item = $(e.relatedTarget);
-      
-      var active = $e.find('.active');
-      var itemIndex = active.index();
-      
-      active.removeClass('active');
-      $indicators.children().eq(itemIndex < totalItems ? itemIndex + 1: 0).addClass('active');
-
-    });
   }
 
   ngOnInit() {

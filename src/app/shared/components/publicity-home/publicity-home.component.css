@@ -15,14 +15,14 @@
 }
   
 .carousel .item {
-  display: none !important;
   position: relative;
 }
 
 .carousel .item img {
   display: block !important;
   line-height: 1;
-  width: 200px;
+  width: 90%;
+  height: 15vh;
 }
 
 .carousel .active,

@@ -1,21 +1,34 @@
+<!-- <owl-carousel [options]="SlideOptions"
+              [items]="banners"
+              [carouselClasses]="['owl-theme', 'sliding']" #owlElement> 
+    <div *ngFor="let banner of banners; let index = index; let last = last" >
+        <div style="align-content: center">  
+                <a href="{{banner.urlLink}}" target="_blank" title="{{banner.campaign}}">
+                    <figure><img src="{{banner.urlImage}}" class="img-responsive" alt="{{banner.campaign}}" /></figure>
+                </a> 
+        </div>  
+    </div> 
+</owl-carousel>   -->
 <aside >
     <div class="row">
         <div class="col-sm col-md col-lg col-xl ">
-            <div class="container py-3 border-top" style="max-height: 90px;">
+            <div class="container py-3 border-top">
                 <div class="top-content">
                     <div class="container-fluid">
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div *ngFor="let banner of banners; let index = index; let last = last" 
-                                     [class.active]="index == 0"
-                                     class="item">
-                                     <div class="col-xs-3 margenes-banner">
-                                       <a href="{{banner.urlLink}}" target="_blank" title="{{banner.campaign}}">
-                                           <figure><img src="{{banner.urlImage}}" class="img-responsive" alt="{{banner.campaign}}" /></figure>
-                                       </a>
-                                     </div>
-                                    <div class="d-none" *ngIf="messagesRendered(last)"></div>
-                                </div>
+                        <div class="carousel slide" data-ride="myCarousel">
+                            <div class="carousel-inner" role="listbox">
+                                <owl-carousel [options]="SlideOptions"
+                                                [items]="banners"
+                                                class="item"
+                                                [carouselClasses]="['owl-theme', 'sliding']" #owlElement> 
+                                    <div *ngFor="let banner of banners; let index = index; let last = last" >
+                                        <div style="align-content: center">  
+                                                <a href="{{banner.urlLink}}" target="_blank" title="{{banner.campaign}}">
+                                                    <figure><img src="{{banner.urlImage}}" class="img-responsive" alt="{{banner.campaign}}" /></figure>
+                                                </a> 
+                                        </div>  
+                                    </div> 
+                                </owl-carousel>
                             </div>
                         </div>
                     </div>
@@ -23,4 +36,4 @@
             </div>
         </div>
     </div>
-</aside>
+  </aside>
