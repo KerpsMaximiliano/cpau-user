@@ -34,8 +34,8 @@
                             "src/stylesCustom/styles/cpau.css",
                             "src/stylesCustom/styles/carousel.css",
                             "src/stylesCustom/styles/fontawesome/font-awesome.css",
-                            "./node_modules/owl.carousel/dist/assets/owl.carousel.min.css",  
-                            "./node_modules/owl.carousel/dist/assets/owl.theme.default.min.css" 
+                            "src/stylesCustom/styles/owl.carousel.min.css",  
+                            "src/stylesCustom/styles/owl.theme.default.min.css" 
                         ],
                         "scripts": [
                             "src/stylesCustom/js/scrollup/lib/jquery-1.11.1.min.js",
@@ -46,7 +46,7 @@
                             "src/stylesCustom/js/playerAPI.js",
                             "src/stylesCustom/js/scrollup/jquery.scrollUp.min.js",
                             "src/stylesCustom/js/scrollup/scrollUp.js",
-                            "./node_modules/owl.carousel/dist/owl.carousel.min.js"
+                            "src/stylesCustom/js/owl.carousel.min.js"
                         ]
                     },
                     "configurations": {

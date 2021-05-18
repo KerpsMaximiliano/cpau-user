@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SiteLoader } from '@app/_services';
 import { OwlCarousel } from 'ngx-owl-carousel';
-
 @Component({
   selector: 'app-publicity-home',
   templateUrl: './publicity-home.component.html',
