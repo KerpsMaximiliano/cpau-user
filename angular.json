@@ -47,7 +47,7 @@
                             "src/stylesCustom/js/scrollup/jquery.scrollUp.min.js",
                             "src/stylesCustom/js/scrollup/scrollUp.js",
                             "src/stylesCustom/js/jquery.min.js",  
-                            "src/stylesCustom/js/owl.carousel.min.js"
+                            "src/assets/js/owl.carousel.min.js"
                         ]
                     },
                     "configurations": {
