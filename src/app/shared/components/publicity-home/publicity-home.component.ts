@@ -47,7 +47,7 @@ export class PublicityHomeComponent implements OnInit {
         navSpeed: 1000,
         navText: ['', ''],
         nav: false,
-        items: this.banners.length < 5 ? 4 : this.banners.length,
+        items: this.banners.length < 5 ? this.banners.length : 4,
         lazyLoad: true,
         autoplay: true,
         responsive:{
@@ -60,7 +60,7 @@ export class PublicityHomeComponent implements OnInit {
               nav: true
           },
           1000: {
-              items: this.banners.length < 5 ? 4 : this.banners.length,
+              items: this.banners.length < 5 ? this.banners.length : 4,
               nav: true,
           }
         }
