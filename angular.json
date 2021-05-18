@@ -46,7 +46,6 @@
                             "src/stylesCustom/js/playerAPI.js",
                             "src/stylesCustom/js/scrollup/jquery.scrollUp.min.js",
                             "src/stylesCustom/js/scrollup/scrollUp.js",
-                            "./node_modules/jquery/dist/jquery.min.js",  
                             "./node_modules/owl.carousel/dist/owl.carousel.min.js"
                         ]
                     },
