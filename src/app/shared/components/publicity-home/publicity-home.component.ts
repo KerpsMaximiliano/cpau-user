@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SiteLoader } from '@app/_services';
 import { OwlCarousel } from 'ngx-owl-carousel';
+declare var $: any;
 @Component({
   selector: 'app-publicity-home',
   templateUrl: './publicity-home.component.html',
@@ -26,6 +27,30 @@ export class PublicityHomeComponent implements OnInit {
 
   constructor(private siteLoad: SiteLoader) {
 
+  }
+
+  messagesRendered(isLast: boolean) {
+    if (isLast && !this.load) {
+      this.carrousel();
+    }
+  }
+
+  carrousel() {
+    this.load = true;
+    const owl = $('.owl-carousel');
+    owl.owlCarousel({
+        loop: true,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
+        navSpeed: 1000,
+        navText: ['', ''],
+        nav: false,
+        items: 4,
+        lazyLoad: true,
+        autoplay: true
+    });
   }
 
   ngOnInit() {
