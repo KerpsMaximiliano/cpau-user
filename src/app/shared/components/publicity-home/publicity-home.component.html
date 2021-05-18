@@ -16,8 +16,8 @@
                                                     <figure><img src="{{banner.urlImage}}" class="img-responsive" alt="{{banner.campaign}}" /></figure>
                                                 </a> 
                                         </div>  
+                                        <div class="d-none" *ngIf="messagesRendered(last)"></div>
                                     </div> 
-                                    <div class="d-none" *ngIf="messagesRendered(last)"></div>
                                 </owl-carousel>
                             </div>
                         </div>
