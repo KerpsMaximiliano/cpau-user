@@ -9,7 +9,7 @@ declare var $: any;
 })
 export class PublicityHomeComponent implements OnInit {
   @ViewChild('owlElement', {static: false}) owlElement: OwlCarousel;
-  banners: any = [];
+  banners: any[] = [];
   load: boolean;
   SlideOptions = {
     loop: true,
@@ -47,9 +47,23 @@ export class PublicityHomeComponent implements OnInit {
         navSpeed: 1000,
         navText: ['', ''],
         nav: false,
-        items: 4,
+        items: this.banners.length < 5 ? 4 : this.banners.length,
         lazyLoad: true,
-        autoplay: true
+        autoplay: true,
+        responsive:{
+          0: {
+              items: 1,
+              nav: true
+          },
+          600: {
+              items: 3,
+              nav: true
+          },
+          1000: {
+              items: this.banners.length < 5 ? 4 : this.banners.length,
+              nav: true,
+          }
+        }
     });
   }
 
