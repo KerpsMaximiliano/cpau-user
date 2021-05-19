@@ -10,7 +10,6 @@
 
 .carousel {
   position: relative;
-  margin-bottom: 10px;
   line-height: 1;
 }
   
@@ -21,8 +20,8 @@
 .carousel .item img {
   display: block !important;
   line-height: 1;
-  width: 90%;
-  height: 15vh;
+  width: 95%;
+  height: 70px;
 }
 
 .carousel .active,

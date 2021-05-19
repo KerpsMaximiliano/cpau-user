@@ -45,23 +45,22 @@ export class PublicityHomeComponent implements OnInit {
         pullDrag: false,
         dots: false,
         navSpeed: 1000,
-        navText: ['', ''],
         nav: false,
         items: this.banners.length < 5 ? this.banners.length : 4,
         lazyLoad: true,
         autoplay: true,
-        responsive:{
+        responsive: {
           0: {
               items: 1,
-              nav: true
+              nav: false
           },
           600: {
               items: 3,
-              nav: true
+              nav: false
           },
           1000: {
               items: this.banners.length < 5 ? this.banners.length : 4,
-              nav: true,
+              nav: false,
           }
         }
     });
