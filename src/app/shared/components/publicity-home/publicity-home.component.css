@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.sin-borde {
+  border-top: 0px !important;
+}
+
 .carousel-inner {
     overflow: hidden;
     width: 100%;
