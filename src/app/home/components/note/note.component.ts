@@ -6,10 +6,6 @@ import { ContentSite, BreadCrumb } from '@app/shared/models/contentsite.model';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-declare function scrollup();
-
-
-
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -19,11 +15,19 @@ declare function scrollup();
 export class NoteComponent implements OnInit {
 
   breadCrumb:BreadCrumb[];
+  private fragment: string;
 
   data: ContentSite;
   constructor(private _router: Router,private _Activatedroute:ActivatedRoute, private siteLoader: SiteLoader,private renderer2: Renderer2,
     @Inject(DOCUMENT) private _document
     ) { }
+
+  ancla(): void {
+    try {
+      const element = document.getElementById( this.fragment);
+      if (element) { element.scrollIntoView(true); }
+    } catch (e) { }
+  }
 
   ngOnInit() {
     const s = this.renderer2.createElement('script');
@@ -41,16 +45,17 @@ export class NoteComponent implements OnInit {
       }
     });
 
+    this._Activatedroute.fragment.subscribe(fragment => { this.fragment = fragment; });
+
     const id = this._Activatedroute.snapshot.paramMap.get("id");
     this.loadContent(id);
-    scrollup();
   }
 
   loadNextScript() {
     const s = this.renderer2.createElement('script');
-    s.text = ``
+    s.text = ``;
     this.renderer2.appendChild(this._document.body, s);
-    }
+  }
 
   loadContent(id) {
     this.siteLoader.bannerSubject.next({main: false, section: true, news: false});
@@ -61,12 +66,15 @@ export class NoteComponent implements OnInit {
     .subscribe( content => {
       this.data = content;
       this.breadCrumb = this.data.breadCrumb;
+      setTimeout(() => {
+        this.ancla();
+      }, 10);
     });
 
   }
 
   top() {
-    window.scroll(0,0);
+    window.scroll(0, 0);
   }
 
 }
