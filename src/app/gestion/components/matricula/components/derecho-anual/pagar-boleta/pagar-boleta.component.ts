@@ -14,6 +14,7 @@ export class PagarBoletaComponent implements OnInit {
   isProcessing: boolean;
   cuotas: string;
   formValidarPago: ValidarPago;
+  debito: boolean = false;
   @ViewChild('form', { static: false }) form: ElementRef;
   @Output() cerrar = new EventEmitter();
   constructor(private derechoAnualService: DerechoAnualService) { }

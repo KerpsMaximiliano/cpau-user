@@ -8,6 +8,12 @@
             
             <div  *ngIf="!isProcessing">
                 <div class="control-group">
+                    <label class="control-label" style="font-weight: bold"> Seleccione el tipo de tarjeta:</label><br />
+                    <input type="radio" id="credito" [value]="false" name="credito" [(ngModel)]="debito"/>&nbsp;<label class="control-label">Crédito</label>&nbsp;&nbsp;
+                    <input type="radio" id="debito" [value]="true" name="debito" [(ngModel)]="debito" />&nbsp;<label class="control-label">Débito</label>&nbsp;&nbsp;
+                </div>
+                <br />
+                <div class="control-group">
                     <label class="control-label" for="cuotas">Cuotas</label>
                     <select id="cuotas" name="cuotas" [(ngModel)]="cuotas" class="form-control">
                         <option value="3">3 (sin interés)</option>
@@ -15,24 +21,36 @@
                         <option value="1">1 (sin interés)</option>
                     </select>
                 </div>
-                <div class="alert alert-info" style="margin-bottom: 0px;">
+                <div class="alert alert-info" style="margin-bottom: 10px;">
                     Haga click sobre el método de pago a utilizar
                 </div>
-                <div style="display: flex;" class="text-center">
-                    <span>
+                <div *ngIf="!debito" style="display: flex;" class="text-center">
+                    <span style="margin-right: 1%;">
                         <div (click)="select('15')">
                             <!-- 15 produccion , 20 test -->
-                            <img [src]="'https://static.cpau.org/images/tarjetas/credit_card_mastercard-128.png'" alt="MasterCard" />
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/mastercard.svg'" alt="MasterCard" />
                         </div>
                     </span> 
-                    <span>
+                    <span style="margin-right: 1%;">
                         <div (click)="select('6')">
-                            <img [src]="'https://static.cpau.org/images/tarjetas/credit_card_amex-128.png'" alt="American Express" />
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/american_express.svg'" alt="American Express" />
                         </div>
                     </span>
-                    <span>
+                    <span style="margin-right: 1%;">
                         <div (click)="select('1')">
-                            <img [src]="'https://static.cpau.org/images/tarjetas/credit_card_visa-128.png'" alt="Visa" />
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa.svg'" alt="Visa" />
+                        </div>
+                    </span>
+                </div>
+                <div *ngIf="debito" style="margin-bottom: 10px;display: flex;" class="text-center">
+                    <span style="margin-right: 1%;">
+                        <div (click)="select('106')">
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/maestro.svg'" alt="Maestro" />
+                        </div>
+                    </span>
+                    <span style="margin-right: 1%;">
+                        <div (click)="select('31')">
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa-electron.svg'" alt="Visa Débito" />
                         </div>
                     </span>
                 </div>
