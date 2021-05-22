@@ -28,14 +28,15 @@
                 <div class="ibox-content" [hidden]="collapsed">
                     <form method="get" class="form-horizontal" [formGroup]="mailForm">
                         <div class="row">
-                            <div class="col-md-8 col-sm-offset-2">
+                            <div class="col-md-10">
                                 <div class="form-group">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-5">
                                         <label class="col-sm-4 control-label">Tipo:</label>
                                         <div class="col-sm-8">
                                             <div *ngIf="(tipos$ | async) as mailTypes">
                                                 <select id="countries" formControlName="idTipoEmail"
                                                     class="mail-select browser-default custom-select form-control">
+                                                    <option value="" disabled selected hidden>Elegí una opción</option>
                                                     <option *ngFor="let type of mailTypes" [value]="type.id">
                                                         {{ type.nombre }}</option>
                                                 </select>
@@ -47,7 +48,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <label class="col-sm-4 control-label">Email:</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" formControlName="email">
@@ -58,7 +59,7 @@
                                             </form-error>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <div class="row">
                                             <div class="col-sm-4 col-sm-offset-2">&nbsp;</div>
                                             <div class="col-sm-4 text-right button-container">
