@@ -1,0 +1,30 @@
+@import '../.././../../gestion.css';
+
+.tipo-obras-select, .destino-obras-select {
+    height: calc(1em + 1.75rem + 2px);
+    font-size: 14px;
+    padding: 6px 12px;
+ }
+
+.form-control.ng-invalid.ng-touched {
+    border: 1px solid red;
+ }
+ .error-text {
+    color: red;
+ }
+
+ .container-action-table {
+     overflow-x: auto;
+ }
+ .input-group-addon {
+    height: 34px;
+ }
+.datepicker {
+   width: 75% !important;
+}
+.button-datepicker {
+   width: 15% !important;
+}
+button {
+   margin-right: 5px;
+}

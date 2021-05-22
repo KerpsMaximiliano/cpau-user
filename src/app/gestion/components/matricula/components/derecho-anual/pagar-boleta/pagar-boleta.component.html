@@ -1,0 +1,62 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Pagar derecho anual</h3>
+            <button type="button" class="close" (click)="cerrar.emit()" >&times;</button>
+        </div>
+        <div class="modal-body">
+            
+            <div  *ngIf="!isProcessing">
+                <div class="control-group">
+                    <label class="control-label" for="cuotas">Cuotas</label>
+                    <select id="cuotas" name="cuotas" [(ngModel)]="cuotas" class="form-control">
+                        <option value="3">3 (sin interés)</option>
+                        <option value="2">2 (sin interés)</option>
+                        <option value="1">1 (sin interés)</option>
+                    </select>
+                </div>
+                <div class="alert alert-info" style="margin-bottom: 0px;">
+                    Haga click sobre el método de pago a utilizar
+                </div>
+                <div style="display: flex;" class="text-center">
+                    <span>
+                        <div (click)="select('15')">
+                            <!-- 15 produccion , 20 test -->
+                            <img [src]="'https://static.cpau.org/images/tarjetas/credit_card_mastercard-128.png'" alt="MasterCard" />
+                        </div>
+                    </span> 
+                    <span>
+                        <div (click)="select('6')">
+                            <img [src]="'https://static.cpau.org/images/tarjetas/credit_card_amex-128.png'" alt="American Express" />
+                        </div>
+                    </span>
+                    <span>
+                        <div (click)="select('1')">
+                            <img [src]="'https://static.cpau.org/images/tarjetas/credit_card_visa-128.png'" alt="Visa" />
+                        </div>
+                    </span>
+                </div>
+                <div class="alert alert-link" style="margin-bottom: 0px;">
+                    Para operar con Visa recuerde que es necesario que su tarjeta esté
+                    activada con el sistema de Verified By Visa. Si quiere activarla ahora presione
+                    <a href="http://www.visa.com.ar/socios_seguridad-proteccion.aspx" target="_blank">aqui</a>.
+                </div>
+                <form #form ngNoForm action="https://sps.decidir.com/sps-ar/Validar" method="post">
+                    <input type="hidden" name="NROCOMERCIO" [value]="formValidarPago?.nroComercio">
+                    <input type="hidden" name="NROOPERACION" [value]="formValidarPago?.nroOperacion">
+                    <input type="hidden" name="MEDIODEPAGO" [value]="formValidarPago?.medioDePago">
+                    <input type="hidden" name="MONTO" [value]="formValidarPago?.monto">
+                    <input type="hidden" name="CUOTAS" [value]="formValidarPago?.cuotas"> 
+                    <input type="hidden" name="EMAILCLIENTE" [value]="formValidarPago?.emailCliente"> 
+                    <input type="hidden" name="URLDINAMICA" value="https://www.cpau.org/api/consejo/resultadooperacion"> 
+                </form>
+            </div>
+            <div style="width: 400px; height: 324px; text-align: center;" *ngIf="isProcessing">
+                <p style="vertical-align: middle;">Por favor espere, se está procesando la operación.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="cerrar.emit()" >Cancelar</button>
+        </div>
+    </div>
+</div>

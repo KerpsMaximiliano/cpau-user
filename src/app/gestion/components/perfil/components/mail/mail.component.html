@@ -1,0 +1,111 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Emails</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>Perfil</a>
+            </li>
+            <li class="active">
+                <a><strong>Emails</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Emails</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                    <form method="get" class="form-horizontal" [formGroup]="mailForm">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-offset-2">
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label class="col-sm-4 control-label">Tipo:</label>
+                                        <div class="col-sm-8">
+                                            <div *ngIf="(tipos$ | async) as mailTypes">
+                                                <select id="countries" formControlName="idTipoEmail"
+                                                    class="mail-select browser-default custom-select form-control">
+                                                    <option *ngFor="let type of mailTypes" [value]="type.id">
+                                                        {{ type.nombre }}</option>
+                                                </select>
+                                                <form-error [errors]="mailForm.controls.idTipoEmail.errors"
+                                                    [errorsMessages]="{
+                                                        required: 'Campo Requerido'
+                                                        }" [controlTouched]="mailForm.controls.idTipoEmail.touched">
+                                                </form-error>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label">Email:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" formControlName="email">
+                                            <form-error [errors]="mailForm.controls.email.errors" [errorsMessages]="{
+                                                required: 'Campo Requerido',
+                                                email: 'Formato invalido'
+                                            }" [controlTouched]="mailForm.controls.email.touched">
+                                            </form-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-sm-4 col-sm-offset-2">&nbsp;</div>
+                                            <div class="col-sm-4 text-right button-container">
+                                                <button *ngIf="!f.id.value" 
+                                                        [disabled]="loading"
+                                                        class="btn btn-primary"
+                                                        (click)="agregarFila()">
+                                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                                    Agregar
+                                                </button>
+                                                <button  *ngIf="f.id.value"
+                                                        [disabled]="loading"
+                                                        class="btn btn-primary"
+                                                        (click)="editarFila()">
+                                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                                    Actualizar
+                                                </button>
+                                                <button class="btn btn-danger"
+                                                    (click)="cancelarFila()">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
+                                    (eliminar)="onEliminar($event)" (visualizar)="onVisualizar($event)">
+                                </app-action-table>
+                            </div>
+                        </div>
+                    </form>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+                                    <div class="alert alert-warning">
+                                        <a class="alert-link" href="#">Atención!</a><br>
+                                        Si Ud. desea modificar el email particular recibirá un correo de confirmación...
+                                    </div>
+                                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

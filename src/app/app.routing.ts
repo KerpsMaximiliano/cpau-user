@@ -16,6 +16,8 @@ import { BoletinesComponent } from './boletines/boletines.component';
 import { NotePreviewComponent } from './home/components/notePreview/notePreview.component';
 import { FormComponent } from './form/form.component';
 import { PreregisterComponent } from './login/preregister';
+import { AuthGuard } from './_helpers';
+import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,10 @@ const routes: Routes = [
   {
     path: 'registrar',
     component: RegisterComponent,
+  },
+  {
+    path: 'actualizacion-email',
+    component: ActualizacionEmailComponent,
   },
   {
     path: 'recover',
@@ -82,7 +88,11 @@ const routes: Routes = [
     path: 'contacto/general',
     component: ContactoComponent,
   },
-
+  {
+    path: 'gestion',
+    loadChildren: () => import('./gestion/gestion.module').then(m => m.GestionModule),
+    canActivate: [AuthGuard] 
+  },
   // otherwise redirect to home
   { path: '**', redirectTo: '' },
 ];

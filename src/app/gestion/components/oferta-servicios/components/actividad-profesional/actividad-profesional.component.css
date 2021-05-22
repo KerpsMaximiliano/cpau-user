@@ -1,0 +1,19 @@
+@import '../.././../../gestion.css';
+
+
+.title {
+
+background-color: #e1e4e8;
+height: 40px;
+display: flex;
+align-items: center; 
+}
+
+.checkbox-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 50%;
+}
+button {
+    margin-right: 5px;
+ }

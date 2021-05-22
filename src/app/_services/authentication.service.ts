@@ -3,7 +3,7 @@ import { RegisterMatriculado } from './../_models/register-matriculado.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
@@ -37,6 +37,7 @@ export class AuthenticationService {
           if (user && user.token) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
+            localStorage.setItem('jwt_token',user.token);
             this.currentUserSubject.next(user);
           }
 
@@ -63,8 +64,7 @@ export class AuthenticationService {
     });
   }
 
-  registermatriculado(registerMatriculado: RegisterMatriculado)
-  {
+  registermatriculado(registerMatriculado: RegisterMatriculado) {
     return this.http.post<any>(`${environment.apiUrl}/api/user/registermatriculado`, {
       tipoMatricula: registerMatriculado.tipoMatricula,
       numeroMatricula: registerMatriculado.numeroMatricula,
@@ -78,8 +78,7 @@ export class AuthenticationService {
     });
   }
 
-  registernomatriculado(registerNoMatriculado: RegisterNoMatriculado)
-  {
+  registernomatriculado(registerNoMatriculado: RegisterNoMatriculado) {
     return this.http.post<any>(`${environment.apiUrl}/api/user/registernomatriculado`, {
       nombre: registerNoMatriculado.nombre,
       apellido: registerNoMatriculado.apellido,
@@ -87,7 +86,7 @@ export class AuthenticationService {
       mail: registerNoMatriculado.mail,
       tipoDocumento: registerNoMatriculado.tipoDocumento,
       numeroDocumento: registerNoMatriculado.numeroDocumento,
-      usuario: registerNoMatriculado. usuario,
+      usuario: registerNoMatriculado.usuario,
       password: registerNoMatriculado.password
     });
   }
@@ -122,6 +121,7 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('jwt_token');
 
     return this.http
       .post<any>(`${environment.apiUrl}/api/user/logout`, null)

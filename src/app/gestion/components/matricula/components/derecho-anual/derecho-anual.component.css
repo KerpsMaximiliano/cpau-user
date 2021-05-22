@@ -1,0 +1,19 @@
+@import '../.././../../gestion.css';
+
+ .container-action-table {
+     overflow-x: auto;
+ }
+ .actions-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+ 
+ }
+ .actions-buttons button {
+    margin-right: 5px;
+ }
+ .content-popup {
+   position: absolute;
+   z-index: 2;
+   width: 100%;
+ }

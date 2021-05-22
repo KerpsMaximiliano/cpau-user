@@ -24,12 +24,15 @@ export class HeaderHomeComponent implements OnInit {
   authentication() {
     if (!this.isAuthenticated) {
       this.router.navigate(["./login"]);
+      console.log("no esta logueado");
       return;
     }
 
-    window.location.href = `/Perfil?tkn=${
-      JSON.parse(localStorage.getItem("currentUser")).token
-    }`;
+    // window.location.href = `/Perfil?tkn=${
+    //   JSON.parse(localStorage.getItem("currentUser")).token
+    // }`;
+    this.router.navigate(["./gestion/home/perfil/identificacion"]);
+    //window.location.href = '/gestion/home/perfil/identificacion';
     this.updateControllers();
   }
 
@@ -40,6 +43,7 @@ export class HeaderHomeComponent implements OnInit {
       this.lblAuthentication = this.isAuthenticated ? "PERFIL" : "LOGIN";
 
       if (!this.isAuthenticated) {
+        console.log("no esta logueado 2");
         this.authenticationService.logout();
       }
 

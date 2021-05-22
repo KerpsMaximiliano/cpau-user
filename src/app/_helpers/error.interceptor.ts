@@ -17,7 +17,13 @@ export class ErrorInterceptor implements HttpInterceptor {
                 location.reload(true);
             }
 
-            const error = err.error.message || err.statusText;
+            let error = "Error Desconocido";
+            if (err && err.error && err.error.message ) {
+                error = err.error.message;
+            } else if (err.statusText) {
+                error = err.statusText;
+            }
+            
             return throwError(error);
         }))
     }

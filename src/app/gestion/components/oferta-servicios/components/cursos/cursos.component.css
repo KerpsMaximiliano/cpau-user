@@ -1,0 +1,25 @@
+@import '../.././../../gestion.css';
+
+   .form-control.ng-invalid.ng-touched {
+      border: 1px solid red;
+   }
+   .error-text {
+      color: red;
+   }
+   
+   .container-action-table {
+      overflow-x: auto;
+   }
+   .input-group-addon {
+      height: 34px;
+      
+   }
+   .datepicker {
+      width: 75% !important; 
+   }
+   .button-datepicker {
+      width: 15% !important;
+   }
+   button {
+      margin-right: 5px;
+   }

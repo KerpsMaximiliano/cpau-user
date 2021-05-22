@@ -1,0 +1,5 @@
+@import '../.././../../gestion.css';
+
+ .container-action-table {
+     overflow-x: auto;
+ }

@@ -1,0 +1,36 @@
+@import '../.././../../gestion.css';
+
+
+
+
+.identification-select {
+   height: calc(1em + 1.75rem - 8px);
+   font-size: 14px;
+   padding: 6px 12px;
+}
+.actions-buttons {
+   display: flex;
+   justify-content: flex-end;
+   align-items: flex-end;
+
+}
+.actions-buttons button {
+   margin-right: 5px;
+}
+.form-control.ng-invalid.ng-touched {
+   border: 1px solid red;
+}
+.error-text {
+   color: red;
+}
+.identification-select.ng-invalid.ng-touched {
+   border: 1px solid red;
+}
+
+.datepicker {
+   width: 75% !important;
+}
+.button-datepicker {
+   height: 34px;
+   width: 50%;
+}

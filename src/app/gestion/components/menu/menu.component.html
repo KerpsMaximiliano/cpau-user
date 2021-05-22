@@ -1,0 +1,143 @@
+<div id="wrapper">
+    <div>
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu" style="display: block;">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                                <img alt="image"
+                                     class="img-circle"
+                                     [src]="imgSrc"
+                                     onerror="this.src='stylesCustom/images/fas-fa-user-circle.svg'"
+                                     width="48"
+                                     height="48">
+                            </span>
+                            <span class="clear">
+                                <span class="block m-t-xs nombre-matricula"> <strong class="font-bold">{{perfil?.nombres}}
+                                        {{perfil?.apellidos}}</strong></span>
+                                <span *ngIf="currentUser?.matricula"
+                                    class="text-muted text-xs block nombre-matricula">{{currentUser.matricula}}</span>
+                                <span *ngIf="currentUser?.tipoMatricula"
+                                    class="text-muted text-xs block nombre-matricula">{{currentUser.tipoMatricula}}</span>
+                            </span>
+                        </div>
+                        <div class="logo-element">
+                            CPAU
+                        </div>
+                    </li>
+                    <!-- <li>
+                        <a [routerLink]="'/gestion/home'" routerLinkActive="active-link"><i class="fa fa-th-large"></i>
+                            <span class="nav-label">Panel</span></a>
+                    </li> -->
+                    <li>
+                        <a (click)="colapsar(0)"><i class="fa fa-user"></i> <span class="nav-label">Perfil</span> <span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[0] === true}">
+                            <li><a [routerLink]="'perfil/identificacion'"
+                                    routerLinkActive="active-link">Identificación</a></li>
+                            <li><a [routerLink]="'perfil/domicilio'" routerLinkActive="active-link">Domicilios</a></li>
+                            <li><a [routerLink]="'perfil/emails'" routerLinkActive="active-link">Emails</a></li>
+                            <li><a [routerLink]="'perfil/telefonos'" routerLinkActive="active-link">Teléfonos</a></li>
+                            <li><a [routerLink]="'perfil/redes'" routerLinkActive="active-link">Redes Sociales</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="isMatriculado">
+                        <a (click)="colapsar(1)"><i class="fa fa-briefcase"></i> <span
+                                class="nav-label">Matrícula</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[1] === true}">
+                            <li><a [routerLink]="'matricula/resumen'" routerLinkActive="active-link">Resumen</a></li>
+                            <li><a [routerLink]="'matricula/derecho-anual'" routerLinkActive="active-link">Derecho
+                                    Anual</a></li>
+                            <li><a [routerLink]="'matricula/certificado'">Certificado</a></li>
+                            <li><a href="#">Credencial digital</a></li>
+                        </ul>
+                    </li>
+                    <li *ngIf="isMatriculado">
+                        <a (click)="colapsar(2)"><i class="fa fa-graduation-cap"></i> <span class="nav-label">Oferta de
+                                Servicios</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[2] === true}">
+                            <li><a [routerLink]="'oferta-servicios/actividad-profesional'"
+                                    routerLinkActive="active-link">Actividad Profesional</a></li>
+                            <li><a [routerLink]="'oferta-servicios/experiencia'"
+                                    routerLinkActive="active-link">Experiencia</a></li>
+                            <li><a [routerLink]="'oferta-servicios/cursos'" routerLinkActive="active-link">Cursos</a>
+                            </li>
+                            <li><a [routerLink]="'oferta-servicios/posgrados'"
+                                    routerLinkActive="active-link">Posgrados</a></li>
+                            <li><a [routerLink]="'oferta-servicios/curriculum-vitae'"
+                                    routerLinkActive="active-link">Curriculum Vitae</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a (click)="colapsar(3)"><i class="fa fa-newspaper-o"></i> <span
+                                class="nav-label">Suscripciones</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[3] === true}">
+                            <li *ngIf="isMatriculado"><a [routerLink]="'suscripciones/publicaciones'">Publicaciones</a></li>
+                            <li><a [routerLink]="'suscripciones/newsletter'">Newsletters</a></li>
+                            <!-- <li><a href="#">Temas de Interés</a></li> -->
+                        </ul>
+                    </li>
+                    <!-- <li>
+                        <a (click)="colapsar(4)"><i class="fa fa-building"></i> <span
+                                class="nav-label">Encomiendas</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[4] === true}">
+                            <li><a href="#">Nuevo RETP</a></li>
+                            <li><a href="#">Histórico</a></li>
+                        </ul>
+                    </li> -->
+                    <li>
+                        <a href="{{storeUrl}}" target="_blank" (click)="colapsar(5)"><i class="fa fa-shopping-cart"></i><span
+                                class="nav-label">Compras
+                                On-line</span></a>
+                        <!-- <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true}">
+                            <li><a href="#">Cursos</a></li>
+                            <li><a href="#">Publicaciones</a></li>
+                            <li><a href="#">Merchandising</a></li>
+                        </ul> -->
+                    </li>
+                    <!-- <li>
+                        <a (click)="colapsar(6)"><i class="fa fa-cog"></i> <span
+                                class="nav-label">Herramientas</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[6] === true}">
+                            <li><a href="#">CPAU MAIL</a></li>
+                        </ul>
+                    </li> -->
+                    <li>
+                        <a (click)="colapsar(7)"><i class="fa fa-lock"></i> <span class="nav-label">Seguridad</span>
+                            <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[7] === true}">
+                            <li><a [routerLink]="'seguridad/usuario'" routerLinkActive="active-link">Usuario</a></li>
+                            <li><a [routerLink]="'seguridad/contrasenia'" routerLinkActive="active-link">Contraseña</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a (click)="colapsar(8)"><i class="fa fa-lock"></i> <span
+                                class="nav-label">Administración</span>
+                            <span class="fa arrow"></span></a>
+                        <ul *ngIf="isAdmin" class="nav nav-second-level collapse"
+                            [ngClass]="{'in': colapsado[8] === true}">
+                            <li><a target="_blank" href="/Content/admin">Nuevo</a></li>
+                            <li><a target="_blank" href="/admin/index">Actual</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+    <div id="page-wrapper" class="gray-bg" style="min-height: 100vh;">
+        <div class="row border-bottom">
+            <app-header (colapsarMenu)="colapsarMenu.emit()"></app-header>
+        </div>
+
+        <!--INCIO CONTENIDO-->
+
+        <ng-content></ng-content>
+
+        <!--FIN CONTENIDO-->
+        <app-footer></app-footer>
+
+
+    </div>
+</div>

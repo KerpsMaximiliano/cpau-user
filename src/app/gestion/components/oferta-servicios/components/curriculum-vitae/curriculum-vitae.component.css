@@ -1,0 +1,8 @@
+@import '../.././../../gestion.css';
+
+.form-control.ng-invalid.ng-touched {
+    border: 1px solid red;
+ }
+ .error-text {
+    color: red;
+ }

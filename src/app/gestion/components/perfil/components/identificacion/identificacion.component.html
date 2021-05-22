@@ -1,0 +1,204 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Identificación</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>Panel</a>
+            </li>
+            <li>
+                <a>Perfil</a>
+            </li>
+            <li class="active">
+                <a><strong>Identificación</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!--TAB IDENTIFICACION-->
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Identificación</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                    <form method="get" class="form-horizontal" [formGroup]="identificacionForm">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Nombres:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" disabled="disabled" class="form-control" formControlName="nombres"
+                                            maxlength="100" placeholder="Nombres">
+                                        <form-error [errors]="identificacionForm.controls.nombres.errors"
+                                            [errorsMessages]="{
+                                              required: 'Campo Requerido',
+                                              minlength: 'La longitud debe ser mayor a 2 caracteres',
+                                              maxlength: 'La longitud debe ser menor a 100 caracteres',
+                                              whitespace: 'No se permite ingresar solo espacios en blanco'
+                                            }" [controlTouched]="identificacionForm.controls.nombres.touched">
+                                        </form-error>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Apellidos:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" disabled="disabled" class="form-control" formControlName="apellidos"
+                                            maxlength="100" placeholder="Apellidos">
+                                        <form-error [errors]="identificacionForm.controls.apellidos.errors"
+                                            [errorsMessages]="{
+                                              required: 'Campo Requerido',
+                                              minlength: 'La longitud debe ser mayor a 2 caracteres',
+                                              maxlength: 'La longitud debe ser menor a 100 caracteres',
+                                              whitespace: 'No se permite ingresar solo espacios en blanco'
+                                            }" [controlTouched]="identificacionForm.controls.apellidos.touched">
+                                        </form-error>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+
+                                    <label class="col-sm-2 control-label">Sexo:</label>
+                                    <div class="col-sm-10">
+                                        <div class="col-md-3 radio i-checks">
+                                            <label>
+                                                <input disabled="disabled" type="radio" formControlName="sexo" name="sexo" value="M">
+                                                <i></i>
+                                                Masculino
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3 radio i-checks">
+                                            <label>
+                                                <input disabled="disabled" type="radio" formControlName="sexo" name="sexo" value="F">
+                                                <i></i>
+                                                Femenino
+                                            </label>
+                                        </div>
+                                        <form-error [errors]="identificacionForm.controls.sexo.errors" [errorsMessages]="{
+                                          required: 'Campo Requerido'
+                                        }" [controlTouched]="identificacionForm.controls.sexo.touched">
+                                        </form-error>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Documento:</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div *ngIf="(docTypes$ | async) as docTypes" class="col-md-4">
+                                                <select disabled="disabled" id="countries" formControlName="tipoDocumento"
+                                                    class="identification-select browser-default custom-select form-control">
+                                                    <option *ngFor="let type of docTypes" [value]="type.id">
+                                                        {{ type.nombre }}</option>
+                                                </select>
+                                                <form-error [errors]="identificacionForm.controls.tipoDocumento.errors"
+                                                    [errorsMessages]="{
+                                                          required: 'Campo Requerido'
+                                                        }"
+                                                    [controlTouched]="identificacionForm.controls.tipoDocumento.touched">
+                                                </form-error>
+                                                <span class="help-block m-b-none">Tipo</span>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text" disabled="disabled" placeholder="Número" mask="99999999"
+                                                    [specialCharacters]="[]" formControlName="numeroDocumento"
+                                                    class="form-control">
+                                                <form-error
+                                                    [errors]="identificacionForm.controls.numeroDocumento.errors"
+                                                    [errorsMessages]="{
+                                                      required: 'Campo Requerido',
+                                                      minlength: 'Ingrese un documento valido entre 8 y 9 digitos.',
+                                                      maxlength: 'Ingrese un documento valido entre 8 y 9 digitos.'
+                                                    }"
+                                                    [controlTouched]="identificacionForm.controls.numeroDocumento.touched">
+                                                </form-error>
+                                                <span class="help-block m-b-none">Número</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Nacimiento:</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <input disabled="disabled" class="form-control datepicker" placeholder="dd/mm/yyyy"
+                                                        formControlName="nacimiento" ngbDatepicker #d="ngbDatepicker" [minDate]="{year: 1900, month: 1, day: 1}" [maxDate]="{year: 2050, month: 1, day: 1}">
+                                                    <div class="input-group-append">
+                                                        <button disabled="disabled" class="input-group-addon button-datepicker"
+                                                            (click)="d.toggle()" type="button">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <form-error [errors]="identificacionForm.controls.nacimiento.errors"
+                                                    [errorsMessages]="{
+                                                              required: 'Campo Requerido'
+                                                            }"
+                                                    [controlTouched]="identificacionForm.controls.nacimiento.touched">
+                                                </form-error>
+                                                <span class="help-block">Fecha</span>
+                                            </div>
+                                            <div *ngIf="countries$ | async as countries" class="col-md-6">
+                                                <select disabled="disabled" id="countries" formControlName="pais"
+                                                    class=" identification-select browser-default custom-select form-control">
+                                                    <option *ngFor="let country of countries" [value]="country.id">
+                                                        {{ country.nombre }}</option>
+                                                </select>
+                                                <form-error [errors]="identificacionForm.controls.pais.errors"
+                                                    [errorsMessages]="{
+                                                          required: 'Campo Requerido'
+                                                        }" [controlTouched]="identificacionForm.controls.pais.touched">
+                                                </form-error>
+                                                <span class="help-block m-b-none">País</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+                                    <div class="alert alert-warning">
+                                        <a class="alert-link" href="#">Atención!</a><br>
+                                        Si Ud. desea modificar alguno de los datos personales que estan grisados,
+                                        contáctese con cualquier personal del staff del Consejo.<br>
+                                        Horario: Lunes a Viernes de 9 a 17hs. al +54 (011) 5238-1068.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="actions-buttons">
+                            <button [disabled]="loading" class="btn btn-primary"  (click)="onSave()">
+                                <span class="spinner-border spinner-border-sm mr-1" *ngIf="loading"></span>
+                                Guardar
+                            </button>
+                            <button class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+                        </div> -->
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--FIN TAB IDENTIFICACION-->
+
+</div>

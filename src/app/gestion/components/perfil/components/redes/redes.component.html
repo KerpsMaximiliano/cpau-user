@@ -1,0 +1,100 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Redes Sociales</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>Perfil</a>
+            </li>
+            <li class="active">
+                <a><strong>Redes Sociales</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Redes Sociales</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                    <form method="get" class="form-horizontal" [formGroup]="redesForm">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-offset-2">
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label class="col-sm-4 control-label">Red Social:</label>
+                                        <div class="col-sm-8">
+                                            <div *ngIf="(tipos$ | async) as redTypes">
+                                                <select id="tiposRed" formControlName="idTipoRedSocial"
+                                                    class="red-select browser-default custom-select form-control">
+                                                    <option *ngFor="let type of redTypes" [value]="type.id">
+                                                        {{ type.nombre }}</option>
+                                                </select>
+                                                <form-error [errors]="redesForm.controls.idTipoRedSocial.errors"
+                                                    [errorsMessages]="{
+                                                        required: 'Campo Requerido'
+                                                        }"
+                                                    [controlTouched]="redesForm.controls.idTipoRedSocial.touched">
+                                                </form-error>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-sm-4 control-label">Url:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" formControlName="url">
+                                            <form-error [errors]="redesForm.controls.url.errors" [errorsMessages]="{
+                                                required: 'Campo Requerido',
+                                                invalidUrl: 'Formato incorrecto de URL'
+                                            }" [controlTouched]="redesForm.controls.url.touched">
+                                            </form-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="row">
+                                            <div class="col-sm-4 col-sm-offset-2">&nbsp;</div>
+                                            <div class="col-sm-4 text-right button-container">
+                                                <button *ngIf="!f.id.value" 
+                                                        [disabled]="loading"
+                                                        class="btn btn-primary"
+                                                        (click)="agregarFila()">
+                                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                                    Agregar
+                                                </button>
+                                                <button  *ngIf="f.id.value"
+                                                        [disabled]="loading"
+                                                        class="btn btn-primary"
+                                                        (click)="editarFila()">
+                                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                                    Actualizar
+                                                </button>
+                                                <button class="btn btn-danger"
+                                                    (click)="cancelarFila()">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="row container-action-table">
+                            <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
+                                (eliminar)="onEliminar($event)">
+                            </app-action-table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

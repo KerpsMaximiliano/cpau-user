@@ -1,0 +1,27 @@
+@import '../.././../../gestion.css';
+
+.red-select {
+    height: calc(1em + 1.75rem + 2px);
+    font-size: 14px;
+    padding: 6px 12px;
+ }
+
+.form-control.ng-invalid.ng-touched {
+    border: 1px solid red;
+ }
+ .error-text {
+    color: red;
+ }
+
+ .container-action-table {
+     overflow-x: auto;
+ }
+ .red-select.ng-invalid.ng-touched {
+    border: 1px solid red;
+ }
+ button {
+    margin-right: 5px;
+ }
+ .button-container { 
+    display: flex;
+}

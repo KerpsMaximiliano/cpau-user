@@ -39,9 +39,16 @@ import { NotePreviewComponent } from "./home/components/notePreview/notePreview.
 import { Safe } from "./_directive/pipeSafeHTML.directive";
 import { FormComponent } from "./form/form.component";
 import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
-import { PreregisterComponent } from "./login/preregister/preregister.component";;
+import { PreregisterComponent } from "./login/preregister/preregister.component";
 import { RegisterMatriculadoComponent } from './login/register/register-matriculado/register-matriculado.component';
 import { RegisterNomatriculadoComponent } from './login/register/register-nomatriculado/register-nomatriculado.component'
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { ModalComponent } from './shared/components/modal/modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -52,7 +59,11 @@ import { RegisterNomatriculadoComponent } from './login/register/register-nomatr
     TooltipModule,
     RecaptchaModule, // this is the recaptcha main module
     RecaptchaFormsModule, // this is the module for form incase form validation
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    BootstrapModalModule.forRoot({ container: document.body }),
+    NgbModule
   ],
   declarations: [
     AppComponent,
@@ -86,7 +97,9 @@ import { RegisterNomatriculadoComponent } from './login/register/register-nomatr
     PreregisterComponent,
     RegisterMatriculadoComponent,
     RegisterNomatriculadoComponent,
-    numberOnlyDirective
+    numberOnlyDirective,
+    ModalComponent,
+    ActualizacionEmailComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -100,7 +113,8 @@ import { RegisterNomatriculadoComponent } from './login/register/register-nomatr
     TemplateListComponent,
     TemplateFourComponent,
     TemplateFiveComponent,
+    ModalComponent
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

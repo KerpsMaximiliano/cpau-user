@@ -65,9 +65,7 @@ export class LoginComponent implements OnInit {
               form.setAttribute(
                 "action",
                 `${environment.oldSiteUrl}/login?tkn=${data.token}`
-                //`/login?tkn=${data.token}`
               );
-              //form.setAttribute("target", "_blank");
               var userName = document.createElement("input");
               userName.setAttribute("type", "hidden");
               userName.setAttribute("name", "UserName");
@@ -78,20 +76,18 @@ export class LoginComponent implements OnInit {
               password.setAttribute("name", "Password");
               password.setAttribute("value", this.f.password.value);
               form.appendChild(password);
-              var redirect = document.createElement("input");
-              redirect.setAttribute("type", "hidden");
-              redirect.setAttribute("name", "redirect");
-              if(this.returnUrl === "/")
-                redirect.setAttribute("value", `/Perfil?tkn=${data.token}`);
-              else
-                redirect.setAttribute("value", `/` + this.returnUrl);
-              form.appendChild(redirect);
+              // var redirect = document.createElement("input");
+              // redirect.setAttribute("type", "hidden");
+              // redirect.setAttribute("name", "redirect");
+              // redirect.setAttribute("value", `/Perfil?tkn=${data.token}`);
+              // form.appendChild(redirect);
               document.body.appendChild(form);
               form.submit();
+
+              this.router.navigate([`gestion/home/perfil/identificacion`]);
             }, 1000);
           } else {
             document.getElementById("btnDatosIncorrectos").click();
-            console.log(data);
             this.loading = false;
           }
         },

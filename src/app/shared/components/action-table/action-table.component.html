@@ -1,0 +1,45 @@
+<div class="container table">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th [hidden]="!(permiteVisualizar || permiteEditar || permiteEliminar || permitePersonalizado)" scope="col">Acciones</th>
+            <th *ngFor="let col of columnas" scope="col">{{col.titulo}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of filas">
+
+            <th scope="row" *ngIf="permiteVisualizar || permiteEditar || permiteEliminar || permitePersonalizado">
+              <!-- <button *ngIf="permiteVisualizar" type="button" class="btn btn-primary"
+                (click)="visualizar.emit(f.valor)">
+                <i class="fa fa-eye"></i>
+              </button> -->
+              <button *ngIf="permiteEditar" type="button" class="btn btn-success" (click)="editar.emit(f.valor)"
+                ngbTooltip="Editar">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button *ngIf="permiteEliminar" type="button" class="btn btn-danger" (click)="eliminar.emit(f.valor)"
+                ngbTooltip="Eliminar" [autoClose]="false"  triggers="manual" #t="ngbTooltip" (click)="t.open()">
+                <i class="fa fa-trash"></i>
+              </button>
+              <button *ngIf="permitePersonalizado" type="button" class="btn btn-success" (click)="personalizado.emit(f.valor)"
+                ngbTooltip="{{configButton?.tooltip}}">
+                <i class="{{configButton?.icon}}"></i>
+              </button>
+            </th>
+            <ng-container *ngFor="let col of columnas">
+              <td *ngIf="col.tipo === ColumnType.Currency">{{ f.valor[col.id] | currency }}</td>
+              <td *ngIf="col.tipo === undefined">{{ f.valor[col.id] }}</td>
+            </ng-container>
+          </tr>
+          <tr *ngIf="mostrarTotal && filas.length > 0">
+            <td><strong>Total:</strong></td>
+            <td>{{ total | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
