@@ -20,3 +20,6 @@ td {
 table tbody tr th button {
     margin-right: 3%;
 }
+.table table {
+    font-size: 13px;
+}
