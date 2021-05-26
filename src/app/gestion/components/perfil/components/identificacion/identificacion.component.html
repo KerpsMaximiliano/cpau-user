@@ -98,6 +98,7 @@
                                             <div *ngIf="(docTypes$ | async) as docTypes" class="col-md-4">
                                                 <select disabled="disabled" id="countries" formControlName="tipoDocumento"
                                                     class="identification-select browser-default custom-select form-control">
+                                                    <option value="" disabled selected hidden>Elegí una opción</option>
                                                     <option *ngFor="let type of docTypes" [value]="type.id">
                                                         {{ type.nombre }}</option>
                                                 </select>
@@ -156,6 +157,7 @@
                                             <div *ngIf="countries$ | async as countries" class="col-md-6">
                                                 <select disabled="disabled" id="countries" formControlName="pais"
                                                     class=" identification-select browser-default custom-select form-control">
+                                                    <option value="" disabled selected hidden>Elegí una opción</option>
                                                     <option *ngFor="let country of countries" [value]="country.id">
                                                         {{ country.nombre }}</option>
                                                 </select>
