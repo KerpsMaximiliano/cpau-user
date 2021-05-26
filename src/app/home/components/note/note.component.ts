@@ -29,6 +29,16 @@ export class NoteComponent implements OnInit {
     } catch (e) { }
   }
 
+  popup(): void {
+    try {
+      const params = new URLSearchParams(window.location.search)
+      if (params.has('modal')){
+        document.getElementById(params.get('modal')).click();
+      }
+    } catch (e) { }
+  }
+
+
   ngOnInit() {
     const s = this.renderer2.createElement('script');
     s.onload = this.loadNextScript.bind(this);
@@ -68,6 +78,9 @@ export class NoteComponent implements OnInit {
       this.breadCrumb = this.data.breadCrumb;
       setTimeout(() => {
         this.ancla();
+      }, 10);
+      setTimeout(() => {
+        this.popup();
       }, 10);
     });
 
