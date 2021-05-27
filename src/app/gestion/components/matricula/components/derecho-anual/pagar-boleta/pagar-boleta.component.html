@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h3 class="modal-title">Pagar derecho anual</h3>
-            <button type="button" class="close" (click)="cerrar.emit()" >&times;</button>
+            <!-- <button type="button" class="close" (click)="cerrar.emit()" >&times;</button> -->
         </div>
         <div class="modal-body">
             
@@ -13,7 +13,7 @@
                     <input type="radio" id="debito" [value]="true" name="debito" [(ngModel)]="debito" />&nbsp;<label class="control-label">Débito</label>&nbsp;&nbsp;
                 </div>
                 <br />
-                <div class="control-group">
+                <div class="control-group" *ngIf="!debito">
                     <label class="control-label" for="cuotas">Cuotas</label>
                     <select id="cuotas" name="cuotas" [(ngModel)]="cuotas" class="form-control">
                         <option value="" disabled selected hidden>Elegí una opción</option>
