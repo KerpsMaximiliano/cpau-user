@@ -23,13 +23,18 @@ export class HeaderHomeComponent implements OnInit {
 
   authentication() {
     if (!this.isAuthenticated) {
-      this.router.navigate(["./login"]);
+      // this.router.navigate(["./login"]);
+      window.open('./login');
       return;
     }
 
-    window.location.href = `/Perfil?tkn=${
-      JSON.parse(localStorage.getItem("currentUser")).token
-    }`;
+    // window.location.href = `/Perfil?tkn=${
+    //   JSON.parse(localStorage.getItem("currentUser")).token
+    // }`;
+
+    window.open(`/Perfil?tkn=${
+      JSON.parse(localStorage.getItem('currentUser')).token
+    }`, '_blank');
     this.updateControllers();
   }
 
