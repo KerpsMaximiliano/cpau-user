@@ -306,9 +306,9 @@
           <div *ngFor="let product of externalProduct" class="col-sm col-md-6 col-lg col-xl">
             <article>
               <h6 class="mt-0 mb-2 pb-1 border-bottom">
-                <a href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
+                <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
               </h6>
-              <a href="{{ product.url }}" target="_blank" class="link-ss" title="{{ product.tooltip }}">
+              <a href="{{ product.url }}"target="{{selectTarget(product.linkTarget)}}" class="link-ss" title="{{ product.tooltip }}">
                 <li class="media">
                   <div class="producto" [ngStyle]="{
                       backgroundColor: product.color,
