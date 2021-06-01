@@ -197,6 +197,8 @@ export class HomeComponent {
     });
   }
 
+// touch
+
   selectTarget(index){
     let target = '';
     switch (index) {
