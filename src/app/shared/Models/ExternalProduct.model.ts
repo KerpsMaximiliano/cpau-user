@@ -9,4 +9,5 @@ export interface ExternalProduct {
     tooltip: string;
     orden: number;
     id: number;
+    linkTarget: number;
   }
