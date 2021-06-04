@@ -23,6 +23,7 @@ export class TemplateTwoComponent implements OnInit, TemplateWrapper {
   constructor() { }
 
   ngOnInit() {
+    localStorage.setItem('tagSelected', this.data.filterApply);
     this.dataOld = Object.assign({}, this.data);
     this.breadCrumb = this.dataOld.breadCrumb;
 

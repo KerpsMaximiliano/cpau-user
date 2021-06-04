@@ -23,6 +23,7 @@ export class TemplateThreeComponent implements OnInit, TemplateWrapper, AfterVie
   constructor() { }
 
   ngOnInit() {
+    localStorage.setItem('tagSelected', this.data.filterApply);
     this.dataOld = Object.assign({}, this.data);
     this.breadCrumb = this.dataOld.breadCrumb;
     this.destacado = this.data.items.filter(x=> x.highlighted);

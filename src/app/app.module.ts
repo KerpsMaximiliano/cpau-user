@@ -45,6 +45,8 @@ import { PreregisterComponent } from "./login/preregister/preregister.component"
 import { RegisterMatriculadoComponent } from './login/register/register-matriculado/register-matriculado.component';
 import { RegisterNomatriculadoComponent } from './login/register/register-nomatriculado/register-nomatriculado.component'
 import { OwlModule } from 'ngx-owl-carousel';
+import { LoadingScreenInterceptor } from './_helpers/loading.interceptor.service';
+import { LoadingComponent } from './shared/components/loading/loading.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -92,12 +94,18 @@ import { OwlModule } from 'ngx-owl-carousel';
     PreregisterComponent,
     RegisterMatriculadoComponent,
     RegisterNomatriculadoComponent,
-    numberOnlyDirective
+    numberOnlyDirective,
+    LoadingComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingScreenInterceptor,
+      multi: true
+    }
   ],
   entryComponents: [
     TemplateOneComponent,
