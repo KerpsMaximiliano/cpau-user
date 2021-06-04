@@ -1,4 +1,4 @@
-﻿import { Component, Injector, ViewEncapsulation } from "@angular/core";
+﻿import { Component, Injector, ViewChild, ViewEncapsulation } from "@angular/core";
 import { User } from "@app/_models";
 import { AuthenticationService, ModalHomeService, SiteLoader } from "@app/_services";
 import { map } from "rxjs/operators";
@@ -11,7 +11,8 @@ import { ExternalProduct } from "@app/shared/Models/ExternalProduct.model";
 import { Router } from '@angular/router';
 import { ModalHome } from '@app/_models/modalHome.model';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { OwlCarousel } from "ngx-owl-carousel";
+declare var $: any;
 declare function recortarTituloPrincipal(text);
 declare function recortarSummary(text);
 declare function recortarTituloSecundario(text);
@@ -26,6 +27,7 @@ declare function recortarDescriptionProductoExterno(text);
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent {
+  @ViewChild('owlElementHome', {static: false}) owlElement: OwlCarousel;
   loading = false;
   currentUser: User;
   userFromApi: User;
@@ -33,6 +35,20 @@ export class HomeComponent {
   events: Events[];
   externalProduct: ExternalProduct[];
   modalContent: ModalHome;
+  load: boolean;
+  SlideOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 1000,
+    navText: ['', ''],
+    nav: false,
+    items: 4,
+    lazyLoad: true,
+    autoplay: true
+  };
   constructor(
     private siteLoader: SiteLoader,
     private authenticationService: AuthenticationService,
@@ -221,5 +237,42 @@ export class HomeComponent {
         break;
     }
     return target;
+  }
+
+  messagesRendered(isLast: boolean) {
+    if (isLast && !this.load) {
+      this.carrousel();
+    }
+  }
+
+  carrousel() {
+    this.load = true;
+    const owl = $('.owl-carousel .owl-carousel-home');
+    owl.owlCarousel({
+        loop: true,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
+        navSpeed: 1000,
+        nav: false,
+        items: this.externalProduct.length < 5 ? this.externalProduct.length : 4,
+        lazyLoad: true,
+        autoplay: true,
+        responsive: {
+          0: {
+              items: 1,
+              nav: false
+          },
+          600: {
+              items: 3,
+              nav: false
+          },
+          1000: {
+              items: this.externalProduct.length < 5 ? this.externalProduct.length : 4,
+              nav: false,
+          }
+        }
+    });
   }
 }
