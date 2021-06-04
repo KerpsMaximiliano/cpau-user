@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/models/contentsite.model';
 
@@ -11,14 +11,14 @@ declare function recortarSummaryListadoTemplateOne(text);
   styleUrls: ['./template-one.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class TemplateOneComponent implements OnInit, TemplateWrapper {
+export class TemplateOneComponent implements OnInit, TemplateWrapper, AfterViewInit {
 
   @Input() data: ContentSite;
   @Output() changeComponent: EventEmitter<any> = new EventEmitter<any>();
   dataOld: ContentSite;
   destacado: ItemsSite[];
   noDestacado: ItemsSite[];
-  breadCrumb:BreadCrumb[];
+  breadCrumb: BreadCrumb[];
 
   constructor() { }
 
@@ -38,10 +38,32 @@ export class TemplateOneComponent implements OnInit, TemplateWrapper {
     
     });
 
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
+  }
+
+  ngAfterViewInit(): void {
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
   }
 
   onSelectTag(tag) {
-    this.changeComponent(tag);
+    localStorage.setItem('tagSelected', tag);
+    this.changeComponent.emit(tag);
+  }
+
+  private resetStyeTags(tag) {
+    document.getElementsByName('categories').forEach(element => {
+      const el =document.getElementById('lbl'+ element.id.replace("#", ""));
+
+      if(el){
+        if(element.id.replace("#", "") === tag.replace("#", "")){
+          el.style.color = '#fff';
+          el.style.backgroundColor  = '#000000';
+        } else{
+          el.style.color = '#000000';
+          el.style.backgroundColor  = '#fff';
+        }
+      }
+    });
   }
 
   selectTarget(index){

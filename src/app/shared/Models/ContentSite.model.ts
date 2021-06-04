@@ -17,6 +17,7 @@ export interface ContentSite {
     contactEmail?:string | null;
     contactName?:string | null;
     content?: Content | null;
+    filterApply: string;
 }
 export interface ItemsSite {
 	displayOrder: number;

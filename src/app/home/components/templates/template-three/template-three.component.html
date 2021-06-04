@@ -19,7 +19,7 @@
     <!--Articles-->
     <section>
         <div class="row">
-            <input type="radio" id="todos" name="categories" value="todos" checked>
+            <input type="radio" id="todos" name="categories" value="todos">
             <input type="radio" id="{{currentTag}}" name="categories" value="{{currentTag}}" *ngFor="let currentTag of data.tags">
             <input type="radio" id="hoy" name="categories" value="hoy">
             <input type="radio" id="semana" name="categories" value="semana">
@@ -30,12 +30,12 @@
             <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosagenda">
                 <ol>
                     <li>
-                        <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="Todas">Todas</label>
+                        <label id="lbltodos" (click)="onSelectTag('todos')" for="todos" title="Todas">Todas</label>
                     </li>
                 </ol>
                 <ol>
                     <li *ngFor="let currentTag of data.tags">
-                        <label for="{{currentTag}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag}}">{{currentTag}}</label>
+                        <label for="{{currentTag}}" id="lbl{{currentTag}}" name="categories" (click)="onSelectTag('#' + currentTag)" title="{{currentTag}}">{{currentTag}}</label>
                     </li>
                 </ol>
             </div>

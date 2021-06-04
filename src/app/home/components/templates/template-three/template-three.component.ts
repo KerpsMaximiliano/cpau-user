@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/models/contentsite.model';
 
@@ -11,14 +11,14 @@ declare function recortarSummaryBeneficio(text);
   styleUrls: ['./template-three.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class TemplateThreeComponent implements OnInit, TemplateWrapper {
+export class TemplateThreeComponent implements OnInit, TemplateWrapper, AfterViewInit {
 
   @Input() data: ContentSite;
   @Output() changeComponent: EventEmitter<any> = new EventEmitter<any>();
   destacado: ItemsSite[];
   noDestacado: ItemsSite[];
   dataOld: ContentSite;
-  breadCrumb:BreadCrumb[];
+  breadCrumb: BreadCrumb[];
 
   constructor() { }
 
@@ -30,13 +30,20 @@ export class TemplateThreeComponent implements OnInit, TemplateWrapper {
     this.noDestacado.forEach(nota => {
       nota.title = recortarTituloBeneficio(nota.title);
       nota.summary = recortarSummaryBeneficio(nota.summary);
-      if (!nota.image || nota.image == null || nota.image.imageUrl == '') {
+      if (!nota.image || nota.image == null || nota.image.imageUrl === '') {
         nota.image = {imageUrl: DEAFULT_IMAGE};
       }
     });
+
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
+  }
+
+  ngAfterViewInit(): void {
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
   }
 
   onSelectTag(tag) {
+    localStorage.setItem('tagSelected', tag);
     this.resetStyeTags(tag);
     this.changeComponent.emit(tag);
   }
@@ -56,7 +63,7 @@ export class TemplateThreeComponent implements OnInit, TemplateWrapper {
       }
     });
   }
-  
+
   selectTarget(index){
     let target = '';
     switch (index) {

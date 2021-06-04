@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Injector, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, Input, Injector, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { templateServiceMap } from '@app/shared/abstract/factory/tempate.abstract';
 import { RenderDirective } from '@app/_directive/renderhost.directive';
@@ -33,13 +33,17 @@ import { AddTemplate } from '@app/shared/models/add-template';
       <!--CONTENEDOR: FIN	-->
     </body>`
 })
-export class MastertemplateComponent implements OnInit {
+export class MastertemplateComponent implements OnInit, OnDestroy {
   sectionName: string;
   injectable: AddTemplate;
   service: any;
   @ViewChild(RenderDirective, {static: true}) renderHost: RenderDirective;
 
   constructor(private _Activatedroute:ActivatedRoute,private route: ActivatedRoute, private injector: Injector, private componentFactoryResolver: ComponentFactoryResolver, private siteLoader: SiteLoader) { }
+
+  ngOnDestroy(): void {
+    localStorage.setItem('tagSelected', null);
+  }
 
   ngOnInit() {
     this.siteLoader.bannerSubject.next({main: false, section: true, news: false});
