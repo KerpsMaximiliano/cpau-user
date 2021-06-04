@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/models/contentsite.model';
 
@@ -14,6 +14,7 @@ declare function recortarSummaryBeneficio(text);
 export class TemplateThreeComponent implements OnInit, TemplateWrapper {
 
   @Input() data: ContentSite;
+  @Output() changeComponent: EventEmitter<any> = new EventEmitter<any>();
   destacado: ItemsSite[];
   noDestacado: ItemsSite[];
   dataOld: ContentSite;
@@ -37,15 +38,7 @@ export class TemplateThreeComponent implements OnInit, TemplateWrapper {
 
   onSelectTag(tag) {
     this.resetStyeTags(tag);
-    if(tag !== 'todos'){
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-    }
-    else{
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted)
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted)
-      this.data.items = this.dataOld.items;
-    }
+    this.changeComponent.emit(tag);
   }
   private resetStyeTags(tag) {
     document.getElementsByName('categories').forEach(element => {

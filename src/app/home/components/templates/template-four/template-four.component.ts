@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/models/contentsite.model';
 
@@ -14,6 +14,7 @@ declare function recortarSummaryListadoTemplateFour(text);
 export class TemplateFourComponent implements OnInit, TemplateWrapper {
 
   @Input() public data: ContentSite;
+  @Output() changeComponent: EventEmitter<any> = new EventEmitter<any>();
   dataOld: ContentSite;
   destacado: ItemsSite[];
   noDestacado: ItemsSite[];
@@ -36,15 +37,7 @@ export class TemplateFourComponent implements OnInit, TemplateWrapper {
 
   onSelectTag(tag) {
     this.resetStyeTags(tag);
-    if(tag !== 'todos'){
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-    }
-    else{
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted)
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted)
-      this.data.items = this.dataOld.items;
-    }
+    this.changeComponent.emit(tag);
   }
 
   private resetStyeTags(tag) {
@@ -57,7 +50,7 @@ export class TemplateFourComponent implements OnInit, TemplateWrapper {
           el.style.backgroundColor  = '#000000';
         }
         else{
-          el.style.color= '#000000';
+          el.style.color = '#000000';
           el.style.backgroundColor  = '#fff';
         }
       }
@@ -71,16 +64,16 @@ export class TemplateFourComponent implements OnInit, TemplateWrapper {
         target = '_self';
         break;
       case 1:
-        target = '_blank';        
+        target = '_blank';
         break;
       case 2:
-        target = '_parent';        
+        target = '_parent';
         break;
       case 3:
-        target = '_top';    
+        target = '_top';
         break;
       case 4:
-        target = '_search';    
+        target = '_search';
         break;
       default:
         break;

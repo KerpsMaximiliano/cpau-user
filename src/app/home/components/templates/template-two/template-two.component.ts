@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/models/contentsite.model';
-import { map } from 'rxjs/operators';
-
 
 declare function recortarTituloListado(text);
 declare function recortarSummaryListado(text);
@@ -16,11 +14,11 @@ declare function recortarSummaryListado(text);
 export class TemplateTwoComponent implements OnInit, TemplateWrapper {
 
   @Input() public data: ContentSite;
+  @Output() changeComponent: EventEmitter<any> = new EventEmitter<any>();
   dataOld: ContentSite;
   destacado: ItemsSite[];
   noDestacado: ItemsSite[];
   breadCrumb: BreadCrumb[];
-  
 
   constructor() { }
 
@@ -28,14 +26,14 @@ export class TemplateTwoComponent implements OnInit, TemplateWrapper {
     this.dataOld = Object.assign({}, this.data);
     this.breadCrumb = this.dataOld.breadCrumb;
 
-    this.destacado = this.data.items.filter(x=> x.highlighted);
-    this.noDestacado = this.data.items.filter(x=> !x.highlighted);
+    this.destacado = this.data.items.filter(x => x.highlighted);
+    this.noDestacado = this.data.items.filter(x => !x.highlighted);
 
     this.noDestacado.forEach(nota => {
       nota.title = recortarTituloListado(nota.title);
       nota.summary = recortarSummaryListado(nota.summary);
 
-      if (!nota.image || nota.image == null || nota.image.imageUrl == '') {
+      if (!nota.image || nota.image == null || nota.image.imageUrl === '') {
         nota.image = {imageUrl: DEAFULT_IMAGE};
       }
 
@@ -44,51 +42,42 @@ export class TemplateTwoComponent implements OnInit, TemplateWrapper {
 
   onSelectTag(tag) {
     this.resetStyeTags(tag);
-    if(tag !== 'todos'){
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-    }
-    else{
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted)
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted)
-      this.data.items = this.dataOld.items;
-    }
+    this.changeComponent.emit(tag);
   }
 
   private resetStyeTags(tag) {
     document.getElementsByName('categories').forEach(element => {
-      const el =document.getElementById('lbl'+element.id.replace("#", ""));
+      const el = document.getElementById('lbl' + element.id.replace('#', ''));
 
-      if(el){
-        if(element.id.replace("#", "") === tag.replace("#", "")){
-          el.style.color= '#fff';
+      if (el) {
+        if (element.id.replace('#', '') === tag.replace('#', '')) {
+          el.style.color = '#fff';
           el.style.backgroundColor  = '#000000';
-        }
-        else{
-          el.style.color= '#000000';
+        } else {
+          el.style.color = '#000000';
           el.style.backgroundColor  = '#fff';
         }
       }
     });
   }
 
-  selectTarget(index){
+  selectTarget(index) {
     let target = '';
     switch (index) {
       case 0:
         target = '_self';
         break;
       case 1:
-        target = '_blank';        
+        target = '_blank';
         break;
       case 2:
-        target = '_parent';        
+        target = '_parent';
         break;
       case 3:
-        target = '_top';    
+        target = '_top';
         break;
       case 4:
-        target = '_search';    
+        target = '_search';
         break;
       default:
         break;

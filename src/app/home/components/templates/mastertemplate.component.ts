@@ -6,6 +6,7 @@ import { SiteLoader } from '@app/_services';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ContentSite } from '@app/shared/models/contentsite.model';
+import { AddTemplate } from '@app/shared/models/add-template';
 
 @Component({
   selector: 'app-mastertemplate',
@@ -34,6 +35,8 @@ import { ContentSite } from '@app/shared/models/contentsite.model';
 })
 export class MastertemplateComponent implements OnInit {
   sectionName: string;
+  injectable: AddTemplate;
+  service: any;
   @ViewChild(RenderDirective, {static: true}) renderHost: RenderDirective;
 
   constructor(private _Activatedroute:ActivatedRoute,private route: ActivatedRoute, private injector: Injector, private componentFactoryResolver: ComponentFactoryResolver, private siteLoader: SiteLoader) { }
@@ -48,40 +51,28 @@ export class MastertemplateComponent implements OnInit {
     this.loadComponent();
   }
 
-  private getData(){
+  private getData() {
     const section = this._Activatedroute.snapshot.paramMap.get("namesection");
     this.sectionName = section;
   }
 
   private loadComponent() {
 
-    this.siteLoader.getSectionBySeName(this.sectionName).subscribe( section =>{
-      
+    this.siteLoader.getSectionBySeName(this.sectionName).subscribe( section => {
+
       if (section == null) {
         this.sectionName = "rutainvalida";
         this.loadComponent();
       }
-      
-      //Resolve AbstractFactory
-      const injectable = templateServiceMap.get(section.templateId);
+      // Resolve AbstractFactory
+      this.injectable = templateServiceMap.get(section.templateId);
       // Inject service
-      const service = this.injector.get(injectable.service);
-      // Calling method implemented by the correct interface
-      service.get(this.sectionName)
-      .pipe(
-        map(ret => ret as ContentSite),
-      ).subscribe(data => {
-        // if(data.childLists.length > 0) {
-        //   const injectable = templateServiceMap.get(0);
-        //   this.setDataInComponet(injectable.component, data);
-        // } else{
-          this.setDataInComponet(injectable.component, data);
-        // }
-       })
+      this.service = this.injector.get(this.injectable.service);
+      this.onChanges();
     });
   }
 
-  private setDataInComponet(component, data){
+  private setDataInComponet(component, data) {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
 
         const viewContainerRef = this.renderHost.viewContainerRef;
@@ -89,5 +80,20 @@ export class MastertemplateComponent implements OnInit {
 
         const componentRef = viewContainerRef.createComponent(componentFactory);
         (<TemplateWrapper>componentRef.instance).data = data;
+
+        (<TemplateWrapper>componentRef.instance).changeComponent.subscribe(val => this.onChanges(val));
+  }
+
+  onChangeComponent() {
+    //
+  }
+  onChanges(tag?: string) {
+      // Calling method implemented by the correct interface
+      this.service.get(this.sectionName, tag ? tag.replace('#', '') : tag)
+      .pipe(
+        map(ret => ret as ContentSite),
+      ).subscribe(data => {
+          this.setDataInComponet(this.injectable.component, data);
+      });
   }
 }

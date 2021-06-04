@@ -24,6 +24,7 @@
             <input type="radio" id="semana" name="categories" value="semana">
             <input type="radio" id="mes" name="categories" value="mes">
             <input type="radio" id="ano" name="categories" value="ano">
+            <input type="radio" id="2ano" name="categories" value="2ano">
             <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 flitrosagenda">
                 <ol>
                     <li>
@@ -42,6 +43,9 @@
                     </li>
                     <li>
                         <label (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
+                    </li>
+                    <li>
+                        <label (click)="onSelectTag('2ano')" for="2ano" title="Últimos Dos años">Últimos Dos años</label>
                     </li>
                 </ol>
             </div>
