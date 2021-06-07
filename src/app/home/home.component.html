@@ -305,9 +305,9 @@
         <aside >
           <div class="row" *ngIf="externalProduct; else loadingBlockExternalProduct">
               <div class="col-sm col-md col-lg col-xl ">
-                  <div class="container py-3" [ngClass]="{'sin-borde': externalProduct?.length == 0}">
+                  <div class="py-3" [ngClass]="{'sin-borde': externalProduct?.length == 0}">
                       <div class="top-content">
-                          <div class="container-fluid">
+                          <div class="">
                               <div class="carousel slide" data-ride="myCarousel">
                                   <div class="carousel-inner" role="listbox">
                                       <owl-carousel [options]="SlideOptions"
