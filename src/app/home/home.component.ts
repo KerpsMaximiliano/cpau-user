@@ -47,7 +47,25 @@ export class HomeComponent {
     nav: false,
     items: 4,
     lazyLoad: true,
-    autoplay: true
+    autoplay: true,
+    responsive: {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 3,
+          nav: false
+      },
+      1000: {
+          items: 4,
+          nav: false,
+      }
+    }
   };
   constructor(
     private siteLoader: SiteLoader,
@@ -264,6 +282,10 @@ export class HomeComponent {
               items: 1,
               nav: false
           },
+          400: {
+            items: 1,
+            nav: false
+          },
           600: {
               items: 3,
               nav: false
@@ -274,5 +296,24 @@ export class HomeComponent {
           }
         }
     });
+    this.SlideOptions.items = this.externalProduct.length < 5 ? this.externalProduct.length : 4;
+    this.SlideOptions.responsive = {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 3,
+          nav: false
+      },
+      1000: {
+          items: this.externalProduct.length < 5 ? this.externalProduct.length : 4,
+          nav: false,
+      }
+    };
   }
 }
