@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite, BreadCrumb } from '@app/shared/models/contentsite.model';
 
@@ -11,7 +11,7 @@ declare function recortarSummaryListadoTemplateFour(text);
   styleUrls: ['./template-five.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class TemplateFiveComponent implements OnInit, TemplateWrapper {
+export class TemplateFiveComponent implements OnInit, TemplateWrapper, AfterViewInit {
 
   @Input() public data: ContentSite;
   @Output() changeComponent: EventEmitter<any> = new EventEmitter<any>();
@@ -22,7 +22,12 @@ export class TemplateFiveComponent implements OnInit, TemplateWrapper {
 
   constructor() { }
 
+  ngAfterViewInit(): void {
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
+  }
+
   ngOnInit() {
+    localStorage.setItem('tagSelected', this.data.filterApply);
     this.dataOld = Object.assign({}, this.data);
     this.breadCrumb = this.dataOld.breadCrumb;
     this.destacado = this.data.items.filter(x=> x.highlighted);
@@ -33,9 +38,12 @@ export class TemplateFiveComponent implements OnInit, TemplateWrapper {
       nota.summary = recortarSummaryListadoTemplateFour(nota.summary);
     });
 
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
+
   }
 
   onSelectTag(tag) {
+    localStorage.setItem('tagSelected', tag);
     this.resetStyeTags(tag);
     this.changeComponent.emit(tag);
   }
