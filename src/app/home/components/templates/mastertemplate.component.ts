@@ -19,24 +19,30 @@ import { AddTemplate } from '@app/shared/models/add-template';
 
             <div class="row" >
               <!--Title-->
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <div [hidden]="!loading" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
 
-                  <ng-template render-host></ng-template>
+                  <ng-template  render-host >
+                  </ng-template>
 
                 </div>
               <!--Title:fin-->
+            </div>
+            <div class="container p-0 pt-2 pb-5 align-self-center " *ngIf="!loading"> 
+                <div class="loader ">Loading...</div>
             </div>
 
           <app-publicity-home></app-publicity-home>
           <app-footer></app-footer>
       </div>
       <!--CONTENEDOR: FIN	-->
-    </body>`
+    </body>`,
+  styleUrls: ['./mastertemplate.component.css'],
 })
 export class MastertemplateComponent implements OnInit, OnDestroy {
   sectionName: string;
   injectable: AddTemplate;
   service: any;
+  loading: boolean;
   @ViewChild(RenderDirective, {static: true}) renderHost: RenderDirective;
 
   constructor(private _Activatedroute:ActivatedRoute,private route: ActivatedRoute, private injector: Injector, private componentFactoryResolver: ComponentFactoryResolver, private siteLoader: SiteLoader) { }
@@ -63,7 +69,7 @@ export class MastertemplateComponent implements OnInit, OnDestroy {
   private loadComponent() {
 
     this.siteLoader.getSectionBySeName(this.sectionName).subscribe( section => {
-
+      this.loading = true;
       if (section == null) {
         this.sectionName = "rutainvalida";
         this.loadComponent();
@@ -77,26 +83,30 @@ export class MastertemplateComponent implements OnInit, OnDestroy {
   }
 
   private setDataInComponet(component, data) {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+    if (this.renderHost) {
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
 
-        const viewContainerRef = this.renderHost.viewContainerRef;
-        viewContainerRef.clear();
+      const viewContainerRef = this.renderHost.viewContainerRef;
+      viewContainerRef.clear();
 
-        const componentRef = viewContainerRef.createComponent(componentFactory);
-        (<TemplateWrapper>componentRef.instance).data = data;
+      const componentRef = viewContainerRef.createComponent(componentFactory);
+      (<TemplateWrapper>componentRef.instance).data = data;
 
-        (<TemplateWrapper>componentRef.instance).changeComponent.subscribe(val => this.onChanges(val));
+      (<TemplateWrapper>componentRef.instance).changeComponent.subscribe(val => this.onChanges(val));
+    }
   }
 
   onChangeComponent() {
     //
   }
   onChanges(tag?: string) {
+      this.loading = false;
       // Calling method implemented by the correct interface
       this.service.get(this.sectionName, tag ? tag.replace('#', '') : tag)
       .pipe(
         map(ret => ret as ContentSite),
       ).subscribe(data => {
+          this.loading = true;
           this.setDataInComponet(this.injectable.component, data);
       });
   }
