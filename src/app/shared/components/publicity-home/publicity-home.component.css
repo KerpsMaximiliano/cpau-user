@@ -68,3 +68,6 @@
 .margenes-banner {
   margin: 0 3%;
 }
+::ng-deep.owl-stage {
+  margin: auto;
+}

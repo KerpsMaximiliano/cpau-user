@@ -12,7 +12,7 @@ export class PublicityHomeComponent implements OnInit {
   banners: any[] = [];
   load: boolean;
   SlideOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
@@ -22,7 +22,25 @@ export class PublicityHomeComponent implements OnInit {
     nav: false,
     items: 4,
     lazyLoad: true,
-    autoplay: true
+    autoplay: true,
+    responsive: {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 3,
+          nav: false
+      },
+      1000: {
+          items: 4,
+          nav: false,
+      }
+    }
   };
 
   constructor(private siteLoad: SiteLoader) {
@@ -31,7 +49,9 @@ export class PublicityHomeComponent implements OnInit {
 
   messagesRendered(isLast: boolean) {
     if (isLast && !this.load) {
-      this.carrousel();
+      if (this.banners.length > 4) {
+        this.carrousel();
+      }
     }
   }
 
@@ -64,6 +84,27 @@ export class PublicityHomeComponent implements OnInit {
           }
         }
     });
+
+    this.SlideOptions.items =  4;
+    this.SlideOptions.loop =  true;
+    this.SlideOptions.responsive = {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 3,
+          nav: false
+      },
+      1000: {
+          items: 4,
+          nav: false,
+      }
+    };
   }
 
   ngOnInit() {

@@ -37,7 +37,7 @@ export class HomeComponent {
   modalContent: ModalHome;
   load: boolean;
   SlideOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
@@ -259,7 +259,9 @@ export class HomeComponent {
 
   messagesRendered(isLast: boolean) {
     if (isLast && !this.load) {
-      this.carrousel();
+      if (this.externalProduct.length > 4) {
+        this.carrousel();
+      }
     }
   }
 
@@ -274,7 +276,7 @@ export class HomeComponent {
         dots: false,
         navSpeed: 1000,
         nav: false,
-        items: this.externalProduct.length < 5 ? this.externalProduct.length : 4,
+        items: 4,
         lazyLoad: true,
         autoplay: true,
         responsive: {
@@ -283,20 +285,17 @@ export class HomeComponent {
               nav: false
           },
           400: {
-            items: 1,
+            items: 3,
             nav: false
           },
-          600: {
-              items: 3,
-              nav: false
-          },
           1000: {
-              items: this.externalProduct.length < 5 ? this.externalProduct.length : 4,
+              items: 4,
               nav: false,
           }
         }
     });
-    this.SlideOptions.items = this.externalProduct.length < 5 ? this.externalProduct.length : 4;
+    this.SlideOptions.items = 4;
+    this.SlideOptions.loop = true;
     this.SlideOptions.responsive = {
       0: {
           items: 1,
@@ -311,7 +310,7 @@ export class HomeComponent {
           nav: false
       },
       1000: {
-          items: this.externalProduct.length < 5 ? this.externalProduct.length : 4,
+          items: 4,
           nav: false,
       }
     };
