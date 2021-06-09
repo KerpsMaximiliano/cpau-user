@@ -27,7 +27,7 @@ import { AddTemplate } from '@app/shared/models/add-template';
                 </div>
               <!--Title:fin-->
             </div>
-            <div class="container p-0 pt-2 pb-5 align-self-center " *ngIf="!loading"> 
+            <div class="container p-0 pt-2 pb-5 align-self-center " *ngIf="!loading">
                 <div class="loader ">Loading...</div>
             </div>
 

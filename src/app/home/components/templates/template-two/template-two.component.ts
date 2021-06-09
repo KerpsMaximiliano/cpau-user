@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/models/contentsite.model';
 
@@ -11,7 +11,7 @@ declare function recortarSummaryListado(text);
   styleUrls: ['./template-two.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class TemplateTwoComponent implements OnInit, TemplateWrapper {
+export class TemplateTwoComponent implements OnInit, TemplateWrapper, AfterViewInit {
 
   @Input() public data: ContentSite;
   @Output() changeComponent: EventEmitter<any> = new EventEmitter<any>();
@@ -21,6 +21,10 @@ export class TemplateTwoComponent implements OnInit, TemplateWrapper {
   breadCrumb: BreadCrumb[];
 
   constructor() { }
+
+  ngAfterViewInit(): void {
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
+  }
 
   ngOnInit() {
     localStorage.setItem('tagSelected', this.data.filterApply);
@@ -39,9 +43,12 @@ export class TemplateTwoComponent implements OnInit, TemplateWrapper {
       }
 
     });
+
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
   }
 
   onSelectTag(tag) {
+    localStorage.setItem('tagSelected', tag);
     this.resetStyeTags(tag);
     this.changeComponent.emit(tag);
   }
