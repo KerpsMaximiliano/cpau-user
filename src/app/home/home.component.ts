@@ -259,9 +259,7 @@ export class HomeComponent {
 
   messagesRendered(isLast: boolean) {
     if (isLast && !this.load) {
-      if (this.externalProduct.length > 4) {
-        this.carrousel();
-      }
+      this.carrousel();
     }
   }
 
@@ -269,7 +267,7 @@ export class HomeComponent {
     this.load = true;
     const owl = $('.owl-carousel .owl-carousel-home');
     owl.owlCarousel({
-        loop: true,
+        loop: this.externalProduct.length > 4,
         mouseDrag: false,
         touchDrag: false,
         pullDrag: false,
@@ -295,7 +293,7 @@ export class HomeComponent {
         }
     });
     this.SlideOptions.items = 4;
-    this.SlideOptions.loop = true;
+    this.SlideOptions.loop = this.externalProduct.length > 4;
     this.SlideOptions.responsive = {
       0: {
           items: 1,
