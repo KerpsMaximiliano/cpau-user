@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite, BreadCrumb } from '@app/shared/models/contentsite.model';
 
@@ -11,9 +11,10 @@ declare function recortarSummaryListadoTemplateFour(text);
   styleUrls: ['./template-five.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class TemplateFiveComponent implements OnInit, TemplateWrapper {
+export class TemplateFiveComponent implements OnInit, TemplateWrapper, AfterViewInit {
 
   @Input() public data: ContentSite;
+  @Output() changeComponent: EventEmitter<any> = new EventEmitter<any>();
   dataOld: ContentSite;
   destacado: ItemsSite[];
   noDestacado: ItemsSite[];
@@ -21,7 +22,12 @@ export class TemplateFiveComponent implements OnInit, TemplateWrapper {
 
   constructor() { }
 
+  ngAfterViewInit(): void {
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
+  }
+
   ngOnInit() {
+    localStorage.setItem('tagSelected', this.data.filterApply);
     this.dataOld = Object.assign({}, this.data);
     this.breadCrumb = this.dataOld.breadCrumb;
     this.destacado = this.data.items.filter(x=> x.highlighted);
@@ -32,19 +38,14 @@ export class TemplateFiveComponent implements OnInit, TemplateWrapper {
       nota.summary = recortarSummaryListadoTemplateFour(nota.summary);
     });
 
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
+
   }
 
   onSelectTag(tag) {
+    localStorage.setItem('tagSelected', tag);
     this.resetStyeTags(tag);
-    if(tag !== 'todos'){
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-    }
-    else{
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted)
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted)
-      this.data.items = this.dataOld.items;
-    }
+    this.changeComponent.emit(tag);
   }
 
   private resetStyeTags(tag) {

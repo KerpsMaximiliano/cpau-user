@@ -19,29 +19,33 @@
     <!--Articles-->
     <section>
         <div class="row">
-            <input type="radio" id="todos" name="categories" value="todos" checked>
+            <input type="radio" id="todos" name="categories" value="todos">
             <input type="radio" id="hoy" name="categories" value="hoy">
             <input type="radio" id="semana" name="categories" value="semana">
             <input type="radio" id="mes" name="categories" value="mes">
             <input type="radio" id="ano" name="categories" value="ano">
+            <input type="radio" id="2ano" name="categories" value="2ano">
             <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 flitrosagenda">
                 <ol>
                     <li>
-                        <label (click)="onSelectTag('todos')" for="todos" title="Todas">Todas</label>
+                        <label id="lbltodos" (click)="onSelectTag('todos')" for="todos" title="Todas">Todas</label>
                     </li>
                 </ol>
                 <ol>
                     <li>
-                        <label (click)="onSelectTag('hoy')" for="hoy" title="Hoy">Hoy</label>
+                        <label id="lblhoy" (click)="onSelectTag('hoy')" for="hoy" title="Hoy">Hoy</label>
                     </li>
                     <li>
-                        <label (click)="onSelectTag('semana')" for="semana" title="Esta semana">Esta semana</label>
+                        <label id="lblsemana" (click)="onSelectTag('semana')" for="semana" title="Esta semana">Esta semana</label>
                     </li>
                     <li>
-                        <label (click)="onSelectTag('mes')" for="mes" title="Este Mes">Este Mes</label>
+                        <label id="lblmes" (click)="onSelectTag('mes')" for="mes" title="Este Mes">Este Mes</label>
                     </li>
                     <li>
-                        <label (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
+                        <label id="lblano" (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
+                    </li>
+                    <li>
+                        <label id="lbl2ano" (click)="onSelectTag('2ano')" for="2ano" title="Últimos Dos años">Últimos Dos años</label>
                     </li>
                 </ol>
             </div>

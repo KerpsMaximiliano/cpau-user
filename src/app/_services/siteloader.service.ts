@@ -24,8 +24,10 @@ export class SiteLoader implements ITemplate {
             .pipe(distinctUntilChanged())
     }
 
-    public get(sectionName): Observable<any> {
-        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/ListContentBySection?sectionName=${sectionName}&onlyBaseInfo=false`).pipe(distinctUntilChanged());
+    public get(sectionName, tag: string = ''): Observable<any> {
+        let params = new HttpParams().set('nocache', 'true');
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/ListContentBySection?sectionName=${sectionName}&onlyBaseInfo=false&filterTag=${tag}`, { params: params })
+        .pipe(distinctUntilChanged());
     }
 
     public getFullContent(id): Observable<any> {
