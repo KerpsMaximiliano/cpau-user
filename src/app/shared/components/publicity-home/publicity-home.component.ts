@@ -12,7 +12,7 @@ export class PublicityHomeComponent implements OnInit {
   banners: any[] = [];
   load: boolean;
   SlideOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
@@ -22,7 +22,25 @@ export class PublicityHomeComponent implements OnInit {
     nav: false,
     items: 4,
     lazyLoad: true,
-    autoplay: true
+    autoplay: true,
+    responsive: {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 3,
+          nav: false
+      },
+      1000: {
+          items: 4,
+          nav: false,
+      }
+    }
   };
 
   constructor(private siteLoad: SiteLoader) {
@@ -31,7 +49,7 @@ export class PublicityHomeComponent implements OnInit {
 
   messagesRendered(isLast: boolean) {
     if (isLast && !this.load) {
-      this.carrousel();
+        this.carrousel();
     }
   }
 
@@ -39,14 +57,14 @@ export class PublicityHomeComponent implements OnInit {
     this.load = true;
     const owl = $('.owl-carousel');
     owl.owlCarousel({
-        loop: true,
+        loop: this.banners.length > 4,
         mouseDrag: false,
         touchDrag: false,
         pullDrag: false,
         dots: false,
         navSpeed: 1000,
         nav: false,
-        items: this.banners.length < 5 ? this.banners.length : 4,
+        items: 4,
         lazyLoad: true,
         autoplay: true,
         responsive: {
@@ -59,11 +77,32 @@ export class PublicityHomeComponent implements OnInit {
               nav: false
           },
           1000: {
-              items: this.banners.length < 5 ? this.banners.length : 4,
+              items: 4,
               nav: false,
           }
         }
     });
+
+    this.SlideOptions.items =  4;
+    this.SlideOptions.loop =  this.banners.length > 4;
+    this.SlideOptions.responsive = {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 3,
+          nav: false
+      },
+      1000: {
+          items: 4,
+          nav: false,
+      }
+    };
   }
 
   ngOnInit() {

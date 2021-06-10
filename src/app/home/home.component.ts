@@ -38,7 +38,7 @@ export class HomeComponent {
   modalContent: ModalHome;
   load: boolean;
   SlideOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
@@ -48,7 +48,25 @@ export class HomeComponent {
     nav: false,
     items: 4,
     lazyLoad: true,
-    autoplay: true
+    autoplay: true,
+    responsive: {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 3,
+          nav: false
+      },
+      1000: {
+          items: 4,
+          nav: false,
+      }
+    }
   };
   constructor(
     private siteLoader: SiteLoader,
@@ -140,53 +158,12 @@ export class HomeComponent {
       .pipe(
         map((ret) => ret as ExternalProduct[]),
         map((ret) => {
-          if (ret != undefined) {
-            ret[0] != undefined && ret[0].title != undefined
-              ? (ret[0].title = recortarTituloProductoExterno(ret[0].title))
-              : false;
-            ret[1] != undefined && ret[1].title != undefined
-              ? (ret[1].title = recortarTituloProductoExterno(ret[1].title))
-              : false;
-            ret[2] != undefined && ret[2].title != undefined
-              ? (ret[2].title = recortarTituloProductoExterno(ret[2].title))
-              : false;
-            ret[3] != undefined && ret[3].title != undefined
-              ? (ret[3].title = recortarTituloProductoExterno(ret[3].title))
-              : false;
-
-            ret[0] != undefined && ret[0].header != undefined
-              ? (ret[0].header = recortarHeaderProductoExterno(ret[0].header))
-              : false;
-            ret[1] != undefined && ret[1].header != undefined
-              ? (ret[1].header = recortarHeaderProductoExterno(ret[1].header))
-              : false;
-            ret[2] != undefined && ret[2].header != undefined
-              ? (ret[2].header = recortarHeaderProductoExterno(ret[2].header))
-              : false;
-            ret[3] != undefined && ret[3].header != undefined
-              ? (ret[3].header = recortarHeaderProductoExterno(ret[3].header))
-              : false;
-
-            ret[0] != undefined && ret[0].description != undefined
-              ? (ret[0].description = recortarDescriptionProductoExterno(
-                ret[0].description
-              ))
-              : false;
-            ret[1] != undefined && ret[1].description != undefined
-              ? (ret[1].description = recortarDescriptionProductoExterno(
-                ret[1].description
-              ))
-              : false;
-            ret[2] != undefined && ret[2].description != undefined
-              ? (ret[2].description = recortarDescriptionProductoExterno(
-                ret[2].description
-              ))
-              : false;
-            ret[3] != undefined && ret[3].description != undefined
-              ? (ret[3].description = recortarDescriptionProductoExterno(
-                ret[3].description
-              ))
-              : false;
+          if (ret !== undefined) {
+            ret.forEach(r => {
+              r.title = r.title !== undefined ? recortarTituloProductoExterno(r.title) : undefined;
+              r.header = r.header !== undefined ? recortarHeaderProductoExterno(r.header) : undefined;
+              r.description = r.description !== undefined ? recortarDescriptionProductoExterno(r.description) : undefined;
+            });
           }
 
           return ret;
@@ -196,7 +173,7 @@ export class HomeComponent {
         this.externalProduct = data;
       });
 
-    //modal
+    // modal
 
     this.modalHomeService.getTodayModal().pipe(
       map(x => x.data)
@@ -248,14 +225,14 @@ export class HomeComponent {
     this.load = true;
     const owl = $('.owl-carousel .owl-carousel-home');
     owl.owlCarousel({
-        loop: true,
+        loop: this.externalProduct.length > 4,
         mouseDrag: false,
         touchDrag: false,
         pullDrag: false,
         dots: false,
         navSpeed: 1000,
         nav: false,
-        items: this.externalProduct.length < 5 ? this.externalProduct.length : 4,
+        items: 4,
         lazyLoad: true,
         autoplay: true,
         responsive: {
@@ -263,15 +240,35 @@ export class HomeComponent {
               items: 1,
               nav: false
           },
-          600: {
-              items: 3,
-              nav: false
+          400: {
+            items: 3,
+            nav: false
           },
           1000: {
-              items: this.externalProduct.length < 5 ? this.externalProduct.length : 4,
+              items: 4,
               nav: false,
           }
         }
     });
+    this.SlideOptions.items = 4;
+    this.SlideOptions.loop = this.externalProduct.length > 4;
+    this.SlideOptions.responsive = {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 3,
+          nav: false
+      },
+      1000: {
+          items: 4,
+          nav: false,
+      }
+    };
   }
 }
