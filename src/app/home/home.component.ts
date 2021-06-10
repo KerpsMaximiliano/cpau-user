@@ -4,6 +4,7 @@ import { AuthenticationService, ModalHomeService, SiteLoader } from "@app/_servi
 import { map } from "rxjs/operators";
 import {
   ContentSite,
+  ItemsSite,
   DEAFULT_IMAGE,
 } from "@app/shared/models/contentsite.model";
 import { Events } from "@app/shared/Models/Events.model";
@@ -31,7 +32,7 @@ export class HomeComponent {
   loading = false;
   currentUser: User;
   userFromApi: User;
-  contentSite: ContentSite;
+  contentSite: ItemsSite[];
   events: Events[];
   externalProduct: ExternalProduct[];
   modalContent: ModalHome;
@@ -90,36 +91,34 @@ export class HomeComponent {
       news: false,
     });
     this.siteLoader
-      .getNews(sectionName, cantMax)
+      .getNews()
       .pipe(
-        map((ret) => ret as ContentSite),
+        map((ret) => ret as ItemsSite[]),
         map((ret) => {
-          if (ret.items != undefined) {
-            ret.items[0] != undefined && ret.items[0].title != undefined
-              ? (ret.items[0].title = recortarTituloPrincipal(
-                ret.items[0].title
+          if (ret != undefined) {
+            ret[0] != undefined && ret[0].title != undefined
+              ? (ret[0].title = recortarTituloPrincipal(
+                ret[0].title
               ))
               : false;
-            ret.items[0] != undefined && ret.items[0].summary != undefined
-              ? (ret.items[0].summary = recortarSummary(ret.items[0].summary))
+            ret[0] != undefined && ret[0].summary != undefined
+              ? (ret[0].summary = recortarSummary(ret[0].summary))
               : false;
 
             for (let ind = 1; ind < 7; ind++) {
-              ret.items[ind] != undefined && ret.items[ind].title != undefined
-                ? (ret.items[ind].title = recortarTituloSecundario(
-                  ret.items[ind].title
+              ret[ind] != undefined && ret[ind].title != undefined
+                ? (ret[ind].title = recortarTituloSecundario(
+                  ret[ind].title
                 ))
                 : false;
+                if (!ret[ind].image ||
+                  ret[ind].image == null ||
+                  ret[ind].image.imageUrl === ''
+                ) {
+                  ret[ind].image = { imageUrl: DEAFULT_IMAGE };
+                }
             }
-            let max = ret.items.length >= 7 ? 7 : ret.items.length - 1;
-            for (let index = 0; index < max; index++) {
-              if (!ret.items[index].image ||
-                ret.items[index].image == null ||
-                ret.items[index].image.imageUrl === ''
-              ) {
-                ret.items[index].image = { imageUrl: DEAFULT_IMAGE };
-              }
-            }
+            
           }
 
           return ret;
