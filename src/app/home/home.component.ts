@@ -58,7 +58,7 @@ export class HomeComponent {
         nav: false
       },
       600: {
-          items: 3,
+          items: 2,
           nav: false
       },
       1000: {
@@ -242,7 +242,7 @@ export class HomeComponent {
               nav: false
           },
           400: {
-            items: 3,
+            items: 2,
             nav: false
           },
           1000: {
@@ -263,7 +263,7 @@ export class HomeComponent {
         nav: false
       },
       600: {
-          items: 3,
+          items: 2,
           nav: false
       },
       1000: {
