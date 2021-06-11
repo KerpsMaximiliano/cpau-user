@@ -31,16 +31,6 @@
                         <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="Todas">Todas</label>
                     </li>
                 </ol>
-                <ol *ngIf="data.tags.length > 0">
-                    <li>
-                        <div class="pl-1 pb-1">
-                            <h6>ETIQUETAS</h6>
-                        </div>
-                    </li>
-                    <li *ngFor="let currentTag of data.tags">
-                        <label for="{{currentTag}}" id="lbl{{currentTag}}" name="categories" (click)="onSelectTag('#' + currentTag)" title="{{currentTag}}">{{currentTag}}</label>
-                    </li>
-                </ol>
                 <ol>
                     <li>
                         <div class="p-1 ">
@@ -54,15 +44,26 @@
                         <label id="lblsemana" (click)="onSelectTag('semana')" for="semana" title="Esta semana">Esta semana</label>
                     </li>
                     <li>
-                        <label id="lblmes" (click)="onSelectTag('mes')" for="mes" title="Este Mes">Este Mes</label>
+                        <label id="lblmes" (click)="onSelectTag('mes')" for="mes" title="Este mes">Este mes</label>
                     </li>
                     <li>
                         <label id="lblano" (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
                     </li>
                     <li>
-                        <label id="lbl2ano" (click)="onSelectTag('2ano')" for="2ano" title="Últimos Dos años">Últimos Dos años</label>
+                        <label id="lbl2ano" (click)="onSelectTag('2ano')" for="2ano" title="Últimos dos años">Últimos dos años</label>
                     </li>
                 </ol>
+                <ol *ngIf="data.tags.length > 0">
+                    <li>
+                        <div class="pl-1 pb-1">
+                            <h6>ETIQUETAS</h6>
+                        </div>
+                    </li>
+                    <li *ngFor="let currentTag of data.tags">
+                        <label for="{{currentTag}}" id="lbl{{currentTag}}" name="categories" (click)="onSelectTag('#' + currentTag)" title="{{currentTag}}">{{currentTag}}</label>
+                    </li>
+                </ol>
+                
             </div>
             <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts ">
                 <ul class="list-unstyled">

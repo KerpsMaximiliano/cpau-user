@@ -32,6 +32,28 @@
                         <label id="lbltodos" (click)="onSelectTag('todos')" for="todos" title="Todas">Todas</label>
                     </li>
                 </ol>
+                <ol>
+                    <li>
+                        <div class="pl-1 pb-1">
+                            <h6>FECHA</h6>
+                        </div>
+                    </li>
+                    <li>
+                        <label id="lblhoy" (click)="onSelectTag('hoy')" for="hoy" title="Hoy">Hoy</label>
+                    </li>
+                    <li>
+                        <label id="lblsemana" (click)="onSelectTag('semana')" for="semana" title="Esta semana">Esta semana</label>
+                    </li>
+                    <li>
+                        <label id="lblmes" (click)="onSelectTag('mes')" for="mes" title="Este mes">Este mes</label>
+                    </li>
+                    <li>
+                        <label id="lblano" (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
+                    </li>
+                    <li>
+                        <label id="lbl2ano" (click)="onSelectTag('2ano')" for="2ano" title="Últimos dos años">Últimos dos años</label>
+                    </li>
+                </ol>
                 <ol *ngIf="data.tags.length > 0">
                     <li>
                         <div class="pl-1 pb-1">
@@ -40,23 +62,6 @@
                     </li>
                     <li *ngFor="let currentTag of data.tags">
                         <label for="{{currentTag}}" id="lbl{{currentTag}}" name="categories" (click)="onSelectTag('#' + currentTag)" title="{{currentTag}}">{{currentTag}}</label>
-                    </li>
-                </ol>
-                <ol>
-                    <li>
-                        <label id="lblhoy" (click)="onSelectTag('hoy')" for="hoy" title="Hoy">Hoy</label>
-                    </li>
-                    <li>
-                        <label id="lblsemana" (click)="onSelectTag('semana')" for="semana" title="Esta semana">Esta semana</label>
-                    </li>
-                    <li>
-                        <label id="lblmes" (click)="onSelectTag('mes')" for="mes" title="Este Mes">Este Mes</label>
-                    </li>
-                    <li>
-                        <label id="lblano" (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
-                    </li>
-                    <li>
-                        <label id="lbl2ano" (click)="onSelectTag('2ano')" for="2ano" title="Últimos Dos años">Últimos Dos años</label>
                     </li>
                 </ol>
             </div>
