@@ -24,8 +24,10 @@ export class SiteLoader implements ITemplate {
             .pipe(distinctUntilChanged())
     }
 
-    public get(sectionName): Observable<any> {
-        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/ListContentBySection?sectionName=${sectionName}&onlyBaseInfo=false`).pipe(distinctUntilChanged());
+    public get(sectionName, tag: string = ''): Observable<any> {
+        let params = new HttpParams().set('nocache', 'true');
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/ListContentBySection?sectionName=${sectionName}&onlyBaseInfo=false&filterTag=${tag}`, { params: params })
+        .pipe(distinctUntilChanged());
     }
 
     public getFullContent(id): Observable<any> {
@@ -56,8 +58,8 @@ export class SiteLoader implements ITemplate {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetMenusExtProd`).pipe(distinctUntilChanged());
     }
 
-    getNews(sectionName, cant) {
-        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/ListContentBySection?sectionName=${sectionName}&cant=${cant}`).pipe(distinctUntilChanged());
+    getNews() {
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetUltimasSieteNoticias`).pipe(distinctUntilChanged());
     }
     getEvents() {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetNextFiveEvents`).pipe(distinctUntilChanged());
