@@ -13,6 +13,9 @@ import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { CheckboxListComponent } from '@app/shared/components/checkbox-list/checkbox-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingScreenInterceptor } from './shared/interceptor/loading.interceptor.service';
+import { LoadingComponent } from '@app/shared/components/loading/loading.component';
 @NgModule({
   declarations: [HomeComponent,
     MenuComponent,
@@ -20,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     ActionTableComponent,
     CheckboxListComponent,
-    FormErrorComponent],
+    FormErrorComponent,
+    LoadingComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,
@@ -33,7 +37,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [ActionTableComponent,
     CheckboxListComponent,
     FormErrorComponent,
-    NgbModule],
-
+    NgbModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingScreenInterceptor,
+      multi: true
+    }
+  ],
 })
 export class GestionModule { }
