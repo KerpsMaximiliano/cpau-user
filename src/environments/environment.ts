@@ -12,7 +12,7 @@ export const environment = {
     // apiUrl: 'https://cpauorgapi.azurewebsites.net',
     // oldSiteUrl: ''
     // storeUrl: 'https://cpau.org/store=length=4'
-    
+
     // production: true,
     // apiUrl: 'https://localhost:44348',
     // oldSiteUrl: ''

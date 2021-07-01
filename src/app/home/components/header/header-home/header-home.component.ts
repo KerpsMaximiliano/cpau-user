@@ -23,16 +23,15 @@ export class HeaderHomeComponent implements OnInit {
 
   authentication() {
     if (!this.isAuthenticated) {
-      this.router.navigate(["./login"]);
-      console.log("no esta logueado");
+      // this.router.navigate(["./login"]);
+      window.open('./institucional/login');
       return;
     }
 
     // window.location.href = `/Perfil?tkn=${
     //   JSON.parse(localStorage.getItem("currentUser")).token
     // }`;
-    this.router.navigate(["./gestion/home/perfil/identificacion"]);
-    //window.location.href = '/gestion/home/perfil/identificacion';
+    window.open('./gestion/home/perfil/identificacion');
     this.updateControllers();
   }
 

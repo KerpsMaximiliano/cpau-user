@@ -1,9 +1,10 @@
-﻿import { Component, Injector, ViewEncapsulation } from "@angular/core";
+﻿import { Component, Injector, ViewChild, ViewEncapsulation } from "@angular/core";
 import { User } from "@app/_models";
 import { AuthenticationService, ModalHomeService, SiteLoader } from "@app/_services";
 import { map } from "rxjs/operators";
 import {
   ContentSite,
+  ItemsSite,
   DEAFULT_IMAGE,
 } from "@app/shared/models/contentsite.model";
 import { Events } from "@app/shared/Models/Events.model";
@@ -11,7 +12,8 @@ import { ExternalProduct } from "@app/shared/Models/ExternalProduct.model";
 import { Router } from '@angular/router';
 import { ModalHome } from '@app/_models/modalHome.model';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { OwlCarousel } from "ngx-owl-carousel";
+declare var $: any;
 declare function recortarTituloPrincipal(text);
 declare function recortarSummary(text);
 declare function recortarTituloSecundario(text);
@@ -26,13 +28,46 @@ declare function recortarDescriptionProductoExterno(text);
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent {
+  @ViewChild('owlElementHome', {static: false}) owlElement: OwlCarousel;
   loading = false;
   currentUser: User;
   userFromApi: User;
-  contentSite: ContentSite;
+  contentSite: ItemsSite[];
   events: Events[];
   externalProduct: ExternalProduct[];
   modalContent: ModalHome;
+  load: boolean;
+  SlideOptions = {
+    loop: false,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 1000,
+    navText: ['', ''],
+    nav: false,
+    items: 4,
+    lazyLoad: true,
+    autoplay: true,
+    responsive: {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 2,
+          nav: false
+      },
+      1000: {
+          items: 4,
+          nav: false,
+      }
+    }
+  };
   constructor(
     private siteLoader: SiteLoader,
     private authenticationService: AuthenticationService,
@@ -74,36 +109,34 @@ export class HomeComponent {
       news: false,
     });
     this.siteLoader
-      .getNews(sectionName, cantMax)
+      .getNews()
       .pipe(
-        map((ret) => ret as ContentSite),
+        map((ret) => ret as ItemsSite[]),
         map((ret) => {
-          if (ret.items != undefined) {
-            ret.items[0] != undefined && ret.items[0].title != undefined
-              ? (ret.items[0].title = recortarTituloPrincipal(
-                ret.items[0].title
+          if (ret != undefined) {
+            ret[0] != undefined && ret[0].title != undefined
+              ? (ret[0].title = recortarTituloPrincipal(
+                ret[0].title
               ))
               : false;
-            ret.items[0] != undefined && ret.items[0].summary != undefined
-              ? (ret.items[0].summary = recortarSummary(ret.items[0].summary))
+            ret[0] != undefined && ret[0].summary != undefined
+              ? (ret[0].summary = recortarSummary(ret[0].summary))
               : false;
 
             for (let ind = 1; ind < 7; ind++) {
-              ret.items[ind] != undefined && ret.items[ind].title != undefined
-                ? (ret.items[ind].title = recortarTituloSecundario(
-                  ret.items[ind].title
+              ret[ind] != undefined && ret[ind].title != undefined
+                ? (ret[ind].title = recortarTituloSecundario(
+                  ret[ind].title
                 ))
                 : false;
+                if (!ret[ind].image ||
+                  ret[ind].image == null ||
+                  ret[ind].image.imageUrl === ''
+                ) {
+                  ret[ind].image = { imageUrl: DEAFULT_IMAGE };
+                }
             }
-            let max = ret.items.length >= 7 ? 7 : ret.items.length - 1;
-            for (let index = 0; index < max; index++) {
-              if (!ret.items[index].image ||
-                ret.items[index].image == null ||
-                ret.items[index].image.imageUrl === ''
-              ) {
-                ret.items[index].image = { imageUrl: DEAFULT_IMAGE };
-              }
-            }
+            
           }
 
           return ret;
@@ -125,53 +158,12 @@ export class HomeComponent {
       .pipe(
         map((ret) => ret as ExternalProduct[]),
         map((ret) => {
-          if (ret != undefined) {
-            ret[0] != undefined && ret[0].title != undefined
-              ? (ret[0].title = recortarTituloProductoExterno(ret[0].title))
-              : false;
-            ret[1] != undefined && ret[1].title != undefined
-              ? (ret[1].title = recortarTituloProductoExterno(ret[1].title))
-              : false;
-            ret[2] != undefined && ret[2].title != undefined
-              ? (ret[2].title = recortarTituloProductoExterno(ret[2].title))
-              : false;
-            ret[3] != undefined && ret[3].title != undefined
-              ? (ret[3].title = recortarTituloProductoExterno(ret[3].title))
-              : false;
-
-            ret[0] != undefined && ret[0].header != undefined
-              ? (ret[0].header = recortarHeaderProductoExterno(ret[0].header))
-              : false;
-            ret[1] != undefined && ret[1].header != undefined
-              ? (ret[1].header = recortarHeaderProductoExterno(ret[1].header))
-              : false;
-            ret[2] != undefined && ret[2].header != undefined
-              ? (ret[2].header = recortarHeaderProductoExterno(ret[2].header))
-              : false;
-            ret[3] != undefined && ret[3].header != undefined
-              ? (ret[3].header = recortarHeaderProductoExterno(ret[3].header))
-              : false;
-
-            ret[0] != undefined && ret[0].description != undefined
-              ? (ret[0].description = recortarDescriptionProductoExterno(
-                ret[0].description
-              ))
-              : false;
-            ret[1] != undefined && ret[1].description != undefined
-              ? (ret[1].description = recortarDescriptionProductoExterno(
-                ret[1].description
-              ))
-              : false;
-            ret[2] != undefined && ret[2].description != undefined
-              ? (ret[2].description = recortarDescriptionProductoExterno(
-                ret[2].description
-              ))
-              : false;
-            ret[3] != undefined && ret[3].description != undefined
-              ? (ret[3].description = recortarDescriptionProductoExterno(
-                ret[3].description
-              ))
-              : false;
+          if (ret !== undefined) {
+            ret.forEach(r => {
+              r.title = r.title !== undefined ? recortarTituloProductoExterno(r.title) : undefined;
+              r.header = r.header !== undefined ? recortarHeaderProductoExterno(r.header) : undefined;
+              r.description = r.description !== undefined ? recortarDescriptionProductoExterno(r.description) : undefined;
+            });
           }
 
           return ret;
@@ -181,7 +173,7 @@ export class HomeComponent {
         this.externalProduct = data;
       });
 
-    //modal
+    // modal
 
     this.modalHomeService.getTodayModal().pipe(
       map(x => x.data)
@@ -195,5 +187,88 @@ export class HomeComponent {
         document.getElementById('openModalButton').click();
       }
     });
+  }
+
+// touch
+
+  selectTarget(index){
+    let target = '';
+    switch (index) {
+      case 0:
+        target = '_self';
+        break;
+      case 1:
+        target = '_blank';        
+        break;
+      case 2:
+        target = '_parent';        
+        break;
+      case 3:
+        target = '_top';    
+        break;
+      case 4:
+        target = '_search';    
+        break;
+      default:
+        break;
+    }
+    return target;
+  }
+
+  messagesRendered(isLast: boolean) {
+    if (isLast && !this.load) {
+      this.carrousel();
+    }
+  }
+
+  carrousel() {
+    this.load = true;
+    const owl = $('.owl-carousel .owl-carousel-home');
+    owl.owlCarousel({
+        loop: this.externalProduct.length > 4,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
+        navSpeed: 1000,
+        nav: false,
+        items: 4,
+        lazyLoad: true,
+        autoplay: true,
+        responsive: {
+          0: {
+              items: 1,
+              nav: false
+          },
+          400: {
+            items: 2,
+            nav: false
+          },
+          1000: {
+              items: 4,
+              nav: false,
+          }
+        }
+    });
+    this.SlideOptions.items = 4;
+    this.SlideOptions.loop = this.externalProduct.length > 4;
+    this.SlideOptions.responsive = {
+      0: {
+          items: 1,
+          nav: false
+      },
+      400: {
+        items: 1,
+        nav: false
+      },
+      600: {
+          items: 2,
+          nav: false
+      },
+      1000: {
+          items: 4,
+          nav: false,
+      }
+    };
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
 import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/models/contentsite.model';
 
@@ -11,17 +11,19 @@ declare function recortarSummaryBeneficio(text);
   styleUrls: ['./template-three.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class TemplateThreeComponent implements OnInit, TemplateWrapper {
+export class TemplateThreeComponent implements OnInit, TemplateWrapper, AfterViewInit {
 
   @Input() data: ContentSite;
+  @Output() changeComponent: EventEmitter<any> = new EventEmitter<any>();
   destacado: ItemsSite[];
   noDestacado: ItemsSite[];
   dataOld: ContentSite;
-  breadCrumb:BreadCrumb[];
+  breadCrumb: BreadCrumb[];
 
   constructor() { }
 
   ngOnInit() {
+    localStorage.setItem('tagSelected', this.data.filterApply);
     this.dataOld = Object.assign({}, this.data);
     this.breadCrumb = this.dataOld.breadCrumb;
     this.destacado = this.data.items.filter(x=> x.highlighted);
@@ -29,23 +31,22 @@ export class TemplateThreeComponent implements OnInit, TemplateWrapper {
     this.noDestacado.forEach(nota => {
       nota.title = recortarTituloBeneficio(nota.title);
       nota.summary = recortarSummaryBeneficio(nota.summary);
-      if (!nota.image || nota.image == null || nota.image.imageUrl == '') {
+      if (!nota.image || nota.image == null || nota.image.imageUrl === '') {
         nota.image = {imageUrl: DEAFULT_IMAGE};
       }
     });
+
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
+  }
+
+  ngAfterViewInit(): void {
+    this.resetStyeTags(localStorage.getItem('tagSelected'));
   }
 
   onSelectTag(tag) {
+    localStorage.setItem('tagSelected', tag);
     this.resetStyeTags(tag);
-    if(tag !== 'todos'){
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted).filter(x=> x.tags.includes(tag) ||  x.categories.includes(tag))
-    }
-    else{
-      this.destacado = this.dataOld.items.filter(x=> x.highlighted)
-      this.noDestacado = this.dataOld.items.filter(x=> !x.highlighted)
-      this.data.items = this.dataOld.items;
-    }
+    this.changeComponent.emit(tag);
   }
   private resetStyeTags(tag) {
     document.getElementsByName('categories').forEach(element => {
@@ -63,7 +64,7 @@ export class TemplateThreeComponent implements OnInit, TemplateWrapper {
       }
     });
   }
-  
+
   selectTarget(index){
     let target = '';
     switch (index) {

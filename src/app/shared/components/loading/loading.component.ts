@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { LoadingScreenService } from '@app/gestion/shared/services/loading-screen.service';
+import { LoadingService } from '@app/shared/services/loading.service';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ export class LoadingComponent implements AfterViewInit, OnDestroy {
   loading = false;
   loadingSubscription: Subscription;
 
-  constructor(private loadingScreenService: LoadingScreenService,
+  constructor(private loadingScreenService: LoadingService,
               private _elmRef: ElementRef,
               private _changeDetectorRef: ChangeDetectorRef) {
   }

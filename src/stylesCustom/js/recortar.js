@@ -1,12 +1,12 @@
-$.fn.textWidth = function(text, font) {
-    if (!$.fn.textWidth.fakeEl) {
-        $.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+textWidth = function(text, font) {
+    if (!textWidth.fakeEl) {
+        textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
     }
-    $.fn.textWidth.fakeEl.text(text || this.val() || this.text()).css('font', font || this.css('font'));
-    return $.fn.textWidth.fakeEl.width();
+    textWidth.fakeEl.text(text || this.val() || this.text()).css('font', font || this.css('font'));
+    return textWidth.fakeEl.width();
 };
 
-$.fn.recortar2 = function(text, font, lineWidth) {
+recortar2 = function(text, font, lineWidth) {
     if (text != undefined && text != null) {
     
         lineWidth = lineWidth - 45;
@@ -24,7 +24,7 @@ $.fn.recortar2 = function(text, font, lineWidth) {
             caracter = text.charAt(posText);
             
             // consulto el largo en px
-            var sizeChar = $.fn.textWidth(caracter, font)
+            var sizeChar = textWidth(caracter, font)
             
             // Incremento el acumulado
             widthacumuladoTotal = widthacumuladoTotal + sizeChar;
@@ -50,11 +50,11 @@ $.fn.recortar2 = function(text, font, lineWidth) {
 };
 
 function recortarTituloPrincipal(text) {
-    return $.fn.recortar2(text, '23pt sans-serif', 800);
+    return recortar2(text, '23pt sans-serif', 800);
 }
 
 function recortarTituloSecundario(text) {
-    return $.fn.recortar2(text, '20px Roboto', 950);
+    return recortar2(text, '20px Roboto', 950);
 }
 
 function recortarSummary(text) {
@@ -62,19 +62,19 @@ function recortarSummary(text) {
 }
 
 function recortarTituloProductoExterno(text) {
-    return $.fn.recortar2(text, '16px Roboto', 243);
+    return recortar2(text, '16px Roboto', 243);
 }
 
 function recortarHeaderProductoExterno(text) {
-    return $.fn.recortar2(text, '20px Roboto', 460);
+    return recortar2(text, '20px Roboto', 460);
 }
 
 function recortarDescriptionProductoExterno(text) {
-    return $.fn.recortar2(text, '16px Roboto', 1000);
+    return recortar2(text, '16px Roboto', 1000);
 }
 
 function recortarTituloListado(text)  {
-    return $.fn.recortar2(text, '26px Roboto', 800);
+    return recortar2(text, '26px Roboto', 800);
 }
 
 function recortarSummaryListado(text) {
@@ -82,7 +82,7 @@ function recortarSummaryListado(text) {
 }
 
 function recortarTituloListadoTemplateOne(text)  {
-    return $.fn.recortar2(text, '26px sans-serif', 630);
+    return recortar2(text, '26px sans-serif', 630);
 }
 
 function recortarSummaryListadoTemplateOne(text) {
@@ -90,7 +90,7 @@ function recortarSummaryListadoTemplateOne(text) {
 }
 
 function recortarTituloBeneficio(text)  {
-    return $.fn.recortar2(text, '26px sans-serif', 395);
+    return recortar2(text, '26px sans-serif', 395);
 }
 
 function recortarSummaryBeneficio(text) {
@@ -98,7 +98,7 @@ function recortarSummaryBeneficio(text) {
 }
 
 function recortarTituloListadoTemplateFour(text)  {
-    return $.fn.recortar2(text, '26px sans-serif', 1300);
+    return recortar2(text, '26px sans-serif', 1300);
 }
 
 function recortarSummaryListadoTemplateFour(text) {
@@ -121,7 +121,7 @@ function reemplazoCaracteres(text, tipografia, size) {
         modified = modified.replace(new RegExp('&Oacute;', "g"),'Ó');
         modified = modified.replace(new RegExp('&Uacute;', "g"),'Ú');
     
-        modified = $.fn.recortar2(modified, tipografia, size);
+        modified = recortar2(modified, tipografia, size);
 
         modified = modified.replace(new RegExp('á', "g"),'&aacute;');
         modified = modified.replace(new RegExp('é', "g"),'&eacute;');

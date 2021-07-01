@@ -16,6 +16,8 @@ declare function scrollup();
 })
 export class NotePreviewComponent implements OnInit {
   data: ContentSite;
+  private fragment: string;
+
   constructor(private _router: Router,private _Activatedroute:ActivatedRoute, private siteLoader: SiteLoader,private renderer2: Renderer2,
     @Inject(DOCUMENT) private _document
     ) { }
@@ -36,9 +38,18 @@ export class NotePreviewComponent implements OnInit {
       }
     });
 
+    this._Activatedroute.fragment.subscribe(fragment => { this.fragment = fragment; });
+
     const id = this._Activatedroute.snapshot.paramMap.get("id");
     this.loadContent(id);
-    scrollup();
+    // scrollup();
+  }
+
+  ancla(): void {
+    try {
+      const element = document.getElementById( this.fragment);
+      if (element) { element.scrollIntoView(true); }
+    } catch (e) { }
   }
 
   loadNextScript() {
@@ -48,19 +59,21 @@ export class NotePreviewComponent implements OnInit {
     }
 
   loadContent(id) {
-    //this.siteLoader.bannerSubject.next({main: false, section: true, news: false});
     this.siteLoader.getFullContentPreview(id)
     .pipe(
       map(ret => ret as ContentSite),
     )
     .subscribe( content => {
       this.data = content;
+      setTimeout(() => {
+        this.ancla();
+      }, 10);
     });
 
   }
 
   top() {
-    window.scroll(0,0);
+    window.scroll(0, 0);
   }
 
 }
