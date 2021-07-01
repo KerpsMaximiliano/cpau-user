@@ -24,7 +24,7 @@ export class HeaderHomeComponent implements OnInit {
   authentication() {
     if (!this.isAuthenticated) {
       // this.router.navigate(["./login"]);
-      window.open('./institucional/login');
+      window.open('./login');
       return;
     }
 
