@@ -52,7 +52,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
 import { LoadingScreenInterceptor } from './gestion/shared/interceptor/loading.interceptor.service';
 import { OwlModule } from 'ngx-owl-carousel';
-import { LoadingComponent } from './shared/components/loading/loading.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -107,7 +106,6 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
     numberOnlyDirective,
     ModalComponent,
     ActualizacionEmailComponent,
-    LoadingComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
