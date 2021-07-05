@@ -46,6 +46,14 @@ export class AuthenticationService {
       );
   }
 
+  loginOldSite(username: string, password: string) {
+    return this.http
+      .post<any>(`${environment.oldSiteUrl}/login?tkn=${localStorage.getItem('jwt_token')}`, {
+        UserName: username,
+        Password: password,
+      });
+  }
+
   preregister(email: string) {
     return this.http.post<any>(`${environment.apiUrl}/api/user/preregister`, {
       Email: email,
