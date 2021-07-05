@@ -47,11 +47,12 @@ export class AuthenticationService {
   }
 
   loginOldSite(username: string, password: string) {
+    const formData: any = new FormData();
+    formData.append('UserName', username);
+    formData.append('Password', password);
+
     return this.http
-      .post<any>(`${environment.oldSiteUrl}/login?tkn=${localStorage.getItem('jwt_token')}`, {
-        UserName: username,
-        Password: password,
-      });
+      .post<any>(`${environment.oldSiteUrl}/login?tkn=${localStorage.getItem('jwt_token')}`, formData);
   }
 
   preregister(email: string) {
