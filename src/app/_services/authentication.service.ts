@@ -52,7 +52,7 @@ export class AuthenticationService {
     formData.append('Password', password);
 
     return this.http
-      .post<any>(`${environment.oldSiteUrl}/login?tkn=${localStorage.getItem('jwt_token')}`, formData);
+      .post<any>(`${environment.oldSiteUrl}/Perfil?tkn=${localStorage.getItem('jwt_token')}`, formData);
   }
 
   preregister(email: string) {
