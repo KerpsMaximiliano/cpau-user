@@ -1,21 +1,20 @@
-﻿import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+﻿import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
 import { User, Role } from './_models';
 import { DomSanitizer } from '@angular/platform-browser';
-import { filter } from 'rxjs/operators';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
     currentUser: User;
-    dynamicCSSUrl: string;
-    dynamicCSSUrlCpau: string;
+    dynamicCSSUrl = '';
+    dynamicCSSUrlCpau = '';
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService,
-        private sanitizer: DomSanitizer
+        public sanitizer: DomSanitizer,
+        private authenticationService: AuthenticationService
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
