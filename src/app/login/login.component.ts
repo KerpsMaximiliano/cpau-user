@@ -60,8 +60,8 @@ export class LoginComponent implements OnInit {
 
             this.authenticationService.loginOldSite(this.loginForm.value.username, this.loginForm.value.password)
             .subscribe(ol => {
-              this.router.navigate([`gestion/home/perfil/identificacion`]);
             });
+            this.router.navigate([`gestion/home/perfil/identificacion`]);
           } else {
             document.getElementById("btnDatosIncorrectos").click();
             this.loading = false;
