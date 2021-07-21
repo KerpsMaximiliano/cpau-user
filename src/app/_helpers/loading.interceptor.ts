@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { LoadingService } from '@app/shared/services/loading.service';
+import { LoadingScreenService } from '@app/_services/loading.service';
+
 
 @Injectable()
 export class LoadingScreenInterceptor implements HttpInterceptor {
@@ -13,14 +14,18 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
      */
     skippUrls = [
       '/authrefresh',
+      '/SiteConsumer',
+      '/ExistToken',
+      '/user/logout',
+      '/ModalHome',
+      '/user/login'
     ];
 
-    constructor(private loadingScreenService: LoadingService) {
+    constructor(private loadingScreenService: LoadingScreenService) {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       let displayLoadingScreen = true;
-
       for (const skippUrl of this.skippUrls) {
         if (new RegExp(skippUrl).test(request.url)) {
           displayLoadingScreen = false;

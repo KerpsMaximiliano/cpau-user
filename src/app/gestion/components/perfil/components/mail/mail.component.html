@@ -92,7 +92,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
-                                    (eliminar)="onEliminar($event)" (visualizar)="onVisualizar($event)">
+                                    (eliminar)="onEliminar($event)" (visualizar)="onVisualizar($event)" [permiteEliminar]="isMatriculado">
                                 </app-action-table>
                             </div>
                         </div>

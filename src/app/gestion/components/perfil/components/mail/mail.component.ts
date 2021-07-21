@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
+import { User } from '@app/_models';
+import { AuthenticationService } from '@app/_services';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
@@ -19,6 +21,7 @@ export class MailComponent implements OnInit {
 
   loading: boolean;
   collapsed: boolean;
+  currentUser: User;
   public filas: Filas<Mail>[] = [];
   public columnnas: Columna<Mail>[];
   public mailForm: FormGroup;
@@ -28,7 +31,8 @@ export class MailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private mailService: MailService,
     private toastr: ToastrService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private authenticationService: AuthenticationService
   ) {
 
     this.columnnas = [
@@ -66,6 +70,7 @@ export class MailComponent implements OnInit {
         ]
       });
     });
+    this.currentUser = this.authenticationService.currentUserValue;
   }
 
   onEditar(ev: Mail) {
@@ -161,5 +166,9 @@ export class MailComponent implements OnInit {
   }
   public cancelarFila(): void {
     this.mailForm.reset();
+  }
+
+  get isMatriculado() {
+    return this.currentUser && this.currentUser.isMatriculado;
   }
 }

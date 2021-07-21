@@ -9,9 +9,13 @@
     display: contents;
 }
 .btn-logout:hover {
-    color: #FFFFFF;
-    background-color: #000000;   
+    color: #999c9e;
 }
-.btn-login {
-    color: white;
+.btn-logout {
+    color: #999c9e;
+    font-weight: 600;
+    font-size: 14px;
+}
+.fa.fa-sign-out {
+    margin-right: 6px;
 }

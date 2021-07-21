@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
+import { User } from '@app/_models';
+import { AuthenticationService } from '@app/_services';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Telefono, TelefonoRequestModel } from './models/telefono.model';
@@ -18,6 +20,7 @@ export class TelefonoComponent implements OnInit {
 
   loading: boolean;
   collapsed: boolean;
+  currentUser: User;
   public filas: Filas<Telefono>[] = [];
   public columnnas: Columna<Telefono>[];
   public telefonoForm: FormGroup;
@@ -27,7 +30,8 @@ export class TelefonoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private telefonoService: TelefonoService,
     private toastr: ToastrService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private authenticationService: AuthenticationService
   ) {
 
     this.columnnas = [
@@ -65,6 +69,7 @@ export class TelefonoComponent implements OnInit {
         ]
       });
     });
+    this.currentUser = this.authenticationService.currentUserValue;
   }
 
   onEditar(ev: Telefono) {
@@ -157,5 +162,9 @@ export class TelefonoComponent implements OnInit {
   }
   public cancelarFila(): void {
     this.telefonoForm.reset();
+  }
+
+  get isMatriculado() {
+    return this.currentUser && this.currentUser.isMatriculado;
   }
 }

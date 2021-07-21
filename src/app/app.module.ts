@@ -50,8 +50,9 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
-import { LoadingScreenInterceptor } from './gestion/shared/interceptor/loading.interceptor.service';
 import { OwlModule } from 'ngx-owl-carousel';
+import { LoadingComponent } from './shared/components/loading/loading.component';
+import { LoadingScreenInterceptor } from './_helpers/loading.interceptor';
 @NgModule({
   imports: [
     BrowserModule,
@@ -106,6 +107,7 @@ import { OwlModule } from 'ngx-owl-carousel';
     numberOnlyDirective,
     ModalComponent,
     ActualizacionEmailComponent,
+    LoadingComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

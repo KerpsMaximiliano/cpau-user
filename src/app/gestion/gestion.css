@@ -6418,11 +6418,11 @@
   
   select {
     background-image: linear-gradient( 
-      45deg
-       , transparent 50%, black 60%), linear-gradient( 
-      135deg
-       , black 33%, transparent 50%) !important;
-    background-position: calc(100% - 9px) 14px, calc(100% - 2px) 14px, 100% 0;
+      60deg
+       , transparent 50%, #999999 60%), linear-gradient( 
+      120deg
+       , #999999 33%, transparent 50%) !important;
+    background-position: calc(98% - 9px) 14px, calc(98% - 2px) 14px, 100% 0;
     background-size: 8px 8px, 8px 8px;
     background-repeat: no-repeat;
     -webkit-appearance: none;

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
+import { User } from '@app/_models';
+import { AuthenticationService } from '@app/_services';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Domicilio } from './model/domicilio.model';
@@ -19,6 +21,7 @@ export class DomicilioComponent implements OnInit {
 
   collapsed: boolean;
   loading: boolean;
+  currentUser: User;
   public filas: Filas<Domicilio>[] = [];
   public columnnas: Columna<Domicilio>[];
 
@@ -26,9 +29,10 @@ export class DomicilioComponent implements OnInit {
   public domicilioForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private domicilioService: DomicilioService,
-    private toastr: ToastrService,
-    private dialogService: DialogService) {
+              private domicilioService: DomicilioService,
+              private toastr: ToastrService,
+              private dialogService: DialogService,
+              private authenticationService: AuthenticationService) {
 
     this.domicilioForm = this.formBuilder.group({
       id: [],
@@ -108,6 +112,8 @@ export class DomicilioComponent implements OnInit {
           ];
         });
       });
+
+    this.currentUser = this.authenticationService.currentUserValue;
   }
 
   onEditar(ev) {
@@ -200,5 +206,9 @@ export class DomicilioComponent implements OnInit {
   }
   public cancelarFila(): void {
     this.domicilioForm.reset();
+  }
+
+  get isMatriculado() {
+    return this.currentUser && this.currentUser.isMatriculado;
   }
 }

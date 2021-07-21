@@ -8,3 +8,9 @@
     left: auto;
     right: auto;
 }
+.footer-redes i{
+    font-size: 18px;
+}
+.footer-redes a {
+    margin-right: 2%;
+}
