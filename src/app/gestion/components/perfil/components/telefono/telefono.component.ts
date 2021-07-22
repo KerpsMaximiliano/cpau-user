@@ -69,7 +69,8 @@ export class TelefonoComponent implements OnInit {
         this.filas = [
           ...this.filas,
           {
-            valor: t
+            valor: t,
+            ocultarEliminar: t.idTipoTelefono === 1
           }
         ]
       });

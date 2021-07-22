@@ -87,6 +87,7 @@ export class CertificadoComponent implements OnInit {
 
           this.toastr.success(null, 'Registro agregado correctamente.');
           this.loading = false;
+          this.initData();
         } else {
           this.toastr.error(null, i.message);
           this.loading = false;

@@ -71,9 +71,10 @@ export class MailComponent implements OnInit {
         this.filas = [
           ...this.filas,
           {
-            valor: t
+            valor: t,
+            ocultarEliminar: t.idTipoEmail === 1
           }
-        ]
+        ];
       });
     });
   }

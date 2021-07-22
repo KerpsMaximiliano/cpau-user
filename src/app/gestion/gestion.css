@@ -33,8 +33,6 @@
   .navbar-default {
     background-color: transparent;
     border-color: #2f4050;
-    overflow-y: auto;
-    max-height: 100vh;
   }
   .navbar-top-links li {
     display: inline-block;

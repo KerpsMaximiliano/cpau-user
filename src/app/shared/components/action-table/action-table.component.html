@@ -20,7 +20,7 @@
                 ngbTooltip="Editar">
                 <i class="fa fa-edit"></i>
               </button>
-              <button *ngIf="permiteEliminar" type="button" class="btn" (click)="eliminar.emit(f.valor)"
+              <button *ngIf="permiteEliminar && !f.ocultarEliminar" type="button" class="btn" (click)="eliminar.emit(f.valor)"
                 ngbTooltip="Eliminar" [autoClose]="false"  triggers="manual" #t="ngbTooltip" (click)="t.open()">
                 <i class="fa fa-trash"></i>
               </button>

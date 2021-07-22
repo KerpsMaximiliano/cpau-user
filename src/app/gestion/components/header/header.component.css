@@ -19,3 +19,10 @@
 .fa.fa-sign-out {
     margin-right: 6px;
 }
+.minimalize-styl-2 {
+    margin: unset;
+}
+.logout {
+    position: absolute;
+    right: 0;
+}

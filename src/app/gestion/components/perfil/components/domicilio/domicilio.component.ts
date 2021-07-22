@@ -113,7 +113,8 @@ export class DomicilioComponent implements OnInit {
         this.filas = [
           ...this.filas,
           {
-            valor: x
+            valor: x,
+            ocultarEliminar: x.idTipoDomicilio === 1
           }
         ];
       });
