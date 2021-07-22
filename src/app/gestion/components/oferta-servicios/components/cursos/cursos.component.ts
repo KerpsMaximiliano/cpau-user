@@ -66,17 +66,24 @@ export class CursosComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+  }
+  initData() {
+    this.filas = [];
     this.cursoService.getAll()
-      .subscribe(d => {
-        d.map(x => {
-          this.filas = [
-            ...this.filas,
-            {
-              valor: x
-            }
-          ];
-        });
+    .subscribe(d => {
+      d.map(x => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: x
+          }
+        ];
       });
+    });
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev: Curso) {

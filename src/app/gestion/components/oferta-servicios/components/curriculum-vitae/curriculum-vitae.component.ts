@@ -29,9 +29,15 @@ export class CurriculumVitaeComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.curriculumVitaeService.getAll().subscribe(x => {
+    this.initData();
+  }
+  initData() {
+    this.curriculumVitaeService.getAll().subscribe(x => {
       this.archivo = x;
     });
+  }
+  protected reload() {
+    this.initData();
   }
 
   subirArchivo() {

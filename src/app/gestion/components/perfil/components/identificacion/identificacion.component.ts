@@ -97,6 +97,9 @@ export class IdentificacionComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.initData();
+  }
+  initData() {
     this.identificacionService.read().subscribe(identificacion => {
       this.identificacionForm.patchValue(identificacion);
 
@@ -105,8 +108,8 @@ export class IdentificacionComponent implements OnInit {
         day: +nacimientoArr[0],
         month: +nacimientoArr[1],
         year: +nacimientoArr[2]
-      }
-      this.identificacionForm.controls.nacimiento.patchValue(nacimiento)
+      };
+      this.identificacionForm.controls.nacimiento.patchValue(nacimiento);
       this.identificacionOriginal = identificacion;
     });
   }
@@ -147,5 +150,9 @@ export class IdentificacionComponent implements OnInit {
     }
     this.identificacionForm.controls.nacimiento.patchValue(nacimiento)
     this.identificacionForm.markAsPristine();
+  }
+
+  protected reload() {
+    this.initData();
   }
 }

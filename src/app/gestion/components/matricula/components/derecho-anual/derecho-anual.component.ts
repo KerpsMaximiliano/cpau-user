@@ -30,18 +30,22 @@ export class DerechoAnualComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+  }
+  initData() {
+    this.filas = [];
     this.derechoAnualService.getAll()
-      .subscribe(d => {
-        d.map(x => {
-          this.filas = [
-            ...this.filas,
-            {
-              valor: x,
-              campoSumarizador: 'saldo'
-            }
-          ];
-        });
+    .subscribe(d => {
+      d.map(x => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: x,
+            campoSumarizador: 'saldo'
+          }
+        ];
       });
+    });
   }
 
   onPagarDerechoAnual() {
@@ -50,5 +54,9 @@ export class DerechoAnualComponent implements OnInit {
 
   onGenerarBoletaPago() {
     // WS que genera el PDF de pago.
+  }
+
+  protected reload() {
+    this.initData();
   }
 }

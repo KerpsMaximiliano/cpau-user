@@ -59,6 +59,11 @@ export class TelefonoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+    this.currentUser = this.authenticationService.currentUserValue;
+  }
+  initData() {
+    this.filas = [];
     this.telefonoService.read().subscribe(telef => {
       telef.map(t => {
         this.filas = [
@@ -69,7 +74,9 @@ export class TelefonoComponent implements OnInit {
         ]
       });
     });
-    this.currentUser = this.authenticationService.currentUserValue;
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev: Telefono) {

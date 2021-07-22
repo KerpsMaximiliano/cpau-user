@@ -6428,3 +6428,15 @@
     -webkit-appearance: none;
     -webkit-appearance: none;
   }
+  .btn-sync button {
+    background-color: unset;
+    border: 1px solid grey;
+    border-radius: 25px;
+    outline: none;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    margin-left: auto;
+  }
+  .title-breadcump {
+    margin-left: 0;
+  }

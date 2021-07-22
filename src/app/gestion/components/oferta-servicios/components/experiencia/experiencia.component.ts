@@ -76,17 +76,24 @@ export class ExperienciaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+  }
+  initData() {
+    this.filas = [];
     this.experienciaService.getAll()
-      .subscribe(d => {
-        d.map(x => {
-          this.filas = [
-            ...this.filas,
-            {
-              valor: x
-            }
-          ];
-        });
+    .subscribe(d => {
+      d.map(x => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: x
+          }
+        ];
       });
+    });
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev: Experiencia) {
