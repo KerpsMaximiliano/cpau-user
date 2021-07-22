@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { environment } from '@environments/environment';
@@ -22,7 +22,8 @@ export class UsuarioService {
   }
 
   public read(): Observable<string> {
-    return this.httpClient.get<string>(`${environment.apiUrl}/api/perfil/username`, {responseType: 'text' as 'json'});
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<string>(`${environment.apiUrl}/api/perfil/username`, {responseType: 'text' as 'json', params});
   }
 
 }

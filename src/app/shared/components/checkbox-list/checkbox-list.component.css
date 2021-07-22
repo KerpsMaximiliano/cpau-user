@@ -14,11 +14,18 @@
 
 
 /*==========  Non-Mobile First Method  ==========*/
-
+@media only screen and ( max-height: 1680px ){
+    .checkbox-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-height: calc(100vh - 120px);
+    }
+}
 
 /* Large Devices, Wide Screens */
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) and ( max-height: 768px ) {
     .checkbox-container {
         display: flex;
         flex-direction: column;
@@ -26,23 +33,31 @@
         max-height: calc(100vh - 320px);
     }
 }
-
-
-/* Medium Devices, Desktops */
-
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1200px) and ( max-height: 480px ){
     .checkbox-container {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        max-height: calc(100vh - 420px);
+        max-height: calc(100vh - 120px);
+    }
+}
+
+
+/* Medium Devices, Desktops */
+
+@media only screen and (max-width: 992px) and ( max-height: 768px ) {
+    .checkbox-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-height: calc(100vh - 120px);
     }
 }
 
 
 /* Small Devices, Tablets */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) and ( max-height: 768px ) {
     .checkbox-container {
         display: flex;
         flex-direction: column;
@@ -54,7 +69,15 @@
 
 /* Extra Small Devices, Phones */
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 480px) and ( max-height: 768px ){
+    .checkbox-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-height: unset;
+    }
+}
+@media only screen and (max-width: 480px) and ( max-height: 480px ){
     .checkbox-container {
         display: flex;
         flex-direction: column;

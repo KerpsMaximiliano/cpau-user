@@ -6436,7 +6436,10 @@
     outline: none;
     margin-top: 28px;
     margin-bottom: 10px;
-    margin-left: auto;
+    margin-left: 5px;
+    height: 21px;
+    width: 21px;
+    padding: 0px 1px;
   }
   .title-breadcump {
     margin-left: 0;
