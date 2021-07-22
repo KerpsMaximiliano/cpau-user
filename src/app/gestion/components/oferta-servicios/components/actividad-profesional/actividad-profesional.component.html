@@ -1,7 +1,12 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Actividad profesional</h2>
+        <div class="row title-breadcump">
+            <div class="col-sm-12 row btn-sync">
+                <h2>Actividad Profesional</h2>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
         <ol class="breadcrumb">
             <li>
                 <a>Oferta de Servicios</a>
@@ -31,11 +36,11 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="col-sm-12 title">
-                                        <span>
+                                        <span class="title-checkbox">
                                             Actividad Profesional
                                         </span>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12" style="float:left;">
                                         <div class=" checkbox-list">
                                             <ng-container *ngIf="actividadProfesionalData">
 
@@ -53,7 +58,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="col-sm-12 title">
-                                        <span>
+                                        <span class="title-checkbox">
                                             Tipo de Obra Realizada
                                         </span>
                                     </div>

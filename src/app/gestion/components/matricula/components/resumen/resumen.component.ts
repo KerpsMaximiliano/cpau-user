@@ -14,10 +14,16 @@ export class ResumenComponent implements OnInit {
   constructor(private resumenService: ResumenService) {}
 
   ngOnInit() {
+    this.initData();
+  }
+  initData() {
     this.resumenService.getAll()
-      .subscribe(d => {
-        this.resumen = d;
-    });
+    .subscribe(d => {
+      this.resumen = d;
+  });
+  }
+  protected reload() {
+    this.initData();
   }
 }
 

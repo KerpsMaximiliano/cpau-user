@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Role, User } from '@app/_models';
 import { AuthenticationService } from '@app/_services';
 import { environment } from '@environments/environment';
@@ -12,7 +12,7 @@ import { IdentificacionService } from '../perfil/components/identificacion/servi
   styleUrls: ['./menu.component.css'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, AfterViewInit {
 
   @Output() colapsarMenu = new EventEmitter();
 
@@ -22,7 +22,10 @@ export class MenuComponent implements OnInit {
   imgSrc: string | ArrayBuffer;
 
   constructor(private identificacionService: IdentificacionService,
-    private authenticationService: AuthenticationService) { }
+              private authenticationService: AuthenticationService) { }
+  ngAfterViewInit(): void {
+    this.colapsado[0] = true;
+  }
 
   ngOnInit(): void {
     this.identificacionService.read().subscribe(identificacion => {

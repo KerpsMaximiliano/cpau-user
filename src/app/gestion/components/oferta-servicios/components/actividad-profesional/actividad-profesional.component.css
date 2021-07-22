@@ -2,11 +2,12 @@
 
 
 .title {
-
-background-color: #e1e4e8;
 height: 40px;
 display: flex;
 align-items: center; 
+}
+.title .title-checkbox {
+    font-weight: 600;
 }
 
 .checkbox-list {

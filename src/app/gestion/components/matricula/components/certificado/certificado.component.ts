@@ -24,13 +24,13 @@ export class CertificadoComponent implements OnInit {
   public certificadoForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private certificadoService: CertificadoService,
-    private toastr: ToastrService,
-    private dialogService: DialogService,
-    private matriculadoService: MatriculaService) {
+              private certificadoService: CertificadoService,
+              private toastr: ToastrService,
+              private dialogService: DialogService,
+              private matriculadoService: MatriculaService) {
 
     this.certificadoForm = this.formBuilder.group({
-      //id: [],
+      // id: [],
       // codigoCertificado: ['CMW', {
       //   validators: [Validators.required, Validators.maxLength(100), Validators.minLength(1)],
       //   updateOn: 'blur'
@@ -54,17 +54,21 @@ export class CertificadoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+  }
+  initData() {
+    this.filas = [];
     this.certificadoService.getAll()
-      .subscribe(d => {
-        d.map(x => {
-          this.filas = [
-            ...this.filas,
-            {
-              valor: x
-            }
-          ];
-        });
+    .subscribe(d => {
+      d.map(x => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: x
+          }
+        ];
       });
+    });
   }
 
   public agregarFila(): void {
@@ -80,10 +84,10 @@ export class CertificadoComponent implements OnInit {
               valor: i.entity
             }
           ];
-          //this.certificadoForm.reset();
 
           this.toastr.success(null, 'Registro agregado correctamente.');
           this.loading = false;
+          this.initData();
         } else {
           this.toastr.error(null, i.message);
           this.loading = false;
@@ -99,8 +103,12 @@ export class CertificadoComponent implements OnInit {
   // public cancelarFila(): void {
   //   this.certificadoForm.controls.fechaHora.reset();
   // }
-  
+
   imprimirCertificado(ev: Certificado) {
     this.matriculadoService.imprimirCertificado(ev.id, ev.codigo.toString());
+  }
+
+  protected reload() {
+    this.initData();
   }
 }

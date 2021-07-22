@@ -59,17 +59,25 @@ export class TelefonoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+    this.currentUser = this.authenticationService.currentUserValue;
+  }
+  initData() {
+    this.filas = [];
     this.telefonoService.read().subscribe(telef => {
       telef.map(t => {
         this.filas = [
           ...this.filas,
           {
-            valor: t
+            valor: t,
+            ocultarEliminar: t.idTipoTelefono === 1
           }
         ]
       });
     });
-    this.currentUser = this.authenticationService.currentUserValue;
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev: Telefono) {

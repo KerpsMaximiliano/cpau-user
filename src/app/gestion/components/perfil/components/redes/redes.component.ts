@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidator } from '@app/gestion/shared/validators/CustomValidator';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
@@ -13,7 +13,7 @@ import { RedesService } from './service/redes.service';
   templateUrl: './redes.component.html',
   styleUrls: ['./redes.component.css']
 })
-export class RedesComponent {
+export class RedesComponent implements OnInit {
   get f() { return this.redesForm.controls; }
 
   public filas: Filas<Redes>[] = [];
@@ -58,6 +58,10 @@ export class RedesComponent {
   }
 
   ngOnInit() {
+    this.initData();
+  }
+  initData() {
+    this.filas = [];
     this.redesService.read().subscribe(redes => {
       redes.map(t => {
         this.filas = [
@@ -68,6 +72,9 @@ export class RedesComponent {
         ]
       });
     });
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev) {

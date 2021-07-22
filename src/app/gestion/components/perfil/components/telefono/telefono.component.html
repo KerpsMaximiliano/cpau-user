@@ -1,7 +1,12 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Teléfonos</h2>
+        <div class="row title-breadcump">
+            <div class="col-sm-8 row btn-sync">
+                <h2>Teléfonos</h2>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
         <ol class="breadcrumb">
             <li>
                 <a>Perfil</a>
@@ -95,7 +100,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
-                                    (eliminar)="onEliminar($event)" (visualizar)="onVisualizar($event)"  [permiteEliminar]="isMatriculado">
+                                    (eliminar)="onEliminar($event)" (visualizar)="onVisualizar($event)">
                                 </app-action-table>
                             </div>
                         </div>

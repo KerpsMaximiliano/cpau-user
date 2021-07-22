@@ -60,17 +60,26 @@ export class MailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+
+    this.currentUser = this.authenticationService.currentUserValue;
+  }
+  initData() {
+    this.filas = [];
     this.mailService.read().subscribe(mail => {
       mail.map(t => {
         this.filas = [
           ...this.filas,
           {
-            valor: t
+            valor: t,
+            ocultarEliminar: t.idTipoEmail === 1
           }
-        ]
+        ];
       });
     });
-    this.currentUser = this.authenticationService.currentUserValue;
+  }
+  public reload() {
+    this.initData();
   }
 
   onEditar(ev: Mail) {

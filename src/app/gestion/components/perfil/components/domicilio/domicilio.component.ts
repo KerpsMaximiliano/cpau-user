@@ -101,19 +101,27 @@ export class DomicilioComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.domicilioService.getAll()
-      .subscribe(d => {
-        d.map(x => {
-          this.filas = [
-            ...this.filas,
-            {
-              valor: x
-            }
-          ];
-        });
-      });
+    this.initData();
 
     this.currentUser = this.authenticationService.currentUserValue;
+  }
+  initData() {
+    this.filas = [];
+    this.domicilioService.getAll()
+    .subscribe(d => {
+      d.map(x => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: x,
+            ocultarEliminar: x.idTipoDomicilio === 1
+          }
+        ];
+      });
+    });
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev) {
