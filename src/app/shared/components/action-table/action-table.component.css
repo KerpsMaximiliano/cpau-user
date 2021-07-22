@@ -11,14 +11,14 @@ h4 {
     vertical-align: middle;
 }
 .table th:first-child, .table td:first-child {
-    width: 10%;
+    width: 75px;
 }
 td {
     word-wrap: break-word;
 
 }
 table tbody tr th button {
-    margin-right: 3%;
+    padding: 7%;
 }
 .table table {
     font-size: 13px;

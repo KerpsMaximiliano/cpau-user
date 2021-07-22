@@ -16,15 +16,15 @@
                 (click)="visualizar.emit(f.valor)">
                 <i class="fa fa-eye"></i>
               </button> -->
-              <button *ngIf="permiteEditar" type="button" class="btn btn-success" (click)="editar.emit(f.valor)"
+              <button *ngIf="permiteEditar" type="button" class="btn" (click)="editar.emit(f.valor)"
                 ngbTooltip="Editar">
                 <i class="fa fa-edit"></i>
               </button>
-              <button *ngIf="permiteEliminar" type="button" class="btn btn-danger" (click)="eliminar.emit(f.valor)"
+              <button *ngIf="permiteEliminar" type="button" class="btn" (click)="eliminar.emit(f.valor)"
                 ngbTooltip="Eliminar" [autoClose]="false"  triggers="manual" #t="ngbTooltip" (click)="t.open()">
                 <i class="fa fa-trash"></i>
               </button>
-              <button *ngIf="permitePersonalizado" type="button" class="btn btn-success" (click)="personalizado.emit(f.valor)"
+              <button *ngIf="permitePersonalizado" type="button" class="btn" (click)="personalizado.emit(f.valor)"
                 ngbTooltip="{{configButton?.tooltip}}">
                 <i class="{{configButton?.icon}}"></i>
               </button>
