@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { environment } from '@environments/environment';
@@ -14,7 +14,8 @@ export class CertificadoService {
 
 
   getAll(): Observable<Certificado[]> {
-    return this.httpClient.get<Certificado[]>(`${environment.apiUrl}/api/perfil/matricula/certificado`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<Certificado[]>(`${environment.apiUrl}/api/perfil/matricula/certificado`, {params});
   }
 
   insert(): Observable<IResponseService<Certificado>> {

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
@@ -51,7 +51,8 @@ export class ExperienciaService {
   public tiposObra$ = this.httpClient.get<SelectItem[]>(`${environment.apiUrl}/api/siteConsumer/TipoObra`);
 
   getAll() {
-    return this.httpClient.get<Experiencia[]>(`${environment.apiUrl}/api/servicios/experiencia`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<Experiencia[]>(`${environment.apiUrl}/api/servicios/experiencia`, {params});
   }
 
   insert(experiencia: Experiencia): Observable<IResponseService<Experiencia>> {
