@@ -69,7 +69,7 @@ export class DomicilioComponent implements OnInit {
     this.columnnas = [
       {
         id: 'tipoDomicilio',
-        titulo: 'Tipo de domicilio'
+        titulo: 'Tipo'
       },
       {
         id: 'calle',
@@ -85,7 +85,7 @@ export class DomicilioComponent implements OnInit {
       },
       {
         id: 'depto',
-        titulo: 'Depto Nro'
+        titulo: 'Depto'
       },
       {
         id: 'localidad',

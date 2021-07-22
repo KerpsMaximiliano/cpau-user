@@ -37,7 +37,7 @@ export class TelefonoComponent implements OnInit {
     this.columnnas = [
       {
         id: 'tipoTelefono',
-        titulo: 'tipo'
+        titulo: 'Tipo'
       },
       {
         id: 'telefono',

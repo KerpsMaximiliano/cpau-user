@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 control-label">Tipo Domicilio:</label>
+                                        <label class="col-sm-3 control-label">Tipo:</label>
                                         <div class="col-sm-9">
                                             <div *ngIf="tiposDomicilios">
                                                 <select id="tiposDomicilios" formControlName="idTipoDomicilio"
@@ -99,10 +99,10 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Depto Nro:</label>
+                                        <label class="col-sm-3 control-label">Depto:</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" formControlName="depto"
-                                                placeholder="Depto Nro" maxlength="20">
+                                                placeholder="Depto" maxlength="20">
                                             <form-error [errors]="domicilioForm.controls.depto.errors" [errorsMessages]="{
                                               required: 'Campo Requerido',
                                               minlength: 'La longitud permitida es entre 1 y 20 caracteres',
