@@ -26,3 +26,8 @@
     position: absolute;
     right: 0;
 }
+@media (max-width: 768px) {
+    .minimalize-styl-2 {
+        display: none;
+    }
+}
