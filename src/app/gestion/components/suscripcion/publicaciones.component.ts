@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CheckBoxDataModel } from '@app/shared/components/checkbox-list/models/CheckboxList.model';
 import { ToastrService } from 'ngx-toastr';
 import { Suscripcion } from './Models/suscipcion.model';
 import { SuscripcionService } from './services/suscripcion.service';
@@ -21,8 +20,8 @@ export class PublicacionComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-    private suscripcionService: SuscripcionService,
-    private toastr: ToastrService,
+              private suscripcionService: SuscripcionService,
+              private toastr: ToastrService,
 
   ) {
 
@@ -31,26 +30,18 @@ export class PublicacionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
+  }
+  loadData() {
     this.suscripcionService.getSuscripciones().subscribe(suscripciones => {
       this.publicaciones = suscripciones.filter(x => x.type === 1);
     });
-    // this.actividadService.getObras().subscribe(obras => {
-    //   this.obrasData = obras
-    // })
   }
 
   public onSave(): void {
     this.loading = true;
     this.publicacionesForm.value.publicaciones
       .map((v, i) => this.publicaciones[i].selected = v);
-
-    console.log(this.publicaciones);
-
-    // const requestActividades = {
-    //   id: selectedActividadesIds
-    // } as ActividadProfesionalRequestModel
-
-
 
     this.suscripcionService.savePublicaciones(this.publicaciones)
       .subscribe(response => {
@@ -62,6 +53,10 @@ export class PublicacionComponent implements OnInit {
           this.toastr.error(response.message);
           this.loading = false;
         }
-      })
+      });
+  }
+  public cancelarFila(): void {
+    this.publicacionesForm.reset();
+    this.loadData();
   }
 }

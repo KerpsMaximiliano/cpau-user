@@ -4,8 +4,15 @@
  *   version 2.0
  *
  */
+    // Minimalize menu
+    $('#navbar-minimalize').on( "click", function() {
+        debugger;
+        $("body").toggleClass("mini-navbar");
+        SmoothlyMenu();
 
-$(document).ready(function () {
+    });
+
+$( document ).on( 'ready', function (e) {
 
     // Add body-small class if window less than 768px
     if ($(this).width() < 769) {
@@ -86,7 +93,8 @@ $(document).ready(function () {
     //});
 
     // Minimalize menu
-    $('.navbar-minimalize').click(function () {
+    $('#navbar-minimalize').on( "click", function() {
+        debugger;
         $("body").toggleClass("mini-navbar");
         SmoothlyMenu();
 
@@ -235,7 +243,10 @@ function animationHover(element, animation){
             }, 2000);
         });
 }
-
+function collapse() {
+    $("body").toggleClass("mini-navbar");
+    SmoothlyMenu();
+}
 function SmoothlyMenu() {
     if (!$('body').hasClass('mini-navbar') || $('body').hasClass('body-small')) {
         // Hide menu in order to smoothly turn on when maximize menu

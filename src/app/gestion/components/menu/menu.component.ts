@@ -20,6 +20,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   perfil: Identificacion;
   currentUser: User;
   imgSrc: string | ArrayBuffer;
+  closeMenu: boolean;
 
   constructor(private identificacionService: IdentificacionService,
               private authenticationService: AuthenticationService) { }
@@ -44,6 +45,11 @@ export class MenuComponent implements OnInit, AfterViewInit {
   }
 
   colapsar(i: number) {
+    this.closeMenu = false;
+    for (let x = 0; x < this.colapsado.length; x++) {
+      this.colapsado[x] = false;
+    }
+    this.colapsado.forEach(f => f = true);
     this.colapsado[i] = !this.colapsado[i];
   }
 

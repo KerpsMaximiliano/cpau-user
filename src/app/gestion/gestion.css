@@ -122,6 +122,7 @@
   }
   .nav-header {
     padding: 15px 25px;
+    width: 100%;
     background: url(img/header-profile.png) no-repeat;
   }
   .pace-done .nav-header {

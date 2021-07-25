@@ -32,47 +32,48 @@
                     <li>
                         <a (click)="colapsar(0)"><i class="fa fa-user"></i> <span class="nav-label">Perfil</span> <span
                                 class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[0] === true}">
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[0] === true, 'hideen-sub-menu': closeMenu}">
                             <li><a [routerLink]="'perfil/identificacion'"
-                                    routerLinkActive="active-link">Identificación</a></li>
-                            <li><a [routerLink]="'perfil/domicilio'" routerLinkActive="active-link">Domicilios</a></li>
-                            <li><a [routerLink]="'perfil/emails'" routerLinkActive="active-link">Emails</a></li>
-                            <li><a [routerLink]="'perfil/telefonos'" routerLinkActive="active-link">Teléfonos</a></li>
-                            <li><a [routerLink]="'perfil/redes'" routerLinkActive="active-link">Redes</a></li>
+                                    routerLinkActive="active-link" 
+                                    (click)="closeMenu=true">Identificación </a></li>
+                            <li><a [routerLink]="'perfil/domicilio'" routerLinkActive="active-link" (click)="closeMenu=true">Domicilios</a></li>
+                            <li><a [routerLink]="'perfil/emails'" routerLinkActive="active-link" (click)="closeMenu=true">Emails</a></li>
+                            <li><a [routerLink]="'perfil/telefonos'" routerLinkActive="active-link" (click)="closeMenu=true">Teléfonos</a></li>
+                            <li><a [routerLink]="'perfil/redes'" routerLinkActive="active-link" (click)="closeMenu=true">Redes</a></li>
                         </ul>
                     </li>
                     <li *ngIf="isMatriculado">
                         <a (click)="colapsar(1)"><i class="fa fa-briefcase"></i> <span
                                 class="nav-label">Matrícula</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[1] === true}">
-                            <li><a [routerLink]="'matricula/resumen'" routerLinkActive="active-link">Resumen</a></li>
-                            <li><a [routerLink]="'matricula/derecho-anual'" routerLinkActive="active-link">Derecho anual</a></li>
-                            <li><a [routerLink]="'matricula/certificado'">Certificado</a></li>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[1] === true, 'hideen-sub-menu': closeMenu}">
+                            <li><a [routerLink]="'matricula/resumen'" routerLinkActive="active-link" (click)="closeMenu=true">Resumen</a></li>
+                            <li><a [routerLink]="'matricula/derecho-anual'" routerLinkActive="active-link" (click)="closeMenu=true">Derecho anual</a></li>
+                            <li><a [routerLink]="'matricula/certificado'" (click)="closeMenu=true">Certificado</a></li>
                             <!-- <li><a href="#">Credencial digital</a></li> -->
                         </ul>
                     </li>
                     <li *ngIf="isMatriculado">
                         <a (click)="colapsar(2)"><i class="fa fa-graduation-cap"></i> <span class="nav-label">Oferta de
                                 Servicios</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[2] === true}">
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[2] === true, 'hideen-sub-menu': closeMenu}">
                             <li><a [routerLink]="'oferta-servicios/actividad-profesional'"
-                                    routerLinkActive="active-link">Actividad Profesional</a></li>
+                                    routerLinkActive="active-link" (click)="closeMenu=true">Actividad Profesional</a></li>
                             <li><a [routerLink]="'oferta-servicios/experiencia'"
-                                    routerLinkActive="active-link">Experiencia</a></li>
-                            <li><a [routerLink]="'oferta-servicios/cursos'" routerLinkActive="active-link">Cursos</a>
+                                    routerLinkActive="active-link" (click)="closeMenu=true">Experiencia</a></li>
+                            <li><a [routerLink]="'oferta-servicios/cursos'" routerLinkActive="active-link" (click)="closeMenu=true">Cursos</a>
                             </li>
                             <li><a [routerLink]="'oferta-servicios/posgrados'"
-                                    routerLinkActive="active-link">Posgrados</a></li>
+                                    routerLinkActive="active-link" (click)="closeMenu=true">Posgrados</a></li>
                             <li><a [routerLink]="'oferta-servicios/curriculum-vitae'"
-                                    routerLinkActive="active-link">Curriculum Vitae</a></li>
+                                    routerLinkActive="active-link" (click)="closeMenu=true">Curriculum Vitae</a></li>
                         </ul>
                     </li>
                     <li>
                         <a (click)="colapsar(3)"><i class="fa fa-newspaper-o"></i> <span
                                 class="nav-label">Suscripciones</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[3] === true}">
-                            <li *ngIf="isMatriculado"><a [routerLink]="'suscripciones/publicaciones'">Publicaciones</a></li>
-                            <li><a [routerLink]="'suscripciones/newsletter'">Newsletters</a></li>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[3] === true, 'hideen-sub-menu': closeMenu}">
+                            <li *ngIf="isMatriculado"><a [routerLink]="'suscripciones/publicaciones'" (click)="closeMenu=true">Publicaciones</a></li>
+                            <li><a [routerLink]="'suscripciones/newsletter'" (click)="closeMenu=true">Newsletters</a></li>
                             <!-- <li><a href="#">Temas de Interés</a></li> -->
                         </ul>
                     </li>
@@ -104,9 +105,9 @@
                     <li>
                         <a (click)="colapsar(7)"><i class="fa fa-lock"></i> <span class="nav-label">Seguridad</span>
                             <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[7] === true}">
-                            <li><a [routerLink]="'seguridad/usuario'" routerLinkActive="active-link">Usuario</a></li>
-                            <li><a [routerLink]="'seguridad/contrasenia'" routerLinkActive="active-link">Contraseña</a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[7] === true, 'hideen-sub-menu': closeMenu}">
+                            <li><a [routerLink]="'seguridad/usuario'" routerLinkActive="active-link" (click)="closeMenu=true">Usuario</a></li>
+                            <li><a [routerLink]="'seguridad/contrasenia'" routerLinkActive="active-link" (click)="closeMenu=true">Contraseña</a>
                             </li>
                         </ul>
                     </li>
