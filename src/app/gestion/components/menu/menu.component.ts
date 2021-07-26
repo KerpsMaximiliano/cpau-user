@@ -62,6 +62,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
   }
 
   get storeUrl() {
-    return environment.storeUrl;
+    return `${environment.storeUrl}?tkn=${localStorage.getItem('jwt_token')}`;
   }
 }
