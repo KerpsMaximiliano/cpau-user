@@ -1,1 +1,4 @@
 @import '../../gestion.css';
+button {
+    margin-right: 5px;
+ }
