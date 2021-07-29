@@ -1,4 +1,7 @@
 /* @import url('//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); */
+#wrapper .nav li {
+  width: 100%;
+}
 .nav > li > a {
     color: #a7b1c2;
     font-weight: 600;
@@ -500,6 +503,9 @@
     .top-navigation .navbar-header {
       display: block;
       float: none;
+    }
+    ::ng-deep.mini-navbar.mobile #page-wrapper {
+      margin: 0 0 0 0px !important;
     }
   }
   .menu-visible-lg,
@@ -5818,7 +5824,7 @@
     body.rtls .navbar-top-links li:last-child {
       margin-left: 20px;
     }
-    .body-small.rtls #page-wrapper {
+    ::ng-deep.body-small.rtls #page-wrapper {
       position: inherit;
       margin: 0 0 0 0px;
       min-height: 1000px;
@@ -5830,7 +5836,7 @@
       width: 70px;
       overflow: inherit;
     }
-    .body-small.rtls#wrapper .navbar-static-side {
+    ::ng-deep.body-small.rtls#wrapper .navbar-static-side {
       display: block;
     }
     ::ng-deep.rtls.fixed-sidebar.body-small .navbar-static-side {
