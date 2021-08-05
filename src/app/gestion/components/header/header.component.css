@@ -8,10 +8,27 @@
 .header .navbar-header {
     display: contents;
 }
+.btn-question:hover {
+    color: #999c9e;
+}
+.btn-question {
+    color: #999c9e;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 7px 10px !important;
+}
 .btn-logout:hover {
     color: #999c9e;
 }
 .btn-logout {
+    color: #999c9e;
+    font-weight: 600;
+    font-size: 14px;
+}
+.btn-user:hover {
+    color: #999c9e;
+}
+.btn-user {
     color: #999c9e;
     font-weight: 600;
     font-size: 14px;
@@ -31,3 +48,17 @@
         display: none;
     }
 } */
+.header .menu {
+    position: absolute;
+    border: 0.5px solid darkgray;
+    right: 0;
+    width: 60vh;
+    background-color: white;
+}
+.header .menu ul {
+    padding-right: 40px;
+    padding-left: 0;
+}
+.header .menu ul li {
+    border-bottom: 1px solid darkgrey;
+}
