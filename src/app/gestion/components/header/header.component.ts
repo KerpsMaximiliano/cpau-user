@@ -16,17 +16,17 @@ export class HeaderComponent implements OnInit {
   @ViewChild('toggleButton', {static: false}) toggleButton: ElementRef;
   @ViewChild('menu', {static: false}) menu: ElementRef;
   @ViewChild('icon', {static: false}) icon: ElementRef;
-  
+
   currentUser: User;
-  private _openMenu : boolean;
-  public get openMenu() : boolean {
+  private _openMenu: boolean;
+  public get openMenu(): boolean {
     return this._openMenu;
   }
-  public set openMenu(v : boolean) {
+  public set openMenu(v: boolean) {
     this._openMenu = v;
   }
-  
-  public get urlPublica() : string {
+
+  public get urlPublica(): string {
     return `https://www.cpau.org/ficha/${this.currentUser.guid}`;
   }
   /**
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
         /**
          * This events get called by all clicks on the page
          */
-         this.renderer.listen('window', 'click',(e:Event)=>{
+         this.renderer.listen('window', 'click', (e: Event) => {
           /**
            * Only run when toggleButton is not clicked
            * If we don't check this, all clicks (even on the toggle button) gets into this
@@ -50,8 +50,8 @@ export class HeaderComponent implements OnInit {
          if (!this.toggleButton || !this.menu)
           return;
 
-         if(e.target !== this.toggleButton.nativeElement && e.target!==this.menu.nativeElement && e.target!==this.icon.nativeElement ){
-             this.openMenu=false;
+         if (e.target !== this.toggleButton.nativeElement && e.target !== this.menu.nativeElement && e.target !== this.icon.nativeElement ){
+             this.openMenu = false;
          }
      });
   }
@@ -66,6 +66,10 @@ export class HeaderComponent implements OnInit {
   collapse() {
     collapse();
     this.colapsarMenu.emit();
+  }
+
+  get isMatriculado() {
+    return this.currentUser && this.currentUser.isMatriculado;
   }
 
 }
