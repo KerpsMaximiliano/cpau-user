@@ -58,6 +58,14 @@ export class ExperienciaComponent implements OnInit {
 
     this.columnnas = [
       {
+        id: 'destino',
+        titulo: 'Destino'
+      },
+      {
+        id: 'tipo',
+        titulo: 'Tipo'
+      },
+      {
         id: 'ubicacion',
         titulo: 'Ubicación'
       },
@@ -68,7 +76,7 @@ export class ExperienciaComponent implements OnInit {
       {
         id: 'fechaFin',
         titulo: 'Fecha Fin'
-      },
+      }
     ];
 
     this.destinosObras$ = this.experienciaService.destinosObra$;

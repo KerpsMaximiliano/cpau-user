@@ -60,7 +60,7 @@
                                             <input type="text" class="form-control" formControlName="url">
                                             <form-error [errors]="redesForm.controls.url.errors" [errorsMessages]="{
                                                 required: 'Campo Requerido',
-                                                invalidUrl: 'Formato incorrecto de URL'
+                                                invalidUrl: 'Formato incorrecto de URL. Recordá que debe empezar con http:// o https://'
                                             }" [controlTouched]="redesForm.controls.url.touched">
                                             </form-error>
                                         </div>

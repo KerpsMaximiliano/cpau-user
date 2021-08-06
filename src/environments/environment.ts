@@ -4,7 +4,7 @@
 
 export const environment = {
     production: true,
-    apiUrl: 'https://cpauorgapi-perfil.azurewebsites.net',
+    // apiUrl: 'https://cpauorgapi-perfil.azurewebsites.net',
     oldSiteUrl: 'https://cpau-perfil.azurewebsites.net',
     storeUrl: 'https://cpau-perfil.azurewebsites.net/store?Length=4',
 
@@ -14,7 +14,7 @@ export const environment = {
     // storeUrl: 'https://cpau.org/store?length=4'
 
     // production: true,
-    //  apiUrl: 'https://localhost:44348',
+     apiUrl: 'https://localhost:44348',
     // oldSiteUrl: 'http://localhost:50501',
     // storeUrl: 'http://localhost:50501/store?length=4'
 };
