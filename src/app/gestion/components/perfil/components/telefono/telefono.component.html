@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <div class="col-sm-12 col-md-12 col-lg-5">
+                                    <div class="col-sm-12 col-md-12 col-lg-3">
                                         <label class="col-sm-4 control-label">Tipo:</label>
                                         <div class="col-sm-8">
                                             <div *ngIf="(tipos$ | async) as telTypes">
@@ -54,7 +54,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-5">
+                                    <div class="col-sm-12 col-md-12 col-lg-4">
                                         <label class="col-sm-4 control-label">Número:</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" mask="0000000000"
@@ -66,6 +66,25 @@
                                                 maxlength: 'La longitud debe ser de 10 digitos.'
                                             }" [controlTouched]="telefonoForm.controls.telefono.touched">
                                             </form-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-3">
+                                        <label class="col-sm-4 control-label">Clase:</label>
+                                        <div class="col-sm-8">
+                                            <div *ngIf="clases$">
+                                                <select id="countries" formControlName="celufijo"
+                                                    class="telefono-select browser-default custom-select form-control">
+                                                    <option value="" disabled selected hidden>Elegí una opción</option>
+                                                    <option *ngFor="let class of clases$" [value]="class.id">
+                                                        {{ class.nombre }}</option>
+                                                </select>
+                                                <form-error [errors]="telefonoForm.controls.celufijo.errors"
+                                                    [errorsMessages]="{
+                                                        required: 'Campo Requerido'
+                                                        }"
+                                                    [controlTouched]="telefonoForm.controls.celufijo.touched">
+                                                </form-error>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2">

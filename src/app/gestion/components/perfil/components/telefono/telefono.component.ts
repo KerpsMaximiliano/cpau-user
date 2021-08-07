@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { User } from '@app/_models';
@@ -25,6 +26,7 @@ export class TelefonoComponent implements OnInit {
   public columnnas: Columna<Telefono>[];
   public telefonoForm: FormGroup;
   public tipos$ = this.telefonoService.tiposTelefonos$;
+  public clases$:SelectItem[] = [{id: 'Fijo', nombre: 'Fijo'}, {id: 'Celular', nombre: 'Celular'}]
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,6 +44,10 @@ export class TelefonoComponent implements OnInit {
       {
         id: 'telefono',
         titulo: 'Número'
+      },
+      {
+        id: 'celufijo',
+        titulo: 'Clase'
       }
     ];
 
@@ -55,6 +61,10 @@ export class TelefonoComponent implements OnInit {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
+      celufijo: ['', {
+        validators: [Validators.required],
+        updateOn: 'blur'
+      }]
     });
   }
 
