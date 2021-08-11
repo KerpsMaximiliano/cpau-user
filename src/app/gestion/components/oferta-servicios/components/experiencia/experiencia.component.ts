@@ -28,6 +28,7 @@ export class ExperienciaComponent implements OnInit {
   public tiposObras$: Observable<SelectItem[]>;
   public destinosObras$: Observable<SelectItem[]>;
   public experienciaForm: FormGroup;
+  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
 
   constructor(private formBuilder: FormBuilder,
     private experienciaService: ExperienciaService,

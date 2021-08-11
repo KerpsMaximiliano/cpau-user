@@ -28,6 +28,7 @@ export class IdentificacionComponent implements OnInit {
     minlength: 'La longitud debe ser mayor a 2 caracteres',
     maxlength: 'La longitud debe ser menor a 200 caracteres'
   };
+  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
 
   config = {
     firstDayOfWeek: 'su',

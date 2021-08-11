@@ -22,6 +22,7 @@ export class RedesComponent implements OnInit {
   public tipos$ = this.redesService.tiposRedes$;
   loading: boolean;
   collapsed: boolean;
+  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
 
   constructor(
     private formBuilder: FormBuilder,

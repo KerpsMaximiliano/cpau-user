@@ -8,15 +8,6 @@
 .header .navbar-header {
     display: contents;
 }
-.btn-question:hover {
-    color: #999c9e;
-}
-.btn-question {
-    color: #999c9e;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 7px 10px !important;
-}
 .btn-logout:hover {
     color: #999c9e;
 }

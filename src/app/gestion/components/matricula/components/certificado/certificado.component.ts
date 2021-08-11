@@ -21,6 +21,7 @@ export class CertificadoComponent implements OnInit {
   mostrarGenerar: boolean;
   public filas: Filas<Certificado>[] = [];
   public columnnas: Columna<Certificado>[];
+  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
 
   public certificadoForm: FormGroup;
 

@@ -23,6 +23,7 @@ export class PosgradosComponent implements OnInit {
   public filas: Filas<Posgrado>[] = [];
   public columnnas: Columna<Posgrado>[];
   public universidades$: Observable<SelectItem[]>;
+  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
 
   public posgradoForm: FormGroup;
   constructor(private formBuilder: FormBuilder,

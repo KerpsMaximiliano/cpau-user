@@ -11,6 +11,8 @@ export class ResumenComponent implements OnInit {
 
   collapsed: boolean;
   public resumen: Resumen;
+  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+
   constructor(private resumenService: ResumenService) {}
 
   ngOnInit() {

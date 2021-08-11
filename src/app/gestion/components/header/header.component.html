@@ -18,9 +18,6 @@
             <!--Columna Logout-->
             <div class="logout text-right">
                 <ul class="nav navbar-top-links navbar-right">
-                    <li>
-                        <a class="btn btn-question" style="font-size: 13px;" href="https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online" target="_blank" title="Preguntas Frecuentes" ><i class="fa fa-question-circle"></i></a>
-                    </li>
                     <li style="position: relative;" *ngIf="isMatriculado">
                         <div class="btn btn-user" #toggleButton (click)="openMenu=!openMenu"><i #icon class="fa fa-user"></i></div>
                         <div class="menu" *ngIf="openMenu" #menu>

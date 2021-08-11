@@ -13,6 +13,7 @@ export class UsuarioComponent implements OnInit {
 
   collapsed: boolean;
   loading: boolean;
+  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
   public usuarioForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private toastr: ToastrService,

@@ -1,9 +1,12 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-sm-4">
+    <div class="col-sm-12">
         <div class="row title-breadcump">
-            <div class="col-sm-8 row btn-sync">
+            <div class="col-sm-8 row">
                 <h2>Identificación</h2>
+            </div>
+            <div class="col-sm-4 text-right  btn-sync">
+                <button class="btn-question"><a [href]="urlHelp" target="_blank" title="Ayuda"><i class="fa fa-question"></i></a></button>
                 <button (click)="reload()"><i class="fa fa-refresh"></i></button>
             </div>
         </div>
