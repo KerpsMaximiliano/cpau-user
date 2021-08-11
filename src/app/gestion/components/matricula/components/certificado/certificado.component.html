@@ -1,7 +1,12 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Certificado</h2>
+        <div class="row title-breadcump">
+            <div class="col-sm-8 row btn-sync">
+                <h2>Certificado</h2>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
         <ol class="breadcrumb">
             <li>
                 <a>Perfil</a>
@@ -27,52 +32,22 @@
                     </div>
                     <div class="ibox-content" [hidden]="collapsed">
                         <form method="get" class="form-horizontal" [formGroup]="certificadoForm">
-                            <!-- <input hidden formControlName="id"> -->
-                            <div class="row">
-                                <!--<div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Código de Certificado:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" disabled class="form-control" formControlName="codigoCertificado"
-                                                placeholder="Código certificado" maxlength="100">
-                                            <form-error [errors]="certificadoForm.controls.codigoCertificado.errors" [errorsMessages]="{
-                                              required: 'Campo Requerido',
-                                              minlength: 'La longitud permitida es entre 1 y 100 caracteres',
-                                              maxlength: 'La longitud permitida es entre 1 y 100 caracteres'
-                                            }" [controlTouched]="certificadoForm.controls.codigoCertificado.touched">
-                                            </form-error>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Fecha y hora:</label>
-                                        <div class="col-sm-9">
-                                            <div class="input-group">
-                                                <input class="form-control datepicker" placeholder="dd/mm/yyyy"
-                                                    formControlName="fechaHora" ngbDatepicker #d="ngbDatepicker" disabled>
-                                                <button class="input-group-addon button-datepicker" (click)="d.toggle()"
-                                                    type="button">
-                                                    <i class="fa fa-calendar"></i>
-                                                </button>
-                                            </div>
 
-                                            <form-error [errors]="certificadoForm.controls.fechaHora.errors"
-                                                [errorsMessages]="{
-                                              required: 'Campo Requerido'
-                                            }" [controlTouched]="certificadoForm.controls.fechaHora.touched">
-                                            </form-error>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="col-sm-4">&nbsp;</div> -->
-                                <div class="col-sm-4">
+                            <div class="row text-right">
+
+                                <div class="col-sm-12" *ngIf="mostrarGenerar">
                                     <button [disabled]="loading" class="btn btn-primary"
                                         (click)="agregarFila()">
                                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                         Generar nuevo
                                     </button>
                                     <!-- <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button> -->
+                                </div>
+                                <div class="col-sm-12" style="text-align: left;" *ngIf="!mostrarGenerar">
+                                    <div class="alert alert-warning">
+                                        <a class="alert-link" href="#">¡Atención!</a><br>
+                                        Es servicio es para matriculados activos.
+                                    </div>
                                 </div>
                             </div>
                         </form>

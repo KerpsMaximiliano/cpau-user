@@ -4,7 +4,15 @@
     bottom: 0;
     padding: 10px 20px;
     position: absolute;
-    width: 100vw;
-    left: auto;
+    width: 100%;
     right: auto;
+}
+.footer-redes i{
+    font-size: 18px;
+}
+.footer-redes a {
+    margin-right: 2%;
+}
+.footer-redes {
+    width: 200px;
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { environment } from '@environments/environment';
@@ -13,7 +13,8 @@ export class CursoService {
   constructor(private httpClient: HttpClient) { }
 
   getAll() {
-    return this.httpClient.get<Curso[]>(`${environment.apiUrl}/api/servicios/cursos`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<Curso[]>(`${environment.apiUrl}/api/servicios/cursos`, {params});
   }
 
   insert(curso: Curso): Observable<IResponseService<Curso>>  {

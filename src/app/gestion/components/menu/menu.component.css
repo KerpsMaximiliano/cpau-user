@@ -8,3 +8,9 @@
     color:white !important;
     font-weight: 400 !important;
 }
+
+@media (max-width: 768px) {
+    .hideen-sub-menu {
+        display: none !important;
+    }
+}

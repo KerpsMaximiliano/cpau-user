@@ -1,11 +1,13 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Identificación</h2>
+        <div class="row title-breadcump">
+            <div class="col-sm-8 row btn-sync">
+                <h2>Identificación</h2>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
         <ol class="breadcrumb">
-            <li>
-                <a>Panel</a>
-            </li>
             <li>
                 <a>Perfil</a>
             </li>
@@ -32,7 +34,7 @@
                 <div class="ibox-content" [hidden]="collapsed">
                     <form method="get" class="form-horizontal" [formGroup]="identificacionForm">
                         <div class="row">
-                            <div class="col-md-6 col-md-offset-3">
+                            <div class="col-lg-6 col-lg-offset-3 col-md-12">
 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Nombres:</label>
@@ -41,7 +43,7 @@
                                             maxlength="100" placeholder="Nombres">
                                         <form-error [errors]="identificacionForm.controls.nombres.errors"
                                             [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud debe ser mayor a 2 caracteres',
                                               maxlength: 'La longitud debe ser menor a 100 caracteres',
                                               whitespace: 'No se permite ingresar solo espacios en blanco'
@@ -57,7 +59,7 @@
                                             maxlength="100" placeholder="Apellidos">
                                         <form-error [errors]="identificacionForm.controls.apellidos.errors"
                                             [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud debe ser mayor a 2 caracteres',
                                               maxlength: 'La longitud debe ser menor a 100 caracteres',
                                               whitespace: 'No se permite ingresar solo espacios en blanco'
@@ -66,7 +68,7 @@
                                     </div>
                                 </div>
 
-                                <div class="hr-line-dashed"></div>
+                                <!-- <div class="hr-line-dashed"></div>
                                 <div class="form-group">
 
                                     <label class="col-sm-2 control-label">Sexo:</label>
@@ -86,11 +88,11 @@
                                             </label>
                                         </div>
                                         <form-error [errors]="identificacionForm.controls.sexo.errors" [errorsMessages]="{
-                                          required: 'Campo Requerido'
+                                          required: 'Campo requerido'
                                         }" [controlTouched]="identificacionForm.controls.sexo.touched">
                                         </form-error>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="hr-line-dashed"></div>
 
@@ -107,7 +109,7 @@
                                                 </select>
                                                 <form-error [errors]="identificacionForm.controls.tipoDocumento.errors"
                                                     [errorsMessages]="{
-                                                          required: 'Campo Requerido'
+                                                          required: 'Campo requerido'
                                                         }"
                                                     [controlTouched]="identificacionForm.controls.tipoDocumento.touched">
                                                 </form-error>
@@ -120,7 +122,7 @@
                                                 <form-error
                                                     [errors]="identificacionForm.controls.numeroDocumento.errors"
                                                     [errorsMessages]="{
-                                                      required: 'Campo Requerido',
+                                                      required: 'Campo requerido',
                                                       minlength: 'Ingrese un documento valido entre 8 y 9 digitos.',
                                                       maxlength: 'Ingrese un documento valido entre 8 y 9 digitos.'
                                                     }"
@@ -151,7 +153,7 @@
                                                 </div>
                                                 <form-error [errors]="identificacionForm.controls.nacimiento.errors"
                                                     [errorsMessages]="{
-                                                              required: 'Campo Requerido'
+                                                              required: 'Campo requerido'
                                                             }"
                                                     [controlTouched]="identificacionForm.controls.nacimiento.touched">
                                                 </form-error>
@@ -166,7 +168,7 @@
                                                 </select>
                                                 <form-error [errors]="identificacionForm.controls.pais.errors"
                                                     [errorsMessages]="{
-                                                          required: 'Campo Requerido'
+                                                          required: 'Campo requerido'
                                                         }" [controlTouched]="identificacionForm.controls.pais.touched">
                                                 </form-error>
                                                 <span class="help-block m-b-none">País</span>
@@ -179,10 +181,9 @@
 
                                 <div class="form-group">
                                     <div class="alert alert-warning">
-                                        <a class="alert-link" href="#">Atención!</a><br>
-                                        Si Ud. desea modificar alguno de los datos personales que estan grisados,
-                                        contáctese con cualquier personal del staff del Consejo.<br>
-                                        Horario: Lunes a Viernes de 9 a 17hs. al +54 (011) 5238-1068.
+                                        <!-- <a class="alert-link" href="#">¡Atención!</a><br> -->
+                                        <strong>¡Atención!</strong><br>
+                                        Si quer&eacute;s modificar alguno de los datos personales que est&aacute;n grisados, envianos un mail a info@cpau.org.
                                     </div>
                                 </div>
                             </div>

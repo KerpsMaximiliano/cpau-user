@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
@@ -13,6 +13,7 @@ export class ResumenService {
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<Resumen> {
-    return this.httpClient.get<Resumen>(`${environment.apiUrl}/api/matricula/datosbasicos`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<Resumen>(`${environment.apiUrl}/api/matricula/datosbasicos`, {params});
   }
 }

@@ -19,6 +19,7 @@ import { ConfirmComponent } from "./login/recover/confirm/confirm.component";
 import { PublicityHomeComponent } from "./shared/components/publicity-home/publicity-home.component";
 import { ProfessionalNeedComponent } from "./Professional/profesional-need/professional-need.component";
 import { TemplateOneComponent } from "./home/components/templates/template-one/template-one.component";
+import { TemplateAgendaTagsComponent } from "./home/components/templates/template-agenda-tags/template-agenda-tags.component";
 import { TemplateTwoComponent } from "./home/components/templates/template-two/template-two.component";
 import { TemplateThreeComponent } from "./home/components/templates/template-three/template-three.component";
 import { TemplateFourComponent } from "./home/components/templates/template-four/template-four.component";
@@ -32,6 +33,7 @@ import { PadronComponent } from "./padron/padron.component";
 import { FichatecnicaComponent } from "./fichatecnica/fichatecnica.component";
 import { ContactoProfesionalComponent } from "./Professional/contacto-profesional/contacto-profesional.component";
 import { ContactoComponent } from "./contacto/contacto.component";
+import { ContactoAnuncianteComponent } from "./contacto-anunciante/contacto-anunciante.component";
 import { TooltipModule } from "ng2-tooltip-directive";
 import { CacheInterceptor } from "../app/_helpers/cache.interceptor";
 import { BoletinesComponent } from "./boletines/boletines.component";
@@ -48,7 +50,9 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
-
+import { OwlModule } from 'ngx-owl-carousel';
+import { LoadingComponent } from './shared/components/loading/loading.component';
+import { LoadingScreenInterceptor } from './_helpers/loading.interceptor';
 @NgModule({
   imports: [
     BrowserModule,
@@ -63,7 +67,8 @@ import { ActualizacionEmailComponent } from './gestion/components/perfil/compone
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     BootstrapModalModule.forRoot({ container: document.body }),
-    NgbModule
+    NgbModule,
+    OwlModule
   ],
   declarations: [
     AppComponent,
@@ -82,6 +87,7 @@ import { ActualizacionEmailComponent } from './gestion/components/perfil/compone
     TemplateThreeComponent,
     TemplateFourComponent,
     TemplateFiveComponent,
+    TemplateAgendaTagsComponent,
     MastertemplateComponent,
     RenderDirective,
     NoteComponent,
@@ -91,6 +97,7 @@ import { ActualizacionEmailComponent } from './gestion/components/perfil/compone
     FichatecnicaComponent,
     ContactoProfesionalComponent,
     ContactoComponent,
+    ContactoAnuncianteComponent,
     BoletinesComponent,
     Safe,
     FormComponent,
@@ -99,12 +106,18 @@ import { ActualizacionEmailComponent } from './gestion/components/perfil/compone
     RegisterNomatriculadoComponent,
     numberOnlyDirective,
     ModalComponent,
-    ActualizacionEmailComponent
+    ActualizacionEmailComponent,
+    LoadingComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingScreenInterceptor,
+      multi: true
+    }
   ],
   entryComponents: [
     TemplateOneComponent,
@@ -113,7 +126,8 @@ import { ActualizacionEmailComponent } from './gestion/components/perfil/compone
     TemplateListComponent,
     TemplateFourComponent,
     TemplateFiveComponent,
-    ModalComponent
+    ModalComponent,
+    TemplateAgendaTagsComponent
   ],
   bootstrap: [AppComponent],
 })

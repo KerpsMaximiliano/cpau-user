@@ -5,17 +5,18 @@
 export const environment = {
     production: true,
     apiUrl: 'https://cpauorgapi-perfil.azurewebsites.net',
-    oldSiteUrl: '',
-    storeUrl: 'https://cpau-perfil.azurewebsites.net/store?Length=4'
+    oldSiteUrl: 'https://cpau-perfil.azurewebsites.net',
+    storeUrl: 'https://cpau-perfil.azurewebsites.net/store?Length=4',
 
     // production: true,
     // apiUrl: 'https://cpauorgapi.azurewebsites.net',
     // oldSiteUrl: ''
-    // storeUrl: 'https://cpau.org/store=length=4'
-    
+    // storeUrl: 'https://cpau.org/store?length=4'
+
     // production: true,
-    // apiUrl: 'https://localhost:44348',
-    // oldSiteUrl: ''
+    //  apiUrl: 'https://localhost:44348',
+    // oldSiteUrl: 'http://localhost:50501',
+    // storeUrl: 'http://localhost:50501/store?length=4'
 };
 
 /*

@@ -59,11 +59,11 @@ export class PosgradosComponent implements OnInit {
       },
       {
         id: 'fechaInicio',
-        titulo: 'Fecha Inicio'
+        titulo: 'Fecha inicio'
       },
       {
         id: 'fechaFin',
-        titulo: 'Fecha Fin'
+        titulo: 'Fecha fin'
       },
     ];
 
@@ -71,17 +71,24 @@ export class PosgradosComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+  }
+  initData() {
+    this.filas = [];
     this.posgradoService.getAll()
-      .subscribe(d => {
-        d.map(x => {
-          this.filas = [
-            ...this.filas,
-            {
-              valor: x
-            }
-          ];
-        });
+    .subscribe(d => {
+      d.map(x => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: x
+          }
+        ];
       });
+    });
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev: Posgrado) {

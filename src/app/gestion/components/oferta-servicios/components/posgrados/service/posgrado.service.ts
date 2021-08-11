@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
@@ -22,7 +22,8 @@ export class PosgradoService {
   constructor(private httpClient: HttpClient) { }
 
   getAll() {
-    return this.httpClient.get<Posgrado[]>(`${environment.apiUrl}/api/servicios/postgrados`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<Posgrado[]>(`${environment.apiUrl}/api/servicios/postgrados`, {params});
   }
 
   insert(posgrado: Posgrado): Observable<IResponseService<Posgrado>> {

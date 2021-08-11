@@ -81,7 +81,7 @@ console.log(`#${key}`)
     }
 
 
-    resolved(captchaResponse: string, res) {
+    resolved(captchaResponse: string) {
       console.log(`Resolved response token: ${captchaResponse}`);
     }
 }

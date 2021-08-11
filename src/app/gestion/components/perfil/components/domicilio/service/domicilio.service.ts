@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
@@ -17,7 +17,8 @@ export class DomicilioService {
   public tiposDomicilios$ = this.httpClient.get<SelectItem[]>(`${environment.apiUrl}/api/siteConsumer/tipoContacto`);
 
   getAll(): Observable<Domicilio[]> {
-    return this.httpClient.get<Domicilio[]>(`${environment.apiUrl}/api/perfil/domicilio`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<Domicilio[]>(`${environment.apiUrl}/api/perfil/domicilio`, {params});
   }
 
   insert(domicilio: Domicilio): Observable<IResponseService<Domicilio>> {

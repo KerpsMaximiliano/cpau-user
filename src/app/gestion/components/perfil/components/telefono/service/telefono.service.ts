@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
@@ -31,7 +31,8 @@ export class TelefonoService {
 
 
   public read(): Observable<Telefono[]> {
-    return this.httpClient.get<Telefono[]>(`${environment.apiUrl}/api/perfil/contacto/telefono`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<Telefono[]>(`${environment.apiUrl}/api/perfil/contacto/telefono`, {params});
   }
 
   public delete(id: number): Observable<IResponseService<Telefono>> {

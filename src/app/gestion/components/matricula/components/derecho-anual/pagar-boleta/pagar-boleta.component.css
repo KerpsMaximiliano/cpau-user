@@ -1,0 +1,8 @@
+@media (max-width: 480px) {
+    .pagar-boleta img {
+        width: 100px;
+    }
+}
+.modal-footer .btn.btn-dark {
+    color: white;
+}

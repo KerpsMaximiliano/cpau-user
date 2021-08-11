@@ -1,0 +1,48 @@
+@import '../../../../../stylesCustom/styles/bootstrap/bootstrap.css';
+@import '../../../../../stylesCustom/styles/cpau.css';
+@import '../../../../../stylesCustom/styles/agenda.css';
+@import '../../../../../stylesCustom/styles/loader.css';
+@import '../../../../../stylesCustom/styles/nota.css';
+
+.div.col-md-7:nth-child(1) {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.col-md-2 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.container.p-0.pt-2.pb-5 {
+    padding-bottom: 0rem !important;
+    padding-top: 0.5rem !important;
+}
+
+.margintop-52 {
+    margin-top: -52px;
+}
+
+.margintop-7 {
+    margin-top: -7px;
+}
+
+.articleCss article h1 {
+    padding: 40px 0px 15px 0px;
+}
+
+.caplik {
+    color: #3400ff;
+    text-decoration: none;
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 12pt;
+    margin-bottom: -0.5rem;
+}
+
+.caplik:hover {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}

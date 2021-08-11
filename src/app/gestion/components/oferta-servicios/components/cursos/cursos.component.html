@@ -1,13 +1,15 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Cursos</h2>
+        <div class="row title-breadcump">
+            <div class="col-sm-8 row btn-sync">
+                <h2>Cursos</h2>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
         <ol class="breadcrumb">
             <li>
-                <a>Panel</a>
-            </li>
-            <li>
-                <a>Oferta de Servicios</a>
+                <a>Oferta de servicios</a>
             </li>
             <li class="active">
                 <a><strong>Cursos</strong></a>
@@ -40,10 +42,10 @@
                                                 placeholder="Institución">
                                             <form-error [errors]="cursosForm.controls.institucion.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud permitida es entre 2 y 100 caracteres',
                                               maxlength: 'La longitud permitida es entre 2 y 100 caracteres',
-                                              whitespace: 'Campo Requerido'
+                                              whitespace: 'Campo requerido'
                                             }" [controlTouched]="cursosForm.controls.institucion.touched">
                                             </form-error>
                                         </div>
@@ -56,10 +58,10 @@
                                             <input type="text" class="form-control" formControlName="nombre"
                                                 placeholder="Nombre">
                                             <form-error [errors]="cursosForm.controls.nombre.errors" [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud permitida es entre 3 y 100 caracteres',
                                               maxlength: 'La longitud permitida es entre 3 y 100 caracteres',
-                                              whitespace: 'Campo Requerido'
+                                              whitespace: 'Campo requerido'
                                             }" [controlTouched]="cursosForm.controls.nombre.touched">
                                             </form-error>
                                         </div>
@@ -69,7 +71,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Fecha Inicio:</label>
+                                        <label class="col-sm-3 control-label">Fecha inicio:</label>
                                         <div class="col-sm-9">
                                             <div class="input-group">
                                                 <input class="form-control datepicker" placeholder="dd/mm/yyyy"
@@ -82,7 +84,7 @@
 
                                             <form-error [errors]="cursosForm.controls.fechaInicio.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido'
+                                              required: 'Campo requerido'
                                             }" [controlTouched]="cursosForm.controls.fechaInicio.touched">
                                             </form-error>
                                         </div>
@@ -90,7 +92,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Fecha Fin:</label>
+                                        <label class="col-sm-3 control-label">Fecha fin:</label>
                                         <div class="col-sm-9">
                                             <div class="input-group">
                                                 <input class="form-control datepicker" placeholder="dd/mm/yyyy"
@@ -101,7 +103,7 @@
                                                 </button>
                                             </div>
                                             <form-error [errors]="cursosForm.controls.fechaFin.errors" [errorsMessages]="{
-                                              required: 'Campo Requerido'
+                                              required: 'Campo requerido'
                                             }" [controlTouched]="cursosForm.controls.fechaFin.touched">
                                             </form-error>
                                         </div>

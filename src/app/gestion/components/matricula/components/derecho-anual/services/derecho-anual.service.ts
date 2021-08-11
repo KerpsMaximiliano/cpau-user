@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { Observable, of } from 'rxjs';
@@ -12,7 +12,8 @@ export class DerechoAnualService {
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<DerechoAnual[]> {
-    return this.httpClient.get<DerechoAnual[]>(`${environment.apiUrl}/api/matricula/obtenerDeuda`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<DerechoAnual[]>(`${environment.apiUrl}/api/matricula/obtenerDeuda`, {params});
 
   }
 

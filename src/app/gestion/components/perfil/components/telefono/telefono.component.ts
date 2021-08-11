@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
+import { User } from '@app/_models';
+import { AuthenticationService } from '@app/_services';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Telefono, TelefonoRequestModel } from './models/telefono.model';
@@ -18,26 +21,33 @@ export class TelefonoComponent implements OnInit {
 
   loading: boolean;
   collapsed: boolean;
+  currentUser: User;
   public filas: Filas<Telefono>[] = [];
   public columnnas: Columna<Telefono>[];
   public telefonoForm: FormGroup;
   public tipos$ = this.telefonoService.tiposTelefonos$;
+  public clases$:SelectItem[] = [{id: 'Fijo', nombre: 'Fijo'}, {id: 'Celular', nombre: 'Celular'}]
 
   constructor(
     private formBuilder: FormBuilder,
     private telefonoService: TelefonoService,
     private toastr: ToastrService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private authenticationService: AuthenticationService
   ) {
 
     this.columnnas = [
       {
         id: 'tipoTelefono',
-        titulo: 'tipo'
+        titulo: 'Tipo'
       },
       {
         id: 'telefono',
         titulo: 'Número'
+      },
+      {
+        id: 'celufijo',
+        titulo: 'Clase'
       }
     ];
 
@@ -51,20 +61,33 @@ export class TelefonoComponent implements OnInit {
         validators: [Validators.required],
         updateOn: 'blur'
       }],
+      celufijo: ['', {
+        validators: [Validators.required],
+        updateOn: 'blur'
+      }]
     });
   }
 
   ngOnInit() {
+    this.initData();
+    this.currentUser = this.authenticationService.currentUserValue;
+  }
+  initData() {
+    this.filas = [];
     this.telefonoService.read().subscribe(telef => {
       telef.map(t => {
         this.filas = [
           ...this.filas,
           {
-            valor: t
+            valor: t,
+            ocultarEliminar: t.idTipoTelefono === 1
           }
         ]
       });
     });
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev: Telefono) {
@@ -157,5 +180,9 @@ export class TelefonoComponent implements OnInit {
   }
   public cancelarFila(): void {
     this.telefonoForm.reset();
+  }
+
+  get isMatriculado() {
+    return this.currentUser && this.currentUser.isMatriculado;
   }
 }

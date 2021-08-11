@@ -58,17 +58,25 @@ export class ExperienciaComponent implements OnInit {
 
     this.columnnas = [
       {
+        id: 'destino',
+        titulo: 'Destino'
+      },
+      {
+        id: 'tipo',
+        titulo: 'Tipo'
+      },
+      {
         id: 'ubicacion',
         titulo: 'Ubicación'
       },
       {
         id: 'fechaInicio',
-        titulo: 'Fecha Inicio'
+        titulo: 'Fecha inicio'
       },
       {
         id: 'fechaFin',
-        titulo: 'Fecha Fin'
-      },
+        titulo: 'Fecha fin'
+      }
     ];
 
     this.destinosObras$ = this.experienciaService.destinosObra$;
@@ -76,17 +84,24 @@ export class ExperienciaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+  }
+  initData() {
+    this.filas = [];
     this.experienciaService.getAll()
-      .subscribe(d => {
-        d.map(x => {
-          this.filas = [
-            ...this.filas,
-            {
-              valor: x
-            }
-          ];
-        });
+    .subscribe(d => {
+      d.map(x => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: x
+          }
+        ];
       });
+    });
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev: Experiencia) {

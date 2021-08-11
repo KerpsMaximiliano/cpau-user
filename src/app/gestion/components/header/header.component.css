@@ -8,10 +8,47 @@
 .header .navbar-header {
     display: contents;
 }
-.btn-logout:hover {
-    color: #FFFFFF;
-    background-color: #000000;   
+.btn-question:hover {
+    color: #999c9e;
 }
-.btn-login {
-    color: white;
+.btn-question {
+    color: #999c9e;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 7px 10px !important;
+}
+.btn-logout:hover {
+    color: #999c9e;
+}
+.btn-logout {
+    color: #999c9e;
+    font-weight: 600;
+    font-size: 14px;
+}
+.btn-user:hover {
+    color: #999c9e;
+}
+.btn-user {
+    color: #999c9e;
+    font-weight: 600;
+    font-size: 14px;
+}
+.fa.fa-sign-out {
+    margin-right: 6px;
+}
+.minimalize-styl-2 {
+    margin: unset;
+}
+.logout {
+    position: absolute;
+    right: 0;
+}
+.header .menu {
+    position: absolute;
+    border: 0.5px solid darkgray;
+    right: 0;
+    background-color: white;
+}
+.header .menu ul li a {
+    min-height: 0;
 }

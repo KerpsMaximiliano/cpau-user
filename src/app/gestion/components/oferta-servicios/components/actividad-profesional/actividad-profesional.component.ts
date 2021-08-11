@@ -34,10 +34,10 @@ export class ActividadProfesionalComponent implements OnInit {
 
   loadData() {
     this.actividadService.getActividadProfesional().subscribe(actividades => {
-      this.actividadProfesionalData = actividades.filter(f => f.id == f.id);
+      this.actividadProfesionalData = actividades.filter(f => f.id === f.id);
 
       this.actividadService.getObras().subscribe(obras => {
-        this.obrasData = obras.filter(f => f.id == f.id);
+        this.obrasData = obras.filter(f => f.id === f.id);
       });
     });
   }
@@ -81,6 +81,10 @@ export class ActividadProfesionalComponent implements OnInit {
   }
   public cancelarFila(): void {
     this.actividadForm.reset();
+    this.loadData();
+  }
+
+  protected reload() {
     this.loadData();
   }
 }

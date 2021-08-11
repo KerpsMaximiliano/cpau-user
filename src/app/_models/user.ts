@@ -7,4 +7,5 @@ export class User {
     isMatriculado: boolean;
     matricula?: string;
     tipoMatricula?: string;
+    guid: string;
 }

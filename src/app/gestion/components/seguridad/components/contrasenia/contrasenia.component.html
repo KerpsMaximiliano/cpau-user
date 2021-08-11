@@ -17,13 +17,13 @@
                             <div class="col-md-8 col-md-offset-1">
 
                                 <div class="form-group">
-                                    <label class="col-sm-6 control-label">Contraseña Actual:</label>
+                                    <label class="col-sm-6 control-label">Contraseña actual:</label>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control" formControlName="passwordActual"
-                                            maxlength="30" placeholder="Contraseña Actual">
+                                            maxlength="30" placeholder="Contraseña actual">
                                         <form-error [errors]="contraseniaForm.controls.passwordActual.errors"
                                             [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud debe ser mayor a 6 caracteres',
                                               maxlength: 'La longitud debe ser menor a 30 caracteres'
                                             }" [controlTouched]="contraseniaForm.controls.passwordActual.touched">
@@ -37,13 +37,13 @@
                             <div class="col-md-8 col-md-offset-1">
 
                                 <div class="form-group">
-                                    <label class="col-sm-6 control-label">Nueva Contraseña:</label>
+                                    <label class="col-sm-6 control-label">Nueva contraseña:</label>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control" formControlName="nuevaPassword"
-                                            maxlength="30" placeholder="Nueva Contraseña">
+                                            maxlength="30" placeholder="Nueva contraseña">
                                         <form-error [errors]="contraseniaForm.controls.nuevaPassword.errors"
                                             [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud debe ser mayor a 6 caracteres',
                                               maxlength: 'La longitud debe ser menor a 30 caracteres'
                                             }" [controlTouched]="contraseniaForm.controls.nuevaPassword.touched">
@@ -57,13 +57,13 @@
                             <div class="col-md-8 col-md-offset-1">
 
                                 <div class="form-group">
-                                    <label class="col-sm-6 control-label">Repite Nueva Contraseña:</label>
+                                    <label class="col-sm-6 control-label">Repetí la nueva contraseña:</label>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control" formControlName="repiteNuevaPassword"
-                                            maxlength="30" placeholder="Repite Nueva Contraseña">
+                                            maxlength="30" placeholder="Repetí la nueva contraseña">
                                         <form-error [errors]="contraseniaForm.controls.repiteNuevaPassword.errors"
                                             [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud debe ser mayor a 6 caracteres',
                                               maxlength: 'La longitud debe ser menor a 30 caracteres',
                                               notEquals: 'Las contraseñas no coinciden'

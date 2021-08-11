@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { environment } from '@environments/environment';
@@ -10,11 +10,16 @@ import { Certificado } from '../model/certificado';
 })
 export class CertificadoService {
 
+  allowGenerate(): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${environment.apiUrl}/api/perfil/PuedeGenerarCertificado`);
+  }
+
   constructor(private httpClient: HttpClient) { }
 
 
   getAll(): Observable<Certificado[]> {
-    return this.httpClient.get<Certificado[]>(`${environment.apiUrl}/api/perfil/matricula/certificado`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<Certificado[]>(`${environment.apiUrl}/api/perfil/matricula/certificado`, {params});
   }
 
   insert(): Observable<IResponseService<Certificado>> {

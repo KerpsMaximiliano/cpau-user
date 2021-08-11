@@ -42,11 +42,12 @@
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
-                        <div class="actions-buttons">
+                        <div class="actions-buttons text-right">
                             <button [disabled]="loading" class="btn btn-primary" (click)="onSave()">
                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                 Guardar
                             </button>
+                            <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button>
                         </div>
 
                     </form>

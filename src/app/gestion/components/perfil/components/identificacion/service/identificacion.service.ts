@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { environment } from '@environments/environment';
@@ -35,7 +35,8 @@ export class IdentificacionService {
     }
 
     public read(): Observable<Identificacion> {
-        return this.httpClient.get<Identificacion>(`${environment.apiUrl}/api/perfil/identificacion`);
+        const params = new HttpParams().set('nocache', 'true');
+        return this.httpClient.get<Identificacion>(`${environment.apiUrl}/api/perfil/identificacion`, {params});
     }
 
     public update(request: Identificacion): Observable<IResponseService<Identificacion>> {

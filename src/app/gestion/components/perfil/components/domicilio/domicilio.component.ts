@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
+import { User } from '@app/_models';
+import { AuthenticationService } from '@app/_services';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Domicilio } from './model/domicilio.model';
@@ -19,6 +21,7 @@ export class DomicilioComponent implements OnInit {
 
   collapsed: boolean;
   loading: boolean;
+  currentUser: User;
   public filas: Filas<Domicilio>[] = [];
   public columnnas: Columna<Domicilio>[];
 
@@ -26,9 +29,10 @@ export class DomicilioComponent implements OnInit {
   public domicilioForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private domicilioService: DomicilioService,
-    private toastr: ToastrService,
-    private dialogService: DialogService) {
+              private domicilioService: DomicilioService,
+              private toastr: ToastrService,
+              private dialogService: DialogService,
+              private authenticationService: AuthenticationService) {
 
     this.domicilioForm = this.formBuilder.group({
       id: [],
@@ -65,7 +69,7 @@ export class DomicilioComponent implements OnInit {
     this.columnnas = [
       {
         id: 'tipoDomicilio',
-        titulo: 'Tipo de domicilio'
+        titulo: 'Tipo'
       },
       {
         id: 'calle',
@@ -81,7 +85,7 @@ export class DomicilioComponent implements OnInit {
       },
       {
         id: 'depto',
-        titulo: 'Depto Nro'
+        titulo: 'Departamento'
       },
       {
         id: 'localidad',
@@ -97,17 +101,27 @@ export class DomicilioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initData();
+
+    this.currentUser = this.authenticationService.currentUserValue;
+  }
+  initData() {
+    this.filas = [];
     this.domicilioService.getAll()
-      .subscribe(d => {
-        d.map(x => {
-          this.filas = [
-            ...this.filas,
-            {
-              valor: x
-            }
-          ];
-        });
+    .subscribe(d => {
+      d.map(x => {
+        this.filas = [
+          ...this.filas,
+          {
+            valor: x,
+            ocultarEliminar: x.idTipoDomicilio === 1
+          }
+        ];
       });
+    });
+  }
+  protected reload() {
+    this.initData();
   }
 
   onEditar(ev) {
@@ -200,5 +214,9 @@ export class DomicilioComponent implements OnInit {
   }
   public cancelarFila(): void {
     this.domicilioForm.reset();
+  }
+
+  get isMatriculado() {
+    return this.currentUser && this.currentUser.isMatriculado;
   }
 }

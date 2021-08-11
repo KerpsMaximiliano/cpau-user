@@ -1,16 +1,24 @@
-<aside *ngIf="banners && banners.length > 0">
+<aside >
     <div class="row">
         <div class="col-sm col-md col-lg col-xl ">
-            <div class="container py-3 border-top">
+            <div class="container py-3 border-top" [ngClass]="{'sin-borde': banners?.length == 0}">
                 <div class="top-content">
                     <div class="container-fluid">
-                        <div id="carousel-example" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                                <div *ngFor="let banner of banners; let index = index" [class.active]="index == 0" class="carousel-item col-6 col-sm-6 col-md-6 col-lg-3  adv">
-                                    <a href="{{banner.urlLink}}" target="_blank" title="{{banner.campaign}}">
-                                        <figure><img src="{{banner.urlImage}}" class="img-fluid mx-auto d-block" alt="{{banner.campaign}}" /></figure>
-                                    </a>
-                                </div>
+                        <div class="carousel slide" data-ride="myCarousel">
+                            <div class="carousel-inner" role="listbox">
+                                <owl-carousel [options]="SlideOptions"
+                                                [items]="banners"
+                                                class="item"
+                                                [carouselClasses]="['owl-theme', 'sliding']" #owlElement> 
+                                    <div *ngFor="let banner of banners; let index = index; let last = last" >
+                                        <div style="align-content: center">  
+                                                <a href="{{banner.urlLink}}" target="_blank" title="{{banner.campaign}}">
+                                                    <figure><img src="{{banner.urlImage}}" class="img-responsive" alt="{{banner.campaign}}" /></figure>
+                                                </a> 
+                                        </div>  
+                                        <div class="d-none" *ngIf="messagesRendered(last)"></div>
+                                    </div> 
+                                </owl-carousel>
                             </div>
                         </div>
                     </div>
@@ -18,4 +26,4 @@
             </div>
         </div>
     </div>
-</aside>
+  </aside>

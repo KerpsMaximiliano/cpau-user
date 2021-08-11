@@ -18,26 +18,17 @@
     <!--Articles-->
     <section>
         <div class="row">
-            <input type="radio" id="todos" name="categories" value="todos" checked>
+            <input type="radio" id="todos" name="categories" value="todos">
             <input type="radio" id="{{currentTag}}" name="categories" value="{{currentTag}}" *ngFor="let currentTag of data.tags">
             <input type="radio" id="hoy" name="categories" value="hoy">
             <input type="radio" id="semana" name="categories" value="semana">
             <input type="radio" id="mes" name="categories" value="mes">
             <input type="radio" id="ano" name="categories" value="ano">
+            <input type="radio" id="2ano" name="categories" value="2ano">
             <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias ">
                 <ol>
                     <li>
                         <label (click)="onSelectTag('todos')" id="lbltodos" for="todos" title="Todas">Todas</label>
-                    </li>
-                </ol>
-                <ol *ngIf="data.tags.length > 0">
-                    <li>
-                        <div class="pl-1 pb-1">
-                            <h6>ETIQUETAS</h6>
-                        </div>
-                    </li>
-                    <li *ngFor="let currentTag of data.tags">
-                        <label for="{{currentTag}}" id="lbl{{currentTag}}" (click)="onSelectTag('#' + currentTag)" title="{{currentTag}}">{{currentTag}}</label>
                     </li>
                 </ol>
                 <ol>
@@ -47,18 +38,32 @@
                         </div>
                     </li>
                     <li>
-                        <label (click)="onSelectTag('hoy')" for="hoy" title="Hoy">Hoy</label>
+                        <label id="lblhoy" (click)="onSelectTag('hoy')" for="hoy" title="Hoy">Hoy</label>
                     </li>
                     <li>
-                        <label (click)="onSelectTag('semana')" for="semana" title="Esta semana">Esta semana</label>
+                        <label id="lblsemana" (click)="onSelectTag('semana')" for="semana" title="Esta semana">Esta semana</label>
                     </li>
                     <li>
-                        <label (click)="onSelectTag('mes')" for="mes" title="Este Mes">Este Mes</label>
+                        <label id="lblmes" (click)="onSelectTag('mes')" for="mes" title="Este mes">Este mes</label>
                     </li>
                     <li>
-                        <label (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
+                        <label id="lblano" (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
+                    </li>
+                    <li>
+                        <label id="lbl2ano" (click)="onSelectTag('2ano')" for="2ano" title="Últimos dos años">Últimos dos años</label>
                     </li>
                 </ol>
+                <ol *ngIf="data.tags.length > 0">
+                    <li>
+                        <div class="pl-1 pb-1">
+                            <h6>ETIQUETAS</h6>
+                        </div>
+                    </li>
+                    <li *ngFor="let currentTag of data.tags">
+                        <label for="{{currentTag}}" id="lbl{{currentTag}}" name="categories" (click)="onSelectTag('#' + currentTag)" title="{{currentTag}}">{{currentTag}}</label>
+                    </li>
+                </ol>
+                
             </div>
             <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts ">
                 <ul class="list-unstyled">

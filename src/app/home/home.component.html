@@ -9,8 +9,7 @@
     <main>
       <!--NOTICIAS Y AGENDA-->
       <section>
-        <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">
-          Open Modal
+        <button id="openModalButton" style="display: none;" [hidden]="true" data-toggle="modal" data-target="#myModal">
         </button>
         <div id="myModal" class="modal" role="dialog">
           <div class="modal-dialog">
@@ -37,7 +36,7 @@
           <!--NOTICIAS-->
           <div *ngIf="contentSite; else loadingBlockNews" class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
             <h6 class="border-bottom title-sections pb-1">
-              <a [routerLink]="['/noticias']" title="{{ (contentSite?.breadCrumb)[0]?.name | uppercase }}">NOTICIAS
+              <a [routerLink]="['/noticias']" title="NOTICIAS">NOTICIAS
               </a>
             </h6>
 
@@ -61,23 +60,23 @@
                 <div class="row">
                   <div class="col-12">
                     <article>
-                      <a [routerLink]="['/nota', contentSite.items[0]?.id]" target="_self"
-                        title="{{ contentSite.items[0]?.image?.title }}">
+                      <a [routerLink]="['/nota', contentSite[0]?.id]" target="_self"
+                        title="{{ contentSite[0]?.image?.title }}">
                         <li class="media noticia-principal">
                           <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                               <!-- TODO -->
                               <figure>
                                 <img class="img-fluid imagen imagen-principal" src="{{
-                                    contentSite.items[0]?.image?.imageUrl
-                                  }}" alt="{{ contentSite.items[0]?.image?.title }}" />
+                                    contentSite[0]?.image?.imageUrl
+                                  }}" alt="{{ contentSite[0]?.image?.title }}" />
                               </figure>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pt-2 pr-4">
                               <div id="noti1title">
-                                <h3>{{ contentSite.items[0].title }}</h3>
+                                <h3>{{ contentSite[0].title }}</h3>
                               </div>
-                              <div class="noticia1content" [innerHTML]="contentSite.items[0]?.summary"></div>
+                              <div class="noticia1content" [innerHTML]="contentSite[0]?.summary"></div>
                             </div>
                           </div>
                         </li>
@@ -90,18 +89,18 @@
                 <div class="row pt-3 pb-1">
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite.items[1]?.id]" target="_self"
-                        title="{{ contentSite.items[1]?.title }}">
+                      <a [routerLink]="['/nota', contentSite[1]?.id]" target="_self"
+                        title="{{ contentSite[1]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
                               <img class="img-fluid imagen imagen-secundaria" src="{{
-                                  contentSite.items[1]?.image?.imageUrl
-                                }}" alt="{{ contentSite.items[1]?.title }}" />
+                                  contentSite[1]?.image?.imageUrl
+                                }}" alt="{{ contentSite[1]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-10">
-                              <h5>{{ contentSite.items[1]?.title }}</h5>
+                              <h5>{{ contentSite[1]?.title }}</h5>
                             </div>
                           </div>
                         </li>
@@ -110,18 +109,18 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite.items[2]?.id]" target="_self"
-                        title="{{ contentSite.items[2]?.title }}">
+                      <a [routerLink]="['/nota', contentSite[2]?.id]" target="_self"
+                        title="{{ contentSite[2]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
                               <img class="img-fluid imagen imagen-secundaria" src="{{
-                                  contentSite.items[2]?.image?.imageUrl
-                                }}" alt="{{ contentSite.items[2]?.title }}" />
+                                  contentSite[2]?.image?.imageUrl
+                                }}" alt="{{ contentSite[2]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-10">
-                              <h5>{{ contentSite.items[2]?.title }}</h5>
+                              <h5>{{ contentSite[2]?.title }}</h5>
                             </div>
                           </div>
                         </li>
@@ -130,18 +129,18 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite.items[3]?.id]" target="_self"
-                        title="{{ contentSite.items[3]?.title }}">
+                      <a [routerLink]="['/nota', contentSite[3]?.id]" target="_self"
+                        title="{{ contentSite[3]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
                               <img class="img-fluid imagen imagen-secundaria" src="{{
-                                  contentSite.items[3]?.image?.imageUrl
-                                }}" alt="{{ contentSite.items[3]?.title }}" />
+                                  contentSite[3]?.image?.imageUrl
+                                }}" alt="{{ contentSite[3]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-5">
-                              <h5>{{ contentSite.items[3]?.title }}</h5>
+                              <h5>{{ contentSite[3]?.title }}</h5>
                             </div>
                           </div>
                         </li>
@@ -152,18 +151,18 @@
                 <div class="row pt-3 pb-1" style="padding-top: 1.1em !important;">
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite.items[4]?.id]" target="_self"
-                        title="{{ contentSite.items[4]?.title }}">
+                      <a [routerLink]="['/nota', contentSite[4]?.id]" target="_self"
+                        title="{{ contentSite[4]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
                               <img class="img-fluid imagen imagen-secundaria" src="{{
-                                  contentSite.items[4]?.image?.imageUrl
-                                }}" alt="{{ contentSite.items[4]?.title }}" />
+                                  contentSite[4]?.image?.imageUrl
+                                }}" alt="{{ contentSite[4]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-5">
-                              <h5>{{ contentSite.items[4]?.title }}</h5>
+                              <h5>{{ contentSite[4]?.title }}</h5>
                             </div>
                           </div>
                         </li>
@@ -172,18 +171,18 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite.items[5]?.id]" target="_self"
-                        title="{{ contentSite.items[5]?.title }}">
+                      <a [routerLink]="['/nota', contentSite[5]?.id]" target="_self"
+                        title="{{ contentSite[5]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
                               <img class="img-fluid imagen imagen-secundaria" src="{{
-                                  contentSite.items[5]?.image?.imageUrl
-                                }}" alt="{{ contentSite.items[5]?.title }}" />
+                                  contentSite[5]?.image?.imageUrl
+                                }}" alt="{{ contentSite[5]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-5">
-                              <h5>{{ contentSite.items[5]?.title }}</h5>
+                              <h5>{{ contentSite[5]?.title }}</h5>
                             </div>
                           </div>
                         </li>
@@ -192,18 +191,18 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite.items[6]?.id]" target="_self"
-                        title="{{ contentSite.items[6]?.title }}">
+                      <a [routerLink]="['/nota', contentSite[6]?.id]" target="_self"
+                        title="{{ contentSite[6]?.title }}">
                         <li class="media minima">
                           <div class="">
                             <!-- TODO -->
                             <figure>
                               <img class="img-fluid imagen imagen-secundaria" src="{{
-                                  contentSite.items[6]?.image?.imageUrl
-                                }}" alt="{{ contentSite.items[6]?.title }}" />
+                                  contentSite[6]?.image?.imageUrl
+                                }}" alt="{{ contentSite[6]?.title }}" />
                             </figure>
                             <div class="p-2 res-margin-top-5">
-                              <h5>{{ contentSite.items[6]?.title }}</h5>
+                              <h5>{{ contentSite[6]?.title }}</h5>
                             </div>
                           </div>
                         </li>
@@ -238,7 +237,7 @@
                         <a [routerLink]="['/nota', event.id]" target="_self" class="link-agenda"
                           title="{{ event.title | uppercase }}">
                           <div class="media-body">
-                            {{ event.dateLabel }}<br />
+                            <span *ngIf="event.showEventStartDate">{{ event.dateLabel }}</span><br />
                             {{ event.tag ? "#" : "" }}{{ event.tag }}
                             <br />
                             <h6>{{ event.title | uppercase }}</h6>
@@ -303,36 +302,54 @@
 
       <!--PRODUCTOS-->
       <section>
-        <div class="row pt-4 pb-5" *ngIf="externalProduct; else loadingBlockExternalProduct">
-          <div *ngFor="let product of externalProduct" class="col-sm col-md-6 col-lg col-xl">
-            <article>
-              <h6 class="mt-0 mb-2 pb-1 border-bottom">
-                <a href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
-              </h6>
-              <a href="{{ product.url }}" target="_blank" class="link-ss" title="{{ product.tooltip }}">
-                <li class="media">
-                  <div class="producto" [ngStyle]="{
-                      backgroundColor: product.color,
-                      color: product.textColor
-                    }">
-                    <figure>
-                      <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}" alt="" />
-                    </figure>
-                    <div class="py-2 px-3">
-                      <h5>{{ product.header }}</h5>
-                      <p>{{ product.description }}</p>
-                    </div>
+        <aside >
+          <div class="row" *ngIf="externalProduct; else loadingBlockExternalProduct">
+              <div class="col-sm col-md col-lg col-xl " style="padding: 0">
+                  <div class="py-3" [ngClass]="{'sin-borde': externalProduct?.length == 0}">
+                      <div class="top-content">
+                          <div class="">
+                              <div class="carousel slide" data-ride="myCarousel">
+                                  <div class="carousel-inner" role="listbox">
+                                      <owl-carousel [options]="SlideOptions"
+                                                      [items]="externalProduct"
+                                                      class="item"
+                                                      [carouselClasses]="['owl-theme', 'sliding', 'owl-carousel-home']" #owlElement> 
+                                          <div *ngFor="let product of externalProduct; let index = index; let last = last" class="col-sm col-md-12 col-lg-12 col-lg col-xl">
+                                              <h6 class="mt-0 mb-2 pb-1 border-bottom">
+                                                <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
+                                              </h6>  
+                                              <a href="{{ product.url }}"target="{{selectTarget(product.linkTarget)}}" class="link-ss" title="{{ product.tooltip }}">
+                                                <li class="media">
+                                                  <div class="producto" [ngStyle]="{
+                                                      backgroundColor: product.color,
+                                                      color: product.textColor
+                                                    }">
+                                                    <figure>
+                                                      <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}" alt="" />
+                                                    </figure>
+                                                    <div class="py-2 px-3">
+                                                      <h5>{{ product.header }}</h5>
+                                                      <p>{{ product.description }}</p>
+                                                    </div>
+                                                  </div>
+                                                </li>
+                                              </a>
+                                              <div class="d-none" *ngIf="messagesRendered(last)"></div>
+                                          </div> 
+                                      </owl-carousel>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </li>
-              </a>
-            </article>
+              </div>
           </div>
-        </div>
-        <ng-template #loadingBlockExternalProduct>
-          <div class="row pt-4 pb-5 align-self-center">
-            <div class="loader">Loading...</div>
-          </div>
-        </ng-template>
+          <ng-template #loadingBlockExternalProduct>
+            <div class="row pt-4 pb-5 align-self-center">
+              <div class="loader">Loading...</div>
+            </div>
+          </ng-template>
+        </aside>
       </section>
       <!--FIN PRODUCTOS-->
     </main>

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { AuthenticationService, UserService } from '@app/_services';
@@ -17,10 +17,11 @@ const HttpOptionsDownloadFile = {
 export class CurriculumVitaeService {
 
   constructor(private httpClient: HttpClient,
-    private authenticationService: AuthenticationService) { }
+              private authenticationService: AuthenticationService) { }
 
   getAll(): Observable<boolean> {
-    return this.httpClient.get<boolean>(`${environment.apiUrl}/api/servicios/curriculumexistente`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<boolean>(`${environment.apiUrl}/api/servicios/curriculumexistente`, {params});
   }
 
   insert(file: File): Observable<IResponseService<any>>  {

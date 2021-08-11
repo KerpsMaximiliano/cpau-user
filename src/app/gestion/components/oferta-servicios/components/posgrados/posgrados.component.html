@@ -1,13 +1,15 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Posgrados</h2>
+        <div class="row title-breadcump">
+            <div class="col-sm-8 row btn-sync">
+                <h2>Posgrados</h2>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
         <ol class="breadcrumb">
             <li>
-                <a>Panel</a>
-            </li>
-            <li>
-                <a>Oferta de Servicios</a>
+                <a>Oferta de servicios</a>
             </li>
             <li class="active">
                 <a><strong>Posgrados</strong></a>
@@ -46,7 +48,7 @@
                                             </div>
                                             <form-error [errors]="posgradoForm.controls.idUniversidad.errors"
                                                 [errorsMessages]="{
-                                                required: 'Campo Requerido'
+                                                required: 'Campo requerido'
                                               }" [controlTouched]="posgradoForm.controls.idUniversidad.touched">
                                             </form-error>
                                         </div>
@@ -59,10 +61,10 @@
                                             <input type="text" class="form-control" formControlName="nombre"
                                                 placeholder="Nombre">
                                             <form-error [errors]="posgradoForm.controls.nombre.errors" [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud permitida es entre 3 y 100 caracteres',
                                               maxlength: 'La longitud permitida es entre 3 y 100 caracteres',
-                                              whitespace: 'Campo Requerido'
+                                              whitespace: 'Campo requerido'
                                             }" [controlTouched]="posgradoForm.controls.nombre.touched">
                                             </form-error>
                                         </div>
@@ -85,7 +87,7 @@
 
                                             <form-error [errors]="posgradoForm.controls.fechaInicio.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido'
+                                              required: 'Campo requerido'
                                             }" [controlTouched]="posgradoForm.controls.fechaInicio.touched">
                                             </form-error>
                                         </div>
@@ -93,7 +95,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Fecha Fin:</label>
+                                        <label class="col-sm-3 control-label">Fecha fin:</label>
                                         <div class="col-sm-9">
                                             <div class="input-group">
                                                 <input class="form-control datepicker" placeholder="dd/mm/yyyy"
@@ -105,7 +107,7 @@
                                             </div>
                                             <form-error [errors]="posgradoForm.controls.fechaFin.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido'
+                                              required: 'Campo requerido'
                                             }" [controlTouched]="posgradoForm.controls.fechaFin.touched">
                                             </form-error>
                                         </div>

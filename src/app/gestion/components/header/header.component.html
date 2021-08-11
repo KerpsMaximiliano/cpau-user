@@ -3,24 +3,36 @@
     <div class="row header">
         <nav style="margin-bottom: 0">
             <div>
-                <a class="navbar-minimalize minimalize-styl-2 btn" (click)="colapsarMenu.emit()"><i class="fa fa-bars"></i> </a>
+                <a id="navbar-minimalize" class="navbar-minimalize minimalize-styl-2 btn" (click)="collapse()"><i class="fa fa-bars"></i> </a>
             </div>
-            <div class="col-sm-6">
-                <!--Columna Logo-->
+            <!-- <div class="col-sm-6">
                 <div>
                     <a [routerLink]="['/']" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
                         <figure><img src="https://static.cpau.org/.newsite/images/logo/cpau.svg" width="310" height="auto" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" /></figure>
                     </a>
                 </div>
-            </div>
+            </div> -->
 
             <!--Columna Logo: fin-->
             
             <!--Columna Logout-->
-            <div class="col-sm-3">
+            <div class="logout text-right">
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <button type="button" class="btn btn-login btn-logout" (click)="closeSession()"><i class="fa fa-sign-out"></i>Cerrar Sesión</button>
+                        <a class="btn btn-question" style="font-size: 13px;" href="https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online" target="_blank" title="Preguntas Frecuentes" ><i class="fa fa-question-circle"></i></a>
+                    </li>
+                    <li style="position: relative;" *ngIf="isMatriculado">
+                        <div class="btn btn-user" #toggleButton (click)="openMenu=!openMenu"><i #icon class="fa fa-user"></i></div>
+                        <div class="menu" *ngIf="openMenu" #menu>
+                            <ul>
+                                <li>
+                                    <a class="btn btn-question" [href]="urlPublica" target="_blank">Ver Perfil público</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-logout" (click)="closeSession()"><i class="fa fa-sign-out"></i>Cerrar sesión</button>
                     </li>
                 </ul>
             </div>

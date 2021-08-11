@@ -23,15 +23,21 @@ export class CurriculumVitaeComponent implements OnInit {
              private cd: ChangeDetectorRef) {
     this.curriculumForm = this.formBuilder.group({
       id: [],
-      archivo: [],
+      archivo: [null, Validators.required],
       file: []
     });
   }
 
   ngOnInit() {
-     this.curriculumVitaeService.getAll().subscribe(x => {
+    this.initData();
+  }
+  initData() {
+    this.curriculumVitaeService.getAll().subscribe(x => {
       this.archivo = x;
     });
+  }
+  protected reload() {
+    this.initData();
   }
 
   subirArchivo() {
@@ -44,6 +50,9 @@ export class CurriculumVitaeComponent implements OnInit {
           this.curriculumForm.reset();
         }
       });
+    } else {
+      this.curriculumForm.markAllAsTouched();
+      this.toastr.error(null, 'Por favor complete los datos requeridos.');
     }
   }
 
@@ -58,7 +67,7 @@ export class CurriculumVitaeComponent implements OnInit {
                                                       Validators.required,
                                                       requiredFileType(["pdf"])]);
     
-    this.curriculumForm.controls.archivo.updateValueAndValidity();              
+    this.curriculumForm.controls.archivo.updateValueAndValidity();
 
     if(event.target.files && event.target.files.length && this.curriculumForm.controls.archivo.valid) {
 

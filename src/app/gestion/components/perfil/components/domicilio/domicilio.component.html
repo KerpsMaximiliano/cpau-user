@@ -1,7 +1,12 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Domicilios</h2>
+        <div class="row title-breadcump">
+            <div class="col-sm-8 row btn-sync">
+                <h2>Domicilios</h2>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
         <ol class="breadcrumb">
             <li>
                 <a>Perfil</a>
@@ -31,7 +36,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 control-label">Tipo Domicilio:</label>
+                                        <label class="col-sm-3 control-label">Tipo:</label>
                                         <div class="col-sm-9">
                                             <div *ngIf="tiposDomicilios">
                                                 <select id="tiposDomicilios" formControlName="idTipoDomicilio"
@@ -42,7 +47,7 @@
                                                 </select>
                                                 <form-error [errors]="domicilioForm.controls.idTipoDomicilio.errors"
                                                     [errorsMessages]="{
-                                                    required: 'Campo Requerido'
+                                                    required: 'Campo requerido'
                                                   }" [controlTouched]="domicilioForm.controls.idTipoDomicilio.touched">
                                                 </form-error>
                                             </div>
@@ -56,7 +61,7 @@
                                             <input type="text" class="form-control" formControlName="calle"
                                                 placeholder="Calle" maxlength="100">
                                             <form-error [errors]="domicilioForm.controls.calle.errors" [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud permitida es entre 1 y 100 caracteres',
                                               maxlength: 'La longitud permitida es entre 1 y 100 caracteres'
                                             }" [controlTouched]="domicilioForm.controls.calle.touched">
@@ -73,7 +78,7 @@
 
                                             <form-error [errors]="domicilioForm.controls.altura.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud permitida es entre 1 y 7 caracteres',
                                               maxlength: 'La longitud permitida es entre 1 y 7 caracteres'
                                             }" [controlTouched]="domicilioForm.controls.altura.touched">
@@ -99,12 +104,12 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Depto Nro:</label>
+                                        <label class="col-sm-3 control-label">Departamento:</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" formControlName="depto"
-                                                placeholder="Depto Nro" maxlength="20">
+                                                placeholder="Departamento" maxlength="20">
                                             <form-error [errors]="domicilioForm.controls.depto.errors" [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud permitida es entre 1 y 20 caracteres',
                                               maxlength: 'La longitud permitida es entre 1 y 20 caracteres'
                                             }" [controlTouched]="domicilioForm.controls.depto.touched">
@@ -120,7 +125,7 @@
                                                 placeholder="Localidad" maxlength="100">
                                             <form-error [errors]="domicilioForm.controls.localidad.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud permitida es entre 1 y 100 caracteres',
                                               maxlength: 'La longitud permitida es entre 1 y 100 caracteres'
                                             }" [controlTouched]="domicilioForm.controls.localidad.touched">
@@ -138,7 +143,7 @@
                                                 placeholder="Código Postal">
                                             <form-error [errors]="domicilioForm.controls.codigoPostal.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               pattern: 'El formato permitido es NNNN 0 LNNNNLLL (N es numérico y L letra)'
                                             }" [controlTouched]="domicilioForm.controls.codigoPostal.touched">
                                             </form-error>

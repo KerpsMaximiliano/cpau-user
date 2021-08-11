@@ -12,7 +12,7 @@ import { ValidarPago } from '../models/validar-pago.model';
 export class PagarBoletaComponent implements OnInit {
 
   isProcessing: boolean;
-  cuotas: string;
+  cuotas: string = '3';
   formValidarPago: ValidarPago;
   debito: boolean = false;
   @ViewChild('form', { static: false }) form: ElementRef;

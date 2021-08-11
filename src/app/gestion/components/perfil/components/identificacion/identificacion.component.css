@@ -33,4 +33,6 @@
 .button-datepicker {
    height: 34px;
    width: 50%;
+   border-right: 1px solid #E5E6E7 !important;
+   min-width: fit-content;
 }

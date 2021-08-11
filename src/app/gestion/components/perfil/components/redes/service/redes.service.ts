@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
@@ -27,7 +27,8 @@ export class RedesService {
   }
 
   public read(): Observable<Redes[]> {
-    return this.httpClient.get<Redes[]>(`${environment.apiUrl}/api/perfil/contacto/redsocial`);
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<Redes[]>(`${environment.apiUrl}/api/perfil/contacto/redsocial`, {params});
   }
 
 }

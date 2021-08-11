@@ -1,7 +1,12 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Emails</h2>
+        <div class="row title-breadcump">
+            <div class="col-sm-8 row btn-sync">
+                <h2>Emails</h2>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
         <ol class="breadcrumb">
             <li>
                 <a>Perfil</a>
@@ -30,7 +35,7 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-12 col-md-12 col-lg-5">
                                         <label class="col-sm-4 control-label">Tipo:</label>
                                         <div class="col-sm-8">
                                             <div *ngIf="(tipos$ | async) as mailTypes">
@@ -42,18 +47,18 @@
                                                 </select>
                                                 <form-error [errors]="mailForm.controls.idTipoEmail.errors"
                                                     [errorsMessages]="{
-                                                        required: 'Campo Requerido'
+                                                        required: 'Campo requerido'
                                                         }" [controlTouched]="mailForm.controls.idTipoEmail.touched">
                                                 </form-error>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-sm-12 col-md-12 col-lg-5">
                                         <label class="col-sm-4 control-label">Email:</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" formControlName="email">
                                             <form-error [errors]="mailForm.controls.email.errors" [errorsMessages]="{
-                                                required: 'Campo Requerido',
+                                                required: 'Campo requerido',
                                                 email: 'Formato invalido'
                                             }" [controlTouched]="mailForm.controls.email.touched">
                                             </form-error>
@@ -61,7 +66,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="row">
-                                            <div class="col-sm-4 col-sm-offset-2">&nbsp;</div>
+                                            <div class="col-lg-4 col-lg-offset-2">&nbsp;</div>
                                             <div class="col-sm-4 text-right button-container">
                                                 <button *ngIf="!f.id.value" 
                                                         [disabled]="loading"
@@ -101,8 +106,9 @@
 
                                 <div class="form-group">
                                     <div class="alert alert-warning">
-                                        <a class="alert-link" href="#">Atención!</a><br>
-                                        Si Ud. desea modificar el email particular recibirá un correo de confirmación...
+                                        <!-- <a class="alert-link" href="#">Atención!</a><br> -->
+                                        <strong>¡Atención!</strong><br>
+                                        Luego de modificar el email de tipo particular, recibirás un correo con un link que deberás clickear para concluir con la actualización.
                                     </div>
                                 </div>
                 </div>

@@ -1,4 +1,4 @@
-<div class="modal-dialog">
+<div class="modal-dialog pagar-boleta">
     <div class="modal-content">
         <div class="modal-header">
             <h3 class="modal-title">Pagar derecho anual</h3>
@@ -8,7 +8,7 @@
             
             <div  *ngIf="!isProcessing">
                 <div class="control-group">
-                    <label class="control-label" style="font-weight: bold"> Seleccione el tipo de tarjeta:</label><br />
+                    <label class="control-label" style="font-weight: bold"> Seleccioná el tipo de tarjeta:</label><br />
                     <input type="radio" id="credito" [value]="false" name="credito" [(ngModel)]="debito"/>&nbsp;<label class="control-label">Crédito</label>&nbsp;&nbsp;
                     <input type="radio" id="debito" [value]="true" name="debito" [(ngModel)]="debito" />&nbsp;<label class="control-label">Débito</label>&nbsp;&nbsp;
                 </div>
@@ -17,6 +17,9 @@
                     <label class="control-label" for="cuotas">Cuotas</label>
                     <select id="cuotas" name="cuotas" [(ngModel)]="cuotas" class="form-control">
                         <option value="" disabled selected hidden>Elegí una opción</option>
+                        <option value="12">12 (sin interés)</option>
+                        <option value="9">9 (sin interés)</option>
+                        <option value="6">6 (sin interés)</option>
                         <option value="3">3 (sin interés)</option>
                         <option value="2">2 (sin interés)</option>
                         <option value="1">1 (sin interés)</option>
@@ -29,37 +32,37 @@
                     <span style="margin-right: 1%;">
                         <div (click)="select('15')">
                             <!-- 15 produccion , 20 test -->
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/mastercard.svg'" alt="MasterCard" />
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/mastercard.svg'" alt="MasterCard" style="cursor: pointer;" />
                         </div>
                     </span> 
                     <span style="margin-right: 1%;">
                         <div (click)="select('6')">
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/american_express.svg'" alt="American Express" />
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/american_express.svg'" alt="American Express" style="cursor: pointer;" />
                         </div>
                     </span>
                     <span style="margin-right: 1%;">
                         <div (click)="select('1')">
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa.svg'" alt="Visa" />
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa.svg'" alt="Visa" style="cursor: pointer;" />
                         </div>
                     </span>
                 </div>
                 <div *ngIf="debito" style="margin-bottom: 10px;display: flex;" class="text-center">
                     <span style="margin-right: 1%;">
                         <div (click)="select('106')">
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/maestro.svg'" alt="Maestro" />
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/maestro.svg'" alt="Maestro" style="cursor: pointer;" />
                         </div>
                     </span>
                     <span style="margin-right: 1%;">
                         <div (click)="select('31')">
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa-electron.svg'" alt="Visa Débito" />
+                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa-electron.svg'" alt="Visa Débito" style="cursor: pointer;" />
                         </div>
                     </span>
                 </div>
-                <div class="alert alert-link" style="margin-bottom: 0px;">
+                <!-- <div class="alert alert-link" style="margin-bottom: 0px;">
                     Para operar con Visa recuerde que es necesario que su tarjeta esté
                     activada con el sistema de Verified By Visa. Si quiere activarla ahora presione
                     <a href="http://www.visa.com.ar/socios_seguridad-proteccion.aspx" target="_blank">aqui</a>.
-                </div>
+                </div> -->
                 <form #form ngNoForm action="https://sps.decidir.com/sps-ar/Validar" method="post">
                     <input type="hidden" name="NROCOMERCIO" [value]="formValidarPago?.nroComercio">
                     <input type="hidden" name="NROOPERACION" [value]="formValidarPago?.nroOperacion">
@@ -75,7 +78,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" (click)="cerrar.emit()" >Cancelar</button>
+			<button type="button" class="btn btn-dark" (click)="cerrar.emit()" >Cancelar</button>
         </div>
     </div>
 </div>
