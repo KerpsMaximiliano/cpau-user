@@ -6,8 +6,8 @@ import {
   ContentSite,
   DEAFULT_IMAGE,
 } from "@app/shared/models/contentsite.model";
-import { Events } from "@app/shared/Models/Events.model";
-import { ExternalProduct } from "@app/shared/Models/ExternalProduct.model";
+import { Events } from "@app/shared/models/Events.model";
+import { ExternalProduct } from "@app/shared/models/ExternalProduct.model";
 import { Router } from '@angular/router';
 import { ModalHome } from '@app/_models/modalHome.model';
 import { DomSanitizer } from '@angular/platform-browser';
