@@ -3,7 +3,7 @@
     <div class="col-sm-4">
         <div class="row title-breadcump">
             <div class="col-sm-8 row btn-sync">
-                <h2>Usuarios</h2>
+                <h2>Usuario</h2>
                 <button (click)="reload()"><i class="fa fa-refresh"></i></button>
             </div>
         </div>
@@ -43,7 +43,7 @@
                                             maxlength="30" placeholder="Usuario">
                                         <form-error [errors]="usuarioForm.controls.username.errors"
                                             [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud debe ser mayor a 6 caracteres',
                                               maxlength: 'La longitud debe ser menor a 30 caracteres',
                                               pattern: 'Formato de usuario no válido'
@@ -55,7 +55,8 @@
 
                                 <div class="form-group">
                                     <div class="alert alert-warning">
-                                        <a class="alert-link" href="#">¡Atención!</a><br>
+                                        <!-- <a class="alert-link" href="#">¡Atención!</a><br> -->
+                                        <strong>¡Atención!</strong><br>
                                         El nombre de usuario es modificable y será el que deberás usar al ingresar al portal.
                                     </div>
                                 </div>

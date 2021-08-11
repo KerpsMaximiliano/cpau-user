@@ -19,20 +19,20 @@
             <div class="logout text-right">
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <a class="btn btn-question" href="https://cpau.org/Content/institucional/preguntas-frecuentes" target="_blank" title="Preguntas Frecuentes" ><i class="fa fa-question-circle"></i></a>
+                        <a class="btn btn-question" style="font-size: 13px;" href="https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online" target="_blank" title="Preguntas Frecuentes" ><i class="fa fa-question-circle"></i></a>
                     </li>
                     <li style="position: relative;" *ngIf="isMatriculado">
                         <div class="btn btn-user" #toggleButton (click)="openMenu=!openMenu"><i #icon class="fa fa-user"></i></div>
                         <div class="menu" *ngIf="openMenu" #menu>
                             <ul>
                                 <li>
-                                    <a class="btn btn-question" [href]="urlPublica" target="_blank">Ver Perfil Público</a>
+                                    <a class="btn btn-question" [href]="urlPublica" target="_blank">Ver Perfil público</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-logout" (click)="closeSession()"><i class="fa fa-sign-out"></i>Cerrar Sesión</button>
+                        <button type="button" class="btn btn-logout" (click)="closeSession()"><i class="fa fa-sign-out"></i>Cerrar sesión</button>
                     </li>
                 </ul>
             </div>

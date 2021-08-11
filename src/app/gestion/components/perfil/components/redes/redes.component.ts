@@ -33,7 +33,7 @@ export class RedesComponent implements OnInit {
     this.columnnas = [
       {
         id: 'tipoRedSocial',
-        titulo: 'Red Social'
+        titulo: 'Red'
       },
       {
         id: 'url',

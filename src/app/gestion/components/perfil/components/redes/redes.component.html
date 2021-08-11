@@ -36,7 +36,7 @@
                             <div class="col-md-10">
                                 <div class="form-group">
                                     <div class="col-sm-12 col-md-12 col-lg-5">
-                                        <label class="col-sm-4 control-label">Red Social:</label>
+                                        <label class="col-sm-4 control-label">Red:</label>
                                         <div class="col-sm-8">
                                             <div *ngIf="(tipos$ | async) as redTypes">
                                                 <select id="tiposRed" formControlName="idTipoRedSocial"
@@ -47,7 +47,7 @@
                                                 </select>
                                                 <form-error [errors]="redesForm.controls.idTipoRedSocial.errors"
                                                     [errorsMessages]="{
-                                                        required: 'Campo Requerido'
+                                                        required: 'Campo requerido'
                                                         }"
                                                     [controlTouched]="redesForm.controls.idTipoRedSocial.touched">
                                                 </form-error>
@@ -59,7 +59,7 @@
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" formControlName="url">
                                             <form-error [errors]="redesForm.controls.url.errors" [errorsMessages]="{
-                                                required: 'Campo Requerido',
+                                                required: 'Campo requerido',
                                                 invalidUrl: 'Formato incorrecto de URL. Recordá que debe empezar con http:// o https://'
                                             }" [controlTouched]="redesForm.controls.url.touched">
                                             </form-error>

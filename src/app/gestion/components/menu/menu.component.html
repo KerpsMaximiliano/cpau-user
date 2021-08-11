@@ -54,10 +54,10 @@
                     </li>
                     <li *ngIf="isMatriculado">
                         <a (click)="colapsar(2)"><i class="fa fa-graduation-cap"></i> <span class="nav-label">Oferta de
-                                Servicios</span><span class="fa arrow"></span></a>
+                                servicios</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[2] === true, 'hideen-sub-menu': closeMenu}">
                             <li><a [routerLink]="'oferta-servicios/actividad-profesional'"
-                                    routerLinkActive="active-link" (click)="closeMenu=true">Actividad Profesional</a></li>
+                                    routerLinkActive="active-link" (click)="closeMenu=true">Actividad profesional</a></li>
                             <li><a [routerLink]="'oferta-servicios/experiencia'"
                                     routerLinkActive="active-link" (click)="closeMenu=true">Experiencia</a></li>
                             <li><a [routerLink]="'oferta-servicios/cursos'" routerLinkActive="active-link" (click)="closeMenu=true">Cursos</a>
@@ -88,7 +88,7 @@
                     <li>
                         <a href="{{storeUrl}}" target="_blank" (click)="colapsar(5)"><i class="fa fa-shopping-cart"></i><span
                                 class="nav-label">Compras
-                                On-line</span></a>
+                                on-line</span></a>
                         <!-- <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true}">
                             <li><a href="#">Cursos</a></li>
                             <li><a href="#">Publicaciones</a></li>

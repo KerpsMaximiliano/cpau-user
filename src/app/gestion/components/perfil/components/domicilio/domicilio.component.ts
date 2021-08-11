@@ -85,7 +85,7 @@ export class DomicilioComponent implements OnInit {
       },
       {
         id: 'depto',
-        titulo: 'Depto'
+        titulo: 'Departamento'
       },
       {
         id: 'localidad',

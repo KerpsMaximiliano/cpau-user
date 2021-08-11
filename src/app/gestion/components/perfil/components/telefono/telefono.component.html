@@ -47,7 +47,7 @@
                                                 </select>
                                                 <form-error [errors]="telefonoForm.controls.idTipoTelefono.errors"
                                                     [errorsMessages]="{
-                                                        required: 'Campo Requerido'
+                                                        required: 'Campo requerido'
                                                         }"
                                                     [controlTouched]="telefonoForm.controls.idTipoTelefono.touched">
                                                 </form-error>
@@ -61,7 +61,7 @@
                                                 formControlName="telefono">
                                             <form-error [errors]="telefonoForm.controls.telefono.errors"
                                                 [errorsMessages]="{
-                                                required: 'Campo Requerido',
+                                                required: 'Campo requerido',
                                                 minlength: 'La longitud debe ser de 10 digitos.',
                                                 maxlength: 'La longitud debe ser de 10 digitos.'
                                             }" [controlTouched]="telefonoForm.controls.telefono.touched">
@@ -80,7 +80,7 @@
                                                 </select>
                                                 <form-error [errors]="telefonoForm.controls.celufijo.errors"
                                                     [errorsMessages]="{
-                                                        required: 'Campo Requerido'
+                                                        required: 'Campo requerido'
                                                         }"
                                                     [controlTouched]="telefonoForm.controls.celufijo.touched">
                                                 </form-error>
@@ -130,10 +130,11 @@
 
                                 <div class="form-group">
                                     <div class="alert alert-warning">
-                                        <a class="alert-link" href="#">¡Atención!</a><br>
-                                        Para teléfonos fijos ingrese 10 dígitos, por ejemplo si su numero es 011 4807-7318 deberá ingresar 1148077318
+                                        <!-- <a class="alert-link" href="#">¡Atención!</a><br> -->
+                                        <strong>¡Atención!</strong><br>
+                                        Para teléfonos fijos ingresá 10 dígitos, por ejemplo, si tu número es 011 4807-7318 tenés que escribir 1148077318.
                                         <br>
-                                        Para teléfonos celulares ingrese 10 dígitos, por ejemplo si su numero es 011 (15) 6565-3226 deberá ingresar 1165653226
+                                        Para teléfonos celulares ingresá 10 dígitos, por ejemplo, si tu número es 011 (15) 6565-3226 tenés que escribir 1165653226.
                                     </div>
                                 </div>
 

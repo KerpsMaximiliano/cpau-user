@@ -9,7 +9,7 @@
         </div>
         <ol class="breadcrumb">
             <li>
-                <a>Oferta de Servicios</a>
+                <a>Oferta de servicios</a>
             </li>
             <li class="active">
                 <a><strong>Experiencia</strong></a>
@@ -36,7 +36,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 control-label">Destino de Obra:</label>
+                                        <label class="col-sm-3 control-label">Destino de obra:</label>
                                         <div class="col-sm-9">
                                             <div *ngIf="destinosObras$ | async as destinoDeObra">
                                                 <select id="destinoDeObra" formControlName="idDestino"
@@ -48,7 +48,7 @@
                                             </div>
                                             <form-error [errors]="experienciaForm.controls.idDestino.errors"
                                                 [errorsMessages]="{
-                                                required: 'Campo Requerido'
+                                                required: 'Campo requerido'
                                               }" [controlTouched]="experienciaForm.controls.idDestino.touched">
                                             </form-error>
                                         </div>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 control-label">Tipo de Obra:</label>
+                                        <label class="col-sm-3 control-label">Tipo de obra:</label>
                                         <div class="col-sm-9">
                                             <div *ngIf="tiposObras$ | async as tipoDeObras">
                                                 <select id="tipoDeObras" formControlName="idTipo"
@@ -68,7 +68,7 @@
                                             </div>
                                             <form-error [errors]="experienciaForm.controls.idTipo.errors"
                                                 [errorsMessages]="{
-                                                required: 'Campo Requerido'
+                                                required: 'Campo requerido'
                                               }" [controlTouched]="experienciaForm.controls.idTipo.touched">
                                             </form-error>
                                         </div>
@@ -82,7 +82,7 @@
                                                 placeholder="Ubicación">
                                             <form-error [errors]="experienciaForm.controls.ubicacion.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               minlength: 'La longitud permitida es entre 3 y 100 caracteres',
                                               maxlength: 'La longitud permitida es entre 3 y 100 caracteres'
                                             }" [controlTouched]="experienciaForm.controls.ubicacion.touched">
@@ -94,7 +94,8 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Fecha Inicio:</label>
+                                        <label class="col-sm-3 control-label">Fecha 
+                                            inicio:</label>
                                         <div class="col-sm-9">
                                             <div class="input-group">
                                                 <input class="form-control datepicker" placeholder="dd/mm/yyyy"
@@ -107,7 +108,7 @@
 
                                             <form-error [errors]="experienciaForm.controls.fechaInicio.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido'
+                                              required: 'Campo requerido'
                                             }" [controlTouched]="experienciaForm.controls.fechaInicio.touched">
                                             </form-error>
 
@@ -120,7 +121,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">Fecha Fin:</label>
+                                        <label class="col-sm-3 control-label">Fecha fin:</label>
                                         <div class="col-sm-9">
                                             <div class="input-group">
                                                 <input class="form-control datepicker" placeholder="dd/mm/yyyy"
@@ -132,7 +133,7 @@
                                             </div>
                                             <form-error [errors]="experienciaForm.controls.fechaFin.errors"
                                                 [errorsMessages]="{
-                                              required: 'Campo Requerido'
+                                              required: 'Campo requerido'
                                             }" [controlTouched]="experienciaForm.controls.fechaFin.touched">
                                             </form-error>
                                         </div>

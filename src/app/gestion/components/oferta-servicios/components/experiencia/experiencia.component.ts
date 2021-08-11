@@ -71,11 +71,11 @@ export class ExperienciaComponent implements OnInit {
       },
       {
         id: 'fechaInicio',
-        titulo: 'Fecha Inicio'
+        titulo: 'Fecha inicio'
       },
       {
         id: 'fechaFin',
-        titulo: 'Fecha Fin'
+        titulo: 'Fecha fin'
       }
     ];
 

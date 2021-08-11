@@ -48,7 +48,7 @@ export class CertificadoComponent implements OnInit {
       },
       {
         id: 'fechaHora',
-        titulo: 'Fecha y Hora'
+        titulo: 'Fecha'
       },
     ];
   }

@@ -24,7 +24,7 @@ export class IdentificacionComponent implements OnInit {
   public countries$: Observable<SelectItem[]>;
   public docTypes$: Observable<SelectItem[]>;
   public fieldErrors: FieldErrorsMessages = {
-    required: 'Campo Requerido',
+    required: 'Campo requerido',
     minlength: 'La longitud debe ser mayor a 2 caracteres',
     maxlength: 'La longitud debe ser menor a 200 caracteres'
   };

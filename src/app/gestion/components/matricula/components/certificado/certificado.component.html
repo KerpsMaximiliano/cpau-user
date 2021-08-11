@@ -32,45 +32,9 @@
                     </div>
                     <div class="ibox-content" [hidden]="collapsed">
                         <form method="get" class="form-horizontal" [formGroup]="certificadoForm">
-                            <!-- <input hidden formControlName="id"> -->
-                            <div class="row text-right">
-                                <!--<div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Código de Certificado:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" disabled class="form-control" formControlName="codigoCertificado"
-                                                placeholder="Código certificado" maxlength="100">
-                                            <form-error [errors]="certificadoForm.controls.codigoCertificado.errors" [errorsMessages]="{
-                                              required: 'Campo Requerido',
-                                              minlength: 'La longitud permitida es entre 1 y 100 caracteres',
-                                              maxlength: 'La longitud permitida es entre 1 y 100 caracteres'
-                                            }" [controlTouched]="certificadoForm.controls.codigoCertificado.touched">
-                                            </form-error>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Fecha y hora:</label>
-                                        <div class="col-sm-9">
-                                            <div class="input-group">
-                                                <input class="form-control datepicker" placeholder="dd/mm/yyyy"
-                                                    formControlName="fechaHora" ngbDatepicker #d="ngbDatepicker" disabled>
-                                                <button class="input-group-addon button-datepicker" (click)="d.toggle()"
-                                                    type="button">
-                                                    <i class="fa fa-calendar"></i>
-                                                </button>
-                                            </div>
 
-                                            <form-error [errors]="certificadoForm.controls.fechaHora.errors"
-                                                [errorsMessages]="{
-                                              required: 'Campo Requerido'
-                                            }" [controlTouched]="certificadoForm.controls.fechaHora.touched">
-                                            </form-error>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="col-sm-4">&nbsp;</div> -->
+                            <div class="row text-right">
+
                                 <div class="col-sm-12">
                                     <button [disabled]="loading" class="btn btn-primary"
                                         (click)="agregarFila()">

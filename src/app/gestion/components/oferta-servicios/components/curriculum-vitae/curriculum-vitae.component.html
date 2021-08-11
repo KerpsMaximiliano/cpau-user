@@ -9,7 +9,7 @@
         </div>
         <ol class="breadcrumb">
             <li>
-                <a>Oferta de Servicios</a>
+                <a>Oferta de servicios</a>
             </li>
             <li class="active">
                 <a><strong>Curriculum Vitae</strong></a>
@@ -45,7 +45,7 @@
                                             <input type="file" class="form-control" formControlName="archivo"
                                                     accept="application/pdf" (change)="onFileChange($event)" >
                                             <form-error [errors]="curriculumForm.controls.archivo.errors" [errorsMessages]="{
-                                              required: 'Campo Requerido',
+                                              required: 'Campo requerido',
                                               requiredFileType: 'Formato de arhivo no permitido',
                                               fileSizeValidator: 'Máximo permitido: 4 MB'
                                             }" [controlTouched]="curriculumForm.controls.archivo.touched">
