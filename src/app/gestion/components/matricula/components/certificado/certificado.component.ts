@@ -18,6 +18,7 @@ export class CertificadoComponent implements OnInit {
 
   collapsed: boolean;
   loading: boolean;
+  mostrarGenerar: boolean;
   public filas: Filas<Certificado>[] = [];
   public columnnas: Columna<Certificado>[];
 
@@ -54,6 +55,10 @@ export class CertificadoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.certificadoService.allowGenerate()
+    .subscribe(g => {
+      this.mostrarGenerar = g;
+    });
     this.initData();
   }
   initData() {

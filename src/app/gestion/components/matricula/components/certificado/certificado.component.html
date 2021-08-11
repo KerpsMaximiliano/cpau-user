@@ -71,13 +71,19 @@
                                     </div>
                                 </div> -->
                                 <!-- <div class="col-sm-4">&nbsp;</div> -->
-                                <div class="col-sm-12">
+                                <div class="col-sm-12" *ngIf="!mostrarGenerar">
                                     <button [disabled]="loading" class="btn btn-primary"
                                         (click)="agregarFila()">
                                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                         Generar nuevo
                                     </button>
                                     <!-- <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button> -->
+                                </div>
+                                <div class="col-sm-12" style="text-align: left;" *ngIf="mostrarGenerar">
+                                    <div class="alert alert-warning">
+                                        <a class="alert-link" href="#">¡Atención!</a><br>
+                                        Es servicio es para matriculados activos.
+                                    </div>
                                 </div>
                             </div>
                         </form>
