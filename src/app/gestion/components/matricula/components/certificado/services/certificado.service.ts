@@ -10,6 +10,10 @@ import { Certificado } from '../model/certificado';
 })
 export class CertificadoService {
 
+  allowGenerate(): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${environment.apiUrl}/api/perfil/PuedeGenerarCertificado`);
+  }
+
   constructor(private httpClient: HttpClient) { }
 
 
