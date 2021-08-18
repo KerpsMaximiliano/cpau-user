@@ -43,3 +43,6 @@
 .header .menu ul li a {
     min-height: 0;
 }
+.logout {
+    z-index: 99999;
+}

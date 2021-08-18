@@ -12,6 +12,7 @@ import { SuscripcionService } from './services/suscripcion.service';
 export class NewsletterComponent implements OnInit {
   collapsed: boolean;
   loading: boolean;
+  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
 
   public newsletterForm: FormGroup;
 
@@ -60,6 +61,10 @@ export class NewsletterComponent implements OnInit {
   
   public cancelarFila(): void {
     this.newsletterForm.reset();
+    this.loadData();
+  }
+
+  protected reload() {
     this.loadData();
   }
 }

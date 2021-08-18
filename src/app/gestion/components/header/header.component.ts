@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('toggleButton', {static: false}) toggleButton: ElementRef;
   @ViewChild('menu', {static: false}) menu: ElementRef;
   @ViewChild('icon', {static: false}) icon: ElementRef;
+  @ViewChild('btnPerfil', {static: false}) perfil: ElementRef;
 
   currentUser: User;
   private _openMenu: boolean;
@@ -50,7 +51,10 @@ export class HeaderComponent implements OnInit {
          if (!this.toggleButton || !this.menu)
           return;
 
-         if (e.target !== this.toggleButton.nativeElement && e.target !== this.menu.nativeElement && e.target !== this.icon.nativeElement ){
+         if (e.target !== this.toggleButton.nativeElement && 
+             e.target !== this.menu.nativeElement && 
+             e.target !== this.icon.nativeElement &&
+             e.target !== this.perfil.nativeElement){
              this.openMenu = false;
          }
      });
