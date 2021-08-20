@@ -166,7 +166,7 @@
                                                 <select disabled="disabled" id="countries" formControlName="pais"
                                                     class=" identification-select browser-default custom-select form-control">
                                                     <option value="" disabled selected hidden>Elegí una opción</option>
-                                                    <option *ngFor="let country of countries" [value]="country.id">
+                                                    <option *ngFor="let country of countries" [value]="country.codigo">
                                                         {{ country.nombre }}</option>
                                                 </select>
                                                 <form-error [errors]="identificacionForm.controls.pais.errors"
