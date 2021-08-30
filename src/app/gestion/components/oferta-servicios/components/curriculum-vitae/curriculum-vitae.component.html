@@ -33,34 +33,34 @@
                             <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
                         </a>
                     </div>
-                    <div class="ibox-content" [hidden]="collapsed">
-                        <form method="get" class="form-horizontal" [formGroup]="curriculumForm">
-                            <input hidden formControlName="id">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <label class="col-sm-8 control-label">Descargar Curriculum Vitae:</label>
-                                    <button class="col-sm-4 btn btn-primary" (click)="descargarArchivo()" [disabled]="!archivo">Descargar</button>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Curriculum Vitae:</label>
-                                        <div class="col-sm-6">
-                                            <input type="file" class="form-control" formControlName="archivo"
-                                                    accept="application/pdf" (change)="onFileChange($event)" >
-                                            <form-error [errors]="curriculumForm.controls.archivo.errors" [errorsMessages]="{
-                                              required: 'Campo requerido',
-                                              requiredFileType: 'Formato de arhivo no permitido',
-                                              fileSizeValidator: 'Máximo permitido: 4 MB'
-                                            }" [controlTouched]="curriculumForm.controls.archivo.touched">
-                                            </form-error>
-                                        </div>
-                                        <div class="col-sm-3"><button class="btn btn-primary" (click)="subirArchivo()">Subir archivo</button></div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                    <form method="get" class="form-horizontal" [formGroup]="curriculumForm">
+                        <input hidden formControlName="id">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="col-sm-8 control-label">Descargar Curriculum Vitae:</label>
+                                <button class="col-sm-4 btn btn-primary" (click)="descargarArchivo()" [disabled]="!archivo">Descargar</button>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Curriculum Vitae:</label>
+                                    <div class="col-sm-6">
+                                        <input type="file" class="form-control" formControlName="archivo"
+                                                accept="application/pdf" (change)="onFileChange($event)" >
+                                        <form-error [errors]="curriculumForm.controls.archivo.errors" [errorsMessages]="{
+                                            required: 'Campo requerido',
+                                            requiredFileType: 'Formato de arhivo no permitido',
+                                            fileSizeValidator: 'Máximo permitido: 4 MB'
+                                        }" [controlTouched]="curriculumForm.controls.archivo.touched">
+                                        </form-error>
                                     </div>
+                                    <div class="col-sm-3"><button class="btn btn-primary" (click)="subirArchivo()">Subir archivo</button></div>
                                 </div>
                             </div>
-                        </form>
-                        <div class="hr-line-dashed"></div>
-                    </div>
+                        </div>
+                    </form>
+                    <div class="hr-line-dashed"></div>
                 </div>
             </div>
         </div>
