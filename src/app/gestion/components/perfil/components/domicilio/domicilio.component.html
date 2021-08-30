@@ -33,148 +33,148 @@
                             <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
                         </a>
                     </div>
-                    <div class="ibox-content" [hidden]="collapsed">
-                        <form method="get" class="form-horizontal" [formGroup]="domicilioForm">
-                            <input hidden formControlName="id">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 control-label">Tipo:</label>
-                                        <div class="col-sm-9">
-                                            <div *ngIf="tiposDomicilios">
-                                                <select id="tiposDomicilios" formControlName="idTipoDomicilio"
-                                                    class="tipo-domicilio-select browser-default custom-select form-control">
-                                                    <option value="" disabled selected hidden>Elegí una opción</option>
-                                                    <option *ngFor="let tp of tiposDomicilios" [value]="tp.id">
-                                                        {{ tp.nombre }}</option>
-                                                </select>
-                                                <form-error [errors]="domicilioForm.controls.idTipoDomicilio.errors"
-                                                    [errorsMessages]="{
-                                                    required: 'Campo requerido'
-                                                  }" [controlTouched]="domicilioForm.controls.idTipoDomicilio.touched">
-                                                </form-error>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Calle:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" formControlName="calle"
-                                                placeholder="Calle" maxlength="100">
-                                            <form-error [errors]="domicilioForm.controls.calle.errors" [errorsMessages]="{
-                                              required: 'Campo requerido',
-                                              minlength: 'La longitud permitida es entre 1 y 100 caracteres',
-                                              maxlength: 'La longitud permitida es entre 1 y 100 caracteres'
-                                            }" [controlTouched]="domicilioForm.controls.calle.touched">
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                    <form method="get" class="form-horizontal" [formGroup]="domicilioForm">
+                        <input hidden formControlName="id">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label">Tipo:</label>
+                                    <div class="col-sm-9">
+                                        <div *ngIf="tiposDomicilios">
+                                            <select id="tiposDomicilios" formControlName="idTipoDomicilio"
+                                                class="tipo-domicilio-select browser-default custom-select form-control">
+                                                <option value="" disabled selected hidden>Elegí una opción</option>
+                                                <option *ngFor="let tp of tiposDomicilios" [value]="tp.id">
+                                                    {{ tp.nombre }}</option>
+                                            </select>
+                                            <form-error [errors]="domicilioForm.controls.idTipoDomicilio.errors"
+                                                [errorsMessages]="{
+                                                required: 'Campo requerido'
+                                                }" [controlTouched]="domicilioForm.controls.idTipoDomicilio.touched">
                                             </form-error>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Altura:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" formControlName="altura"
-                                                [specialCharacters]="[]" mask="9999999" placeholder="Altura">
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Calle:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" formControlName="calle"
+                                            placeholder="Calle" maxlength="100">
+                                        <form-error [errors]="domicilioForm.controls.calle.errors" [errorsMessages]="{
+                                            required: 'Campo requerido',
+                                            minlength: 'La longitud permitida es entre 1 y 100 caracteres',
+                                            maxlength: 'La longitud permitida es entre 1 y 100 caracteres'
+                                        }" [controlTouched]="domicilioForm.controls.calle.touched">
+                                        </form-error>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Altura:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" formControlName="altura"
+                                            [specialCharacters]="[]" mask="9999999" placeholder="Altura">
 
-                                            <form-error [errors]="domicilioForm.controls.altura.errors"
-                                                [errorsMessages]="{
-                                              required: 'Campo requerido',
-                                              minlength: 'La longitud permitida es entre 1 y 7 caracteres',
-                                              maxlength: 'La longitud permitida es entre 1 y 7 caracteres'
-                                            }" [controlTouched]="domicilioForm.controls.altura.touched">
-                                            </form-error>
+                                        <form-error [errors]="domicilioForm.controls.altura.errors"
+                                            [errorsMessages]="{
+                                            required: 'Campo requerido',
+                                            minlength: 'La longitud permitida es entre 1 y 7 caracteres',
+                                            maxlength: 'La longitud permitida es entre 1 y 7 caracteres'
+                                        }" [controlTouched]="domicilioForm.controls.altura.touched">
+                                        </form-error>
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Piso:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" formControlName="piso" mask="99"
-                                                [specialCharacters]="[]" placeholder="Piso">
-                                            <form-error [errors]="domicilioForm.controls.piso.errors" [errorsMessages]="{
-                                              maxlength: 'La longitud permitida es entre 1 y 2 caracteres'
-                                            }" [controlTouched]="domicilioForm.controls.piso.touched">
-                                            </form-error>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Departamento:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" formControlName="depto"
-                                                placeholder="Departamento" maxlength="20">
-                                            <form-error [errors]="domicilioForm.controls.depto.errors" [errorsMessages]="{
-                                              required: 'Campo requerido',
-                                              minlength: 'La longitud permitida es entre 1 y 20 caracteres',
-                                              maxlength: 'La longitud permitida es entre 1 y 20 caracteres'
-                                            }" [controlTouched]="domicilioForm.controls.depto.touched">
-                                            </form-error>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Localidad:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" formControlName="localidad"
-                                                placeholder="Localidad" maxlength="100">
-                                            <form-error [errors]="domicilioForm.controls.localidad.errors"
-                                                [errorsMessages]="{
-                                              required: 'Campo requerido',
-                                              minlength: 'La longitud permitida es entre 1 y 100 caracteres',
-                                              maxlength: 'La longitud permitida es entre 1 y 100 caracteres'
-                                            }" [controlTouched]="domicilioForm.controls.localidad.touched">
-                                            </form-error>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Código Postal:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" formControlName="codigoPostal"
-                                                placeholder="Código Postal">
-                                            <form-error [errors]="domicilioForm.controls.codigoPostal.errors"
-                                                [errorsMessages]="{
-                                              required: 'Campo requerido',
-                                              pattern: 'El formato permitido es NNNN 0 LNNNNLLL (N es numérico y L letra)'
-                                            }" [controlTouched]="domicilioForm.controls.codigoPostal.touched">
-                                            </form-error>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">&nbsp;</div>
-                                <div class="col-sm-4  text-right">
-                                    <button *ngIf="!f.id.value" [disabled]="loading" class="btn btn-primary"
-                                        (click)="agregarFila()">
-                                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                                        Agregar
-                                    </button>
-                                    <button *ngIf="f.id.value" [disabled]="loading" class="btn btn-primary"
-                                        (click)="editarFila()">
-                                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                                        Actualizar
-                                    </button>
-                                    <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="hr-line-dashed"></div>
-                        <div class="row container-action-table">
-                            <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
-                                (eliminar)="onEliminar($event)">
-                            </app-action-table>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Piso:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" formControlName="piso" mask="99"
+                                            [specialCharacters]="[]" placeholder="Piso">
+                                        <form-error [errors]="domicilioForm.controls.piso.errors" [errorsMessages]="{
+                                            maxlength: 'La longitud permitida es entre 1 y 2 caracteres'
+                                        }" [controlTouched]="domicilioForm.controls.piso.touched">
+                                        </form-error>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Departamento:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" formControlName="depto"
+                                            placeholder="Departamento" maxlength="20">
+                                        <form-error [errors]="domicilioForm.controls.depto.errors" [errorsMessages]="{
+                                            required: 'Campo requerido',
+                                            minlength: 'La longitud permitida es entre 1 y 20 caracteres',
+                                            maxlength: 'La longitud permitida es entre 1 y 20 caracteres'
+                                        }" [controlTouched]="domicilioForm.controls.depto.touched">
+                                        </form-error>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Localidad:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" formControlName="localidad"
+                                            placeholder="Localidad" maxlength="100">
+                                        <form-error [errors]="domicilioForm.controls.localidad.errors"
+                                            [errorsMessages]="{
+                                            required: 'Campo requerido',
+                                            minlength: 'La longitud permitida es entre 1 y 100 caracteres',
+                                            maxlength: 'La longitud permitida es entre 1 y 100 caracteres'
+                                        }" [controlTouched]="domicilioForm.controls.localidad.touched">
+                                        </form-error>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Código Postal:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" formControlName="codigoPostal"
+                                            placeholder="Código Postal">
+                                        <form-error [errors]="domicilioForm.controls.codigoPostal.errors"
+                                            [errorsMessages]="{
+                                            required: 'Campo requerido',
+                                            pattern: 'El formato permitido es NNNN 0 LNNNNLLL (N es numérico y L letra)'
+                                        }" [controlTouched]="domicilioForm.controls.codigoPostal.touched">
+                                        </form-error>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">&nbsp;</div>
+                            <div class="col-sm-4  text-right">
+                                <button *ngIf="!f.id.value" [disabled]="loading" class="btn btn-primary"
+                                    (click)="agregarFila()">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                    Agregar
+                                </button>
+                                <button *ngIf="f.id.value" [disabled]="loading" class="btn btn-primary"
+                                    (click)="editarFila()">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                    Actualizar
+                                </button>
+                                <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="hr-line-dashed"></div>
+                    <div class="row container-action-table">
+                        <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
+                            (eliminar)="onEliminar($event)">
+                        </app-action-table>
                     </div>
                 </div>
             </div>

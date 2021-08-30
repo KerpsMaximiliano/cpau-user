@@ -18,3 +18,7 @@ align-items: center;
 button {
     margin-right: 5px;
  }
+ .content-buttons {
+    margin: auto;
+    padding-bottom: 1%;
+ }

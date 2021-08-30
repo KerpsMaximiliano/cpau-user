@@ -70,4 +70,8 @@ export class CurriculumVitaeService {
 
     return filename  ? filename : `Curriculum_${this.authenticationService.currentUserValue.username}`;
   }
+
+  deleteFile() {
+    return this.httpClient.delete<IResponseService<any>>(`${environment.apiUrl}/api/servicios/curriculum`, { });
+  }
 }

@@ -22,8 +22,9 @@
 </div>
 
 <div class="wrapper wrapper-content animated fadeIn">
+    <form method="get" class="form-horizontal" [formGroup]="actividadForm">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Actividad profesional</h5>
@@ -34,15 +35,17 @@
                     </div>
                 </div>
                 <div class="ibox-content" [hidden]="collapsed">
-                    <form method="get" class="form-horizontal" [formGroup]="actividadForm">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
+
                                     <div class="col-sm-12 title">
                                         <span class="title-checkbox">
                                             Tildá la o las actividades en la que te desarrollás como profesional.
                                         </span>
                                     </div>
+
+
                                     <div class="col-md-12" style="float:left;">
                                         <div class=" checkbox-list">
                                             <ng-container *ngIf="actividadProfesionalData">
@@ -57,14 +60,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="hr-line-dashed"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Tipo de obra realizada</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed2=!collapsed2">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed2, 'fa-chevron-up': collapsed2}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed2">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
+
                                     <div class="col-sm-12 title">
                                         <span class="title-checkbox">
                                             Tildá el o los tipos de obras que realizaste como profesional.
                                         </span>
                                     </div>
+
                                     <div class="col-md-12 checkbox-list">
                                         <ng-container *ngIf="obrasData">
 
@@ -78,17 +98,19 @@
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
-                        <div class="actions-buttons text-right">
-                            <button [disabled]="loading" class="btn btn-primary" (click)="onSave()">
-                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                                Guardar
-                            </button>
-                            <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button>
-                        </div>
-
-                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row content-buttons">
+        <div class="actions-buttons text-right">
+            <button [disabled]="loading" class="btn btn-primary" (click)="onSave()">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Guardar
+            </button>
+            <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button>
+        </div>
+    </div>
+    <div class="hr-line-dashed"></div>
+    </form>
 </div>

@@ -61,6 +61,16 @@ export class CurriculumVitaeComponent implements OnInit {
     this.curriculumVitaeService.getDownloadFile();
   }
 
+  eliminarArchivo() {
+    this.curriculumVitaeService.deleteFile()
+    .subscribe(d => {
+      if (d.success) {
+        this.toastr.success(null, 'Curriculum eliminado correctamente.');
+        this.curriculumForm.reset();
+      }
+    });
+  }
+
   onFileChange(event) {
     let reader = new FileReader();
 
