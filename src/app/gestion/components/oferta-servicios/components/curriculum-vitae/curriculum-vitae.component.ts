@@ -62,7 +62,13 @@ export class CurriculumVitaeComponent implements OnInit {
   }
 
   eliminarArchivo() {
-    this.curriculumVitaeService.deleteFile();
+    this.curriculumVitaeService.deleteFile()
+    .subscribe(d => {
+      if (d.success) {
+        this.toastr.success(null, 'Curriculum eliminado correctamente.');
+        this.curriculumForm.reset();
+      }
+    });
   }
 
   onFileChange(event) {

@@ -12,6 +12,7 @@ import { ActividadProfesionalService } from './services/actividad-profesional.se
 })
 export class ActividadProfesionalComponent implements OnInit {
   collapsed: boolean;
+  collapsed2: boolean;
   loading: boolean;
   public actividadForm: FormGroup;
 
