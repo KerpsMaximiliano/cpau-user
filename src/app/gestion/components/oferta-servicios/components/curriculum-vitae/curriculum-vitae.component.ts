@@ -67,6 +67,7 @@ export class CurriculumVitaeComponent implements OnInit {
       if (d.success) {
         this.toastr.success(null, 'Curriculum eliminado correctamente.');
         this.curriculumForm.reset();
+        this.initData();
       }
     });
   }
