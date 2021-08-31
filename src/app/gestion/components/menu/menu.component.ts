@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   colapsado: boolean[] = [];
   perfil: Identificacion;
   currentUser: User;
-  imgSrc: string | ArrayBuffer;
+  imgSrc: string | ArrayBuffer = "";
   closeMenu: boolean;
 
   constructor(private identificacionService: IdentificacionService,
