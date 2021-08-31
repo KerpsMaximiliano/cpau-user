@@ -8,13 +8,13 @@
             
             <div  *ngIf="!isProcessing">
                 <div class="control-group">
-                    <label class="control-label" style="font-weight: bold"> Seleccioná el tipo de tarjeta:</label><br />
+                    <label class="control-label" style="font-weight: bold">Seleccioná el tipo de tarjeta:</label><br />
                     <input type="radio" id="credito" [value]="false" name="credito" [(ngModel)]="debito"/>&nbsp;<label class="control-label">Crédito</label>&nbsp;&nbsp;
                     <input type="radio" id="debito" [value]="true" name="debito" [(ngModel)]="debito" />&nbsp;<label class="control-label">Débito</label>&nbsp;&nbsp;
                 </div>
                 <br />
                 <div class="control-group" *ngIf="!debito">
-                    <label class="control-label" for="cuotas">Cuotas</label>
+                    <label class="control-label" for="cuotas">Elegí la cantidad de cuotas:</label>
                     <select id="cuotas" name="cuotas" [(ngModel)]="cuotas" class="form-control">
                         <option value="" disabled selected hidden>Elegí una opción</option>
                         <option value="12">12 (sin interés)</option>
@@ -24,39 +24,42 @@
                         <option value="2">2 (sin interés)</option>
                         <option value="1">1 (sin interés)</option>
                     </select>
+                    <br />
                 </div>
-                <div class="alert alert-info" style="margin-bottom: 10px;">
-                    Haga click sobre el método de pago a utilizar
-                </div>
-                <div *ngIf="!debito" style="display: flex;" class="text-center">
-                    <span style="margin-right: 1%;">
-                        <div (click)="select('15')">
-                            <!-- 15 produccion , 20 test -->
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/mastercard.svg'" alt="MasterCard" style="cursor: pointer;" />
-                        </div>
-                    </span> 
-                    <span style="margin-right: 1%;">
-                        <div (click)="select('6')">
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/american_express.svg'" alt="American Express" style="cursor: pointer;" />
-                        </div>
-                    </span>
-                    <span style="margin-right: 1%;">
-                        <div (click)="select('1')">
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa.svg'" alt="Visa" style="cursor: pointer;" />
-                        </div>
-                    </span>
-                </div>
-                <div *ngIf="debito" style="margin-bottom: 10px;display: flex;" class="text-center">
-                    <span style="margin-right: 1%;">
-                        <div (click)="select('106')">
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/maestro.svg'" alt="Maestro" style="cursor: pointer;" />
-                        </div>
-                    </span>
-                    <span style="margin-right: 1%;">
-                        <div (click)="select('31')">
-                            <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa-electron.svg'" alt="Visa Débito" style="cursor: pointer;" />
-                        </div>
-                    </span>
+                
+                
+                <div class="control-group">
+                    <label class="control-label" for="cuotas">Clickeá sobre la tarjeta con la que querés abonar:</label>
+                    <div *ngIf="!debito" style="display: flex;" class="text-center">
+                        <span style="margin-right: 1%;">
+                            <div (click)="select('15')">
+                                <!-- 15 produccion , 20 test -->
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/mastercard.svg'" alt="MasterCard" style="cursor: pointer;" />
+                            </div>
+                        </span> 
+                        <span style="margin-right: 1%;">
+                            <div (click)="select('6')">
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/american_express.svg'" alt="American Express" style="cursor: pointer;" />
+                            </div>
+                        </span>
+                        <span style="margin-right: 1%;">
+                            <div (click)="select('1')">
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa.svg'" alt="Visa" style="cursor: pointer;" />
+                            </div>
+                        </span>
+                    </div>
+                    <div *ngIf="debito" style="margin-bottom: 10px;display: flex;" class="text-center">
+                        <span style="margin-right: 1%;">
+                            <div (click)="select('106')">
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/maestro.svg'" alt="Maestro" style="cursor: pointer;" />
+                            </div>
+                        </span>
+                        <span style="margin-right: 1%;">
+                            <div (click)="select('31')">
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa-electron.svg'" alt="Visa Débito" style="cursor: pointer;" />
+                            </div>
+                        </span>
+                    </div>
                 </div>
                 <!-- <div class="alert alert-link" style="margin-bottom: 0px;">
                     Para operar con Visa recuerde que es necesario que su tarjeta esté
@@ -78,7 +81,7 @@
             </div>
         </div>
         <div class="modal-footer">
-			<button type="button" class="btn btn-dark" (click)="cerrar.emit()" >Cancelar</button>
+			<button type="button" class="btn btn-dark" style="background-color: black;" (click)="cerrar.emit()" >Cancelar</button>
         </div>
     </div>
 </div>
