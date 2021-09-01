@@ -7,7 +7,7 @@
 
 .checkbox-list {
     display: flex;
-    width: 90%;
+    width: 150px;
 }
 .checkbox-container label {
     font-weight: unset;

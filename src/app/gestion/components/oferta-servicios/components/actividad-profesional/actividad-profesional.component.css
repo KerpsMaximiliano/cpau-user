@@ -2,9 +2,9 @@
 
 
 .title {
-height: 40px;
-display: flex;
-align-items: center; 
+    height: 40px;
+    display: flex;
+    align-items: center; 
 }
 .title .title-checkbox {
     font-weight: 600;
@@ -21,4 +21,8 @@ button {
  .content-buttons {
     margin: auto;
     padding-bottom: 1%;
+ }
+ .content-checkboxs {
+    overflow-y: hidden;
+    overflow-x: auto;
  }

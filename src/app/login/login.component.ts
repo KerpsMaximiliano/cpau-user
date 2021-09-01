@@ -1,7 +1,6 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { environment } from "@environments/environment";
 import { AuthenticationService } from "@app/_services";
 
 @Component({
@@ -61,7 +60,12 @@ export class LoginComponent implements OnInit {
             this.authenticationService.loginOldSite(this.loginForm.value.username, this.loginForm.value.password)
             .subscribe(ol => {
             });
-            this.router.navigate([`gestion/home/perfil/identificacion`]);
+            var returnUrl = this.route.snapshot.queryParams["returnUrl"];
+            if (returnUrl) {
+              this.router.navigate([returnUrl]);
+            } else {
+              this.router.navigate([`gestion/home/perfil/identificacion`]);
+            }
           } else {
             document.getElementById("btnDatosIncorrectos").click();
             this.loading = false;
