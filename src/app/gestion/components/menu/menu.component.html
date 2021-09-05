@@ -49,7 +49,7 @@
                             <li><a [routerLink]="'matricula/resumen'" routerLinkActive="active-link" (click)="closeMenu=true">Resumen</a></li>
                             <li><a [routerLink]="'matricula/derecho-anual'" routerLinkActive="active-link" (click)="closeMenu=true">Derecho anual</a></li>
                             <li><a [routerLink]="'matricula/certificado'" (click)="closeMenu=true">Certificado</a></li>
-                            <!-- <li><a href="#">Credencial digital</a></li> -->
+                            <li><a [routerLink]="'matricula/credencial'" (click)="closeMenu=true">Credencial digital</a></li>
                         </ul>
                     </li>
                     <li *ngIf="isMatriculado">

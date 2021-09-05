@@ -9,10 +9,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { DerechoAnualComponent } from './components/derecho-anual/derecho-anual.component';
 import { PagarBoletaComponent } from './components/derecho-anual/pagar-boleta/pagar-boleta.component';
 import { CertificadoComponent } from './components/certificado/certificado.component';
+import { CredencialComponent } from './components/credencial/credencial.component';
 
 
 @NgModule({
-  declarations: [ResumenComponent, DerechoAnualComponent, PagarBoletaComponent, CertificadoComponent],
+  declarations: [ResumenComponent, DerechoAnualComponent, PagarBoletaComponent, CertificadoComponent, CredencialComponent],
   imports: [
     CommonModule,
     MatriculaRoutingModule,
