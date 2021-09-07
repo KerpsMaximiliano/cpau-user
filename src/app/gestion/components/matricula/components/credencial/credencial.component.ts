@@ -19,12 +19,12 @@ export class CredencialComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.credencialService.allowGenerate()
-    // .subscribe(g => {
-    //   this.mostrarGenerar = g;
-    // });
-    // TODO 
-    this.mostrarGenerar = true;
+    this.credencialService.allowGenerate()
+    .subscribe(g => {
+      this.mostrarGenerar = g;
+    });
+    
+    //this.mostrarGenerar = true;
   }
 
   imprimirCredencial() {
