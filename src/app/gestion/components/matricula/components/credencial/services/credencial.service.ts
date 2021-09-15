@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 const HttpOptionsDownloadFile = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   responseType : 'blob' as 'json',
-  observe: 'response' as 'body'
+  observe: 'response' as 'body',
+  nocache: 'true'
 };
 
 @Injectable({
@@ -18,7 +19,7 @@ export class CredencialService {
   }
 
   imprimirCertificado() {
-    this.httpClient.get(`${environment.apiUrl}/api/perfil/generarCredencial`, HttpOptionsDownloadFile )
+    this.httpClient.get(`${environment.apiUrl}/api/perfil/generarCredencial?nocache=${Math.random()}`, HttpOptionsDownloadFile )
     .subscribe((resp: HttpResponse<Blob>) => {
       this.downloadFile(resp);
     });
