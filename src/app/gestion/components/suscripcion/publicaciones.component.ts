@@ -12,7 +12,7 @@ import { SuscripcionService } from './services/suscripcion.service';
 export class PublicacionComponent implements OnInit {
   collapsed: boolean;
   loading: boolean;
-  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+  public urlHelp = 'https://www.cpau.org/nota/34672';
 
   public publicacionesForm: FormGroup;
 

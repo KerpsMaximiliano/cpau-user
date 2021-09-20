@@ -27,7 +27,7 @@ export class TelefonoComponent implements OnInit {
   public telefonoForm: FormGroup;
   public tipos$ = this.telefonoService.tiposTelefonos$;
   public clases$:SelectItem[] = [{id: 'Fijo', nombre: 'Fijo'}, {id: 'Celular', nombre: 'Celular'}];
-  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+  public urlHelp = 'https://www.cpau.org/nota/34662';
 
   constructor(
     private formBuilder: FormBuilder,

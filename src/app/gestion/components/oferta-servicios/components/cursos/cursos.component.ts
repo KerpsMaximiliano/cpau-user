@@ -20,7 +20,7 @@ export class CursosComponent implements OnInit {
   loading: boolean;
   public filas: Filas<Curso>[] = [];
   public columnnas: Columna<Curso>[];
-  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+  public urlHelp = 'https://www.cpau.org/nota/34669';
 
   public cursosForm: FormGroup;
   constructor(private formBuilder: FormBuilder,

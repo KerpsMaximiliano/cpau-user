@@ -15,7 +15,7 @@ export class CurriculumVitaeComponent implements OnInit {
   get f() { return this.curriculumForm.controls; }
   collapsed: boolean;
   archivo: boolean;
-  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+  public urlHelp = 'https://www.cpau.org/nota/34671';
 
   public curriculumForm: FormGroup;
   constructor(private formBuilder: FormBuilder,

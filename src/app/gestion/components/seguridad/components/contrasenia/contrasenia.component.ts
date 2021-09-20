@@ -12,6 +12,7 @@ import { ContraseniaService } from './service/contrasenia.service';
 })
 export class ContraseniaComponent implements OnInit {
 
+  public urlHelp = 'https://www.cpau.org/nota/34676';
   collapsed: boolean;
   loading: boolean;
   public contraseniaForm: FormGroup;

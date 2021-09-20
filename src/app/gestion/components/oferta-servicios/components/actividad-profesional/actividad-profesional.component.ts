@@ -18,7 +18,7 @@ export class ActividadProfesionalComponent implements OnInit {
 
   public actividadProfesionalData: CheckBoxDataModel[];
   public obrasData: CheckBoxDataModel[];
-  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+  public urlHelp = 'https://www.cpau.org/nota/34667';
 
   constructor(private formBuilder: FormBuilder,
     private toastr: ToastrService,

@@ -27,7 +27,7 @@ export class DomicilioComponent implements OnInit {
 
   public tiposDomicilios: SelectItem[];
   public domicilioForm: FormGroup;
-  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+  public urlHelp = 'https://www.cpau.org/nota/34660';
 
   constructor(private formBuilder: FormBuilder,
               private domicilioService: DomicilioService,

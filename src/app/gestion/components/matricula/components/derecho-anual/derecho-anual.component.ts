@@ -15,7 +15,7 @@ export class DerechoAnualComponent implements OnInit {
   collapsed: boolean;
   public filas: Filas<DerechoAnual>[] = [];
   public columnas: Columna<DerechoAnual>[];
-  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+  public urlHelp = 'https://www.cpau.org/nota/34665';
 
   constructor(private derechoAnualService: DerechoAnualService) {
     this.columnas = [

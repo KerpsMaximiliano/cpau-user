@@ -26,7 +26,7 @@ export class MailComponent implements OnInit {
   public columnnas: Columna<Mail>[];
   public mailForm: FormGroup;
   public tipos$ = this.mailService.tiposMails$;
-  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+  public urlHelp = 'https://www.cpau.org/nota/34661';
 
   constructor(
     private formBuilder: FormBuilder,

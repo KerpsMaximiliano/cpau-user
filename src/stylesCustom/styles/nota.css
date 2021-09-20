@@ -222,3 +222,8 @@
 .articleCss a:not([href])::after {
     content: '';
 }
+
+.link {color: black; cursor: pointer;} 
+.link:hover{color:blue;} 
+.acordeon:after{font-family: 'FontAwesome';content: "\f106";float: right; margin:0px 15px 0px 15px;} 
+.acordeon.collapsed:after{content: "\f107";}

@@ -11,7 +11,7 @@ export class ResumenComponent implements OnInit {
 
   collapsed: boolean;
   public resumen: Resumen;
-  public urlHelp = 'https://cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online';
+  public urlHelp = 'https://www.cpau.org/nota/34664';
 
   constructor(private resumenService: ResumenService) {}
 
