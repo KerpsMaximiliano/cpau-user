@@ -1,7 +1,6 @@
 export const environment = {
-    production: true,
-//    apiUrl: 'https://site2020-api.azurewebsites.net',
+    production: false,
     apiUrl: 'https://cpauorgapi.azurewebsites.net',
-    // apiUrl: 'https://cpauorgapi-perfil.azurewebsites.net',
-    oldSiteUrl: ''
+    oldSiteUrl: '',
+    storeUrl: 'https://cpau.org/store?length=4'
 };
