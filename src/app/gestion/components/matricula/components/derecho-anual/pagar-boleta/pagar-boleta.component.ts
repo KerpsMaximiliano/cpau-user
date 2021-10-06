@@ -24,6 +24,9 @@ export class PagarBoletaComponent implements OnInit {
   }
 
   select(medioDePago: string) {
+    if (this.debito) {
+      this.cuotas = "1";
+    }
     this.derechoAnualService.pagarBoleta(medioDePago, this.cuotas)
     .subscribe(data => {
       this.buildForm(data);
