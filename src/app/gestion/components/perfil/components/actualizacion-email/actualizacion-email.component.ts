@@ -14,12 +14,17 @@ export class ActualizacionEmailComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      const uid = params['uid'];
-      const contactId = params['ci'];
+      // const uid = params['uid'];
+      // const contactId = params['ci'];
+
+      const uid: string = this.router.url.split('uid=')[1].split('&')[0];
+      const contactId: string = this.router.url.split('ci=').reverse()[0];
+
+
       if(uid === undefined) {
         this.router.navigate(["/"]);
       }
-      this.actualizacionEmailService.emailconfirmacion(uid, contactId).subscribe(result => {
+      this.actualizacionEmailService.emailconfirmacion(this.parse(uid), this.parse(contactId)).subscribe(result => {
         if(result.success) {
           this.router.navigate(["/actualizacion-email-valida"]);
         } else {
@@ -28,6 +33,11 @@ export class ActualizacionEmailComponent implements OnInit {
        });
     }
     );
+  }
+
+  parse(url: string): string {
+    url = url.replace(/\%/g, '%25');
+    return url;
   }
 
 }
