@@ -14,11 +14,13 @@ import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { CustomDateParserFormatter } from '@app/shared/service/datepicker-format.service';
+import { InscripcionesComponent } from '../inscripciones/inscripciones.component';
 
 export var options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
   declarations: [IdentificacionComponent,
+    InscripcionesComponent,
     DomicilioComponent,
     TelefonoComponent,
     RedesComponent,

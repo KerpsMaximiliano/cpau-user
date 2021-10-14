@@ -86,9 +86,19 @@
                         </ul>
                     </li> -->
                     <li>
-                        <a href="{{storeUrl}}" target="_blank" (click)="colapsar(5)"><i class="fa fa-shopping-cart"></i><span
+                        <a href="{{storeUrl}}" (click)="colapsar(5)"><i class="fa fa-shopping-cart"></i><span
                                 class="nav-label">Compras
                                 on-line</span></a>
+                        <!-- <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true}">
+                            <li><a href="#">Cursos</a></li>
+                            <li><a href="#">Publicaciones</a></li>
+                            <li><a href="#">Merchandising</a></li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a [routerLink]="'perfil/inscripciones'" routerLinkActive="active-link" (click)="colapsar(5)"><i class="fa fa-table-list"></i><span
+                            class="nav-label">Inscripciones</span></a>
+                        
                         <!-- <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true}">
                             <li><a href="#">Cursos</a></li>
                             <li><a href="#">Publicaciones</a></li>
