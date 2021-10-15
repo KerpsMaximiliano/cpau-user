@@ -53,8 +53,7 @@ export class AuthenticationService {
     formData.append('redirect', '');
 
     return this.http
-      // .post<any>(`${environment.oldSiteUrl}/loginOldsite?token=${localStorage.getItem('jwt_token')}`, formData);
-      .post<any>(`${environment.oldSiteUrl}/login?token=${localStorage.getItem('jwt_token')}`, formData);
+      .post<any>(`${environment.oldSiteUrl}/loginOldsite?token=${localStorage.getItem('jwt_token')}`, formData);
   }
 
   preregister(email: string) {
