@@ -77,46 +77,36 @@
                             <!-- <li><a href="#">Temas de Interés</a></li> -->
                         </ul>
                     </li>
-                    <!-- <li>
-                        <a (click)="colapsar(4)"><i class="fa fa-building"></i> <span
-                                class="nav-label">Encomiendas</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[4] === true}">
-                            <li><a href="#">Nuevo RETP</a></li>
-                            <li><a href="#">Histórico</a></li>
-                        </ul>
-                    </li> -->
                     <li>
-                        <a href="{{storeUrl}}" target="_blank" (click)="colapsar(5)"><i class="fa fa-shopping-cart"></i><span
+                        <a href="{{storeUrl}}" target="_blank" ><i class="fa fa-shopping-cart"></i><span
                                 class="nav-label">Compras
                                 on-line</span></a>
-                        <!-- <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true}">
-                            <li><a href="#">Cursos</a></li>
-                            <li><a href="#">Publicaciones</a></li>
-                            <li><a href="#">Merchandising</a></li>
-                        </ul> -->
                     </li>
-                    <!-- <li>
-                        <a (click)="colapsar(6)"><i class="fa fa-cog"></i> <span
-                                class="nav-label">Herramientas</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[6] === true}">
-                            <li><a href="#">CPAU MAIL</a></li>
-                        </ul>
-                    </li> -->
                     <li>
-                        <a (click)="colapsar(7)"><i class="fa fa-lock"></i> <span class="nav-label">Seguridad</span>
+                        <a (click)="colapsar(5)"><i class="fa fa-wpforms"></i> <span
+                            class="nav-label">Inscripciones</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[5] === true, 'hideen-sub-menu': closeMenu}">
+                            <li>
+                                <a [routerLink]="'perfil/inscripciones'" routerLinkActive="active-link" (click)="colapsar(5)"><i class="fa fa-table-list"></i><span
+                                    class="nav-label">Activas</span></a>        
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a (click)="colapsar(6)"><i class="fa fa-lock"></i> <span class="nav-label">Seguridad</span>
                             <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[7] === true, 'hideen-sub-menu': closeMenu}">
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[6] === true, 'hideen-sub-menu': closeMenu}">
                             <li><a [routerLink]="'seguridad/usuario'" routerLinkActive="active-link" (click)="closeMenu=true">Usuario</a></li>
                             <li><a [routerLink]="'seguridad/contrasenia'" routerLinkActive="active-link" (click)="closeMenu=true">Contraseña</a>
                             </li>
                         </ul>
                     </li>
                     <li *ngIf="isAdmin">
-                        <a (click)="colapsar(8)"><i class="fa fa-lock"></i> <span
+                        <a (click)="colapsar(7)"><i class="fa fa-lock"></i> <span
                                 class="nav-label">Administración</span>
                             <span class="fa arrow"></span></a>
                         <ul *ngIf="isAdmin" class="nav nav-second-level collapse"
-                            [ngClass]="{'in': colapsado[8] === true}">
+                            [ngClass]="{'in': colapsado[7] === true}">
                             <li><a target="_blank" href="/Content/admin">Nuevo</a></li>
                             <li><a target="_blank" href="/admin/index">Actual</a></li>
                         </ul>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '@app/_helpers';
+import { InscripcionesComponent } from '../inscripciones/inscripciones.component';
 import { DomicilioComponent } from './components/domicilio/domicilio.component';
 import { IdentificacionComponent } from './components/identificacion/identificacion.component';
 import { MailComponent } from './components/mail/mail.component';
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'redes',
     component: RedesComponent,
+    canActivate: [AuthGuard] 
+  },
+  {
+    path: 'inscripciones',
+    component: InscripcionesComponent,
     canActivate: [AuthGuard] 
   },
 ];
