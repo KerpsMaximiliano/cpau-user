@@ -4,7 +4,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th [hidden]="!(permiteVisualizar || permiteEditar || permiteEliminar || permitePersonalizado)" scope="col">Acciones</th>
+            <th [hidden]="!(permiteVisualizar || permiteEditar || permiteEliminar || permitePersonalizado)" scope="col">{{columnaAcciones}}</th>
             <th *ngFor="let col of columnas" scope="col">{{col.titulo}}</th>
           </tr>
         </thead>

@@ -14,7 +14,8 @@ export class ActionTableComponent {
   @Input() permiteVisualizar = true;
   @Input() permiteEditar = true;
   @Input() permiteEliminar = true;
-  @Input() permitePersonalizado;
+  @Input() permitePersonalizado : string;
+  @Input() columnaAcciones = "Acciones";
   @Input() configButton: ConfigButton;
   @Input() columnas: Columna<any>[] = [];
   @Input() filas: Filas<any>[] = [];
