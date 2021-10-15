@@ -22,8 +22,9 @@ export class InscripcionesComponent implements OnInit {
   mostrarGenerar: boolean;
   public filas: Filas<Inscripcion>[] = [];
   public columnnas: Columna<Inscripcion>[];
+  public columnaAcciones : string = "Acceder";
   
-  public urlHelp = 'https://www.cpau.org/nota/34666';
+  public urlHelp = 'https://www.cpau.org/Content/institucional/%2F%2Fpreguntas-frecuentes%2Fherramientas-online%2Fperfil%2Finscripciones';
 
   public inscripcionesForm: FormGroup;
 

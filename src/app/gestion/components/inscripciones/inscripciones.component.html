@@ -11,8 +11,11 @@
             </div>
         </div>
         <ol class="breadcrumb">
-            <li class="active">
+            <li>
                 <a>Inscripciones</a>
+            </li>
+            <li class="active">
+                <a><strong>Activas</strong></a>
             </li>
         </ol>
     </div>
@@ -32,9 +35,23 @@
                     </div>
                 </div>
                 <div class="ibox-content" [hidden]="collapsed">
+                    
+                        <div class="form-group">
+                            <div class="alert alert-warning">
+                                <!-- <a class="alert-link" href="#">¡Atención!</a><br> -->
+                                <strong>¡Atención!</strong><br>
+                                Para finalizar la inscripción es necesario ingresar al ícono de acceso <i class="fa fa-external-link" aria-hidden="true"></i> del curso de tu interés y enviar el formulario.
+                                <br>
+                                Recordá, solo podés inscribirte a un curso de ejercicio profesional sin costo por mes.
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                    
                     <div class="row container-action-table">
                         <app-action-table [columnas]="columnnas"
                                             [filas]="filas"
+                                            [columnaAcciones]="columnaAcciones"
                                             [permiteVisualizar]="false"
                                             [permiteEditar]="false"
                                             [permiteEliminar]="false"
