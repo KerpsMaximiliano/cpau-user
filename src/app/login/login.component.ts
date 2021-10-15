@@ -1,7 +1,8 @@
-﻿import { Component, OnInit } from "@angular/core";
+﻿import { Component, Inject, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthenticationService } from "@app/_services";
+import { DOCUMENT } from "@angular/common";
 
 @Component({
   templateUrl: "login.component.html",
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    @Inject(DOCUMENT) private document: Document
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -61,8 +63,11 @@ export class LoginComponent implements OnInit {
             .subscribe(ol => {
             });
             var returnUrl = this.route.snapshot.queryParams["returnUrl"];
+            var redirect = this.route.snapshot.queryParams["redirect"];
             if (returnUrl) {
               this.router.navigate([returnUrl]);
+            } else if (redirect) {
+              this.document.location.href = redirect;
             } else {
               this.router.navigate([`gestion/home/perfil/identificacion`]);
             }
