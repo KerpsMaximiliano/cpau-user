@@ -132,13 +132,12 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     localStorage.removeItem('jwt_token');
-
-    this.http.get<any>(`${environment.oldSiteUrl}/logoutOldsite`);
-
     return this.http
       .post<any>(`${environment.apiUrl}/api/user/logout`, null)
       .subscribe((ret) => {
         this.currentUserSubject.next(null);
+
+        this.http.post<any>(`${environment.oldSiteUrl}/logoutOldsite`, null).subscribe();
       });
   }
 }
