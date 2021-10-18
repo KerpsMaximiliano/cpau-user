@@ -133,6 +133,8 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('jwt_token');
 
+    this.http.get<any>(`${environment.oldSiteUrl}/logoutOldsite`);
+
     return this.http
       .post<any>(`${environment.apiUrl}/api/user/logout`, null)
       .subscribe((ret) => {
