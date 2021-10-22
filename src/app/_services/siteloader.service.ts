@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
 import { ITemplate } from '@app/shared/abstract/factory/tempate.abstract';
@@ -8,6 +8,12 @@ import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import { BannerModelSearch } from '@app/shared/models/BannerModelSearch';
 import { ModalHome } from '@app/_models/modalHome.model';
 import { CustomResponse } from '@app/_models/customResponse.model';
+
+const HttpOptionsDownloadFile = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    responseType : 'blob' as 'json',
+    observe: 'response' as 'body'
+};
 
 @Injectable({ providedIn: 'root' })
 export class SiteLoader implements ITemplate {
@@ -114,5 +120,52 @@ export class SiteLoader implements ITemplate {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/PortalPublicBoletin`, { params: params });
     }
 
+    getCV(guid,nombreArchivo, cb?: () => void) {
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetCV?guid=${guid}`, HttpOptionsDownloadFile).pipe(distinctUntilChanged())
+        .subscribe((resp: HttpResponse<Blob>) => {
+          this.downloadFile(resp, nombreArchivo);
+          if (cb) { cb(); }
+        });
+    }
+
+    poseeCV(guid) {
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/PoseeCV?guid=${guid}`).pipe(distinctUntilChanged());
+    }
+
+    downloadFile(resp: HttpResponse<Blob>, nombreArchivo: string) {
+        const contentType = resp.headers.get('Content-type');
+        const file = new Blob([ resp.body ], {type: contentType});
+    
+        // Explorador
+        const ieEDGE = navigator.userAgent.match(/Edge/g);
+        const ie = navigator.userAgent.match(/.NET/g); // IE 11+
+        const oldIE = navigator.userAgent.match(/MSIE/g);
+    
+        // Descarga
+        if (ie || oldIE || ieEDGE) {
+          window.navigator.msSaveBlob(file, this.getContentDisposition(resp, nombreArchivo));
+        } else {
+          const fileURL = URL.createObjectURL(file);
+          const a       = document.createElement('a');
+          a.href        = fileURL;
+          a.target      = '_blank';
+          a.download    = this.getContentDisposition(resp, nombreArchivo);
+          a.click();
+          URL.revokeObjectURL(fileURL);
+        }
+    }
+
+    getContentDisposition(resp: HttpResponse<Blob>, nombreArchivo: string): string {
+        const contentDispositionHeader = resp.headers.get('content-disposition');
+        const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+    
+        let filename: string;
+        const matches = filenameRegex.exec(contentDispositionHeader);
+        if (matches != null && matches[1]) {
+          filename = matches[1].replace(/['"]/g, '');
+        }
+    
+        return filename  ? filename : `Curriculum_${nombreArchivo}`;
+    }
 
 }
