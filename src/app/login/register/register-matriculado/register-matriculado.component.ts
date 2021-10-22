@@ -86,6 +86,7 @@ export class RegisterMatriculadoComponent implements OnInit {
         }
         else {
           this.modalErrorMessage = result.message;
+          jQuery.noConflict();
           $("#datosIncorrectos").modal('show');
         }
       })

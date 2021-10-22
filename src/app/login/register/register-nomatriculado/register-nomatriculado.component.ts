@@ -22,8 +22,6 @@ export class RegisterNomatriculadoComponent implements OnInit {
   constructor(private listConstantService: ListConstantService,private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
-    
-    $("#datosIncorrectos").modal('show');
     this.getTiposDocumento();
     this.formNoMatriculado = this.formBuilder.group({
       nombre: new FormControl('', [Validators.required, Validators.minLength(2)]),
@@ -72,6 +70,7 @@ export class RegisterNomatriculadoComponent implements OnInit {
         }
         else {
           this.modalErrorMessage = result.message;
+          jQuery.noConflict();
           $("#datosIncorrectos").modal('show');
         }
       })
