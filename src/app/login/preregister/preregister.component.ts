@@ -43,6 +43,7 @@ export class PreregisterComponent implements OnInit {
           this.router.navigate(["./preregistracionexitosa"]);
         } else {
           this.modalErrorMessage = result.message;
+          jQuery.noConflict();
           $("#datosIncorrectos").modal('show');
         }
         this.loading = false;
