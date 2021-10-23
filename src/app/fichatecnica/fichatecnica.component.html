@@ -15,223 +15,158 @@
 
           <div class="row">
             <div class="col-12 col-sm-12 col-md-7 offset-md-2">
-              <!-- <h1 class="my-3">Ficha técnica</h1> -->
+              <div class="row">
+                <div class="col-sm-4">
+                  <img alt="image"
+                      class="img"
+                      [src]="imgSrc"
+                      onerror="this.src='stylesCustom/images/fas-fa-user-circle.svg'"
+                      width="100%">
+                </div>
+                <div class="col-sm-8">
+                  <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
+
+                    <tr>
+                      <td colspan="3" width="100%" style="
+                            font-weight: bold;
+                            border-top: #3400ff solid 1px;
+                            border-bottom: #3400ff solid 1px;
+                            padding: 10px 0px 10px 5px;
+                            background: #f8f8f8;
+                          ">
+                        Información registrada
+                      </td>
+                    </tr>
+
+                    <tr width="100%">
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Nombre y apellido:
+                      </td>
+                      <td colspan="3" class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        {{ data?.nombre }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Matrícula:
+                      </td>
+                      <td colspan="3" class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        {{ data?.matriculaTipo }} - {{ data?.matricula }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Estado:
+                      </td>
+                      <td colspan="3" class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        {{ data?.estado }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Fecha de matriculación:
+                      </td>
+                      <td colspan="3" class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px; ">
+                        {{ data?.fechaMatricula }}
+                      </td>
+                    </tr>
+                    <tr width="100%">
+                      <td class="textotabla" width="30%"
+                        style="border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Universidad:
+                      </td>
+                      <td colspan="3" class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px; ">
+                        {{ data?.universidad }}
+                      </td>
+                    </tr>
+
+                  </table>
+                </div>
+              </div>
+              <br>
               <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
-                
-                  <tr>
-                    <td
-                      colspan="3"
-                      width="100%"
-                      style="
+                <tr>
+                  <td colspan="3" width="100%" style="
                         font-weight: bold;
                         border-top: #3400ff solid 1px;
                         border-bottom: #3400ff solid 1px;
                         padding: 10px 0px 10px 5px;
                         background: #f8f8f8;
-                      "
-                    >
-                      Información registrada
-                    </td>
-                  </tr>
-                
-                  <tr width="100%">
-                    <td
-                      class="textotabla"
-                      width="30%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; "
-                    >
-                      Nombre y apellido:
-                    </td>
-                    <td
-                      colspan="3"
-                      class="textotabla"
-                      width="70%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;"
-                    >
-                      {{ data?.nombre }}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class="textotabla"
-                      width="30%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; "
-                    >
-                      Matrícula:
-                    </td>
-                    <td
-                      colspan="3"
-                      class="textotabla"
-                      width="70%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;"
-                    >
-                      {{ data?.matriculaTipo }} - {{ data?.matricula }}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class="textotabla"
-                      width="30%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; "
-                    >
-                      Estado:
-                    </td>
-                    <td
-                      colspan="3"
-                      class="textotabla"
-                      width="70%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;"
-                    >
-                      {{ data?.estado }}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      class="textotabla"
-                      width="30%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; "
-                    >
-                      Fecha de matriculación:
-                    </td>
-                    <td
-                      colspan="3"
-                      class="textotabla"
-                      width="70%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px; "
-                    >
-                      {{ data?.fechaMatricula }}
-                    </td>
-                  </tr>
-                  <tr width="100%">
-                    <td
-                      class="textotabla"
-                      width="30%"
-                      style="border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; "
-                    >
-                      Universidad:
-                    </td>
-                    <td
-                      colspan="3"
-                      class="textotabla"
-                      width="70%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px; "
-                    >
-                      {{ data?.universidad }}
-                    </td>
-                  </tr>
-                
-                </table>
-                <br>
-                <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td
-                      colspan="3"
-                      width="100%"
-                      style="
+                      ">
+                    Actividades profesionales
+                  </td>
+                </tr>
+                <tr *ngFor="let actividad of data.actividades">
+                  <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                    {{ actividad.nombre }}
+                  </td>
+                </tr>
+
+              </table>
+              <br>
+              <table>
+
+                <tr>
+                  <td colspan="3" width="100%" style="
                         font-weight: bold;
                         border-top: #3400ff solid 1px;
                         border-bottom: #3400ff solid 1px;
                         padding: 10px 0px 10px 5px;
                         background: #f8f8f8;
-                      "
-                    >
-                      Actividades profesionales
-                    </td>
-                  </tr>
-                  <tr *ngFor="let actividad of data.actividades">
-                    <td
-                      colspan="3"
-                      class="textotabla"
-                      width="70%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;"
-                    >
-                      {{ actividad.nombre }}
-                    </td>
-                  </tr>
-                
-                </table>
-                <br>
-                <table>
-                
-                  <tr>
-                    <td
-                      colspan="3"
-                      width="100%"
-                      style="
+                      ">
+                    Cursos
+                  </td>
+                </tr>
+
+                <tr *ngFor="let curso of data.cursos">
+                  <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                    {{ curso.nombre }} - {{ curso.institucion}}{{curso.universidad}}
+                  </td>
+                </tr>
+              </table>
+              <br>
+              <table>
+                <tr>
+                  <td colspan="3" width="100%" style="
                         font-weight: bold;
                         border-top: #3400ff solid 1px;
                         border-bottom: #3400ff solid 1px;
                         padding: 10px 0px 10px 5px;
                         background: #f8f8f8;
-                      "
-                    >
-                      Cursos
-                    </td>
-                  </tr>
-                
-                  <tr *ngFor="let curso of data.cursos">
-                    <td
-                      colspan="3"
-                      class="textotabla"
-                      width="70%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;"
-                    >
-                      {{ curso.nombre }} - {{ curso.institucion}}{{curso.universidad}}
-                    </td>
-                  </tr>
-                </table>
-                <br>
-                <table>
-                  <tr>
-                    <td
-                      colspan="3"
-                      width="100%"
-                      style="
-                        font-weight: bold;
-                        border-top: #3400ff solid 1px;
-                        border-bottom: #3400ff solid 1px;
-                        padding: 10px 0px 10px 5px;
-                        background: #f8f8f8;
-                      "
-                    >
-                      Experiencia
-                    </td>
-                  </tr>
-                  <tr *ngFor="let obraDestino of data.obrasDestino">
-                    <td
-                      colspan="3"
-                      class="textotabla"
-                      width="70%"
-                      style="solid 1px; border-bottom:#e7e7e7 solid 1px;"
-                    >
-                      {{ obraDestino.nombre }}
-                    </td>
-                  </tr>
-                
+                      ">
+                    Experiencia
+                  </td>
+                </tr>
+                <tr *ngFor="let obraDestino of data.obrasDestino">
+                  <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                    {{ obraDestino.nombre }}
+                  </td>
+                </tr>
+
               </table>
               <div class="row pt-5">
                 <div class="col-md-4">
-                  <button
-                    class="btn btn-secondary btn-lg rounded-0"
-                    type="submit "
-                    (click)="back()"
-                  >
+                  <button class="btn btn-secondary btn-lg rounded-0" type="submit " (click)="back()">
                     Volver
                   </button>
                 </div>
                 <div class="col-md-4">
-                  <button
-                    class="btn btn-secondary btn-lg rounded-0"
-                    [disabled]="!archivo" (click)="downloadCV()">
+                  <button class="btn btn-secondary btn-lg rounded-0" [disabled]="!archivo" (click)="downloadCV()">
                     <i class="fa fa-search"></i> Ver CV
                   </button>
                 </div>
                 <div class="col-md-4">
-                  <button
-                    class="btn btn-secondary btn-lg rounded-0"
-                    type="submit"
-                    [routerLink]="['/profesional/contacto/', data?.guid]"
-                  >
+                  <button class="btn btn-secondary btn-lg rounded-0" type="submit"
+                    [routerLink]="['/profesional/contacto/', data?.guid]">
                     Contactar
                   </button>
                 </div>

@@ -168,4 +168,8 @@ export class SiteLoader implements ITemplate {
         return filename  ? filename : `Curriculum_${nombreArchivo}`;
     }
 
+    readImage(guid) {
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/profileImage?guid=${guid}`).pipe(distinctUntilChanged());
+    }
+
 }

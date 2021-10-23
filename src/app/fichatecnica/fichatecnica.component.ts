@@ -11,6 +11,8 @@ export class FichatecnicaComponent implements OnInit {
   data: any;
   guid: string;
   archivo: boolean;
+  imgSrc: string | ArrayBuffer = "stylesCustom/images/fas-fa-user-circle.svg";
+
   constructor(private _Activatedroute:ActivatedRoute, private siteLoader: SiteLoader) { }
 
   ngOnInit() {
@@ -21,6 +23,12 @@ export class FichatecnicaComponent implements OnInit {
 
     this.siteLoader.poseeCV(this.guid).subscribe(b =>{
       this.archivo =b;
+    });
+
+    this.siteLoader.readImage(this.guid).subscribe(i => {
+      if (i.success) {
+        this.imgSrc = 'data:image/jpg;base64,' + i.entity.image;
+      }
     });
   }
 
