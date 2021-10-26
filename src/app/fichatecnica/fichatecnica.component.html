@@ -1,6 +1,6 @@
 <body>
   <!--CONTENEDOR-->
-  <div class="container pt-4">
+  <div class="container pt-4 ficha">
     <app-header-home></app-header-home>
 
     <app-button-home></app-button-home>
@@ -93,29 +93,33 @@
                 </div>
               </div>
               <br>
-              <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td colspan="3" width="100%" style="
-                        font-weight: bold;
-                        border-top: #3400ff solid 1px;
-                        border-bottom: #3400ff solid 1px;
-                        padding: 10px 0px 10px 5px;
-                        background: #f8f8f8;
-                      ">
-                    Actividades profesionales
-                  </td>
-                </tr>
-                <tr *ngFor="let actividad of data?.actividades">
-                  <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
-                    {{ actividad.nombre }}
-                  </td>
-                </tr>
-
-              </table>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td colspan="3" width="100%" style="
+                            font-weight: bold;
+                            border-top: #3400ff solid 1px;
+                            border-bottom: #3400ff solid 1px;
+                            padding: 10px 0px 10px 5px;
+                            background: #f8f8f8;
+                          ">
+                        Actividades profesionales
+                      </td>
+                    </tr>
+                    <tr *ngFor="let actividad of data?.actividades"  width="100%">
+                      <td colspan="3" class="textotabla" width="100%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        {{ actividad.nombre }}
+                      </td>
+                    </tr>
+    
+                  </table>
+                </div>
+              </div>
               <br>
               <table>
 
-                <tr>
+                <tr  width="100%">
                   <td colspan="3" width="100%" style="
                         font-weight: bold;
                         border-top: #3400ff solid 1px;
