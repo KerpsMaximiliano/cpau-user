@@ -1239,6 +1239,10 @@ td {
     .copyright {
         text-align: left;
     }
+    .redes {
+        width: 75%;
+        margin: auto;
+    }
 }
 
 
