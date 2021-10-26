@@ -105,7 +105,7 @@
                     Actividades profesionales
                   </td>
                 </tr>
-                <tr *ngFor="let actividad of data.actividades">
+                <tr *ngFor="let actividad of data?.actividades">
                   <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
                     {{ actividad.nombre }}
                   </td>
@@ -127,9 +127,30 @@
                   </td>
                 </tr>
 
-                <tr *ngFor="let curso of data.cursos">
+                <tr *ngFor="let curso of data?.cursos">
                   <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
                     {{ curso.nombre }} - {{ curso.institucion}}{{curso.universidad}}
+                  </td>
+                </tr>
+              </table>
+              <br>
+              <table>
+
+                <tr>
+                  <td colspan="3" width="100%" style="
+                        font-weight: bold;
+                        border-top: #3400ff solid 1px;
+                        border-bottom: #3400ff solid 1px;
+                        padding: 10px 0px 10px 5px;
+                        background: #f8f8f8;
+                      ">
+                    Postgrados
+                  </td>
+                </tr>
+
+                <tr *ngFor="let postgrado of data?.postgrados">
+                  <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                    {{ postgrado.nombre }} - {{ postgrado.institucion}}{{postgrado.universidad}}
                   </td>
                 </tr>
               </table>
@@ -146,7 +167,7 @@
                     Experiencia
                   </td>
                 </tr>
-                <tr *ngFor="let obraDestino of data.obrasDestino">
+                <tr *ngFor="let obraDestino of data?.obrasDestino">
                   <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
                     {{ obraDestino.nombre }}
                   </td>
