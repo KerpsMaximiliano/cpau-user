@@ -57,7 +57,7 @@
                                     <label for="nombre">
                                     <h6>Nombre o número de matícula:</h6>
                                     </label>
-                                    <input formControlName="nameOrNumber" type="text" class="form-control rounded-0" id="nombre" placeholder="">
+                                    <input formControlName="nameOrNumber" type="text" class="form-control rounded-0" id="nombre" placeholder="" (keydown.enter)="submit()">
                                     <div class="invalid-feedback"> </div>
                                 </div>
                                 <h5 class="mt-4 mb-4">Por actividad profesional:</h5>
@@ -83,7 +83,7 @@
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onClear()">Borrar filtros</button>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <button type="button" class="btn btn-primary" (click)="submit()" ng-disabled="buscando">{{buscando ? "Buscando..." : "Buscar"}}</button>
+                                        <button #profesionalstag id="profesionalstag" type="button" class="btn btn-primary" (click)="submit()" ng-disabled="buscando">{{buscando ? "Buscando..." : "Buscar"}}</button>
                                     </div>
                                 </div>
                             </form>

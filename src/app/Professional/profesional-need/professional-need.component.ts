@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SiteLoader } from '@app/_services';
 
 @Component({
@@ -16,6 +17,7 @@ export class ProfessionalNeedComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
     private siteLoader: SiteLoader) {}
 
   ngOnInit() {
@@ -47,7 +49,15 @@ export class ProfessionalNeedComponent implements OnInit {
     this.form.value.profesion = value;
   }
 
+  goto(): void {
+    try {
+      const element = document.getElementById('profesionalstag');
+      if (element) { element.scrollIntoView(true); }
+    } catch (e) { }
+  }
+
   submit() {
+    this.goto();
     this.buscando=true;
     this.siteLoader
     .getProfesionales(this.form.value.profesion, this.form.value.nameOrNumber,this.form.value.actividades,this.form.value.obras)
