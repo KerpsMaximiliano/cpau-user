@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { ContentSite } from '@app/shared/models/contentsite.model';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import {Title} from "@angular/platform-browser";
 
 declare function scrollup();
 
@@ -19,7 +20,8 @@ export class NotePreviewComponent implements OnInit {
   private fragment: string;
 
   constructor(private _router: Router,private _Activatedroute:ActivatedRoute, private siteLoader: SiteLoader,private renderer2: Renderer2,
-    @Inject(DOCUMENT) private _document
+    @Inject(DOCUMENT) private _document,
+    private titleService: Title
     ) { }
 
   ngOnInit() {
@@ -65,6 +67,7 @@ export class NotePreviewComponent implements OnInit {
     )
     .subscribe( content => {
       this.data = content;
+      this.titleService.setTitle(`${this.data.content.title} | CPAU`);
       setTimeout(() => {
         this.ancla();
       }, 10);

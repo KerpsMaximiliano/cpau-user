@@ -7,6 +7,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ContentSite } from '@app/shared/models/contentsite.model';
 import { AddTemplate } from '@app/shared/models/add-template';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mastertemplate',
@@ -45,7 +46,8 @@ export class MastertemplateComponent implements OnInit, OnDestroy {
   loading: boolean;
   @ViewChild(RenderDirective, {static: true}) renderHost: RenderDirective;
 
-  constructor(private _Activatedroute:ActivatedRoute,private route: ActivatedRoute, private injector: Injector, private componentFactoryResolver: ComponentFactoryResolver, private siteLoader: SiteLoader) { }
+  constructor(private _Activatedroute:ActivatedRoute,private route: ActivatedRoute, private injector: Injector, private componentFactoryResolver: ComponentFactoryResolver, private siteLoader: SiteLoader,
+    private titleService: Title) { }
 
   ngOnDestroy(): void {
     localStorage.setItem('tagSelected', null);
@@ -107,6 +109,7 @@ export class MastertemplateComponent implements OnInit, OnDestroy {
         map(ret => ret as ContentSite),
       ).subscribe(data => {
           this.loading = true;
+          this.titleService.setTitle(`${data.breadCrumb[0].name} | CPAU`);
           this.setDataInComponet(this.injectable.component, data);
       });
   }

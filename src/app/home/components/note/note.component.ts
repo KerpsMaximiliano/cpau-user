@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { ContentSite, BreadCrumb } from '@app/shared/models/contentsite.model';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-note',
@@ -19,7 +20,8 @@ export class NoteComponent implements OnInit {
 
   data: ContentSite;
   constructor(private _router: Router,private _Activatedroute:ActivatedRoute, private siteLoader: SiteLoader,private renderer2: Renderer2,
-    @Inject(DOCUMENT) private _document
+    @Inject(DOCUMENT) private _document,
+    private titleService: Title
     ) { }
 
   ancla(): void {
@@ -75,6 +77,7 @@ export class NoteComponent implements OnInit {
     )
     .subscribe( content => {
       this.data = content;
+      this.titleService.setTitle(`${this.data.content.title} | CPAU`);
       this.breadCrumb = this.data.breadCrumb;
       setTimeout(() => {
         this.ancla();
