@@ -23,3 +23,12 @@
     line-height: inherit !important;
     height: inherit !important;
 }
+
+@media only screen and (max-width: 992px) {
+    .separador {
+        display: none;
+    }
+    .botonera li a {
+        margin-left: 15px;
+    }
+}
