@@ -5,3 +5,7 @@
 .ficha table {
     display: inline-table;
 }
+
+.ficha .redes li a{
+    padding: 2px 20px 0px 0px;
+}

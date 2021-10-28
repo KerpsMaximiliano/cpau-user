@@ -12,6 +12,7 @@ export class FichatecnicaComponent implements OnInit {
   guid: string;
   archivo: boolean;
   imgSrc: string | ArrayBuffer = "stylesCustom/images/fas-fa-user-circle.svg";
+  website: string;
 
   constructor(private _Activatedroute:ActivatedRoute, private siteLoader: SiteLoader) { }
 
@@ -19,6 +20,9 @@ export class FichatecnicaComponent implements OnInit {
     this.guid = this._Activatedroute.snapshot.paramMap.get("guid");
     this.siteLoader.getFicha(this.guid).subscribe( data =>{
       this.data =data;
+
+      if (data && data.redes)
+        this.website = data.redes.find(x => +x.data2 == 10).data1;
     });
 
     this.siteLoader.poseeCV(this.guid).subscribe(b =>{

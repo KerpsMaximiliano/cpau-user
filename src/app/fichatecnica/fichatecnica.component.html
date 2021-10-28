@@ -88,7 +88,41 @@
                         {{ data?.universidad }}
                       </td>
                     </tr>
-
+                    <tr width="100%">
+                      <td class="textotabla" width="30%"
+                        style="border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Web:
+                      </td>
+                      <td colspan="3" class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px; ">
+                        {{ website }}
+                      </td>
+                    </tr>
+                    <tr width="100%">
+                      <td class="textotabla" width="30%"
+                        style="border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Redes:
+                      </td>
+                      <td colspan="3" class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px; ">
+                          <!--Columna Redes-->
+                          <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 pr-0 redes-header" style="padding-left: 0px;">
+                            <ul class="redes">
+                                <li *ngFor="let r of data.redes">
+                                  <a *ngIf="+r.data2 == 1" [href]="r.data1" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
+                                  <a *ngIf="+r.data2 == 2" [href]="r.data1" target="_blank" title="Facebook"><i class="fa fa-facebook-square"></i></a>
+                                  <a *ngIf="+r.data2 == 3" [href]="r.data1" target="_blank" title="Linkedin"><i class="fa fa-linkedin-square"></i></a>
+                                  <a *ngIf="+r.data2 == 4" [href]="r.data1" target="_blank" title="Twitter"><i class="fa fa-twitter-square"></i></a>
+                                  <a *ngIf="+r.data2 == 5" [href]="r.data1" target="_blank" title="Pinterest"><i class="fa fa-pinterest-square"></i></a>
+                                  <a *ngIf="+r.data2 == 6" [href]="r.data1" target="_blank" title="Flickr"><i class="fa fa-flickr"></i></a>
+                                  <a *ngIf="+r.data2 == 7" [href]="r.data1" target="_blank" title="Vimeo"><i class="fa fa-vimeo-square"></i></a>
+                                  <a *ngIf="+r.data2 == 8" [href]="r.data1" target="_blank" title="Youtube"><i class="fa fa-youtube-square"></i></a>
+                                  <a *ngIf="+r.data2 == 9" [href]="r.data1" target="_blank" title="Behance"><i class="fa fa-behance-square"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                      </td>
+                    </tr>
                   </table>
                 </div>
               </div>
