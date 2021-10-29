@@ -622,6 +622,13 @@ h6,
     height: 150px;
 }
 
+@media (max-width:575px) {
+    .imagen-secundaria {
+        height: auto;
+    }
+    
+}
+
 .noticias {
     list-style-type: none;
     text-align: left;
