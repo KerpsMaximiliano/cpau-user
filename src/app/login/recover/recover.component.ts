@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '@app/_services';
 import { first } from 'rxjs/operators';
 
@@ -9,13 +10,15 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./recover.component.css','../../../stylesCustom/styles/login.css']
 })
 export class RecoverComponent implements OnInit {
+
   formsignin: FormGroup;
   ButtonText = "RECUPERAR";
   loading = false;
   errorCode = undefined;
   buttonDisabled = false;
 
-  constructor( private formBuilder: FormBuilder, private authenticationService: AuthenticationService) { }
+  constructor( private formBuilder: FormBuilder, private authenticationService: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit() {
     this.formsignin = this.formBuilder.group({
@@ -54,6 +57,8 @@ export class RecoverComponent implements OnInit {
                    } else {
                     this.ButtonText = "EMAIL ENVIADO";
                     this.buttonDisabled = true;
+
+                    document.getElementById('btnEmailEnviado').click();
                    }
                }
 

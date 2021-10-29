@@ -24,6 +24,25 @@
                     {{ButtonText}}</button>
             </div>
         </form>
+        <!-- Modal:Email Enviado -->
+        <a id="btnEmailEnviado" class="hide" data-toggle="modal" data-target="#EmailEnviado" href="" #EmailEnviado></a>
+        <div class="modal fade" id="EmailEnviado" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="terminosTitle">RECUPERAR</h5>
+                    </div>
+                    <div class="modal-body">
+                        <span style="font-size: 1rem;">Email enviado correctamente, consulte su casilla de email.</span>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn btn-primary">
+                            <a style="color: white; font-weight:normal; text-decoration: none;" data-dismiss="modal" [routerLink]="['/']" target="_self">Cerrar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Modal:Datos Incorrectos -->
         <a id="btnDatosIncorrectos" class="hide" data-toggle="modal" data-target="#DatosIncorrectos" href=""></a>
         <div class="modal fade" id="DatosIncorrectos" tabindex="-1" role="dialog" aria-labelledby="DatosIncorrectosLabel" aria-hidden="true">
