@@ -72,7 +72,7 @@
                         <a (click)="colapsar(3)"><i class="fa fa-newspaper-o"></i> <span
                                 class="nav-label">Suscripciones</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[3] === true, 'hideen-sub-menu': closeMenu}">
-                            <li *ngIf="isMatriculado"><a [routerLink]="'suscripciones/publicaciones'" (click)="closeMenu=true">Publicaciones</a></li>
+                            <!-- <li *ngIf="isMatriculado"><a [routerLink]="'suscripciones/publicaciones'" (click)="closeMenu=true">Publicaciones</a></li> -->
                             <li><a [routerLink]="'suscripciones/newsletter'" (click)="closeMenu=true">Newsletters</a></li>
                             <!-- <li><a href="#">Temas de Interés</a></li> -->
                         </ul>
