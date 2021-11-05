@@ -128,6 +128,10 @@ export class AuthenticationService {
     return this.http.get<any>(`${environment.apiUrl}/api/user/ExistToken`);
   }
 
+  getGuidMatriculado(matId: number) {
+    return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetGUIDByMatricId?matricId=${matId}`);
+  }
+
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
@@ -137,7 +141,7 @@ export class AuthenticationService {
       .subscribe((ret) => {
         this.currentUserSubject.next(null);
 
-        this.http.post<any>(`${environment.oldSiteUrl}/logoutOldsite`, null).subscribe();
+        //this.http.post<any>(`${environment.oldSiteUrl}/logoutOldsite`, null).subscribe();
       });
   }
 }

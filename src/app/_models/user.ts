@@ -8,4 +8,5 @@ export class User {
     matricula?: string;
     tipoMatricula?: string;
     guid: string;
+    idMatricula: number;
 }

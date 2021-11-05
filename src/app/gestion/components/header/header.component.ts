@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('btnPerfil', {static: false}) perfil: ElementRef;
 
   currentUser: User;
+  guid: string;
   private _openMenu: boolean;
   public get openMenu(): boolean {
     return this._openMenu;
@@ -28,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public get urlPublica(): string {
-    return `https://www.cpau.org/ficha/${this.currentUser.guid}`;
+    return `${location.origin}/ficha/${this.guid}`;
   }
   /**
    *
@@ -61,6 +62,12 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit(): void {
     this.currentUser = this.authenticationService.currentUserValue;
+
+    this.authenticationService.getGuidMatriculado(this.currentUser.idMatricula).subscribe(x => {
+        if (x.success) {
+          this.guid = x.guid;
+        }
+    });
   }
   closeSession() {
     this.authenticationService.logout();
