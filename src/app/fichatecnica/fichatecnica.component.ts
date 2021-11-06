@@ -21,7 +21,7 @@ export class FichatecnicaComponent implements OnInit {
     this.siteLoader.getFicha(this.guid).subscribe( data =>{
       this.data =data;
 
-      if (data && data.redes)
+      if (data && data.redes && data.redes.length > 0)
         this.website = data.redes.find(x => +x.data2 == 10).data1;
     });
 

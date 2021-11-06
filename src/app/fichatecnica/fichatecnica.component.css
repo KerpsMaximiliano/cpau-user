@@ -16,10 +16,10 @@
     } 
 }
 
-.ficha a {
-    color: #007bff;
-    text-decoration: none;
-    background-color: transparent;
+.ficha .web a {
+    color: #007bff !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
 }
 
 @media only screen and (max-width: 480px) {
