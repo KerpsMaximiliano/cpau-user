@@ -8,7 +8,7 @@
       <!--Tittle-->
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <h6 class="border-bottom title-sections pb-1">
-          <a [routerLink]="[this.router.url]" style="cursor: pointer" title="FICHA TÉCNICA ">FICHA TÉCNICA</a>
+          <a style="cursor: pointer" title="FICHA TÉCNICA ">FICHA TÉCNICA</a>
         </h6>
         <div class="container p-0 pt-2 pb-5">
           <!--Nota-->
@@ -127,89 +127,83 @@
                 </div>
               </div>
               <br>
-              <div *ngIf="data && data.actividades.length > 0">
-                <div class="row" >
-                  <div class="col-sm-12">
-                    <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td colspan="3" width="100%" style="
-                              font-weight: bold;
-                              border-top: #3400ff solid 1px;
-                              border-bottom: #3400ff solid 1px;
-                              padding: 10px 0px 10px 5px;
-                              background: #f8f8f8;
-                            ">
-                          Actividades profesionales
-                        </td>
-                      </tr>
-                      <tr *ngFor="let actividad of data?.actividades"  width="100%">
-                        <td colspan="3" class="textotabla" width="100%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
-                          {{ actividad.nombre }}
-                        </td>
-                      </tr>
-      
-                    </table>
-                  </div>
+              <div class="row" *ngIf="data && data.actividades.length > 0">
+                <div class="col-sm-12">
+                  <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td colspan="3" width="100%" style="
+                            font-weight: bold;
+                            border-top: #3400ff solid 1px;
+                            border-bottom: #3400ff solid 1px;
+                            padding: 10px 0px 10px 5px;
+                            background: #f8f8f8;
+                          ">
+                        Actividades profesionales
+                      </td>
+                    </tr>
+                    <tr *ngFor="let actividad of data?.actividades"  width="100%">
+                      <td colspan="3" class="textotabla" width="100%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        {{ actividad.nombre }}
+                      </td>
+                    </tr>
+    
+                  </table>
                 </div>
-                <br>
               </div>
+              <br>
               
-              <div *ngIf="data && data.cursos.length > 0">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
-  
-                  <tr  width="100%">
-                    <td colspan="3" width="100%" style="
-                          font-weight: bold;
-                          border-top: #3400ff solid 1px;
-                          border-bottom: #3400ff solid 1px;
-                          padding: 10px 0px 10px 5px;
-                          background: #f8f8f8;
-                        ">
-                      Cursos
-                    </td>
-                  </tr>
-  
-                  <tr *ngFor="let curso of data?.cursos">
-                    <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
-                      {{ curso.nombre }} - {{ curso.institucion}}{{curso.universidad}}
-                    </td>
-                  </tr>
-                </table>
-                  </div>
+              <div class="row" *ngIf="data && data.cursos.length > 0">
+                <div class="col-sm-12">
+                  <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
+
+                <tr  width="100%">
+                  <td colspan="3" width="100%" style="
+                        font-weight: bold;
+                        border-top: #3400ff solid 1px;
+                        border-bottom: #3400ff solid 1px;
+                        padding: 10px 0px 10px 5px;
+                        background: #f8f8f8;
+                      ">
+                    Cursos
+                  </td>
+                </tr>
+
+                <tr *ngFor="let curso of data?.cursos">
+                  <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                    {{ curso.nombre }} - {{ curso.institucion}}{{curso.universidad}}
+                  </td>
+                </tr>
+              </table>
                 </div>
-                <br>
               </div>
+              <br>
               
-              <div *ngIf="data && data.postgrados.length > 0">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
-  
-                      <tr>
-                        <td colspan="3" width="100%" style="
-                              font-weight: bold;
-                              border-top: #3400ff solid 1px;
-                              border-bottom: #3400ff solid 1px;
-                              padding: 10px 0px 10px 5px;
-                              background: #f8f8f8;
-                            ">
-                          Postgrados
-                        </td>
-                      </tr>
-  
-                      <tr *ngFor="let postgrado of data?.postgrados">
-                        <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
-                          {{ postgrado.nombre }} - {{ postgrado.institucion}}{{postgrado.universidad}}
-                        </td>
-                      </tr>
-                    </table>
-                </div>
-                </div>
-                <br>
+              <div class="row" *ngIf="data && data.postgrados.length > 0">
+                <div class="col-sm-12">
+                  <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
+
+                    <tr>
+                      <td colspan="3" width="100%" style="
+                            font-weight: bold;
+                            border-top: #3400ff solid 1px;
+                            border-bottom: #3400ff solid 1px;
+                            padding: 10px 0px 10px 5px;
+                            background: #f8f8f8;
+                          ">
+                        Postgrados
+                      </td>
+                    </tr>
+
+                    <tr *ngFor="let postgrado of data?.postgrados">
+                      <td colspan="3" class="textotabla" width="70%" style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        {{ postgrado.nombre }} - {{ postgrado.institucion}}{{postgrado.universidad}}
+                      </td>
+                    </tr>
+                  </table>
               </div>
-              
+              </div>
+
+              <br>
               <div class="row" *ngIf="data && data.obrasDestino.length > 0">
                 <div class="col-sm-12">
                   <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
