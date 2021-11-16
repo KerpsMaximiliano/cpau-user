@@ -187,6 +187,8 @@ export class HomeComponent {
         document.getElementById('openModalButton').click();
       }
     });
+
+    $("video[autoplay]").each(function(){ this.play(); });
   }
 
 // touch
