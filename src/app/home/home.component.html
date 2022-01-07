@@ -275,9 +275,16 @@
                   </h6>
                   <a [routerLink]="['/profesionales']" target="_self" class="link-ss" title="Contactate ahora">
                     <div style="padding: 56.25% 0 0 0; position: relative">
-                      <video id="video" autoplay loop muted loop="true" autoplay="autoplay" playsinline="" src="https://player.vimeo.com/external/448910505.sd.mp4?s=54e987126e23506fc6eee8d4f0e0f627b3c194e0&profile_id=164" 
-                             style="position:absolute;top:0;left:0;width:100%;height:100%;" type="video/mp4">&nbsp;
-                      </video>
+                      <iframe
+                        src="https://player.vimeo.com/video/448910505?autoplay=1&loop=1&color=3400ff&title=0&byline=0&portrait=0"
+                        style="
+                          position: absolute;
+                          top: 0;
+                          left: 0;
+                          width: 100%;
+                          height: 100%;
+                        " frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+                      </iframe>
                     </div>
                     <script src="https://player.vimeo.com/api/player.js"></script>
                     <li class="media">
