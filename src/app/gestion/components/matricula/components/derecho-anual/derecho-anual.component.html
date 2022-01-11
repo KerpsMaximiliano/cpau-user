@@ -38,11 +38,23 @@
                 </div>
                 <div class="ibox-content" [hidden]="collapsed">
                     <label class="control-label">Te detallamos tu estado de deuda:</label><br><br>
+                    
+                    
+                    
                     <div class="row container-action-table">
                         <app-action-table [columnas]="columnas" [filas]="filas" [permiteEliminar]="false"
                             [permiteEditar]="false" [permiteVisualizar]="false" [mostrarTotal]="true">
                         </app-action-table>
                     </div>
+
+                    <div class="form-group">
+                        <div class="alert alert-warning">
+                            <!-- <a class="alert-link" href="#">¡Atención!</a><br> -->
+                            <strong>¡Atención!</strong><br>
+                            Una vez que hayas realizado el pago, la deuda seguirá apareciendo hasta que la misma haya sido aprobada por el consejo. 
+                        </div>
+                    </div>
+
                     <div class="actions-buttons">
                         <button class="btn btn-primary" (click)="onPagarDerechoAnual()">Pagar derecho anual</button>
                         <!-- <button class="btn btn-primary" (click)="onGenerarBoletaPago()">Generar boleta de pago</button> -->
