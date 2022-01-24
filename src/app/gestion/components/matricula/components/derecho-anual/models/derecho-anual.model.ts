@@ -1,5 +1,8 @@
+import { DetalleDeuda } from "./detalle-deuda.model";
+
 export interface DerechoAnual {
-    id: number;
-    periodo: string;
-    saldo: number;
+    puedePagar: boolean;
+    detalle: DetalleDeuda[];
+    matriculaBonificada: boolean;
+    pendienteActivacion: boolean;
 }

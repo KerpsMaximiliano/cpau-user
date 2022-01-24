@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ColumnType } from '@app/shared/enum/ColumnType.enum';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
-import { DerechoAnual } from './models/derecho-anual.model';
+import { DetalleDeuda } from './models/detalle-deuda.model';
 import { DerechoAnualService } from './services/derecho-anual.service';
 
 @Component({
@@ -13,8 +13,13 @@ export class DerechoAnualComponent implements OnInit {
 
   mostrarPop: boolean;
   collapsed: boolean;
-  public filas: Filas<DerechoAnual>[] = [];
-  public columnas: Columna<DerechoAnual>[];
+  puedePagar: boolean = false;
+  bonificada: boolean = false;
+  existeDeuda: boolean = true;
+  pendienteActivacion: boolean = false;
+  
+  public filas: Filas<DetalleDeuda>[] = [];
+  public columnas: Columna<DetalleDeuda>[];
   public urlHelp = 'https://www.cpau.org/nota/34665';
 
   constructor(private derechoAnualService: DerechoAnualService) {
@@ -36,9 +41,14 @@ export class DerechoAnualComponent implements OnInit {
   }
   initData() {
     this.filas = [];
+    
     this.derechoAnualService.getAll()
     .subscribe(d => {
-      d.map(x => {
+      this.puedePagar = d.puedePagar,
+      this.bonificada = d.matriculaBonificada,
+      this.pendienteActivacion = d.pendienteActivacion,
+      this.existeDeuda = d.detalle.length > 0;
+      d.detalle.map(x => {
         this.filas = [
           ...this.filas,
           {
@@ -52,6 +62,11 @@ export class DerechoAnualComponent implements OnInit {
 
   onPagarDerechoAnual() {
     this.mostrarPop = true;
+  }
+
+  onActivarMatricula() {
+    this.derechoAnualService.activarMatricula().subscribe();
+    this.pendienteActivacion = true;
   }
 
   onGenerarBoletaPago() {
