@@ -40,13 +40,13 @@
 
                     
                         <div class="alert alert-success" *ngIf="!existeDeuda">
-                            Tu estado de matrícula ya se encuentra ACTIVO, no tenés saldo a pagar.
+                            Tu estado de matrícula ya se encuentra ACTIVO.
                         </div>
                         <div class="alert alert-light" *ngIf="existeDeuda && bonificada && !pendienteActivacion">
                             <strong>¡Atención!</strong><br>
                             Tu estado actual de matriculación tiene bonificado el derecho anual. <br>
                             Para demostrar tu condición activa, si tenés pensado ejercer la profesión este año, 
-                            te pedimos que hagas clic en el botón "Activar Matrícula"
+                            te pedimos que hagas clic en el botón.
                         </div>
                         <div class="alert alert-light" *ngIf="pendienteActivacion">
                             Muchas gracias, tu activación esta en proceso. En las próximas 48 horas hábiles recibirás el comprobante correspondiente.
