@@ -40,26 +40,14 @@ export class RecoverComponent implements OnInit {
     if (this.formsignin.invalid) {
         return;
     }
-
+    this.f.captcha.reset();
     this.loading = true;
     this.authenticationService.recover(this.f.email.value, this.f.captcha.value)
         .pipe(first())
         .subscribe(
             data => {
                if(data) {
-                   if(!data.success) {
-                    this.errorCode = data.errorCode;
-                    document.getElementById('btnDatosIncorrectos').click();
-
-                    if(data.message)
-                      console.log(data);
-
-                   } else {
-                    this.ButtonText = "EMAIL ENVIADO";
-                    this.buttonDisabled = true;
-
-                    document.getElementById('btnEmailEnviado').click();
-                   }
+                document.getElementById('btnDatosIncorrectos').click();
                }
 
                this.loading = false;
