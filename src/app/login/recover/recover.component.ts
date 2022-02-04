@@ -36,6 +36,7 @@ export class RecoverComponent implements OnInit {
         alert('Debe validar el captcha antes de continuar.');
       }
 
+      
     // stop here if form is invalid
     if (this.formsignin.invalid) {
         return;
