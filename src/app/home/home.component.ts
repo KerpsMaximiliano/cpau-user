@@ -35,6 +35,7 @@ export class HomeComponent {
   contentSite: ItemsSite[];
   events: Events[];
   externalProduct: ExternalProduct[];
+  noticiasCarrousel: ExternalProduct[];
   modalContent: ModalHome;
   load: boolean;
   SlideOptions = {
@@ -153,6 +154,26 @@ export class HomeComponent {
         this.events = data;
       });
 
+      this.siteLoader
+      .getNoticiasCarrousel()
+      .pipe(
+        map((ret) => ret as ExternalProduct[]),
+        map((ret) => {
+          if (ret !== undefined) {
+            ret.forEach(r => {
+              r.title = r.title !== undefined ? recortarTituloProductoExterno(r.title) : undefined;
+              r.header = r.header !== undefined ? recortarHeaderProductoExterno(r.header) : undefined;
+              r.description = r.description !== undefined ? recortarDescriptionProductoExterno(r.description) : undefined;
+            });
+          }
+
+          return ret;
+        })
+      )
+      .subscribe((data) => {
+        this.noticiasCarrousel = data;
+      });
+
     this.siteLoader
       .getExternalProducts()
       .pipe(
@@ -225,9 +246,36 @@ export class HomeComponent {
 
   carrousel() {
     this.load = true;
-    const owl = $('.owl-carousel .owl-carousel-home');
-    owl.owlCarousel({
-        loop: this.externalProduct.length > 4,
+    const epowl = $('#epCarrousel');
+    epowl.owlCarousel({
+        loop: this.externalProduct && this.externalProduct.length > 4,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
+        navSpeed: 1000,
+        nav: false,
+        items: 4,
+        lazyLoad: true,
+        autoplay: true,
+        responsive: {
+          0: {
+              items: 1,
+              nav: false
+          },
+          400: {
+            items: 2,
+            nav: false
+          },
+          1000: {
+              items: 4,
+              nav: false,
+          }
+        }
+    });
+    const ncowl = $('#ncCarrousel');
+    ncowl.owlCarousel({
+        loop: this.noticiasCarrousel && this.noticiasCarrousel.length > 4,
         mouseDrag: false,
         touchDrag: false,
         pullDrag: false,

@@ -74,6 +74,10 @@ export class SiteLoader implements ITemplate {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetExternalProducts`).pipe(distinctUntilChanged());
     }
 
+    getNoticiasCarrousel() {
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetNoticiasCarrousel`).pipe(distinctUntilChanged());
+    }
+
     getActividades() {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetActividades`).pipe(distinctUntilChanged());
     }
