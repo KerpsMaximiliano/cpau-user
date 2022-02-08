@@ -41,19 +41,18 @@ export class RecoverComponent implements OnInit {
     if (this.formsignin.invalid) {
         return;
     }
-    this.f.captcha.reset();
     this.loading = true;
     this.authenticationService.recover(this.f.email.value, this.f.captcha.value)
         .pipe(first())
         .subscribe(
             data => {
-               if(data) {
-                document.getElementById('btnDatosIncorrectos').click();
-               }
-
+                               document.getElementById('btnDatosIncorrectos').click();
+               
+               this.f.captcha.reset();
                this.loading = false;
             },
             error => {
+              this.f.captcha.reset();
                 this.loading = false;
             });
 }
