@@ -1,4 +1,4 @@
-﻿import { Component, Injector, ViewChild, ViewEncapsulation } from "@angular/core";
+﻿import { Component, Inject, Injector, ViewChild, ViewEncapsulation } from "@angular/core";
 import { User } from "@app/_models";
 import { AuthenticationService, ModalHomeService, SiteLoader } from "@app/_services";
 import { map } from "rxjs/operators";
@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 import { ModalHome } from '@app/_models/modalHome.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OwlCarousel } from "ngx-owl-carousel";
+import { stringify } from "querystring";
+import { DOCUMENT } from "@angular/common";
 declare var $: any;
 declare function recortarTituloPrincipal(text);
 declare function recortarSummary(text);
@@ -74,7 +76,8 @@ export class HomeComponent {
     private authenticationService: AuthenticationService,
     private modalHomeService: ModalHomeService,
     private router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    @Inject(DOCUMENT) readonly document: Document
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
   }
@@ -242,6 +245,25 @@ export class HomeComponent {
     if (isLast && !this.load) {
       this.carrousel();
     }
+  }
+
+  redirectUrl(cs : ContentSite) {
+    if (cs.link && cs.link.trim() != ''){
+      this.redirect(cs.link);
+    } else {
+      this.router.navigateByUrl("/nota/" + cs.id);
+    }
+  }
+
+  get window(): Window { return this.document.defaultView; }
+
+  redirect(url: string, target: string = '_blank'): Promise<boolean> {
+
+    return new Promise<boolean>( (resolve, reject) => {
+  
+        try { resolve(!!this.window.open(url, target)); }
+        catch(e) { reject(e); }
+    });
   }
 
   carrousel() {
