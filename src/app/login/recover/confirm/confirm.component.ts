@@ -64,7 +64,7 @@ export class ConfirmComponent implements OnInit {
                     this.ButtonText = "PROCESO COMPLETADO CON EXITO";
 
                     setTimeout(() => {
-                      this.router.navigate(['/']);
+                      this.router.navigate(['/login']);
                     }, 3000);
                    }
                }
