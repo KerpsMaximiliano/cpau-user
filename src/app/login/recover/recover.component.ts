@@ -36,35 +36,23 @@ export class RecoverComponent implements OnInit {
         alert('Debe validar el captcha antes de continuar.');
       }
 
+      
     // stop here if form is invalid
     if (this.formsignin.invalid) {
         return;
     }
-
     this.loading = true;
     this.authenticationService.recover(this.f.email.value, this.f.captcha.value)
         .pipe(first())
         .subscribe(
             data => {
-               if(data) {
-                   if(!data.success) {
-                    this.errorCode = data.errorCode;
-                    document.getElementById('btnDatosIncorrectos').click();
-
-                    if(data.message)
-                      console.log(data);
-
-                   } else {
-                    this.ButtonText = "EMAIL ENVIADO";
-                    this.buttonDisabled = true;
-
-                    document.getElementById('btnEmailEnviado').click();
-                   }
-               }
-
+                               document.getElementById('btnDatosIncorrectos').click();
+               
+               this.f.captcha.reset();
                this.loading = false;
             },
             error => {
+              this.f.captcha.reset();
                 this.loading = false;
             });
 }

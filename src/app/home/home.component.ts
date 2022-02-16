@@ -1,4 +1,4 @@
-﻿import { Component, Injector, ViewChild, ViewEncapsulation } from "@angular/core";
+﻿import { Component, Inject, Injector, ViewChild, ViewEncapsulation } from "@angular/core";
 import { User } from "@app/_models";
 import { AuthenticationService, ModalHomeService, SiteLoader } from "@app/_services";
 import { map } from "rxjs/operators";
@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 import { ModalHome } from '@app/_models/modalHome.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OwlCarousel } from "ngx-owl-carousel";
+import { stringify } from "querystring";
+import { DOCUMENT } from "@angular/common";
 declare var $: any;
 declare function recortarTituloPrincipal(text);
 declare function recortarSummary(text);
@@ -35,6 +37,7 @@ export class HomeComponent {
   contentSite: ItemsSite[];
   events: Events[];
   externalProduct: ExternalProduct[];
+  noticiasCarrousel: ExternalProduct[];
   modalContent: ModalHome;
   load: boolean;
   SlideOptions = {
@@ -73,7 +76,8 @@ export class HomeComponent {
     private authenticationService: AuthenticationService,
     private modalHomeService: ModalHomeService,
     private router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    @Inject(DOCUMENT) readonly document: Document
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
   }
@@ -153,6 +157,26 @@ export class HomeComponent {
         this.events = data;
       });
 
+      this.siteLoader
+      .getNoticiasCarrousel()
+      .pipe(
+        map((ret) => ret as ExternalProduct[]),
+        map((ret) => {
+          if (ret !== undefined) {
+            ret.forEach(r => {
+              r.title = r.title !== undefined ? recortarTituloProductoExterno(r.title) : undefined;
+              r.header = r.header !== undefined ? recortarHeaderProductoExterno(r.header) : undefined;
+              r.description = r.description !== undefined ? recortarDescriptionProductoExterno(r.description) : undefined;
+            });
+          }
+
+          return ret;
+        })
+      )
+      .subscribe((data) => {
+        this.noticiasCarrousel = data;
+      });
+
     this.siteLoader
       .getExternalProducts()
       .pipe(
@@ -223,15 +247,61 @@ export class HomeComponent {
     }
   }
 
+  redirectUrl(cs : ContentSite) {
+    if (cs.link && cs.link.trim() != ''){
+      this.redirect(cs.link);
+    } else {
+      this.router.navigateByUrl("/nota/" + cs.id);
+    }
+  }
+
+  get window(): Window { return this.document.defaultView; }
+
+  redirect(url: string, target: string = '_blank'): Promise<boolean> {
+
+    return new Promise<boolean>( (resolve, reject) => {
+  
+        try { resolve(!!this.window.open(url, target)); }
+        catch(e) { reject(e); }
+    });
+  }
+
   carrousel() {
     this.load = true;
-    const owl = $('.owl-carousel .owl-carousel-home');
-    owl.owlCarousel({
-        loop: this.externalProduct.length > 4,
-        mouseDrag: true,
-        touchDrag: true,
-        pullDrag: true,
-        dots: true,
+    const epowl = $('#epCarrousel');
+    epowl.owlCarousel({
+        loop: this.externalProduct && this.externalProduct.length > 4,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
+        navSpeed: 1000,
+        nav: false,
+        items: 4,
+        lazyLoad: true,
+        autoplay: true,
+        responsive: {
+          0: {
+              items: 1,
+              nav: false
+          },
+          400: {
+            items: 2,
+            nav: false
+          },
+          1000: {
+              items: 4,
+              nav: false,
+          }
+        }
+    });
+    const ncowl = $('#ncCarrousel');
+    ncowl.owlCarousel({
+        loop: this.noticiasCarrousel && this.noticiasCarrousel.length > 4,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
         navSpeed: 1000,
         nav: true,
         items: 4,

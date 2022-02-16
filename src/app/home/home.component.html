@@ -41,7 +41,7 @@
             </h6>
 
             <!-- alerta -->
-            <div class="alert alert-secondary" role="alert">
+            <!-- <div class="alert alert-secondary" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -49,7 +49,7 @@
                 <a href="https://www.cpau.org/Content/institucional/nota/34769" target="_self">Atención presencial en el Consejo</a>
               </h6>
               <span style="font-size: 15px">Para matricularte, resolver consultas especiales o concurrir a la Biblioteca podés venir al CPAU con turno previo asignado. El resto de nuestros servicios sigue funcionando exclusivamente de manera virtual.</span>
-            </div>
+            </div> -->
             <!-- fin alerta -->
 
             <div class="container p-0">
@@ -58,7 +58,7 @@
                 <div class="row">
                   <div class="col-12">
                     <article>
-                      <a [routerLink]="['/nota', contentSite[0]?.id]" target="_self"
+                      <a (click)="redirectUrl(contentSite[0])"  onmouseover="this.style.cursor='pointer';"
                         title="{{ contentSite[0]?.image?.title }}">
                         <li class="media noticia-principal">
                           <div class="row">
@@ -87,8 +87,8 @@
                 <div class="row pt-3 pb-1">
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite[1]?.id]" target="_self"
-                        title="{{ contentSite[1]?.title }}">
+                      <a (click)="redirectUrl(contentSite[1])"  onmouseover="this.style.cursor='pointer';"
+                        title="{{ contentSite[1]?.image?.title }}">
                         <li class="media minima">
                           <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -109,8 +109,8 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite[2]?.id]" target="_self"
-                        title="{{ contentSite[2]?.title }}">
+                      <a (click)="redirectUrl(contentSite[2])"  onmouseover="this.style.cursor='pointer';"
+                        title="{{ contentSite[2]?.image?.title }}">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
@@ -131,8 +131,8 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite[3]?.id]" target="_self"
-                        title="{{ contentSite[3]?.title }}">
+                      <a (click)="redirectUrl(contentSite[3])"  onmouseover="this.style.cursor='pointer';"
+                        title="{{ contentSite[3]?.image?.title }}">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
@@ -155,8 +155,8 @@
                 <div class="row pt-3 pb-1" style="padding-top: 1.1em !important;">
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite[4]?.id]" target="_self"
-                        title="{{ contentSite[4]?.title }}">
+                      <a (click)="redirectUrl(contentSite[4])"  onmouseover="this.style.cursor='pointer';"
+                      title="{{ contentSite[4]?.image?.title }}">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
@@ -177,8 +177,8 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite[5]?.id]" target="_self"
-                        title="{{ contentSite[5]?.title }}">
+                      <a (click)="redirectUrl(contentSite[5])"  onmouseover="this.style.cursor='pointer';"
+                        title="{{ contentSite[5]?.image?.title }}">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
@@ -199,8 +199,8 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a [routerLink]="['/nota', contentSite[6]?.id]" target="_self"
-                        title="{{ contentSite[6]?.title }}">
+                      <a (click)="redirectUrl(contentSite[6])"  onmouseover="this.style.cursor='pointer';"
+                      title="{{ contentSite[6]?.image?.title }}">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
@@ -310,6 +310,58 @@
       </section>
       <!--FIN NOTICIAS Y AGENDA-->
 
+      <!-- noticias carrousel -->
+      <section>
+        <aside >
+          <div class="row" *ngIf="noticiasCarrousel; else loadingBlockNoticiasCarrousel">
+            <div class="col-sm col-md col-lg col-xl " style="padding: 0">
+              <div class="py-3" [ngClass]="{'sin-borde': noticiasCarrousel?.length == 0}">
+                <div class="top-content">
+                  <div class="">
+                    <div class="carousel slide" data-ride="myCarousel">
+                      <div class="carousel-inner" role="listbox">
+                        <owl-carousel [options]="SlideOptions"
+                                [items]="noticiasCarrousel"
+                                class="item" id="ncCarrousel"
+                                [carouselClasses]="['owl-theme', 'sliding', 'owl-carousel-home']" #owlElement> 
+                          <div *ngFor="let product of noticiasCarrousel; let index = index; let last = last" class="col-sm col-md-12 col-lg-12 col-lg col-xl">
+                            <h6 class="mt-0 mb-2 pb-1 border-bottom">
+                            <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
+                            </h6>  
+                            <a href="{{ product.url }}"target="{{selectTarget(product.linkTarget)}}" class="link-ss" title="{{ product.tooltip }}">
+                            <li class="media">
+                              <div class="producto" [ngStyle]="{
+                                backgroundColor: product.color,
+                                color: product.textColor
+                              }">
+                              <figure>
+                                <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}" alt="" />
+                              </figure>
+                              <div class="py-2 px-3">
+                                <h5>{{ product.header }}</h5>
+                                <p>{{ product.description }}</p>
+                              </div>
+                              </div>
+                            </li>
+                            </a>
+                            <div class="d-none" *ngIf="messagesRendered(last)"></div>
+                          </div> 
+                        </owl-carousel>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #loadingBlockNoticiasCarrousel>
+          <div class="row pt-4 pb-5 align-self-center">
+            <div class="loader">Loading...</div>
+          </div>
+          </ng-template>
+        </aside>
+        </section>
+
       <!--PRODUCTOS-->
       <section>
         <aside >
@@ -320,7 +372,7 @@
                           <div class="">
                               <div class="carousel slide" data-ride="myCarousel">
                                   <div class="carousel-inner" role="listbox">
-                                      <owl-carousel [options]="SlideOptions"
+                                      <owl-carousel [options]="SlideOptions" id="epCarrousel"
                                                       [items]="externalProduct"
                                                       class="item"
                                                       [carouselClasses]="['owl-theme', 'sliding', 'owl-carousel-home']" #owlElement> 

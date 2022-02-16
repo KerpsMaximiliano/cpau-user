@@ -43,6 +43,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- Modal:Datos Incorrectos -->
         <a id="btnDatosIncorrectos" class="hide" data-toggle="modal" data-target="#DatosIncorrectos" href=""></a>
         <div class="modal fade" id="DatosIncorrectos" tabindex="-1" role="dialog" aria-labelledby="DatosIncorrectosLabel" aria-hidden="true">
@@ -50,12 +51,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="DatosIncorrectosLabel">RECUPERAR</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                     </div>
-                    <div *ngIf="errorCode == 'SRP'" class="modal-body"> Ha excedido la cantidad de reintentos de solicitud de restablecimiento de contraseña. Por favor, póngase en contacto con web@cpau.org.</div>
-                    <div *ngIf="errorCode == 'MNE'" class="modal-body"> El correo electrónico brindado no corresponde.</div>
+                    <div class="modal-body">
+                        Se ha enviado un mensaje al correo electrónico que indicaste. Si es correcto, recibirás las indicaciones para reestablecer tu contraseña. Si no lo recibís, por favor revisá haber escrito tu correo electrónico de forma correcta. Si el problema persiste, podés comunicarte a <a href="mailto:web@cpau.org">web@cpau.org</a>.
+                    </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver a intentar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
                     </div>
                 </div>
             </div>
