@@ -271,9 +271,9 @@ export class HomeComponent {
     const epowl = $('#epCarrousel');
     epowl.owlCarousel({
         loop: this.externalProduct && this.externalProduct.length > 4,
-        mouseDrag: false,
-        touchDrag: false,
-        pullDrag: false,
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: true,
         dots: false,
         navSpeed: 1000,
         nav: false,
@@ -298,9 +298,9 @@ export class HomeComponent {
     const ncowl = $('#ncCarrousel');
     ncowl.owlCarousel({
         loop: this.noticiasCarrousel && this.noticiasCarrousel.length > 4,
-        mouseDrag: false,
-        touchDrag: false,
-        pullDrag: false,
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: true,
         dots: false,
         navSpeed: 1000,
         nav: true,
