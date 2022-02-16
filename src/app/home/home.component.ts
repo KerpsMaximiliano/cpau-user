@@ -228,12 +228,12 @@ export class HomeComponent {
     const owl = $('.owl-carousel .owl-carousel-home');
     owl.owlCarousel({
         loop: this.externalProduct.length > 4,
-        mouseDrag: false,
-        touchDrag: false,
-        pullDrag: false,
-        dots: false,
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: true,
+        dots: true,
         navSpeed: 1000,
-        nav: false,
+        nav: true,
         items: 4,
         lazyLoad: true,
         autoplay: true,
@@ -252,6 +252,9 @@ export class HomeComponent {
           }
         }
     });
+    this.SlideOptions.mouseDrag = true;
+    this.SlideOptions.touchDrag = true;
+    this.SlideOptions.pullDrag = true;
     this.SlideOptions.items = 4;
     this.SlideOptions.loop = this.externalProduct.length > 4;
     this.SlideOptions.responsive = {

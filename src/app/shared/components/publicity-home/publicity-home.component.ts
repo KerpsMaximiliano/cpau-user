@@ -13,9 +13,9 @@ export class PublicityHomeComponent implements OnInit {
   load: boolean;
   SlideOptions = {
     loop: false,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
     dots: false,
     navSpeed: 1000,
     navText: ['', ''],
@@ -58,9 +58,9 @@ export class PublicityHomeComponent implements OnInit {
     const owl = $('.owl-carousel');
     owl.owlCarousel({
         loop: this.banners.length > 4,
-        mouseDrag: false,
-        touchDrag: false,
-        pullDrag: false,
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: true,
         dots: false,
         navSpeed: 1000,
         nav: false,
@@ -82,7 +82,9 @@ export class PublicityHomeComponent implements OnInit {
           }
         }
     });
-
+    this.SlideOptions.mouseDrag = true;
+    this.SlideOptions.touchDrag = true;
+    this.SlideOptions.pullDrag = true;
     this.SlideOptions.items =  4;
     this.SlideOptions.loop =  this.banners.length > 4;
     this.SlideOptions.responsive = {
