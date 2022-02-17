@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
   currentUser: User;
   imgSrc: string | ArrayBuffer = "";
   closeMenu: boolean;
+  hasImage: boolean;
 
   constructor(private identificacionService: IdentificacionService,
               private authenticationService: AuthenticationService) { }
@@ -35,6 +36,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
     this.identificacionService.readImage().subscribe(i => {
       if (i.success) {
+        this.hasImage = true;
         this.imgSrc = 'data:image/jpg;base64,' + i.entity.image;
       }
     });

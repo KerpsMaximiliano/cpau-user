@@ -40,6 +40,7 @@
                             <li><a [routerLink]="'perfil/emails'" routerLinkActive="active-link" (click)="closeMenu=true">Emails</a></li>
                             <li><a [routerLink]="'perfil/telefonos'" routerLinkActive="active-link" (click)="closeMenu=true">Teléfonos</a></li>
                             <li><a [routerLink]="'perfil/redes'" routerLinkActive="active-link" (click)="closeMenu=true">Redes</a></li>
+                            <li *ngIf="hasImage"><a [routerLink]="'perfil/fotos'" routerLinkActive="active-link" (click)="closeMenu=true">Fotos</a></li>
                         </ul>
                     </li>
                     <li *ngIf="isMatriculado">

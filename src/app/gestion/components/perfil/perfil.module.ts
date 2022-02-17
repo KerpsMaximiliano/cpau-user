@@ -15,6 +15,7 @@ import { DpDatePickerModule } from 'ng2-date-picker';
 import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { CustomDateParserFormatter } from '@app/shared/service/datepicker-format.service';
 import { InscripcionesComponent } from '../inscripciones/inscripciones.component';
+import { FotoComponent } from './components/foto/foto.component';
 
 export var options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -24,7 +25,8 @@ export var options: Partial<IConfig> | (() => Partial<IConfig>);
     DomicilioComponent,
     TelefonoComponent,
     RedesComponent,
-    MailComponent],
+    MailComponent,
+    FotoComponent],
   imports: [
     CommonModule,
     PerfilRoutingModule,

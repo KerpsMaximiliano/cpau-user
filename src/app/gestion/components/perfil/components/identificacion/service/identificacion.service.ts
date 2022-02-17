@@ -5,6 +5,7 @@ import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { environment } from '@environments/environment';
 import { Identificacion } from '../model/identificacion.model';
 import { IResponseService } from '@app/gestion/shared/Models/ResponseService.model';
+import { IFoto, IResponseFoto } from '../model/foto.model';
 
 @Injectable(
     {
@@ -43,4 +44,12 @@ export class IdentificacionService {
         return this.httpClient.put<IResponseService<Identificacion>>(`${environment.apiUrl}/api/perfil/identificacion`, request);
     }
 
+    public readFoto(): Observable<IResponseFoto> {
+        const params = new HttpParams().set('nocache', 'true');
+        return this.httpClient.get<IResponseFoto>(`${environment.apiUrl}/api/perfil/foto/check`, {params});
+    }
+
+    public updateFoto(request: IFoto): Observable<IResponseService<IResponseFoto>> {
+        return this.httpClient.put<IResponseService<IResponseFoto>>(`${environment.apiUrl}/api/perfil/foto/check`, request);
+    }
 }
