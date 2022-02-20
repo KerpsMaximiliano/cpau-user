@@ -35,6 +35,10 @@ export class IdentificacionService {
         return this.httpClient.get<IResponseService<any>>(`${environment.apiUrl}/api/perfil/profileImage`);
     }
 
+    public hasImage(): Observable<IResponseService<any>> {
+        return this.httpClient.get<IResponseService<any>>(`${environment.apiUrl}/api/perfil/foto/check`);
+    }
+
     public read(): Observable<Identificacion> {
         const params = new HttpParams().set('nocache', 'true');
         return this.httpClient.get<Identificacion>(`${environment.apiUrl}/api/perfil/identificacion`, {params});

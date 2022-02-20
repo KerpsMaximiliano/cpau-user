@@ -84,6 +84,9 @@ export class FotoComponent implements OnInit {
       this.fotosForm.controls['perfil'].disable();
       this.fotosForm.controls['credencial'].disable();
       this.fotosForm.controls['ficha'].disable();
+      this.fotosForm.controls['perfil'].setValue(false);
+      this.fotosForm.controls['credencial'].setValue(false);
+      this.fotosForm.controls['ficha'].setValue(false);
     }
   }
 

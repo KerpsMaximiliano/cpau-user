@@ -36,9 +36,12 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
     this.identificacionService.readImage().subscribe(i => {
       if (i.success) {
-        this.hasImage = true;
         this.imgSrc = 'data:image/jpg;base64,' + i.entity.image;
       }
+    });
+
+    this.identificacionService.hasImage().subscribe(i => {
+        this.hasImage = i.success && i.entity.hasImage;
     });
 
     this.identificacionService.getCurrentIdentificacionValue().subscribe(x => this.perfil = x);

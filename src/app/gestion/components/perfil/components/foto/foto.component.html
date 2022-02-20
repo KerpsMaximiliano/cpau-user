@@ -38,17 +38,11 @@
                     <form method="get" class="form-horizontal" [formGroup]="fotosForm">
                         <div class="row">
                             <div class="col-lg-8 col-md-8 text-left">
-
-                                <div class="form-group">
-                                    <div class="alert alert-warning">
-                                        <strong>¡Atención!</strong><br>
-                                        <input type="checkbox" formControlName="politica" (click)="changeCheck($event)"> Si quer&eacute;s modificar alguno de los datos personales que est&aacute;n grisados, envianos un mail a info@cpau.org.
-                                    </div>
-                                </div>
-
-                                <input type="checkbox" formControlName="perfil"> Perfil <br>
-                                <input type="checkbox" formControlName="credencial"> Credencial <br>
-                                <input type="checkbox" formControlName="ficha"> Ficha técnica
+                                <label class="control-label">En esta pantalla podés controlar los lugares donde querés que se visualice tu foto de perfil.</label><br><br>
+                                <input type="checkbox" formControlName="politica" (click)="changeCheck($event)"><strong> Permito al consejo emplear mi foto de perfil en las siguiente secciones.</strong> <br><br>
+                                <input type="checkbox" formControlName="perfil"> Perfil: Se mostrará tu foto en la parte superior izquierda una vez que ingreses a tu perfil. <br>
+                                <input type="checkbox" formControlName="credencial"> Credencial: Se mostrará tu foto dentro del círculo superior en medio de la credencial. <br>
+                                <input type="checkbox" formControlName="ficha"> Ficha técnica:  Se mostrará tu foto en la ficha técnica pública del consejo junto con tus datos, experiencia y trabajo realizado.
                             </div>
                         </div>
                         <div class="row">
