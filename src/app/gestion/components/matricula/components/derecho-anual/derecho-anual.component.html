@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="actions-buttons">
-                        <button style="display:none;" class="btn btn-primary"  (click)="imprimirBoleta()">Imprimir Boleta</button>
+                        <button class="btn btn-primary" *ngIf="puedePagar && !bonificada" (click)="imprimirBoleta()">Imprimir Boleta</button>
                         <button class="btn btn-primary" *ngIf="puedePagar && !bonificada" (click)="onPagarDerechoAnual()">Pagar derecho anual</button>
                         <button class="btn btn-primary" *ngIf="bonificada && !pendienteActivacion" (click)="onActivarMatricula()">Activar Matrícula</button>
                     </div>
