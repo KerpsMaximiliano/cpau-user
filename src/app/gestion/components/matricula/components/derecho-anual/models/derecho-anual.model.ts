@@ -5,4 +5,5 @@ export interface DerechoAnual {
     detalle: DetalleDeuda[];
     matriculaBonificada: boolean;
     pendienteActivacion: boolean;
+    matricId: string;
 }

@@ -17,7 +17,8 @@ export class DerechoAnualComponent implements OnInit {
   bonificada: boolean = false;
   existeDeuda: boolean = true;
   pendienteActivacion: boolean = false;
-  
+  matricId: string;
+
   public filas: Filas<DetalleDeuda>[] = [];
   public columnas: Columna<DetalleDeuda>[];
   public urlHelp = 'https://www.cpau.org/nota/34665';
@@ -44,6 +45,7 @@ export class DerechoAnualComponent implements OnInit {
     
     this.derechoAnualService.getAll()
     .subscribe(d => {
+      this.matricId = d.matricId;
       this.puedePagar = d.puedePagar,
       this.bonificada = d.matriculaBonificada,
       this.pendienteActivacion = d.pendienteActivacion,
@@ -71,6 +73,10 @@ export class DerechoAnualComponent implements OnInit {
 
   onGenerarBoletaPago() {
     // WS que genera el PDF de pago.
+  }
+
+  imprimirBoleta() {
+    this.derechoAnualService.imprimirBoleta(this.matricId);
   }
 
   protected reload() {

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { Observable, of } from 'rxjs';
@@ -6,6 +6,14 @@ import { DerechoAnual } from '../models/derecho-anual.model';
 import { DetalleDeuda } from '../models/detalle-deuda.model';
 
 import { ValidarPago } from '../models/validar-pago.model';
+
+const HttpOptionsDownloadFile = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  responseType : 'blob' as 'json',
+  observe: 'response' as 'body',
+  nocache: 'true'
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,4 +34,37 @@ export class DerechoAnualService {
     const params = new HttpParams().set('nocache', 'true');
     return this.httpClient.get<boolean>(`${environment.apiUrl}/api/Matricula/activarMatricula`, {params});
   }
+
+  imprimirBoleta(matricId: string) {
+    this.httpClient.get(`${environment.oldSiteUrl}/api/matriculados/imprimirboleta/${matricId}?nocache=${Math.random()}`, HttpOptionsDownloadFile )
+    .subscribe((resp: HttpResponse<Blob>) => {
+      this.downloadFile(resp);
+    });
+  }
+
+  downloadFile(resp: HttpResponse<Blob>) {
+    const contentType = resp.headers.get('Content-type');
+    const file = new Blob([ resp.body ], {type: contentType});
+
+    // Explorador
+    const ieEDGE = navigator.userAgent.match(/Edge/g);
+    const ie = navigator.userAgent.match(/.NET/g); // IE 11+
+    const oldIE = navigator.userAgent.match(/MSIE/g);
+
+    // Descarga
+    if (ie || oldIE || ieEDGE) {
+      window.navigator.msSaveBlob(file, 'Credencial');
+    } else {
+      const fileURL = URL.createObjectURL(file);
+      const a       = document.createElement('a');
+      a.href        = fileURL;
+      a.target      = '_blank';
+      a.download    = 'Boleta';
+      a.click();
+      URL.revokeObjectURL(fileURL);
+    }
+  }
+
+  
+
 }
