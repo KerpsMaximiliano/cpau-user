@@ -12,9 +12,9 @@ import { ValidarPago } from '../models/validar-pago.model';
 export class PagarBoletaComponent implements OnInit {
 
   isProcessing: boolean;
-  cuotas: string = '3';
+  cuotas: string;
   formValidarPago: ValidarPago;
-  debito: boolean = false;
+  tipotarjeta: string;
   @ViewChild('form', { static: false }) form: ElementRef;
   @ViewChild('emailCliente', { static: false }) email : ElementRef;
   @Output() cerrar = new EventEmitter();
@@ -23,8 +23,14 @@ export class PagarBoletaComponent implements OnInit {
   ngOnInit() {
   }
 
+  limpiarCuotas() {
+    if (this.tipotarjeta != 'credito') {
+      this.cuotas = undefined;
+    }
+  }
+
   select(medioDePago: string) {
-    if (this.debito) {
+    if (this.tipotarjeta == 'debito') {
       this.cuotas = "1";
     }
     this.derechoAnualService.pagarBoleta(medioDePago, this.cuotas)
