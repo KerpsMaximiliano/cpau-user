@@ -75,9 +75,7 @@ export class DerechoAnualComponent implements OnInit {
     // WS que genera el PDF de pago.
   }
 
-  imprimirBoleta() {
-    this.derechoAnualService.imprimirBoleta(this.matricId);
-  }
+  
 
   protected reload() {
     this.initData();

@@ -7,10 +7,11 @@
         <div class="modal-body">
             
             <div  *ngIf="!isProcessing">
-                <label class="control-label" style="font-weight: bold">Seleccioná el tipo de tarjeta:</label><br />
+                <label class="control-label" style="font-weight: bold">Seleccioná el modo de pago:</label><br />
                 <div class="control-group" style="margin-left: 20px;">
-                    <input type="radio" (click)="limpiarCuotas()" id="credito" value="credito" name="tipotarjeta" [(ngModel)]="tipotarjeta"/>&nbsp;Crédito&nbsp;&nbsp;
-                    <input type="radio" id="debito" value="debito" name="tipotarjeta" [(ngModel)]="tipotarjeta" />&nbsp;Débito&nbsp;&nbsp;
+                    <input type="radio" (click)="limpiarCuotas()" id="credito" value="credito" name="tipotarjeta" [(ngModel)]="tipotarjeta"/>&nbsp;Tarjeta de Crédito&nbsp;&nbsp;
+                    <input type="radio" id="debito" value="debito" name="tipotarjeta" [(ngModel)]="tipotarjeta" />&nbsp;Tarjeta de Débito&nbsp;&nbsp;
+                    <input type="radio" id="boleta" value="boleta" name="tipotarjeta" [(ngModel)]="tipotarjeta" />&nbsp;Boleta Bancaria&nbsp;&nbsp;
                 </div>
                 <br />
                 <label *ngIf="tipotarjeta == 'credito'" class="control-label" for="cuotas">Elegí la cantidad de cuotas:</label>
@@ -22,6 +23,17 @@
                     <br>
                 </div>
                 
+                <label *ngIf="tipotarjeta == 'boleta'" class="control-label">Imprimí tu boleta:</label>
+                <div class="control-group" *ngIf="tipotarjeta == 'boleta'">
+                    <br>
+                    <div class="alert alert-warning">
+                        <strong>¡Atención!</strong><br>
+                        Esta boleta la tendrás vigente para abonar en cualquier sede del Banco Macro o Hipotecario por un término de 7 días.<br>
+                        Para imprimirla tenés que tildar el casillero que figura a continuación.<br>
+                    </div>
+                    <div style="margin-left: 2px;"><input type="checkbox" [(ngModel)]="vigenciaboleta">&nbsp; &nbsp;Leí el plazo valido de vigencia de la boleta<br><br></div>
+                    <button class="btn btn-primary" [disabled]="!vigenciaboleta" (click)="imprimirBoleta();cerrar.emit();">Imprimir Boleta</button>
+                </div>
                 
                 <div class="control-group" *ngIf="(tipotarjeta == 'credito' && cuotas) || tipotarjeta == 'debito'">
                     <label class="control-label" for="cuotas">Clickeá sobre la tarjeta con la que querés abonar:</label>
@@ -76,7 +88,7 @@
             </div>
         </div>
         <div class="modal-footer">
-			<button type="button" class="btn btn-dark" style="background-color: black;" (click)="cerrar.emit()" >Cancelar</button>
+			<button  type="button" class="btn btn-dark" style="background-color: black;" (click)="cerrar.emit()" >Cancelar</button>
         </div>
     </div>
 </div>

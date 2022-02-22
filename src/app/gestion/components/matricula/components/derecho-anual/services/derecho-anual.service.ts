@@ -35,14 +35,14 @@ export class DerechoAnualService {
     return this.httpClient.get<boolean>(`${environment.apiUrl}/api/Matricula/activarMatricula`, {params});
   }
 
-  imprimirBoleta(matricId: string) {
+  imprimirBoleta(matricId: string, numero: string, tipo: string) {
     this.httpClient.get(`${environment.oldSiteUrl}/api/matriculados/imprimirboleta/${matricId}?nocache=${Math.random()}`, HttpOptionsDownloadFile )
     .subscribe((resp: HttpResponse<Blob>) => {
-      this.downloadFile(resp);
+      this.downloadFile(resp, numero, tipo);
     });
   }
 
-  downloadFile(resp: HttpResponse<Blob>) {
+  downloadFile(resp: HttpResponse<Blob>, numero: string, tipo: string) {
     const contentType = resp.headers.get('Content-type');
     const file = new Blob([ resp.body ], {type: contentType});
 
@@ -59,7 +59,7 @@ export class DerechoAnualService {
       const a       = document.createElement('a');
       a.href        = fileURL;
       a.target      = '_blank';
-      a.download    = 'Boleta';
+      a.download    = 'Boleta-' + tipo + '-' + numero;
       a.click();
       URL.revokeObjectURL(fileURL);
     }

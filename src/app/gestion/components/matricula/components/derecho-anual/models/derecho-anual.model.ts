@@ -6,4 +6,6 @@ export interface DerechoAnual {
     matriculaBonificada: boolean;
     pendienteActivacion: boolean;
     matricId: string;
+    numero: string;
+    tipo: string;
 }
