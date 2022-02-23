@@ -64,6 +64,7 @@ export class FotoComponent implements OnInit {
         if (response.success) {
           this.toastr.success('Actualizacion realizada con exito');
           this.loading = false;
+          location.reload(true);
         } else {
           this.toastr.error(response.message);
           this.loading = false;
