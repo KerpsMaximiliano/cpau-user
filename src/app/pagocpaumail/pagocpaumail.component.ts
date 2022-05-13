@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ValidarPago } from '@app/gestion/components/matricula/components/derecho-anual/models/validar-pago.model';
 import { SiteLoader } from '@app/_services';
-import { environment } from '@environments/environment.prod';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-pagocpaumail',
