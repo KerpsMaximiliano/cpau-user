@@ -86,6 +86,10 @@ export class SiteLoader implements ITemplate {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetFicha?guid=${guid}`).pipe(distinctUntilChanged());
     }
 
+    getDatosPago(guid) {
+        return this.http.get<any>(`${environment.apiUrl}/api/Matricula/DatosPagoCpauMail?hash=${guid}`).pipe(distinctUntilChanged());
+    }
+
     getMatriculasTipos() {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetTipoMatricula`).pipe(distinctUntilChanged());
     }

@@ -53,6 +53,7 @@ import { ActualizacionEmailComponent } from './gestion/components/perfil/compone
 import { OwlModule } from 'ngx-owl-carousel';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { LoadingScreenInterceptor } from './_helpers/loading.interceptor';
+import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -95,6 +96,7 @@ import { LoadingScreenInterceptor } from './_helpers/loading.interceptor';
     TemplateListComponent,
     PadronComponent,
     FichatecnicaComponent,
+    PagoCpauMailComponent,
     ContactoProfesionalComponent,
     ContactoComponent,
     ContactoAnuncianteComponent,

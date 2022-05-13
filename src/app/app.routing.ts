@@ -19,6 +19,7 @@ import { FormComponent } from './form/form.component';
 import { PreregisterComponent } from './login/preregister';
 import { AuthGuard } from './_helpers';
 import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
+import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,10 @@ const routes: Routes = [
   {
     path: 'ficha/:guid',
     component: FichatecnicaComponent,
+  },
+  {
+    path: 'pagocpaumail/:guid',
+    component: PagoCpauMailComponent,
   },
   {
     path: 'contacto/general',

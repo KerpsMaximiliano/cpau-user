@@ -1,0 +1,32 @@
+@import '../../stylesCustom/styles/bootstrap/bootstrap.css';
+@import '../../stylesCustom/styles/cpau.css';
+@import '../../stylesCustom/styles/form.css';
+
+.ficha table {
+    display: inline-table;
+}
+
+.ficha .redes li a{
+    padding: 2px 20px 0px 0px;
+}
+
+@media (max-width: 575.98px) {
+    .ficha .img {
+        margin-bottom: 1rem;
+    } 
+}
+
+.ficha .web a {
+    color: #007bff !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+}
+
+@media only screen and (max-width: 480px) {
+    .redes-header {
+        display: block;
+    }
+    .td-redes {
+        padding: 0;
+    }
+}

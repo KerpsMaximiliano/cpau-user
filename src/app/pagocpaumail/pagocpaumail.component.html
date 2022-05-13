@@ -1,0 +1,141 @@
+<body>
+  <!--CONTENEDOR-->
+  <div class="container pt-4 ficha">
+    <app-header-home></app-header-home>
+
+    <app-button-home></app-button-home>
+    <div class="row" *ngIf="data">
+      <!--Tittle-->
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h6 class="border-bottom title-sections pb-1">
+          <a style="cursor: pointer" title="FICHA TÉCNICA ">ABONO CPAU MAIL</a>
+        </h6>
+        <div class="container p-0 pt-2 pb-5">
+          <!--Nota-->
+
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-7 offset-md-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
+                    <tr width="100%">
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Nombre y apellido:
+                      </td>
+                      <td class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        {{ nombre }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Matrícula:
+                      </td>
+                      <td class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        {{ tipoMatricula }} - {{ matricula }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Monto:
+                      </td>
+                      <td class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        $ {{ monto }},00
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Seleccioná el modo de pago:
+                      </td>
+                      <td class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        <div class="control-group">
+                          <input type="radio" (click)="limpiarCuotas()" id="credito" value="credito" name="tipotarjeta" [(ngModel)]="tipotarjeta"/>&nbsp;Tarjeta de Crédito&nbsp;&nbsp;
+                          <input type="radio" id="debito" value="debito" name="tipotarjeta" [(ngModel)]="tipotarjeta" />&nbsp;Tarjeta de Débito&nbsp;&nbsp;
+                      </div>
+                      </td>
+                    </tr>
+                    <tr *ngIf="tipotarjeta == 'credito'">
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Elegí la cantidad de cuotas:
+                      </td>
+                      <td class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        <div class="control-group" *ngIf="tipotarjeta == 'credito'">
+                          <input type="radio" value="12" name="cuotas" [(ngModel)]="cuotas">&nbsp;12 (sin interés)<br>
+                          <input type="radio" value="6" name="cuotas" [(ngModel)]="cuotas">&nbsp;6 (sin interés)<br>
+                          <input type="radio" value="3" name="cuotas" [(ngModel)]="cuotas">&nbsp;3 (sin interés)<br>
+                          <input type="radio" value="2" name="cuotas" [(ngModel)]="cuotas">&nbsp;2 (sin interés)<br>
+                          <input type="radio" value="1" name="cuotas" [(ngModel)]="cuotas">&nbsp;1 (sin interés)<br>
+                          <br>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr *ngIf="(tipotarjeta == 'credito' && cuotas) || tipotarjeta == 'debito'">
+                      <td class="textotabla" width="30%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                        Clickeá sobre la tarjeta con la que querés abonar:
+                      </td>
+                      <td class="textotabla" width="70%"
+                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                        <div *ngIf="tipotarjeta == 'credito'" style="display: flex;" class="text-center">
+                          <span style="margin-right: 1%;">
+                              <div (click)="select('15')">
+                                  <!-- 15 produccion , 20 test -->
+                                  <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/mastercard.svg'" alt="MasterCard" style="cursor: pointer;" />
+                              </div>
+                          </span> 
+                          <span style="margin-right: 1%;">
+                              <div (click)="select('6')">
+                                  <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/american_express.svg'" alt="American Express" style="cursor: pointer;" />
+                              </div>
+                          </span>
+                          <span style="margin-right: 1%;">
+                              <div (click)="select('1')">
+                                  <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa.svg'" alt="Visa" style="cursor: pointer;" />
+                              </div>
+                          </span>
+                      </div>
+                      <div *ngIf="tipotarjeta == 'debito'" style="display: flex;" class="text-center">
+                          <span style="margin-right: 1%;">
+                              <div (click)="select('106')">
+                                  <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/maestro.svg'" alt="Maestro" style="cursor: pointer;" />
+                              </div>
+                          </span>
+                          <span style="margin-right: 1%;">
+                              <div (click)="select('31')">
+                                  <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa-electron.svg'" alt="Visa Débito" style="cursor: pointer;" />
+                              </div>
+                          </span>
+                      </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+          
+              
+              
+
+            </div>
+          
+         
+        </div>
+          <!--FIN TITULO-->
+        </div>
+
+        <!--FIN NOTICIAS-->
+      </div>
+    </div>
+    <app-publicity-home></app-publicity-home>
+    <app-footer></app-footer>
+  </div>
+  <!--CONTENEDOR: FIN	-->
+</body>
