@@ -54,6 +54,8 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { LoadingScreenInterceptor } from './_helpers/loading.interceptor';
 import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
+import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
+//import { LightgalleryModule } from 'lightgallery/angular';
 @NgModule({
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
     ToastrModule.forRoot(),
     BootstrapModalModule.forRoot({ container: document.body }),
     NgbModule,
-    OwlModule
+    OwlModule,
+    Angular2ImageGalleryModule
   ],
   declarations: [
     AppComponent,

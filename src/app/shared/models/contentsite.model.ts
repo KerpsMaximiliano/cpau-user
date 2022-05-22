@@ -42,6 +42,8 @@ export interface ItemsSite {
 	categoryData?: string;
 	linkTarget: number;
 	percent: number;
+  imagenesGaleria: string[];
+  posicionGaleria: number;
 }
   export interface SectionTopicsEntity {
     id: number;

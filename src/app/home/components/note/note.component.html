@@ -35,6 +35,15 @@
                         <div class="row ">
                             <!--div class="col-12 col-sm-12 col-md-8 articleCss"-->
                             <div class="col-12 col-sm-12 col-md-7 offset-md-2 articleCss">
+                                <div *ngIf="data?.content?.posicionGaleria == 1">
+                                    <gallery *ngFor="let item of data?.content?.imagenesGaleria"
+                                        [flexBorderSize]="3" 
+                                        [flexImageSize]="7"
+                                        [metadataUri]="'http://oidamo.de/angular2-image-gallery/assets/img/gallery/data.json'"
+                                        [maxRowsPerPage]="100">
+                                    </gallery>
+                                </div>
+
                                 <article>
                                     <!--Foto-->
                                     <figure style="padding-bottom: 20px;" *ngIf="data?.content?.image">
@@ -49,10 +58,27 @@
 
                                     <h6 [innerHTML]="data?.content?.summary" class="resumen"> </h6>
 
+                                    <div *ngIf="data?.content?.posicionGaleria == 2">
+                                        <gallery *ngFor="let item of data?.content?.imagenesGaleria"
+                                            [flexBorderSize]="3" 
+                                            [flexImageSize]="7"
+                                            [metadataUri]="item"
+                                            [maxRowsPerPage]="100">
+                                        </gallery>
+                                    </div>
                                     <!--Nota - Resumen: fin -->
                                     <!--Nota - Contenido -->
                                     <div [innerHTML]="data?.content?.text | safeHtml"></div>
                                 </article>
+
+                                <div *ngIf="data?.content?.posicionGaleria == 3">
+                                    <gallery *ngFor="let item of data?.content?.imagenesGaleria"
+                                        [flexBorderSize]="3" 
+                                        [flexImageSize]="7"
+                                        [metadataUri]="item"
+                                        [maxRowsPerPage]="100">
+                                    </gallery>
+                                </div>
                             </div>
                         </div>
                         <!--Nota: Fin-->
