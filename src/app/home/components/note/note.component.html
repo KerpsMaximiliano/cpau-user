@@ -1,4 +1,7 @@
 <body>
+
+    
+
     <!--CONTENEDOR-->
     <div class="container pt-4">
         <app-header-home></app-header-home>
@@ -35,13 +38,19 @@
                         <div class="row ">
                             <!--div class="col-12 col-sm-12 col-md-8 articleCss"-->
                             <div class="col-12 col-sm-12 col-md-7 offset-md-2 articleCss">
-                                <div *ngIf="data?.content?.posicionGaleria == 1">
+                                <!-- <div *ngIf="data?.content?.posicionGaleria == 1">
                                     <gallery *ngFor="let item of data?.content?.imagenesGaleria"
                                         [flexBorderSize]="3" 
                                         [flexImageSize]="7"
                                         [metadataUri]="'https://oidamo.de/angular2-image-gallery/assets/img/gallery/data.json'"
                                         [maxRowsPerPage]="100">
                                     </gallery>
+                                </div> -->
+                            
+                                <div *ngIf="data?.content?.posicionGaleria == 2">
+                                    <a *ngFor="let immgal of imagenesGaleria" href="{{ immgal.imageUrl }}" data-title="{{ immgal.epigraph }}" data-lightbox="galeriasuperior"  >
+                                        <img src="{{ immgal.thumbnailUrl }}" />
+                                    </a>
                                 </div>
 
                                 <article>
@@ -58,27 +67,22 @@
 
                                     <h6 [innerHTML]="data?.content?.summary" class="resumen"> </h6>
 
-                                    <div *ngIf="data?.content?.posicionGaleria == 2">
-                                        <gallery *ngFor="let item of data?.content?.imagenesGaleria"
-                                            [flexBorderSize]="3" 
-                                            [flexImageSize]="7"
-                                            [metadataUri]="item"
-                                            [maxRowsPerPage]="100">
-                                        </gallery>
-                                    </div>
+                                    
+
+                                    
                                     <!--Nota - Resumen: fin -->
                                     <!--Nota - Contenido -->
                                     <div [innerHTML]="data?.content?.text | safeHtml"></div>
                                 </article>
 
                                 <div *ngIf="data?.content?.posicionGaleria == 3">
-                                    <gallery *ngFor="let item of data?.content?.imagenesGaleria"
-                                        [flexBorderSize]="3" 
-                                        [flexImageSize]="7"
-                                        [metadataUri]="item"
-                                        [maxRowsPerPage]="100">
-                                    </gallery>
+                                    <a *ngFor="let immgal of imagenesGaleria" href="{{ immgal.imageUrl }}" data-title="{{ immgal.epigraph }}" data-lightbox="galeriainferior"  >
+                                        <img src="{{ immgal.thumbnailUrl }}" />
+                                    </a>
                                 </div>
+
+                                
+                               
                             </div>
                         </div>
                         <!--Nota: Fin-->

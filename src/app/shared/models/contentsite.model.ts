@@ -42,7 +42,7 @@ export interface ItemsSite {
 	categoryData?: string;
 	linkTarget: number;
 	percent: number;
-  imagenesGaleria: string[];
+  imagenesGaleria: Image[];
   posicionGaleria: number;
 }
   export interface SectionTopicsEntity {
@@ -60,6 +60,7 @@ export interface Image {
   epigraph?: string | null;
   title?: string | null;
   alternateText?: string | null;
+  thumbnailUrl?: string | null;
 }
 
 export interface ChildList {

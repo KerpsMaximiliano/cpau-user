@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SiteLoader } from '@app/_services';
 import { map } from 'rxjs/operators';
-import { ContentSite, BreadCrumb } from '@app/shared/models/contentsite.model';
+import { ContentSite, BreadCrumb, Image } from '@app/shared/models/contentsite.model';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import {Title} from "@angular/platform-browser";
@@ -15,6 +15,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class NoteComponent implements OnInit {
 
+  imagenesGaleria:Image[];
   breadCrumb:BreadCrumb[];
   private fragment: string;
 
@@ -77,6 +78,7 @@ export class NoteComponent implements OnInit {
     )
     .subscribe( content => {
       this.data = content;
+      this.imagenesGaleria = content.content.imagenesGaleria;
       this.titleService.setTitle(`${this.data.content.title} | CPAU`);
       this.breadCrumb = this.data.breadCrumb;
       setTimeout(() => {
