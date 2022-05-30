@@ -76,6 +76,9 @@
                                 </article>
 
                                 <div *ngIf="data?.content?.posicionGaleria == 3">
+                                    <h6 class="breadcrumb">
+                                        Galería
+                                    </h6>
                                     <a *ngFor="let immgal of imagenesGaleria" href="{{ immgal.imageUrl }}" data-title="{{ immgal.epigraph }}" data-lightbox="galeriainferior"  >
                                         <img src="{{ immgal.thumbnailUrl }}" />
                                     </a>
