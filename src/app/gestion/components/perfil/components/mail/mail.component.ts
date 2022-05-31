@@ -73,7 +73,8 @@ export class MailComponent implements OnInit {
           ...this.filas,
           {
             valor: t,
-            ocultarEliminar: t.idTipoEmail === 1
+            ocultarEliminar: t.idTipoEmail === 1,
+            ocultarPersonalizado: t.idTipoEmail === 1
           }
         ];
       });
@@ -85,6 +86,16 @@ export class MailComponent implements OnInit {
 
   onEditar(ev: Mail) {
     this.mailForm.patchValue(ev);
+  }
+
+  setearComoParticular(ev: Mail) {
+    this.mailService.setearParticular(ev.id).subscribe(response => {
+      if (response.success) {
+        this.reload();
+      } else {
+        this.toastr.error(null, response.message);
+      }
+    });
   }
 
   showConfirm(ev) {

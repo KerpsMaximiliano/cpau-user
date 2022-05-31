@@ -24,7 +24,7 @@ export class ActualizacionEmailComponent implements OnInit {
       if(uid === undefined) {
         this.router.navigate(["/"]);
       }
-      this.actualizacionEmailService.emailconfirmacion(this.parse(uid), this.parse(contactId)).subscribe(result => {
+      this.actualizacionEmailService.emailconfirmacion(uid, contactId).subscribe(result => {
         if(result.success) {
           this.router.navigate(["/actualizacion-email-valida"]);
         } else {

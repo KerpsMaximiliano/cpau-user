@@ -5,7 +5,7 @@
         <thead>
           <tr>
             <th [hidden]="!(permiteVisualizar || permiteEditar || permiteEliminar || permitePersonalizado)" scope="col">{{columnaAcciones}}</th>
-            <th *ngFor="let col of columnas" scope="col">{{col.titulo}}</th>
+            <th style="width: auto;" *ngFor="let col of columnas" scope="col">{{col.titulo}}</th>
           </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
                 ngbTooltip="Eliminar">
                 <i class="fa fa-trash"></i>
               </button>
-              <button *ngIf="permitePersonalizado" type="button" class="btn" (click)="personalizado.emit(f.valor)"
+              <button *ngIf="permitePersonalizado && !f.ocultarPersonalizado" type="button" class="btn" (click)="personalizado.emit(f.valor)"
                 ngbTooltip="{{configButton?.tooltip}}">
                 <i class="{{configButton?.icon}}"></i>
               </button>

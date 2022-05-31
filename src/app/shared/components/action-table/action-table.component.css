@@ -11,7 +11,7 @@ h4 {
     vertical-align: middle;
 }
 .table th:first-child, .table td:first-child {
-    width: 75px;
+    width: 100px;
 }
 td {
     word-wrap: break-word;

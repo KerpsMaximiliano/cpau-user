@@ -92,15 +92,22 @@
                                     </div>
                                 </div>
 
-
+                                
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <app-action-table [columnas]="columnnas" [filas]="filas" (editar)="onEditar($event)"
-                                    (eliminar)="onEliminar($event)" (visualizar)="onVisualizar($event)">
+                                <app-action-table 
+                                    [columnas]="columnnas" 
+                                    [filas]="filas" 
+                                    (editar)="onEditar($event)"
+                                    (eliminar)="onEliminar($event)" 
+                                    (visualizar)="onVisualizar($event)"
+                                    [permitePersonalizado]="true"
+                                    [configButton]="{icon:'fa fa-check-square-o', tooltip: 'Setear como particular'}"
+                                    (personalizado)="setearComoParticular($event)">
                                 </app-action-table>
                             </div>
                         </div>

@@ -24,6 +24,9 @@ export class MailService {
     return this.httpClient.put<IResponseService<Mail>>(`${environment.apiUrl}/api/perfil/contacto/email/${request.id}`, request);
   }
 
+  public setearParticular(id: number): Observable<IResponseService<Mail>> {
+    return this.httpClient.get<IResponseService<Mail>>(`${environment.apiUrl}/api/perfil/contacto/email/particular/${id}`);
+  }
 
   public read(): Observable<Mail[]> {
     const params = new HttpParams().set('nocache', 'true');

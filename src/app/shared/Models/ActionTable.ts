@@ -9,5 +9,6 @@ export interface Columna<T> {
 export interface Filas<T> {
     valor: T;
     ocultarEliminar?: boolean;
+    ocultarPersonalizado?: boolean;
     campoSumarizador?: string;
 }
