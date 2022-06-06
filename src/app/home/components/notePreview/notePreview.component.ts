@@ -71,8 +71,18 @@ export class NotePreviewComponent implements OnInit {
       setTimeout(() => {
         this.ancla();
       }, 10);
+      setTimeout(() => {
+        this.acordeon();
+      }, 500);
     });
 
+  }
+
+  acordeon(): void {
+    try {
+      const element = document.getElementById(window.location.hash.replace("#", '') + 'Button');
+      if (element) { element.click(); }
+    } catch (e) { }
   }
 
   top() {

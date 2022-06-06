@@ -32,6 +32,13 @@ export class NoteComponent implements OnInit {
     } catch (e) { }
   }
 
+  acordeon(): void {
+    try {
+      const element = document.getElementById(window.location.hash.replace("#", '') + 'Button');
+      if (element) { element.click(); }
+    } catch (e) { }
+  }
+
   popup(): void {
     try {
       const params = new URLSearchParams(window.location.search)
@@ -85,9 +92,12 @@ export class NoteComponent implements OnInit {
         this.ancla();
       }, 10);
       setTimeout(() => {
-        this.popup();
+        this.ancla();
       }, 10);
     });
+    setTimeout(() => {
+      this.acordeon();
+    }, 10);
 
   }
 
