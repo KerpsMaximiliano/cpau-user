@@ -48,7 +48,7 @@
                                 </div> -->
                             
                                 <div *ngIf="data?.content?.posicionGaleria == 2">
-                                    <a *ngFor="let immgal of imagenesGaleria" href="{{ immgal.imageUrl }}" data-title="{{ immgal.epigraph }}" data-lightbox="galeriasuperior"  >
+                                    <a style="cursor: zoom-in" *ngFor="let immgal of imagenesGaleria" href="{{ immgal.imageUrl }}" data-title="{{ immgal.epigraph }}" data-lightbox="galeriasuperior"  >
                                         <img src="{{ immgal.thumbnailUrl }}" />
                                     </a>
                                 </div>
@@ -79,7 +79,7 @@
                                     <h6 class="breadcrumb" style="font-size: 14pt;">
                                         Galería
                                     </h6>
-                                    <a *ngFor="let immgal of imagenesGaleria" href="{{ immgal.imageUrl }}" data-title="{{ immgal.epigraph }}" data-lightbox="galeriainferior"  >
+                                    <a style="cursor: zoom-in" *ngFor="let immgal of imagenesGaleria" href="{{ immgal.imageUrl }}" data-title="{{ immgal.epigraph }}" data-lightbox="galeriainferior"  >
                                         <img src="{{ immgal.thumbnailUrl }}" />
                                     </a>
                                 </div>

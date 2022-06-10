@@ -169,5 +169,8 @@
             }
         }
     },
-    "defaultProject": "InstitutionalSite"
+    "defaultProject": "InstitutionalSite",
+    "cli": {
+      "analytics": false
+    }
 }

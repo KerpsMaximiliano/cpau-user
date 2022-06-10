@@ -106,7 +106,7 @@
                                     (eliminar)="onEliminar($event)" 
                                     (visualizar)="onVisualizar($event)"
                                     [permitePersonalizado]="true"
-                                    [configButton]="{icon:'fa fa-check-square-o', tooltip: 'Setear como particular'}"
+                                    [configButton]="{icon:'fa fa-exchange', tooltip: 'Setear como particular'}"
                                     (personalizado)="setearComoParticular($event)">
                                 </app-action-table>
                             </div>
@@ -118,7 +118,8 @@
                                     <div class="alert alert-warning">
                                         <!-- <a class="alert-link" href="#">Atención!</a><br> -->
                                         <strong>¡Atención!</strong><br>
-                                        Luego de modificar el email de tipo particular, recibirás un correo con un link que deberás clickear para concluir con la actualización.
+                                        Si querés establecer como particular alguno de los correos secundarios (judicial, laboral u otros), hace click en el ícono <i class="fa fa-exchange" aria-hidden="true"></i><br>
+                                        Si modificás el correo particular, recibirás un email con un link que deberás clickear para concluir la actualización.
                                     </div>
                                 </div>
                 </div>
