@@ -249,7 +249,7 @@ export class HomeComponent {
 
   redirectUrl(cs : ContentSite) {
     if (cs.link && cs.link.trim() != ''){
-      this.redirect(cs.link);
+      this.redirect(cs.link, cs.linkTarget);
     } else {
       this.router.navigateByUrl("/nota/" + cs.id);
     }
@@ -257,7 +257,7 @@ export class HomeComponent {
 
   get window(): Window { return this.document.defaultView; }
 
-  redirect(url: string, target: string = '_blank'): Promise<boolean> {
+  redirect(url: string, target: string): Promise<boolean> {
 
     return new Promise<boolean>( (resolve, reject) => {
   
