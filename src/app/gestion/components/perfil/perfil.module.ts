@@ -17,7 +17,7 @@ import { CustomDateParserFormatter } from '@app/shared/service/datepicker-format
 import { InscripcionesComponent } from '../inscripciones/inscripciones.component';
 import { FotoComponent } from './components/foto/foto.component';
 
-// export var options: Partial<IConfig> | (() => Partial<IConfig>);
+export let options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [IdentificacionComponent,
