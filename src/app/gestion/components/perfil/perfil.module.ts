@@ -17,7 +17,7 @@ import { CustomDateParserFormatter } from '@app/shared/service/datepicker-format
 import { InscripcionesComponent } from '../inscripciones/inscripciones.component';
 import { FotoComponent } from './components/foto/foto.component';
 
-export var options: Partial<IConfig> | (() => Partial<IConfig>);
+// export var options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
   declarations: [IdentificacionComponent,
@@ -34,7 +34,7 @@ export var options: Partial<IConfig> | (() => Partial<IConfig>);
     FormsModule,
     DpDatePickerModule,
     GestionModule,
-    NgxMaskModule.forRoot(options),
+    NgxMaskModule.forRoot(),
 
     ToastrModule.forRoot(), // ToastrModule added
   ],

@@ -85,7 +85,7 @@ export class ActividadProfesionalComponent implements OnInit {
     this.loadData();
   }
 
-  protected reload() {
+  reload() {
     this.loadData();
   }
 }

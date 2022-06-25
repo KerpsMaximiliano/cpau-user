@@ -37,7 +37,7 @@ export class CurriculumVitaeComponent implements OnInit {
       this.archivo = x;
     });
   }
-  protected reload() {
+  reload() {
     this.initData();
   }
 

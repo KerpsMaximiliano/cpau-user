@@ -68,7 +68,7 @@ export class InscripcionesComponent implements OnInit {
     //this.matriculadoService.imprimirCertificado(ev.id, ev.codigo.toString());
   }
 
-  protected reload() {
+  reload() {
     this.initData();
   }
 }
