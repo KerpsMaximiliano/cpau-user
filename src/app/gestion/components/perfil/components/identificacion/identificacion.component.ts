@@ -153,7 +153,7 @@ export class IdentificacionComponent implements OnInit {
     this.identificacionForm.markAsPristine();
   }
 
-  protected reload() {
+  reload() {
     this.initData();
   }
 }

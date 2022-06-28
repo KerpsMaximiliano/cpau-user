@@ -87,7 +87,7 @@ export class TelefonoComponent implements OnInit {
       });
     });
   }
-  protected reload() {
+  reload() {
     this.initData();
   }
 

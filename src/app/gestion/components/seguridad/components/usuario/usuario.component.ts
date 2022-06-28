@@ -37,7 +37,7 @@ export class UsuarioComponent implements OnInit {
       this.usuarioForm.controls.username.patchValue(usr);
     });
   }
-  protected reload() {
+  reload() {
     this.setUser();
   }
 

@@ -121,7 +121,7 @@ export class DomicilioComponent implements OnInit {
       });
     });
   }
-  protected reload() {
+  reload() {
     this.initData();
   }
 

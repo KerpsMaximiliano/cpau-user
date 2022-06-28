@@ -74,7 +74,7 @@ export class RedesComponent implements OnInit {
       });
     });
   }
-  protected reload() {
+  reload() {
     this.initData();
   }
 

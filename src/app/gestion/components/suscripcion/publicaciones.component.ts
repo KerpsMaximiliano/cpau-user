@@ -60,7 +60,7 @@ export class PublicacionComponent implements OnInit {
     this.publicacionesForm.reset();
     this.loadData();
   }
-  protected reload() {
+  reload() {
     this.loadData();
   }
 }

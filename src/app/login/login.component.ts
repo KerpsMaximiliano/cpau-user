@@ -58,20 +58,8 @@ export class LoginComponent implements OnInit {
         (data) => {
           if (!data.error) {
             console.log(localStorage.getItem("currentUser"));
-
-            this.authenticationService.loginOldSite(this.loginForm.value.username, this.loginForm.value.password)
-            .subscribe(ol => {
-              var returnUrl = this.route.snapshot.queryParams["returnUrl"];
-              var redirect = this.route.snapshot.queryParams["redirect"];
-              if (returnUrl) {
-                this.router.navigate([returnUrl]);
-              } else if (redirect) {
-                this.document.location.href = redirect;
-              } else {
-                this.router.navigate([`gestion/home/perfil/identificacion`]);
-              }
-            });
-
+            this.loading = false;
+            this.router.navigate([`gestion/home/perfil/identificacion`]);
           } else {
             document.getElementById("btnDatosIncorrectos").click();
             this.loading = false;
