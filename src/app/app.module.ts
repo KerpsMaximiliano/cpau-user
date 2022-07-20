@@ -54,7 +54,10 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { LoadingScreenInterceptor } from './_helpers/loading.interceptor';
 import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
-import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
+import { Angular2ImageGalleryModule } from 'angular2-image-gallery';;
+import { FormGroupComponent } from './form/form-group/form-group.component'
+;
+import { ConstanciaComponent } from './form/constancia/constancia.component'
 //import { LightgalleryModule } from 'lightgallery/angular';
 @NgModule({
   imports: [
@@ -112,8 +115,9 @@ import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
     numberOnlyDirective,
     ModalComponent,
     ActualizacionEmailComponent,
-    LoadingComponent
-  ],
+    LoadingComponent,
+    FormGroupComponent,
+    ConstanciaComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

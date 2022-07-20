@@ -20,6 +20,7 @@ import { PreregisterComponent } from './login/preregister';
 import { AuthGuard } from './_helpers';
 import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
 import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
+import { ConstanciaComponent } from './form/constancia/constancia.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'formulario/:idFormulario',
     component: FormComponent,
+  },
+  {
+    path: 'formulario/constancia/:uid',
+    component: ConstanciaComponent,
   },
   {
     path: 'login',

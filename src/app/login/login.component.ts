@@ -59,7 +59,11 @@ export class LoginComponent implements OnInit {
           if (!data.error) {
             console.log(localStorage.getItem("currentUser"));
             this.loading = false;
-            this.router.navigate([`gestion/home/perfil/identificacion`]);
+            if (this.returnUrl !== '/') {
+              this.router.navigate([this.returnUrl]);
+            } else {
+              this.router.navigate([`gestion/home/perfil/identificacion`]);
+            }
           } else {
             document.getElementById("btnDatosIncorrectos").click();
             this.loading = false;
