@@ -10,7 +10,7 @@ import { IdentificacionService } from '../identificacion/service/identificacion.
 })
 export class FotoComponent implements OnInit {
 
-  public urlHelp = 'https://www.cpau.org/nota/34659';
+  public urlHelp = 'https://www.cpau.org/nota/35486';
   collapsed: boolean;
   public fotosForm: FormGroup;
   loading: boolean;

@@ -21,7 +21,7 @@ export class CertificadoComponent implements OnInit {
   mostrarGenerar: boolean;
   public filas: Filas<Certificado>[] = [];
   public columnnas: Columna<Certificado>[];
-  public urlHelp = 'https://www.cpau.org/nota/34666';
+  public urlHelp = 'https://www.cpau.org/nota/35451';
 
   public certificadoForm: FormGroup;
 
