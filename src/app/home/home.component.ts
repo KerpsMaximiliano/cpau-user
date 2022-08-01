@@ -9,7 +9,7 @@ import {
 } from "@app/shared/models/contentsite.model";
 import { Events } from "@app/shared/models/Events.model";
 import { ExternalProduct } from "@app/shared/models/ExternalProduct.model";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalHome } from '@app/_models/modalHome.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OwlCarousel } from "ngx-owl-carousel";
@@ -77,6 +77,7 @@ export class HomeComponent {
     private modalHomeService: ModalHomeService,
     private router: Router,
     private sanitizer: DomSanitizer,
+    private activatedRoute: ActivatedRoute,
     @Inject(DOCUMENT) readonly document: Document
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
@@ -251,7 +252,11 @@ export class HomeComponent {
     if (cs.link && cs.link.trim() != ''){
       this.redirect(cs.link, cs.linkTarget);
     } else {
-      this.router.navigateByUrl("/nota/" + cs.id);
+      console.log(this.activatedRoute.snapshot)
+      this.router.navigate([`/nota/${cs.id}`])
+        .then(() => {
+          window.location.reload();
+        });
     }
   }
 
