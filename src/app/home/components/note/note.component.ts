@@ -92,12 +92,15 @@ export class NoteComponent implements OnInit {
         this.ancla();
       }, 10);
       setTimeout(() => {
+        this.acordeon();
+      }, 20);
+      setTimeout(() => {
+        this.popup();
+      }, 30);
+      setTimeout(() => {
         this.ancla();
-      }, 500);
+      }, 40);
     });
-    setTimeout(() => {
-      this.acordeon();
-    }, 10);
 
   }
 
