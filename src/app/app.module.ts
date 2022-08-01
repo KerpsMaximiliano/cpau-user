@@ -54,10 +54,22 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { LoadingScreenInterceptor } from './_helpers/loading.interceptor';
 import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
-import { Angular2ImageGalleryModule } from 'angular2-image-gallery';;
-import { FormGroupComponent } from './form/form-group/form-group.component'
-;
-import { ConstanciaComponent } from './form/constancia/constancia.component'
+import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
+import { ConstanciaComponent } from './form/constancia/constancia.component';
+import { DynamicComponent } from './form/dynamic-component/dynamic-component.component';
+import { ComponentContainer } from './form/directives/componentContainer';
+import { LblSelectAdapterComponent } from './form/dynamicComponentsAdapters/lblSelect.componentAdapter';
+import { SelectControlComponent } from './form/selectControl/selectControl.component';
+import { LblInputStringAdapterComponent } from './form/dynamicComponentsAdapters/lblInput.string.componentAdapter';
+import { StringInputControlComponent } from './form/inputControl/string.input.control';
+import { TextAreaControlComponent } from './form/textareaControl/textareaControl.component';
+import { LblTextareaAdapterComponent } from './form/dynamicComponentsAdapters/lblTextareacomponentAdapter';
+import { LblCheckboxAdapterComponent } from './form/dynamicComponentsAdapters/lblCheckbox.componentAdapter';
+import { CheckboxControlComponent } from './form/checkboxControl/checkboxControl.component';
+import { LblRadioAdapterComponent } from './form/dynamicComponentsAdapters/lblRadio.componentAdapter';
+import { RadioControlComponent } from './form/radioControl/radioControl.component';
+import {NgxPrintModule} from 'ngx-print';
+import { QRCodeModule } from 'angularx-qrcode';
 //import { LightgalleryModule } from 'lightgallery/angular';
 @NgModule({
   imports: [
@@ -75,7 +87,9 @@ import { ConstanciaComponent } from './form/constancia/constancia.component'
     BootstrapModalModule.forRoot({ container: document.body }),
     NgbModule,
     OwlModule,
-    Angular2ImageGalleryModule
+    Angular2ImageGalleryModule,
+    NgxPrintModule,
+    QRCodeModule
   ],
   declarations: [
     AppComponent,
@@ -116,8 +130,30 @@ import { ConstanciaComponent } from './form/constancia/constancia.component'
     ModalComponent,
     ActualizacionEmailComponent,
     LoadingComponent,
-    FormGroupComponent,
-    ConstanciaComponent],
+    ConstanciaComponent,
+    DynamicComponent,
+    ComponentContainer,
+    LblSelectAdapterComponent,
+    SelectControlComponent,
+    LblInputStringAdapterComponent,
+    StringInputControlComponent,
+    TextAreaControlComponent,
+    LblTextareaAdapterComponent,
+    LblCheckboxAdapterComponent,
+    CheckboxControlComponent,
+    LblRadioAdapterComponent,
+    RadioControlComponent,
+  ],
+  exports:[
+    SelectControlComponent,
+    StringInputControlComponent,
+    TextAreaControlComponent,
+    LblTextareaAdapterComponent,
+    LblCheckboxAdapterComponent,
+    CheckboxControlComponent,
+    LblRadioAdapterComponent,
+    RadioControlComponent,
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -136,7 +172,12 @@ import { ConstanciaComponent } from './form/constancia/constancia.component'
     TemplateFourComponent,
     TemplateFiveComponent,
     ModalComponent,
-    TemplateAgendaTagsComponent
+    TemplateAgendaTagsComponent,
+    LblSelectAdapterComponent,
+    LblInputStringAdapterComponent,
+    LblTextareaAdapterComponent,
+    LblCheckboxAdapterComponent,
+    LblRadioAdapterComponent
   ],
   bootstrap: [AppComponent],
 })

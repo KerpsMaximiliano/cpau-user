@@ -9,6 +9,8 @@ export const environment = {
     // apiUrl: 'https://cpauorgapi-test.azurewebsites.net',
     // apiUrl: 'https://cpauorgapi.azurewebsites.net',
     storeUrl: 'http://localhost:50501/store?length=4',
+    recaptcha: '6LdrlTAhAAAAAOu8PHdsj1IwMKybDPLbqGj_RfeC',
+    // siteUrl: 'http://localhost:4200/',
 
     // production: true,
     apiUrl: 'https://localhost:44348',

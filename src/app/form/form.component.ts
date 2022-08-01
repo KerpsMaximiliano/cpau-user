@@ -1,7 +1,10 @@
+import { FormService } from './../_services/form.service';
+import { options } from './../gestion/components/perfil/perfil.module';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import { SiteLoader } from '@app/_services';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-form',
@@ -13,19 +16,26 @@ export class FormComponent implements OnInit {
   fields: any;
   error: any;
   form: FormGroup;
+  showForm = true;
+  errorLE = false;
+  messageLE = false;
+  captcha = null;
+  siteKey: string;
+  response: any;
+  idForm: string;
   constructor(
     private _Activatedroute: ActivatedRoute,
-    private siteLoader: SiteLoader,
+    private formService: FormService,
     private router: Router) {
+    this.siteKey = environment.recaptcha;
     this.form = new FormGroup({
     });
   }
 
   ngOnInit() {
-    this.siteLoader.bannerSubject.next({main: false, section: false, news: true});
     const id = this._Activatedroute.snapshot.paramMap.get('idFormulario');
     const idInt = id == null ? 0 : parseInt(id);
-    this.siteLoader.getForm(idInt).subscribe( response =>{
+    this.formService.getForm(idInt).subscribe( response =>{
       if(response.error === 'YICC') {
         this.router.navigate(['/formulario/constancia', response.data] );
       }
@@ -33,10 +43,15 @@ export class FormComponent implements OnInit {
         this.router.navigate(['/login'], { queryParams: { redirect: this.router.routerState.snapshot.url } });
       }
       this.error = response.error;
+      this.response = response;
+      this.idForm = response.data.id;
       if (!response.data.fields) {
         this.fields = [];
       } else {
-        console.log(response)
+        if (response.error === 'LE') {
+          this.errorLE = true;
+          this.showForm = false;
+        }
         let parseF = JSON.parse(response.data.fields);
         let jsonResponseArray = [];
         parseF.forEach(function (f) {
@@ -61,18 +76,60 @@ export class FormComponent implements OnInit {
                         jsonResponseArray.push(jsonResponse);
                     });
         this.fields = jsonResponseArray;
+        this.fields.forEach(field => {
+          if(field.required){
+            this.form.addControl(field.id, new FormControl('', Validators.required));
+          } else { this.form.addControl(field.id, new FormControl()); }
+          this.form.addControl(field.id, new FormControl());
+        });
       }
-      console.log(this.fields);
     },err=>{console.log(err);
     });
   }
 
   onClick() {
-    const respArr = [] ;
-    Object.keys(this.form.controls).forEach(key=> {
-      respArr.push(this.form.get(key).value);
+    const requestArr = [] ;
+    this.fields.forEach(element => {
+      const jsonRequest = {};
+      jsonRequest['id'] = element.id;
+      jsonRequest['value'] = this.form.value[element.id]
+      jsonRequest['options'] = [];
+      if (element.options !== []){
+        element.options.forEach(option => {
+          let jsonOption = {};
+          jsonOption['id'] = option.id;
+          jsonOption['allowcomments'] = option.allowcomments;
+          if (option.allowcomments && this.form.get(option.id) !== null) {
+            jsonOption['comments'] = this.form.value[option.id];
+          }
+          jsonRequest['options'].push(jsonOption);
+        });
+      }
+      requestArr.push(jsonRequest);
     });
-    console.log(respArr)
+    this.formService.sendForm(this.idForm , requestArr).subscribe(res => {
+      if (res.data.le === true) {
+        this.messageLE = true;
+        this.showForm = false;
+      }
+      if (res.data.showReceipt) {
+        this.router.navigate(['/formulario/constancia', res.data.guid] );
+      }
+    }, err => {console.log(err);
+    });
+  }
+
+  onShowForm() {
+    this.showForm = true;
+    this.errorLE = false;
+  }
+
+  resolved(captchaResponse: string) {
+    this.captcha = captchaResponse;
+  }
+
+  changeEmit(ev) {
+    // console.log(ev);
   }
 
 }

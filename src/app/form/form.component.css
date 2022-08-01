@@ -1,2 +1,12 @@
 @import '../../stylesCustom/styles/cpau.css';
+/* @import '../../stylesCustom/styles/form.css'; */
 @import '../../stylesCustom/styles/encuesta.css';
+label{
+    display: inline-flex !important;
+}
+@media only screen and (max-width: 500px) {
+    .recaptcha {
+        transform:scale(0.77);
+        transform-origin:0 0;
+    }
+}

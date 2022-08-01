@@ -1,0 +1,27 @@
+<div class="form-group">
+    <div class="container"><div class="row">
+        <div>
+            <label><h6>{{allData.name}}</h6><span *ngIf="allData.required === true">&nbsp;*</span></label>
+        </div>
+        <div *ngIf="parentGroup.controls[id].invalid && (parentGroup.controls[id].dirty || parentGroup.controls[id].touched)">
+            <small
+                class="form alert-warning ml-1"
+                *ngIf="parentGroup?.controls[id].errors.required"
+                [hidden]='!parentGroup?.controls[id].errors && !parentGroup?.controls[id].errors.required'>
+                Dato obligatorio
+            </small>
+        </div>
+    </div></div>
+    <div *ngFor="let item of allData.options" class="col-sm-6">
+            <input  
+                type="radio"
+                [name]="allData.id"
+                [id]="item.id"
+                [checked]="false"
+                (click)="onClick(item)">  
+            <label for="{{item.id}}" class="ml-1">{{item.text}}</label>      
+        <div *ngIf="item.allowcomments== true && isSelected(item)">
+            <textarea class="form-control mb-1" rows="3" (blur)="onBlur($event, item.id)"></textarea>
+        </div>
+    </div>
+</div>

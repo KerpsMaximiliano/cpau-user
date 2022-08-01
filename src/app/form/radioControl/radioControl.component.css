@@ -1,0 +1,30 @@
+/* .content-radio {
+    display: flex;
+
+    .radios-input {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        -webkit-appearance: none;
+        border: 1px solid darkgrey;
+        background: lightgrey;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    input[type=radio]{
+        margin: 0px 5px 0px 10px;
+    }
+    input[type=radio]:checked{
+        box-shadow: inset 0 0 0 2px white;
+    }
+    input[type=radio]:hover, input[type=radio]:active, input[type=radio]:focus{
+        outline:0px !important;
+    }
+    .radios {
+        span {
+            vertical-align: super;
+        }
+        margin-right: 10px;
+    }
+} */

@@ -5,7 +5,7 @@
             <!--Columna Logo-->
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
                 <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
-                    <figure><img src={{fields?.headerImage}} width="35%;" height="auto" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" /></figure>
+                    <figure><img src="../../stylesCustom/images/logo/logocpau.jpg" width="35%;" height="auto" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" /></figure>
                 </a>
             </div>
             <!--Columna Logo: fin-->
@@ -14,6 +14,13 @@
         <ng-container [ngSwitch]="error">
             <div *ngSwitchCase="'YISC'">
                 <p>Usted ya se encuentra registrado en esta inscripción.</p>
+            </div>
+            <div *ngSwitchCase="'UB'">
+                <p>
+                    Tu usuario no cumple con las condiciones de inscripción.
+                    <br>
+                    Ante cualquier consulta comunicate con capacitacion@cpau.org.
+                </p>
             </div>
             <div *ngSwitchCase="'NVNP'">
                 <p>El formulario no se encuentra disponible.</p>
@@ -30,42 +37,52 @@
                     Agradecemos tu interés.
                 </p>
             </div>
-            <div *ngSwitchCase="'LE'">
-                <p>Lamentablemente el cupo para esta actividad se completó.<br>Podés ingresar a la lista de espera.<br><br>Muchas gracias</p>
-                <!-- TODO AGREGAR BOTON -->
-            </div>
         
-            <div *ngSwitchCase="null">
-                <div class="row bk6 p-4 shadow">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bk6">
-                        <div>
-                            <h6 class="border-bottom title-sections pb-1">{{fields?.name}}</h6>
-                            <h1 class="pt-2 pb-2"> {{fields?.description}}</h1>
-                            <p>{{fields?.remarks}}</p>
+            <div *ngSwitchCase="error === null || error ==='LE'? error : ' ' ">
+                <div *ngIf="errorLE == true">
+                    <p>Lamentablemente el cupo para esta actividad se completó.<br>Podés ingresar a la lista de espera.<br><br>Muchas gracias</p>
+                    <button (click)="onShowForm()">Mostrar formulario para lista de espera</button>
+                </div>
+                <div *ngIf="showForm">
+                    <img [src]="response?.data?.headerImage" height="auto" width="100%">
+                    <div class="row bk6 p-4 shadow">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bk6">
+                            <div>
+                                <h3 class="border-bottom title-sections pb-1" [innerHTML]="response?.data?.name"></h3>
+                                <h6 class="pt-2 pb-2" [innerHTML]="response?.data?.description"></h6>
+                                <p [innerHTML]="response?.data?.remarks"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row bk6 shadow" *ngIf="showForm">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bk6">
+                            <div class="col-12 col-sm-12 col-md-10 offset-md-1">
+                                <div *ngFor="let item of fields">
+                                    <dynamic-component
+                                    [data]="item" 
+                                    [parentGroup]="form"
+                                    (onChangeComponent)="changeEmit($event)"
+                                    >
+                                    </dynamic-component>
+                                </div>
+                                <div class="form-group recaptcha col-sm-6">
+                                    <re-captcha (resolved)="resolved($event)" siteKey="{{siteKey}}"></re-captcha>
+                                </div>
+                                <div class="form-group">
+                                    <button [disabled]="(captcha === null || false) || !form.valid" type="button" class="btn btn-login" (click)="onClick()">Enviar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="row bk6 shadow ">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bk6">
-                        <div class="col-12 col-sm-12 col-md-8 offset-md-2">
-                            <form [formGroup]="form">
-                                <app-form-group 
-                                *ngFor="let field of fields"
-                                [field]="field"
-                                [form]="form"
-                                >                           
-                            </app-form-group>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button type="button" class="btn btn-login" (click)="onClick()">Enviar</button>
-                </div>
-                
             </div>
         </ng-container>
+        <div *ngIf="messageLE">
+            <p>
+                Muchas gracias, ya formas parte de la lista de espera.
+            </p>
+        </div>
         <footer>
             <!--COPYRIGHT-->
             <div class="row shadow pt-3 bk6">

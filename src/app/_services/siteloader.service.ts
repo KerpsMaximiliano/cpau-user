@@ -128,11 +128,6 @@ export class SiteLoader implements ITemplate {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/PortalPublicBoletin`, { params: params });
     }
 
-    getForm(id: number) {
-        const formId = id.toString();
-        return this.http.get<any>(`${environment.apiUrl}/api/Form/Render/${formId}`);
-    }
-
     getCV(guid,nombreArchivo, cb?: () => void) {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetCV?guid=${guid}`, HttpOptionsDownloadFile).pipe(distinctUntilChanged())
         .subscribe((resp: HttpResponse<Blob>) => {
