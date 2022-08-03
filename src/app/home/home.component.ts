@@ -254,9 +254,9 @@ export class HomeComponent {
     } else {
       console.log(this.activatedRoute.snapshot)
       this.router.navigate([`/nota/${cs.id}`])
-        .then(() => {
-          window.location.reload();
-        });
+        //.then(() => {
+        //  window.location.reload();
+        //});
     }
   }
 

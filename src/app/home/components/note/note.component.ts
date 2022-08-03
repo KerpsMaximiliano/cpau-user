@@ -60,8 +60,8 @@ export class NoteComponent implements OnInit {
     this._router.events.subscribe(res => {
       if (res instanceof NavigationEnd)
       {
-        const id = this._Activatedroute.snapshot.paramMap.get("id");
-        this.loadContent(id);
+        //const id = this._Activatedroute.snapshot.paramMap.get("id");
+        //this.loadContent(id);
       }
     });
 
@@ -84,6 +84,7 @@ export class NoteComponent implements OnInit {
       map(ret => ret as ContentSite),
     )
     .subscribe( content => {
+      this.checkLightbox(content.content.text);
       this.data = content;
       this.imagenesGaleria = content.content.imagenesGaleria;
       this.titleService.setTitle(`${this.data.content.title} | CPAU`);
@@ -108,4 +109,18 @@ export class NoteComponent implements OnInit {
     window.scroll(0, 0);
   }
 
+  checkLightbox(text: string) {
+    if(text.search("lightbox") == -1) {
+      return;
+    } else {
+      let noteLightbox = sessionStorage.getItem("noteLightbox");
+      console.log(noteLightbox);
+      if(noteLightbox == null) {
+        sessionStorage.setItem("noteLightbox", 'loaded');
+        window.location.reload();
+      } else {
+        sessionStorage.removeItem("noteLightbox")
+      }
+    }
+  }
 }
