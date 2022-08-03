@@ -50,6 +50,7 @@ export class NoteComponent implements OnInit {
 
 
   ngOnInit() {
+    this.reload();
     const s = this.renderer2.createElement('script');
     s.onload = this.loadNextScript.bind(this);
     s.type = 'text/javascript';
@@ -84,7 +85,7 @@ export class NoteComponent implements OnInit {
       map(ret => ret as ContentSite),
     )
     .subscribe( content => {
-      this.checkLightbox(content.content.text);
+      //this.checkLightbox(content.content.text);
       this.data = content;
       this.imagenesGaleria = content.content.imagenesGaleria;
       this.titleService.setTitle(`${this.data.content.title} | CPAU`);
@@ -114,7 +115,6 @@ export class NoteComponent implements OnInit {
       return;
     } else {
       let noteLightbox = sessionStorage.getItem("noteLightbox");
-      console.log(noteLightbox);
       if(noteLightbox == null) {
         sessionStorage.setItem("noteLightbox", 'loaded');
         window.location.reload();
@@ -122,5 +122,15 @@ export class NoteComponent implements OnInit {
         sessionStorage.removeItem("noteLightbox")
       }
     }
+  }
+
+  reload() {
+    let noteLightbox = sessionStorage.getItem("noteLightbox");
+      if(noteLightbox == null) {
+        sessionStorage.setItem("noteLightbox", 'loaded');
+        window.location.reload();
+      } else {
+        sessionStorage.removeItem("noteLightbox")
+      }
   }
 }
