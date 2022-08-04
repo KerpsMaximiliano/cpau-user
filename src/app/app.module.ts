@@ -70,6 +70,8 @@ import { LblRadioAdapterComponent } from './form/dynamicComponentsAdapters/lblRa
 import { RadioControlComponent } from './form/radioControl/radioControl.component';
 import {NgxPrintModule} from 'ngx-print';
 import { QRCodeModule } from 'angularx-qrcode';
+import { LabelAdapterComponent } from './form/dynamicComponentsAdapters/label.componentAdapter';
+import { LabelControlComponent } from './form/labelControl/label.control';
 //import { LightgalleryModule } from 'lightgallery/angular';
 @NgModule({
   imports: [
@@ -143,6 +145,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     CheckboxControlComponent,
     LblRadioAdapterComponent,
     RadioControlComponent,
+    LabelAdapterComponent,
+    LabelControlComponent,
   ],
   exports:[
     SelectControlComponent,
@@ -153,6 +157,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     CheckboxControlComponent,
     LblRadioAdapterComponent,
     RadioControlComponent,
+    LabelControlComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -177,7 +182,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     LblInputStringAdapterComponent,
     LblTextareaAdapterComponent,
     LblCheckboxAdapterComponent,
-    LblRadioAdapterComponent
+    LblRadioAdapterComponent,
+    LabelAdapterComponent,
   ],
   bootstrap: [AppComponent],
 })

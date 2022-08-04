@@ -1,5 +1,6 @@
 import { Component } from "@app/_models/component";
 import { IComponentData } from "@app/_models/componentData.model";
+import { LabelAdapterComponent } from "../dynamicComponentsAdapters/label.componentAdapter";
 import { LblCheckboxAdapterComponent } from "../dynamicComponentsAdapters/lblCheckbox.componentAdapter";
 import { LblInputStringAdapterComponent } from "../dynamicComponentsAdapters/lblInput.string.componentAdapter";
 import { LblRadioAdapterComponent } from "../dynamicComponentsAdapters/lblRadio.componentAdapter";
@@ -14,9 +15,9 @@ export class DynamicComponentFactory {
             case 'dropdown':
                 comp = new Component(LblSelectAdapterComponent, datosComponente);
                 break;
-            // case 'label':
-            //     comp = new Component(LblSelectYesNoAdapterComponent, datosComponente);
-            //     break;
+            case 'label':
+                comp = new Component(LabelAdapterComponent, datosComponente);
+                break;
             case 'textarea':
                 comp = new Component(LblTextareaAdapterComponent, datosComponente);
                 break;
