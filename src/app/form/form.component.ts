@@ -37,7 +37,7 @@ export class FormComponent implements OnInit {
     const idInt = id == null ? 0 : parseInt(id);
     this.formService.getForm(idInt).subscribe( response =>{
       if(response.error === 'YICC') {
-        this.router.navigate(['/formulario/constancia', response.data] );
+        this.router.navigate(['/formularios/constancia', response.data] );
       }
       if(response.error === 'UNV') {
         this.router.navigate(['/login'], { queryParams: { redirect: this.router.routerState.snapshot.url } });
@@ -59,6 +59,8 @@ export class FormComponent implements OnInit {
                         jsonResponse['id'] = f.IdFormField;
                         jsonResponse['name'] = f.Name;
                         jsonResponse['type'] = f.Type;
+                        jsonResponse['dependentFieldId'] = f.DependentFieldId === "" ? null : f.DependentFieldId
+                        jsonResponse['dependentValue'] = f.DependentValue === "" ? null : f.DependentValue
                         jsonResponse['required'] = f.Required;
                         jsonResponse['value'] = f.Value;
                         jsonResponse['options'] = [];
@@ -77,10 +79,18 @@ export class FormComponent implements OnInit {
                     });
         this.fields = jsonResponseArray;
         this.fields.forEach(field => {
-          if(field.required){
+          if (field.dependentFieldId && field.dependentValue) {
+            field.disabled = true
+            if (field.required && field.type !== 'label') {
+              this.form.addControl(field.id, new FormControl({value:'', disabled: true }, Validators.required));
+            } else if (field.type !== 'label') {
+              this.form.addControl(field.id, new FormControl({value:'', disabled: true }));
+            }
+          } else if (field.required && field.type !== 'label') {
             this.form.addControl(field.id, new FormControl('', Validators.required));
-          } else { this.form.addControl(field.id, new FormControl()); }
-          this.form.addControl(field.id, new FormControl());
+          } else if (field.type !== 'label') {
+            this.form.addControl(field.id, new FormControl());
+          }
         });
       }
     },err=>{console.log(err);
@@ -90,9 +100,10 @@ export class FormComponent implements OnInit {
   onClick() {
     const requestArr = [] ;
     this.fields.forEach(element => {
+      if (element.disabled !== true) {
       const jsonRequest = {};
       jsonRequest['id'] = element.id;
-      jsonRequest['value'] = this.form.value[element.id]
+      jsonRequest['value'] = this.form.value[element.id] || '';
       jsonRequest['options'] = [];
       if (element.options !== []){
         element.options.forEach(option => {
@@ -106,6 +117,7 @@ export class FormComponent implements OnInit {
         });
       }
       requestArr.push(jsonRequest);
+      }
     });
     this.formService.sendForm(this.idForm , requestArr).subscribe(res => {
       if (res.data.le === true) {
@@ -113,7 +125,7 @@ export class FormComponent implements OnInit {
         this.showForm = false;
       }
       if (res.data.showReceipt) {
-        this.router.navigate(['/formulario/constancia', res.data.guid] );
+        this.router.navigate(['/formularios/constancia', res.data.guid] );
       }
     }, err => {console.log(err);
     });
@@ -129,7 +141,41 @@ export class FormComponent implements OnInit {
   }
 
   changeEmit(ev) {
-    // console.log(ev);
+    if (typeof(ev.parentValue) === 'object') {
+      this.fields.forEach(field => {
+        if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue 
+          && Object.values(ev.parentValue).includes(field.dependentValue)) {
+          if (this.form.get(field.id)){
+            this.form.controls[field.id].enable();
+          }
+          field.disabled = false;
+        } else if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue 
+        && !Object.values(ev.parentValue).includes(field.dependentValue) && field.disabled === false) {
+          if (this.form.get(field.id)){
+            this.form.controls[field.id].disable();
+            this.form.controls[field.id].patchValue('');
+          }
+          field.disabled = true
+        }
+      });
+    } else {
+    this.fields.forEach(field => {
+      if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue && field.dependentValue === ev.parentValue) {
+        if (this.form.get(field.id)){
+          this.form.controls[field.id].enable();
+        }
+        field.disabled = false;
+      }
+      if (field.dependentFieldId && field.dependentFieldId === ev.data.id 
+        && field.dependentValue && field.dependentValue !== ev.parentValue && field.disabled === false) {
+          if (this.form.get(field.id)){
+            this.form.controls[field.id].disable();
+            this.form.controls[field.id].patchValue('');
+          }
+          field.disabled = true
+        }
+      });
+    }
   }
 
 }

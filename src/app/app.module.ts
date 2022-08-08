@@ -72,6 +72,8 @@ import {NgxPrintModule} from 'ngx-print';
 import { QRCodeModule } from 'angularx-qrcode';
 import { LabelAdapterComponent } from './form/dynamicComponentsAdapters/label.componentAdapter';
 import { LabelControlComponent } from './form/labelControl/label.control';
+import { LblHiddenAdapterComponent } from './form/dynamicComponentsAdapters/lblHidden.componentAdapter';
+import { HiddenControlComponent } from './form/hiddenControl/hidden.control';
 //import { LightgalleryModule } from 'lightgallery/angular';
 @NgModule({
   imports: [
@@ -147,6 +149,8 @@ import { LabelControlComponent } from './form/labelControl/label.control';
     RadioControlComponent,
     LabelAdapterComponent,
     LabelControlComponent,
+    LblHiddenAdapterComponent,
+    HiddenControlComponent,
   ],
   exports:[
     SelectControlComponent,
@@ -158,6 +162,7 @@ import { LabelControlComponent } from './form/labelControl/label.control';
     LblRadioAdapterComponent,
     RadioControlComponent,
     LabelControlComponent,
+    HiddenControlComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -184,6 +189,7 @@ import { LabelControlComponent } from './form/labelControl/label.control';
     LblCheckboxAdapterComponent,
     LblRadioAdapterComponent,
     LabelAdapterComponent,
+    LblHiddenAdapterComponent,
   ],
   bootstrap: [AppComponent],
 })

@@ -30,14 +30,12 @@ export class StringInputControlComponent extends AbstractValueAccessor implement
   labelText: string;
   placeholder: string;
   required: boolean;
-  disabled: boolean;
   // requiredControl: Boolean;
 
   ngOnInit() {
     this.labelText = this.allData.name;
     this.required = this.allData.required;
     this.id = this.allData.id;
-    this.disabled = false;
     this.placeholder = this.allData.value;
   }
 

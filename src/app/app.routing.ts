@@ -32,11 +32,11 @@ const routes: Routes = [
     component: BoletinesComponent,
   },
   {
-    path: 'formulario/:idFormulario',
+    path: 'formularios/:idFormulario',
     component: FormComponent,
   },
   {
-    path: 'formulario/constancia/:uid',
+    path: 'formularios/constancia/:uid',
     component: ConstanciaComponent,
   },
   {

@@ -24,11 +24,10 @@ export class RadioControlComponent extends AbstractValueAccessor implements OnIn
     selectedItem: DataOptions;
     id: string;
     /**OUTPUT */
-    @Output() onInit = new EventEmitter<any>();
+    @Output() onChangeComponent = new EventEmitter<any>();
     /**INPUT */
     @Input() parentGroup: FormGroup;
     // @Input() id:number;
-    // @Input() deshabilitado:boolean;
     @Input() required: boolean;
     @Input() allData: IComponentData;
 
@@ -58,6 +57,7 @@ export class RadioControlComponent extends AbstractValueAccessor implements OnIn
     onClick(item: DataOptions) {
         if (item.id !== this.selectedItem.id) {
             this.selected(item);
+            this.onChangeComponent.emit(item.value);
         }
         this.onTouch();
         // this.allData.options.forEach(element => {

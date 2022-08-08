@@ -7,6 +7,8 @@ export interface IComponentData {
     required: boolean;
     type: string;
     value: string;
+    dependentFieldId: string;
+    dependentValue: string; 
 
     // dependienteId?: number;
     // dependienteValor: string;

@@ -1,9 +1,27 @@
-.select-control{
-    /* .select{
-        display: flex;
-
-        .error-required{
-            margin-left: 10px;
-        }
-    } */
+.select-ctrl {
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    appearance: none;
+    margin-top: 16px !important;
+    display: block !important;
+    width: 100% !important;
+    height: calc(1.5em + 0.75rem + 6px) !important;
+    padding: 0.35rem 1rem !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #495057 !important;
+    border-radius: 0 !important;
+    -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    transition-property: border-color, box-shadow !important;
+    transition-duration: 0.15s, 0.15s !important;
+    transition-timing-function: ease-in-out, ease-in-out !important;
+    transition-delay: 0s, 0s !important;
+}
+.select-ctrl:focus {
+    border-color: #3400ff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(52, 0, 255, 0.01);
 }

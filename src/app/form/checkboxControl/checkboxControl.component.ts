@@ -21,6 +21,7 @@ export class CheckboxControlComponent implements OnInit, ControlValueAccessor {
 
     /**OUTPUT */
     @Output() onCheck = new EventEmitter<any>();
+    @Output() onChangeComponent = new EventEmitter<any>();
     /**INPUT */
     @Input() allData: IComponentData;
     @Input() parentGroup: FormGroup;
@@ -44,6 +45,10 @@ export class CheckboxControlComponent implements OnInit, ControlValueAccessor {
             this.removeSelected(item);
             // this.onDeSelect.emit(item);
         }
+        let values = this.selectedItems.map(item => {
+            return item.value;
+        })
+        this.onChangeComponent.emit(values);
     }
 
     isSelected(clickedItem) {

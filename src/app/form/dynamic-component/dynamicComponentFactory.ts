@@ -2,6 +2,7 @@ import { Component } from "@app/_models/component";
 import { IComponentData } from "@app/_models/componentData.model";
 import { LabelAdapterComponent } from "../dynamicComponentsAdapters/label.componentAdapter";
 import { LblCheckboxAdapterComponent } from "../dynamicComponentsAdapters/lblCheckbox.componentAdapter";
+import { LblHiddenAdapterComponent } from "../dynamicComponentsAdapters/lblHidden.componentAdapter";
 import { LblInputStringAdapterComponent } from "../dynamicComponentsAdapters/lblInput.string.componentAdapter";
 import { LblRadioAdapterComponent } from "../dynamicComponentsAdapters/lblRadio.componentAdapter";
 import { LblSelectAdapterComponent } from "../dynamicComponentsAdapters/lblSelect.componentAdapter";
@@ -29,6 +30,9 @@ export class DynamicComponentFactory {
                 break;
             case 'text' || 'email' || 'password':
                 comp = new Component(LblInputStringAdapterComponent, datosComponente);
+                break;
+            case 'hidden':
+                comp = new Component(LblHiddenAdapterComponent, datosComponente);
                 break;
         }
 
