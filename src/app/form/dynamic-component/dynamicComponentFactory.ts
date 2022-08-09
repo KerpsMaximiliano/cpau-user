@@ -28,7 +28,7 @@ export class DynamicComponentFactory {
             case 'checkbox':
                 comp = new Component(LblCheckboxAdapterComponent, datosComponente);
                 break;
-            case 'text' || 'email' || 'password':
+            case (datosComponente.type === 'text' || 'email' || 'password' ? datosComponente.type : null):
                 comp = new Component(LblInputStringAdapterComponent, datosComponente);
                 break;
             case 'hidden':
