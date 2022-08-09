@@ -55,32 +55,32 @@ export class FormComponent implements OnInit {
         let parseF = JSON.parse(response.data.fields);
         let jsonResponseArray = [];
         parseF.forEach(function (f) {
-                        let jsonResponse = {};
-                        jsonResponse['id'] = f.IdFormField;
-                        jsonResponse['name'] = f.Name;
-                        jsonResponse['type'] = f.Type;
-                        jsonResponse['dependentFieldId'] = f.DependentFieldId === "" ? null : f.DependentFieldId
-                        jsonResponse['dependentValue'] = f.DependentValue === "" ? null : f.DependentValue
-                        jsonResponse['required'] = f.Required;
-                        jsonResponse['value'] = f.Value;
-                        jsonResponse['options'] = [];
-                        if (f.Options) {
-                            f.Options.forEach(function (o) {
-                                let jsonOption = {};
-                                jsonOption['id'] = o.IdFormFieldOption;
-                                jsonOption['text'] = o.Text;
-                                jsonOption['value'] = o.Value;
-                                jsonOption['allowcomments'] = o.allowComments;
-                                jsonOption['comments'] = o.comments;
-                                jsonResponse['options'].push(jsonOption);
-                            });
-                        }
-                        jsonResponseArray.push(jsonResponse);
-                    });
+          let jsonResponse = {};
+          jsonResponse['id'] = f.IdFormField;
+          jsonResponse['name'] = f.Name;
+          jsonResponse['type'] = f.Type;
+          jsonResponse['dependentFieldId'] = (f.DependentField && f.DependentField.idFormField !== '') ? f.DependentField.idFormField : null ;
+          jsonResponse['dependentValue'] = f.DependentValue === "" ? null : f.DependentValue;
+          jsonResponse['required'] = f.Required;
+          jsonResponse['value'] = f.Value;
+          jsonResponse['options'] = [];
+          if (f.Options) {
+            f.Options.forEach(function (o) {
+                let jsonOption = {};
+                jsonOption['id'] = o.IdFormFieldOption;
+                jsonOption['text'] = o.Text;
+                jsonOption['value'] = o.Value;
+                jsonOption['allowcomments'] = o.allowComments;
+                jsonOption['comments'] = o.comments;
+                jsonResponse['options'].push(jsonOption);
+            });
+          }
+          jsonResponseArray.push(jsonResponse);
+        });
         this.fields = jsonResponseArray;
         this.fields.forEach(field => {
           if (field.dependentFieldId && field.dependentValue) {
-            field.disabled = true
+            field.disabled = true;
             if (field.required && field.type !== 'label') {
               this.form.addControl(field.id, new FormControl({value:'', disabled: true }, Validators.required));
             } else if (field.type !== 'label') {

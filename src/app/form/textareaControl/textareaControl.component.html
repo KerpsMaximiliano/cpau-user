@@ -1,4 +1,4 @@
-<div class="row custom-control" style="padding:0px 10px !important;">
+<div class="row custom-control" style="padding:0px 10px !important;" *ngIf="!allData.disabled">
     <label class="headersmalltext">{{allData.name}}<span *ngIf="allData.required === true">&nbsp;*</span></label>
     <div *ngIf="parentGroup.controls[id].invalid && (parentGroup.controls[id].dirty || parentGroup.controls[id].touched)" style="display: inline;">
         <small
