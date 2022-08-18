@@ -73,7 +73,8 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { LabelAdapterComponent } from './form/dynamicComponentsAdapters/label.componentAdapter';
 import { LabelControlComponent } from './form/labelControl/label.control';
 import { LblHiddenAdapterComponent } from './form/dynamicComponentsAdapters/lblHidden.componentAdapter';
-import { HiddenControlComponent } from './form/hiddenControl/hidden.control';
+import { HiddenControlComponent } from './form/hiddenControl/hidden.control';;
+import { FinalMessageComponent } from './form/final-message/final-message.component'
 //import { LightgalleryModule } from 'lightgallery/angular';
 @NgModule({
   imports: [
@@ -151,6 +152,7 @@ import { HiddenControlComponent } from './form/hiddenControl/hidden.control';
     LabelControlComponent,
     LblHiddenAdapterComponent,
     HiddenControlComponent,
+    FinalMessageComponent
   ],
   exports:[
     SelectControlComponent,

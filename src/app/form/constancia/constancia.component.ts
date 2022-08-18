@@ -26,7 +26,7 @@ export class ConstanciaComponent implements OnInit {
 
   ngOnInit() {
     const uid = this._Activatedroute.snapshot.paramMap.get('uid');
-    this.qrdata = this.currentLocation + '/formularios/constancia/' + uid
+    this.qrdata = this.currentLocation + '/formularios/constancia/' + uid;
     this.formService.getUid(uid).subscribe(res => {
       this.resp = JSON.parse(res.data.response.fields)
       this.form = res.data.form
@@ -41,8 +41,8 @@ export class ConstanciaComponent implements OnInit {
     });
   }
 
-  // onPrint(){
-  //   window.print();
-  // }
+  onPrint() {
+    window.print();
+  }
 
 }

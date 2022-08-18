@@ -1,12 +1,25 @@
 @import '../../../stylesCustom/styles/cpau.css';
 
-.main {
+/* .main {
     height: 100%!important;
     width: 100%!important;
     background-image: url("../../../stylesCustom/images/backgrounds/background2.jpg")!important;
     background-repeat: no-repeat!important;
     background-position: top!important;
     background-attachment: fixed!important;
+} */
+.main {
+    background-attachment: fixed;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: url(https://static.cpau.org/web/images/backgrounds/background.jpg);
+    margin: 0;
+    padding: 0;
 }
 
 .border-bottom {
@@ -55,11 +68,19 @@
     }
 }
 
+/* Print */
+
 @media print {
     * {
         -webkit-print-color-adjust: exact;
     }
     .print-skip {
         display: none;
+    }
+    .main {
+        all: revert;
+    }
+    .p-5 {
+        all: revert;
     }
 }

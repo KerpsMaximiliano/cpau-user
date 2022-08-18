@@ -21,6 +21,7 @@ import { AuthGuard } from './_helpers';
 import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
 import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
 import { ConstanciaComponent } from './form/constancia/constancia.component';
+import { FinalMessageComponent } from './form/final-message/final-message.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'boletin/:idBoletin',
     component: BoletinesComponent,
+  },
+  {
+    path: 'formularios/mensajefinal',
+    component: FinalMessageComponent,
   },
   {
     path: 'formularios/:idFormulario',

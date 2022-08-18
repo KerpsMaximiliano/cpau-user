@@ -35,9 +35,6 @@
                         Ante cualquier consulta comunicate con capacitacion@cpau.org.
                     </p>
                 </div>
-                <div *ngSwitchCase="'YISC'">
-                    <p>Usted ya se encuentra registrado en esta inscripción.</p>
-                </div>
                 <div *ngSwitchCase="'NVNP'" class="alert alert-warning">
                     <p>El formulario no se encuentra disponible.</p>
                 </div>
@@ -91,27 +88,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div style="padding: 15px 15px; position: relative;">
-                            <div *ngIf="showForm">
-                                <div *ngFor="let item of fields">
-                                    <dynamic-component
-                                    [data]="item" 
-                                    [parentGroup]="form"
-                                    (onChangeComponent)="changeEmit($event)"
-                                    >
-                                    </dynamic-component>
-                                </div>
-                                <div class="form-group recaptcha col-sm-6">
-                                    <re-captcha (resolved)="resolved($event)" siteKey="{{siteKey}}"></re-captcha>
-                                </div>
-                                <div class="form-group">
-                                    <div style="padding: 0 14.6px !important;">
-                                        <button [disabled]="(captcha === null || false) || !form.valid" class="btn btn-secondary" 
-                                        style="padding-top:7px !important; padding-bottom:7px !important;" type="button" (click)="onClick()">Enviar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <div *ngIf="messageLE">
@@ -120,11 +96,6 @@
                     </p>
                 </div>
             </ng-container>
-            <!-- <div *ngIf="messageLE">
-                <p>
-                    Muchas gracias, ya formas parte de la lista de espera.
-                </p>
-            </div> -->
             <footer>
                 <!--COPYRIGHT-->
                 <div class="row shadow pt-3 bk6">

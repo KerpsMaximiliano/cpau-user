@@ -10,7 +10,7 @@ import { environment } from '@environments/environment';
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class FormComponent implements OnInit {
   fields: any;
@@ -123,9 +123,10 @@ export class FormComponent implements OnInit {
       if (res.data.le === true) {
         this.messageLE = true;
         this.showForm = false;
-      }
-      if (res.data.showReceipt) {
+      } else if (res.data.showReceipt) {
         this.router.navigate(['/formularios/constancia', res.data.guid] );
+      }else {
+        this.router.navigate(['/formularios/mensajefinal'], { state: { finalMessage: res.data.finalMessage } });
       }
     }, err => {console.log(err);
     });
@@ -172,7 +173,7 @@ export class FormComponent implements OnInit {
             this.form.controls[field.id].disable();
             this.form.controls[field.id].patchValue('');
           }
-          field.disabled = true
+          field.disabled = true;
         }
       });
     }

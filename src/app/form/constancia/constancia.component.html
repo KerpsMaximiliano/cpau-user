@@ -1,7 +1,7 @@
 <div class="main">
     <div class="container p-5">
         <!--Fila Logo-->
-        <div class="row bk6 p-4 shadow" style="border-top: 4px solid #000;">
+        <div class="row bk6 p-4 shadow print-skip" style="border-top: 4px solid #000;">
             <!--Columna Logo-->
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
                 <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
@@ -76,11 +76,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                            <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'" class="print-qr"></qrcode>
                         </div>
                         <div class="row print-skip">
                             <div class="col-md-12" style="margin: 10px">
-                                <button class="btn btn-imprimir" [useExistingCss]="true" printSectionId="sectionToPrint" ngxPrint>
+                                <button class="btn btn-imprimir" (click)="onPrint()">
                                     Imprimir comprobante
                                 </button>
                             </div>
@@ -89,13 +89,6 @@
                 </div>
             </div>
             </div>
-        <!-- <div class="row">
-            <div class="col-md-12" style="margin: 10px">
-                <button class="btn btn-imprimir" (click)="onPrint()">
-                    Imprimir comprobante test
-                </button>
-            </div>
-        </div> -->
         <footer>
             <!--COPYRIGHT-->
             <div class="row shadow pt-3 bk6">

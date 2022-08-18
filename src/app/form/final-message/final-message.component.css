@@ -1,0 +1,16 @@
+@import '../../../stylesCustom/styles/cpau.css';
+@import '../../../stylesCustom/styles/form.css';
+
+.main {
+    background-attachment: fixed;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: url(https://static.cpau.org/web/images/backgrounds/background.jpg);
+    margin: 0;
+    padding: 0;
+}
