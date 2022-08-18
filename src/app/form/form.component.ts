@@ -125,7 +125,7 @@ export class FormComponent implements OnInit {
         this.showForm = false;
       } else if (res.data.showReceipt) {
         this.router.navigate(['/formularios/constancia', res.data.guid] );
-      }else {
+      } else if (res.data.showReceipt === false && res.data.finalMessage) {
         this.router.navigate(['/formularios/mensajefinal'], { state: { finalMessage: res.data.finalMessage } });
       }
     }, err => {console.log(err);
