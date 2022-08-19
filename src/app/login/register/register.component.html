@@ -17,8 +17,8 @@
                                     <h1 class="my-3">Registración</h1>
                                     <div *ngIf="isValidate">
                                     <div class="checkbox mb-3">
-                                      <label>
-                                        <input type="checkbox" [(ngModel)]="isMatriculado">
+                                      <label style="display: none;">
+                                        <input style="display: none;"  type="checkbox" [(ngModel)]="isMatriculado">
                                         Estoy matriculado en el CPAU</label>
                                       </div>
                                       <div *ngIf="isMatriculado">
