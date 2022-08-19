@@ -77,6 +77,13 @@
                         </div>
                         <div class="row">
                             <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'" class="print-qr"></qrcode>
+                            <div *ngIf="form?.receiptFooter" style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-direction: column;"
+                            [innerHTML]="form.receiptFooter"
+                            ></div>
                         </div>
                         <div class="row print-skip">
                             <div class="col-md-12" style="margin: 10px">
