@@ -59,7 +59,7 @@ export class FormComponent implements OnInit {
           jsonResponse['id'] = f.IdFormField;
           jsonResponse['name'] = f.Name;
           jsonResponse['type'] = f.Type;
-          jsonResponse['dependentFieldId'] = (f.DependentField && f.DependentField.idFormField !== '') ? f.DependentField.idFormField : null ;
+          jsonResponse['dependentFieldId'] = (f.DependentField && f.DependentField.IdFormField !== '') ? f.DependentField.IdFormField : null ;
           jsonResponse['dependentValue'] = f.DependentValue === "" ? null : f.DependentValue;
           jsonResponse['required'] = f.Required;
           jsonResponse['value'] = f.Value;
