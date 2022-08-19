@@ -1,22 +1,27 @@
-<div class="row custom-control" style="padding:0px 10px !important;" *ngIf="!allData.disabled">
-    <label class="headersmalltext">{{allData.name}}<span *ngIf="allData.required === true">&nbsp;*</span></label>
-    <div *ngIf="parentGroup.controls[id].invalid && (parentGroup.controls[id].dirty || parentGroup.controls[id].touched)" style="display: inline;">
-        <small
-            class="alert-warning ml-1"
-            *ngIf="parentGroup?.controls[id].errors.required"
-            [hidden]='!parentGroup?.controls[id].errors && !parentGroup?.controls[id].errors.required'>
-            Dato obligatorio
-        </small>
+<div class="row" *ngIf="!allData.disabled">
+    <div class="col-md-12">
+        <label class="headersmalltext">{{allData.name}}<span *ngIf="allData.required === true">&nbsp;*</span></label>
+        <div *ngIf="parentGroup.controls[id].invalid && (parentGroup.controls[id].dirty || parentGroup.controls[id].touched)" style="display: inline;">
+            <small
+                class="alert-warning ml-1"
+                *ngIf="parentGroup?.controls[id].errors.required"
+                [hidden]='!parentGroup?.controls[id].errors && !parentGroup?.controls[id].errors.required'>
+                Dato obligatorio
+            </small>
+        </div>
+        <form novalidate>
+            <textarea 
+            [(ngModel)]="value"
+            style="margin-top: 5px;"
+            class="form-control input-form"
+            [ngClass]="{'input-error': parentGroup.controls[id].invalid && (parentGroup.controls[id].dirty || parentGroup.controls[id].touched)}"
+            [id]="id"
+            [name]="id"
+            [disabled]="disabled"
+            [hidden]="disabled"
+            (blur)="onTouch()"
+            [placeholder]="placeholder">
+            </textarea>
+        </form>
     </div>
-    <textarea 
-                [(ngModel)]="value"
-                style="margin-top: 5px;"
-                [ngClass]="{'input-error': parentGroup.controls[id].invalid && (parentGroup.controls[id].dirty || parentGroup.controls[id].touched)}"
-                [id]="id"
-                [name]="id"
-                [disabled]="disabled"
-                [hidden]="disabled"
-                (blur)="onTouch()"
-                [placeholder]="placeholder">
-    </textarea>
 </div>
