@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['../../../stylesCustom/styles/form.css'],
 })
 export class RegisterComponent implements OnInit {
-  isMatriculado = true;
+  isMatriculado = false;
   isValidate = true;
   showForm = false;
   emailPreregistro = '';
