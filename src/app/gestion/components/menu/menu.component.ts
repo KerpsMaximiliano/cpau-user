@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { Role, User } from '@app/_models';
 import { AuthenticationService } from '@app/_services';
 import { environment } from '@environments/environment';
@@ -24,9 +25,24 @@ export class MenuComponent implements OnInit, AfterViewInit {
   hasImage: boolean;
 
   constructor(private identificacionService: IdentificacionService,
-              private authenticationService: AuthenticationService) { }
+              private authenticationService: AuthenticationService,
+              private router: Router) { }
   ngAfterViewInit(): void {
     this.colapsado[0] = true;
+    let url = this.router.url.split('/');
+    if(url[url.length - 1] == "inscripciones") {
+      this.colapsar(5);
+    } else if (url[url.length - 2] == "seguridad") {
+      this.colapsar(6);
+    } else if (url[url.length - 2] == "suscripciones") {
+      this.colapsar(3);
+    } else if (url[url.length - 2] == "perfil") {
+      this.colapsar(0);
+    } else if (url[url.length - 2] == "matricula") {
+      this.colapsar(1);
+    } else if (url[url.length - 2] == "oferta-servicio") {
+      this.colapsar(2);
+    }
   }
 
   ngOnInit(): void {
