@@ -10,6 +10,7 @@ export const environment = {
     // apiUrl: 'https://cpauorgapi.azurewebsites.net',
     oldSiteUrl: '',
     storeUrl: 'http://localhost:50501/store?length=4',
+    adminUrl: ''
 
     // production: true,
     // apiUrl: 'https://localhost:44348',
