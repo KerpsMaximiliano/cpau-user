@@ -4,18 +4,10 @@
 
 export const environment = {
     production: true,
-    
-    
-    apiUrl: 'https://cpauorgapi-test.azurewebsites.net',
-    // apiUrl: 'https://cpauorgapi.azurewebsites.net',
     oldSiteUrl: '',
     storeUrl: 'http://localhost:50501/store?length=4',
-    adminUrl: ''
-
-    // production: true,
-    // apiUrl: 'https://localhost:44348',
-    // oldSiteUrl: 'http://localhost:50501',
-    // storeUrl: 'http://localhost:50501/store?length=4'
+    adminUrl: '',
+    apiUrl: 'https://localhost:44348',
 };
 
 /*
