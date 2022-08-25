@@ -19,6 +19,7 @@ export interface ContentSite {
     content?: Content | null;
     filterApply?: string | null;
     link?: string | null;
+    linkTarget: string;
 }
 export interface ItemsSite {
 	displayOrder: number;

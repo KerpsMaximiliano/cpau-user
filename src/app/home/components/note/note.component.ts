@@ -50,6 +50,7 @@ export class NoteComponent implements OnInit {
 
 
   ngOnInit() {
+    this.reload();
     const s = this.renderer2.createElement('script');
     s.onload = this.loadNextScript.bind(this);
     s.type = 'text/javascript';
@@ -60,8 +61,8 @@ export class NoteComponent implements OnInit {
     this._router.events.subscribe(res => {
       if (res instanceof NavigationEnd)
       {
-        const id = this._Activatedroute.snapshot.paramMap.get("id");
-        this.loadContent(id);
+        //const id = this._Activatedroute.snapshot.paramMap.get("id");
+        //this.loadContent(id);
       }
     });
 
@@ -84,6 +85,7 @@ export class NoteComponent implements OnInit {
       map(ret => ret as ContentSite),
     )
     .subscribe( content => {
+      //this.checkLightbox(content.content.text);
       this.data = content;
       this.imagenesGaleria = content.content.imagenesGaleria;
       this.titleService.setTitle(`${this.data.content.title} | CPAU`);
@@ -92,12 +94,15 @@ export class NoteComponent implements OnInit {
         this.ancla();
       }, 10);
       setTimeout(() => {
+        this.acordeon();
+      }, 20);
+      setTimeout(() => {
+        this.popup();
+      }, 30);
+      setTimeout(() => {
         this.ancla();
-      }, 500);
+      }, 40);
     });
-    setTimeout(() => {
-      this.acordeon();
-    }, 10);
 
   }
 
@@ -105,4 +110,27 @@ export class NoteComponent implements OnInit {
     window.scroll(0, 0);
   }
 
+  checkLightbox(text: string) {
+    if(text.search("lightbox") == -1) {
+      return;
+    } else {
+      let noteLightbox = sessionStorage.getItem("noteLightbox");
+      if(noteLightbox == null) {
+        sessionStorage.setItem("noteLightbox", 'loaded');
+        window.location.reload();
+      } else {
+        sessionStorage.removeItem("noteLightbox")
+      }
+    }
+  }
+
+  reload() {
+    let noteLightbox = sessionStorage.getItem("noteLightbox");
+      if(noteLightbox == null) {
+        sessionStorage.setItem("noteLightbox", 'loaded');
+        window.location.reload();
+      } else {
+        sessionStorage.removeItem("noteLightbox")
+      }
+  }
 }
