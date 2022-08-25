@@ -68,6 +68,22 @@
     font-family: 'FontAwesome';
 }
 
+.articleCss article a[data-lightbox]::after {
+    content: "";
+}
+
+.articleCss article a[href$=".jpg"]::after {
+    content: "";
+}
+
+.articleCss article a[href$=".png"]::after {
+    content: "";
+}
+
+.articleCss article a[href$=".jpeg"]::after {
+    content: "";
+}
+
 .articleCss article ul {
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
