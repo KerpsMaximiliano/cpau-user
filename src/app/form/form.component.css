@@ -298,84 +298,55 @@ html * {
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
-/* AGREGADOS */
-    .alert {
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-    }
-    .alert-warning {
-        color: #721c24;
-        background: #f8d7da;
-        border: 1px solid #f5c6cb;
-    }
-    .mater-wrapper {
-        background-attachment: fixed;
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        position: relative;
-        width: 100%;
-        background-position: top;
-        background-repeat: no-repeat;
+
+/*AGREGADOS*/
+
+    .parallax-container {
         background-image: url(https://static.cpau.org/web/images/backgrounds/background.jpg);
-        margin: 0;
-        padding: 0;
-    }
-    .master-wrapper-content {
-        float: left;
-        width: 1070px;
-        margin: 47px 0 0;
-        text-align: left;
-        background-color: transparent;
-    }
-    .master-wrapper-page {
-        margin: auto;
-        width: 1070px;
-        text-align: left;
-    }
-    .header {
-        height: 97px;
-        background-color: white;
-        margin-left: 12px;
-        margin-right: -6px;
-    }
-    .header-logo {
-        margin-top: 25px;
-        float: left;
-        text-align: left;
-    }
-    .master-wrapper-leftside-3 {
-        float: left;
-        width: 180px;
-        margin: 10px 0 0 10px;
-        display: inline;
-    }
-    .master-wrapper-center-3 {
-        float: left;
-        width: 1064px;
-        margin: 0px 10px 0 3px;
-        display: inline;
+        min-height: 100vh;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow-x: hidden;
     }
 
-    .master-wrapper-cph-3 {
-        float: left;
-        width: 100%;
-        color: #000;
-        border: none;
-        min-height: 600px;
-        margin: -10px 0px 0px 10px;
+    .container {
+        padding: 3%;
     }
-    .sectioncontent {
-        line-height: normal;
+
+    .header {
+        height: 3rem;
+        background-color: white;
+        display: flex;
     }
+
+    .header-logo {
+        margin-top: 25px;
+        text-align: left;
+        max-width: 100%;
+        padding-right: 6%;
+    }
+
+    .captcha {
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+    }
+
+    @media (max-width: 769px) {
+        .captcha {
+            transform:scale(0.77);
+            margin-left: 0;
+        }
+    }
+
     .inscripcion {
         clear: both;
         margin-bottom: 5px;
         padding-top: 5px;
         min-height: 30px;
     }
+
     .inscripciontitle {
         font-size: 40px;
         font-weight: 800;
@@ -385,6 +356,7 @@ html * {
         margin-bottom: 10px;
         margin-top: 20px;
     }
+
     .inscripcionaclaraciones {
         font-size: 11px;
         display: block;
@@ -392,152 +364,15 @@ html * {
         margin-top: 5px;
         margin-bottom: 5px;
     }
-
-/* ADDS  */
-
-.header {
-    height: 97px;
-    background-color: white;
-    margin-left: 12px;
-    margin-right: -6px;
-}
-
-.header-links-wrapper {
-    float: right;
-    text-align: right;
-    margin-top: 10px;
-    margin-right: 20px;
-}
-
-.necesitanombre {
-    clear: both;
-    width: 100%;
-    background-color: #F7F7F7;
-    margin-bottom: 5px;
-    padding-top: 5px;
-    border-top: solid 1px #D1D1D1;
-    border-bottom: solid 1px #D1D1D1;
-    min-height: 40px;
-    margin-left: -10px;
-}
-
-.sectionimageheader {
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    margin-left: -10px;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
-.container {
-    width: 100%;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 40px;
-}
-
-.inscripciontitle {
-    font-size: 40px;
-    font-weight: 800;
-    display: block;
-    color: #212529;
-    margin-left: 14px;
-    margin-bottom: 10px;
-    margin-top: 20px;
-}
-
-.mater-wrapper {
-    background-attachment: fixed;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    position: relative;
-    width: 100%;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-image: url(https://static.cpau.org/web/images/backgrounds/background.jpg);
-    margin: 0;
-    padding: 0;
-}
-
-.master-wrapper-page {
-    margin: auto;
-    width: 1070px;
-    text-align: left;
-}
-
-
-.master-wrapper-center-3 {
-    float: left;
-    width: 1064px;
-    margin: 0px 10px 0 3px;
-    display: inline;
-}
-
-.master-wrapper-cph-3 {
-    float: left;
-    width: 100%;
-    color: #000;
-    border: none;
-    /* min-height: 600px; */
-    margin: -10px 0px 0px 10px;
-}
-
-.master-wrapper-content {
-    float: left;
-    width: 1070px;
-    margin: 47px 0 0;
-    text-align: left;
-    background-color: transparent;
-}
-
-.inscripcionsubtitle {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: left;
-    background-color: transparent;
-    margin-top: 18px;
-    margin-left: 14px;
-}
-.inscripcioncontent
-{
-    position: relative;
-    text-align: left;
-    padding-left: 10px;
-    padding-bottom: 15px;
-    margin: 0;
-    margin-right: 20px;
-}
-
-.shadow {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-#g-recaptcha-response {
-    display: none!important;
-}
-
-.input-form {
-    margin-top: 16px !important;
-    display: block !important;
-    width: 100% !important;
-    /* height: calc(1.5em + 0.75rem + 6px) !important; */
-    padding: 0.35rem 1.0rem !important;
-    /* font-size: 1.6rem !important; */
-    font-weight: 400 !important;
-    line-height: 1.5 !important;
-    color: #495057 !important;
-    border-radius: 0 !important;
-    -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
-}
-.input-error {
-    border-color: #ec3f41!important;
-}
+    
+    .inscripcionsubtitle {
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: transparent;
+        margin-top: 18px;
+        margin-left: 14px;
+    }

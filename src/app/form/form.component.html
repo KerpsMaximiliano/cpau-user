@@ -1,112 +1,133 @@
-<div class="mater-wrapper" style="position: absolute!important;"> <div class="master-wrapper-page">
-    <div class="master-wrapper-content">
+<div class="parallax-container">
+    <div class="container">
         <div class="header">
             <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
-                <img src="../../stylesCustom/images/logo/logocpau.jpg" class="header-logo" style="margin-left: 10px;" width="310" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" />
+                <img src="../../stylesCustom/images/logo/logocpau.jpg" class="header-logo" style="margin-left: 10px;"
+                    width="320" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" />
             </a>
         </div>
         <!--Fila Logo-->
         <!-- <div class="row bk6 p-4 shadow" style="border-top: 4px solid #000;"> -->
-            <!--Columna Logo-->
-            <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+        <!--Columna Logo-->
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
                 <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
                     <figure><img src="../../stylesCustom/images/logo/logocpau.jpg" width="35%;" height="auto" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" /></figure>
                 </a>
             </div> -->
-            <!--Columna Logo: fin-->
+        <!--Columna Logo: fin-->
         <!-- </div> -->
         <!--Fila Logo: fin-->
-        <div class="master-wrapper-leftside-3" style="margin: 0px 0 0 10px;"></div>
-        <div class="master-wrapper-center-3"> <div class="master-wrapper-cph-3">
-        <div class="form" style="background: white; margin-left: -1px; margin-right: 1px;">
-        <div class="container"> <div class="sectioncontent" style="margin-top: 5px;">
-        <div class="inscripcion inscripcioncontent">
-            <ng-container [ngSwitch]="error">
-                <div *ngSwitchCase="'UNM'" class="alert alert-warning">
-                    <p>Debe ser matriculado para poder acceder al formulario.</p>
-                </div>
-                <div *ngSwitchCase="'YISC'">
-                    <p>Usted ya se encuentra registrado en esta inscripción.</p>
-                </div>
-                <div *ngSwitchCase="'UB'" class="alert alert-warning">
-                    <p>
-                        Tu usuario no cumple con las condiciones de inscripción.
-                        <br>
-                        Ante cualquier consulta comunicate con capacitacion@cpau.org.
-                    </p>
-                </div>
-                <div *ngSwitchCase="'NVNP'" class="alert alert-warning">
-                    <p>El formulario no se encuentra disponible.</p>
-                </div>
-                <div *ngSwitchCase="'CL'" class="alert alert-warning">
-                    <p>Lamentablemente el cupo para esta actividad se completó.</p>
-                </div>
-                <div *ngSwitchCase="'YISCLE'">
-                    <p>
-                        Muchas gracias, ya formás parte de la lista de espera
-                        <br>
-                        Si se produce una vacante te avisaremos inmediatamente a tu cuenta de correo electrónico
-                        <br>
-                        Agradecemos tu interés.
-                    </p>
-                </div>
-            
-                <div *ngSwitchCase="error === null || error ==='LE'? error : ' ' ">
-                    <div *ngIf="errorLE == true" class="alert alert-warning">
-                        <p>Lamentablemente el cupo para esta actividad se completó.<br>Podés ingresar a la lista de espera.<br><br>Muchas gracias</p>
-                        <button (click)="onShowForm()">Mostrar formulario para lista de espera</button>
-                    </div>
-                    <div *ngIf="showForm">
-                        <div class="row bk6" style="margin-top: -10px; margin-left: -30px; background-color: transparent; margin-right: -40px;">
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <div>
-                                    <img [src]="response?.data?.headerImage" height="auto" width="100%">
-                                </div>
+        <div class="">
+            <div class="">
+                <div class="form" style="background: white;">
+                    <div class="container">
+                        <div class="sectioncontent" style="margin-top: 5px;">
+                            <div>
+                                <ng-container [ngSwitch]="error">
+                                    <div *ngSwitchCase="'UNM'" class="alert alert-warning">
+                                        <p>Debe ser matriculado para poder acceder al formulario.</p>
+                                    </div>
+                                    <div *ngSwitchCase="'YISC'">
+                                        <p>Usted ya se encuentra registrado en esta inscripción.</p>
+                                    </div>
+                                    <div *ngSwitchCase="'UB'" class="alert alert-warning">
+                                        <p>
+                                            Tu usuario no cumple con las condiciones de inscripción.
+                                            <br>
+                                            Ante cualquier consulta comunicate con capacitacion@cpau.org.
+                                        </p>
+                                    </div>
+                                    <div *ngSwitchCase="'NVNP'" class="alert alert-warning">
+                                        <p>El formulario no se encuentra disponible.</p>
+                                    </div>
+                                    <div *ngSwitchCase="'CL'" class="alert alert-warning">
+                                        <p>Lamentablemente el cupo para esta actividad se completó.</p>
+                                    </div>
+                                    <div *ngSwitchCase="'YISCLE'">
+                                        <p>
+                                            Muchas gracias, ya formás parte de la lista de espera
+                                            <br>
+                                            Si se produce una vacante te avisaremos inmediatamente a tu cuenta de
+                                            correo electrónico
+                                            <br>
+                                            Agradecemos tu interés.
+                                        </p>
+                                    </div>
+
+                                    <div *ngSwitchCase="error === null || error ==='LE'? error : ' ' ">
+                                        <div *ngIf="errorLE == true" class="alert alert-warning">
+                                            <p>Lamentablemente el cupo para esta actividad se completó.<br>Podés
+                                                ingresar a la lista de espera.<br><br>Muchas gracias</p>
+                                            <button (click)="onShowForm()">Mostrar formulario para lista de
+                                                espera</button>
+                                        </div>
+                                        <div *ngIf="showForm">
+                                            <div class="row bk6"
+                                                style="margin-top: -10px; margin-left: -30px; background-color: transparent; margin-right: -40px;">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                    <div>
+                                                        <img [src]="response?.data?.headerImage" height="auto"
+                                                            width="100%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h1 class="pt-2 pb-2 inscripciontitle"
+                                                    [innerHTML]="response?.data?.name" *ngIf="response?.data?.name">
+                                                </h1>
+                                                <div class="inscripcionsubtitle"
+                                                    [innerHTML]="response?.data?.description"
+                                                    *ngIf="response?.data?.description"></div>
+                                                <div class="inscripcionaclaraciones"
+                                                    [innerHTML]="response?.data?.remarks"
+                                                    *ngIf="response?.data?.remarks"></div>
+                                            </div>
+                                            <div *ngIf="showForm" style="margin-top: 14px;">
+                                                <div *ngFor="let item of fields"
+                                                    style="padding: 0 15px;position: relative; margin-bottom: 15px;">
+                                                    <dynamic-component [data]="item" [parentGroup]="form"
+                                                        (onChangeComponent)="changeEmit($event)">
+                                                    </dynamic-component>
+                                                </div>
+                                                <div class="captcha">
+                                                    <re-captcha (resolved)="resolved($event)" siteKey="{{siteKey}}">
+                                                    </re-captcha>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div style="padding: 0 14.6px !important;">
+                                                        <button [disabled]="(captcha === null || false) || !form.valid"
+                                                            class="btn btn-secondary"
+                                                            style="padding-top:7px !important; padding-bottom:7px !important;"
+                                                            type="button" (click)="onClick()">Enviar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="messageLE">
+                                        <p>
+                                            Muchas gracias, ya formas parte de la lista de espera.
+                                        </p>
+                                    </div>
+                                </ng-container>
+                                <footer class="container">
+                                    <!--COPYRIGHT-->
+                                    <div class="row shadow pt-3 bk6">
+                                        <div class="col-sm pt-3"
+                                            style="background-color:#C8C3C3; text-align: center;font-size:11px; font-weight: 700 ">
+                                            <p>© CPAU | Consejo Profesional de Arquitectura y Urbanismo - 25 de Mayo
+                                                482 - (C1002ABJ) CABA - Tel: +54 (11) 5239.9401 - Atención: Lunes a
+                                                Viernes de 9 a 17 horas.</p>
+                                        </div>
+                                    </div>
+                                    <!--FIN COPYRIGHT-->
+                                    <!--FIN PIE-->
+                                </footer>
                             </div>
                         </div>
-                        <div>
-                            <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data?.name" *ngIf="response?.data?.name"></h1>
-                            <div class="inscripcionsubtitle" [innerHTML]="response?.data?.description" *ngIf="response?.data?.description"></div>
-                            <div class="inscripcionaclaraciones" [innerHTML]="response?.data?.remarks" *ngIf="response?.data?.remarks"></div>
-                        </div>
-                        <div *ngIf="showForm" style="margin-top: 14px;">
-                            <div *ngFor="let item of fields" style="padding: 0 15px;position: relative; margin-bottom: 15px;">
-                                <dynamic-component
-                                [data]="item" 
-                                [parentGroup]="form"
-                                (onChangeComponent)="changeEmit($event)"
-                                >
-                                </dynamic-component>
-                            </div>
-                            <div class="form-group recaptcha col-sm-6">
-                                <re-captcha (resolved)="resolved($event)" siteKey="{{siteKey}}"></re-captcha>
-                            </div>
-                            <div class="form-group">
-                                <div style="padding: 0 14.6px !important;">
-                                    <button [disabled]="(captcha === null || false) || !form.valid" class="btn btn-secondary" 
-                                    style="padding-top:7px !important; padding-bottom:7px !important;" type="button" (click)="onClick()">Enviar</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div *ngIf="messageLE">
-                    <p>
-                        Muchas gracias, ya formas parte de la lista de espera.
-                    </p>
-                </div>
-            </ng-container>
-            <footer>
-                <!--COPYRIGHT-->
-                <div class="row shadow pt-3 bk6">
-                    <div class="col-sm pt-3" style="background-color:#C8C3C3; text-align: center;font-size:11px; font-weight: 700 ">
-                        <p>© CPAU | Consejo Profesional de Arquitectura y Urbanismo - 25 de Mayo 482 - (C1002ABJ) CABA - Tel: +54 (11) 5239.9401 - Atención: Lunes a Viernes de 9 a 17 horas.</p>
-                    </div>
-                </div>
-                <!--FIN COPYRIGHT-->
-                <!--FIN PIE-->
-            </footer>
-        </div></div></div></div></div></div>
-        <div class="master-wrapper-rightside-3"></div>
+            </div>
+        </div>
     </div>
-</div></div>
+</div>

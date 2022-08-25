@@ -11,7 +11,6 @@ import { LblTextareaAdapterComponent } from "../dynamicComponentsAdapters/lblTex
 export class DynamicComponentFactory {
     static crearControl(datosComponente: IComponentData) {
         let comp
-
         switch (datosComponente.type) {
             case 'dropdown':
                 comp = new Component(LblSelectAdapterComponent, datosComponente);
@@ -28,11 +27,11 @@ export class DynamicComponentFactory {
             case 'checkbox':
                 comp = new Component(LblCheckboxAdapterComponent, datosComponente);
                 break;
-            case (datosComponente.type === 'text' || 'email' || 'password' ? datosComponente.type : null):
-                comp = new Component(LblInputStringAdapterComponent, datosComponente);
-                break;
             case 'hidden':
                 comp = new Component(LblHiddenAdapterComponent, datosComponente);
+                break;
+            case (datosComponente.type === 'text' || 'email' || 'password' ? datosComponente.type : null):
+                comp = new Component(LblInputStringAdapterComponent, datosComponente);
                 break;
         }
 

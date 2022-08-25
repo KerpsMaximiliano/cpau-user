@@ -13,7 +13,7 @@
                 <select [(ngModel)]="value"
                         [id]="id"
                         [name]="id"
-                        class="select-ctrl"
+                        class="custom-select d-block w-100 rounded-0"
                         [ngClass]="{'input-error': parentGroup.controls[id].invalid && (parentGroup.controls[id].dirty || parentGroup.controls[id].touched)}"
                         [required]="requiredControl"
                         (change)="onItemChanges(value)"
