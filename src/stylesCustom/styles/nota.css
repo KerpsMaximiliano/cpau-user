@@ -76,6 +76,10 @@
     content: "";
 }
 
+.linkimg::after {
+    content: "" !important;
+}
+
 .articleCss article a[href$=".png"]::after {
     content: "";
 }
