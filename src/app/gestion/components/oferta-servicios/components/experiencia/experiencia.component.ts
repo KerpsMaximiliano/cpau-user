@@ -101,7 +101,7 @@ export class ExperienciaComponent implements OnInit {
       });
     });
   }
-  protected reload() {
+  reload() {
     this.initData();
   }
 

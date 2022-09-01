@@ -24,7 +24,7 @@ export class ResumenComponent implements OnInit {
       this.resumen = d;
   });
   }
-  protected reload() {
+  reload() {
     this.initData();
   }
 }

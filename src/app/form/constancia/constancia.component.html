@@ -1,0 +1,111 @@
+<div class="main">
+    <div class="container p-5">
+        <!--Fila Logo-->
+        <div class="row bk6 p-4 shadow print-skip" style="border-top: 4px solid #000;">
+            <!--Columna Logo-->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
+                    <figure><img src="../../stylesCustom/images/logo/logocpau.jpg" width="35%" height="auto" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" /></figure>
+                </a>
+            </div>
+            <!--Columna Logo: fin-->
+        </div>
+        <!--Fila Logo: fin-->
+        <div id="sectionToPrint">
+            <div *ngIf="form">
+                <div *ngIf="form?.headerImage">
+                    <img [src]="form?.headerImage" width="100%">
+                </div>
+                <div class="row bk6 p-4 shadow">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bk6">
+                        <div>
+                            <h1 class="border-bottom title-sections pb-1" style="font-size:20px;" ><strong [innerHTML]="form?.name"></strong></h1>
+                            <h6 class="pt-2 pb-2" [innerHTML]="form?.description"></h6>
+                            <p [innerHTML]="form?.data?.remarks"></p>
+                        </div>
+                        <div *ngIf="form?.place || form?.fecha || form?.hora || form?.contact">
+                            <h6 class="border-bottom title-sections pb-1">DATOS DEL EVENTO</h6>
+                            <div class="container">
+                                <div class="row" *ngIf="form?.place">
+                                    <div class="col-4 col-left" >
+                                        <p class="datos-p"><strong>Lugar:</strong></p>
+                                    </div>
+                                    <div class="col-8 col-right">
+                                        <p class="datos-p">{{form?.place}}</p>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="form?.fecha">
+                                    <div class="col-4 col-left">
+                                        <p class="datos-p"><strong>Fecha:</strong></p>
+                                    </div>
+                                    <div class="col-8 col-right">
+                                        <p class="datos-p">{{form?.fecha}}</p>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="form?.hora">
+                                    <div class="col-4 col-left">
+                                        <p class="datos-p"><strong>Hora:</strong></p>
+                                    </div>
+                                    <div class="col-8 col-right">
+                                        <p class="datos-p">{{form?.hora}}</p>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="form?.contact">
+                                    <div class="col-4 col-left">
+                                        <p class="datos-p"><strong>Contacto:</strong></p>
+                                    </div>
+                                    <div class="col-8 col-right">
+                                        <p class="datos-p">{{form?.contact}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="resp?.length >= 1">
+                            <h6 class="border-bottom title-sections pb-1 mt-2">
+                                DATOS DEL INSCRIPTO
+                            </h6>
+                            <div class="container">
+                                <div class="row" *ngFor="let field of resp">
+                                    <div class="col-4 col-left">
+                                        <p class="datos-p"><strong>{{field?.name}}</strong></p>
+                                    </div>
+                                    <div class="col-8 col-right">
+                                        <p class="datos-p">{{field?.value}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'" class="print-qr"></qrcode>
+                            <div *ngIf="form?.receiptFooter" style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-direction: column;"
+                            [innerHTML]="form.receiptFooter"
+                            ></div>
+                        </div>
+                        <div class="row print-skip">
+                            <div class="col-md-12" style="margin: 10px">
+                                <button class="btn btn-imprimir" (click)="onPrint()">
+                                    Imprimir comprobante
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <footer>
+            <!--COPYRIGHT-->
+            <div class="row shadow pt-3 bk6">
+                <div class="col-sm pt-3" style="background-color:#C8C3C3; text-align: center;font-size:11px; font-weight: 700 ">
+                    <p>© CPAU | Consejo Profesional de Arquitectura y Urbanismo - 25 de Mayo 482 - (C1002ABJ) CABA - Tel: +54 (11) 5239.9401 - Atención: Lunes a Viernes de 9 a 17 horas.</p>
+                </div>
+            </div>
+            <!--FIN COPYRIGHT-->
+            <!--FIN PIE-->
+        </footer>
+    </div>
+</div>
+

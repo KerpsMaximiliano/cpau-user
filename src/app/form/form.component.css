@@ -1,2 +1,378 @@
-@import '../../stylesCustom/styles/cpau.css';
+/* @import '../../stylesCustom/styles/cpau.css';
 @import '../../stylesCustom/styles/encuesta.css';
+label{
+    display: inline-flex !important;
+}
+@media only screen and (max-width: 500px) {
+    .recaptcha {
+        transform:scale(0.77);
+        transform-origin:0 0;
+    }
+} */
+
+@import '../../stylesCustom/styles/cpau.css';
+@import '../../stylesCustom/styles/form.css';
+/* @import '../../stylesCustom/styles/bootstrap/bootstrapOldS.css'; */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+
+html * {
+    font-family: 'Roboto', sans-serif;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+    p {
+        margin: 0 0 10px;
+    }
+
+    .headersmalltext {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 18px;
+        color: black;
+        margin-bottom: 10px;
+        text-align:left;
+        display:contents !important;
+    }
+
+    form {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        background: #3400ff;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background: #000000;
+            border: none;
+            box-shadow: none;
+        }
+
+        .btn-primary:focus {
+            border: none;
+            box-shadow: none;
+        }
+
+        .btn-primary:active {
+            border: none;
+            box-shadow: none;
+        }
+
+    .btn-secondary {
+        background: #444444;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        width: 100%;
+    }
+
+        .btn-secondary:hover {
+            background: #000000;
+            border: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary:focus {
+            border: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary:active {
+            border: none;
+            box-shadow: none;
+        }
+
+    button {
+        font-size: 1rem;
+        font-weight: 600 !important;
+        color: #FFFFFF !important;
+        text-align: center !important;
+        vertical-align: middle !important;
+        background-color: #3400ff !important;
+        border-radius: 0rem !important;
+        border: none !important;
+        width: 100% !important;
+        margin-top: 1px !important;
+    }
+
+
+
+    input[type=text], input[type=number], select, input[type=password], input[type=email] {
+        margin-top: 16px !important;
+        display: block !important;
+        width: 100% !important;
+        height: calc(1.5em + 0.75rem + 6px) !important;
+        padding: 0.35rem 1.2rem !important;
+        font-size: 1.6rem !important;
+        font-weight: 400 !important;
+        line-height: 1.5 !important;
+        color: #495057 !important;
+        border-radius: 0 !important;
+        -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    }
+
+    .custom-radio .custom-control-label::before {
+        border-radius: 50% !important;
+    }
+
+    .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
+    }
+
+    .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(0, 123, 255, 0.5) !important;
+    }
+
+
+    textarea {
+        margin-top: 16px !important;
+        display: block !important;
+        width: 100% !important;
+        padding: 0.35rem 1.2rem !important;
+        /* font-size: 1.6rem !important; */
+        font-weight: 400 !important;
+        line-height: 1.5 !important;
+        color: #495057 !important;
+        border-color: #000000 !important;
+        border-radius: 0 !important;
+        -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    }
+
+    textarea:focus {
+        border-color: #3400ff !important;
+        outline: none !important;
+    }
+
+    .custom-control {
+        position: relative;
+        display: block;
+        min-height: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+
+    input[type=radio]:checked ~ input[type=radio]::before {
+        color: #fff !important;
+        border-color: #3400ff !important;
+        background-color: #3400ff !important;
+    }
+
+    input[type=radio]:focus ~ .input[type=radio]::before {
+        box-shadow: 0 0 0 0.2rem !important;
+        background-color: #3400ff !important;
+    }
+
+    .custom-control-input:checked ~ .custom-control-label::before {
+        color: #fff !important;
+        border-color: #3400ff !important;
+        background-color: #3400ff !important;
+    }
+
+    .custom-control-input:focus ~ .custom-control-label::before {
+        box-shadow: 0 0 0 0.2rem !important;
+        background-color: #3400ff !important;
+    }
+
+    label.custom-control-label::after {
+        border-color: #000000;
+    }
+
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #3400ff;
+        outline: 0;
+        box-shadow: 0 0 0 0.1rem rgba(52, 0, 255, 0.01);
+    }
+
+
+    .custom-select {
+        display: inline-block;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #000;
+        vertical-align: middle;
+        background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+        background-color: #fff;
+        border: 1px solid #000;
+        border-radius: 0.25rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+        .custom-select:focus {
+            border-color: #3400ff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(52, 0, 255, 0.01);
+        }
+
+            .custom-select:focus::-ms-value {
+                color: #6c757d;
+                background-color: #fff;
+            }
+
+        .custom-select[multiple], .custom-select[size]:not([size="1"]) {
+            height: auto;
+            padding-right: 0.75rem;
+            background-image: none;
+        }
+
+        .custom-select:disabled {
+            color: #6c757d;
+            background-color: #e9ecef;
+        }
+
+        .custom-select::-ms-expand {
+            display: none;
+        }
+
+    .custom-select-sm {
+        height: calc(1.5em + 0.5rem + 2px);
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        padding-left: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .custom-select-lg {
+        height: calc(1.5em + 1rem + 2px);
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+        font-size: 1.25rem;
+    }
+
+    .custom-control-label::before {
+        border: #000000 solid 1px;
+        border-radius: 0;
+    }
+
+
+    .search1 {
+        padding: 0px 0px 0px 0px;
+    }
+
+    .padront {
+        color: #3400ff;
+        font-weight: 600;
+    }
+
+    .contacto {
+        color: #3400ff;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .contacto:hover {
+            text-decoration: underline;
+        }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #000000;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+/*AGREGADOS*/
+
+    .parallax-container {
+        background-image: url(https://static.cpau.org/web/images/backgrounds/background.jpg);
+        min-height: 100vh;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding: 3%;
+    }
+
+    .header {
+        height: 3rem;
+        background-color: white;
+        display: flex;
+    }
+
+    .header-logo {
+        margin-top: 25px;
+        text-align: left;
+        max-width: 100%;
+        padding-right: 6%;
+    }
+
+    .captcha {
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+    }
+
+    @media (max-width: 769px) {
+        .captcha {
+            transform:scale(0.77);
+            margin-left: 0;
+        }
+    }
+
+    .inscripcion {
+        clear: both;
+        margin-bottom: 5px;
+        padding-top: 5px;
+        min-height: 30px;
+    }
+
+    .inscripciontitle {
+        font-size: 40px;
+        font-weight: 800;
+        display: block;
+        color: #212529;
+        margin-left: 14px;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    .inscripcionaclaraciones {
+        font-size: 11px;
+        display: block;
+        color: Red;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .inscripcionsubtitle {
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: transparent;
+        margin-top: 18px;
+        margin-left: 14px;
+    }

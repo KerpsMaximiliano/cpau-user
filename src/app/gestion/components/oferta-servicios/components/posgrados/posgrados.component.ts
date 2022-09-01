@@ -88,7 +88,7 @@ export class PosgradosComponent implements OnInit {
       });
     });
   }
-  protected reload() {
+  reload() {
     this.initData();
   }
 

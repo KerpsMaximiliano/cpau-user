@@ -77,7 +77,7 @@ export class DerechoAnualComponent implements OnInit {
 
   
 
-  protected reload() {
+  reload() {
     this.initData();
   }
 }

@@ -1,0 +1,27 @@
+﻿<div class="row" *ngIf="!allData.disabled">
+    <div class="col-md-12">
+        <label class="headersmalltext">{{allData.name}}<span *ngIf="allData.required === true">&nbsp;*</span></label>
+        <div *ngIf="parentGroup.controls[id].invalid && (parentGroup.controls[id].dirty || parentGroup.controls[id].touched)" style="display: inline;">
+            <small
+                class="alert-warning ml-1"
+                *ngIf="parentGroup?.controls[id].errors.required"
+                [hidden]='!parentGroup?.controls[id].errors && !parentGroup?.controls[id].errors.required'>
+                Dato obligatorio
+            </small>
+        </div>
+        <form novalidate>
+            <input  
+                [(ngModel)]="value"
+                [type]="type"                
+                class="form-control rounded-0"
+                [ngClass]="{'input-error': parentGroup.controls[id].invalid && (parentGroup.controls[id].dirty || parentGroup.controls[id].touched)}"
+                [id]="id"
+                [name]="id"
+                uppercase-code
+                (blur)="onTouch()"
+                (change)="changedInput($event.target.value)"
+                [placeholder]="placeholder"
+            >
+        </form>
+    </div>
+</div>

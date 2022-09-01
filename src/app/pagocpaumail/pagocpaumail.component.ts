@@ -105,7 +105,7 @@ export class PagoCpauMailComponent implements OnInit {
     var my_tb=document.createElement('INPUT') as any;
     my_tb.type='HIDDEN';
     my_tb.name='URLDINAMICA';
-    my_tb.value=environment.oldSiteUrl + '/api/consejo/resultadooperacioncpaumail';
+    my_tb.value=environment.apiUrl + '/api/consejo/resultadooperacioncpaumail';
     my_form.appendChild(my_tb);
 
     document.body.appendChild(my_form);

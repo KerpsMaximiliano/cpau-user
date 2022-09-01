@@ -2,11 +2,11 @@ export const DEAFULT_IMAGE: string = 'https://static.cpau.org/.newsite/images/ho
 
 export interface ContentSite {
     id: number;
-    keywords: string;
-    showHeader: boolean;
-    breadCrumb: any;
-    templateId: number;
-    backgroundImageUrl: string;
+    keywords?: string | null;
+    showHeader?: boolean;
+    breadCrumb?: any | null;
+    templateId?: number | null;
+    backgroundImageUrl?: string | null;
     items?: (ItemsSite)[] | null;
     childLists?: (ChildList)[] | null;
     sectionTopics?: (SectionTopicsEntity)[] | null;
@@ -17,8 +17,8 @@ export interface ContentSite {
     contactEmail?:string | null;
     contactName?:string | null;
     content?: Content | null;
-    filterApply: string;
-    link: string;
+    filterApply?: string | null;
+    link?: string | null;
     linkTarget: string;
 }
 export interface ItemsSite {

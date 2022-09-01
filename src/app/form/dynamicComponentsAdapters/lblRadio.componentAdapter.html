@@ -1,0 +1,8 @@
+<form class="form-horizontal" [formGroup]="parentGroup" novalidate >
+    <radiocontrol-component
+        [parentGroup]="parentGroup"
+        formControlName="{{allData.id}}"
+        [allData]="allData"
+        (onChangeComponent)="onChangeComponentEvent($event)">
+    </radiocontrol-component>
+</form>

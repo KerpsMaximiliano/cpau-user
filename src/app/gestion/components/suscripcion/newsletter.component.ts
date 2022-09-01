@@ -64,7 +64,7 @@ export class NewsletterComponent implements OnInit {
     this.loadData();
   }
 
-  protected reload() {
+  reload() {
     this.loadData();
   }
 }

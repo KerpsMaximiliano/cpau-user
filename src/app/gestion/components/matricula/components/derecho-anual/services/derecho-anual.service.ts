@@ -36,8 +36,7 @@ export class DerechoAnualService {
   }
 
   imprimirBoleta(matricId: string, numero: string, tipo: string) {
-    this.httpClient.get(`${environment.apiUrl}/api/matriculado/GenerarBoleta?nocache=${Math.random()}`, HttpOptionsDownloadFile )
-    .subscribe((resp: HttpResponse<Blob>) => {
+	this.httpClient.get(`${environment.apiUrl}/api/matriculados/imprimirboleta/${matricId}?nocache=${Math.random()}`, HttpOptionsDownloadFile )    .subscribe((resp: HttpResponse<Blob>) => {
       this.downloadFile(resp, numero, tipo);
     });
   }

@@ -7182,7 +7182,7 @@ button.bg-dark:focus {
     }
 }
 
-@media print {
+/* @media print {
     .d-print-none {
         display: none !important;
     }
@@ -7212,7 +7212,7 @@ button.bg-dark:focus {
         display: -ms-inline-flexbox !important;
         display: inline-flex !important;
     }
-}
+} */
 
 .embed-responsive {
     position: relative;
@@ -10261,7 +10261,7 @@ a.text-dark:focus {
     visibility: hidden !important;
 }
 
-@media print {
+/* @media print {
     *,
     *::before,
     *::after {
@@ -10338,7 +10338,7 @@ a.text-dark:focus {
         color: inherit;
         border-color: #dee2e6;
     }
-}
+} */
 
 
 /*# sourceMappingURL=bootstrap.css.map */

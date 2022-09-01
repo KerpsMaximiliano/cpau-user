@@ -55,6 +55,26 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
 import { LoadingScreenInterceptor } from './_helpers/loading.interceptor';
 import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
 import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
+import { ConstanciaComponent } from './form/constancia/constancia.component';
+import { DynamicComponent } from './form/dynamic-component/dynamic-component.component';
+import { ComponentContainer } from './form/directives/componentContainer';
+import { LblSelectAdapterComponent } from './form/dynamicComponentsAdapters/lblSelect.componentAdapter';
+import { SelectControlComponent } from './form/selectControl/selectControl.component';
+import { LblInputStringAdapterComponent } from './form/dynamicComponentsAdapters/lblInput.string.componentAdapter';
+import { StringInputControlComponent } from './form/inputControl/string.input.control';
+import { TextAreaControlComponent } from './form/textareaControl/textareaControl.component';
+import { LblTextareaAdapterComponent } from './form/dynamicComponentsAdapters/lblTextareacomponentAdapter';
+import { LblCheckboxAdapterComponent } from './form/dynamicComponentsAdapters/lblCheckbox.componentAdapter';
+import { CheckboxControlComponent } from './form/checkboxControl/checkboxControl.component';
+import { LblRadioAdapterComponent } from './form/dynamicComponentsAdapters/lblRadio.componentAdapter';
+import { RadioControlComponent } from './form/radioControl/radioControl.component';
+import {NgxPrintModule} from 'ngx-print';
+import { QRCodeModule } from 'angularx-qrcode';
+import { LabelAdapterComponent } from './form/dynamicComponentsAdapters/label.componentAdapter';
+import { LabelControlComponent } from './form/labelControl/label.control';
+import { LblHiddenAdapterComponent } from './form/dynamicComponentsAdapters/lblHidden.componentAdapter';
+import { HiddenControlComponent } from './form/hiddenControl/hidden.control';;
+import { FinalMessageComponent } from './form/final-message/final-message.component'
 //import { LightgalleryModule } from 'lightgallery/angular';
 @NgModule({
   imports: [
@@ -72,7 +92,9 @@ import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
     BootstrapModalModule.forRoot({ container: document.body }),
     NgbModule,
     OwlModule,
-    Angular2ImageGalleryModule
+    Angular2ImageGalleryModule,
+    NgxPrintModule,
+    QRCodeModule
   ],
   declarations: [
     AppComponent,
@@ -112,7 +134,37 @@ import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
     numberOnlyDirective,
     ModalComponent,
     ActualizacionEmailComponent,
-    LoadingComponent
+    LoadingComponent,
+    ConstanciaComponent,
+    DynamicComponent,
+    ComponentContainer,
+    LblSelectAdapterComponent,
+    SelectControlComponent,
+    LblInputStringAdapterComponent,
+    StringInputControlComponent,
+    TextAreaControlComponent,
+    LblTextareaAdapterComponent,
+    LblCheckboxAdapterComponent,
+    CheckboxControlComponent,
+    LblRadioAdapterComponent,
+    RadioControlComponent,
+    LabelAdapterComponent,
+    LabelControlComponent,
+    LblHiddenAdapterComponent,
+    HiddenControlComponent,
+    FinalMessageComponent
+  ],
+  exports:[
+    SelectControlComponent,
+    StringInputControlComponent,
+    TextAreaControlComponent,
+    LblTextareaAdapterComponent,
+    LblCheckboxAdapterComponent,
+    CheckboxControlComponent,
+    LblRadioAdapterComponent,
+    RadioControlComponent,
+    LabelControlComponent,
+    HiddenControlComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -132,7 +184,14 @@ import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
     TemplateFourComponent,
     TemplateFiveComponent,
     ModalComponent,
-    TemplateAgendaTagsComponent
+    TemplateAgendaTagsComponent,
+    LblSelectAdapterComponent,
+    LblInputStringAdapterComponent,
+    LblTextareaAdapterComponent,
+    LblCheckboxAdapterComponent,
+    LblRadioAdapterComponent,
+    LabelAdapterComponent,
+    LblHiddenAdapterComponent,
   ],
   bootstrap: [AppComponent],
 })

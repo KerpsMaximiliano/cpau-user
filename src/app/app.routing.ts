@@ -20,6 +20,8 @@ import { PreregisterComponent } from './login/preregister';
 import { AuthGuard } from './_helpers';
 import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
 import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
+import { ConstanciaComponent } from './form/constancia/constancia.component';
+import { FinalMessageComponent } from './form/final-message/final-message.component';
 
 const routes: Routes = [
   {
@@ -31,8 +33,16 @@ const routes: Routes = [
     component: BoletinesComponent,
   },
   {
-    path: 'formulario/:idFormulario',
+    path: 'formularios/mensajefinal',
+    component: FinalMessageComponent,
+  },
+  {
+    path: 'formularios/:idFormulario',
     component: FormComponent,
+  },
+  {
+    path: 'formularios/constancia/:uid',
+    component: ConstanciaComponent,
   },
   {
     path: 'login',

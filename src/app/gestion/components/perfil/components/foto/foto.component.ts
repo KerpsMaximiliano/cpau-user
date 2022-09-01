@@ -46,7 +46,7 @@ export class FotoComponent implements OnInit {
     });
   }
 
-  protected reload() {
+  reload() {
     this.initData();
   }
 
@@ -64,7 +64,7 @@ export class FotoComponent implements OnInit {
         if (response.success) {
           this.toastr.success('Actualizacion realizada con exito');
           this.loading = false;
-          location.reload(true);
+          location.reload();
         } else {
           this.toastr.error(response.message);
           this.loading = false;
@@ -76,7 +76,8 @@ export class FotoComponent implements OnInit {
     }
   }
 
-  changeCheck() {
+  changeCheck(event) {
+    console.log(event)
     if (!this.hasPolicy) {
       this.fotosForm.controls['perfil'].enable();
       this.fotosForm.controls['credencial'].enable();
