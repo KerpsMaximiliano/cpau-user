@@ -40,7 +40,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
       this.colapsar(0);
     } else if (url[url.length - 2] == "matricula") {
       this.colapsar(1);
-    } else if (url[url.length - 2] == "oferta-servicio") {
+    } else if (url[url.length - 2] == "oferta-servicios") {
       this.colapsar(2);
     }
   }
