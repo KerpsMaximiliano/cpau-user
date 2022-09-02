@@ -14,7 +14,7 @@
                             <div *ngSwitchCase="'UNM'" class="alert alert-warning">
                                 <p>Debe ser matriculado para poder acceder al formulario.</p>
                             </div>
-                            <div *ngSwitchCase="'YISC'">
+                            <div *ngSwitchCase="'YISC'" class="alert alert-warning">
                                 <p>Usted ya se encuentra registrado en esta inscripción.</p>
                             </div>
                             <div *ngSwitchCase="'UB'" class="alert alert-warning">
@@ -30,7 +30,7 @@
                             <div *ngSwitchCase="'CL'" class="alert alert-warning">
                                 <p>Lamentablemente el cupo para esta actividad se completó.</p>
                             </div>
-                            <div *ngSwitchCase="'YISCLE'">
+                            <div *ngSwitchCase="'YISCLE'" class="alert alert-warning">
                                 <p>
                                     Muchas gracias, ya formás parte de la lista de espera
                                     <br>
@@ -45,9 +45,9 @@
                                 <div *ngIf="errorLE == true" class="alert alert-warning">
                                     <p>Lamentablemente el cupo para esta actividad se completó.<br>Podés
                                         ingresar a la lista de espera.<br><br>Muchas gracias</p>
-                                    <button (click)="onShowForm()">Mostrar formulario para lista de
-                                        espera</button>
                                 </div>
+                                <button *ngIf="errorLE == true" class="alert alert-warning" (click)="onShowForm()">Mostrar formulario para lista de
+                                    espera</button>
                                 <div *ngIf="showForm">
                                     <div class="row bk6"
                                         style="margin-top: -10px; margin-left: -30px; background-color: transparent; margin-right: -40px;">
@@ -91,7 +91,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div *ngIf="messageLE">
+                            <div *ngIf="messageLE" class="alert alert-warning">
                                 <p>
                                     Muchas gracias, ya formas parte de la lista de espera.
                                 </p>
