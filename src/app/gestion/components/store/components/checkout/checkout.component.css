@@ -1,0 +1,74 @@
+@import './../../../../gestion.css';
+
+.form-label {
+    padding-top: 7px;
+    margin-bottom: 0;
+    /* text-align: right; */
+}
+.tipo-domicilio-select {
+    font-size: 14px;
+    padding: 6px 12px;
+}
+table {
+    table-layout: auto!important;
+}
+/* td, th {
+    vertical-align: middle!important;
+} */
+/* .table th:first-child, .table td:first-child {
+    width: 80px;
+    text-align: center;
+}
+.table td:first-child {
+    font-size: 18px;
+}
+.table td:first-child i{
+    cursor: pointer;
+} */
+.table th:last-child, .table td:last-child {
+    text-align: right;
+}
+td {
+    word-wrap: break-word;
+    border-bottom: 1px solid #c5c5c5;
+}
+/* table tbody tr th button {
+    padding: 7%;
+} */
+.form-control:focus {
+    border-color: #3400FF!important;
+}
+.has-error > div > .form-control:focus {
+    border-color: #ed5565!important;
+}
+.readOnly {
+    cursor: auto;
+}
+.readOnly:focus {
+    border: 1px solid #e5e6e7!important;
+}
+.price {
+    color: #1ab394;
+}
+.error-message {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    color: #ed5565;
+}
+.credit-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+@media only screen and (min-width: 1200px){
+    .credit-card-container {
+        gap: 20px;
+    }
+}
+@media only screen and (max-width: 576px){
+    .tipo-domicilio-select {
+        margin-bottom: 0.25rem !important;
+    }
+}

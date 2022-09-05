@@ -1,0 +1,41 @@
+@import './../../../../gestion.css';
+
+.product-item {
+    border-radius: 5px;
+    border: 1px solid #D1D1D1;
+    max-width: 520px;
+    margin: auto;
+}
+.categoria-select {
+    font-size: 14px;
+    padding: 6px 12px;
+}
+.form-control:focus {
+    border-color: #3400FF!important;
+}
+.card {
+    padding: 10px;
+    max-width: 580px;
+    margin: auto;
+    border: 2px solid #e7eaec;
+}
+.card-img {
+    border-right: solid 1px #e3e3e3;
+}
+.price {
+    color: #1ab394;
+}
+@media only screen and (max-width: 991px){
+    .control-label {
+        text-align: left!important;
+    }
+}
+@media only screen and (max-width: 768px){
+    .product-item {
+        text-align: center
+    }
+    .card {
+        padding: 0;
+        border: 0px solid #e7eaec;
+    }
+}
