@@ -39,12 +39,19 @@
                         <span>Su carrito está vacío!</span>
                     </ng-template>
                     <ng-template [ngIf]="productos.length > 0">
+                        <div *ngIf="datosEnvio" class="row">
+                            <div class="col-md-6 col-lg-4" style="padding:0;">
+                                <p class="col-md-12"><strong>Dirección de facturación:</strong></p>
+                                <p class="col-md-12">{{datosEnvio.nombre}}</p>
+                                <p class="col-md-12">{{domicilioParticular.domicilio}}</p>
+                            </div>
+                        </div>
                         <ng-container *ngIf="enviable">
                             <form method="get" class="form-horizontal" [formGroup]="datosEnvioForm">
                                 <div class="row">
                                     <div class="col-lg-7 col-md-12">
                                         <div class="form-group">
-                                            <div class="checkbox col-sm-12">
+                                            <div class="checkbox col-sm-12">    
                                                 <label>
                                                     <input type="checkbox" (change)="onChangeCheckbox($event)">
                                                     <strong>Solicitar envio</strong>
@@ -84,14 +91,6 @@
                                 </div>
                             </form>
                         </ng-container>
-                                                            <!-- <div class="form-group">
-                                        <input type="checkbox">
-                                        <label class="form-label ml-2">Solicitar envio</label>
-                                    </div> -->
-                        <!-- <div class="checkbox">
-                            <input type="checkbox">
-                            <label class="form-label">Solicitar envio</label>
-                        </div> -->
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>

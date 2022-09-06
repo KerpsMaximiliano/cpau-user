@@ -10,10 +10,13 @@ export class StoreService {
 
   constructor( private httpClient: HttpClient) { }
 
-  getAllProductos(categoriaId = 'todos'): Observable<any> {
+  getAllProductos(categoriaId?, orderBy? ): Observable<any> {
     let params = new HttpParams().set('nocache', 'true');
-    if (categoriaId !== 'todos') {
+    if (categoriaId && categoriaId !== 'todos') {
       params = params.append('categoriaId', categoriaId.toString());
+    }
+    if (orderBy) {
+      params = params.append('orderBy', orderBy);
     }
     return this.httpClient.get(`${environment.apiUrl}/api/store/productos`, {params});
   }

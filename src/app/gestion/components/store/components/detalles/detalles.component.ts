@@ -12,6 +12,7 @@ import { Categoria } from '../../models/categoria.model';
 })
 export class DetallesComponent implements OnInit {
 
+  public urlHelp = 'BETO PONE LA URL DE LA NOTA ACA';
   collapsed: boolean;
   loading: boolean;
   quantity: FormControl;
@@ -68,6 +69,10 @@ export class DetallesComponent implements OnInit {
 
   onClickCategoria() {
     this.router.navigate(['/gestion/home/store'], {state: {categoria: this.categoria.id}});
+  }
+
+  reload() {
+    this.initData();
   }
 
 }

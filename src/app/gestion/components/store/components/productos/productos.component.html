@@ -37,39 +37,40 @@
                 <div class="ibox-content" [hidden]="collapsed">
                     <div class="container-fluid">
                         <div class="form-horizontal">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group row">
-                                    <label class="col-md-12 col-lg-4 control-label">Categorias:</label>
-                                    <div class="col-md-8 col-lg-8">
-                                        <div>
-                                            <select
-                                                class="categoria-select browser-default custom-select form-control"
-                                                (change)="onChangeCategoria($event.target.value)">
-                                                <option value="todos" [selected]="selectedCategory === 'todos'" >Todos</option>
-                                                <option *ngFor="let categoria of categorias" 
-                                                [value]="categoria.id" [selected]="selectedCategory === categoria.id">{{categoria.nombre}}</option>
-                                            </select>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group row">
+                                        <label class="col-md-12 col-lg-4 control-label">Categorias:</label>
+                                        <div class="col-md-8 col-lg-8">
+                                            <div>
+                                                <select
+                                                    class="cust-select browser-default custom-select form-control"
+                                                    (change)="onChangeCategoria($event.target.value)">
+                                                    <option value="todos" [selected]="selectedCategory === 'todos'" >Todos</option>
+                                                    <option *ngFor="let categoria of categorias" 
+                                                    [value]="categoria.id" [selected]="selectedCategory === categoria.id">{{categoria.nombre}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group row">
+                                        <label class="col-md-12 col-lg-4 control-label">Ordenar por:</label>
+                                        <div class="col-md-8 col-lg-8">
+                                            <div>
+                                                <select
+                                                    class="cust-select browser-default custom-select form-control"
+                                                    (change)="onChangeOrdenar($event.target.value)">
+                                                    <option value="nombre" [selected]="orderBy === 'nombre'">Nombre</option>
+                                                    <option value="precio" [selected]="orderBy === 'precio'">Precio</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form-group row">
-                                    <label class="col-md-12 col-lg-4 control-label">Ordenar por:</label>
-                                    <div class="col-md-8 col-lg-8">
-                                        <div>
-                                            <select
-                                                class="ordenar-select browser-default custom-select form-control">
-                                                <option value="" disabled selected hidden>Elegí una opción</option>
-                                                <option value="2">2n</option>
-                                                <option value="A">A</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div></div>
+                        </div>
                         <div *ngFor="let producto of productos" class="row product-item mt-2">
                             <div class="col-md-12"><h4>{{producto.nombre}}</h4></div>
                             <div class="col-md-3 mb-2 card-img"><img src="../../../../../../stylesCustom/images/agenda/1.jpg" width="100px" height="100px"></div>
@@ -80,20 +81,6 @@
                                 <button (click)="onClickComprar(producto.id)" class="btn btn-primary btn-block">Comprar</button>
                             </div>
                         </div>
-                        <!-- <div class="row product-item mt-2">
-                            <div class="col-md-12"><h4>ABC del Ejercicio Profesional en CABA y Jurisdicción Nacional</h4></div>
-                            <div class="col-md-3 mb-2"><img src="../../../../../../stylesCustom/images/agenda/1.jpg" width="100px" height="100px"></div>
-                            <div class="col-md-6"><p><b>› Docente: </b>Arq. Irene Kalnins<br>
-                                <b>› Inicia: </b>14 de septiembre.<br>
-                                <b>› Finaliza:</b>&nbsp;26 de octubre.<br>
-                                <b>› Modalidad:</b> Asincrónica - Clases en formato PDF y actividades en foros.<br>
-                                &nbsp;</p></div>
-                            <div class="col-md-3">
-                                <span>$ 2.250,00</span>
-                                <button (click)="onClickDetalles('ABC')" class="btn btn-info btn-block">Detalles</button>
-                                <button class="btn btn-primary btn-block">Comprar</button>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>

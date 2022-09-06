@@ -12,11 +12,13 @@ import { environment } from '@environments/environment';
 })
 export class CheckoutComponent implements OnInit {
 
+  public urlHelp = 'BETO PONE LA URL DE LA NOTA ACA';
   collapsed: boolean;
   loading: boolean;
   productos: Producto[];
   datosEnvio: DatosEnvio;
   datosEnvioForm: FormGroup;
+  domicilioParticular: any;
   enviable: boolean;
   solicitarEnvio: boolean;
 
@@ -54,19 +56,25 @@ export class CheckoutComponent implements OnInit {
           }
         });
       }
+    },(err) => console.log(err), () => {
+      this.storeService.getDatosEnvio().subscribe(res => {
+        this.datosEnvio = res.data;
+        this.domicilioParticular = this.datosEnvio.domicilios.find(d => d.tipo === 'Particular');
+      });
     });
   }
 
   onChangeCheckbox(event) {
     this.solicitarEnvio = event.target.checked;
     if (event.target.checked) {
-      if (!this.datosEnvio) {
-        this.storeService.getDatosEnvio().subscribe(res => {
-          this.datosEnvio = res.data;
-        }, (err) => console.log(err), () => this.enableForm());
-      } else {
-        this.enableForm();
-      }
+      this.enableForm();
+      // if (!this.datosEnvio) {
+      //   this.storeService.getDatosEnvio().subscribe(res => {
+      //     this.datosEnvio = res.data;
+      //   }, (err) => console.log(err), () => this.enableForm());
+      // } else {
+      //   this.enableForm();
+      // }
     } else {
       this.datosEnvioForm.disable();
     }
@@ -173,6 +181,10 @@ export class CheckoutComponent implements OnInit {
 
     document.body.appendChild(my_form);
     my_form.submit();
+  }
+
+  reload() {
+    this.initData();
   }
 
 }

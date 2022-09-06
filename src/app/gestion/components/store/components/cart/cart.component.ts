@@ -11,6 +11,7 @@ import { Producto } from '../../models/producto.model';
 })
 export class CartComponent implements OnInit {
 
+  public urlHelp = 'BETO PONE LA URL DE LA NOTA ACA';
   collapsed: boolean;
   loading: boolean;
   productos: Producto[];
@@ -86,6 +87,10 @@ export class CartComponent implements OnInit {
 
   onClickSiguiente() {
     this.router.navigate(['/gestion/home/store/checkout']);
+  }
+
+  reload() {
+    this.initData();
   }
 
 }

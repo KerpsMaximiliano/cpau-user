@@ -11,15 +11,17 @@ import { Producto } from '../../models/producto.model';
 })
 export class ProductosComponent implements OnInit {
 
+  public urlHelp = 'BETO PONE LA URL DE LA NOTA ACA';
   collapsed: boolean;
   loading: boolean;
   productos: Producto[];
-  // productosResponse: Producto[];
   categorias: Categoria[];
   selectedCategory: any;
+  orderBy: any;
 
   constructor(private router: Router, private storeService: StoreService) {
     this.selectedCategory = 'todos';
+    this.orderBy = 'nombre';
     if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation().extras.state) {
       this.selectedCategory = this.router.getCurrentNavigation().extras.state.categoria;
     }
@@ -35,27 +37,18 @@ export class ProductosComponent implements OnInit {
       }, err => {
         console.log(err);
       }, () => {
-        this.getAllProductos(this.selectedCategory);
+        this.getAllProductos(this.selectedCategory, this.orderBy);
     });
-    // this.storeService.getAllProductos().subscribe(res => {
-    //   this.productosResponse = res.data;
-    //   this.productos = res.data;
-    // }, err => {
-    //   console.log(err);
-    // }, () =>{
-    //   this.storeService.getAllCategorias().subscribe(res => {
-    //     this.categorias = res.data;
-    //   });
-    // });
   }
 
   onChangeCategoria(value) {
-    this.getAllProductos(value);
-    // if (id === 'todos') {
-    //   this.productos = this.productosResponse;
-    // } else {
-    //   this.productos = this.productosResponse.filter(producto => producto.idCategoria === Number(id));
-    // }
+    this.selectedCategory = value;
+    this.getAllProductos(value, this.orderBy);
+  }
+
+  onChangeOrdenar(value) {
+    this.orderBy = value;
+    this.getAllProductos(this.selectedCategory, value);
   }
 
   onClickDetalles(id) {
@@ -78,10 +71,14 @@ export class ProductosComponent implements OnInit {
     localStorage.setItem('productos', JSON.stringify(productos));
 }
 
-  getAllProductos(categoria = 'todos') {
-    this.storeService.getAllProductos(categoria).subscribe(res => {
+  getAllProductos(categoria, orderBy) {
+    this.storeService.getAllProductos(categoria, orderBy).subscribe(res => {
       this.productos = res.data;
     });
+  }
+
+  reload() {
+    this.initData();
   }
 
 }
