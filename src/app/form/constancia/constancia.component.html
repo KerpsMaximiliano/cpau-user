@@ -77,8 +77,8 @@
                         </div>
                         <div class="row" style="margin-top: 1rem;">
                             <div class="col-sm-9 col-btn">
-                                <div class="col-sm-12 remove-pl-m" *ngIf="form?.receiptFooter"[innerHTML]="form.receiptFooter"></div>
-                                <div class="print-skip">
+                                <div class="col-sm-12 remove-pl-m" *ngIf="form?.receiptFooter" [innerHTML]="form.receiptFooter"></div>
+                                <div class="print-skip" [ngClass]="{'no-receiptFooter': !form?.receiptFooter}">
                                     <div class="col-sm-12 remove-p-m">
                                         <button class="btn btn-imprimir btn-comprobante" (click)="onPrint()">
                                             Imprimir comprobante

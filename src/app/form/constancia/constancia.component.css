@@ -68,6 +68,12 @@
 .qr-d-only-m {
     display: none;
 }
+.no-receiptFooter {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+}
+
 
 /* Media Queries */
 
