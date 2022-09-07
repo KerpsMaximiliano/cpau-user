@@ -75,21 +75,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'" class="print-qr"></qrcode>
-                            <div *ngIf="form?.receiptFooter" style="
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            flex-direction: column;"
-                            [innerHTML]="form.receiptFooter"
-                            ></div>
-                        </div>
-                        <div class="row print-skip">
-                            <div class="col-md-12" style="margin: 10px">
-                                <button class="btn btn-imprimir" (click)="onPrint()">
-                                    Imprimir comprobante
-                                </button>
+                        <div class="row" style="margin-top: 1rem;">
+                            <div class="col-sm-9 col-btn">
+                                <div class="col-sm-12 remove-pl-m" *ngIf="form?.receiptFooter"[innerHTML]="form.receiptFooter"></div>
+                                <div class="print-skip">
+                                    <div class="col-sm-12 remove-p-m">
+                                        <button class="btn btn-imprimir btn-comprobante" (click)="onPrint()">
+                                            Imprimir comprobante
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 qr-col">
+                                <qrcode [qrdata]="qrdata" [width]="128" [errorCorrectionLevel]="'M'" class=""></qrcode>
+                            </div>
+                            <div class="col-sm-3 qr-d-only-m">
+                                <qrcode [qrdata]="qrdata" [width]="64" [errorCorrectionLevel]="'M'" class=""></qrcode>
                             </div>
                         </div>
                     </div>
