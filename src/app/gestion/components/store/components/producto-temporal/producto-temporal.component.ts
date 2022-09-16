@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StoreService } from '../../services/store.service';
-import { Producto } from '../../models/producto.model';
 import { Categoria } from '../../models/categoria.model';
+import { Producto } from '../../models/producto.model';
+import { StoreService } from '../../services/store.service';
 
 @Component({
-  selector: 'app-detalles',
-  templateUrl: './detalles.component.html',
-  styleUrls: ['./detalles.component.css']
+  selector: 'app-producto-temporal',
+  templateUrl: './producto-temporal.component.html',
+  styleUrls: ['./producto-temporal.component.css']
 })
-export class DetallesComponent implements OnInit {
+export class ProductoTemporalComponent implements OnInit {
 
   public urlHelp = 'BETO PONE LA URL DE LA NOTA ACA';
   collapsed: boolean;
@@ -18,7 +18,7 @@ export class DetallesComponent implements OnInit {
   quantity: FormControl;
   producto: Producto;
   categoria: Categoria;
-  error: any;
+  error: string;
 
   constructor(
     private router: Router,
@@ -36,10 +36,10 @@ export class DetallesComponent implements OnInit {
   }
 
   initData() {
-    const paramId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.storeService.getProductoById(paramId).subscribe(res => {
-      this.producto = res.data;
+    const paramHash = this.activatedRoute.snapshot.paramMap.get('hash');
+    this.storeService.getProductoTemporalByToken(paramHash).subscribe(res => {
       this.error = res.error;
+      this.producto = res.data;
     }, (err) => console.log(err)
     , () => {
       this.storeService.getAllCategorias().subscribe(res => {

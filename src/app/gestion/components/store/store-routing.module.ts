@@ -4,6 +4,7 @@ import { AuthGuard } from '@app/_helpers';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { DetallesComponent } from './components/detalles/detalles.component';
+import { ProductoTemporalComponent } from './components/producto-temporal/producto-temporal.component';
 import { ProductosComponent } from './components/productos/productos.component';
 
 
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: 'productos/:id',
     component: DetallesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'productoTemporal/:hash',
+    component: ProductoTemporalComponent,
     canActivate: [AuthGuard],
   },
   {

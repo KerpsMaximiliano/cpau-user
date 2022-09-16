@@ -35,52 +35,80 @@
                     </div>
                 </div>
                 <div class="ibox-content" [hidden]="collapsed">
-                    <div class="container-fluid">
-                        <div class="form-horizontal">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group row">
-                                        <label class="col-md-12 col-lg-4 control-label">Categorias:</label>
-                                        <div class="col-md-8 col-lg-8">
-                                            <div>
-                                                <select
-                                                    class="cust-select browser-default custom-select form-control"
-                                                    (change)="onChangeCategoria($event.target.value)">
-                                                    <option value="todos" [selected]="selectedCategory === 'todos'" >Todos</option>
-                                                    <option *ngFor="let categoria of categorias" 
-                                                    [value]="categoria.id" [selected]="selectedCategory === categoria.id">{{categoria.nombre}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                    <div class="row">
+                        <ng-container *ngIf="productos && productos.length >= 1">
+                        <div class="col-lg-6 col-md-12 main-col" style="margin: auto;">
+                            <div class="col-lg-9 col-md-12 productos-col">
+                                <div *ngFor="let producto of productos" class="row product-item mt-2 pb-2 pt-2">
+                                    <div class="col-md-3">
+                                        <img src="../../../../../../stylesCustom/images/agenda/1.jpg" width="100px" height="100px">
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group row">
-                                        <label class="col-md-12 col-lg-4 control-label">Ordenar por:</label>
-                                        <div class="col-md-8 col-lg-8">
-                                            <div>
-                                                <select
-                                                    class="cust-select browser-default custom-select form-control"
-                                                    (change)="onChangeOrdenar($event.target.value)">
-                                                    <option value="nombre" [selected]="orderBy === 'nombre'">Nombre</option>
-                                                    <option value="precio" [selected]="orderBy === 'precio'">Precio</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-6">
+                                        <h4>{{producto.nombre}}</h4>
+                                        <p [innerHTML]="producto.descripcion"></p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h3 class="price">${{producto.precio}}</h3>
+                                        <button (click)="onClickDetalles(producto.id)" class="btn btn-detalles btn-block">Detalles</button>
+                                        <button (click)="onClickComprar(producto.id)" class="btn btn-primary btn-block">Comprar</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div *ngFor="let producto of productos" class="row product-item mt-2">
-                            <div class="col-md-12"><h4>{{producto.nombre}}</h4></div>
-                            <div class="col-md-3 mb-2 card-img"><img src="../../../../../../stylesCustom/images/agenda/1.jpg" width="100px" height="100px"></div>
-                            <div class="col-md-6"><p [innerHTML]="producto.descripcion"></p></div>
-                            <div class="col-md-3">
-                                <span class="price">${{producto.precio}}</span>
-                                <button (click)="onClickDetalles(producto.id)" class="btn btn-info btn-block">Detalles</button>
-                                <button (click)="onClickComprar(producto.id)" class="btn btn-primary btn-block">Comprar</button>
+                            <!-- <div class="col-lg-9 col-md-12 productos-col">
+                                <div *ngFor="let producto of productos" class="row product-item mt-2">
+                                    <div class="col-md-12"><h4>{{producto.nombre}}</h4></div>
+                                    <div class="col-md-3 mb-2 card-img"><img src="../../../../../../stylesCustom/images/agenda/1.jpg" width="100px" height="100px"></div>
+                                    <div class="col-md-6"><p [innerHTML]="producto.descripcion"></p></div>
+                                    <div class="col-md-3">
+                                        <span class="price">${{producto.precio}}</span>
+                                        <button (click)="onClickDetalles(producto.id)" class="btn btn-detalles btn-block">Detalles</button>
+                                        <button (click)="onClickComprar(producto.id)" class="btn btn-primary btn-block">Comprar</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-lg-3 col-md-12 filtros-col">
+                                <div class="form-group row">
+                                    <label class="col-md-12 control-label">Categorias:</label>
+                                    <div class="col-md-12">
+                                        <div>
+                                            <select
+                                                class="cust-select browser-default custom-select form-control"
+                                                (change)="onChangeCategoria($event.target.value)">
+                                                <option value="todos" [selected]="selectedCategory === 'todos'" >Todos</option>
+                                                <option *ngFor="let categoria of categorias" 
+                                                [value]="categoria.id" [selected]="selectedCategory === categoria.id.toString()">{{categoria.nombre}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-12 control-label">Ordenar por:</label>
+                                    <div class="col-md-12">
+                                        <div>
+                                            <select
+                                                class="cust-select browser-default custom-select form-control"
+                                                (change)="onChangeOrdenar($event.target.value)">
+                                                <option value="nombre" [selected]="orderBy === 'nombre'">Nombre</option>
+                                                <option value="precio" [selected]="orderBy === 'precio'">Precio</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row qr-desktop">
+                                    <a class="col-md-12" href="http://qr.afip.gob.ar/?qr=G--S8nCDInjn7mqbNQdPOg,," target="_F960AFIPInfo">
+                                        <img src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="QR AFIP" style="width:100%;height: auto;">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 qr-tablet mt-2">
+                                <div class="row" style="margin:auto;">
+                                    <a href="http://qr.afip.gob.ar/?qr=G--S8nCDInjn7mqbNQdPOg,," target="_F960AFIPInfo">
+                                        <img src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="QR AFIP" style="width:100%;height:auto;">
+                                    </a>
+                                </div>
                             </div>
                         </div>
+                        </ng-container>
                     </div>
                 </div>
             </div>

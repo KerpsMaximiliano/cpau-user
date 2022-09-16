@@ -58,16 +58,13 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12">
-                                            <span>ABC del Ejercicio Profesional en CABA y Jurisdicción Nacional</span>
+                                            <span>{{producto.nombre}}</span>
+                                        </div>
+                                        <div class="col-md-12 mt-2" *ngIf="producto.descripcion">
+                                            <p [innerHTML]="producto.descripcion"></p>
                                         </div>
                                         <div class="col-md-12 mt-2">
-                                            <p><b>› Docente: </b>Arq. Irene Kalnins<br>
-                                                <b>› Inicia: </b>14 de septiembre.<br>
-                                                <b>› Finaliza:</b>&nbsp;26 de octubre.<br>
-                                                <b>› Modalidad:</b> Asincrónica - Clases en formato PDF y actividades en foros.<br></p>
-                                        </div>
-                                        <div class="col-md-12 mt-2">
-                                            <span class="price">$ 2.250,00</span>
+                                            <span class="price">{{producto.precio | currency}}</span>
                                             <form class="form-inline mt-2">
                                                 <div class="form-group" [ngClass]="{'has-error':quantity.touched && quantity.errors}">
                                                     <label class="control-label mr-2"> Cantidad:</label>
@@ -82,7 +79,7 @@
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-12">
-                                        <p>En los asesoramientos que se ofrecen en la Gerencia Técnica del CPAU se han detectado numerosas situaciones de conflicto que atraviesan los/las profesionales, sobre todo en los/as recientemente matriculados/as. La mayoría de ellas son fácilmente evitables si se aplican sencillos criterios y procesos en el ejercicio profesional. Los más importantes, conforme el<a href="https://mepa.cpau.org" target="_blank" class="keychainify-checked">&nbsp;<strong>Manual del Ejercicio Profesional del Arquitecto&nbsp;(MEPA)</strong></a>, se han recopilado en las guías que se ofrecen en este curso. Asimismo, se han agregado explicaciones sobre la ley que rige el ejercicio profesional en CABA y jurisdicción nacional, el Código de Ética &nbsp;y los códigos que rigen la construcción en el ámbito mencionado.</p>
+                                            <p [innerHTML]="producto.descripcionLarga"></p>
                                         </div>
                                     </div>
                                 </div>
