@@ -65,19 +65,23 @@
                                 DATOS DEL INSCRIPTO
                             </h6>
                             <div class="container">
-                                <div class="row" *ngFor="let field of resp">
-                                    <div class="col-4 col-left">
-                                        <p class="datos-p"><strong>{{field?.name}}</strong></p>
-                                    </div>
-                                    <div class="col-8 col-right">
-                                        <p class="datos-p">{{field?.value}}</p>
-                                    </div>
-                                </div>
+                                <ng-container *ngFor="let field of resp">
+                                    <ng-container *ngIf="field.type != 'hidden'">
+                                        <div class="row">
+                                            <div class="col-4 col-left">
+                                                <p class="datos-p"><strong>{{field?.name}}</strong></p>
+                                            </div>
+                                            <div class="col-8 col-right">
+                                                <p class="datos-p">{{field?.value}}</p>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </ng-container>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 1rem;">
                             <div class="col-sm-9 col-btn">
-                                <div class="col-sm-12 remove-pl-m" *ngIf="form?.receiptFooter" [innerHTML]="form.receiptFooter"></div>
+                                <div class="col-sm-12 remove-p-m" *ngIf="form?.receiptFooter" [innerHTML]="form.receiptFooter" style="margin-bottom:2.8rem;padding-right:2rem;"></div>
                                 <div class="print-skip" [ngClass]="{'no-receiptFooter': !form?.receiptFooter}">
                                     <div class="col-sm-12 remove-p-m">
                                         <button class="btn btn-imprimir btn-comprobante" (click)="onPrint()">

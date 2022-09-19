@@ -21,20 +21,20 @@ export class ConstanciaComponent implements OnInit {
   constructor(
     private _Activatedroute: ActivatedRoute,
     private formService: FormService,
-    private siteLoader: SiteLoader
   ) { }
 
   ngOnInit() {
     const uid = this._Activatedroute.snapshot.paramMap.get('uid');
     this.qrdata = this.currentLocation + '/formularios/constancia/' + uid;
     this.formService.getUid(uid).subscribe(res => {
-      this.resp = JSON.parse(res.data.response.fields)
-      this.form = res.data.form
-      this.form.fields = JSON.parse(res.data.form.fields)
+      this.resp = JSON.parse(res.data.response.fields);
+      this.form = res.data.form;
+      this.form.fields = JSON.parse(res.data.form.fields);
       this.resp.forEach((resp, index) => {
-        this.form.fields.forEach(field=> {
-          if(resp.id === field.IdFormField){
+        this.form.fields.forEach(field => {
+          if (resp.id === field.IdFormField) {
             this.resp[index].name = field.Name;
+            this.resp[index].type = field.Type;
           }
         });
       });
