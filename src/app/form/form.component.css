@@ -316,16 +316,16 @@ html * {
     }
 
     .header {
-        height: 3rem;
+         /* height: 3rem; */
         background-color: white;
         display: flex;
     }
 
     .header-logo {
-        margin-top: 25px;
+        /* margin-top: 25px; */
         text-align: left;
         max-width: 100%;
-        padding-right: 6%;
+        /* padding-right: 6%; */
     }
 
     .captcha {
