@@ -1,15 +1,17 @@
 <div class="parallax-container">
     <div class="container">
-        <div class="header">
-            <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
-                <img src="stylesCustom/images/logo/logocpau.jpg" class="header-logo" style="margin-left: 10px;"
-                    width="320" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" />
-            </a>
-        </div>
+        
        
         <div class="form" style="background: white;">
             <div class="container">
-                <div class="container" style="margin-top: 5px;">
+                
+                <div class="container" style="margin-top: 0px;">
+                    <div class="header">
+                        <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
+                            <img src="stylesCustom/images/logo/logocpau.jpg" class="header-logo"
+                                width="320" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" />
+                        </a>
+                    </div>
                         <ng-container [ngSwitch]="error" class="container">
                             <div *ngSwitchCase="'UNM'" class="alert alert-warning">
                                 <p>Debe ser matriculado para poder acceder al formulario.</p>
