@@ -73,5 +73,6 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         }
       );
-  }
+      this.authenticationService.loginOldSite(this.loginForm.value.username, this.loginForm.value.password).subscribe();
+   }
 }

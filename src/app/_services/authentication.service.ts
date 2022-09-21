@@ -134,4 +134,14 @@ export class AuthenticationService {
         //this.http.post<any>(`${environment.oldSiteUrl}/logoutOldsite`, null).subscribe();
       });
   }
+
+  loginOldSite(username: string, password: string) {
+    const formData: any = new FormData();
+    formData.append('UserName', username);
+    formData.append('Password', password);
+
+    return this.http
+      .post<any>(`${environment.oldSiteUrl}/LoginOldsite`, formData);
+  }
+
 }
