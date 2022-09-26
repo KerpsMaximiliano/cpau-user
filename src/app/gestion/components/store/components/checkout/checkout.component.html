@@ -1,0 +1,145 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <div class="row title-breadcump">
+            <div class="col-sm-8 row btn-sync">
+                <h2>Checkout</h2>
+            </div>
+            <div class="col-sm-4 text-right  btn-sync">
+                <button class="btn-question"><a [href]="urlHelp" target="_blank" title="Ayuda"><i class="fa fa-question"></i></a></button>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
+        <ol class="breadcrumb">
+            <li>
+                <a>Compras on-line</a>
+            </li>
+            <li class="active">
+                <a><strong>Checkout</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!--TAB Checkout-->
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Resúmen de compra</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                    <ng-template [ngIf]="productos.length === 0">
+                        <span>Su carrito está vacío!</span>
+                    </ng-template>
+                    <ng-template [ngIf]="productos.length > 0">
+                        <div *ngIf="datosEnvio" class="row">
+                            <div class="col-md-6 col-lg-4" style="padding:0;">
+                                <p class="col-md-12"><strong>Dirección de facturación:</strong></p>
+                                <p class="col-md-12">{{datosEnvio.nombre}}</p>
+                                <p class="col-md-12">{{domicilioParticular.domicilio}}</p>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="enviable">
+                            <form method="get" class="form-horizontal" [formGroup]="datosEnvioForm">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-12">
+                                        <div class="form-group">
+                                            <div class="checkbox col-sm-12">    
+                                                <label>
+                                                    <input type="checkbox" (change)="onChangeCheckbox($event)">
+                                                    <strong>Solicitar envio</strong>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <ng-container *ngIf="solicitarEnvio">
+                                            <div class="form-group" [ngClass]="{'has-error':destinatario.touched && destinatario.errors}">
+                                                <label for="destinatario" class="form-label col-sm-3">Destinatario:</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" id="destinatario" class="form-control" formControlName="destinatario">
+                                                    <span *ngIf="destinatario.touched && destinatario.errors?.required" class="error-message">Campo requerido</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" [ngClass]="{'has-error':direccion.touched && direccion.errors}">
+                                                <label for="direccion" class="form-label col-sm-3" >Direccion de envio:</label>
+                                                <div class="col-xs-12 col-sm-3">
+                                                    <select id="tiposDomicilios" formControlName="tipoDomicilio"
+                                                    class="tipo-domicilio-select form-control" (change)="onChangeTipoDomicilio($event.target.value)">
+                                                        <option *ngFor="let domicilio of datosEnvio?.domicilios" [value]="domicilio.tipo">
+                                                            {{domicilio.tipo}}
+                                                        </option>
+                                                        <option value="Nuevo">Nuevo</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <input type="text" id="direccion" class="form-control" 
+                                                    [ngClass]="{'readOnly':tipoDomicilio.value !== 'Nuevo'}" 
+                                                    formControlName="direccion" [readOnly]="tipoDomicilio.value !== 'Nuevo'">
+                                                    <span *ngIf="direccion.touched && direccion.errors?.required" class="error-message">Campo requerido</span>
+                                                    <span class="help-block">*Si necesitas ingresar un nuevo domicilio, selecciona Nuevo. 
+                                                        Tené en cuenta que es solo para el envío. No se guardará</span>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </form>
+                        </ng-container>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Productos</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Sub-Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let producto of productos">
+                                        <td><span>{{producto.nombre}}</span></td>
+                                        <td><span>{{producto.precio | currency}}</span></td>
+                                        <td><span>{{producto.cantidad}}</span></td>
+                                        <td><span class="price">{{producto.precio * producto.cantidad | currency}}</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row mb-2" style="margin: 0; justify-content: flex-end; padding-right: 8px;">
+                            <span class="text-right"><strong class="mr-2">Total:</strong>{{calcTotal() | currency}}</span>
+                        </div>
+                        <div class="row">
+                            <h5 style="padding:10px;">Seleccionar el medio de pago</h5>
+                        </div>
+                        <div class="credit-card-container">
+                            <div (click)="select('106')">
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/maestro.svg'" alt="Maestro" style="cursor: pointer;" />
+                            </div>
+                            <div (click)="select('31')">
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa-electron.svg'" alt="Visa Débito" style="cursor: pointer;" />
+                            </div>
+                            <div (click)="select('15')">
+                                <!-- 15 produccion , 20 test -->
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/mastercard.svg'" alt="MasterCard" style="cursor: pointer;" />
+                            </div>
+                            <div (click)="select('6')">
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/american_express.svg'" alt="American Express" style="cursor: pointer;" />
+                            </div>
+                            <div (click)="select('1')">
+                                <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/visa.svg'" alt="Visa" style="cursor: pointer;" />
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--FIN TAB Checkout-->

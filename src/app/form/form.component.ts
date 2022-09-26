@@ -20,14 +20,14 @@ export class FormComponent implements OnInit {
   errorLE = false;
   messageLE = false;
   captcha = null;
-  siteKey: string;
+  //siteKey: string;
   response: any;
   idForm: string;
   constructor(
     private _Activatedroute: ActivatedRoute,
     private formService: FormService,
     private router: Router) {
-    this.siteKey = environment.recaptcha;
+    //this.siteKey = environment.recaptcha;
     this.form = new FormGroup({
     });
   }

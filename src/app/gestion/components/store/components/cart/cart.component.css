@@ -1,0 +1,58 @@
+@import './../../../../gestion.css';
+
+/* .container {
+    padding: 2rem 5rem 2rem 1rem;
+    min-height: 200px;
+} */
+
+/* h4 {
+    margin: 2rem 0rem 1rem;
+} */
+
+table {
+    table-layout: auto!important;
+}
+td, th {
+    vertical-align: middle!important;
+}
+.table th:first-child, .table td:first-child {
+    width: 80px;
+    text-align: center;
+}
+.table td:first-child {
+    font-size: 18px;
+}
+.table td:first-child i{
+    cursor: pointer;
+}
+.table th:last-child, .table td:last-child {
+    text-align: right;
+}
+td {
+    word-wrap: break-word;
+    border-bottom: 1px solid #c5c5c5;
+}
+table tbody tr th button {
+    padding: 7%;
+}
+.form-control:focus {
+    border-color: #3400FF!important;
+}
+.has-error > .form-control:focus {
+    border-color: #ed5565!important;
+}
+.price {
+    color: #1ab394;
+}
+.error-message {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    color: #ed5565;
+}
+@media only screen and (max-width: 767px){
+    button {
+        width: 100%;
+        margin-right: 0;
+    }
+}

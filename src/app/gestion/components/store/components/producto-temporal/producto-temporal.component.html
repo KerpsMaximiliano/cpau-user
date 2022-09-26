@@ -1,0 +1,101 @@
+<!--Breadcump-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <div class="row title-breadcump">
+            <div class="col-sm-8 row btn-sync">
+                <h2>Detalles</h2>
+            </div>
+            <div class="col-sm-4 text-right  btn-sync">
+                <button class="btn-question"><a [href]="urlHelp" target="_blank" title="Ayuda"><i class="fa fa-question"></i></a></button>
+                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+            </div>
+        </div>
+        <ol class="breadcrumb">
+            <li>
+                <a>Compras on-line</a>
+            </li>
+            <li>
+                <a [routerLink]="'/gestion/home/store/productos'">Productos</a>
+            </li>
+            <li class="active">
+                <a><strong>Detalles</strong></a>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!--TAB Detalles-->
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <ol class="breadcrumb">
+                            <li>
+                                <a (click)="onClickCategoria()">{{categoria?.nombre}}</a>
+                            </li>
+                            <li>
+                                {{producto?.nombre}}
+                            </li>
+                        </ol>
+                    </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link" (click)="collapsed=!collapsed">
+                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" [hidden]="collapsed">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <ng-container *ngIf="producto && error == null">
+                                <div class="card">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                        <img src="../../../../../../stylesCustom/images/agenda/cpaufototest2.jpg" class="img-responsive" style="width:100%;">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <span>{{producto.nombre}}</span>
+                                        </div>
+                                        <div class="col-md-12 mt-2" *ngIf="producto.descripcion">
+                                            <p [innerHTML]="producto.descripcion"></p>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <span class="price">{{producto.precio | currency}}</span>
+                                            <form class="form-inline mt-2">
+                                                <div class="form-group" [ngClass]="{'has-error':quantity.touched && quantity.errors}">
+                                                    <label class="control-label mr-2"> Cantidad:</label>
+                                                    <input type="number" class="form-control" min="1" [formControl]="quantity">
+                                                    <p *ngIf="quantity.touched && quantity.errors?.required" class="error-message">Campo requerido</p>
+                                                    <p *ngIf="quantity.touched && quantity.errors?.min" class="error-message">
+                                                        La cantidad no puede ser menor a 1</p>
+                                                </div>
+                                            </form>
+                                            <button class="btn btn-primary mt-2" (click)="onClickComprar()" [disabled]="quantity.errors">Comprar</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-12">
+                                            <p [innerHTML]="producto.descripcionLarga"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="error == 'PND'">
+                                <div class="col-lg-6 col-lg-offset-3 col-md-12">
+                                    <div class="alert alert-warning">
+                                        Este producto no se encuentra disponible.
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--FIN TAB Detalles-->

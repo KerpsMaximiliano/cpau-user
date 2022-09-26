@@ -1,0 +1,30 @@
+@import './../../../../gestion.css';
+
+.form-control:focus {
+    border-color: #3400FF!important;
+}
+.has-error > .form-control:focus {
+    border-color: #ed5565!important;
+}
+.price {
+    color: #1ab394;
+}
+.error-message {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    color: #ed5565;
+    margin: 8px 0 0 0;
+}
+.card {
+    padding: 10px;
+    max-width: 580px;
+    margin: auto;
+    border: 2px solid #e7eaec;
+}
+@media only screen and (max-width: 768px){
+    .card {
+        padding: 0;
+        border: 0px solid #e7eaec;
+    }
+}

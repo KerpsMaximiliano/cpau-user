@@ -79,9 +79,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{storeUrl}}" target="_blank" ><i class="fa fa-shopping-cart"></i><span
-                                class="nav-label">Compras
-                                on-line</span></a>
+                        <a (click)="colapsar(4)"><i class="fa fa-shopping-cart"></i><span class="nav-label">Compras
+                            on-line</span>
+                            <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" [ngClass]="{'in': colapsado[4] === true, 'hideen-sub-menu': closeMenu}">
+                            <li><a [routerLink]="'store/productos'" routerLinkActive="active-link" (click)="closeMenu=true">Productos</a></li>
+                            <li><a [routerLink]="'store/carrito'" routerLinkActive="active-link" (click)="closeMenu=true">Carrito</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a (click)="colapsar(5)"><i class="fa fa-wpforms"></i> <span

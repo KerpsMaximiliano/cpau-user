@@ -36,6 +36,8 @@ export class MenuComponent implements OnInit, AfterViewInit {
       this.colapsar(6);
     } else if (url[url.length - 2] == "suscripciones") {
       this.colapsar(3);
+    } else if (url[url.length - 2] == "store") {
+      this.colapsar(4);
     } else if (url[url.length - 2] == "perfil") {
       this.colapsar(0);
     } else if (url[url.length - 2] == "matricula") {
@@ -82,9 +84,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
     return this.currentUser && this.currentUser.isMatriculado;
   }
 
-  get storeUrl() {
-    return `${environment.storeUrl}?token=${localStorage.getItem('jwt_token')}`;
-  }
+  // get storeUrl() {
+  //   return `${environment.storeUrl}?token=${localStorage.getItem('jwt_token')}`;
+  // }
 
   get adminUrl() {
     return environment.adminUrl;
