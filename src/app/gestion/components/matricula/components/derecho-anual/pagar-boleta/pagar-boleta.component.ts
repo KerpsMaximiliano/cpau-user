@@ -64,7 +64,7 @@ export class PagarBoletaComponent implements OnInit {
     var my_tb=document.createElement('INPUT') as any;
     my_tb.type='HIDDEN';
     my_tb.name='NROCOMERCIO';
-    my_tb.value=data.nroComercio;
+    my_tb.value='00050711';
     my_form.appendChild(my_tb);
 
     var my_tb=document.createElement('INPUT') as any;
