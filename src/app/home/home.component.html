@@ -373,31 +373,32 @@
                               <div class="carousel slide" data-ride="myCarousel">
                                   <div class="carousel-inner" role="listbox">
                                       <owl-carousel [options]="SlideOptions" id="epCarrousel"
-                                                      [items]="externalProduct"
-                                                      class="item"
-                                                      [carouselClasses]="['owl-theme', 'sliding', 'owl-carousel-home']" #owlElement> 
+                                          [items]="externalProduct"
+                                          class="item"
+                                          [carouselClasses]="['owl-theme', 'sliding', 'owl-carousel-home']" #owlElement> 
                                           <div *ngFor="let product of externalProduct; let index = index; let last = last" class="col-sm col-md-12 col-lg-12 col-lg col-xl">
-                                              <h6 class="mt-0 mb-2 pb-1 border-bottom">
-                                                <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
-                                              </h6>  
-                                              <a href="{{ product.url }}"target="{{selectTarget(product.linkTarget)}}" class="link-ss" title="{{ product.tooltip }}">
-                                                <li class="media">
-                                                  <div class="producto" [ngStyle]="{
-                                                      backgroundColor: product.color,
-                                                      color: product.textColor
-                                                    }">
-                                                    <figure>
-                                                      <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}" alt="" />
-                                                    </figure>
-                                                    <div class="py-2 px-3">
-                                                      <h5>{{ product.header }}</h5>
-                                                      <p>{{ product.description }}</p>
-                                                    </div>
+                                            <h6 class="mt-0 mb-2 pb-1 border-bottom">
+                                              <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
+                                            </h6>  
+                                            
+                                              <li class="media">
+                                                <div class="producto" [ngStyle]="{
+                                                    backgroundColor: product.color,
+                                                    color: product.textColor
+                                                  }">
+                                                  <figure>
+                                                    <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}" alt="" />
+                                                  </figure>
+                                                  <div class="py-2 px-3">
+                                                    <h5>
+                                                      <a href="{{ product.urlHeader }}" target="{{selectTarget(product.linkTargetHeader)}}" class="link-ss" title="{{ product.tooltip }}">{{ product.header }}</a>
+                                                    </h5>
+                                                    <p>{{ product.description }}</p>
                                                   </div>
-                                                </li>
-                                              </a>
-                                              <div class="d-none" *ngIf="messagesRendered(last)"></div>
-                                          </div> 
+                                                </div>
+                                              </li>
+                                            <div class="d-none" *ngIf="messagesRendered(last)"></div>
+                                        </div> 
                                       </owl-carousel>
                                   </div>
                               </div>
