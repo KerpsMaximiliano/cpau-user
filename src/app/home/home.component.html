@@ -58,7 +58,7 @@
                 <div class="row">
                   <div class="col-12">
                     <article>
-                      <a (click)="redirectUrl(contentSite[0])"  onmouseover="this.style.cursor='pointer';"
+                      <a (click)="redirectUrl(contentSite[0], $event)"  onmouseover="this.style.cursor='pointer';"
                         title="{{ contentSite[0]?.image?.title }}">
                         <li class="media noticia-principal">
                           <div class="row">

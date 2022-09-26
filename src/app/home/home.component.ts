@@ -248,15 +248,18 @@ export class HomeComponent {
     }
   }
 
-  redirectUrl(cs : ContentSite) {
-    if (cs.link && cs.link.trim() != ''){
-      this.redirect(cs.link, cs.linkTarget);
+  redirectUrl(cs : ContentSite, event) {
+    if(event.ctrlKey) {
+      console.log(this.activatedRoute.snapshot);
+      let win = window.open(`/nota/${cs.id}`, '_blank');
+      win.focus();
     } else {
-      console.log(this.activatedRoute.snapshot)
-      this.router.navigate([`/nota/${cs.id}`])
-        //.then(() => {
-        //  window.location.reload();
-        //});
+      if (cs.link && cs.link.trim() != ''){
+        this.redirect(cs.link, cs.linkTarget);
+      } else {
+        console.log(this.activatedRoute.snapshot)
+        this.router.navigate([`/nota/${cs.id}`])
+      }
     }
   }
 
