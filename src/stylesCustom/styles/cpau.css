@@ -207,6 +207,14 @@ h6,
     text-decoration: none;
 }
 
+.link-pe-nostyle {
+    text-decoration: none;
+}
+
+.link-pe-nostyle:hover {
+    text-decoration: none;
+}
+
 .celda-logo {
     vertical-align: bottom;
 }
