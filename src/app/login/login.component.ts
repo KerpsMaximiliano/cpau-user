@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams["redirect"] || "/";
+    this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
   }
 
   // convenience getter for easy access to form fields
@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
           if (!data.error) {
             console.log(localStorage.getItem("currentUser"));
             this.loading = false;
+            this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
             if (this.returnUrl !== '/') {
               this.router.navigate([this.returnUrl]);
             } else {
