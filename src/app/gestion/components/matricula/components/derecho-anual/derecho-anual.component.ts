@@ -73,6 +73,7 @@ export class DerechoAnualComponent implements OnInit {
 
   onGenerarBoletaPago() {
     // WS que genera el PDF de pago.
+    this.derechoAnualService.imprimirRecibo();
   }
 
   
