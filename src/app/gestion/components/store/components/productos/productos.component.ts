@@ -75,11 +75,10 @@ export class ProductosComponent implements OnInit {
   getAllProductos(categoria, orderBy) {
     this.storeService.getAllProductos(categoria, orderBy).subscribe(res => {
       this.productos = res.data;
-      console.log(this.productos)
     });
   }
 
-  getImage(imgByte){
+  getImage(imgByte) {
     const objectURL = 'data:image/png;base64,' + imgByte;
     return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
