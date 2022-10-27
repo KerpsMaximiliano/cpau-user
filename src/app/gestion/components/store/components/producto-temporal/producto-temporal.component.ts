@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Categoria } from '../../models/categoria.model';
 import { Producto } from '../../models/producto.model';
@@ -24,6 +25,7 @@ export class ProductoTemporalComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService,
+    private sanitizer: DomSanitizer
   ) {
     this.quantity = new FormControl('', {
       validators: [Validators.required, Validators.min(1)],
@@ -43,7 +45,7 @@ export class ProductoTemporalComponent implements OnInit {
     }, (err) => console.log(err)
     , () => {
       this.storeService.getAllCategorias().subscribe(res => {
-        this.categoria = res.data.find(c => c.id === this.producto.id);
+        this.categoria = res.data.find(c => c.id === this.producto.idCategoria);
       });
     });
   }
@@ -71,6 +73,11 @@ export class ProductoTemporalComponent implements OnInit {
 
   onClickCategoria() {
     this.router.navigate(['/gestion/home/store'], {state: {categoria: this.categoria.id}});
+  }
+
+  getImage(imgByte) {
+    const objectURL = 'data:image/png;base64,' + imgByte;
+    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 
   reload() {

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StoreService } from '../../services/store.service';
 import { Categoria } from '../../models/categoria.model';
 import { Producto } from '../../models/producto.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-productos',
@@ -19,7 +20,7 @@ export class ProductosComponent implements OnInit {
   selectedCategory: any;
   orderBy: any;
 
-  constructor(private router: Router, private storeService: StoreService) {
+  constructor(private router: Router, private storeService: StoreService, private sanitizer: DomSanitizer) {
     this.selectedCategory = 'todos';
     this.orderBy = 'nombre';
     if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation().extras.state) {
@@ -74,7 +75,13 @@ export class ProductosComponent implements OnInit {
   getAllProductos(categoria, orderBy) {
     this.storeService.getAllProductos(categoria, orderBy).subscribe(res => {
       this.productos = res.data;
+      console.log(this.productos)
     });
+  }
+
+  getImage(imgByte){
+    const objectURL = 'data:image/png;base64,' + imgByte;
+    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 
   reload() {
