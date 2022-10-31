@@ -1,0 +1,45 @@
+@import '../../../../../stylesCustom/styles/bootstrap/bootstrap.css';
+@import '../../../../../stylesCustom/styles/cpau.css';
+@import '../../../../../stylesCustom/styles/noticias.css';
+@import '../../../../../stylesCustom/styles/nota.css';
+@import '../../../../../stylesCustom/styles/loader.css';
+
+.div.col-md-7:nth-child(1) {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.col-md-2 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.col-12.col-sm-12.col-md-5.col-lg-5.col-xl-5 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+li.post:nth-child(1)>article:nth-child(1)>div:nth-child(1)>div:nth-child(2)>p:nth-child(3)>p:nth-child(1) {
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+    margin: 0px 0px 10px 0px !important;
+}
+
+.noticias-txt p {
+    font-size: 12pt;
+    line-height: 1.4;
+    margin: 0px 0px 6px 0px;
+}
+
+.margintop-52 {
+    margin-top: -52px;
+}
+
+.margintop-7 {
+    margin-top: -7px;
+}
+
+.articleCss article h1 {
+    padding: 40px 0px 15px 0px;
+}
+

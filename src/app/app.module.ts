@@ -75,6 +75,7 @@ import { LabelControlComponent } from './form/labelControl/label.control';
 import { LblHiddenAdapterComponent } from './form/dynamicComponentsAdapters/lblHidden.componentAdapter';
 import { HiddenControlComponent } from './form/hiddenControl/hidden.control';;
 import { FinalMessageComponent } from './form/final-message/final-message.component'
+import { TemplateSixComponent } from './home/components/templates/template-six/template-six.component';
 //import { LightgalleryModule } from 'lightgallery/angular';
 @NgModule({
   imports: [
@@ -113,6 +114,7 @@ import { FinalMessageComponent } from './form/final-message/final-message.compon
     TemplateThreeComponent,
     TemplateFourComponent,
     TemplateFiveComponent,
+    TemplateSixComponent,
     TemplateAgendaTagsComponent,
     MastertemplateComponent,
     RenderDirective,
@@ -183,6 +185,7 @@ import { FinalMessageComponent } from './form/final-message/final-message.compon
     TemplateListComponent,
     TemplateFourComponent,
     TemplateFiveComponent,
+    TemplateSixComponent,
     ModalComponent,
     TemplateAgendaTagsComponent,
     LblSelectAdapterComponent,
