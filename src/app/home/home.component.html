@@ -328,7 +328,7 @@
                             <h6 class="mt-0 mb-2 pb-1 border-bottom">
                             <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
                             </h6>  
-                            <a href="{{ product.url }}"target="{{selectTarget(product.linkTarget)}}" class="link-ss" title="{{ product.tooltip }}">
+                            <a href="{{ product.urlHeader }}"target="{{selectTarget(product.linkTargetHeader)}}" class="link-ss" title="{{ product.tooltip }}">
                             <li class="media">
                               <div class="producto" [ngStyle]="{
                                 backgroundColor: product.color,
