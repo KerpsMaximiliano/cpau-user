@@ -27,7 +27,7 @@ export class ConfirmComponent implements OnInit {
     });
 
     this.formsignin = this.formBuilder.group({
-      pass1: ['', [Validators.required,Validators.minLength(8),Validators.maxLength(50),Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,50}$')]],
+      pass1: ['', [Validators.required,Validators.minLength(8),Validators.maxLength(50),Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$+%^\-_&\[\]*]')]],
       pass2: ['', Validators.required]
   });
   }
