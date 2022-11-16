@@ -39,7 +39,7 @@ body {
 
 .alert {
     text-align: center;
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 500;
     padding: 20px;
     border-radius: 4px;
@@ -62,6 +62,8 @@ body {
     background: #f8d7da;
     border: 1px solid #f5c6cb;
 }
+
+
 
 
 /*LOGIN*/

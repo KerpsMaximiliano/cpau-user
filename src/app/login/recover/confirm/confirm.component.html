@@ -5,6 +5,9 @@
                 <div class="text-center py-4">
                     <a href="/" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo"> <img src="https://static.cpau.org/web/images/logo/cpau.svg" class="logo" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" /> </a>
                 </div>
+                <div class="alert alert-secondary" role="alert" style="margin-bottom: 0rem; text-align: left;">
+                    La nueva contraseña debe contener un mínimo de 8 caracters incluyendo al menos una minúscula, una mayúscula y un número. Pueden agregarse los siguientes caracteres especiales: # $ + % - _ & [ ] *
+                </div>
                 <br>
                 <div class="mb-2">
                     <label> Ingrese y re-ingrese su clave:</label>
@@ -12,31 +15,21 @@
                 <div class="form-label-group">
                     <input formControlName="pass1" type="password" id="pass1" class="form-control" placeholder="Nueva clave" required autofocus>
                     <label for="pass1"><i class="fa fa-key"></i> Nueva contraseña:</label>
-                    <div class="error-message"
-                    *ngIf="
-                    formsignin.controls.pass1?.errors &&
-                      (formsignin.controls.pass1?.dirty ||
-                      formsignin.controls.pass1?.touched)
-                    "
-                  >
-                    <div *ngIf="formsignin.controls.pass1?.errors.required">El ingreso de contraseña es obligatorio.</div>
-                    <div *ngIf="formsignin.controls.pass1?.errors.minlength">Se requiere que la contraseña tenga al menos 8 caracteres.</div>
-                    <div *ngIf="formsignin.controls.pass1?.value.length >= 8 && formsignin.controls.pass1?.errors.pattern"> Debe contener al menos una minúscula, una mayúscula y un número. Caracteres especiales opcionales: +#$%&*-_[]</div>
+                    <div class="error-message">
+                        <div *ngIf="pass1requerida">La contraseña es requerida.</div>
+                        <div *ngIf="pass1invalida">La contraseña no cumple con los requerimientos mínimos para ser válida.</div>
+                        
                     </div>
                 </div>
                 <div class="form-label-group">
                     <input formControlName="pass2" type="password" id="pass2" class="form-control" placeholder="Nueva clave" required autofocus>
                     <label for="pass2"><i class="fa fa-key"></i> Repita su nueva contraseña:</label>
 
-                <div class="error-message"
-                *ngIf="
-                formsignin.controls.pass2?.errors &&
-                  (formsignin.controls.pass2?.dirty ||
-                  formsignin.controls.pass2?.touched)
-                "
-              >
-                <div *ngIf="formsignin.controls.pass2?.errors.required">El reingreso de la contraseña es obligatorio.</div>
-                </div>
+                    <div class="error-message">
+                        <div *ngIf="pass2requerida">El reingreso de la contraseña es requerida.</div>
+                        <div *ngIf="pass2nocoincide">El reingreso de la contraseña no coincide con la nueva.</div>
+                    </div>
+                <br>
                 <button type="submit" [disabled]="loading" class="btn btn-login">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     {{ButtonText}}</button>
