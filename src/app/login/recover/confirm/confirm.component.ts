@@ -67,30 +67,30 @@ export class ConfirmComponent implements OnInit {
       return;
     }
 
-    // this.loading = true;
+    this.loading = true;
 
-    // this.authenticationService.confirm(this.email,this.token, this.f.pass1.value)
-    //     .pipe(first())
-    //     .subscribe(
-    //         data => {
-    //            if(data) {
-    //                if(!data.success) {
-    //                   document.getElementById('btnDatosIncorrectos').click();
+    this.authenticationService.confirm(this.email,this.token, this.f.pass1.value)
+        .pipe(first())
+        .subscribe(
+            data => {
+               if(data) {
+                   if(!data.success) {
+                      document.getElementById('btnDatosIncorrectos').click();
 
-    //                 if(data.message)
-    //                   console.log(data);
+                    if(data.message)
+                      console.log(data);
 
-    //                } else {
-    //                 this.ButtonText = "PROCESO COMPLETADO CON EXITO";
+                   } else {
+                    this.ButtonText = "PROCESO COMPLETADO CON EXITO";
 
-    //                 setTimeout(() => {
-    //                   this.router.navigate(['/login']);
-    //                 }, 3000);
-    //                }
-    //            }
-    //         },
-    //         error => {
-    //             this.loading = false;
-    //         });
+                    setTimeout(() => {
+                      this.router.navigate(['/login']);
+                    }, 3000);
+                   }
+               }
+            },
+            error => {
+                this.loading = false;
+            });
 }
 }
