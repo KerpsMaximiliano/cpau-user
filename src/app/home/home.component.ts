@@ -248,7 +248,7 @@ export class HomeComponent {
     }
   }
 
-  redirectUrl(cs : ContentSite, event) {
+  redirectUrl(cs : ItemsSite, event) {
     if(event.ctrlKey) {
       console.log(this.activatedRoute.snapshot);
       let win = window.open(`/nota/${cs.id}`, '_blank');

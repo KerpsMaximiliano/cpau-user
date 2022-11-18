@@ -41,7 +41,7 @@ export interface ItemsSite {
 	tags?: string[];
 	categories?: string[];
 	categoryData?: string;
-	linkTarget: number;
+	linkTarget: string;
 	percent: number;
   imagenesGaleria: Image[];
   posicionGaleria: number;
