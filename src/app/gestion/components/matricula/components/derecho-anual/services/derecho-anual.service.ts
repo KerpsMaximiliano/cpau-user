@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { Observable, of } from 'rxjs';
 import { DerechoAnual } from '../models/derecho-anual.model';
-import { DetalleDeuda } from '../models/detalle-deuda.model';
 
 import { ValidarPago } from '../models/validar-pago.model';
 
@@ -26,6 +25,11 @@ export class DerechoAnualService {
     return this.httpClient.get<DerechoAnual>(`${environment.apiUrl}/api/matricula/obtenerDeuda`, {params});
   }
 
+  hasRecibo(): Observable<boolean> {
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<boolean>(`${environment.apiUrl}/api/Matricula/hasRecibo`, {params});
+  }
+
   pagarBoleta(CreditCardType, CreditCardInstallments): Observable<ValidarPago> {
     return this.httpClient.post<ValidarPago>(`${environment.apiUrl}/api/Matricula/pagarDerechoAnual`, { CreditCardType, CreditCardInstallments });
   }
@@ -37,11 +41,23 @@ export class DerechoAnualService {
 
   imprimirBoleta(matricId: string, numero: string, tipo: string) {
 	this.httpClient.get(`${environment.apiUrl}/api/matriculado/GenerarBoleta`, HttpOptionsDownloadFile )    .subscribe((resp: HttpResponse<Blob>) => {
-      this.downloadFile(resp, numero, tipo);
+      var name = 'Boleta-' + tipo + '-' + numero;
+      this.downloadFile(resp, name);
     });
   }
 
-  downloadFile(resp: HttpResponse<Blob>, numero: string, tipo: string) {
+  imprimirRecibo() {
+    this.httpClient.get(`${environment.apiUrl}/api/Matricula/GenerarUltimoRecibo`, HttpOptionsDownloadFile )    .subscribe((resp: HttpResponse<Blob>) => {
+        var name = 'Recibo';
+        if (resp.body != null) {
+          this.downloadFile(resp, name);
+        } else {
+          alert('No hay recibo');
+        }
+      });
+    }
+
+  downloadFile(resp: HttpResponse<Blob>, name: string) {
     const contentType = resp.headers.get('Content-type');
     const file = new Blob([ resp.body ], {type: contentType});
 
@@ -52,13 +68,13 @@ export class DerechoAnualService {
 
     // Descarga
     if (ie || oldIE || ieEDGE) {
-      window.navigator.msSaveBlob(file, 'Credencial');
+      window.navigator.msSaveBlob(file, name);
     } else {
       const fileURL = URL.createObjectURL(file);
       const a       = document.createElement('a');
       a.href        = fileURL;
       a.target      = '_blank';
-      a.download    = 'Boleta-' + tipo + '-' + numero;
+      a.download    = name;
       a.click();
       URL.revokeObjectURL(fileURL);
     }

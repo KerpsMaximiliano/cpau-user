@@ -1,0 +1,111 @@
+@import './../../../../gestion.css';
+
+.product-item {
+    border-radius: 5px;
+    border: 1px solid #D1D1D1;
+    /* max-width: 520px; */
+    margin: auto;
+}
+.cust-select {
+    font-size: 14px;
+    padding: 6px 12px;
+}
+.form-control:focus {
+    border-color: #3400FF!important;
+}
+.card {
+    padding: 10px;
+    max-width: 580px;
+    margin: auto;
+    border: 2px solid #e7eaec;
+}
+/* .card-img {
+    border-right: solid 1px #e3e3e3;
+} */
+.price {
+    color: var(--dark)!important;
+    text-align: center;
+}
+.btn-detalles {
+    background-color: var(--dark);
+    border-color: var(--dark);
+    color: #FFFFFF;
+}
+.btn-detalles:hover {
+    color: #FFFFFF;
+}
+.qr-tablet {
+    display: none;
+}
+/* @media only screen and (max-width: 1601px) and (min-width: 1313px){
+    .main-col {
+        width: 66.66%;
+        max-width: 66.66%;
+        flex-basis: 66.66%;
+    }
+}
+@media only screen and (max-width: 1313px) and (min-width: 991px){
+    .main-col {
+        width: 83.33%;
+        max-width: 83.33%;
+        flex-basis: 83.33%;
+    }
+} */
+@media only screen and (max-width: 1680px) and (min-width: 1408px){
+    .main-col {
+        width: 66.66%;
+        max-width: 66.66%;
+        flex-basis: 66.66%;
+    }
+}
+@media only screen and (max-width: 1407px) and (min-width: 1249px){
+    .main-col {
+        width: 83.33%;
+        max-width: 83.33%;
+        flex-basis: 83.33%;
+    }
+}
+@media only screen and (max-width: 1248px) and (min-width: 991px){
+    .main-col {
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+}
+@media only screen and (max-width: 991px){
+    .main-col {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .control-label {
+        text-align: left!important;
+    }
+    .filtros-col {
+        order: 1;
+    }
+    .productos-col {
+        order: 2;
+    }
+    .qr-desktop {
+        display: none;
+        text-align: center;
+    }
+    .qr-tablet {
+        display: flex;
+        order: 3
+    }
+}
+@media only screen and (max-width: 768px){
+    .product-item {
+        text-align: center
+    }
+    .card {
+        padding: 0;
+        border: 0px solid #e7eaec;
+    }
+}
+@media only screen and (max-width: 368px){
+    .ibox-content {
+        padding: 5px;
+    }
+}

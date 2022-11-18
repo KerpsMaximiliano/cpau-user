@@ -11,13 +11,14 @@ import { DerechoAnualService } from './services/derecho-anual.service';
 })
 export class DerechoAnualComponent implements OnInit {
 
-  mostrarPop: boolean;
+  mostrarPop: boolean = false;
   collapsed: boolean;
   puedePagar: boolean = false;
   bonificada: boolean = false;
   existeDeuda: boolean = true;
   pendienteActivacion: boolean = false;
   matricId: string;
+  mostrarBotonRecibo: boolean = false;
 
   public filas: Filas<DetalleDeuda>[] = [];
   public columnas: Columna<DetalleDeuda>[];
@@ -42,7 +43,7 @@ export class DerechoAnualComponent implements OnInit {
   }
   initData() {
     this.filas = [];
-    
+
     this.derechoAnualService.getAll()
     .subscribe(d => {
       this.matricId = d.matricId;
@@ -59,6 +60,7 @@ export class DerechoAnualComponent implements OnInit {
           }
         ];
       });
+      this.derechoAnualService.hasRecibo().subscribe(a=> this.mostrarBotonRecibo = a);
     });
   }
 
@@ -73,6 +75,7 @@ export class DerechoAnualComponent implements OnInit {
 
   onGenerarBoletaPago() {
     // WS que genera el PDF de pago.
+    this.derechoAnualService.imprimirRecibo();
   }
 
   
