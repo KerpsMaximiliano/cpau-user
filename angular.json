@@ -27,6 +27,7 @@
                             "src/favicon.ico",
                             "src/assets",
                             "src/stylesCustom",
+                            "src/routes.json",
                             "src/web.config"
                         ],
                         "styles": [
