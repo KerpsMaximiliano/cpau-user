@@ -71,7 +71,12 @@
                     <div class="actions-buttons">
                         <button class="btn btn-primary" *ngIf="puedePagar && !bonificada" (click)="onPagarDerechoAnual()">Pagar derecho anual</button>
                         <button class="btn btn-primary" *ngIf="bonificada && !pendienteActivacion" (click)="onActivarMatricula()">Activar Matrícula</button>
-                        <button class="btn btn-primary" *ngIf="mostrarBotonRecibo" (click)="onGenerarBoletaPago()">Imprimir Último Recibo</button>
+                    </div>
+                    
+                    <div class="hr-line-dashed" *ngIf="mostrarBotonRecibo"></div>
+                    <label *ngIf="mostrarBotonRecibo" style="margin-bottom: 10px;">Accedé al último pago de matricula realizado</label>
+                    <div class="actions-buttons" style="justify-content: unset !important;" *ngIf="mostrarBotonRecibo">
+                        <button class="btn btn-primary" *ngIf="mostrarBotonRecibo" (click)="onGenerarBoletaPago()">Imprimir</button>
                     </div>
                 </div>
             </div>
