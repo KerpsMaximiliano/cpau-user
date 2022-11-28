@@ -37,10 +37,10 @@
                 <div class="ibox-content" [hidden]="collapsed">
                     <div class="row">
                         <ng-container *ngIf="productos && productos.length >= 1">
-                        <div class="col-lg-6 col-md-12 main-col" style="margin: auto;">
+                        <div class="col-lg-8 col-md-12 main-col" style="margin: auto;">
                             <div class="col-lg-9 col-md-12 productos-col">
                                 <div *ngFor="let producto of productos" class="row product-item mt-2 pb-2 pt-2">
-                                    <div class="col-md-3">
+                                    <div class="col-lg-2 col-md-3">
                                         <div *ngIf="producto.imagen !== null && producto.imagen !== undefined && producto.imagen !== '' then customImage; else defaultImage"></div>
                                         <ng-template #customImage>
                                             <img [src]="getImage(producto.imagen)" width="100px" height="100px">
@@ -50,11 +50,11 @@
                                             <img src="https://www.dten.com/wp-content/uploads/2022/05/default-image.jpg" width="100px" height="100px">
                                         </ng-template>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-lg-8 col-md-6">
                                         <h4>{{producto.nombre}}</h4>
                                         <p [innerHTML]="producto.descripcion"></p>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-lg-2 col-md-3">
                                         <h3 class="price">${{producto.precio}}</h3>
                                         <button (click)="onClickDetalles(producto.id)" class="btn btn-detalles btn-block">Detalles</button>
                                         <button (click)="onClickComprar(producto.id)" class="btn btn-primary btn-block">Comprar</button>

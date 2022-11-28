@@ -75,7 +75,7 @@
                                             <form class="form-inline mt-2">
                                                 <div class="form-group" [ngClass]="{'has-error':quantity.touched && quantity.errors}">
                                                     <label class="control-label mr-2"> Cantidad:</label>
-                                                    <input type="number" class="form-control" min="1" [formControl]="quantity">
+                                                    <input type="number" class="form-control" min="1" [formControl]="quantity" value="1">
                                                     <p *ngIf="quantity.touched && quantity.errors?.required" class="error-message">Campo requerido</p>
                                                     <p *ngIf="quantity.touched && quantity.errors?.min" class="error-message">
                                                         La cantidad no puede ser menor a 1</p>
