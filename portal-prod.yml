@@ -3,7 +3,7 @@ name: Azure Static Web Apps CI/CD
 pr:
   branches:
     include:
-      - test
+      - prod
 jobs:
 - job: build_and_deploy_job
   displayName: Build and Deploy Job
@@ -28,12 +28,12 @@ jobs:
      workingDir: '$(System.DefaultWorkingDirectory)'
      verbose: false
   - task: Npm@1
-    displayName: 'npm build-test'
+    displayName: 'npm build-prod'
     inputs:
         command: custom
         workingDir: '$(System.DefaultWorkingDirectory)'
         verbose: false
-        customCommand: 'run build'
+        customCommand: 'run build-prod'
   - task: AzureStaticWebApp@0
     inputs:
       azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN_GENTLE_POND_007F1140F)
