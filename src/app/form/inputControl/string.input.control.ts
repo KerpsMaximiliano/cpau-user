@@ -37,6 +37,7 @@ export class StringInputControlComponent extends AbstractValueAccessor implement
     this.required = this.allData.required;
     this.id = this.allData.id;
     this.placeholder = this.allData.value;
+    this.type = this.allData.type;
   }
 
   changedInput(value) {

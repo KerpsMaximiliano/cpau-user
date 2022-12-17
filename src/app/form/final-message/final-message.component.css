@@ -1,16 +1,73 @@
 @import '../../../stylesCustom/styles/cpau.css';
 @import '../../../stylesCustom/styles/form.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
 
-.main {
-    background-attachment: fixed;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    position: relative;
-    width: 100%;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-image: url(https://static.cpau.org/web/images/backgrounds/background.jpg);
-    margin: 0;
-    padding: 0;
+html * {
+    font-family: 'Roboto', sans-serif;
 }
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+    p {
+        margin: 0 0 10px;
+    }
+
+    textarea {
+        margin-top: 16px !important;
+        display: block !important;
+        width: 100% !important;
+        padding: 0.35rem 1.2rem !important;
+        /* font-size: 1.6rem !important; */
+        font-weight: 400 !important;
+        line-height: 1.5 !important;
+        color: #495057 !important;
+        border-color: #000000 !important;
+        border-radius: 0 !important;
+        -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    }
+
+    textarea:focus {
+        border-color: #3400ff !important;
+        outline: none !important;
+    }
+
+
+    .parallax-container {
+        background-image: url(https://static.cpau.org/web/images/backgrounds/background.jpg);
+        min-height: 100vh;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding: 3%;
+    }
+
+    .header {
+         /* height: 3rem; */
+        background-color: white;
+        display: flex;
+    }
+
+    .header-logo {
+        /* margin-top: 25px; */
+        text-align: left;
+        max-width: 100%;
+        /* padding-right: 6%; */
+    }
+
+    .captcha {
+        margin-bottom: 2rem;
+        margin-left: 15px;
+    }
+
+    .alert-padding {
+        padding-left: 15px;
+        padding-right: 15px;
+    }

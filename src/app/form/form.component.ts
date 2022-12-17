@@ -59,8 +59,10 @@ export class FormComponent implements OnInit {
           jsonResponse['id'] = f.IdFormField;
           jsonResponse['name'] = f.Name;
           jsonResponse['type'] = f.Type;
-          jsonResponse['dependentFieldId'] = (f.DependentField && f.DependentField.IdFormField !== '') ? f.DependentField.IdFormField : null ;
-          jsonResponse['dependentValue'] = f.DependentValue === "" ? null : f.DependentValue;
+          jsonResponse['dependentFieldId'] = (f.DependentField && f.DependentField.IdFormField !== '')
+            ? f.DependentField.IdFormField : null ;
+          jsonResponse['dependentValue'] = (f.DependentValue && f.DependentValue.Value !== null && f.DependentValue.Value !== undefined)
+            ? f.DependentValue.Value : null ;
           jsonResponse['required'] = f.Required;
           jsonResponse['value'] = f.Value;
           jsonResponse['minValue'] = f.MinValue;
@@ -141,13 +143,13 @@ export class FormComponent implements OnInit {
   changeEmit(ev) {
     if (typeof(ev.parentValue) === 'object') {
       this.fields.forEach(field => {
-        if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue 
+        if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue
           && Object.values(ev.parentValue).includes(field.dependentValue)) {
           if (this.form.get(field.id)){
             this.form.controls[field.id].enable();
           }
           field.disabled = false;
-        } else if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue 
+        } else if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue
         && !Object.values(ev.parentValue).includes(field.dependentValue) && field.disabled === false) {
           if (this.form.get(field.id)){
             this.form.controls[field.id].disable();

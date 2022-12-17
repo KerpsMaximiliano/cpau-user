@@ -1,116 +1,122 @@
-<div class="main">
-    <div class="container p-5">
-        <!--Fila Logo-->
-        <div class="row bk6 p-4 shadow print-skip" style="border-top: 4px solid #000;">
-            <!--Columna Logo-->
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
-                    <figure><img src="stylesCustom/images/logo/logocpau.jpg" width="35%" height="auto" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" /></figure>
-                </a>
-            </div>
-            <!--Columna Logo: fin-->
-        </div>
-        <!--Fila Logo: fin-->
-        <div id="sectionToPrint">
-            <div *ngIf="form">
-                <div *ngIf="form?.headerImage">
-                    <img [src]="form?.headerImage" width="100%">
-                </div>
-                <div class="row bk6 p-4 shadow">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bk6">
-                        <div>
-                            <h1 class="border-bottom title-sections pb-1" style="font-size:20px;" ><strong [innerHTML]="form?.name"></strong></h1>
-                            <h6 class="pt-2 pb-2" [innerHTML]="form?.description"></h6>
-                            <p [innerHTML]="form?.data?.remarks"></p>
-                        </div>
-                        <div *ngIf="form?.place || form?.fecha || form?.hora || form?.contact">
-                            <h6 class="border-bottom title-sections pb-1">DATOS DEL EVENTO</h6>
-                            <div class="container">
-                                <div class="row" *ngIf="form?.place">
-                                    <div class="col-4 col-left" >
-                                        <p class="datos-p"><strong>Lugar:</strong></p>
-                                    </div>
-                                    <div class="col-8 col-right">
-                                        <p class="datos-p">{{form?.place}}</p>
-                                    </div>
-                                </div>
-                                <div class="row" *ngIf="form?.fecha">
-                                    <div class="col-4 col-left">
-                                        <p class="datos-p"><strong>Fecha:</strong></p>
-                                    </div>
-                                    <div class="col-8 col-right">
-                                        <p class="datos-p">{{form?.fecha}}</p>
-                                    </div>
-                                </div>
-                                <div class="row" *ngIf="form?.hora">
-                                    <div class="col-4 col-left">
-                                        <p class="datos-p"><strong>Hora:</strong></p>
-                                    </div>
-                                    <div class="col-8 col-right">
-                                        <p class="datos-p">{{form?.hora}}</p>
-                                    </div>
-                                </div>
-                                <div class="row" *ngIf="form?.contact">
-                                    <div class="col-4 col-left">
-                                        <p class="datos-p"><strong>Contacto:</strong></p>
-                                    </div>
-                                    <div class="col-8 col-right">
-                                        <p class="datos-p">{{form?.contact}}</p>
-                                    </div>
-                                </div>
+<div class="parallax-container">
+    <div class="container">
+        <div class="form" style="background: white;">
+            <div class="container" style="padding-bottom:0;">
+                <div class="container" style="margin-top: 0px;">
+                    <div class="header mb-3" style="padding-left: 15px; padding-right: 15px;">
+                        <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
+                            <img src="https://static.cpau.org/.newsite/images/logo/cpau.svg" class="header-logo"
+                                width="320" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" />
+                        </a>
+                    </div>
+                    <div id="sectionToPrint">
+                        <div *ngIf="form">
+                            <div *ngIf="form?.headerImage" style="padding-left: 15px; padding-right: 15px;">
+                                <img [src]="form?.headerImage" width="100%">
                             </div>
-                        </div>
-                        <div *ngIf="resp?.length >= 1">
-                            <h6 class="border-bottom title-sections pb-1 mt-2">
-                                DATOS DEL INSCRIPTO
-                            </h6>
-                            <div class="container">
-                                <ng-container *ngFor="let field of resp">
-                                    <ng-container *ngIf="field.type != 'hidden'">
-                                        <div class="row">
-                                            <div class="col-4 col-left">
-                                                <p class="datos-p"><strong>{{field?.name}}</strong></p>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bk6">
+                                    <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="form?.name"
+                                        *ngIf="form?.showTitle">
+                                    </h1>
+                                    <div class="inscripcionsubtitle" [innerHTML]="form?.description"
+                                        *ngIf="form?.description">
+                                    </div>
+                                    <div class="inscripcionaclaraciones" [innerHTML]="form?.remarks"
+                                        *ngIf="form?.remarks">
+                                    </div>
+                                    <div *ngIf="form?.place || form?.fecha || form?.hora || form?.contact">
+                                        <div class="table-container mt-3">
+                                            <h2 class="title-table">DATOS DEL EVENTO</h2>
+                                            <div class="row-whitout-negative-p" *ngIf="form?.place">
+                                                <div class="col-4 col-left">
+                                                    <p class="datos-p"><strong>Lugar:</strong></p>
+                                                </div>
+                                                <div class="col-8 col-right">
+                                                    <p class="datos-p">{{form?.place}}</p>
+                                                </div>
                                             </div>
-                                            <div class="col-8 col-right">
-                                                <p class="datos-p">{{field?.value}}</p>
+                                            <div class="row-whitout-negative-p" *ngIf="form?.fecha">
+                                                <div class="col-4 col-left">
+                                                    <p class="datos-p"><strong>Fecha:</strong></p>
+                                                </div>
+                                                <div class="col-8 col-right">
+                                                    <p class="datos-p">{{form?.fecha}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row-whitout-negative-p" *ngIf="form?.hora">
+                                                <div class="col-4 col-left">
+                                                    <p class="datos-p"><strong>Hora:</strong></p>
+                                                </div>
+                                                <div class="col-8 col-right">
+                                                    <p class="datos-p">{{form?.hora}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row-whitout-negative-p" *ngIf="form?.contact">
+                                                <div class="col-4 col-left">
+                                                    <p class="datos-p"><strong>Contacto:</strong></p>
+                                                </div>
+                                                <div class="col-8 col-right">
+                                                    <p class="datos-p">{{form?.contact}}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </ng-container>
-                                </ng-container>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 1rem;">
-                            <div class="col-sm-9 col-btn">
-                                <div class="col-sm-12 remove-p-m" *ngIf="form?.receiptFooter" [innerHTML]="form.receiptFooter" style="margin-bottom:2.8rem;padding-right:2rem;"></div>
-                                <div class="print-skip" [ngClass]="{'no-receiptFooter': !form?.receiptFooter}">
-                                    <div class="col-sm-12 remove-p-m">
-                                        <button class="btn btn-imprimir btn-comprobante" (click)="onPrint()">
-                                            Imprimir comprobante
-                                        </button>
+                                    </div>
+                                    <div *ngIf="resp?.length >= 1">
+                                        <div class="table-container mt-3">
+                                            <h2 class="title-table">DATOS DEL INSCRIPTO</h2>
+                                            <ng-container *ngFor="let field of resp">
+                                                <ng-container *ngIf="field.type != 'hidden'">
+                                                    <div class="row-whitout-negative-p">
+                                                        <div class="col-4 col-left">
+                                                            <p class="datos-p"><strong>{{field?.name}}</strong></p>
+                                                        </div>
+                                                        <div class="col-8 col-right">
+                                                            <p class="datos-p">{{field?.value}}</p>
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 1rem;">
+                                        <div class="col-sm-9 col-btn">
+                                            <div class="col-sm-12" *ngIf="form?.receiptFooter"
+                                                [innerHTML]="form.receiptFooter"
+                                                style="margin-bottom:2.8rem;padding-left:15px;padding-right:5px;"></div>
+                                            <div class="print-skip"
+                                                [ngClass]="{'no-receiptFooter': !form?.receiptFooter}">
+                                                <div class="col-sm-12" style="padding-left:15px;padding-right:5px;">
+                                                    <button class="btn btn-imprimir btn-comprobante"
+                                                        (click)="onPrint()">
+                                                        Imprimir comprobante
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 qr-col">
+                                            <qrcode [qrdata]="qrdata" [width]="128" [errorCorrectionLevel]="'M'"
+                                                class=""></qrcode>
+                                        </div>
+                                        <div class="col-sm-3 qr-d-only-m">
+                                            <qrcode [qrdata]="qrdata" [width]="64" [errorCorrectionLevel]="'M'"
+                                                class=""></qrcode>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-3 qr-col">
-                                <qrcode [qrdata]="qrdata" [width]="128" [errorCorrectionLevel]="'M'" class=""></qrcode>
-                            </div>
-                            <div class="col-sm-3 qr-d-only-m">
-                                <qrcode [qrdata]="qrdata" [width]="64" [errorCorrectionLevel]="'M'" class=""></qrcode>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            </div>
-        <footer>
-            <!--COPYRIGHT-->
-            <div class="row shadow pt-3 bk6">
-                <div class="col-sm pt-3" style="background-color:#C8C3C3; text-align: center;font-size:11px; font-weight: 700 ">
-                    <p>© CPAU | Consejo Profesional de Arquitectura y Urbanismo - 25 de Mayo 482 - (C1002ABJ) CABA - Tel: +54 (11) 5239.9401 - Atención: Lunes a Viernes de 9 a 17 horas.</p>
+                <div class="row" style="margin-right:-3.2%;margin-left:-3.2%;">
+                    <div class="col-sm pt-3 copyright">
+                        <p style="margin-bottom:1rem;">© Consejo Profesional de Arquitectura y Urbanismo. 25 de Mayo
+                            482. C1002ABJ CABA. Tel: +5411 5238 1068. Email: <a href="mailto:red@cpau.org"
+                                target="_blank" class="pie">red@cpau.org</a>. Atención: lunes a viernes de 9 a 17
+                            horas.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <!--FIN COPYRIGHT-->
-            <!--FIN PIE-->
-        </footer>
+        </div>
     </div>
-</div>
-
