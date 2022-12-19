@@ -1,37 +1,33 @@
 @import '../../../stylesCustom/styles/cpau.css';
+@import '../../../stylesCustom/styles/form.css';
 
-/* .main {
-    height: 100%!important;
-    width: 100%!important;
-    background-image: url("../../../stylesCustom/images/backgrounds/background2.jpg")!important;
-    background-repeat: no-repeat!important;
-    background-position: top!important;
-    background-attachment: fixed!important;
-} */
-.main {
-    background-attachment: fixed;
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    position: relative;
-    width: 100%;
-    background-position: top;
-    background-repeat: no-repeat;
+.parallax-container {
     background-image: url(https://static.cpau.org/web/images/backgrounds/background.jpg);
-    margin: 0;
-    padding: 0;
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
 }
 
-.border-bottom {
-    border-bottom: 1px solid #315162 !important;
-    padding-bottom: 0.25rem !important;
-    font-weight: 600!important;
-    font-family: "Roboto", sans-serif!important;
-    font-size: 16px;
-    margin-bottom: 0.5rem!important;
-    line-height: 1.2!important;
-    color: #315162!important;
+.container {
+    padding: 3%;
 }
+
+.header {
+     /* height: 3rem; */
+    background-color: white;
+    display: flex;
+}
+
+.header-logo {
+    /* margin-top: 25px; */
+    text-align: left;
+    max-width: 100%;
+    /* padding-right: 6%; */
+}
+
 .col-left{
     background-color: #e8e8e8!important;
     border-bottom: 1px solid #fff!important;
@@ -64,6 +60,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    padding: 0 15px 0 5px;
 }
 .qr-d-only-m {
     display: none;
@@ -73,7 +70,58 @@
     align-items: flex-end;
     height: 100%;
 }
+.inscripciontitle {
+    font-size: 36px;
+    font-weight: 800;
+    display: block;
+    color: #212529;
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
 
+.inscripcionaclaraciones {
+    font-size: 11px;
+    display: block;
+    color: Red;
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.inscripcionsubtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: transparent;
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.table-container{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.title-table {
+    border-bottom: 1px solid #212529 !important;
+    padding-bottom: 0.25rem !important;
+    font-weight: 600!important;
+    font-family: "Roboto", sans-serif!important;
+    font-size: 16px;
+    line-height: 1.2!important;
+    color: #212529!important;
+}
+.row-whitout-negative-p {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 /* Media Queries */
 
@@ -90,7 +138,6 @@
     }
     .qr-col {
         width: 25%;
-        padding: 0!important;
     }
 }
 @media screen and (max-width: 480px) {
@@ -100,18 +147,20 @@
     .p-5 {
         padding:0!important;
     }
-    .remove-p-m {
-        padding-left: 0px!important;
-    }
     .qr-col {
         display: none;
     }
     .qr-d-only-m {
         width: 25%;
-        padding: 0!important;
+        padding: 0 25px 0 5px;
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
+    }
+}
+@media screen and (max-width: 370px) {
+    .btn-imprimir {
+        font-size: 12px;
     }
 }
 

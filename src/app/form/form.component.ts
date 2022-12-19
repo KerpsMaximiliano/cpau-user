@@ -1,7 +1,7 @@
 import { FormService } from './../_services/form.service';
 import { options } from './../gestion/components/perfil/perfil.module';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import { SiteLoader } from '@app/_services';
 import { environment } from '@environments/environment';
@@ -20,14 +20,14 @@ export class FormComponent implements OnInit {
   errorLE = false;
   messageLE = false;
   captcha = null;
-  //siteKey: string;
+  siteKey: string;
   response: any;
   idForm: string;
   constructor(
     private _Activatedroute: ActivatedRoute,
     private formService: FormService,
     private router: Router) {
-    //this.siteKey = environment.recaptcha;
+    this.siteKey = environment.recaptcha;
     this.form = new FormGroup({
     });
   }
@@ -59,10 +59,14 @@ export class FormComponent implements OnInit {
           jsonResponse['id'] = f.IdFormField;
           jsonResponse['name'] = f.Name;
           jsonResponse['type'] = f.Type;
-          jsonResponse['dependentFieldId'] = (f.DependentField && f.DependentField.IdFormField !== '') ? f.DependentField.IdFormField : null ;
-          jsonResponse['dependentValue'] = f.DependentValue === "" ? null : f.DependentValue;
+          jsonResponse['dependentFieldId'] = (f.DependentField && f.DependentField.IdFormField !== '')
+            ? f.DependentField.IdFormField : null ;
+          jsonResponse['dependentValue'] = (f.DependentValue && f.DependentValue.Value !== null && f.DependentValue.Value !== undefined)
+            ? f.DependentValue.Value : null ;
           jsonResponse['required'] = f.Required;
           jsonResponse['value'] = f.Value;
+          jsonResponse['minValue'] = f.MinValue;
+          jsonResponse['maxValue'] = f.MaxValue;
           jsonResponse['options'] = [];
           if (f.Options) {
             f.Options.forEach(function (o) {
@@ -79,17 +83,12 @@ export class FormComponent implements OnInit {
         });
         this.fields = jsonResponseArray;
         this.fields.forEach(field => {
-          if (field.dependentFieldId && field.dependentValue) {
-            field.disabled = true;
-            if (field.required && field.type !== 'label') {
-              this.form.addControl(field.id, new FormControl({value:'', disabled: true }, Validators.required));
-            } else if (field.type !== 'label') {
-              this.form.addControl(field.id, new FormControl({value:'', disabled: true }));
-            }
-          } else if (field.required && field.type !== 'label') {
-            this.form.addControl(field.id, new FormControl('', Validators.required));
-          } else if (field.type !== 'label') {
-            this.form.addControl(field.id, new FormControl());
+          field.disabled = field.dependentFieldId && field.dependentValue ? true : false;
+          if (field.type !== 'label' && field.type !== 'hidden') {
+            const validators = this.getValidators(field);
+            this.form.addControl(field.id, validators.length > 0 ?
+              new FormControl({value: '', disabled: field.disabled }, validators)
+              : new FormControl({value: '', disabled: field.disabled }));
           }
         });
       }
@@ -105,7 +104,7 @@ export class FormComponent implements OnInit {
       jsonRequest['id'] = element.id;
       jsonRequest['value'] = this.form.value[element.id] || '';
       jsonRequest['options'] = [];
-      if (element.options !== []){
+      if (element.options.length >= 1){
         element.options.forEach(option => {
           let jsonOption = {};
           jsonOption['id'] = option.id;
@@ -144,13 +143,13 @@ export class FormComponent implements OnInit {
   changeEmit(ev) {
     if (typeof(ev.parentValue) === 'object') {
       this.fields.forEach(field => {
-        if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue 
+        if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue
           && Object.values(ev.parentValue).includes(field.dependentValue)) {
           if (this.form.get(field.id)){
             this.form.controls[field.id].enable();
           }
           field.disabled = false;
-        } else if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue 
+        } else if (field.dependentFieldId && field.dependentFieldId === ev.data.id && field.dependentValue
         && !Object.values(ev.parentValue).includes(field.dependentValue) && field.disabled === false) {
           if (this.form.get(field.id)){
             this.form.controls[field.id].disable();
@@ -177,6 +176,20 @@ export class FormComponent implements OnInit {
         }
       });
     }
+  }
+
+  getValidators(field) {
+    const validators = [];
+    if (field.required) {
+      validators.push(Validators.required);
+    }
+    if (field.type === 'checkbox' && field.minValue !== undefined && field.minValue !== '' && field.minValue !== 0) {
+      validators.push(Validators.minLength(field.minValue));
+    }
+    if (field.type === 'checkbox' && field.maxValue !== undefined && field.maxValue !== '' && field.maxValue !== 0) {
+      validators.push(Validators.maxLength(field.maxValue));
+    }
+    return validators;
   }
 
 }

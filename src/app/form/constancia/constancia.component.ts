@@ -35,6 +35,24 @@ export class ConstanciaComponent implements OnInit {
           if (resp.id === field.IdFormField) {
             this.resp[index].name = field.Name;
             this.resp[index].type = field.Type;
+            if (field.Type === 'radio' || field.Type === 'dropdown') {
+              const found = field.Options.find(option => option.Value === resp.value);
+              if (found) {
+                this.resp[index].value = found.Text;
+              }
+            }
+            if (field.Type === 'checkbox') {
+              let textValue;
+              resp.value.forEach((selectedValue) => {
+                const found = field.Options.find(option => option.Value === selectedValue);
+                if (found && !textValue) {
+                  textValue = found.Text;
+                } else if (found && textValue) {
+                  textValue = `${textValue}; ${found.Text}`;
+                }
+              });
+              this.resp[index].value = textValue;
+            }
           }
         });
       });

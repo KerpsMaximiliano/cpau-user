@@ -1,38 +1,48 @@
 <div class="parallax-container">
     <div class="container">
-        
-       
+
+
         <div class="form" style="background: white;">
-            <div class="container">
-                
+            <div class="container" style="padding-bottom:0;">
                 <div class="container" style="margin-top: 0px;">
-                    <div class="header">
+                    <div class="header mb-3" style="padding-left: 15px; padding-right: 15px;">
                         <a href="#" target="_self" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
-                            <img src="stylesCustom/images/logo/logocpau.jpg" class="header-logo"
+                            <img src="https://static.cpau.org/.newsite/images/logo/cpau.svg" class="header-logo"
                                 width="320" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" />
                         </a>
                     </div>
-                        <ng-container [ngSwitch]="error" class="container">
-                            <div *ngSwitchCase="'UNM'" class="alert alert-warning">
+                    <ng-container [ngSwitch]="error" class="container">
+                        <div *ngSwitchCase="'UNM'" class="alert-padding">
+                            <div class="alert alert-warning">
                                 <p>Debe ser matriculado para poder acceder al formulario.</p>
                             </div>
-                            <div *ngSwitchCase="'YISC'" class="alert alert-warning">
+                        </div>
+                        <div *ngSwitchCase="'YISC'" class="alert-padding">
+                            <div class="alert alert-warning">
                                 <p>Usted ya se encuentra registrado en esta inscripción.</p>
                             </div>
-                            <div *ngSwitchCase="'UB'" class="alert alert-warning">
+                        </div>
+                        <div *ngSwitchCase="'UB'" class="alert-padding">
+                            <div class="alert alert-warning">
                                 <p>
                                     Tu usuario no cumple con las condiciones de inscripción.
                                     <br>
                                     Ante cualquier consulta comunicate con capacitacion@cpau.org.
                                 </p>
                             </div>
-                            <div *ngSwitchCase="'NVNP'" class="alert alert-warning">
+                        </div>
+                        <div *ngSwitchCase="'NVNP'" class="alert-padding">
+                            <div class="alert alert-warning">
                                 <p>El formulario no se encuentra disponible.</p>
                             </div>
-                            <div *ngSwitchCase="'CL'" class="alert alert-warning">
+                        </div>
+                        <div *ngSwitchCase="'CL'" class="alert-padding">
+                            <div class="alert alert-warning">
                                 <p>Lamentablemente el cupo para esta actividad se completó.</p>
                             </div>
-                            <div *ngSwitchCase="'YISCLE'" class="alert alert-warning">
+                        </div>
+                        <div *ngSwitchCase="'YISCLE'" class="alert-padding">
+                            <div class="alert alert-warning">
                                 <p>
                                     Muchas gracias, ya formás parte de la lista de espera
                                     <br>
@@ -42,77 +52,71 @@
                                     Agradecemos tu interés.
                                 </p>
                             </div>
+                        </div>
 
-                            <div *ngSwitchCase="error === null || error ==='LE'? error : ' ' ">
-                                <div *ngIf="errorLE == true" class="alert alert-warning">
+                        <div *ngSwitchCase="error === null || error ==='LE'? error : ' ' ">
+                            <div *ngIf="errorLE == true" class="alert-padding">
+                                <div class="alert alert-warning">
                                     <p>Lamentablemente el cupo para esta actividad se completó.<br>Podés
                                         ingresar a la lista de espera.<br><br>Muchas gracias</p>
                                 </div>
-                                <button *ngIf="errorLE == true" class="alert alert-warning" (click)="onShowForm()">Mostrar formulario para lista de
-                                    espera</button>
-                                <div *ngIf="showForm">
-                                    <div class="row bk6"
-                                        style="margin-top: -10px; margin-left: -30px; background-color: transparent; margin-right: -40px;">
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                            <div>
-                                                <img [src]="response?.data?.headerImage" height="auto"
-                                                    width="100%">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h1 class="pt-2 pb-2 inscripciontitle"
-                                            [innerHTML]="response?.data?.name" *ngIf="response?.data?.showTitle">
-                                        </h1>
-                                        <div class="inscripcionsubtitle"
-                                            [innerHTML]="response?.data?.description"
-                                            *ngIf="response?.data?.description"></div>
-                                        <div class="inscripcionaclaraciones"
-                                            [innerHTML]="response?.data?.remarks"
-                                            *ngIf="response?.data?.remarks"></div>
-                                    </div>
-                                    <div *ngIf="showForm" style="margin-top: 14px;">
-                                        <div *ngFor="let item of fields"
-                                            style="padding: 0 15px;position: relative; margin-bottom: 15px;">
-                                            <dynamic-component [data]="item" [parentGroup]="form"
-                                                (onChangeComponent)="changeEmit($event)">
-                                            </dynamic-component>
-                                        </div>
-                                        <div class="captcha">
-                                            <re-captcha (resolved)="resolved($event)" siteKey="6LeK_qIZAAAAAHHxNXAPji20tBXobWD-B5WDihF7">
-                                            </re-captcha>
-                                        </div>
-                                        <div class="form-group">
-                                            <div style="padding: 0 14.6px !important;">
-                                                <button [disabled]="(captcha === null || false) || !form.valid"
-                                                    class="btn btn-secondary"
-                                                    style="padding-top:7px !important; padding-bottom:7px !important;"
-                                                    type="button" (click)="onClick()">Enviar</button>
-                                            </div>
+                            </div>
+                            <button *ngIf="errorLE == true" class="alert alert-warning" (click)="onShowForm()">Mostrar
+                                formulario para lista de
+                                espera</button>
+                            <div *ngIf="showForm">
+                                <div style="padding-left: 15px; padding-right: 15px;">
+                                    <img [src]="response?.data?.headerImage" height="auto" width="100%">
+                                </div>
+                                <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data?.name"
+                                    *ngIf="response?.data?.showTitle">
+                                </h1>
+                                <div class="inscripcionsubtitle" [innerHTML]="response?.data?.description"
+                                    *ngIf="response?.data?.description">
+                                </div>
+                                <div class="inscripcionaclaraciones" [innerHTML]="response?.data?.remarks"
+                                    *ngIf="response?.data?.remarks">
+                                </div>
+                                <div *ngIf="showForm" style="margin-top: 14px;">
+                                    <div *ngFor="let item of fields"
+                                        style="padding: 0 15px;position: relative; margin-bottom: 15px;">
+                                        <dynamic-component [data]="item" [parentGroup]="form"
+                                            (onChangeComponent)="changeEmit($event)">
+                                        </dynamic-component>
+                                    </div><div class="row" style="justify-content: flex-start;">
+                                    <div class="captcha">
+                                        <re-captcha (resolved)="resolved($event)"
+                                            siteKey="{{siteKey}}">
+                                        </re-captcha>
+                                    </div></div>
+                                    <div class="form-group">
+                                        <div style="padding: 0 15px !important;">
+                                            <button [disabled]="(captcha === null || false) || !form.valid"
+                                                class="btn btn-secondary"
+                                                style="padding-top:7px !important; padding-bottom:7px !important;"
+                                                type="button" (click)="onClick()">Enviar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div *ngIf="messageLE" class="alert alert-warning">
+                        </div>
+                        <div *ngIf="messageLE" class="alert-padding">
+                            <div class="alert alert-warning">
                                 <p>
                                     Muchas gracias, ya formas parte de la lista de espera.
                                 </p>
                             </div>
-                        </ng-container>
-                        <footer class="container">
-                            <!--COPYRIGHT-->
-                            <div class="row shadow pt-3 bk6">
-                                <div class="col-sm pt-3"
-                                    style="background-color:#C8C3C3; text-align: center;font-size:11px; font-weight: 700 ">
-                                    <p>© CPAU | Consejo Profesional de Arquitectura y Urbanismo - 25 de Mayo
-                                        482 - (C1002ABJ) CABA - Tel: +54 (11) 5239.9401 - Atención: Lunes a
-                                        Viernes de 9 a 17 horas.</p>
-                                </div>
-                            </div>
-                            <!--FIN COPYRIGHT-->
-                            <!--FIN PIE-->
-                        </footer>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="row" style="margin-right:-3.2%;margin-left:-3.2%;">
+                    <div class="col-sm pt-3 copyright">
+                        <p style="margin-bottom:1rem;">© Consejo Profesional de Arquitectura y Urbanismo. 25 de Mayo
+                            482. C1002ABJ CABA. Tel: +5411 5238 1068. Email: <a href="mailto:red@cpau.org"
+                                target="_blank" class="pie">red@cpau.org</a>. Atención: lunes a viernes de 9 a 17 horas.
+                        </p>
                     </div>
+                </div>
             </div>
         </div>
     </div>
