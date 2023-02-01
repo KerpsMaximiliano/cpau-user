@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SiteLoader } from '@app/_services';
+import { VirtualTimeScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-fichatecnica',
@@ -19,8 +20,8 @@ export class FichatecnicaComponent implements OnInit {
   ngOnInit() {
     this.guid = this._Activatedroute.snapshot.paramMap.get("guid");
     this.siteLoader.getFicha(this.guid).subscribe( data =>{
-      this.data =data;
-
+      this.data = data;
+      this.data.estado = this.data.estado == "Inactivo" ? "Debe pagar derecho anual" : this.data.estado;
       if (data && data.redes && data.redes.length > 0)
         this.website = data.redes.find(x => +x.data2 == 10).data1;
     });
