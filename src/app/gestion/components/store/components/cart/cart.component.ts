@@ -11,7 +11,7 @@ import { Producto } from '../../models/producto.model';
 })
 export class CartComponent implements OnInit {
 
-  public urlHelp = 'BETO PONE LA URL DE LA NOTA ACA';
+  public urlHelp = 'https://www.cpau.org/nota/35840';
   collapsed: boolean;
   loading: boolean;
   productos: Producto[];

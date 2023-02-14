@@ -12,7 +12,7 @@ import { environment } from '@environments/environment';
 })
 export class CheckoutComponent implements OnInit {
 
-  public urlHelp = 'BETO PONE LA URL DE LA NOTA ACA';
+  public urlHelp = 'https://www.cpau.org/nota/35840';
   collapsed: boolean;
   loading: boolean;
   productos: Producto[];

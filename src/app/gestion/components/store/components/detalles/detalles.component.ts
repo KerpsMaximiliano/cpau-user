@@ -13,7 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class DetallesComponent implements OnInit {
 
-  public urlHelp = 'BETO PONE LA URL DE LA NOTA ACA';
+  public urlHelp = 'https://www.cpau.org/nota/35839';
   collapsed: boolean;
   loading: boolean;
   quantity: FormControl;
