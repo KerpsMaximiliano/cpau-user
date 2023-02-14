@@ -30,8 +30,8 @@ export class DerechoAnualService {
     return this.httpClient.get<boolean>(`${environment.apiUrl}/api/Matricula/hasRecibo`, {params});
   }
 
-  pagarBoleta(CreditCardType, CreditCardInstallments): Observable<ValidarPago> {
-    return this.httpClient.post<ValidarPago>(`${environment.apiUrl}/api/Matricula/pagarDerechoAnual`, { CreditCardType, CreditCardInstallments });
+  pagarBoleta(CreditCardType, CreditCardInstallments) : Observable<any> {
+    return this.httpClient.post(`${environment.apiUrl}/api/Matricula/pagarDerechoAnual`, { CreditCardType, CreditCardInstallments });
   }
 
   activarMatricula(): Observable<boolean> {

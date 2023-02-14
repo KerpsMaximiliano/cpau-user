@@ -15,6 +15,7 @@ export class PagarBoletaComponent implements OnInit {
   cuotas: string;
   formValidarPago: ValidarPago;
   vigenciaboleta: boolean;
+  showMensajeDomicilio: boolean = false;
   tipotarjeta: string;
   @ViewChild('form', { static: false }) form: ElementRef;
   @ViewChild('emailCliente', { static: false }) email : ElementRef;
@@ -46,7 +47,11 @@ export class PagarBoletaComponent implements OnInit {
     }
     this.derechoAnualService.pagarBoleta(medioDePago, this.cuotas)
     .subscribe(data => {
-      this.buildForm(data);
+      if (data.ok == false && data.error == 'error.domicilio.nulo') {
+        this.showMensajeDomicilio = true;
+      } else {
+        this.buildForm(data.data);
+      }
     })
   }
   buildForm(data: ValidarPago) {

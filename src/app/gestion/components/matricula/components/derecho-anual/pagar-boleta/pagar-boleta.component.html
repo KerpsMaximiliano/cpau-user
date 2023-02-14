@@ -5,7 +5,6 @@
             <!-- <button type="button" class="close" (click)="cerrar.emit()" >&times;</button> -->
         </div>
         <div class="modal-body">
-            
             <div  *ngIf="!isProcessing">
                 <label class="control-label" style="font-weight: bold">Seleccioná el modo de pago:</label><br />
                 <div class="control-group" style="margin-left: 20px;">
@@ -69,9 +68,13 @@
                     </div>
                 </div>
             </div>
+           
             <div style="width: 400px; height: 324px; text-align: center;" *ngIf="isProcessing">
                 <p style="vertical-align: middle;">Por favor espere, se está procesando la operación.</p>
             </div>
+        </div>
+        <div class="alert alert-warning" *ngIf="showMensajeDomicilio" style="margin: 15px;">
+            No podemos completar el pago de tu derecho anual, es necesario que tengas declarado un domicilio particular. <a href="/gestion/home/perfil/domicilio">Ir a domicilios</a> 
         </div>
         <div class="modal-footer">
 			<button  type="button" class="btn btn-dark" style="background-color: black;" (click)="cerrar.emit()" >Cancelar</button>
