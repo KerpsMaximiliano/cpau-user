@@ -39,6 +39,7 @@ export class HomeComponent {
   externalProduct: ExternalProduct[];
   noticiasCarrousel: ExternalProduct[];
   modalContent: ModalHome;
+  video:string;
   load: boolean;
   SlideOptions = {
     loop: false,
@@ -81,6 +82,7 @@ export class HomeComponent {
     @Inject(DOCUMENT) readonly document: Document
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
+    this.video = "<div style=\"padding: 56.25% 0 0 0; position: relative;\"><a title=\"&iquest;NECESIT&Aacute;S UN/A PROFESIONAL?\" href=\"https://www.cpau.org/Content/institucional/profesionales\" target=\"_self\"> <video style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\" src=\"https://player.vimeo.com/progressive_redirect/playback/432956089/rendition/240p/file.mp4?loc=external&signature=92f7cf3f6fed0923afc3b78f3a83e052545824ee5e656345b96108aee0f25a23\" preload=\"metadata\" autoplay=\"autoplay\" loop=\"loop\" muted=\"\"></video> </a></div>";
   }
 
   ngOnInit() {

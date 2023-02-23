@@ -14,6 +14,7 @@ export class ProfessionalNeedComponent implements OnInit {
   actividades: Array<any>[];
   profesionals: Array<any>[];
   buscando: boolean;
+  video: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -21,6 +22,9 @@ export class ProfessionalNeedComponent implements OnInit {
     private siteLoader: SiteLoader) {}
 
   ngOnInit() {
+
+    this.video = "<div style=\"padding: 56.25% 0 0 0; position: relative;\"> <video style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\" src=\"https://player.vimeo.com/progressive_redirect/playback/432956089/rendition/540p/file.mp4?loc=external&signature=3304f4eac4878630468afd66f95ad405192c80a4f55e5e88521bc3a836cb5217\" preload=\"metadata\" autoplay=\"autoplay\" loop=\"loop\" muted=\"\"></video></div>";
+
     this.form = this.formBuilder.group({
       profesion: 'ARQ',
       nameOrNumber: new FormControl(''),
