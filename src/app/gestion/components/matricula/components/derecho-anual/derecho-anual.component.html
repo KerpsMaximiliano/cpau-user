@@ -36,32 +36,44 @@
                         </a>
                     </div>
                 </div>
-                <div class="ibox-content" [hidden]="collapsed">
+                <div class="ibox-content" [hidden]="collapsed" *ngIf="loaded">
 
-                    
-                        <div class="alert alert-success" *ngIf="!existeDeuda">
+                        <div class="alert alert-warning" *ngIf="suspendido">
+                            Para activar tu matrícula envianos un correo electrónico a matricula@cpau.org
+                        </div>
+                        <div class="alert alert-success" *ngIf="!existeDeuda && !vitalicioBenefactor">
                             Tu estado de matrícula ya se encuentra ACTIVO.
                         </div>
-                        <div class="alert alert-light" *ngIf="existeDeuda && bonificada && !pendienteActivacion">
+                        <div class="alert alert-success" *ngIf="!existeDeuda && vitalicioBenefactor">
+                            Tu estado de matrícula es VITALICIO BENEFACTOR.
+                        </div>
+                        <div class="alert alert-light" *ngIf="existeDeuda && bonificada && !pendienteActivacion && !suspendido">
                             <strong>¡Atención!</strong><br>
                             Tu estado actual de matriculación tiene bonificado el derecho anual. <br>
                             Para demostrar tu condición activa, si tenés pensado ejercer la profesión este año, 
                             te pedimos que hagas clic en el botón.
                         </div>
-                        <div class="alert alert-light" *ngIf="pendienteActivacion">
+                        <div class="alert alert-light" *ngIf="pendienteActivacion && !suspendido">
                             Muchas gracias, tu activación esta en proceso. En las próximas 48 horas hábiles recibirás el comprobante correspondiente.
                         </div>
+                        
+                        <div class="alert alert-success" *ngIf="vitalicio">
+                            Tu estado de matrícula es VITALICIO, no tenés que pagar deuda. Si querés ser vitalicio benefactor hace clic en el botón.<br>
+                        </div>
+                        <div class="actions-buttons">
+                            <button class="btn btn-primary" *ngIf="vitalicio" (click)="onMostrarDeuda()">Pagar y convertirme en benefactor</button>
+                        </div>
+                    
+                        <label *ngIf="existeDeuda && !bonificada && mostrarDeuda && !suspendido" class="control-label">Te detallamos tu estado de deuda:</label><br><br>
                     
 
-                    <label *ngIf="existeDeuda && !bonificada" class="control-label">Te detallamos tu estado de deuda:</label><br><br>
-                    
-                    <div class="row container-action-table" *ngIf="existeDeuda && !bonificada">
+                    <div class="row container-action-table" *ngIf="existeDeuda && !bonificada && mostrarDeuda && !suspendido">
                         <app-action-table [columnas]="columnas" [filas]="filas" [permiteEliminar]="false"
                             [permiteEditar]="false" [permiteVisualizar]="false" [mostrarTotal]="true">
                         </app-action-table>
                     </div>
 
-                    <div class="form-group" *ngIf="existeDeuda && !bonificada">
+                    <div class="form-group" *ngIf="existeDeuda && !bonificada && mostrarDeuda && !suspendido">
                         <div class="alert alert-danger">
                             <strong>¡Atención!</strong><br>
                             Una vez que hayas realizado el pago, la deuda seguirá apareciendo hasta que la misma haya sido aprobada por el consejo. La acreditación de su operación puede demorar hasta 48 hs.
@@ -69,8 +81,8 @@
                     </div>
 
                     <div class="actions-buttons">
-                        <button class="btn btn-primary" *ngIf="puedePagar && !bonificada" (click)="onPagarDerechoAnual()">Pagar derecho anual</button>
-                        <button class="btn btn-primary" *ngIf="bonificada && !pendienteActivacion" (click)="onActivarMatricula()">Activar Matrícula</button>
+                        <button class="btn btn-primary" *ngIf="puedePagar && !bonificada && mostrarDeuda && !suspendido" (click)="onPagarDerechoAnual()">Pagar derecho anual</button>
+                        <button class="btn btn-primary" *ngIf="bonificada && !suspendido" (click)="onActivarMatricula()">Activar Matrícula</button>
                     </div>
                     
                     <div class="hr-line-dashed" *ngIf="mostrarBotonRecibo"></div>

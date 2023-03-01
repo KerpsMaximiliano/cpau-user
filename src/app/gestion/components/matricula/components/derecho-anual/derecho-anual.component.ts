@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ColumnType } from '@app/shared/enum/ColumnType.enum';
 import { Columna, Filas } from '@app/shared/Models/ActionTable';
@@ -19,6 +20,11 @@ export class DerechoAnualComponent implements OnInit {
   pendienteActivacion: boolean = false;
   matricId: string;
   mostrarBotonRecibo: boolean = false;
+  suspendido: boolean = false;
+  vitalicio: boolean = false;
+  mostrarDeuda: boolean = true;
+  loaded: boolean = false;
+  vitalicioBenefactor: boolean = false;
 
   public filas: Filas<DetalleDeuda>[] = [];
   public columnas: Columna<DetalleDeuda>[];
@@ -47,10 +53,14 @@ export class DerechoAnualComponent implements OnInit {
     this.derechoAnualService.getAll()
     .subscribe(d => {
       this.matricId = d.matricId;
-      this.puedePagar = d.puedePagar,
-      this.bonificada = d.matriculaBonificada,
-      this.pendienteActivacion = d.pendienteActivacion,
+      this.suspendido = d.estadoMatricula == '7SP' || d.estadoMatricula == 'GSD';
+      this.vitalicio = d.estadoMatricula == '8VI';
+      this.puedePagar = d.puedePagar;
+      this.bonificada = d.matriculaBonificada;
+      this.mostrarDeuda = !this.vitalicio;
+      this.pendienteActivacion = d.pendienteActivacion;
       this.existeDeuda = d.detalle.length > 0;
+      this.vitalicioBenefactor = d.estadoMatricula == '9VB';
       d.detalle.map(x => {
         this.filas = [
           ...this.filas,
@@ -60,12 +70,17 @@ export class DerechoAnualComponent implements OnInit {
           }
         ];
       });
-      this.derechoAnualService.hasRecibo().subscribe(a=> this.mostrarBotonRecibo = a);
+      this.derechoAnualService.hasRecibo().subscribe(a=> {this.mostrarBotonRecibo = a; this.loaded = true;});
     });
+    
   }
 
   onPagarDerechoAnual() {
     this.mostrarPop = true;
+  }
+
+  onMostrarDeuda() {
+    this.mostrarDeuda = true;
   }
 
   onActivarMatricula() {
@@ -77,6 +92,11 @@ export class DerechoAnualComponent implements OnInit {
     // WS que genera el PDF de pago.
     this.derechoAnualService.imprimirRecibo();
   }
+
+  getVitalicio() {
+    return this.vitalicio;
+  }
+
 
   
 

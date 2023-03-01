@@ -8,4 +8,5 @@ export interface DerechoAnual {
     matricId: string;
     numero: string;
     tipo: string;
+    estadoMatricula: string;
 }
