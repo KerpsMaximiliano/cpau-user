@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
         this.router.navigate(['/formularios/constancia', response.data] );
       }
       if(response.error === 'UNV') {
-        this.router.navigate(['/login'], { queryParams: { redirect: this.router.routerState.snapshot.url } });
+        this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.routerState.snapshot.url } });
       }
       this.error = response.error;
       this.response = response;
