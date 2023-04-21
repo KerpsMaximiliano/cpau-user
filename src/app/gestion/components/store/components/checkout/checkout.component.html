@@ -34,17 +34,20 @@
                         </a>
                     </div>
                 </div>
-                <div class="ibox-content" [hidden]="collapsed">
+                <div class="ibox-content" [hidden]="collapsed" *ngIf="!loading">
                     <ng-template [ngIf]="productos.length === 0">
                         <span>Su carrito está vacío!</span>
                     </ng-template>
                     <ng-template [ngIf]="productos.length > 0">
-                        <div *ngIf="datosEnvio" class="row">
+                        <div class="row" *ngIf="mostrarTarjetas">
                             <div class="col-md-6 col-lg-4" style="padding:0;">
-                                <p class="col-md-12"><strong>Dirección de facturación:</strong></p>
-                                <p class="col-md-12">{{datosEnvio.nombre}}</p>
-                                <p class="col-md-12">{{domicilioParticular.domicilio}}</p>
+                                <p class="col-md-12"><strong>Dirección de recibo de pago:</strong></p>
+                                <p class="col-md-12">{{nombreRecibo}}</p>
+                                <p class="col-md-12">{{domicilioRecibo}}</p>
                             </div>
+                        </div>
+                        <div class="alert alert-warning" *ngIf="!mostrarTarjetas"> No tenés un domiclio particular cargado. Lo necesitamos para generar el recibo de tu compra. 
+                            Podés cargarlo haciendo click <a href="/gestion/home/perfil/domicilio">aquí</a> y luego retomar la compra.
                         </div>
                         <ng-container *ngIf="enviable">
                             <form method="get" class="form-horizontal" [formGroup]="datosEnvioForm">
@@ -114,10 +117,13 @@
                         <div class="row mb-2" style="margin: 0; justify-content: flex-end; padding-right: 8px;">
                             <span class="text-right"><strong class="mr-2">Total:</strong>{{calcTotal() | currency}}</span>
                         </div>
-                        <div class="row">
+
+                       
+
+                        <div class="row" *ngIf="mostrarTarjetas">
                             <h5 style="padding:10px;">Seleccionar el medio de pago</h5>
                         </div>
-                        <div class="credit-card-container">
+                        <div class="credit-card-container" *ngIf="mostrarTarjetas">
                             <div (click)="select('106')">
                                 <img width="128" [src]="'https://static.cpau.org/.newsite/images/perfil/tarjetas/maestro.svg'" alt="Maestro" style="cursor: pointer;" />
                             </div>

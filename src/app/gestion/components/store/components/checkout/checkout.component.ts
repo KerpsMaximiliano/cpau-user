@@ -21,6 +21,9 @@ export class CheckoutComponent implements OnInit {
   domicilioParticular: any;
   enviable: boolean;
   solicitarEnvio: boolean;
+  mostrarTarjetas: boolean;
+  nombreRecibo: string;
+  domicilioRecibo: string;
 
   constructor(
     private storeService: StoreService,
@@ -38,10 +41,12 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.initData();
   }
 
   initData() {
+    this.mostrarTarjetas = false;
     this.storeService.getAllProductos().subscribe(res => {
       let localStorProductos = [];
       if (localStorage.getItem('productos')) {
@@ -60,8 +65,15 @@ export class CheckoutComponent implements OnInit {
       this.storeService.getDatosEnvio().subscribe(res => {
         this.datosEnvio = res.data;
         this.domicilioParticular = this.datosEnvio.domicilios.find(d => d.tipo === 'Particular');
+        if (this.domicilioParticular != null) {
+          this.mostrarTarjetas = true;
+          this.nombreRecibo = this.datosEnvio.nombre;
+          this.domicilioRecibo = this.domicilioParticular.domicilio;
+        }
+        this.loading = false;
       });
     });
+    
   }
 
   onChangeCheckbox(event) {
