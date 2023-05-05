@@ -41,14 +41,16 @@
                             <div class="col-lg-9 col-md-12 productos-col">
                                 <div *ngFor="let producto of productos" class="row product-item mt-2 pb-2 pt-2">
                                     <div class="col-lg-2 col-md-3">
-                                        <div *ngIf="producto.imagen !== null && producto.imagen !== undefined && producto.imagen !== '' then customImage; else defaultImage"></div>
+                                        <!-- <div *ngIf="producto.imagen !== null && producto.imagen !== undefined && producto.imagen !== '' then customImage; else defaultImage"></div>
                                         <ng-template #customImage>
                                             <img [src]="producto.imagen" width="100px" height="100px">
                                         </ng-template>
                                         <ng-template #defaultImage>
-                                            <!-- CAMBIAR ESTA URL -->
+
                                             <img src="https://www.dten.com/wp-content/uploads/2022/05/default-image.jpg" width="100px" height="100px">
-                                        </ng-template>
+                                        </ng-template> -->
+
+                                        <img [src]="producto.imagen" width="100px" height="100px">
                                     </div>
                                     <div class="col-lg-8 col-md-6">
                                         <h4>{{producto.nombre}}</h4>
