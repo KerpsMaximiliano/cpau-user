@@ -79,7 +79,7 @@ export class ProductosComponent implements OnInit {
   }
 
   getImage(imgByte) {
-    const objectURL = 'data:image/png;base64,' + imgByte;
+    const objectURL = imgByte;
     return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 

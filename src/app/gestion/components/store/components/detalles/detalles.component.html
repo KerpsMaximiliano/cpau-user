@@ -55,7 +55,7 @@
                                         <div class="col-md-12">
                                             <div *ngIf="producto.imagen !== null && producto.imagen !== undefined && producto.imagen !== '' then customImage; else defaultImage"></div>
                                             <ng-template #customImage>
-                                                <img [src]="getImage(producto.imagen)" class="img-responsive" style="width:100%;">
+                                                <img [src]="producto.imagen" class="img-responsive" style="width:100%;">
                                             </ng-template>
                                             <ng-template #defaultImage>
                                                 <!-- CAMBIAR ESTA URL -->

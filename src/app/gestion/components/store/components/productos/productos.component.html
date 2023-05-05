@@ -43,7 +43,7 @@
                                     <div class="col-lg-2 col-md-3">
                                         <div *ngIf="producto.imagen !== null && producto.imagen !== undefined && producto.imagen !== '' then customImage; else defaultImage"></div>
                                         <ng-template #customImage>
-                                            <img [src]="getImage(producto.imagen)" width="100px" height="100px">
+                                            <img [src]="producto.imagen" width="100px" height="100px">
                                         </ng-template>
                                         <ng-template #defaultImage>
                                             <!-- CAMBIAR ESTA URL -->
