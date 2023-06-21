@@ -14,7 +14,17 @@
                     <ng-container [ngSwitch]="error" class="container">
                         <div *ngSwitchCase="'UNM'" class="alert-padding">
                             <div class="alert alert-warning">
-                                <p>Debe ser matriculado para poder acceder al formulario.</p>
+                                <p>Este formulario está destinado solamente a usuarios matriculados.</p>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'UME'" class="alert-padding">
+                            <div class="alert alert-warning">
+                                <p>Este formulario no está destinado para su estado actual de matrícula.</p>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'UNV'" class="alert-padding">
+                            <div class="alert alert-warning">
+                                <p>Este formulario está destinado a usuarios no matriculados en CPAU.</p>
                             </div>
                         </div>
                         <div *ngSwitchCase="'YISC'" class="alert-padding">

@@ -39,7 +39,7 @@ export class FormComponent implements OnInit {
       if(response.error === 'YICC') {
         this.router.navigate(['/formularios/constancia', response.data] );
       }
-      if(response.error === 'UNV') {
+      if(response.error === 'UNR') {
         this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.routerState.snapshot.url } });
       }
       this.error = response.error;
