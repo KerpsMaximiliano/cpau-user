@@ -13,31 +13,31 @@
                     </div>
                     <ng-container [ngSwitch]="error" class="container">
                         <div *ngSwitchCase="'UNM'" class="alert-padding">
-                            <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
+                            <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
                             <div class="alert alert-warning">
                                 <p>Este formulario está destinado solamente a usuarios matriculados.</p>
                             </div>
                         </div>
                         <div *ngSwitchCase="'UME'" class="alert-padding">
-                            <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
+                            <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
                             <div class="alert alert-warning">
                                 <p>Este formulario no está destinado para su estado actual de matrícula.</p>
                             </div>
                         </div>
                         <div *ngSwitchCase="'UNV'" class="alert-padding">
-                            <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
+                            <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
                             <div class="alert alert-warning">
                                 <p>Este formulario está destinado a usuarios no matriculados en CPAU.</p>
                             </div>
                         </div>
                         <div *ngSwitchCase="'YISC'" class="alert-padding">
-                            <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
+                            <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
                             <div class="alert alert-warning">
                                 <p>Usted ya se encuentra registrado en esta inscripción.</p>
                             </div>
                         </div>
                         <div *ngSwitchCase="'UB'" class="alert-padding">
-                            <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
+                            <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
                             <div class="alert alert-warning">
                                 <p>
                                     Tu usuario no cumple con las condiciones de inscripción.
@@ -47,19 +47,19 @@
                             </div>
                         </div>
                         <div *ngSwitchCase="'NVNP'" class="alert-padding">
-                            <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
+                            <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
                             <div class="alert alert-warning">
                                 <p>El formulario no se encuentra disponible.</p>
                             </div>
                         </div>
                         <div *ngSwitchCase="'CL'" class="alert-padding">
-                            <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
+                            <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
                             <div class="alert alert-warning">
                                 <p>Lamentablemente el cupo para esta actividad se completó.</p>
                             </div>
                         </div>
                         <div *ngSwitchCase="'YISCLE'" class="alert-padding">
-                            <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
+                            <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
                             <div class="alert alert-warning">
                                 <p>
                                     Muchas gracias, ya formás parte de la lista de espera
@@ -74,8 +74,7 @@
 
                         <div *ngSwitchCase="error === null || error ==='LE'? error : ' ' ">
                             <div *ngIf="errorLE == true" class="alert-padding">
-                                <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
-                                <h1 class="pt-2 pb-2 inscripciontitle" [innerHTML]="response?.data"></h1>
+                                <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
                                 <div class="alert alert-warning">
                                     <p>Lamentablemente el cupo para esta actividad se completó.<br>Podés
                                         ingresar a la lista de espera.<br><br>Muchas gracias</p>

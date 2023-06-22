@@ -345,7 +345,15 @@ html * {
         padding-left: 15px;
         padding-right: 15px;
     }
-
+    .inscripciontitle2 {
+        font-size: 36px;
+        font-weight: 800;
+        display: block;
+        color: #212529;
+        margin-top: 7.5px;
+        margin-bottom: 7.5px;
+        padding: 0px;
+    }
     .inscripcionaclaraciones {
         font-size: 11px;
         display: block;
