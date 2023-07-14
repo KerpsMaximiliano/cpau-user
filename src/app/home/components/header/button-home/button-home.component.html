@@ -53,10 +53,10 @@
 
                         <li class="nav-item dropdown bk5">
                             <a class="nav-link div" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                HERRAMIENTAS
+                                FORMACION
                             </a>
                             <div class="dropdown-menu adaptado" aria-labelledby="navbarDropdown">
-                                <span *ngFor="let item of herramientas">
+                                <span *ngFor="let item of formacion">
                                     <a *ngIf="!item.link" class="dropdown-item" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
                                     <a *ngIf="item.link" class="dropdown-item" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
                                 </span>
@@ -126,7 +126,7 @@
                         </div>
                         <div class="columna-4">
                             <ul class="list-unstyled p-0 m-0 sections-link">
-                                <li *ngFor="let item of herramientas">
+                                <li *ngFor="let item of formacion">
                                     <a *ngIf="!item.link" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
                                     <a *ngIf="item.link" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
                                 </li>

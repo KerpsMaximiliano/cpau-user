@@ -56,10 +56,10 @@
                     </div>
                     <div class="col-sm col-md-6 col-lg col-xl">
                         <div class="title-pie-celda border-bottom ">
-                            <h6 class="title-pie">HERRAMIENTAS</h6>
+                            <h6 class="title-pie">FORMACION</h6>
                         </div>
                         <ul class="list-unstyled pie">
-                            <li *ngFor="let item of herramientas">
+                            <li *ngFor="let item of formacion">
                                 <a *ngIf="!item.link" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
                                 <a *ngIf="item.link" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
                             </li>
