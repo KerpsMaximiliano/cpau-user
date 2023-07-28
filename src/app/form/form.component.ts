@@ -57,7 +57,6 @@ export class FormComponent implements OnInit {
         parseF.forEach(function (f) {
           let jsonResponse = {};
           jsonResponse['id'] = f.IdFormField;
-          jsonResponse['idFormField'] = f.IdFormField;
           jsonResponse['name'] = f.Name;
           jsonResponse['type'] = f.Type;
           jsonResponse['dependentFieldId'] = (f.DependentField && f.DependentField.IdFormField !== '')
@@ -68,7 +67,6 @@ export class FormComponent implements OnInit {
           jsonResponse['value'] = f.Value;
           jsonResponse['minValue'] = f.MinValue;
           jsonResponse['maxValue'] = f.MaxValue;
-          jsonResponse['unique'] = f.Unique;
           jsonResponse['options'] = [];
           if (f.Options) {
             f.Options.forEach(function (o) {
@@ -104,9 +102,6 @@ export class FormComponent implements OnInit {
       if (element.disabled !== true) {
       const jsonRequest = {};
       jsonRequest['id'] = element.id;
-      jsonRequest['idFormField'] = element.idFormField;
-      jsonRequest['unique'] = element.unique;
-      jsonRequest['name'] = element.Name;
       jsonRequest['value'] = this.form.value[element.id] || '';
       jsonRequest['options'] = [];
       if (element.options.length >= 1){
@@ -124,13 +119,6 @@ export class FormComponent implements OnInit {
       }
     });
     this.formService.sendForm(this.idForm , requestArr).subscribe(res => {
-      
-      if(!res.ok)
-      {
-        alert(res.error)
-        return;
-      }
-      
       if (res.data.le === true) {
         this.messageLE = true;
         this.showForm = false;
