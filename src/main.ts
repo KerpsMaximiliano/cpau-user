@@ -17,9 +17,9 @@ const __stripTrailingSlash = (Location as any).stripTrailingSlash;
 (Location as any).stripTrailingSlash = function _stripTrailingSlash(url: string): string {
   
   if (url.startsWith('servicios/') || url.startsWith('el-consejo/') || url.startsWith('ejercicio-profesional/') 
-      || url.startsWith('herramientas/') || url.startsWith('agenda/') || url.startsWith('noticias/')
+      || url.startsWith('formacion/') || url.startsWith('agenda/') || url.startsWith('noticias/')
       || url.startsWith('/servicios/') || url.startsWith('/el-consejo/') || url.startsWith('/ejercicio-profesional/') 
-      || url.startsWith('/herramientas/') || url.startsWith('/agenda/') || url.startsWith('/noticias/')) {
+      || url.startsWith('/formacion/') || url.startsWith('/agenda/') || url.startsWith('/noticias/')) {
     url = url.replace(new RegExp('/', "g"), '%2F');
   }
   

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ButtonHomeComponent implements OnInit {
   servicios: any[] = [];
-  herramientas: any[] = [];
+  formacion: any[] = [];
   ejercicioprofesional: any[] = [];
   prodExternos: any[] = [];
   consejo: any[] = [];
@@ -31,8 +31,8 @@ export class ButtonHomeComponent implements OnInit {
           case '/el-consejo':
             this.consejo.push(e);
             break;
-          case '/herramientas':
-            this.herramientas.push(e);
+          case '/formacion':
+            this.formacion.push(e);
             break;
           case '/servicios':
             this.servicios.push(e);
