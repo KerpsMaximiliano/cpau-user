@@ -74,14 +74,14 @@
 
                         <div *ngSwitchCase="error === null || error ==='LE'? error : ' ' ">
                             <div *ngIf="errorLE == true" class="alert-padding">
-                                <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data"></h1>
+                                <h1 class="pt-2 pb-2 inscripciontitle2" [innerHTML]="response?.data.name"></h1>
                                 <div class="alert alert-warning">
                                     <p>Lamentablemente el cupo para esta actividad se completó.<br>Podés
                                         ingresar a la lista de espera.<br><br>Muchas gracias</p>
                                 </div>
                             </div>
-                            <button *ngIf="errorLE == true" class="alert alert-warning" (click)="onShowForm()">Mostrar
-                                formulario para lista de
+                            <button *ngIf="errorLE == true" class="alert alert-warning" (click)="onShowForm()">Ir al
+                                formulario para la lista de
                                 espera</button>
                             <div *ngIf="showForm">
                                 <div style="padding-left: 15px; padding-right: 15px;">
