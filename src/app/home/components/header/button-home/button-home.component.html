@@ -70,7 +70,7 @@
                                 PROGRAMAS
                             </a>
                             <div class="dropdown-menu adaptado" aria-labelledby="navbarDropdown">
-                                <a *ngFor="let item of prodExternos" class="dropdown-item" href="{{item.url}}" target="_blank" title="{{item.title}}">
+                                <a *ngFor="let item of prodExternos" class="dropdown-item" href="{{item.url}}" target="{{selectTarget(item.linkTarget)}}" title="{{item.title}}">
                                     {{item.title}}
                                 </a>
                             </div>
