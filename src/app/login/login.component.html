@@ -7,17 +7,17 @@
                 </div>
                 <br>
                 <div class="form-label-group form-group">
-                    <input required [ngClass]="{ 'is-invalid': submitted && f.username.errors }" type="text" formControlName="username" class="form-control" placeholder="Usuario">
-                    <label for="UserName"><i class="fa fa-user"></i> Usuario:</label>
+                    <input required [ngClass]="{ 'is-invalid': submitted && f.username.errors }" type="text" formControlName="username" class="form-control" placeholder="Usuario o E-Mail">
+                    <label for="UserName"><i class="fa fa-user"></i> Usuario o E-Mail:</label>
                     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">El usuario es requerido</div>
+                        <div *ngIf="f.username.errors.required">El usuario o e-mail es requerido</div>
                     </div>
                 </div>
                 <div class="form-label-group form-group">
                     <input required [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="Password">
                     <label for="Password"><i class="fa fa-lock"></i> Clave: </label><i style="position: absolute;top: 34%;font-size: 16px;right: 5%;"(click)="showPasswordSwitch()" class="fa fa-eye" [ngClass]="!showPassword ? 'fa-eye-slash' : ''"></i>
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Su clave es requerida</div>
+                        <div *ngIf="f.password.errors.required">La clave es requerida</div>
                     </div>
                 </div>
                 <div class="checkbox mb-3">
