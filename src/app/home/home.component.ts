@@ -336,7 +336,7 @@ export class HomeComponent {
     this.SlideOptions.touchDrag = true;
     this.SlideOptions.pullDrag = true;
     this.SlideOptions.items = 4;
-    this.SlideOptions.loop = this.externalProduct.length > 4;
+    this.SlideOptions.loop = this.externalProduct && this.externalProduct.length > 4;
     this.SlideOptions.responsive = {
       0: {
           items: 1,

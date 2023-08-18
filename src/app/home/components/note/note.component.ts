@@ -51,12 +51,12 @@ export class NoteComponent implements OnInit {
 
   ngOnInit() {
     this.reload();
-    const s = this.renderer2.createElement('script');
-    s.onload = this.loadNextScript.bind(this);
-    s.type = 'text/javascript';
-    s.src = '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cfa8097b7056b7c';
-    s.text = ``;
-    this.renderer2.appendChild(this._document.body, s);
+    // const s = this.renderer2.createElement('script');
+    // s.onload = this.loadNextScript.bind(this);
+    // s.type = 'text/javascript';
+    // s.src = '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cfa8097b7056b7c';
+    // s.text = ``;
+    // this.renderer2.appendChild(this._document.body, s);
 
     this._router.events.subscribe(res => {
       if (res instanceof NavigationEnd)
