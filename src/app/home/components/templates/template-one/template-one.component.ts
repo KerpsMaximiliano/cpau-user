@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
-import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/models/contentsite.model';
+import { ContentSite, ItemsSite, DEAFULT_IMAGE, BreadCrumb } from '@app/shared/Models/contentsite.model';
 
 declare function recortarTituloListadoTemplateOne(text);
 declare function recortarSummaryListadoTemplateOne(text);

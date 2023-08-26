@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { TemplateWrapper } from '@app/shared/interface/template.wrapper';
-import { ContentSite } from '@app/shared/models/contentsite.model';
+import { ContentSite } from '@app/shared/Models/contentsite.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

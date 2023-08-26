@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { SiteLoader } from '@app/_services';
 import { map } from 'rxjs/operators';
-import { ContentSite, BreadCrumb, Image } from '@app/shared/models/contentsite.model';
+import { ContentSite, BreadCrumb, Image } from '@app/shared/Models/contentsite.model';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import {Title} from "@angular/platform-browser";

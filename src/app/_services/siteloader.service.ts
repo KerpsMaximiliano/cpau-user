@@ -5,7 +5,7 @@ import { environment } from '@environments/environment';
 import { ITemplate } from '@app/shared/abstract/factory/tempate.abstract';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
-import { BannerModelSearch } from '@app/shared/models/BannerModelSearch';
+import { BannerModelSearch } from '@app/shared/Models/BannerModelSearch';
 import { ModalHome } from '@app/_models/modalHome.model';
 import { CustomResponse } from '@app/_models/customResponse.model';
 
