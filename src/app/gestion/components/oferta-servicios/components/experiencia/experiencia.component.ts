@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { DateValidator } from '@app/gestion/shared/validators/dateValidator';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
-import { Columna, Filas } from '@app/shared/Models/ActionTable';
+import { Columna, Filas } from '@app/shared/models/ActionTable';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { IDatePickerDirectiveConfig } from 'ng2-date-picker';
