@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidator } from '@app/gestion/shared/validators/CustomValidator';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
-import { Columna, Filas } from '@app/shared/Models/ActionTable';
+import { Columna, Filas } from '@app/shared/models/ActionTable';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Curso } from './model/curso.model';
