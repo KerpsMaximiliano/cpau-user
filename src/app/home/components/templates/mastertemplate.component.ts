@@ -5,8 +5,8 @@ import { RenderDirective } from '@app/_directive/renderhost.directive';
 import { SiteLoader } from '@app/_services';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { ContentSite } from '@app/shared/Models/contentsite.model';
-import { AddTemplate } from '@app/shared/Models/add-template';
+import { ContentSite } from '@app/shared/models/contentsite.model';
+import { AddTemplate } from '@app/shared/models/add-template';
 import { Title } from '@angular/platform-browser';
 
 @Component({

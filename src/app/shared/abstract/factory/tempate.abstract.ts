@@ -1,6 +1,6 @@
 import { SiteLoader } from '@app/_services';
 import { Observable } from 'rxjs';
-import { AddTemplate } from '@app/shared/Models/add-template';
+import { AddTemplate } from '@app/shared/models/add-template';
 import { TemplateOneComponent } from '@app/home/components/templates/template-one/template-one.component';
 import { TemplateTwoComponent } from '@app/home/components/templates/template-two/template-two.component';
 import { TemplateThreeComponent } from '@app/home/components/templates/template-three/template-three.component';

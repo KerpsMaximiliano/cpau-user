@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
-import { Columna, Filas } from '@app/shared/models/ActionTable';
+import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { User } from '@app/_models';
 import { AuthenticationService } from '@app/_services';
 import { DialogService } from 'ng2-bootstrap-modal';

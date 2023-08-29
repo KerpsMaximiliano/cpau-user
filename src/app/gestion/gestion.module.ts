@@ -28,7 +28,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(), // ToastrModule added
-    BootstrapModalModule.forRoot({container:document.body}),
+    BootstrapModalModule,
     NgbModule
   ],
   exports: [ActionTableComponent,

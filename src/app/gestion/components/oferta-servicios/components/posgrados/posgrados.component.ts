@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectItem } from '@app/gestion/shared/Models/SelectItem.model';
 import { CustomValidator } from '@app/gestion/shared/validators/CustomValidator';
 import { ModalComponent } from '@app/shared/components/modal/modal.component';
-import { Columna, Filas } from '@app/shared/models/ActionTable';
+import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';

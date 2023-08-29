@@ -1,7 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ColumnType } from '@app/shared/enum/ColumnType.enum';
-import { Columna, Filas } from '@app/shared/models/ActionTable';
+import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { DetalleDeuda } from './models/detalle-deuda.model';
 import { DerechoAnualService } from './services/derecho-anual.service';
 

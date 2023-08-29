@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ColumnType } from '@app/shared/enum/ColumnType.enum';
-import { Columna, Filas } from '@app/shared/models/ActionTable';
+import { Columna, Filas } from '@app/shared/Models/ActionTable';
 import { ConfigButton } from './model/configButton';
 
 @Component({
