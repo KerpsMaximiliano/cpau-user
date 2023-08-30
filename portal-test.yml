@@ -20,7 +20,7 @@ jobs:
       versionSource: 'spec'
       versionSpec: '14.x'
   - script: |
-      npm install -g @angular/cli@6.0.8
+      npm install -g @angular/cli@13.3.11
     displayName: 'install angular cli'
   - task: Npm@1
     displayName: 'npm install '
