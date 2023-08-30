@@ -85,6 +85,7 @@
                                             <select
                                                 class="cust-select browser-default custom-select form-control"
                                                 (change)="onChangeOrdenar($event.target.value)">
+                                                <option value="default" [selected]="orderBy === 'default'">Default</option>
                                                 <option value="nombre" [selected]="orderBy === 'nombre'">Nombre</option>
                                                 <option value="precio" [selected]="orderBy === 'precio'">Precio</option>
                                             </select>

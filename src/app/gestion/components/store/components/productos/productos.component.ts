@@ -22,7 +22,7 @@ export class ProductosComponent implements OnInit {
 
   constructor(private router: Router, private storeService: StoreService, private sanitizer: DomSanitizer) {
     this.selectedCategory = 'todos';
-    this.orderBy = 'nombre';
+    this.orderBy = 'default';
     if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation().extras.state) {
       this.selectedCategory = this.router.getCurrentNavigation().extras.state.categoria;
     }
