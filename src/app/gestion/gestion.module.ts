@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ApplicationRef, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { GestionRoutingModule } from './gestion-routing.module';
@@ -39,4 +39,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   providers: [
   ],
 })
-export class GestionModule { }
+export class GestionModule { 
+  constructor(applicationRef: ApplicationRef) {
+    //for ng2-bootstrap-modal in angualar 5+(6, 7 etc..)
+      Object.defineProperty(applicationRef, '_rootComponents', {get: () => applicationRef['components']});
+    }
+}

@@ -1,5 +1,5 @@
 ﻿import { numberOnlyDirective } from './_directive/numbersOnly.directive';
-import { NgModule } from "@angular/core";
+import { ApplicationRef, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
@@ -198,4 +198,9 @@ import { TemplateSixComponent } from './home/components/templates/template-six/t
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(applicationRef: ApplicationRef) {
+    //for ng2-bootstrap-modal in angualar 5+(6, 7 etc..)
+      Object.defineProperty(applicationRef, '_rootComponents', {get: () => applicationRef['components']});
+    }
+}
