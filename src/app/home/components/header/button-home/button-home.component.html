@@ -118,7 +118,7 @@
                         <div class="columna-3">
                             <ul class="list-unstyled p-0 m-0 sections-link">
                                 <li *ngFor="let item of servicios">
-                                    <a *ngIf="!item.link" [routerLink]="['/', item.seName]" title="{{item.name}}">{{item.name}}</a>
+                                    <a *ngIf="!item.link" [href]="getAbsoluteLink(item.seName)" (click)="irAlMenu(item.seName)" title="{{item.name}}">{{item.name}}</a>
                                     <a *ngIf="item.link" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}" title="{{item.name}}">{{item.name}}</a>
 
                                 </li>

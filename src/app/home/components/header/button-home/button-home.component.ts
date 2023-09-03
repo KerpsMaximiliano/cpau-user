@@ -61,6 +61,10 @@ export class ButtonHomeComponent implements OnInit {
     // do something with selected item
   }
 
+  getAbsoluteLink(seName: string): string {
+    return this.router.serializeUrl(this.router.createUrlTree([seName]));
+  }
+
   onChangeSearch(search: string) {
     this.search = search.trim();
     if(this.search.length > 2)

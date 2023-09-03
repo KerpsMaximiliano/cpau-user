@@ -65,6 +65,7 @@ export class MastertemplateComponent implements OnInit, OnDestroy {
 
   private getData() {
     const section = this._Activatedroute.snapshot.paramMap.get("namesection");
+    console.log(section);
     this.sectionName = section;
   }
 
