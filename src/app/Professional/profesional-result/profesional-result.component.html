@@ -1,0 +1,60 @@
+<body>
+    <!--CONTENEDOR-->
+    <div class="container pt-4">
+        <app-header-home></app-header-home>
+        <app-button-home></app-button-home>
+
+        <!--NOTICIAS-->
+        <div class="row ">
+
+            <!--Tittle-->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <h6 class="border-bottom title-sections pb-1"><a [routerLink]="['/profesionales']" target="_self" title="¿NECESITÁS UN/A PROFESIONAL?">¿NECESITÁS UN/A PROFESIONAL?</a></h6>
+                <div class="container p-0 pt-2 pb-5">
+                    <div class="row ">
+                        <div *ngFor="let item of filtros" class="col-12">
+                            <h5>{{item}}</h5>
+                        </div>
+                    </div>
+                    <!--Nota-->
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
+                            <div *ngIf="profesionals" class="row pb-2 pt-4">
+                                <table class="table table-striped tb-m">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Matrícula</th>
+                                            <th>Contacto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of profesionals">
+                                            <td>{{item.apellido}}, {{item.nombre}}</td>
+                                            <td>{{item.matriculaTipo}}. {{item.matricula}}</td>
+                                            <td>
+                                                <a *ngIf="item.userId; else elseBlock" a class="contacto" routerLink="/ficha/{{item.guid}}">Ficha Profesional</a>
+
+                                                <ng-template #elseBlock>
+                                                    <a *ngIf="item.email" a class="contacto" href="/profesional/contacto/{{item.guid}}">Contactate</a>
+                                                </ng-template>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--FIN TITULO-->
+                </div>
+
+                <!--FIN NOTICIAS-->
+            </div>
+        </div>
+
+        <app-publicity-home></app-publicity-home>
+        <app-footer></app-footer>
+    </div>
+    <!--CONTENEDOR: FIN	-->
+</body>
