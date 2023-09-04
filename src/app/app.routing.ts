@@ -22,6 +22,7 @@ import { ActualizacionEmailComponent } from './gestion/components/perfil/compone
 import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
 import { ConstanciaComponent } from './form/constancia/constancia.component';
 import { FinalMessageComponent } from './form/final-message/final-message.component';
+import { ProfesionalResultComponent } from './Professional/profesional-result/profesional-result.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: 'profesionales',
     component: ProfessionalNeedComponent,
+  },
+  {
+    path: 'profesionales/:params',
+    component: ProfesionalResultComponent,
   },
   {
     path: 'profesional/contacto/:guid',

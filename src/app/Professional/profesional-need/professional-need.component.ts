@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +13,6 @@ export class ProfessionalNeedComponent implements OnInit {
   form: FormGroup;
   obras: Array<any>[];
   actividades: Array<any>[];
-  profesionals: Array<any>[];
   buscando: boolean;
   video: string;
 
@@ -37,7 +37,6 @@ export class ProfessionalNeedComponent implements OnInit {
 
   private addCheckboxes() {
     this.siteLoader.getActividades().subscribe(data => this.actividades = data);
-
     this.siteLoader.getObraDestino().subscribe(data => this.obras = data);
   }
 
@@ -61,19 +60,58 @@ export class ProfessionalNeedComponent implements OnInit {
   }
 
   submit() {
-    this.goto();
-    this.buscando=true;
-    this.siteLoader
-    .getProfesionales(this.form.value.profesion, this.form.value.nameOrNumber,this.form.value.actividades,this.form.value.obras)
-    .subscribe(data =>
-      {
-        this.buscando=false;
-        this.profesionals = data;
-      } );
+    var filtros = this.armarParams();
+
+    const url = this.router.createUrlTree([
+      '/profesionales', filtros
+    ]).toString();
+    window.open(url, '_blank');
   }
 
 onClear(){
   window.location.reload();
+}
+
+armarParams() : string {
+  var params = "";
+
+  console.log("profesion: " , this.form.value.profesion);
+  if(this.form.value.profesion)
+    params += "codigoProfesion=" + this.form.value.profesion;
+
+  console.log("nameOrNumber: " , this.form.value.nameOrNumber);
+  if(this.form.value.nameOrNumber)
+    params += "?filtro=" + this.form.value.nameOrNumber;
+
+  console.log("actividades: " , this.form.value.actividades);
+  if(this.form.value.actividades.length > 0)
+  {
+    var actividades = "";
+
+    this.form.value.actividades.forEach(element => {
+      actividades += element + "-";
+    });
+
+    actividades = actividades.slice(0, -1);
+
+    params += "?actividades=" + actividades;
+  }
+
+  console.log("obras: " , this.form.value.obras);
+  if(this.form.value.obras.length > 0)
+  {
+    var obras = "";
+
+    this.form.value.obras.forEach(element => {
+      obras += element + "-";
+    });
+
+    obras = obras.slice(0, -1);
+
+    params += "?obras=" + obras;
+  }
+
+  return params;
 }
 
   private eventCheckbox(list, item) {
