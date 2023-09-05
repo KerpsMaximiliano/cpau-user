@@ -24,7 +24,7 @@ const __stripTrailingSlash = (Location as any).stripTrailingSlash;
       || url.startsWith('/servicios/') || url.startsWith('/el-consejo/') || url.startsWith('/ejercicio-profesional/') 
       || url.startsWith('/formacion/') || url.startsWith('/agenda/') || url.startsWith('/noticias/')) {
 
-        url = url.replace(new RegExp('/', "g"), '%2F');
+        //url = url.replace(new RegExp('/', "g"), '%2F');
 
   }
 

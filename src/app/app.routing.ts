@@ -89,6 +89,10 @@ const routes: Routes = [
     component: MastertemplateComponent,
   },
   {
+    path: ':namesection/:namesection',
+    component: MastertemplateComponent,
+  },
+  {
     path: 'nota/:id',
     component: NoteComponent,
   },
