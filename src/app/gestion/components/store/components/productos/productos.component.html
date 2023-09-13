@@ -1,47 +1,48 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-sm-12">
-        <div class="row title-breadcump">
-            <div class="col-sm-8 row btn-sync">
-                <h2>Productos</h2>
-            </div>
-            <div class="col-sm-4 text-right  btn-sync">
-                <button class="btn-question"><a [href]="urlHelp" target="_blank" title="Ayuda"><i class="fa fa-question"></i></a></button>
-                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
-            </div>
-        </div>
-        <ol class="breadcrumb">
-            <li>
-                <a>Compras on-line</a>
-            </li>
-            <li class="active">
-                <a><strong>Productos</strong></a>
-            </li>
-        </ol>
+  <div class="col-sm-12">
+    <div class="row title-breadcump">
+      <div class="col-sm-8 row btn-sync">
+        <h2>Productos</h2>
+      </div>
+      <div class="col-sm-4 text-right  btn-sync">
+        <button class="btn-question"><a [href]="urlHelp" target="_blank" title="Ayuda"><i
+              class="fa fa-question"></i></a></button>
+        <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+      </div>
     </div>
+    <ol class="breadcrumb">
+      <li>
+        <a>Compras on-line</a>
+      </li>
+      <li class="active">
+        <a><strong>Productos</strong></a>
+      </li>
+    </ol>
+  </div>
 </div>
 
 <!--TAB Productos-->
 <div class="wrapper wrapper-content animated fadeIn">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Productos</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link" (click)="collapsed=!collapsed">
-                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="ibox-content" [hidden]="collapsed">
-                    <div class="row">
-                        <ng-container *ngIf="productos && productos.length >= 1">
-                        <div class="col-lg-8 col-md-12 main-col" style="margin: auto;">
-                            <div class="col-lg-9 col-md-12 productos-col">
-                                <div *ngFor="let producto of productos" class="row product-item mt-2 pb-2 pt-2">
-                                    <div class="col-lg-2 col-md-3">
-                                        <!-- <div *ngIf="producto.imagen !== null && producto.imagen !== undefined && producto.imagen !== '' then customImage; else defaultImage"></div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Productos</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link" (click)="collapsed=!collapsed">
+              <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content" [hidden]="collapsed">
+          <div class="row">
+            <ng-container *ngIf="productos; else noProducts">
+              <div class="col-lg-8 col-md-12 main-col" style="margin: auto;">
+                <div class="col-lg-9 col-md-12 productos-col" *ngIf="productos.length >= 1; else noProduct">
+                  <div *ngFor="let producto of productos" class="row product-item mt-2 pb-2 pt-2">
+                    <div class="col-lg-2 col-md-3">
+                      <!-- <div *ngIf="producto.imagen !== null && producto.imagen !== undefined && producto.imagen !== '' then customImage; else defaultImage"></div>
                                         <ng-template #customImage>
                                             <img [src]="producto.imagen" width="100px" height="100px">
                                         </ng-template>
@@ -50,67 +51,90 @@
                                             <img src="https://www.dten.com/wp-content/uploads/2022/05/default-image.jpg" width="100px" height="100px">
                                         </ng-template> -->
 
-                                        <img [src]="producto.imagen" width="100px" height="100px">
-                                    </div>
-                                    <div class="col-lg-8 col-md-6">
-                                        <h4>{{producto.nombre}}</h4>
-                                        <p [innerHTML]="producto.descripcion"></p>
-                                    </div>
-                                    <div class="col-lg-2 col-md-3">
-                                        <h3 class="price">${{producto.precio}}</h3>
-                                        <button (click)="onClickDetalles(producto.id)" class="btn btn-detalles btn-block">Detalles</button>
-                                        <button (click)="onClickComprar(producto.id)" class="btn btn-primary btn-block">Comprar</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 filtros-col">
-                                <div class="form-group row">
-                                    <label class="col-md-12 control-label">Categorias:</label>
-                                    <div class="col-md-12">
-                                        <div>
-                                            <select
-                                                class="cust-select browser-default custom-select form-control"
-                                                (change)="onChangeCategoria($event.target.value)">
-                                                <option value="todos" [selected]="selectedCategory === 'todos'" >Todos</option>
-                                                <option *ngFor="let categoria of categorias" 
-                                                [value]="categoria.id" [selected]="selectedCategory === categoria.id.toString()">{{categoria.nombre}}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-12 control-label">Ordenar por:</label>
-                                    <div class="col-md-12">
-                                        <div>
-                                            <select
-                                                class="cust-select browser-default custom-select form-control"
-                                                (change)="onChangeOrdenar($event.target.value)">
-                                                <option value="default" [selected]="orderBy === 'default'">Default</option>
-                                                <option value="nombre" [selected]="orderBy === 'nombre'">Nombre</option>
-                                                <option value="precio" [selected]="orderBy === 'precio'">Precio</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row qr-desktop">
-                                    <a class="col-md-12" href="http://qr.afip.gob.ar/?qr=G--S8nCDInjn7mqbNQdPOg,," target="_F960AFIPInfo">
-                                        <img src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="QR AFIP" style="width:50%;height: auto;">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-12 qr-tablet mt-2">
-                                <div class="row" style="margin:auto;">
-                                    <a href="http://qr.afip.gob.ar/?qr=G--S8nCDInjn7mqbNQdPOg,," target="_F960AFIPInfo">
-                                        <img src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="QR AFIP" style="width:50%;height:auto;">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        </ng-container>
+                      <img [src]="producto.imagen" width="100px" height="100px">
                     </div>
+                    <div class="col-lg-8 col-md-6">
+                      <h4>{{producto.nombre}}</h4>
+                      <p [innerHTML]="producto.descripcion"></p>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                      <h3 class="price">${{producto.precio}}</h3>
+                      <button (click)="onClickDetalles(producto.id)"
+                        class="btn btn-detalles btn-block">Detalles</button>
+                      <button (click)="onClickComprar(producto.id)" class="btn btn-primary btn-block">Comprar</button>
+                    </div>
+                  </div>
                 </div>
-            </div>
+                <ng-template #noProduct>
+                  <div class="col-lg-9 col-md-12 productos-col">
+                    <div class="col-lg-2 col-md-3"></div>
+                    <div class="col-lg-8 col-md-6">
+                      <h4> No se encontro el producto: {{ value }} </h4>
+                    </div>
+                    <div class="col-lg-2 col-md-3"></div>
+                  </div>
+                </ng-template>
+                <div class="col-lg-3 col-md-12 filtros-col">
+                  <div class="form-group row">
+                    <label class="col-md-12 control-label">Categorias:</label>
+                    <div class="col-md-12">
+                      <div>
+                        <select class="cust-select browser-default custom-select form-control"
+                          (change)="onChangeCategoria($event.target.value)">
+                          <option value="todos" [selected]="selectedCategory === 'todos'">Todos</option>
+                          <option *ngFor="let categoria of categorias" [value]="categoria.id"
+                            [selected]="selectedCategory === categoria.id.toString()">{{categoria.nombre}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-12 control-label">Ordenar por:</label>
+                    <div class="col-md-12">
+                      <div>
+                        <select class="cust-select browser-default custom-select form-control"
+                          (change)="onChangeOrdenar($event.target.value)">
+                          <option value="default" [selected]="orderBy === 'default'">Default</option>
+                          <option value="nombre" [selected]="orderBy === 'nombre'">Nombre</option>
+                          <option value="precio" [selected]="orderBy === 'precio'">Precio</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-12 control-label"> Búsqueda Rápida: </label>
+                    <div class="col-md-12">
+                      <input [(ngModel)]="search" type="text" class="form-control" minlength="1" maxlength="30">
+                      <div id="box-search">
+                        <button class="btn btn-primary mt-2" (click)="get()"> Buscar </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row qr-desktop">
+                    <a class="col-md-12" href="http://qr.afip.gob.ar/?qr=G--S8nCDInjn7mqbNQdPOg,,"
+                      target="_F960AFIPInfo">
+                      <img src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="QR AFIP"
+                        style="width:50%;height: auto;">
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-12 qr-tablet mt-2">
+                  <div class="row" style="margin:auto;">
+                    <a href="http://qr.afip.gob.ar/?qr=G--S8nCDInjn7mqbNQdPOg,," target="_F960AFIPInfo">
+                      <img src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="QR AFIP"
+                        style="width:50%;height:auto;">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-template #noProducts>
+              No se encontradon productos.
+            </ng-template>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!--FIN TAB Productos-->

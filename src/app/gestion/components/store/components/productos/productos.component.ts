@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { StoreService } from '../../services/store.service';
-import { Categoria } from '../../models/categoria.model';
-import { Producto } from '../../models/producto.model';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
+import { Router } from "@angular/router";
+
+// * Services.
+import { StoreService } from "../../services/store.service";
+
+// * Models.
+import { Categoria } from "../../models/categoria.model";
+import { Producto } from "../../models/producto.model";
 
 @Component({
-  selector: 'app-productos',
-  templateUrl: './productos.component.html',
-  styleUrls: ['./productos.component.css']
+  selector: "app-productos",
+  templateUrl: "./productos.component.html",
+  styleUrls: ["./productos.component.css"],
 })
 export class ProductosComponent implements OnInit {
-
-  public urlHelp = 'https://www.cpau.org/nota/35839';
+  public urlHelp = "https://www.cpau.org/nota/35839";
   collapsed: boolean;
   loading: boolean;
   productos: Producto[];
@@ -20,11 +23,22 @@ export class ProductosComponent implements OnInit {
   selectedCategory: any;
   orderBy: any;
 
-  constructor(private router: Router, private storeService: StoreService, private sanitizer: DomSanitizer) {
-    this.selectedCategory = 'todos';
-    this.orderBy = 'default';
-    if (this.router.getCurrentNavigation() && this.router.getCurrentNavigation().extras.state) {
-      this.selectedCategory = this.router.getCurrentNavigation().extras.state.categoria;
+  public search: string;
+  public value: string;
+
+  constructor(
+    private _store: StoreService,
+    private sanitizer: DomSanitizer,
+    private router: Router
+  ) {
+    this.selectedCategory = "todos";
+    this.orderBy = "default";
+    if (
+      this.router.getCurrentNavigation() &&
+      this.router.getCurrentNavigation().extras.state
+    ) {
+      this.selectedCategory =
+        this.router.getCurrentNavigation().extras.state.categoria;
     }
   }
 
@@ -33,13 +47,17 @@ export class ProductosComponent implements OnInit {
   }
 
   initData() {
-    this.storeService.getAllCategorias().subscribe(res => {
+    this._store.getAllCategorias().subscribe(
+      (res) => {
         this.categorias = res.data;
-      }, err => {
+      },
+      (err) => {
         console.log(err);
-      }, () => {
+      },
+      () => {
         this.getAllProductos(this.selectedCategory, this.orderBy);
-    });
+      }
+    );
   }
 
   onChangeCategoria(value) {
@@ -58,22 +76,22 @@ export class ProductosComponent implements OnInit {
 
   onClickComprar(id) {
     this.addProducto(id);
-    this.router.navigate(['gestion/home/store/carrito']);
+    this.router.navigate(["gestion/home/store/carrito"]);
   }
 
   addProducto(productoId) {
     let productos = [];
-    if (localStorage.getItem('productos')) {
-      productos = JSON.parse(localStorage.getItem('productos'));
+    if (localStorage.getItem("productos")) {
+      productos = JSON.parse(localStorage.getItem("productos"));
     }
-    if (!productos.some(p => p.productoId === productoId)) {
-      productos.push({productoId, cantidad: 1});
+    if (!productos.some((p) => p.productoId === productoId)) {
+      productos.push({ productoId, cantidad: 1 });
     }
-    localStorage.setItem('productos', JSON.stringify(productos));
-}
+    localStorage.setItem("productos", JSON.stringify(productos));
+  }
 
   getAllProductos(categoria, orderBy) {
-    this.storeService.getAllProductos(categoria, orderBy).subscribe(res => {
+    this._store.getAllProductos(categoria, orderBy).subscribe((res) => {
       this.productos = res.data;
     });
   }
@@ -87,4 +105,16 @@ export class ProductosComponent implements OnInit {
     this.initData();
   }
 
+  public get(): void {
+    this._store.get(this.search).subscribe({
+      next: (res: any) => {
+        if (res.status === "200" && res.ok) {
+          if (res.data.length === 0) this.value = this.search;
+          this.productos = res.data;
+        }
+      },
+      error: (err) => console.error(err),
+      complete: () => {},
+    });
+  }
 }
