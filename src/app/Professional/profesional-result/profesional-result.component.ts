@@ -16,6 +16,12 @@ export class ProfesionalResultComponent implements OnInit {
   actividades = [];
   obras = [];
 
+  disciplinaFiltro: string;
+  nombreMatriculaFiltro: string;
+  actividadesFiltro: string;
+  obrasFiltro: string;
+
+
   constructor(private router: ActivatedRoute, private siteLoader: SiteLoader,) { }
 
   ngOnInit() {
@@ -51,17 +57,22 @@ export class ProfesionalResultComponent implements OnInit {
 
   buscarNombresFiltros() {
 
-    if(this.profesion == "ARQ")
+    if(this.profesion == "ARQ"){
       this.filtros.push("Disciplina: Arquitecto");
-    else if(this.profesion == "PAI")
+      this.disciplinaFiltro = "Arquitecto";
+    } else if(this.profesion == "PAI") {
       this.filtros.push("Disciplina: Planificación y Diseño del paisaje");
-    else if(this.profesion == "DSI")
+      this.disciplinaFiltro = "Planificación y Diseño del paisaje";
+    } else if(this.profesion == "DSI") {
       this.filtros.push("Disciplina: Diseño de Interiores");
+      this.disciplinaFiltro = "Diseño de Interiores";
+    }
     
-    if(this.nameOrNumber)
+    if(this.nameOrNumber) {
       this.filtros.push("Nombre o matricula:" + this.nameOrNumber);
-    else
-      this.filtros.push("Nombre o matricula: XXXX");
+      this.nombreMatriculaFiltro = this.nameOrNumber
+    }
+    
 
     if(this.actividades.length > 0){
       this.siteLoader.getActividadesByIds(this.actividades.join(", ")).subscribe(data => {
@@ -73,6 +84,7 @@ export class ProfesionalResultComponent implements OnInit {
           }
         });
         this.filtros.push("Actividades: " + nombres);
+        this.actividadesFiltro = nombres;
       });
     }
 
@@ -86,6 +98,7 @@ export class ProfesionalResultComponent implements OnInit {
           }
         });
         this.filtros.push("Obras: " + nombres);
+        this.obrasFiltro = nombres;
       });
     }
      

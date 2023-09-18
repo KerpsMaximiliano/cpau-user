@@ -12,11 +12,53 @@
                 <h6 class="border-bottom title-sections pb-1"><a [routerLink]="['/profesionales']" target="_self" title="¿NECESITÁS UN/A PROFESIONAL?">¿NECESITÁS UN/A PROFESIONAL?</a></h6>
                 <div class="container p-0 pt-2 pb-5">
                     <div class="row ">
-                        <div *ngFor="let item of filtros" class="col-12">
-                            <h5>{{item}}</h5>
+                        <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
+                            <div class="row pb-2 pt-4"></div>
+                                <table width="100%" border-width="0" cellspacing="0" cellpadding="0">
+                                    <tr width="100%">
+                                        <td class="textotabla" width="30%"
+                                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                                        Disciplina: 
+                                      </td>
+                                      <td colspan="3" class="textotabla" width="70%"
+                                        style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                                        {{ disciplinaFiltro }}
+                                      </td>
+                                </tr>
+                                <tr width="100%" *ngIf="nombreMatriculaFiltro">
+                                    <td class="textotabla" width="30%"
+                                    style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                                    Nombre o Matrícula: 
+                                  </td>
+                                  <td colspan="3" class="textotabla" width="70%"
+                                    style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                                    {{ nombreMatriculaFiltro }}
+                                  </td>
+                            </tr>
+                            <tr width="100%" *ngIf="obrasFiltro">
+                                <td class="textotabla" width="30%"
+                                style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                                Obras: 
+                              </td>
+                              <td colspan="3" class="textotabla" width="70%"
+                                style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                                {{ obrasFiltro }}
+                              </td>
+                        </tr>
+                        <tr width="100%" *ngIf="actividadesFiltro">
+                            <td class="textotabla" width="30%"
+                            style="solid 1px; border-bottom:#e7e7e7 solid 1px;padding: 8px 0px 8px 5px;font-weight: 500; ">
+                            Actividades: 
+                          </td>
+                          <td colspan="3" class="textotabla" width="70%"
+                            style="solid 1px; border-bottom:#e7e7e7 solid 1px;">
+                            {{ actividadesFiltro }}
+                          </td>
+                    </tr>
+                            </table>
                         </div>
                     </div>
-                    <!--Nota-->
+                    
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-7 offset-md-2 ">
                             <div *ngIf="profesionals" class="row pb-2 pt-4">
