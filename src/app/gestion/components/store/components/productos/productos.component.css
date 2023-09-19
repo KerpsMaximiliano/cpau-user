@@ -72,7 +72,7 @@
     flex-basis: 100%;
   }
 }
-@media only screen and (max-width: 1344px) and (min-width: 991px) {
+@media only screen and (max-width: 1220px) and (min-width: 991px) {
   .main-col {
     display: flex;
     flex-wrap: wrap;
