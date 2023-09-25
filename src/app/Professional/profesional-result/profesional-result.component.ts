@@ -58,8 +58,8 @@ export class ProfesionalResultComponent implements OnInit {
   buscarNombresFiltros() {
 
     if(this.profesion == "ARQ"){
-      this.filtros.push("Disciplina: Arquitecto");
-      this.disciplinaFiltro = "Arquitecto";
+      this.filtros.push("Disciplina: Arquitectura");
+      this.disciplinaFiltro = "Arquitectura";
     } else if(this.profesion == "PAI") {
       this.filtros.push("Disciplina: Planificación y Diseño del paisaje");
       this.disciplinaFiltro = "Planificación y Diseño del paisaje";
