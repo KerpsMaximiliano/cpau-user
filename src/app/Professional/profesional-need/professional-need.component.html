@@ -86,30 +86,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <div *ngIf="profesionals" class="row pb-2 pt-4">
-                                <table class="table table-striped tb-m">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Matrícula</th>
-                                            <th>Contacto</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let item of profesionals">
-                                            <td>{{item.apellido}}, {{item.nombre}}</td>
-                                            <td>{{item.matriculaTipo}}. {{item.matricula}}</td>
-                                            <td>
-                                                <a *ngIf="item.userId; else elseBlock" a class="contacto" routerLink="/ficha/{{item.guid}}">Ficha Profesional</a>
-
-                                                <ng-template #elseBlock>
-                                                    <a *ngIf="item.email" a class="contacto" href="/profesional/contacto/{{item.guid}}">Contactate</a>
-                                                </ng-template>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            
                         </div>
                     </div>
 
