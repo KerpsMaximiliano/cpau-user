@@ -65,7 +65,7 @@ export class ProfessionalNeedComponent implements OnInit {
     const url = this.router.createUrlTree([
       '/profesionales', filtros
     ]).toString();
-    window.open(url, '_blank');
+    window.open(url, '_self');
   }
 
 onClear(){
