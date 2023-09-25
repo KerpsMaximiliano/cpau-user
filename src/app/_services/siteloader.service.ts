@@ -82,6 +82,11 @@ export class SiteLoader implements ITemplate {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetActividades`).pipe(distinctUntilChanged());
     }
 
+    getActividadesByIds(avtividesIDs) {
+        console.log(avtividesIDs);
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetActividadesByIds?actividadesIDs=${avtividesIDs}`).pipe(distinctUntilChanged());
+    }
+
     getFicha(guid) {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetFicha?guid=${guid}`).pipe(distinctUntilChanged());
     }
@@ -98,7 +103,12 @@ export class SiteLoader implements ITemplate {
         return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetObraDestino`).pipe(distinctUntilChanged());
     }
 
+    getObraDestinoByIds(obrasIds) {
+        return this.http.get<any>(`${environment.apiUrl}/api/SiteConsumer/GetObraDestinoByIds?obrasIds=${obrasIds}`).pipe(distinctUntilChanged());
+    }
+
     getProfesionales(codigoProfesion, filtro, actividades, obraDestino) {
+
         let params = new HttpParams()
             .set('codigoProfesion', codigoProfesion)
             .set('filtro', filtro)
