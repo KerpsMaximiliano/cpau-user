@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { SiteLoader } from '@app/_services';
-import { Observable, of } from 'rxjs';
-import { debounceTime,distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { SiteLoader } from "@app/_services";
+import { Observable, of } from "rxjs";
+import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-button-home',
-  templateUrl: './button-home.component.html',
-  styleUrls: ['./button-home.component.css']
+  selector: "app-button-home",
+  templateUrl: "./button-home.component.html",
+  styleUrls: ["./button-home.component.css"],
 })
 export class ButtonHomeComponent implements OnInit {
   servicios: any[] = [];
@@ -15,85 +15,106 @@ export class ButtonHomeComponent implements OnInit {
   ejercicioprofesional: any[] = [];
   prodExternos: any[] = [];
   consejo: any[] = [];
-  keyword = 'title';
+  keyword = "title";
   resultSearch: any;
   private search: string;
-  @ViewChild("autoComplete", {static: false}) autoComplete: ElementRef;
+  @ViewChild("autoComplete", { static: false }) autoComplete: ElementRef;
 
-  constructor(private siteLoader: SiteLoader, public router: Router) { }
+  constructor(private siteLoader: SiteLoader, public router: Router) {}
 
   ngOnInit() {
-    this.siteLoader.GetSectionMenu()
-    .subscribe(x => {
-
-      x.forEach(e => {
+    this.siteLoader.GetSectionMenu().subscribe((x) => {
+      x.forEach((e) => {
         switch (e.parentSeName) {
-          case '/el-consejo':
+          case "/el-consejo":
             this.consejo.push(e);
             break;
-          case '/formacion':
+          case "/formacion":
             this.formacion.push(e);
             break;
-          case '/servicios':
+          case "/servicios":
             this.servicios.push(e);
             break;
-          case '/ejercicio-profesional':
+          case "/ejercicio-profesional":
             this.ejercicioprofesional.push(e);
             break;
           default:
             break;
         }
-      });       
+      });
     });
 
-    this.siteLoader.GetMenusExtProd()
-    .subscribe(data => this.prodExternos = data);
+    interface MenuItem {
+      header: string;
+      description: string;
+      orden: number;
+      title: string;
+      url: string;
+      linkTarget: number;
+    }
 
+    this.siteLoader.GetMenusExtProd().subscribe((data: MenuItem[]) => {
+      this.prodExternos = data.map((item) => {
+        item.url = this.cleanURL(item.url);
+        return item;
+      });
+    });
   }
 
-  onBtnSearch(){
-    this.siteLoader.getSearch(this.search)
-    .subscribe(data => this.resultSearch = data);
+  private cleanURL(url: string): string {
+    url = url.replace(/%2F/g, "/");
+
+    if (url.indexOf("https://") === 0)
+      url = `https://${url.slice(7).replace(/\/\/+/g, "/")}`;
+
+    if (url.indexOf("http://") === 0)
+      url = `http://${url.slice(6).replace(/\/\/+/g, "/")}`;
+
+    return url;
+  }
+
+  onBtnSearch() {
+    this.siteLoader
+      .getSearch(this.search)
+      .subscribe((data) => (this.resultSearch = data));
   }
 
   selectEvent(item) {
-    this.router.navigate(['/nota/' + item.sectionContentId]);
+    this.router.navigate(["/nota/" + item.sectionContentId]);
     // do something with selected item
   }
 
   onChangeSearch(search: string) {
     this.search = search.trim();
-    if(this.search.length > 2)
-    {
-      this.siteLoader.getSearch(this.search)
-      .pipe(debounceTime(1000),distinctUntilChanged())
-      .subscribe(data => this.resultSearch = data);
+    if (this.search.length > 2) {
+      this.siteLoader
+        .getSearch(this.search)
+        .pipe(debounceTime(1000), distinctUntilChanged())
+        .subscribe((data) => (this.resultSearch = data));
     }
     // fetch remote data from here
     // And reassign the 'data' which is binded to 'data' property.
   }
 
-  onFocused(e) {
-    // do something
-  }
+  onFocused(e) {}
 
-  selectTarget(index){
-    let target = '';
+  selectTarget(index) {
+    let target = "";
     switch (index) {
       case 0:
-        target = '_self';
+        target = "_self";
         break;
       case 1:
-        target = '_blank';        
+        target = "_blank";
         break;
       case 2:
-        target = '_parent';        
+        target = "_parent";
         break;
       case 3:
-        target = '_top';    
+        target = "_top";
         break;
       case 4:
-        target = '_search';    
+        target = "_search";
         break;
       default:
         break;

@@ -1,140 +1,146 @@
 <h6 *ngIf="breadCrumb?.length == 1" class="border-bottom title-sections pb-1">
-    <a *ngFor="let bc of breadCrumb" target="_self" [routerLink]="['/', bc.link]" title="{{bc.name}}">{{bc.name}}
-    </a>
+  <a *ngFor="let bc of breadCrumb" target="_self" [routerLink]="[bc.link]" title="{{bc.name}}">{{bc.name}}
+  </a>
 </h6>
 
 <nav aria-label="breadcrumb" *ngIf="breadCrumb?.length > 1">
-    <ol class="breadcrumb">
-        <li *ngFor="let bc of breadCrumb; let last = last;" 
-            class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}}" 
-            title="{{bc.name}}">
-            <a *ngIf="bc.link != ''" [routerLink]="['/', bc.link]">{{bc.name}}</a>
-            <span *ngIf="bc.link == ''">{{bc.name}}</span>
-        </li>
-    </ol>
+  <ol class="breadcrumb">
+    <li *ngFor="let bc of breadCrumb; let last = last;" class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}}"
+      title="{{bc.name}}">
+      <a *ngIf="bc.link != ''" [routerLink]="[bc.link]">{{bc.name}}</a>
+      <span *ngIf="bc.link == ''">{{bc.name}}</span>
+    </li>
+  </ol>
 </nav>
 
 <div class="container p-0 pt-2 pb-5">
 
-    <!--Articles-->
-    <section>
-        <div class="row">
-            <input type="radio" id="todos" name="categories" value="todos">
-            <input type="radio" id="hoy" name="categories" value="hoy">
-            <input type="radio" id="semana" name="categories" value="semana">
-            <input type="radio" id="mes" name="categories" value="mes">
-            <input type="radio" id="ano" name="categories" value="ano">
-            <input type="radio" id="2ano" name="categories" value="2ano">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 flitrosagenda">
-                <ol>
-                    <li>
-                        <label id="lbltodos" (click)="onSelectTag('todos')" for="todos" title="Todas">Todas</label>
-                    </li>
-                </ol>
-                <ol>
-                    <li>
-                        <div class="p-1 ">
-                            <h6>FECHA</h6>
-                        </div>
-                    </li>
-                    <li>
-                        <label id="lblhoy" (click)="onSelectTag('hoy')" for="hoy" title="Hoy">Hoy</label>
-                    </li>
-                    <li>
-                        <label id="lblsemana" (click)="onSelectTag('semana')" for="semana" title="Esta semana">Esta semana</label>
-                    </li>
-                    <li>
-                        <label id="lblmes" (click)="onSelectTag('mes')" for="mes" title="Este mes">Este mes</label>
-                    </li>
-                    <li>
-                        <label id="lblano" (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
-                    </li>
-                    <li>
-                        <label id="lbl2ano" (click)="onSelectTag('2ano')" for="2ano" title="Últimos dos años">Últimos dos años</label>
-                    </li>
-                </ol>
+  <!--Articles-->
+  <section>
+    <div class="row">
+      <input type="radio" id="todos" name="categories" value="todos">
+      <input type="radio" id="hoy" name="categories" value="hoy">
+      <input type="radio" id="semana" name="categories" value="semana">
+      <input type="radio" id="mes" name="categories" value="mes">
+      <input type="radio" id="ano" name="categories" value="ano">
+      <input type="radio" id="2ano" name="categories" value="2ano">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 flitrosagenda">
+        <ol>
+          <li>
+            <label id="lbltodos" (click)="onSelectTag('todos')" for="todos" title="Todas">Todas</label>
+          </li>
+        </ol>
+        <ol>
+          <li>
+            <div class="p-1 ">
+              <h6>FECHA</h6>
             </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 posts ">
-                <ul class="list-unstyled">
-                    <li *ngFor="let item of destacado" class="post" [attr.data-category]="item.categoryData">
-                        <div class="row">
-                            <!--Tittle-->
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                                <div class="container p-0 pt-2 pb-5">
-                                    <!--Nota-->
-                                    <div class="row">
-                                        <!--div class="col-12 col-sm-12 col-md-7 offset-md-2 "-->
-                                        <div class="col-12 col-sm-12 col-md-9 articleCss" style="flex: 0 0 70%;">
-                                            <article class="{{(item?.image == undefined || item?.image == null) ? 'margintop-52' : 'margintop-7'}}">
-                                                <figure *ngIf="item?.image">
-                                                    <img class="img-fluid imagen" src="{{item?.image?.imageUrl}}" alt="{{item?.image?.title}}" />
-                                                    <figcaption>{{item?.image?.epigraph}}</figcaption>
-                                                </figure>
-                                                <!--Foto:fin-->
-                                                <!--Nota - Titulo -->
-                                                <h1>{{item.title}}</h1>
-                                                <!--Nota - Titulo:fin -->
-                                                <!--Nota - Resumen -->
-                                                <h6 [innerHTML]="item.summary" class="resumen"> </h6>
-                                                <!--Nota - Resumen: fin -->
-                                                <!--Nota - Contenido -->
-                                                <div [innerHTML]="item?.text | safeHtml"></div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                    <!--Nota: Fin-->
-                                </div>
-                            </div>
-                            <!--FIN TITULO-->
-                        </div>
-                    </li>
-                    <li *ngFor="let item of noDestacado" class="post" [attr.data-category]="item.categoryData">
-                        <article>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 fecha-agenda">
-                                    <p *ngIf="item.showEventStartDate">
-                                        <time>{{item.fechaInicioString2}}</time>
-                                    </p>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 agenda-txt">
-                                    <h4 title="{{item.title}}">{{item.title}}</h4>
-                                    <p [innerHTML]="item.summary"></p>
-                                    <div>
-                                        <a *ngIf="item.link" class="caplik" target="{{selectTarget(item.linkTarget)}}" href="{{item.link}}">MÁS INFO</a>
-                                        <a *ngIf="!item.link" class="caplik" [routerLink]="['/nota', item?.id]">MÁS INFO</a>
-                                    </div>
+          </li>
+          <li>
+            <label id="lblhoy" (click)="onSelectTag('hoy')" for="hoy" title="Hoy">Hoy</label>
+          </li>
+          <li>
+            <label id="lblsemana" (click)="onSelectTag('semana')" for="semana" title="Esta semana">Esta
+              semana</label>
+          </li>
+          <li>
+            <label id="lblmes" (click)="onSelectTag('mes')" for="mes" title="Este mes">Este mes</label>
+          </li>
+          <li>
+            <label id="lblano" (click)="onSelectTag('ano')" for="ano" title="Este año">Este año</label>
+          </li>
+          <li>
+            <label id="lbl2ano" (click)="onSelectTag('2ano')" for="2ano" title="Últimos dos años">Últimos
+              dos años</label>
+          </li>
+        </ol>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 posts ">
+        <ul class="list-unstyled">
+          <li *ngFor="let item of destacado" class="post" [attr.data-category]="item.categoryData">
+            <div class="row">
+              <!--Tittle-->
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                <div class="container p-0 pt-2 pb-5">
+                  <!--Nota-->
+                  <div class="row">
+                    <!--div class="col-12 col-sm-12 col-md-7 offset-md-2 "-->
+                    <div class="col-12 col-sm-12 col-md-9 articleCss" style="flex: 0 0 70%;">
+                      <article
+                        class="{{(item?.image == undefined || item?.image == null) ? 'margintop-52' : 'margintop-7'}}">
+                        <figure *ngIf="item?.image">
+                          <img class="img-fluid imagen" src="{{item?.image?.imageUrl}}" alt="{{item?.image?.title}}" />
+                          <figcaption>{{item?.image?.epigraph}}</figcaption>
+                        </figure>
+                        <!--Foto:fin-->
+                        <!--Nota - Titulo -->
+                        <h1>{{item.title}}</h1>
+                        <!--Nota - Titulo:fin -->
+                        <!--Nota - Resumen -->
+                        <h6 [innerHTML]="item.summary" class="resumen"> </h6>
+                        <!--Nota - Resumen: fin -->
+                        <!--Nota - Contenido -->
+                        <div [innerHTML]="item?.text | safeHtml"></div>
+                      </article>
+                    </div>
+                  </div>
+                  <!--Nota: Fin-->
+                </div>
+              </div>
+              <!--FIN TITULO-->
+            </div>
+          </li>
+          <li *ngFor="let item of noDestacado" class="post" [attr.data-category]="item.categoryData">
+            <article>
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 fecha-agenda">
+                  <p *ngIf="item.showEventStartDate">
+                    <time>{{item.fechaInicioString2}}</time>
+                  </p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 agenda-txt">
+                  <h4 title="{{item.title}}">{{item.title}}</h4>
+                  <p [innerHTML]="item.summary"></p>
+                  <div>
+                    <a *ngIf="item.link" class="caplik" target="{{selectTarget(item.linkTarget)}}"
+                      href="{{item.link}}">MÁS INFO</a>
+                    <a *ngIf="!item.link" class="caplik" [routerLink]="['/nota', item?.id]">MÁS
+                      INFO</a>
+                  </div>
 
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                                    <figure><img class="img-fluid imagen-agenda" src="{{item?.image?.imageUrl}}" alt="{{item[0]?.image?.title}}" /></figure>
-                                </div>
-                            </div>
-                        </article>
-                    </li>
-                    <li *ngFor="let item of data.childLists" class="post">
-                        <article>
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
-                                    <a *ngIf="item.link.includes('http') || item.link.includes('www')" href="{{item.link}}" target="{{item.linkTarget}}">
-                                        <h4>{{item.name}}</h4>
-                                    </a>
-                                    <a *ngIf="!item.link.includes('http') && !item.link.includes('www')" [routerLink]="['/', item.link]">
-                                        <h4>{{item.name}}</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!--Articles:fin-->
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                  <figure><img class="img-fluid imagen-agenda" src="{{item?.image?.imageUrl}}"
+                      alt="{{item[0]?.image?.title}}" /></figure>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li *ngFor="let item of data.childLists" class="post">
+            <article>
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                  <a *ngIf="item.link.includes('http') || item.link.includes('www')" href="{{item.link}}"
+                    target="{{item.linkTarget}}">
+                    <h4>{{item.name}}</h4>
+                  </a>
+                  <a *ngIf="!item.link.includes('http') && !item.link.includes('www')" [routerLink]="[item.link]">
+                    <h4>{{item.name}}</h4>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!--Articles:fin-->
 
 </div>
 
 <ng-template #loadingBlockNews>
-    <div class="container p-0 pt-2 pb-5 align-self-center ">
-        <div class="loader ">Loading...</div>
-    </div>
+  <div class="container p-0 pt-2 pb-5 align-self-center ">
+    <div class="loader ">Loading...</div>
+  </div>
 </ng-template>
