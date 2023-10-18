@@ -109,52 +109,64 @@ const routes: Routes = [
     path: "contacto/general",
     component: ContactoComponent,
   },
+  // {
+  //   path: "agenda/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "ejercicio-profesional/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "el-consejo/*/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "el-consejo/programas/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "el-consejo/programas/bien-comun/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "formacion/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "noticias/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "servicios/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "preguntas-frecuentes/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "Terminos-y-Condiciones/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "Normativa-de-Confidencialidad/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "servicios/biblioteca/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "servicios/biblioteca/servicios-y-productos/:namesection",
+  //   component: MastertemplateComponent,
+  // },
+  // {
+  //   path: "servicios/biblioteca/sobre-nosotros/:namesection",
+  //   component: MastertemplateComponent,
+  // },
   {
-    path: "agenda/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "ejercicio-profesional/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "el-consejo/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "el-consejo/programas/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "el-consejo/programas/bien-comun/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "formacion/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "noticias/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "servicios/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "servicios/biblioteca/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "servicios/biblioteca/servicios-y-productos/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: "servicios/biblioteca/sobre-nosotros/:namesection",
-    component: MastertemplateComponent,
-  },
-  {
-    path: ":namesection",
+    path: "**",
     component: MastertemplateComponent,
   },
   {
@@ -164,7 +176,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   // otherwise redirect to home
-  { path: "**", redirectTo: "" },
+  // { path: "**", redirectTo: "" },
 ];
 
 export const appRoutingModule = RouterModule.forRoot(routes, {
