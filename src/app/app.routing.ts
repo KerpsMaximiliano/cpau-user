@@ -166,14 +166,14 @@ const routes: Routes = [
   //   component: MastertemplateComponent,
   // },
   {
-    path: "**",
-    component: MastertemplateComponent,
-  },
-  {
     path: "gestion",
     loadChildren: () =>
       import("./gestion/gestion.module").then((m) => m.GestionModule),
     canActivate: [AuthGuard],
+  },
+  {
+    path: "**",
+    component: MastertemplateComponent,
   },
   // otherwise redirect to home
   // { path: "**", redirectTo: "" },
