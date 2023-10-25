@@ -8,7 +8,7 @@
   <h6 class="border-bottom title-sections pb-1"><a>BOLETINES</a></h6>
 
   <!-- Content -->
-  <div class="container p-0 pt-2 pb-5" *ngIf="loader === false; else loading">
+  <div class="container p-0 pt-2 pb-5" *ngIf="loader === false">
     <section>
       <div class="row">
 
@@ -69,13 +69,6 @@
       </div>
     </section>
   </div>
-
-  <!-- Loader -->
-  <ng-template #loading>
-    <div class="container p-0 pt-2 pb-5 align-self-center ">
-      <div class="loader">Loading...</div>
-    </div>
-  </ng-template>
 
   <!-- Publicity -->
   <app-publicity-home></app-publicity-home>

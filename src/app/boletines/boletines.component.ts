@@ -47,22 +47,21 @@ export class BoletinesComponent implements OnInit {
   }
 
   public getPage(fetchData: boolean) {
+    if (!fetchData) return;
     let error: string = "boletines.componen.ts => getPage() => error: ";
-    if (fetchData) {
-      this._boletines.getPage(this.tag, this.page).subscribe({
-        next: (boletines: IBoletin[] | null) => {
-          if (boletines) {
-            this.boletines = this.boletines.concat(boletines);
-            this.page++;
-          }
-          this.loader = false;
-        },
-        error: (err: any) => {
-          console.error(error, err);
-          this.loader = false;
-        },
-        complete: () => {},
-      });
-    }
+    this._boletines.getPage(this.tag, this.page).subscribe({
+      next: (boletines: IBoletin[] | null) => {
+        if (boletines) {
+          this.boletines = this.boletines.concat(boletines);
+          this.page++;
+        }
+        this.loader = false;
+      },
+      error: (err: any) => {
+        console.error(error, err);
+        this.loader = false;
+      },
+      complete: () => {},
+    });
   }
 }
