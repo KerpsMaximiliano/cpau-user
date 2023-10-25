@@ -101,19 +101,19 @@
             <!-- Secciones:fin-->
           </ul>
         </div>
+
+        <!-- FILTER -->
         <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 input-group search">
-          <ng-autocomplete #autoComplete class="autocomplete-css" [data]="resultSearch" [searchKeyword]="keyword"
-            (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
-            [itemTemplate]="itemTemplate">
-          </ng-autocomplete>
-          <ng-template #itemTemplate let-item>
-            <a [innerHTML]="item.title"></a>
-          </ng-template>
+          <input #filter class="autocomplete-css" placeholder="Buscar" (keyup.enter)="configFilter(filter.value)">
           <span class="input-group-append">
-            <button (click)="onBtnSearch()" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
-              type="button"> <i class="fa fa-search"></i> </button>
+            <button type="button" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
+              [ngClass]="{'min-filter': filter.value.length >= 4, 'disabled': filter.value.length < 4}"
+              [disabled]="filter.value.length < 4" (click)="configFilter(filter.value)">
+              <i class="fa fa-search" [ngClass]="{ 'min-filter-icon': filter.value.length >= 4 }"></i>
+            </button>
           </span>
         </div>
+
       </div>
     </nav>
     <div id="sections" class="collapse col-12 p-0 m-0 py-2 p-1 mt-2 mb-4 sections">

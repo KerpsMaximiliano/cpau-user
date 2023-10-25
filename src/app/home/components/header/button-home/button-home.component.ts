@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+
+// * Services.
 import { SiteLoader } from "@app/_services";
-import { Observable, of } from "rxjs";
-import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
-import { Router } from "@angular/router";
+import { BusquedaService } from "@app/_services/busqueda.service";
 
 @Component({
   selector: "app-button-home",
@@ -18,9 +19,13 @@ export class ButtonHomeComponent implements OnInit {
   keyword = "title";
   resultSearch: any;
   private search: string;
-  @ViewChild("autoComplete", { static: false }) autoComplete: ElementRef;
 
-  constructor(private siteLoader: SiteLoader, public router: Router) {}
+  constructor(
+    private _busqueda: BusquedaService,
+    private siteLoader: SiteLoader,
+    private activedRoute: ActivatedRoute,
+    public router: Router
+  ) {}
 
   ngOnInit() {
     this.siteLoader.GetSectionMenu().subscribe((x) => {
@@ -61,6 +66,17 @@ export class ButtonHomeComponent implements OnInit {
     });
   }
 
+  public configFilter(keyword: string): void {
+    if (keyword.length < 4 || this._busqueda.get() === keyword) return;
+
+    this._busqueda.emit(keyword);
+
+    let route = this.activedRoute.snapshot.url
+      .map((segment) => segment.path)
+      .join("/");
+    if (route !== "busqueda") this.router.navigate(["/busqueda"]);
+  }
+
   private cleanURL(url: string): string {
     url = url.replace(/%2F/g, "/");
 
@@ -73,30 +89,9 @@ export class ButtonHomeComponent implements OnInit {
     return url;
   }
 
-  onBtnSearch() {
-    this.siteLoader
-      .getSearch(this.search)
-      .subscribe((data) => (this.resultSearch = data));
-  }
-
   selectEvent(item) {
     this.router.navigate(["/nota/" + item.sectionContentId]);
-    // do something with selected item
   }
-
-  onChangeSearch(search: string) {
-    this.search = search.trim();
-    if (this.search.length > 2) {
-      this.siteLoader
-        .getSearch(this.search)
-        .pipe(debounceTime(1000), distinctUntilChanged())
-        .subscribe((data) => (this.resultSearch = data));
-    }
-    // fetch remote data from here
-    // And reassign the 'data' which is binded to 'data' property.
-  }
-
-  onFocused(e) {}
 
   selectTarget(index) {
     let target = "";

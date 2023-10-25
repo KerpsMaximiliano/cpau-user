@@ -1,34 +1,54 @@
 .ng-autocomplete,
 .autocomplete-container,
 .input-container {
-    height: inherit;
+  height: inherit;
 }
 
 .ng-autocomplete,
 .autocomplete-container,
 .input-container input {
-    color: #6c757d;
-    opacity: 1;
-    position: relative;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    width: 1%;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    margin-bottom: 0;
-    border-radius: 0 !important;
-    border-color: #6c757d !important;
-    border-right: 0 !important;
-    height: auto !important;
-    line-height: inherit !important;
-    height: inherit !important;
+  color: #6c757d;
+  opacity: 1;
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  width: 1%;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  margin-bottom: 0;
+  border-radius: 0 !important;
+  border-color: #6c757d !important;
+  border-right: 0 !important;
+  height: auto !important;
+  line-height: inherit !important;
+  height: inherit !important;
 }
 
 @media only screen and (max-width: 992px) {
-    .separador {
-        display: none;
-    }
-    .botonera li a {
-        margin-left: 15px;
-    }
+  .separador {
+    display: none;
+  }
+  .botonera li a {
+    margin-left: 15px;
+  }
+}
+
+.min-filter {
+  background-color: blue;
+  cursor: pointer;
+}
+
+.min-filter-icon {
+  color: #fff;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: pointer;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+}
+
+.disabled:hover {
+  filter: grayscale(100%);
 }

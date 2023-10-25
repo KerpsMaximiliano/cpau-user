@@ -1,0 +1,97 @@
+<div class="container pt-4">
+
+  <!-- Header -->
+  <app-header-home></app-header-home>
+  <app-button-home></app-button-home>
+
+  <!-- Title -->
+  <h6 class="border-bottom title-sections pb-1"><a>BÚSQUEDA</a></h6>
+
+  <!-- Content -->
+  <div class="container p-0 pt-2 pb-5" *ngIf="!loader; else loading">
+    <section>
+      <div class="row">
+
+        <!-- Filter -->
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias ">
+          <ol>
+            <li>
+              <label (click)="filter('todos')" [ngClass]="{ 'selected': tag === 'todos' }">Todos</label>
+            </li>
+          </ol>
+          <ol>
+            <li>
+              <h6 class="p-1">FECHA</h6>
+            </li>
+            <li>
+              <label (click)="filter('hoy')" [ngClass]="{ 'selected': tag === 'hoy' }">Hoy</label>
+            </li>
+            <li>
+              <label (click)="filter('semana')" [ngClass]="{ 'selected': tag === 'semana' }">Esta semana</label>
+            </li>
+            <li>
+              <label (click)="filter('mes')" [ngClass]="{ 'selected': tag === 'mes' }">Este mes</label>
+            </li>
+            <li>
+              <label (click)="filter('ano')" [ngClass]="{ 'selected': tag === 'ano' }">Este año</label>
+            </li>
+            <li>
+              <label (click)="filter('2ano')" [ngClass]="{ 'selected': tag === '2ano' }">Últimos dos años</label>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Articles -->
+        <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts ">
+          <ul class="list-unstyled">
+            <ng-container *ngFor="let result of results; let i = index">
+              <li class="post" appContentView (elementVisible)="getPage($event)"
+                [isTargetElement]="i == result.length - 1">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                    <div class="container p-0 pt-2 pb-5">
+                      <div class="row">
+                        <div class="col-12 col-sm-12">
+                          <article>
+                            <a [href]="'/nota/' + result.sectionContentId" target="_blank">
+                              <h4>{{ result.title }}</h4>
+                            </a>
+                            <p [innerHTML]="result.summary"></p>
+                            <h6 *ngIf="result.publishDate">{{ result.publishDate }}</h6>
+                            <h5>{{ result.section }}</h5>
+                            <nav aria-label="breadcrumb" *ngIf="result.breadCrumb.length > 1">
+                              <ol class="breadcrumb border-bottom-0">
+                                <li *ngFor="let bc of result.breadCrumb; let last = last;" class="breadcrumb-item"
+                                  title="{{ bc.name }}">
+                                  <a *ngIf="bc.link != ''" [routerLink]="[bc.link]">{{ bc.name }}</a>
+                                  <span *ngIf="bc.link == ''">{{ bc.name }}</span>
+                                </li>
+                              </ol>
+                            </nav>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Loader -->
+  <ng-template #loading>
+    <div class="container p-0 pt-2 pb-5 align-self-center ">
+      <div class="loader">Loading...</div>
+    </div>
+  </ng-template>
+
+  <!-- Publicity -->
+  <app-publicity-home></app-publicity-home>
+  <!-- Footer -->
+  <app-footer></app-footer>
+
+</div>

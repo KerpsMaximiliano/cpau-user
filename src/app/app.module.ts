@@ -1,4 +1,4 @@
-﻿import { numberOnlyDirective } from './_directive/numbersOnly.directive';
+﻿import { numberOnlyDirective } from "./_directive/numbersOnly.directive";
 import { ApplicationRef, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
@@ -42,42 +42,50 @@ import { Safe } from "./_directive/pipeSafeHTML.directive";
 import { FormComponent } from "./form/form.component";
 import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 import { PreregisterComponent } from "./login/preregister/preregister.component";
-import { RegisterMatriculadoComponent } from './login/register/register-matriculado/register-matriculado.component';
-import { RegisterNomatriculadoComponent } from './login/register/register-nomatriculado/register-nomatriculado.component'
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-import { ModalComponent } from './shared/components/modal/modal.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ActualizacionEmailComponent } from './gestion/components/perfil/components/actualizacion-email/actualizacion-email.component';
-import { OwlModule } from 'ngx-owl-carousel';
-import { LoadingComponent } from './shared/components/loading/loading.component';
-import { LoadingScreenInterceptor } from './_helpers/loading.interceptor';
-import { PagoCpauMailComponent } from './pagocpaumail/pagocpaumail.component';
-import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
-import { ConstanciaComponent } from './form/constancia/constancia.component';
-import { DynamicComponent } from './form/dynamic-component/dynamic-component.component';
-import { ComponentContainer } from './form/directives/componentContainer';
-import { LblSelectAdapterComponent } from './form/dynamicComponentsAdapters/lblSelect.componentAdapter';
-import { SelectControlComponent } from './form/selectControl/selectControl.component';
-import { LblInputStringAdapterComponent } from './form/dynamicComponentsAdapters/lblInput.string.componentAdapter';
-import { StringInputControlComponent } from './form/inputControl/string.input.control';
-import { TextAreaControlComponent } from './form/textareaControl/textareaControl.component';
-import { LblTextareaAdapterComponent } from './form/dynamicComponentsAdapters/lblTextareacomponentAdapter';
-import { LblCheckboxAdapterComponent } from './form/dynamicComponentsAdapters/lblCheckbox.componentAdapter';
-import { CheckboxControlComponent } from './form/checkboxControl/checkboxControl.component';
-import { LblRadioAdapterComponent } from './form/dynamicComponentsAdapters/lblRadio.componentAdapter';
-import { RadioControlComponent } from './form/radioControl/radioControl.component';
-import {NgxPrintModule} from 'ngx-print';
-import { QRCodeModule } from 'angularx-qrcode';
-import { LabelAdapterComponent } from './form/dynamicComponentsAdapters/label.componentAdapter';
-import { LabelControlComponent } from './form/labelControl/label.control';
-import { LblHiddenAdapterComponent } from './form/dynamicComponentsAdapters/lblHidden.componentAdapter';
-import { HiddenControlComponent } from './form/hiddenControl/hidden.control';;
-import { FinalMessageComponent } from './form/final-message/final-message.component'
-import { TemplateSixComponent } from './home/components/templates/template-six/template-six.component';;
-import { ProfesionalResultComponent } from './Professional/profesional-result/profesional-result.component'
+import { RegisterMatriculadoComponent } from "./login/register/register-matriculado/register-matriculado.component";
+import { RegisterNomatriculadoComponent } from "./login/register/register-nomatriculado/register-nomatriculado.component";
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BootstrapModalModule } from "ng2-bootstrap-modal";
+import { ModalComponent } from "./shared/components/modal/modal.component";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { ActualizacionEmailComponent } from "./gestion/components/perfil/components/actualizacion-email/actualizacion-email.component";
+import { OwlModule } from "ngx-owl-carousel";
+import { LoadingComponent } from "./shared/components/loading/loading.component";
+import { LoadingScreenInterceptor } from "./_helpers/loading.interceptor";
+import { PagoCpauMailComponent } from "./pagocpaumail/pagocpaumail.component";
+import { Angular2ImageGalleryModule } from "angular2-image-gallery";
+import { ConstanciaComponent } from "./form/constancia/constancia.component";
+import { DynamicComponent } from "./form/dynamic-component/dynamic-component.component";
+import { ComponentContainer } from "./form/directives/componentContainer";
+import { LblSelectAdapterComponent } from "./form/dynamicComponentsAdapters/lblSelect.componentAdapter";
+import { SelectControlComponent } from "./form/selectControl/selectControl.component";
+import { LblInputStringAdapterComponent } from "./form/dynamicComponentsAdapters/lblInput.string.componentAdapter";
+import { StringInputControlComponent } from "./form/inputControl/string.input.control";
+import { TextAreaControlComponent } from "./form/textareaControl/textareaControl.component";
+import { LblTextareaAdapterComponent } from "./form/dynamicComponentsAdapters/lblTextareacomponentAdapter";
+import { LblCheckboxAdapterComponent } from "./form/dynamicComponentsAdapters/lblCheckbox.componentAdapter";
+import { CheckboxControlComponent } from "./form/checkboxControl/checkboxControl.component";
+import { LblRadioAdapterComponent } from "./form/dynamicComponentsAdapters/lblRadio.componentAdapter";
+import { RadioControlComponent } from "./form/radioControl/radioControl.component";
+import { NgxPrintModule } from "ngx-print";
+import { QRCodeModule } from "angularx-qrcode";
+import { LabelAdapterComponent } from "./form/dynamicComponentsAdapters/label.componentAdapter";
+import { LabelControlComponent } from "./form/labelControl/label.control";
+import { LblHiddenAdapterComponent } from "./form/dynamicComponentsAdapters/lblHidden.componentAdapter";
+import { HiddenControlComponent } from "./form/hiddenControl/hidden.control";
+import { FinalMessageComponent } from "./form/final-message/final-message.component";
+import { TemplateSixComponent } from "./home/components/templates/template-six/template-six.component";
+import { ProfesionalResultComponent } from "./Professional/profesional-result/profesional-result.component";
+
+// * Directives.
+import { ContentViewDirective } from "./_directive/content-view.directive";
+
+// * Components.
+import { BusquedaComponent } from "./busqueda/busqueda.component";
+
 //import { LightgalleryModule } from 'lightgallery/angular';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -96,7 +104,7 @@ import { ProfesionalResultComponent } from './Professional/profesional-result/pr
     OwlModule,
     Angular2ImageGalleryModule,
     NgxPrintModule,
-    QRCodeModule
+    QRCodeModule,
   ],
   declarations: [
     AppComponent,
@@ -156,9 +164,15 @@ import { ProfesionalResultComponent } from './Professional/profesional-result/pr
     LblHiddenAdapterComponent,
     HiddenControlComponent,
     FinalMessageComponent,
-    ProfesionalResultComponent
+    ProfesionalResultComponent,
+
+    // * Directives.
+    ContentViewDirective,
+
+    // * Components.
+    BusquedaComponent,
   ],
-  exports:[
+  exports: [
     SelectControlComponent,
     StringInputControlComponent,
     TextAreaControlComponent,
@@ -177,8 +191,8 @@ import { ProfesionalResultComponent } from './Professional/profesional-result/pr
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingScreenInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   entryComponents: [
     TemplateOneComponent,
@@ -200,9 +214,11 @@ import { ProfesionalResultComponent } from './Professional/profesional-result/pr
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { 
+export class AppModule {
   constructor(applicationRef: ApplicationRef) {
     //for ng2-bootstrap-modal in angualar 5+(6, 7 etc..)
-      Object.defineProperty(applicationRef, '_rootComponents', {get: () => applicationRef['components']});
-    }
+    Object.defineProperty(applicationRef, "_rootComponents", {
+      get: () => applicationRef["components"],
+    });
+  }
 }

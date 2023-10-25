@@ -24,6 +24,9 @@ import { ConstanciaComponent } from "./form/constancia/constancia.component";
 import { FinalMessageComponent } from "./form/final-message/final-message.component";
 import { ProfesionalResultComponent } from "./Professional/profesional-result/profesional-result.component";
 
+// * Components.
+import { BusquedaComponent } from "./busqueda/busqueda.component";
+
 const routes: Routes = [
   {
     path: "",
@@ -170,6 +173,10 @@ const routes: Routes = [
     loadChildren: () =>
       import("./gestion/gestion.module").then((m) => m.GestionModule),
     canActivate: [AuthGuard],
+  },
+  {
+    path: "busqueda",
+    component: BusquedaComponent,
   },
   {
     path: "**",
