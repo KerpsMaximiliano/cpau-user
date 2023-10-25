@@ -10,10 +10,10 @@
   <!-- Content -->
   <div class="container p-0 pt-2 pb-5" *ngIf="!loader; else loading">
     <section>
-      <div class="row">
+      <div class="row" *ngIf="results.length > 0; else noResults">
 
         <!-- Filter -->
-        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias ">
+        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias">
           <ol>
             <li>
               <label (click)="filter('todos')" [ngClass]="{ 'selected': tag === 'todos' }">Todos</label>
@@ -79,6 +79,12 @@
           </ul>
         </div>
       </div>
+
+      <ng-template #noResults>
+        <div class="row pt-3 pl-2">
+          <h1>No se encontraron coincidencias</h1>
+        </div>
+      </ng-template>
     </section>
   </div>
 
