@@ -13,7 +13,6 @@ import { PadronComponent } from "./padron/padron.component";
 import { FichatecnicaComponent } from "./fichatecnica/fichatecnica.component";
 import { ContactoComponent } from "./contacto/contacto.component";
 import { ContactoAnuncianteComponent } from "./contacto-anunciante/contacto-anunciante.component";
-import { BoletinesComponent } from "./boletines/boletines.component";
 import { NotePreviewComponent } from "./home/components/notePreview/notePreview.component";
 import { FormComponent } from "./form/form.component";
 import { PreregisterComponent } from "./login/preregister";
@@ -24,14 +23,14 @@ import { ConstanciaComponent } from "./form/constancia/constancia.component";
 import { FinalMessageComponent } from "./form/final-message/final-message.component";
 import { ProfesionalResultComponent } from "./Professional/profesional-result/profesional-result.component";
 
+// * Boletines.
+import { BoletinesComponent } from "./boletines/boletines.component";
+import { BoletinComponent } from "./boletin/boletin.component";
+
 const routes: Routes = [
   {
     path: "",
     component: HomeComponent,
-  },
-  {
-    path: "boletin/:idBoletin",
-    component: BoletinesComponent,
   },
   {
     path: "formularios/mensajefinal",
@@ -109,67 +108,19 @@ const routes: Routes = [
     path: "contacto/general",
     component: ContactoComponent,
   },
-  // {
-  //   path: "agenda/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "ejercicio-profesional/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "el-consejo/*/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "el-consejo/programas/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "el-consejo/programas/bien-comun/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "formacion/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "noticias/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "servicios/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "preguntas-frecuentes/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "Terminos-y-Condiciones/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "Normativa-de-Confidencialidad/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "servicios/biblioteca/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "servicios/biblioteca/servicios-y-productos/:namesection",
-  //   component: MastertemplateComponent,
-  // },
-  // {
-  //   path: "servicios/biblioteca/sobre-nosotros/:namesection",
-  //   component: MastertemplateComponent,
-  // },
   {
     path: "gestion",
     loadChildren: () =>
       import("./gestion/gestion.module").then((m) => m.GestionModule),
     canActivate: [AuthGuard],
+  },
+  {
+    path: "boletines",
+    component: BoletinesComponent,
+  },
+  {
+    path: "boletin/:idBoletin",
+    component: BoletinComponent,
   },
   {
     path: "**",
