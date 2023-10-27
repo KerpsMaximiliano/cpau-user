@@ -36,7 +36,6 @@ import { ContactoComponent } from "./contacto/contacto.component";
 import { ContactoAnuncianteComponent } from "./contacto-anunciante/contacto-anunciante.component";
 import { TooltipModule } from "ng2-tooltip-directive";
 import { CacheInterceptor } from "../app/_helpers/cache.interceptor";
-import { BoletinesComponent } from "./boletines/boletines.component";
 import { NotePreviewComponent } from "./home/components/notePreview/notePreview.component";
 import { Safe } from "./_directive/pipeSafeHTML.directive";
 import { FormComponent } from "./form/form.component";
@@ -80,10 +79,9 @@ import { ProfesionalResultComponent } from "./Professional/profesional-result/pr
 
 // * Directives.
 import { ContentViewDirective } from "./_directive/content-view.directive";
-
 // * Components.
-import { BusquedaComponent } from "./busqueda/busqueda.component";
-
+import { BoletinesComponent } from "./boletines/boletines.component";
+import { BoletinComponent } from "./boletin/boletin.component";import { BusquedaComponent } from "./busqueda/busqueda.component";
 //import { LightgalleryModule } from 'lightgallery/angular';
 
 @NgModule({
@@ -125,6 +123,7 @@ import { BusquedaComponent } from "./busqueda/busqueda.component";
     TemplateFiveComponent,
     TemplateSixComponent,
     TemplateAgendaTagsComponent,
+    ProfesionalResultComponent,
     MastertemplateComponent,
     RenderDirective,
     NoteComponent,
@@ -136,7 +135,6 @@ import { BusquedaComponent } from "./busqueda/busqueda.component";
     ContactoProfesionalComponent,
     ContactoComponent,
     ContactoAnuncianteComponent,
-    BoletinesComponent,
     Safe,
     FormComponent,
     PreregisterComponent,
@@ -164,14 +162,13 @@ import { BusquedaComponent } from "./busqueda/busqueda.component";
     LblHiddenAdapterComponent,
     HiddenControlComponent,
     FinalMessageComponent,
-    ProfesionalResultComponent,
+// * Components.
+    BoletinesComponent,
+    BoletinComponent,
 
     // * Directives.
-    ContentViewDirective,
-
-    // * Components.
-    BusquedaComponent,
-  ],
+    ContentViewDirective,// * Components.
+    BusquedaComponent,  ],
   exports: [
     SelectControlComponent,
     StringInputControlComponent,

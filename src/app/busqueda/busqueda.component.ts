@@ -29,7 +29,7 @@ declare function recortarSummaryListadoTemplateFour(text: string): string;
 export class BusquedaComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private page: number = 1;
-  private tag: string = "todos";
+  public tag: string = "todos";
 
   public loader: boolean = true;
   public results: IResultado[] = [];

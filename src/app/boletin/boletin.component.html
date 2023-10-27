@@ -1,0 +1,135 @@
+<body width="100%" yahoo="yahoo">
+    <table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" class="tabla-general">
+        <tr>
+            <td>
+                <div class="d-flex justify-content-center" style="width: 100%;">
+                    <div *ngIf="!page" class="div-general">
+                        <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" class="tabla-header">
+                            <tr>
+                                <td class="celda">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://www.cpau.org" target="_blank" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">
+                                        <img src="https://static.cpau.org/boletines/2019/general/nuevo/cb.png" width="680" alt="CPAU | Consejo Profesional de Arquitectura y Urbanismo" border="0" class="logo-cpau">
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                        <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" class="tabla-body">
+                            <tr>
+                                <td>
+                                    <table *ngIf="data?.contenidoDestacado" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td class="fila">
+                                                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td class="celda-migas"><a [routerLink]="['/',data?.contenidoDestacado.section]" target="_blank" class="migas" title="{{data?.contenidoDestacado.nameSection | uppercase}}">{{data?.contenidoDestacado.nameSection | uppercase}}</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="celda-title"><a class="title" [routerLink]="['/nota',data?.contenidoDestacado?.link]" target="_blank" title="{{data?.contenidoDestacado?.title}}">{{data?.contenidoDestacado?.title}}</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="celda-resumen resumen stack-column" [innerHTML]="data?.contenidoDestacado?.summary"> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="celda-masinfo"><a class="masinfo" [routerLink]="['/nota',data?.contenidoDestacado?.link]" target="_blank" title="Más información">Más información</a></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#ffffff" align="left" height="100%" valign="top" width="100%">
+                                    <table border="0" cellpadding="0" cellspacing="0" align="left" width="100%" style="max-width:680px;">
+                                        <tr>
+                                            <td>
+                                                <div *ngIf="data?.contenidos" style="max-width:456px; display:inline-block; min-width:200px; vertical-align:top; width:100%; padding: 40px 0 0 0;" class="stack-column">
+
+                                                    <!--  NOTA -->
+                                                    <table *ngFor="let contenido of data?.contenidos" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                        <tr>
+                                                            <td class="fila-notas">
+                                                                <table cellspacing="0" cellpadding="0" border="0" width="100%" class="tabla-notas">
+                                                                    <tr>
+                                                                        <td class="celda-migas"><a [routerLink]="['/',contenido.section]" target="_blank" class="migas" title="{{contenido.nameSection | uppercase}}">{{contenido.nameSection | uppercase}}</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="celda-title"><a class="title" [routerLink]="['/nota',contenido?.link]" target="_blank" title="Preocupa la enajenación de bienes del Estado">{{contenido?.title}}</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="celda-resumen resumen stack-column" [innerHTML]="contenido?.summary"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="celda-masinfo">
+                                                                            <a *ngIf="contenido.link.includes('http') || contenido.link.includes('www')" class="masinfo" href="{{contenido.link}}" target="_blank" title="Más información">Más información</a>
+                                                                            <a *ngIf="!contenido.link.includes('http') && !contenido.link.includes('www')" class="masinfo" [routerLink]="['/nota',contenido.link]" target="_blank" title="Más información">Más información</a>
+
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <!-- FIN NOTA -->
+
+                                                </div>
+
+                                                <div style=" max-width:160px; display:inline-block; min-width:200px; vertical-align:top; width:100%; padding: 40px 0;" class="stack-column">
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td style="padding: 5px; background:#eeeeee;">
+                                                                <table cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 14px;text-align: center;">
+                                                                    <tr>
+                                                                        <td style="font-family: sans-serif; font-size: 13px;  text-align: center; padding:8px 0;"><a href="https://ly.cpau.org/2gyydW9" class="pie" target="_blank">Anunciantes</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <a *ngFor="let banner of data?.banners" target="_blank" href="{{banner.urlLink}}">
+                                                                                <img src="{{banner.urlImage}}" width="180" alt="{{banner.alternativeText}}" style="border: 0;width: 100%;max-width:180px;height: auto;" class="center-on-narrow">
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" class="tabla-footer">
+                            <tr>
+                                <td class="celda-pie"><a href="https://www.cpau.org" target="_blank" class="pie-cpau" title="CPAU | Consejo Profesional de Arquitectura y Urbanismo">CPAU | Consejo Profesional de Arquitectura y Urbanismo</a><br>
+                                    <a href="https://ly.cpau.org/2BDptaK" target="_blank" class="pie">25 de Mayo 482</a> - (C1002ABJ) Ciudad de Buenos Aires | +54 (11) 5238.1068 | <a href="https://www.cpau.org" target="_blank" class="pie">www.cpau.org</a>                                    | <a href="mailto:info@cpau.org" target="_blank" class="pie">info@cpau.org</a> <br> Copyright © 2019 | ISSN 1853-158X </td>
+                            </tr>
+                            <tr>
+                                <td class="celda">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="tabla-redes">
+        <tr>
+            <td height="10" align="center" valign="middle" class="celda-redes"> Segu&iacute;nos:
+                <a href="https://www.facebook.com/cpauorg" target="_blank" title="Facebook" class="redes"> <img src="https://static.cpau.org/2.0/iconos/facebook.png" border="0" alt="" align="absmiddle" /> </a>
+                <a href="https://www.twitter.com/cpauorg" target="_blank" title="Twitter" class="redes"> <img src="https://static.cpau.org/2.0/iconos/twitter-2.png" border="0" alt="" align="absmiddle" /> </a>
+                <a href="https://www.linkedin.com/company/cpau-consejo-profesional-de-arquitectura-y-urbanismo" target="_blank" title="Linkedin" class="redes">
+                    <img src="https://static.cpau.org/2.0/iconos/linkedin.png" border="0" alt="" align="absmiddle" /> </a>
+                <a href="https://www.flickr.com/photos/cpauorg" target="_blank" title="Flickr" class="redes"> <img src="https://static.cpau.org/2.0/iconos/flickr.png" border="0" alt="" align="absmiddle" /> </a>
+                <a href="https://instagram.com/cpauorg/" target="_blank" title="Instagram" class="redes"> <img src="https://static.cpau.org/2.0/iconos/instagram.png" width="24" border="0" alt="" align="absmiddle" /> </a>
+                <a href="https://www.vimeo.com/cpauorg" target="_blank" title="Vimeo" class="redes"> <img src="https://static.cpau.org/2.0/iconos/vimeo.png" border="0" alt="" align="absmiddle" /> </a>
+                <a href="https://www.cpau.org/rss.aspx" target="_blank" title="RSS" class="redes"> <img src="https://static.cpau.org/2.0/iconos/rss.png" border="0" alt="" align="absmiddle" /> </a>
+            </td>
+        </tr>
+    </table>
+</body>

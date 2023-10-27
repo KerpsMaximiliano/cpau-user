@@ -8,6 +8,7 @@ import {
 
 @Directive({ selector: "[appContentView]" })
 export class ContentViewDirective {
+  private hasBeenVisible: boolean = false;
   private intersectionOptions: any = {
     root: null,
     rootMargin: "0px",
@@ -29,9 +30,10 @@ export class ContentViewDirective {
 
   private intersectionCallback(entries: any, observer: any): void {
     entries.forEach((entry: any) => {
-      entry.intersectionRatio === 1
-        ? this.elementVisible.emit(true)
-        : this.elementVisible.emit(false);
+      if (entry.isIntersecting && !this.hasBeenVisible) {
+        this.elementVisible.emit(true);
+        this.hasBeenVisible = true;
+      }
     });
   }
 }
