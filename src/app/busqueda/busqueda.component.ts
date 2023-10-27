@@ -59,7 +59,7 @@ export class BusquedaComponent implements OnInit, OnDestroy {
     this.get(true);
   }
 
-  private get(fetchData: boolean): void {
+  public get(fetchData: boolean): void {
     if (!fetchData) return;
     if (!this.loader) this.loader = true;
     let error: string = "busqueda.componen.ts => getPage() => error: ";
