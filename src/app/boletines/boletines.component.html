@@ -43,7 +43,10 @@
 
         <!-- Articles -->
         <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts ">
-          <ul class="list-unstyled">
+          <ng-template #noBoletines>
+            <h1>No se han encontrado resultados.</h1>
+          </ng-template>
+          <ul class="list-unstyled" *ngIf="boletines.length > 0; else noBoletines">
             <ng-container *ngFor="let boletin of boletines; let i = index">
               <li class="post" appContentView (elementVisible)="getPage($event)"
                 [isTargetElement]="i == boletines.length - 1">

@@ -18,7 +18,9 @@ export class ButtonHomeComponent implements OnInit {
   consejo: any[] = [];
   keyword = "title";
   resultSearch: any;
+
   private search: string;
+  public filterValue: string;
 
   constructor(
     private _busqueda: BusquedaService,
@@ -66,7 +68,8 @@ export class ButtonHomeComponent implements OnInit {
     });
   }
 
-  public configFilter(keyword: string): void {
+  public configFilter(): void {
+    let keyword: string = this.filterValue;
     if (keyword.length < 4 || this._busqueda.get() === keyword) return;
 
     this._busqueda.emit(keyword);

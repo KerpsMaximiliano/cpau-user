@@ -51,3 +51,7 @@ li.post:nth-child(1)
   background-color: #000;
   color: #fff;
 }
+
+ol li label:hover {
+  background: #3400ff;
+}

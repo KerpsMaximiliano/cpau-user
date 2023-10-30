@@ -42,11 +42,14 @@
         </div>
 
         <!-- Articles -->
-        <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts ">
-          <ul class="list-unstyled">
+        <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts">
+          <ng-template #noResults>
+            <h1>No se han encontrado resultados.</h1>
+          </ng-template>
+          <ul class="list-unstyled" *ngIf="results.length > 0; else noResults">
             <ng-container *ngFor="let result of results; let i = index">
-              <li class="post" appContentView (elementVisible)="get($event)"
-                [isTargetElement]="i == result.length - 1">
+              <li class="post" appContentView (elementVisible)="getPage($event)"
+                [isTargetElement]="i == results.length - 1">
                 <div class="row">
                   <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
                     <div class="container p-0 pt-2 pb-5">
@@ -77,17 +80,20 @@
               </li>
             </ng-container>
           </ul>
+          <!-- Loader -->
+          <div class="container p-0 pt-2 pb-5 align-self-center" *ngIf="loadMore">
+            <div class="loader">Loading...</div>
+          </div>
         </div>
       </div>
     </section>
   </div>
-
-  <!-- Loader -->
   <ng-template #loading>
-    <div class="container p-0 pt-2 pb-5 align-self-center ">
+    <div class="container p-0 pt-2 pb-5 align-self-center">
       <div class="loader">Loading...</div>
     </div>
   </ng-template>
+
 
   <!-- Publicity -->
   <app-publicity-home></app-publicity-home>

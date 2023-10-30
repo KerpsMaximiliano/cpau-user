@@ -29,9 +29,11 @@ declare function recortarSummaryListadoTemplateFour(text: string): string;
 export class BusquedaComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private page: number = 1;
-  public tag: string = "todos";
+  private request: boolean = false;
 
+  public tag: string = "todos";
   public loader: boolean = true;
+  public loadMore: boolean = false;
   public results: IResultado[] = [];
 
   constructor(private _busqueda: BusquedaService, private router: Router) {
@@ -42,10 +44,10 @@ export class BusquedaComponent implements OnInit, OnDestroy {
     this.subscription = this._busqueda.receive().subscribe(() => {
       this.page = 1;
       this.results = [];
-      this.get(true);
+      this.getPage(true);
     });
     window.scroll(0, 0);
-    this.get(true);
+    this.getPage(true);
   }
 
   public ngOnDestroy(): void {
@@ -53,15 +55,18 @@ export class BusquedaComponent implements OnInit, OnDestroy {
   }
 
   public filter(tag: string): void {
+    if (this.request) return;
     this.tag = tag;
     this.page = 1;
     this.results = [];
-    this.get(true);
+    this.loader = true;
+    this.getPage(true);
   }
 
-  public get(fetchData: boolean): void {
-    if (!fetchData) return;
-    if (!this.loader) this.loader = true;
+  public getPage(fetchData: boolean): void {
+    if (!fetchData || this.request) return;
+    this.request = true;
+    if (!this.loader) this.loadMore = true;
     let error: string = "busqueda.componen.ts => getPage() => error: ";
     this._busqueda.search(this.tag, this.page).subscribe({
       next: (results: IResultado[] | null) => {
@@ -72,11 +77,18 @@ export class BusquedaComponent implements OnInit, OnDestroy {
           this.results = this.results.concat(results);
           this.page++;
         }
-        this.loader = false;
+        if (this.loader) {
+          this.loader = false;
+        } else {
+          this.loadMore = false;
+        }
+        this.request = false;
       },
       error: (err: any) => {
         console.error(error, err);
         this.loader = false;
+        this.loadMore = false;
+        this.request = false;
       },
       complete: () => {},
     });

@@ -55,3 +55,7 @@ li.post:nth-child(1)
 p {
   font-size: 14px !important;
 }
+
+ol li label:hover {
+  background: #3400ff;
+}

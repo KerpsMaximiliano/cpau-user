@@ -32,23 +32,6 @@
     margin-left: 15px;
   }
 }
-
-.min-filter {
-  background-color: blue;
-  cursor: pointer;
-}
-
-.min-filter-icon {
-  color: #fff;
-}
-
-.disabled {
-  opacity: 0.5;
-  pointer-events: pointer;
-  cursor: not-allowed;
-  filter: grayscale(100%);
-}
-
-.disabled:hover {
-  filter: grayscale(100%);
+::ng-deep ng-autocomplete .not-found {
+  border: 0px !important;
 }
