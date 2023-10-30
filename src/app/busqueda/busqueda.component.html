@@ -53,12 +53,6 @@
                       <div class="row">
                         <div class="col-12 col-sm-12">
                           <article>
-                            <a [href]="'/nota/' + result.sectionContentId" target="_blank">
-                              <h4>{{ result.title }}</h4>
-                            </a>
-                            <p [innerHTML]="result.summary"></p>
-                            <h6 *ngIf="result.publishDateString">{{ result.publishDateString }}</h6>
-                            <h5>{{ result.section }}</h5>
                             <nav aria-label="breadcrumb" *ngIf="result.breadCrumb.length > 1">
                               <ol class="breadcrumb border-bottom-0">
                                 <li *ngFor="let bc of result.breadCrumb; let last = last;" class="breadcrumb-item"
@@ -68,6 +62,12 @@
                                 </li>
                               </ol>
                             </nav>
+                            <a [href]="'/nota/' + result.sectionContentId" target="_blank">
+                              <h4>{{ result.title }}</h4>
+                            </a>
+                            <p [innerHTML]="result.summary"></p>
+                            <h6 *ngIf="result.publishDateString">{{ result.publishDateString }}</h6>
+                            <h5>{{ result.section }}</h5>
                           </article>
                         </div>
                       </div>
