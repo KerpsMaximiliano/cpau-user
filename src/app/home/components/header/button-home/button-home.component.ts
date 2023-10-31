@@ -70,9 +70,9 @@ export class ButtonHomeComponent implements OnInit {
 
   public configFilter(): void {
     let keyword: string = this.filterValue;
-    if (keyword.length < 4 || this._busqueda.get() === keyword) return;
+    if (keyword.length < 4) return;
 
-    this._busqueda.emit(keyword);
+    if (this._busqueda.get() !== keyword) this._busqueda.emit(keyword);
 
     let route = this.activedRoute.snapshot.url
       .map((segment) => segment.path)
