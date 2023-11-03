@@ -42,6 +42,7 @@ export class BusquedaComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.subscription = this._busqueda.receive().subscribe(() => {
+      this.loader = true;
       this.page = 1;
       this.results = [];
       this.getPage(true);

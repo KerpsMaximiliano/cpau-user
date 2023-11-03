@@ -44,7 +44,7 @@
         <!-- Articles -->
         <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts">
           <ng-template #noResults>
-            <h1>No se han encontrado resultados.</h1>
+            <h1 *ngIf="!loader">No se han encontrado resultados.</h1>
           </ng-template>
           <ul class="list-unstyled" *ngIf="results.length > 0; else noResults">
             <ng-container *ngFor="let result of results; let i = index">
