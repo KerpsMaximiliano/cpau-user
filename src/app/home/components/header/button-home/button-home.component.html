@@ -104,11 +104,9 @@
 
         <!-- FILTER -->
         <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 input-group search">
-          <ng-autocomplete class="autocomplete-css ng-autocomplete" #filter (keyup.enter)="configFilter()"
-            [(ngModel)]="filterValue">
-            <div class="not-found" style="border: none;">
-              <!-- Contenido del div -->
-            </div>
+          <ng-autocomplete class="autocomplete-css ng-autocomplete" (keyup.enter)="configFilter()"
+            [(ngModel)]="filterValue" [tooltip]="'Tenés que ingresar al menos cuatro caracteres'" #toolTip>
+            <div class="not-found" style="border: none;"></div>
           </ng-autocomplete>
 
           <span class="input-group-append">
@@ -117,16 +115,6 @@
               <i class="fa fa-search"></i>
             </button>
           </span>
-
-          <!-- <input #filter class="autocomplete-css ng-autocomplete" type="text"
-            (keyup.enter)="configFilter(filter.value)"> -->
-          <!-- <span class="input-group-append">
-            <button type="button" class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
-              [ngClass]="{'min-filter': filter.value.length >= 4, 'disabled': filter.value.length < 4}"
-              [disabled]="filter.value.length < 4" (click)="configFilter(filter.value)">
-              <i class="fa fa-search" [ngClass]="{ 'min-filter-icon': filter.value.length >= 4 }"></i>
-            </button>
-          </span> -->
         </div>
 
       </div>

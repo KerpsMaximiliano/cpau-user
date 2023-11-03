@@ -1,16 +1,17 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 // * Services.
 import { SiteLoader } from "@app/_services";
 import { BusquedaService } from "@app/_services/busqueda.service";
+import { TooltipDirective } from "ng2-tooltip-directive";
 
 @Component({
   selector: "app-button-home",
   templateUrl: "./button-home.component.html",
   styleUrls: ["./button-home.component.css"],
 })
-export class ButtonHomeComponent implements OnInit {
+export class ButtonHomeComponent implements OnInit, AfterViewInit {
   servicios: any[] = [];
   formacion: any[] = [];
   ejercicioprofesional: any[] = [];
@@ -19,8 +20,8 @@ export class ButtonHomeComponent implements OnInit {
   keyword = "title";
   resultSearch: any;
 
-  private search: string;
   public filterValue: string;
+  @ViewChild(TooltipDirective, { static: false }) toolTip: TooltipDirective;
 
   constructor(
     private _busqueda: BusquedaService,
@@ -68,9 +69,21 @@ export class ButtonHomeComponent implements OnInit {
     });
   }
 
+  public ngAfterViewInit(): void {
+    if (this.toolTip) this.toolTip._options.trigger = "manual";
+  }
+
   public configFilter(): void {
-    let keyword: string = this.filterValue;
-    if (keyword.length < 4) return;
+    let keyword: string | undefined = this.filterValue;
+    if (!keyword || keyword.length < 4) {
+      if (this.toolTip) {
+        this.toolTip.show();
+        setTimeout(() => {
+          this.toolTip.hide();
+        }, 2000);
+      }
+      return;
+    }
 
     if (this._busqueda.get() !== keyword) this._busqueda.emit(keyword);
 
