@@ -52,11 +52,11 @@
                 [isTargetElement]="i == results.length - 1">
                 <div class="row">
                   <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                    <div class="container p-0 pt-2 pb-5">
+                    <div class="container p-0">
                       <div class="row">
                         <div class="col-12 col-sm-12">
                           <article>
-                            <nav aria-label="breadcrumb" *ngIf="result.breadCrumb.length > 1">
+                            <nav aria-label="breadcrumb" *ngIf="result.breadCrumb.length >= 1">
                               <ol class="breadcrumb border-bottom-0">
                                 <li *ngFor="let bc of result.breadCrumb; let last = last;" class="breadcrumb-item"
                                   title="{{ bc.name }}">

@@ -59,3 +59,12 @@ p {
 ol li label:hover {
   background: #3400ff;
 }
+
+.breadcrumb {
+  padding: 0 !important;
+  padding-bottom: 1rem !important;
+}
+
+h4 {
+  margin-bottom: 1rem !important;
+}
