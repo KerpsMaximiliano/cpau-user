@@ -15,6 +15,7 @@ export class PagarBoletaComponent implements OnInit {
   cuotas: string;
   formValidarPago: ValidarPago;
   vigenciaboleta: boolean;
+  listadoCuotas: any;
   showMensajeDomicilio: boolean = false;
   tipotarjeta: string;
   @ViewChild('form', { static: false }) form: ElementRef;
@@ -23,7 +24,10 @@ export class PagarBoletaComponent implements OnInit {
   constructor(private derechoAnualService: DerechoAnualService) { }
 
   ngOnInit() {
-   
+    this.derechoAnualService.getListadoCuotas()
+    .subscribe(d => {
+      this.listadoCuotas= d;
+    });
   }
 
   imprimirBoleta() {

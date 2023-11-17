@@ -25,6 +25,11 @@ export class DerechoAnualService {
     return this.httpClient.get<DerechoAnual>(`${environment.apiUrl}/api/matricula/obtenerDeuda`, {params});
   }
 
+  getListadoCuotas(): Observable<any> {
+    const params = new HttpParams().set('nocache', 'true');
+    return this.httpClient.get<any>(`${environment.apiUrl}/api/matricula/listadoCuotas`, {params});
+  }
+
   hasRecibo(): Observable<boolean> {
     const params = new HttpParams().set('nocache', 'true');
     return this.httpClient.get<boolean>(`${environment.apiUrl}/api/Matricula/hasRecibo`, {params});

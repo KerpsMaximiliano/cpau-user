@@ -15,11 +15,10 @@
                 <br />
                 <label *ngIf="tipotarjeta == 'credito'" class="control-label" for="cuotas">Elegí la cantidad de cuotas:</label>
                 <div class="control-group" *ngIf="tipotarjeta == 'credito'" style="margin-left: 20px;">
-                    <input type="radio" value="6" name="cuotas" [(ngModel)]="cuotas">&nbsp;6 (sin interés)<br>
-                    <input type="radio" value="3" name="cuotas" [(ngModel)]="cuotas">&nbsp;3 (sin interés)<br>
-                    <input type="radio" value="2" name="cuotas" [(ngModel)]="cuotas">&nbsp;2 (sin interés)<br>
-                    <input type="radio" value="1" name="cuotas" [(ngModel)]="cuotas">&nbsp;1 (sin interés)<br>
-                    <br>
+                    <span *ngFor="let cuota of listadoCuotas">
+                        <input type="radio" value="{{ cuota }}" name="cuotas" [(ngModel)]="cuotas">&nbsp;{{ cuota }} (sin interés)<br>
+                    </span> 
+                    <br>                   
                 </div>
                 
                 <label *ngIf="tipotarjeta == 'boleta'" class="control-label">Imprimí tu boleta:</label>
