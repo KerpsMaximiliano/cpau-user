@@ -44,3 +44,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/.vs/Site2020-Institucional/v16/.suo
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite
