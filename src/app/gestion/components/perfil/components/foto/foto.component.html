@@ -1,69 +1,89 @@
 <!--Breadcump-->
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-sm-12">
-        <div class="row title-breadcump">
-            <div class="col-sm-8 row">
-                <h2>Fotos</h2>
-            </div>
-            <div class="col-sm-4 text-right  btn-sync">
-                <button class="btn-question"><a [href]="urlHelp" target="_blank" title="Ayuda"><i class="fa fa-question"></i></a></button>
-                <button (click)="reload()"><i class="fa fa-refresh"></i></button>
-            </div>
-        </div>
-        <ol class="breadcrumb">
-            <li>
-                <a>Perfil</a>
-            </li>
-            <li class="active">
-                <a><strong>Fotos</strong></a>
-            </li>
-        </ol>
+  <div class="col-sm-12">
+    <div class="row title-breadcump">
+      <div class="col-sm-8 row">
+        <h2>Fotos</h2>
+      </div>
+      <div class="col-sm-4 text-right  btn-sync">
+        <button class="btn-question"><a [href]="urlHelp" target="_blank" title="Ayuda"><i
+              class="fa fa-question"></i></a></button>
+        <button (click)="reload()"><i class="fa fa-refresh"></i></button>
+      </div>
     </div>
+    <ol class="breadcrumb">
+      <li>
+        <a>Perfil</a>
+      </li>
+      <li class="active">
+        <a><strong>Fotos</strong></a>
+      </li>
+    </ol>
+  </div>
 </div>
 
 <!--TAB-->
 <div class="wrapper wrapper-content animated fadeIn">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Fotos</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link" (click)="collapsed=!collapsed">
-                            <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="ibox-content" [hidden]="collapsed">
-                    <form method="get" class="form-horizontal" [formGroup]="fotosForm">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 text-left">
-                                <label class="control-label">En esta pantalla podés controlar los lugares donde querés que se visualice tu foto de perfil.</label><br><br>
-                                <input type="checkbox" formControlName="politica" (click)="changeCheck($event)"><strong> Permito al consejo emplear mi foto de perfil en las siguiente secciones.</strong> <br><br>
-                                <input type="checkbox" formControlName="perfil"> Perfil: Se mostrará tu foto en la parte superior izquierda una vez que ingreses a tu perfil. <br>
-                                <input type="checkbox" formControlName="credencial"> Credencial: Se mostrará tu foto dentro del círculo superior en medio de la credencial. <br>
-                                <input type="checkbox" formControlName="ficha"> Ficha técnica:  Se mostrará tu foto en la ficha técnica pública del consejo junto con tus datos, experiencia y trabajo realizado.
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 text-right">
-                                <div class="hr-line-dashed"></div>
-                                <div class="actions-buttons text-right">
-                                    <button [disabled]="loading" class="btn btn-primary" (click)="onSave()">
-                                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                                        Guardar
-                                    </button>
-                                    <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-
-            </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Fotos</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link" (click)="collapsed=!collapsed">
+              <i class="fa" [ngClass]="{'fa-chevron-down': !collapsed, 'fa-chevron-up': collapsed}"></i>
+            </a>
+          </div>
         </div>
+        <div class="ibox-content" [hidden]="collapsed">
+          <form method="get" class="form-horizontal" [formGroup]="form">
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
+                <label class="control-label">
+                  En esta pantalla podés controlar los lugares donde querés que se visualice tu foto de perfil.
+                  <br>
+                  <br>
+                </label>
+              </div>
+              <div class="col-lg-9 col-md-9 text-left pb-lg-4 pb-md-4 pb-4">
+                <input type="checkbox" formControlName="politica" (click)="changeCheck($event)">
+                <strong> Permito al consejo emplear mi foto de perfil en las siguiente secciones.</strong>
+                <br><br>
+                <input type="checkbox" formControlName="perfil">
+                Perfil: Se mostrará tu foto en la parte superior izquierda una vez que ingreses a tu perfil.
+                <br>
+                <input type="checkbox" formControlName="credencial">
+                Credencial: Se mostrará tu foto dentro del círculo superior en medio de la credencial.
+                <br>
+                <input type="checkbox" formControlName="ficha">
+                Ficha técnica: Se mostrará tu foto en la ficha técnica pública del consejo junto con tus datos,
+                experiencia y trabajo realizado.
+              </div>
+              <div class="col-lg-3 col-md-3"
+                style="display: flex; justify-content: center; align-items: center; padding-left: 0 !important;">
+                <img [src]="img" alt="Imagen de perfil" onerror="this.src='stylesCustom/images/fas-fa-user-circle.svg'"
+                  style="width: 100%; height: auto; max-width: 150px;">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 text-right">
+                <div class="hr-line-dashed"></div>
+                <div class="actions-buttons text-right">
+                  <button [disabled]="loading" class="btn btn-primary" (click)="onSave()">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Guardar
+                  </button>
+                  <button class="btn btn-danger" (click)="cancelarFila()">Cancelar</button>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
     </div>
-    <!--FIN TAB-->
+  </div>
+  <!--FIN TAB-->
 
 </div>

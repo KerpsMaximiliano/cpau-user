@@ -1,20 +1,26 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
-import { Role, User } from '@app/_models';
-import { AuthenticationService } from '@app/_services';
-import { environment } from '@environments/environment';
-import { MatriculaService } from '../matricula/services/matricula.service';
-import { Identificacion } from '../perfil/components/identificacion/model/identificacion.model';
-import { IdentificacionService } from '../perfil/components/identificacion/service/identificacion.service';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from "@angular/core";
+import { Router } from "@angular/router";
+import { Role, User } from "@app/_models";
+import { AuthenticationService } from "@app/_services";
+import { environment } from "@environments/environment";
+import { MatriculaService } from "../matricula/services/matricula.service";
+import { Identificacion } from "../perfil/components/identificacion/model/identificacion.model";
+import { IdentificacionService } from "../perfil/components/identificacion/service/identificacion.service";
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  selector: "app-menu",
+  templateUrl: "./menu.component.html",
+  styleUrls: ["./menu.component.css"],
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class MenuComponent implements OnInit, AfterViewInit {
-
   @Output() colapsarMenu = new EventEmitter();
 
   colapsado: boolean[] = [];
@@ -24,13 +30,15 @@ export class MenuComponent implements OnInit, AfterViewInit {
   closeMenu: boolean;
   hasImage: boolean;
 
-  constructor(private identificacionService: IdentificacionService,
-              private authenticationService: AuthenticationService,
-              private router: Router) { }
+  constructor(
+    private identificacionService: IdentificacionService,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
   ngAfterViewInit(): void {
     this.colapsado[0] = true;
-    let url = this.router.url.split('/');
-    if(url[url.length - 1] == "inscripciones") {
+    let url = this.router.url.split("/");
+    if (url[url.length - 1] == "inscripciones") {
       this.colapsar(5);
     } else if (url[url.length - 2] == "seguridad") {
       this.colapsar(6);
@@ -48,21 +56,24 @@ export class MenuComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.identificacionService.read().subscribe(identificacion => {
+    this.identificacionService.read().subscribe((identificacion) => {
       this.identificacionService.currentIdentificacionValue = identificacion;
     });
 
-    this.identificacionService.readImage().subscribe(i => {
+    this.identificacionService.readImage().subscribe((i) => {
       if (i.success) {
-        this.imgSrc = 'data:image/jpg;base64,' + i.entity.image;
+        this.imgSrc = `data:image/jpg;base64,${i.entity.image}`;
+        this.identificacionService.img = `data:image/jpg;base64,${i.entity.image}`;
       }
     });
 
-    this.identificacionService.hasImage().subscribe(i => {
-        this.hasImage = i.success && i.entity.hasImage;
+    this.identificacionService.hasImage().subscribe((i) => {
+      this.hasImage = i.success && i.entity.hasImage;
     });
 
-    this.identificacionService.getCurrentIdentificacionValue().subscribe(x => this.perfil = x);
+    this.identificacionService
+      .getCurrentIdentificacionValue()
+      .subscribe((x) => (this.perfil = x));
 
     this.currentUser = this.authenticationService.currentUserValue;
   }
@@ -72,7 +83,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
     for (let x = 0; x < this.colapsado.length; x++) {
       this.colapsado[x] = false;
     }
-    this.colapsado.forEach(f => f = true);
+    this.colapsado.forEach((f) => (f = true));
     this.colapsado[i] = !this.colapsado[i];
   }
 
