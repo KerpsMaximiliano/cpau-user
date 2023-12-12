@@ -58,16 +58,15 @@
                 <div class="row">
                   <div class="col-12">
                     <article>
-                      <a (click)="redirectUrl(contentSite[0], $event)"  onmouseover="this.style.cursor='pointer';"
-                        title="{{ contentSite[0]?.image?.title }}">
+                      <a [href]="'/nota/' + contentSite[0].id" style="cursor: pointer;"
+                        [title]="contentSite[0]?.image?.title">
                         <li class="media noticia-principal">
                           <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                               <!-- TODO -->
                               <figure>
-                                <img class="img-fluid imagen imagen-principal" src="{{
-                                    contentSite[0]?.image?.imageUrl
-                                  }}" alt="{{ contentSite[0]?.image?.title }}" />
+                                <img class="img-fluid imagen imagen-principal" [src]="contentSite[0]?.image?.imageUrl"
+                                  [alt]="contentSite[0]?.image?.title" />
                               </figure>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pt-2 pr-4">
@@ -87,16 +86,15 @@
                 <div class="row pt-3 pb-1">
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a (click)="redirectUrl(contentSite[1], $event)"  onmouseover="this.style.cursor='pointer';"
-                        title="{{ contentSite[1]?.image?.title }}">
+                      <a [href]="'/nota/' + contentSite[1]?.id" [title]="contentSite[1]?.image?.title"
+                        style="cursor: pointer;">
                         <li class="media minima">
                           <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                               <!-- TODO -->
                               <figure>
-                                <img class="img-fluid imagen imagen-secundaria" src="{{
-                                    contentSite[1]?.image?.imageUrl
-                                  }}" alt="{{ contentSite[1]?.title }}" />
+                                <img class="img-fluid imagen imagen-secundaria" [src]="contentSite[1]?.image?.imageUrl"
+                                  [alt]="contentSite[1]?.title" />
                               </figure>
                             </div>
                             <div class="p-2 res-margin-top-10">
@@ -109,16 +107,15 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a (click)="redirectUrl(contentSite[2], $event)"  onmouseover="this.style.cursor='pointer';"
-                        title="{{ contentSite[2]?.image?.title }}">
+                      <a [href]="'/nota/' + contentSite[2]?.id" style="cursor: pointer;"
+                        [title]="contentSite[2]?.image?.title">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                               <figure>
-                                <img class="img-fluid imagen imagen-secundaria" src="{{
-                                    contentSite[2]?.image?.imageUrl
-                                  }}" alt="{{ contentSite[2]?.title }}" />
+                                <img class="img-fluid imagen imagen-secundaria" [src]="contentSite[2]?.image?.imageUrl"
+                                  [alt]="contentSite[2]?.title" />
                               </figure>
                             </div>
                             <div class="p-2 res-margin-top-10">
@@ -131,16 +128,15 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a (click)="redirectUrl(contentSite[3], $event)"  onmouseover="this.style.cursor='pointer';"
-                        title="{{ contentSite[3]?.image?.title }}">
+                      <a [href]="'/nota/' + contentSite[3]?.id" style="cursor: pointer;"
+                        [title]="contentSite[3]?.image?.title">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                               <figure>
-                                <img class="img-fluid imagen imagen-secundaria" src="{{
-                                    contentSite[3]?.image?.imageUrl
-                                  }}" alt="{{ contentSite[3]?.title }}" />
+                                <img class="img-fluid imagen imagen-secundaria" [src]="contentSite[3]?.image?.imageUrl"
+                                  [alt]="contentSite[3]?.title" />
                               </figure>
                             </div>
                             <div class="p-2 res-margin-top-5">
@@ -155,16 +151,15 @@
                 <div class="row pt-3 pb-1" style="padding-top: 1.1em !important;">
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a (click)="redirectUrl(contentSite[4], $event)"  onmouseover="this.style.cursor='pointer';"
-                      title="{{ contentSite[4]?.image?.title }}">
+                      <a [href]="'/nota/' + contentSite[4]?.id" style="cursor: pointer;"
+                        [title]="contentSite[4]?.image?.title">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                               <figure>
-                                <img class="img-fluid imagen imagen-secundaria" src="{{
-                                    contentSite[4]?.image?.imageUrl
-                                  }}" alt="{{ contentSite[4]?.title }}" />
+                                <img class="img-fluid imagen imagen-secundaria" [src]="contentSite[4]?.image?.imageUrl"
+                                  [alt]="contentSite[4]?.title" />
                               </figure>
                             </div>
                             <div class="p-2 res-margin-top-5">
@@ -177,16 +172,15 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a (click)="redirectUrl(contentSite[5], $event)"  onmouseover="this.style.cursor='pointer';"
-                        title="{{ contentSite[5]?.image?.title }}">
+                      <a [href]="'/nota/' + contentSite[5]?.id" style="cursor: pointer;"
+                        [title]="contentSite[5]?.image?.title">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                               <figure>
-                                <img class="img-fluid imagen imagen-secundaria" src="{{
-                                    contentSite[5]?.image?.imageUrl
-                                  }}" alt="{{ contentSite[5]?.title }}" />
+                                <img class="img-fluid imagen imagen-secundaria" [src]="contentSite[5]?.image?.imageUrl"
+                                  [alt]="contentSite[5]?.title" />
                               </figure>
                             </div>
                             <div class="p-2 res-margin-top-5">
@@ -199,16 +193,15 @@
                   </div>
                   <div class="col-sm res-margin-bottom-20">
                     <article>
-                      <a (click)="redirectUrl(contentSite[6], $event)"  onmouseover="this.style.cursor='pointer';"
-                      title="{{ contentSite[6]?.image?.title }}">
+                      <a [href]="'/nota/' + contentSite[6]?.id" style="cursor: pointer;"
+                        [title]="contentSite[6]?.image?.title">
                         <li class="media minima">
                           <div class="row">
                             <!-- TODO -->
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                               <figure>
-                                <img class="img-fluid imagen imagen-secundaria" src="{{
-                                    contentSite[6]?.image?.imageUrl
-                                  }}" alt="{{ contentSite[6]?.title }}" />
+                                <img class="img-fluid imagen imagen-secundaria" [src]="contentSite[6]?.image?.imageUrl"
+                                  [alt]="contentSite[6]?.title" />
                               </figure>
                             </div>
                             <div class="p-2 res-margin-top-5">
@@ -300,7 +293,7 @@
 
       <!-- noticias carrousel -->
       <section>
-        <aside >
+        <aside>
           <div class="row" *ngIf="noticiasCarrousel; else loadingBlockNoticiasCarrousel">
             <div class="col-sm col-md col-lg col-xl " style="padding: 0">
               <div class="py-3" [ngClass]="{'sin-borde': noticiasCarrousel?.length == 0}">
@@ -308,32 +301,34 @@
                   <div class="">
                     <div class="carousel slide" data-ride="myCarousel">
                       <div class="carousel-inner" role="listbox">
-                        <owl-carousel [options]="SlideOptions"
-                                [items]="noticiasCarrousel"
-                                class="item" id="ncCarrousel"
-                                [carouselClasses]="['owl-theme', 'sliding', 'owl-carousel-home']" #owlElement> 
-                          <div *ngFor="let product of noticiasCarrousel; let index = index; let last = last" class="col-sm col-md-12 col-lg-12 col-lg col-xl">
+                        <owl-carousel [options]="SlideOptions" [items]="noticiasCarrousel" class="item" id="ncCarrousel"
+                          [carouselClasses]="['owl-theme', 'sliding', 'owl-carousel-home']" #owlElement>
+                          <div *ngFor="let product of noticiasCarrousel; let index = index; let last = last"
+                            class="col-sm col-md-12 col-lg-12 col-lg col-xl">
                             <h6 class="mt-0 mb-2 pb-1 border-bottom">
-                            <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url }}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
-                            </h6>  
-                            <a href="{{ product.urlHeader }}"target="{{selectTarget(product.linkTargetHeader)}}" class="link-ss" title="{{ product.tooltip }}">
-                            <li class="media">
-                              <div class="producto" [ngStyle]="{
+                              <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url }}"
+                                title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
+                            </h6>
+                            <a href="{{ product.urlHeader }}" target="{{selectTarget(product.linkTargetHeader)}}"
+                              class="link-ss" title="{{ product.tooltip }}">
+                              <li class="media">
+                                <div class="producto" [ngStyle]="{
                                 backgroundColor: product.color,
                                 color: product.textColor
                               }">
-                              <figure>
-                                <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}" alt="" />
-                              </figure>
-                              <div class="py-2 px-3">
-                                <h5>{{ product.header }}</h5>
-                                <p>{{ product.description }}</p>
-                              </div>
-                              </div>
-                            </li>
+                                  <figure>
+                                    <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}"
+                                      alt="" />
+                                  </figure>
+                                  <div class="py-2 px-3">
+                                    <h5>{{ product.header }}</h5>
+                                    <p>{{ product.description }}</p>
+                                  </div>
+                                </div>
+                              </li>
                             </a>
                             <div class="d-none" *ngIf="messagesRendered(last)"></div>
-                          </div> 
+                          </div>
                         </owl-carousel>
                       </div>
                     </div>
@@ -343,56 +338,58 @@
             </div>
           </div>
           <ng-template #loadingBlockNoticiasCarrousel>
-          <div class="row pt-4 pb-5 align-self-center">
-            <div class="loader">Loading...</div>
-          </div>
+            <div class="row pt-4 pb-5 align-self-center">
+              <div class="loader">Loading...</div>
+            </div>
           </ng-template>
         </aside>
-        </section>
+      </section>
 
       <!--PRODUCTOS-->
       <section>
-        <aside >
+        <aside>
           <div class="row" *ngIf="externalProduct; else loadingBlockExternalProduct">
-              <div class="col-sm col-md col-lg col-xl " style="padding: 0">
-                  <div class="py-3" [ngClass]="{'sin-borde': externalProduct?.length == 0}">
-                      <div class="top-content">
-                          <div class="">
-                              <div class="carousel slide" data-ride="myCarousel">
-                                  <div class="carousel-inner" role="listbox">
-                                      <owl-carousel [options]="SlideOptions" id="epCarrousel"
-                                                      [items]="externalProduct"
-                                                      class="item"
-                                                      [carouselClasses]="['owl-theme', 'sliding', 'owl-carousel-home']" #owlElement> 
-                                          <div *ngFor="let product of externalProduct; let index = index; let last = last" class="col-sm col-md-12 col-lg-12 col-lg col-xl">
-                                              <h6 class="mt-0 mb-2 pb-1 border-bottom">
-                                                <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url}}" title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
-                                              </h6>  
-                                              <a href="{{ product.urlHeader }}"target="{{selectTarget(product.linkTargetHeader)}}" class="link-ss" title="{{ product.tooltip }}">
-                                                <li class="media">
-                                                  <div class="producto" [ngStyle]="{
+            <div class="col-sm col-md col-lg col-xl " style="padding: 0">
+              <div class="py-3" [ngClass]="{'sin-borde': externalProduct?.length == 0}">
+                <div class="top-content">
+                  <div class="">
+                    <div class="carousel slide" data-ride="myCarousel">
+                      <div class="carousel-inner" role="listbox">
+                        <owl-carousel [options]="SlideOptions" id="epCarrousel" [items]="externalProduct" class="item"
+                          [carouselClasses]="['owl-theme', 'sliding', 'owl-carousel-home']" #owlElement>
+                          <div *ngFor="let product of externalProduct; let index = index; let last = last"
+                            class="col-sm col-md-12 col-lg-12 col-lg col-xl">
+                            <h6 class="mt-0 mb-2 pb-1 border-bottom">
+                              <a target="{{selectTarget(product.linkTarget)}}" href="{{ product.url}}"
+                                title="{{ product.title | uppercase }}">{{ product.title | uppercase }}</a>
+                            </h6>
+                            <a href="{{ product.urlHeader }}" target="{{selectTarget(product.linkTargetHeader)}}"
+                              class="link-ss" title="{{ product.tooltip }}">
+                              <li class="media">
+                                <div class="producto" [ngStyle]="{
                                                       backgroundColor: product.color,
                                                       color: product.textColor
                                                     }">
-                                                    <figure>
-                                                      <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}" alt="" />
-                                                    </figure>
-                                                    <div class="py-2 px-3">
-                                                      <h5>{{ product.header }}</h5>
-                                                      <p>{{ product.description }}</p>
-                                                    </div>
-                                                  </div>
-                                                </li>
-                                              </a>
-                                              <div class="d-none" *ngIf="messagesRendered(last)"></div>
-                                          </div> 
-                                      </owl-carousel>
+                                  <figure>
+                                    <img class="img-fluid imagen imagen-secundaria" src="{{ product.imageURL }}"
+                                      alt="" />
+                                  </figure>
+                                  <div class="py-2 px-3">
+                                    <h5>{{ product.header }}</h5>
+                                    <p>{{ product.description }}</p>
                                   </div>
-                              </div>
+                                </div>
+                              </li>
+                            </a>
+                            <div class="d-none" *ngIf="messagesRendered(last)"></div>
                           </div>
+                        </owl-carousel>
                       </div>
+                    </div>
                   </div>
+                </div>
               </div>
+            </div>
           </div>
           <ng-template #loadingBlockExternalProduct>
             <div class="row pt-4 pb-5 align-self-center">

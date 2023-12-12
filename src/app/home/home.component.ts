@@ -1,19 +1,18 @@
-﻿import { Component, Inject, Injector, ViewChild, ViewEncapsulation } from "@angular/core";
+﻿import { Component, Inject, ViewChild, ViewEncapsulation } from "@angular/core";
 import { User } from "@app/_models";
-import { AuthenticationService, ModalHomeService, SiteLoader } from "@app/_services";
-import { map } from "rxjs/operators";
 import {
-  ContentSite,
-  ItemsSite,
-  DEAFULT_IMAGE,
-} from "@app/shared/models/contentsite.model";
+  AuthenticationService,
+  ModalHomeService,
+  SiteLoader,
+} from "@app/_services";
+import { map } from "rxjs/operators";
+import { ItemsSite, DEAFULT_IMAGE } from "@app/shared/models/contentsite.model";
 import { Events } from "@app/shared/models/Events.model";
 import { ExternalProduct } from "@app/shared/models/ExternalProduct.model";
-import { ActivatedRoute, Router } from '@angular/router';
-import { ModalHome } from '@app/_models/modalHome.model';
-import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from "@angular/router";
+import { ModalHome } from "@app/_models/modalHome.model";
+import { DomSanitizer } from "@angular/platform-browser";
 import { OwlCarousel } from "ngx-owl-carousel";
-import { stringify } from "querystring";
 import { DOCUMENT } from "@angular/common";
 declare var $: any;
 declare function recortarTituloPrincipal(text);
@@ -30,7 +29,7 @@ declare function recortarDescriptionProductoExterno(text);
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent {
-  @ViewChild('owlElementHome', {static: false}) owlElement: OwlCarousel;
+  @ViewChild("owlElementHome", { static: false }) owlElement: OwlCarousel;
   loading = false;
   currentUser: User;
   userFromApi: User;
@@ -39,7 +38,7 @@ export class HomeComponent {
   externalProduct: ExternalProduct[];
   noticiasCarrousel: ExternalProduct[];
   modalContent: ModalHome;
-  video:string;
+  video: string;
   load: boolean;
   SlideOptions = {
     loop: false,
@@ -48,29 +47,29 @@ export class HomeComponent {
     pullDrag: false,
     dots: false,
     navSpeed: 1000,
-    navText: ['', ''],
+    navText: ["", ""],
     nav: false,
     items: 4,
     lazyLoad: true,
     autoplay: true,
     responsive: {
       0: {
-          items: 1,
-          nav: false
+        items: 1,
+        nav: false,
       },
       400: {
         items: 1,
-        nav: false
+        nav: false,
       },
       600: {
-          items: 2,
-          nav: false
+        items: 2,
+        nav: false,
       },
       1000: {
-          items: 4,
-          nav: false,
-      }
-    }
+        items: 4,
+        nav: false,
+      },
+    },
   };
   constructor(
     private siteLoader: SiteLoader,
@@ -82,30 +81,31 @@ export class HomeComponent {
     @Inject(DOCUMENT) readonly document: Document
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
-    this.video = "<div style=\"padding: 56.25% 0 0 0; position: relative;\"><a title=\"&iquest;NECESIT&Aacute;S UN/A PROFESIONAL?\" href=\"https://www.cpau.org/Content/institucional/profesionales\" target=\"_self\"> <video style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\" src=\"https://player.vimeo.com/progressive_redirect/playback/432956089/rendition/240p/file.mp4?loc=external&signature=92f7cf3f6fed0923afc3b78f3a83e052545824ee5e656345b96108aee0f25a23\" preload=\"metadata\" autoplay=\"autoplay\" loop=\"loop\" muted=\"\"></video> </a></div>";
+    this.video =
+      '<div style="padding: 56.25% 0 0 0; position: relative;"><a title="&iquest;NECESIT&Aacute;S UN/A PROFESIONAL?" href="https://www.cpau.org/Content/institucional/profesionales" target="_self"> <video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://player.vimeo.com/progressive_redirect/playback/432956089/rendition/240p/file.mp4?loc=external&signature=92f7cf3f6fed0923afc3b78f3a83e052545824ee5e656345b96108aee0f25a23" preload="metadata" autoplay="autoplay" loop="loop" muted=""></video> </a></div>';
   }
 
   ngOnInit() {
-
     const queryString = window.location.search;
 
     if (queryString) {
       const urlParams = new URLSearchParams(queryString);
 
-      if (urlParams && urlParams.has('redirectToPage')) {
-        var redirectToPage = urlParams.get('redirectToPage');
-        if (redirectToPage == '/passwordrecovery/confirm') {
+      if (urlParams && urlParams.has("redirectToPage")) {
+        var redirectToPage = urlParams.get("redirectToPage");
+        if (redirectToPage == "/passwordrecovery/confirm") {
           const params = window.location.hash;
-          var paramsarray = params.split('&');
-          const token = paramsarray[0].split('=')[1];
-          const email = paramsarray[1].split('=')[1];
-          this.router.navigate([redirectToPage], { queryParams: { 'token': token, 'email': email } });
+          var paramsarray = params.split("&");
+          const token = paramsarray[0].split("=")[1];
+          const email = paramsarray[1].split("=")[1];
+          this.router.navigate([redirectToPage], {
+            queryParams: { token: token, email: email },
+          });
         } else {
           this.router.navigate([redirectToPage]);
         }
       }
     }
-
 
     const sectionName = "NOTICIAS";
     const cantMax = 7;
@@ -122,9 +122,7 @@ export class HomeComponent {
         map((ret) => {
           if (ret != undefined) {
             ret[0] != undefined && ret[0].title != undefined
-              ? (ret[0].title = recortarTituloPrincipal(
-                ret[0].title
-              ))
+              ? (ret[0].title = recortarTituloPrincipal(ret[0].title))
               : false;
             ret[0] != undefined && ret[0].summary != undefined
               ? (ret[0].summary = recortarSummary(ret[0].summary))
@@ -132,18 +130,16 @@ export class HomeComponent {
 
             for (let ind = 1; ind < 7; ind++) {
               ret[ind] != undefined && ret[ind].title != undefined
-                ? (ret[ind].title = recortarTituloSecundario(
-                  ret[ind].title
-                ))
+                ? (ret[ind].title = recortarTituloSecundario(ret[ind].title))
                 : false;
-                if (!ret[ind].image ||
-                  ret[ind].image == null ||
-                  ret[ind].image.imageUrl === ''
-                ) {
-                  ret[ind].image = { imageUrl: DEAFULT_IMAGE };
-                }
+              if (
+                !ret[ind].image ||
+                ret[ind].image == null ||
+                ret[ind].image.imageUrl === ""
+              ) {
+                ret[ind].image = { imageUrl: DEAFULT_IMAGE };
+              }
             }
-            
           }
 
           return ret;
@@ -160,16 +156,25 @@ export class HomeComponent {
         this.events = data;
       });
 
-      this.siteLoader
+    this.siteLoader
       .getNoticiasCarrousel()
       .pipe(
         map((ret) => ret as ExternalProduct[]),
         map((ret) => {
           if (ret !== undefined) {
-            ret.forEach(r => {
-              r.title = r.title !== undefined ? recortarTituloProductoExterno(r.title) : undefined;
-              r.header = r.header !== undefined ? recortarHeaderProductoExterno(r.header) : undefined;
-              r.description = r.description !== undefined ? recortarDescriptionProductoExterno(r.description) : undefined;
+            ret.forEach((r) => {
+              r.title =
+                r.title !== undefined
+                  ? recortarTituloProductoExterno(r.title)
+                  : undefined;
+              r.header =
+                r.header !== undefined
+                  ? recortarHeaderProductoExterno(r.header)
+                  : undefined;
+              r.description =
+                r.description !== undefined
+                  ? recortarDescriptionProductoExterno(r.description)
+                  : undefined;
             });
           }
 
@@ -186,10 +191,19 @@ export class HomeComponent {
         map((ret) => ret as ExternalProduct[]),
         map((ret) => {
           if (ret !== undefined) {
-            ret.forEach(r => {
-              r.title = r.title !== undefined ? recortarTituloProductoExterno(r.title) : undefined;
-              r.header = r.header !== undefined ? recortarHeaderProductoExterno(r.header) : undefined;
-              r.description = r.description !== undefined ? recortarDescriptionProductoExterno(r.description) : undefined;
+            ret.forEach((r) => {
+              r.title =
+                r.title !== undefined
+                  ? recortarTituloProductoExterno(r.title)
+                  : undefined;
+              r.header =
+                r.header !== undefined
+                  ? recortarHeaderProductoExterno(r.header)
+                  : undefined;
+              r.description =
+                r.description !== undefined
+                  ? recortarDescriptionProductoExterno(r.description)
+                  : undefined;
             });
           }
 
@@ -202,41 +216,45 @@ export class HomeComponent {
 
     // modal
 
-    this.modalHomeService.getTodayModal().pipe(
-      map(x => x.data)
-    ).subscribe(modal => {
+    this.modalHomeService
+      .getTodayModal()
+      .pipe(map((x) => x.data))
+      .subscribe((modal) => {
+        if (modal && modal.content) {
+          this.modalContent = {
+            title: modal.title,
+            content: this.sanitizer.bypassSecurityTrustHtml(
+              modal.content as string
+            ),
+          };
+          document.getElementById("openModalButton").click();
+        }
+      });
 
-      if (modal && modal.content) {
-        this.modalContent = {
-          title: modal.title,
-          content: this.sanitizer.bypassSecurityTrustHtml(modal.content as string)
-        };
-        document.getElementById('openModalButton').click();
-      }
+    $("video[autoplay]").each(function () {
+      this.play();
     });
-
-    $("video[autoplay]").each(function(){ this.play(); });
   }
 
-// touch
+  // touch
 
-  selectTarget(index){
-    let target = '';
+  selectTarget(index) {
+    let target = "";
     switch (index) {
       case 0:
-        target = '_self';
+        target = "_self";
         break;
       case 1:
-        target = '_blank';        
+        target = "_blank";
         break;
       case 2:
-        target = '_parent';        
+        target = "_parent";
         break;
       case 3:
-        target = '_top';    
+        target = "_top";
         break;
       case 4:
-        target = '_search';    
+        target = "_search";
         break;
       default:
         break;
@@ -250,110 +268,116 @@ export class HomeComponent {
     }
   }
 
-  redirectUrl(cs : ItemsSite, event) {
-    if(event.ctrlKey) {
-      console.log(this.activatedRoute.snapshot);
-      let win = window.open(`/nota/${cs.id}`, '_blank');
-      win.focus();
-    } else {
-      if (cs.link && cs.link.trim() != ''){
-        this.redirect(cs.link, cs.linkTarget);
-      } else {
-        console.log(this.activatedRoute.snapshot)
-        this.router.navigate([`/nota/${cs.id}`])
-      }
-    }
+  // redirectUrl(cs: ItemsSite, event, mousedown: boolean) {
+  //   console.log("hola");
+
+  //   if (event.ctrlKey) {
+  //     console.log(this.activatedRoute.snapshot);
+  //     let win = window.open(`/nota/${cs.id}`, "_blank");
+  //     win.focus();
+  //   } else {
+  //     if (cs.link && cs.link.trim() != "") {
+  //       this.redirect(cs.link, cs.linkTarget);
+  //     } else {
+  //       console.log(this.activatedRoute.snapshot);
+  //       this.router.navigate([`/nota/${cs.id}`]);
+  //     }
+  //   }
+  // }
+
+  get window(): Window {
+    return this.document.defaultView;
   }
 
-  get window(): Window { return this.document.defaultView; }
-
-  redirect(url: string, target: string): Promise<boolean> {
-
-    return new Promise<boolean>( (resolve, reject) => {
-  
-        try { resolve(!!this.window.open(url, target)); }
-        catch(e) { reject(e); }
-    });
-  }
+  // redirect(url: string, target: string): Promise<boolean> {
+  //   return new Promise<boolean>((resolve, reject) => {
+  //     try {
+  //       resolve(!!this.window.open(url, target));
+  //     } catch (e) {
+  //       reject(e);
+  //     }
+  //   });
+  // }
 
   carrousel() {
     this.load = true;
-    const epowl = $('#epCarrousel');
+    const epowl = $("#epCarrousel");
     epowl.owlCarousel({
-        loop: this.externalProduct && this.externalProduct.length > 4,
-        mouseDrag: true,
-        touchDrag: true,
-        pullDrag: true,
-        dots: false,
-        navSpeed: 1000,
-        nav: false,
-        items: 4,
-        lazyLoad: true,
-        autoplay: true,
-        responsive: {
-          0: {
-              items: 1,
-              nav: false
-          },
-          400: {
-            items: 2,
-            nav: false
-          },
-          1000: {
-              items: 4,
-              nav: false,
-          }
-        }
+      loop: this.externalProduct && this.externalProduct.length > 4,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: true,
+      dots: false,
+      navSpeed: 1000,
+      nav: false,
+      items: 4,
+      lazyLoad: true,
+      autoplay: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false,
+        },
+        400: {
+          items: 2,
+          nav: false,
+        },
+        1000: {
+          items: 4,
+          nav: false,
+        },
+      },
     });
-    const ncowl = $('#ncCarrousel');
+    const ncowl = $("#ncCarrousel");
     ncowl.owlCarousel({
-        loop: this.noticiasCarrousel && this.noticiasCarrousel.length > 4,
-        mouseDrag: true,
-        touchDrag: true,
-        pullDrag: true,
-        dots: false,
-        navSpeed: 1000,
-        nav: true,
-        items: 4,
-        lazyLoad: true,
-        autoplay: true,
-        responsive: {
-          0: {
-              items: 1,
-              nav: false
-          },
-          400: {
-            items: 2,
-            nav: false
-          },
-          1000: {
-              items: 4,
-              nav: false,
-          }
-        }
+      loop: this.noticiasCarrousel && this.noticiasCarrousel.length > 4,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: true,
+      dots: false,
+      navSpeed: 1000,
+      nav: true,
+      items: 4,
+      lazyLoad: true,
+      autoplay: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false,
+        },
+        400: {
+          items: 2,
+          nav: false,
+        },
+        1000: {
+          items: 4,
+          nav: false,
+        },
+      },
     });
     this.SlideOptions.mouseDrag = true;
     this.SlideOptions.touchDrag = true;
     this.SlideOptions.pullDrag = true;
     this.SlideOptions.items = 4;
-    this.SlideOptions.loop = this.externalProduct && this.externalProduct.length > 4;
+    this.SlideOptions.loop =
+      this.externalProduct && this.externalProduct.length > 4;
     this.SlideOptions.responsive = {
       0: {
-          items: 1,
-          nav: false
+        items: 1,
+        nav: false,
       },
       400: {
         items: 1,
-        nav: false
+        nav: false,
       },
       600: {
-          items: 2,
-          nav: false
+        items: 2,
+        nav: false,
       },
       1000: {
-          items: 4,
-          nav: false,
-      }
+        items: 4,
+        nav: false,
+      },
     };
   }
 }
