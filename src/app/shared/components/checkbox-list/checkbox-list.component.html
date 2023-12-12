@@ -1,12 +1,10 @@
 <form [formGroup]="form">
     <div class="checkbox-container">
         <ng-container *ngFor="let order of ordersFormArray.controls; let i = index">
-
             <div class="checkbox-list">
-
                 <label [formArrayName]="controlName">
                     <input type="checkbox" [formControlName]="i">
-                    {{checkboxData[i].nombre}}
+                    <p>{{ checkboxData[i].nombre }}</p>
                 </label>
             </div>
         </ng-container>
