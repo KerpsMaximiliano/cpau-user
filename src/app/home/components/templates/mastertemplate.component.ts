@@ -39,7 +39,7 @@ import { Title } from "@angular/platform-browser";
         <div class="loader ">Loading...</div>
       </div>
 
-      <app-publicity-home></app-publicity-home>
+      <app-publicity-home class="no-print"></app-publicity-home>
       <app-footer></app-footer>
     </div>
     <!--CONTENEDOR: FIN	-->

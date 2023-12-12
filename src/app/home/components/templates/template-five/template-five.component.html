@@ -1,29 +1,29 @@
-<h6 *ngIf="breadCrumb?.length == 1" class="border-bottom title-sections pb-1">
+<h6 *ngIf="breadCrumb?.length == 1" class="border-bottom title-sections pb-1 no-print">
   <a *ngFor="let bc of breadCrumb" target="_self" [routerLink]="[bc.link]" title="{{bc.name}}">{{bc.name}}
   </a>
 </h6>
 
-<nav aria-label="breadcrumb" *ngIf="breadCrumb?.length > 1">
+<nav aria-label="breadcrumb" *ngIf="breadCrumb?.length > 1" class="print-pd">
   <ol class="breadcrumb">
-    <li *ngFor="let bc of breadCrumb; let last = last;" class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}}"
-      title="{{bc.name}}">
+    <li *ngFor="let bc of breadCrumb; let last = last;"
+      class="{{last ? 'breadcrumb-item active' : 'breadcrumb-item'}} no-print" title="{{bc.name}}">
       <a *ngIf="bc.link != ''" [routerLink]="[bc.link]">{{bc.name}}</a>
       <span *ngIf="bc.link == ''">{{bc.name}}</span>
     </li>
   </ol>
 </nav>
 
-<div *ngIf="data; else loadingBlockNews" class="container p-0 pt-2 pb-5">
+<div *ngIf="data; else loadingBlockNews" class="container p-0 pt-2 pb-5 no-print-empty print-0">
   <!--Articles-->
-  <section>
-    <div class="row">
+  <section class="print">
+    <div class="row print-w-full">
       <!--input type="radio" id="todos" name="categories" value="todos" checked>
             <input type="radio" id="{{currentTag | uppercase}}" name="categories" value="{{currentTag | uppercase}}" *ngFor="let currentTag of data.tags">
             <input type="radio" id="hoy" name="categories" value="hoy">
             <input type="radio" id="semana" name="categories" value="semana">
             <input type="radio" id="mes" name="categories" value="mes">
             <input type="radio" id="ano" name="categories" value="ano"-->
-      <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias ">
+      <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 flitrosnoticias no-print">
         <!--ol>
                     <li>
                         <div class="pl-1 pb-1">
@@ -57,16 +57,16 @@
                     </li>
                 </ol-->
       </div>
-      <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts ">
+      <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 posts print-w-full">
         <ul class="list-unstyled">
-          <li *ngFor="let item of destacado" class="post" [attr.data-category]="item.categoryData">
+          <li *ngFor="let item of destacado" class="post print-0" [attr.data-category]="item.categoryData">
             <div class="row">
               <!--Tittle-->
               <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                <div class="container p-0 pt-2 pb-5">
+                <div class="container p-0 pt-2 pb-5 print-0">
                   <!--Nota-->
-                  <div class="row">
-                    <div class="col-12 col-sm-12 col-md-10 articleCss" style="flex: 0 0 77.8%;">
+                  <div class="row print-w-full">
+                    <div class="col-12 col-sm-12 col-md-10 articleCss print-w-full" style="flex: 0 0 77.8%;">
                       <article
                         class="{{(item?.image == undefined || item?.image == null) ? 'margintop-52' : 'margintop-7'}}">
                         <figure *ngIf="item?.image">
@@ -93,7 +93,7 @@
           </li>
           <li *ngFor="let item of noDestacado" class="post" [attr.data-category]="item.categoryData">
             <article>
-              <div *ngIf="!item.highlighted" class="row">
+              <div *ngIf="!item.highlighted" class="row no-print">
                 <div class="col-15 col-sm-12 col-md-30 col-lg-38 col-xl-46 noticias-txt">
                   <h4 *ngIf="item.link"><a href="{{item.link}}" target="{{selectTarget(item.linkTarget)}}"
                       title="{{item.title}}">{{item.title}}</a></h4>
@@ -133,7 +133,7 @@
 </div>
 
 <ng-template #loadingBlockNews>
-  <div class="container p-0 pt-2 pb-5 align-self-center ">
+  <div class="container p-0 pt-2 pb-5 align-self-center no-print">
     <div class="loader ">Loading...</div>
   </div>
 </ng-template>
